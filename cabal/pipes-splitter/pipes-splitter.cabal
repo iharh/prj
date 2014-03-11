@@ -1,0 +1,25 @@
+name:                splitter
+version:             0.1.0.0
+synopsis:            file splitter 
+description:         file splitter which uses pipes and pipes-parse
+license:             BSD3
+-- license-file:        LICENSE
+author:              Igor Goncharenko
+-- maintainer:          
+-- copyright:           
+-- category:            
+build-type:          Simple
+cabal-version:       >=1.8
+
+build-depends:
+  base ==4.6.*
+
+executable pipes-splitter
+  hs-source-dirs:    src
+  main-is:           Main.hs
+  GHC-Options:       -O2 -Wall
+  build-depends:
+    base        ==4.6.*,
+    pipes       ==4.0.*
+    -- pipes-parse ==2.0.*
+  -- other-modules:       

@@ -1,0 +1,11 @@
+.*.swp
+cabal/*/dist/*
+cabal/*/.cabal-sandbox/*
+cabal/*/cabal.sandbox.config
+cabal/*/*.exe
+cabal/*/*.nsi
+sbt/*/target/*
+sbt/*/project/target/*
+sbt/*/project/project/target/*
+sbt/knlph/models/*
+sbt/*/lib/*

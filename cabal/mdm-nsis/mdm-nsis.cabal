@@ -1,0 +1,59 @@
+name:                mdm-nsis
+version:             0.1.0.0
+cabal-version:       >= 1.10
+synopsis:            mdm nsis 
+description:         mdm nsis descr
+license:             BSD3
+-- license-file:        LICENSE
+author:              Igor Goncharenko
+-- maintainer:          
+-- copyright:           
+-- category:            
+build-type:          Simple
+cabal-version:       >=1.10
+
+flag documentation
+    default: True
+    -- False
+    -- cabal install -fdocumentation or cabal install --flags=documentation.
+    -- cabal haddock --hyperlink-source
+
+library
+    default-language:    Haskell2010
+    ghc-options:         -O2
+    build-depends:
+        base         == 4.6.*,
+        transformers >= 0.2 && < 0.4,
+        uniplate     >= 1.5 && < 1.7
+    if flag(documentation)
+        build-depends: hscolour == 1.20.*
+    exposed-modules:
+        Husk
+        Development.NSIS
+        Development.NSIS.Plugins.Base64
+        Development.NSIS.Plugins.Taskbar
+    other-modules:
+        Development.NSIS.Library
+        Development.NSIS.Optimise
+        Development.NSIS.Show
+        Development.NSIS.Sugar
+        Development.NSIS.Type
+    hs-source-dirs:  library
+--    ghc-options:         -O2 -Wall
+
+executable mdm-nsis 
+    default-language:    Haskell2010
+    ghc-options:         -O2 -Wall
+    hs-source-dirs:      src
+    main-is:             Main.hs
+    build-depends:
+        base        == 4.6.*,
+        mdm-nsis
+    -- nsis        ==0.2.*
+
+test-suite hspec
+    default-language: Haskell2010
+    build-depends:    base, mdm-nsis, hspec == 1.8.*
+    hs-source-dirs:   test-suite
+    type:             exitcode-stdio-1.0
+    main-is:          Spec.hs

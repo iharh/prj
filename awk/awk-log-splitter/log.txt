@@ -1,0 +1,28 @@
+2012-07-04 00:35:57,472 [0x00003e10] DEBUG com.knova.native.default - version=11
+07-04 00:35:57,472 [0x00003e10] DEBUG com.knova.native.default - version=11
+2012-0704 00:35:57,472 [0x00003e10] DEBUG com.knova.native.default - version=11
+00:35:57,472 [0x00003e10] DEBUG com.knova.native.default - version=11
+[0x00003e10] DEBUG com.knova.native.default - version=11
+DEBUG com.knova.native.default - version=11
+2012-07-04 00:35:57,488 [0x00003e10] DEBUG com.knova.native.default - name=pohagan
+2012-07-04 00:35:57,488 [0x00003e10] DEBUG com.knova.native.default - answerCount=0
+2012-07-04 00:35:57,488 [0x00003e10] DEBUG com.knova.native.default - questionCount=0
+2012-07-04 00:35:57,488 [0x00003e10] DEBUG com.knova.native.default - ratingCount=0
+2012-07-04 00:35:57,488 [0x00003e10] DEBUG com.knova.native.default - rating=0
+2012-07-04 00:35:57,488 [0x00003e10] DEBUG com.knova.native.default - positiveRatingCount=0
+2012-07-04 00:35:57,488 [0x00003e10] DEBUG com.knova.native.default - point=3
+2012-07-04 00:35:57,488 [0x00003e10] DEBUG com.knova.native.default - participationCount=6
+2012-07-04 00:35:57,488 [0x00003e10] DEBUG com.knova.native.default - noContextAnswerCount=0
+2012-07-04 00:35:57,488 [0x00003e10] DEBUG com.knova.native.default - noContextQuestionCount=0
+2012-07-04 00:35:57,489 [0x00003e10] DEBUG com.knova.native.default - id=1829
+2012-07-04 00:35:57,489 [0x00003e10] DEBUG com.knova.native.default - version=208516
+2012-07-04 08:48:20,801 [0x000013dc] DEBUG com.knova.native.default -          predicate     WP:     7 Pred: Segment AboveOrAt MS_Agent ***
+
+2012-07-04 08:48:20,801 [0x000013dc] DEBUG com.knova.native.default -    21 active  Subscription: "" 
+         R  Pred: Dummy Equals Dummy
+         R  Pred: Pagelet Equals MSRecommendationPagelet27
+         R  Pred: Segment AboveOrAt MS_Agent
+
+2012-07-04 08:48:20,801 [0x000013dc] DEBUG com.knova.native.default -          assertion set WP:     0 Pred: Dummy Equals Dummy ***
+
+

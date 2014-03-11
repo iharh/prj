@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<madamira_output xmlns="urn:edu.columbia.ccls.madamira.configuration:0.1">
+    <out_doc id="ExampleDocument">
+        <out_seg id="SENT1">
+            <segment_info>
+                <preprocessed>AlslTp AlflsTynyp tstnkr AstmrAr syAsp AlAgtyAlAt AlAsrA}y</preprocessed>
+            </segment_info>
+            <word_info>
+                <word id="0" word="السلطة">
+                    <analysis rank="0" score="0.9547473631510263">
+                        <morph_feature_set diac="السُّلْطَةُ" lemma="سُلْطَة_1" bw="Al/DET+suloT/NOUN+ap/NSUFF_FEM_SG+u/CASE_DEF_NOM" gloss="power;authority;rule" pos="noun" prc3="0" prc2="0" prc1="0" prc0="Al_det" per="na" asp="na" vox="na" mod="na" gen="f" num="s" stt="d" cas="n" enc0="0" source="lex" stem="سُلْط"/>
+                    </analysis>
+                </word>
+            </word_info>            
+        </out_seg>
+    </out_doc>
+</madamira_output>
