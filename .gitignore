@@ -1,4 +1,5 @@
 .*.swp
+wrk/*
 cabal/*/dist/*
 cabal/*/.cabal-sandbox/*
 cabal/*/cabal.sandbox.config
