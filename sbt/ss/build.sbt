@@ -50,9 +50,9 @@ copydf := {
     IO.copy(rebasedFilesToCopy)
 } 
 
-copynotes := {
-    val dst = file("D:\\Knova\\-\\backup\\notes")
-    val src = file("D:\\dev\\notes")
+def copy_x(n: String): Unit = {
+    val dst = file("D:\\Knova\\-\\backup") / n
+    val src = file("D:\\dev") / n
     IO.delete(dst)
     IO.createDirectory(dst)
     val filesToCopy = (src / "wrk") ***
@@ -60,21 +60,16 @@ copynotes := {
     //rebasedFilesToCopy foreach {tup => println(tup._2) }
     IO.copy(rebasedFilesToCopy)
     //p1.lines.foreach(println)
-    Process("cmd /c git archive HEAD -o " + dst / "notes.tar", src).run()
+    Process("cmd /c git archive HEAD -o " + dst / (n + ".tar"), src).run()
+}
+
+copynotes := {
+    copy_x("notes")
     println("finish copynotes")
 }
 
 copyprj := {
-    val dst = file("D:\\Knova\\-\\backup\\prj")
-    val src = file("D:\\dev\\prj")
-    IO.delete(dst)
-    IO.createDirectory(dst)
-    val filesToCopy = (src / "wrk") ***
-    val rebasedFilesToCopy = filesToCopy pair Path.rebase(src, dst)
-    //rebasedFilesToCopy foreach {tup => println(tup._2) }
-    IO.copy(rebasedFilesToCopy)
-    //p1.lines.foreach(println)
-    Process("cmd /c git archive HEAD -o " + dst / "prj.tar", src).run()
+    copy_x("prj")
     println("finish copyprj")
 }
 
