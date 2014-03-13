@@ -44,6 +44,7 @@ copydf := {
 	)
         +++ (src * "_*rc")
 	+++ (src / ".vimsauce" ***)
+	+++ (src / ".unite" / "bookmark" ***)
     )
     val rebasedFilesToCopy = filesToCopy pair Path.rebase(src, dst)
     // rebasedFilesToCopy foreach {tup => println(tup._2) }
