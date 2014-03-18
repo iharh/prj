@@ -5,9 +5,9 @@ import Test.Hspec
 import Test.Hspec.QuickCheck
 
 spec :: Spec
-spec = do
+spec = --do
     describe "husk" $ do
-        it "returns the unit value" $ do
+        it "returns the unit value" $ -- do
             husk `shouldBe` ()
 
         prop "equals the unit value" $
