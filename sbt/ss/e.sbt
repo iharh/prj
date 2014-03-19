@@ -1,3 +1,5 @@
+import scala.Console._
+
 // http://www.scala-sbt.org/release/docs/Detailed-Topics/Parallel-Execution.html
 //concurrentRestrictions in Global := Seq(
 //  Tags.limitAll(1)
@@ -22,6 +24,8 @@ e2 := {
 
 e3 := {
     println("hello e3")
+    val ttt = "abc"
+    println(s"[${GREEN}run-task$RESET] $ttt") // $taskName
 }
 
 e0 := Def.sequentialTask {

@@ -23,47 +23,47 @@ library
     ghc-options:         -O2 -Wall
     hs-source-dirs:      library
     build-depends:
-        base         == 4.6.*
+        base             == 4.6.*
     if flag(documentation)
         build-depends:   hscolour == 1.20.*
     exposed-modules:
         Husk
+--caball-hell-investigation --- , hspec == 1.8.*, doctest == 0.9.*, Glob == 0.7.*, criterion == 0.6.*, hlint == 1.8.*, statistics == 0.10.3.*
 
 executable husk
     default-language: Haskell2010
-    build-depends:    base, husk
+    build-depends:    husk, base == 4.6.*
     hs-source-dirs:   executable
     main-is:          Main.hs
 
 test-suite hspec
     default-language: Haskell2010
-    build-depends:    base, husk, hspec == 1.8.*, statistics == 0.10.*
+    build-depends:    husk, base == 4.6.*, hspec == 1.8.*
     hs-source-dirs:   test-suite
     type:             exitcode-stdio-1.0
     main-is:          Spec.hs
-    -- ghc-options:      -fhpc
-    -- hs-source-dirs:   test-suite library
-    -- other-modules:    Husk, HuskSpec
+-- ghc-options:      -fhpc
+-- hs-source-dirs:   test-suite library
+-- other-modules:    Husk, HuskSpec
 
 test-suite doctest
     default-language: Haskell2010
-    build-depends:    base, doctest == 0.9.*, Glob == 0.7.*, statistics == 0.10.*
+    build-depends:    husk, base == 4.6.*, doctest == 0.9.*, Glob == 0.7.*
     hs-source-dirs:   test-suite
     main-is:          DocTest.hs
     type:             exitcode-stdio-1.0
 
 test-suite hlint
     default-language: Haskell2010
-    build-depends:    base, hlint == 1.8.*
+    build-depends:    husk, base == 4.6.*, hlint == 1.8.*
     hs-source-dirs:   test-suite
     main-is:          HLint.hs
     type:             exitcode-stdio-1.0
 
 benchmark criterion
     default-language: Haskell2010
-    build-depends:    base, husk, criterion == 0.6.*, statistics == 0.10.*
+    build-depends:    husk, base == 4.6.*, criterion == 0.6.*
     hs-source-dirs:   benchmark
     main-is:          Bench.hs
     type:             exitcode-stdio-1.0
-    --build-depends:    base, husk, criterion == 0.8.*
-
+-- criterion == 0.8.* requires a new binary

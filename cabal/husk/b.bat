@@ -1,9 +1,12 @@
 @echo off
 setlocal
 call cabal.bat sandbox init
-:: cabal configure
-call cabal.bat install --only-dependencies
-call cabal.bat build
-:: cabal repl
-:: cabal haddock --hyperlink-source
+:: configure just tells about missing deps
+::-v3
+call cabal.bat install --enable-tests --enable-benchmarks --flags=documentation --only-dependencies
+::call cabal.bat build
+call cabal.bat haddock --hyperlink-source
+call cabal.bat test
+call cabal.bat bench
+:: call cabal.bat repl
 endlocal
