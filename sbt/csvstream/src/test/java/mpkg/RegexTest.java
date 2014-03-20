@@ -52,6 +52,7 @@ public class RegexTest {
     private static String excapeSpecialSymbols(String term) {
         if (term != null) {
             String result = term;
+            //char[] specCharset = new char[] {')', '(', '+', '^', '$', '.', '{', '}'};
             char[] specCharset = new char[] {')', '(', '+', '^', '$', '.'};
             for (int i = 0; i < specCharset.length; i++) {
                 result = result.replaceAll("\\" + specCharset[i], "\\\\\\" + specCharset[i]);
@@ -64,7 +65,7 @@ public class RegexTest {
 
 
     @Test
-    public void testAAA() throws Exception {
+    public void testFrownie() throws Exception {
         String processedTerm = "*{{"; // ":{{";
         processedTerm = processedTerm.trim().toLowerCase();
 
