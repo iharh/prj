@@ -18,6 +18,8 @@ flag documentation
     -- cabal install -fdocumentation or cabal install --flags=documentation.
     -- cabal haddock --hyperlink-source
 
+extra-source-files: .travis.yml
+
 library
     default-language:    Haskell2010
     ghc-options:         -O2 -Wall
