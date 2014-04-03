@@ -55,4 +55,6 @@ copyprj := {
 
 addCommandAlias("copyall", ";copydf;copynotes;copyprj")
 
-
+//libraryDependencies ++= Seq(
+//    "org.apache.commons" % "commons-compress" % "1.8"
+//)
