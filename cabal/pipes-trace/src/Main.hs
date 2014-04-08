@@ -2,6 +2,8 @@
 module Main(main, main01, main02, main03) where
 -- -fno-warn-unused-matches 
 import Pipes
+-- import Pipes.Core
+import Pipes.Internal
 --import qualified Pipes.Prelude as P
 
 --
@@ -25,8 +27,8 @@ main03 = putStrLn "s1" >>= \_ -> putStrLn "s2"
 
 {-| Let's put some basic 'pipes' stuff into play
 -}
-main :: IO ()
-main = runEffect $ p1 >-> c1
+main04 :: IO ()
+main04 = runEffect $ p1 >-> c1
     where
 	p1 :: Producer String IO ()
 	p1 = do
@@ -39,6 +41,17 @@ main = runEffect $ p1 >-> c1
 	     lift $ putStrLn s1
 	     s2 <- await
 	     lift $ putStrLn s2
+
+main :: IO ()
+-- main = runEffect $ for (yield "str0") (lift . putStrLn)
+-- main = runEffect $ for (yield "str0") (\str -> lift $ putStrLn str)
+-- main = runEffect $ for (yield "str0") (lift . putStrLn)
+-- main = runEffect $ (Respond "str0" Pure) //> (\str -> liftIO $ putStrLn str)
+-- main = runEffect $ (Respond "str0" Pure) //> (\str -> M (putStrLn str >>= \r -> return (Pure r)))
+-- main = runEffect $ M (putStrLn "str0" >>= \r -> return (Pure r)) >>= \b' -> Pure b'
+main = runEffect $ M (putStrLn "str0" >>= \r -> return (Pure r))
+
+
 
 --main = runEffect $ for (each ([1..]::[Int]) `P.zip` P.stdinLn) $ \(i, s) -> liftIO $ withFile (printf "%03d" i ++ ".out") WriteMode (\h -> hPutStrLn h s)
 

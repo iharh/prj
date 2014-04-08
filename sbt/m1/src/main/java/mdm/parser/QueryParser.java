@@ -43,6 +43,17 @@ public final class QueryParser {
 			+ "-->\\\\ ([" + wPat1 + "\\*\\?\\s\\\\]+)_([0,1,\\?]+)\\s*\\)?\\s*)";
         
 
+    private static final String NR_REGEXP = // CatRefParserImpl
+        "_catRef\\s*:\\s*\\[((model:)\\s*\"([^\"]+)\")?\\s*((path:)\\s*\"([^\"\\]]+)\")?\\s*((node:)\\s*\"([^\"\\]]+)\")?\\s*(isCatRollUp:true)?\\s*\\]";
+
+    public static final String CATROLLUP_REGEXP_NOT_GROUP = // CatRollupParser
+        "\\s*_catRollup\\s*:\\s*(?:\"[^_,\"\\)]+\"|[^_,\"\\)\\s]+)";	
+
+    public static final String MTOKEN_REGEXP_NOT_GROUP = // MTokenParser
+        "\\s*_mtoken\\s*:\\s*(?:\"[^_,\"\\)]+\"|[^_,\"\\)\\s]+)";
+
+
+
 	private static Pattern pattern;
 	
 	private static Pattern negPattern;
@@ -72,9 +83,10 @@ public final class QueryParser {
 				} else {
 					result.addAttributeTerm(matchedTerm);
 				}
+			//} else if (matcher.group(26) != null) {
+			//	result.addTerm(matchedTerm);
+			//} else if (matcher.group(27) != null) {
 			} else if (matcher.group(26) != null) {
-				result.addTerm(matchedTerm);
-			} else if (matcher.group(27) != null) {
 				result.addQuotedTerm(matchedTerm);
 			} else if ((matcher.group(22) != null)
 					|| (matcher.group(23) != null)
@@ -191,14 +203,6 @@ public final class QueryParser {
     }
 
 
-    private static final String NR_REGEXP = // CatRefParserImpl
-        "_catRef\\s*:\\s*\\[((model:)\\s*\"([^\"]+)\")?\\s*((path:)\\s*\"([^\"\\]]+)\")?\\s*((node:)\\s*\"([^\"\\]]+)\")?\\s*(isCatRollUp:true)?\\s*\\]";
-
-    public static final String CATROLLUP_REGEXP_NOT_GROUP = // CatRollupParser
-        "\\s*_catRollup\\s*:\\s*(?:\"[^_,\"\\)]+\"|[^_,\"\\)\\s]+)";	
-
-    public static final String MTOKEN_REGEXP_NOT_GROUP = // MTokenParser
-        "\\s*_mtoken\\s*:\\s*(?:\"[^_,\"\\)]+\"|[^_,\"\\)\\s]+)";
 
     private static Pattern getPattern() {
         if (pattern == null) {
@@ -206,7 +210,7 @@ public final class QueryParser {
                     + /*CatRollupParser.*/CATROLLUP_REGEXP_NOT_GROUP + "|"
                     + /*MTokenParser.*/MTOKEN_REGEXP_NOT_GROUP + ")|" 
                     + LC_RULE + "|" + PATTERN_ATTRIBUTE + "|"
-                    + PATTERN_SYNTSX_WORD + "|" + PATTERN_SIMPLE_WORD + "|"
+                    + PATTERN_SYNTSX_WORD + "|" //+ PATTERN_SIMPLE_WORD + "|"
                     + PATTERN_QUOTED_WORD, Pattern.UNICODE_CHARACTER_CLASS);
         }
 

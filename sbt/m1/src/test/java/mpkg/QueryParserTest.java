@@ -24,6 +24,28 @@ import static org.hamcrest.collection.IsEmptyCollection.empty;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 
 public class QueryParserTest {
+    @Test
+    public void testPipeSeparator() {
+        final String q = "_catRef:[" +
+            "model:\"Products Model - Tuning Base Model\"" +
+            " path:\"Enterprise|Poweredge Modular Servers\"" +
+            //" node:\"Mellanox IB m2401g\"" +
+            "]" +
+            ", _catRef:[" +
+            "model:\"Products Model - Tuning Base Model\"" +
+            " path:\"Enterprise|Poweredge Modular Servers\"" +
+            //" node:\"Power Edge m2401g\"" +
+            "]";
+
+        QueryParserResult result = QueryParser.parse(q);
+
+        assertEquals(0, result.getQuotedTerms().size());
+        assertEquals(0, result.getLcPairs().size());
+        assertEquals(0, result.getTerms().size()); // need 0
+        assertEquals(0, result.getAttributeTerms().size()); // need 0
+        assertEquals("", result.toString());
+    }
+
     @Ignore
     public void testParseSmiley() {
         final String q = "\"<:)>\"";
