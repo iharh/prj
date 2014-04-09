@@ -4,8 +4,9 @@ import mdm.parser.QueryParser;
 import mdm.parser.QueryParserResult;
 import mdm.parser.LuceneSearcher;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+import java.util.regex.MatchResult;
 
 import java.util.List;
 import java.util.LinkedList;
@@ -24,29 +25,57 @@ import static org.hamcrest.collection.IsEmptyCollection.empty;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 
 public class QueryParserTest {
+    private static String parseAllGroups(Pattern p, String q) {
+        StringBuilder result = new StringBuilder();
+
+        String query = QueryParser.omitNegated(q);
+
+        Matcher matcher = p.matcher(query);
+        while (matcher.find()) {
+            MatchResult mr = matcher.toMatchResult();
+            int gcnt = mr.groupCount();
+            result.append("\n-- matchResult ").append(mr.start()).append("-").append(mr.end()).append(" gcnt ").append(gcnt);
+            for (int i = 0; i < gcnt; ++i) {
+                result.append("\n\tgroup(").append(i).append(") ").append(mr.start(i)).append("-").append(mr.end(i)).append(" : ").append(mr.group(i));
+            }
+        }
+        return result.toString();
+    }
+
     @Test
+    public void testRegr1() {
+        final String q = "Cuban AND Crisis";
+        QueryParserResult result = QueryParser.parse(q);
+        //assertEquals(2, result.getTerms().size()); // need 0
+
+        //assertEquals("", result.toString());
+        assertEquals("", parseAllGroups(QueryParser.getPattern(), q));
+    }
+
+    @Ignore
     public void testPipeSeparator() {
         final String q = "_catRef:[" +
-            "model:\"Products Model - Tuning Base Model\"" +
-            " path:\"Enterprise|Poweredge Modular Servers\"" +
-            //" node:\"Mellanox IB m2401g\"" +
+            "model:\"v1Products Model - Tuning Base Model\"" +
+            " path:\"v1Enterprise|Poweredge Modular Servers\"" +
+            " node:\"v1Mellanox IB m2401g\"" +
             "]" +
             ", _catRef:[" +
-            "model:\"Products Model - Tuning Base Model\"" +
-            " path:\"Enterprise|Poweredge Modular Servers\"" +
-            //" node:\"Power Edge m2401g\"" +
+            "model:\"v2Products Model - Tuning Base Model\"" +
+            " path:\"v2Enterprise|Poweredge Modular Servers\"" +
+            " node:\"v2Power Edge m2401g\"" +
             "]";
 
+        //assertEquals("", parseAllGroups(QueryParser.getPattern(), q));
+        //
         QueryParserResult result = QueryParser.parse(q);
-
         assertEquals(0, result.getQuotedTerms().size());
         assertEquals(0, result.getLcPairs().size());
         assertEquals(0, result.getTerms().size()); // need 0
         assertEquals(0, result.getAttributeTerms().size()); // need 0
-        assertEquals("", result.toString());
+        //assertEquals("", result.toString());
     }
 
-    @Ignore
+    @Test
     public void testParseSmiley() {
         final String q = "\"<:)>\"";
         QueryParserResult result = QueryParser.parse(q);
@@ -55,7 +84,7 @@ public class QueryParserTest {
         assertThat(result.getQuotedTerms(), containsInAnyOrder(q));
     }
 
-    @Ignore
+    @Test
     public void testParseFr() {
         QueryParserResult result = QueryParser.parse("_lc:(acheter\\ -->\\ fleur_?)");
         assertEquals(0, result.getQuotedTerms().size());
@@ -63,7 +92,7 @@ public class QueryParserTest {
         assertEquals(1, result.getLcPairs().size());
     }
 
-    @Ignore
+    @Test
     public void testParseAr() {
         QueryParserResult result = QueryParser.parse("_lc:(طَبِيعِيّ\\ -->\\ جِدّ_?)");
         assertEquals(0, result.getQuotedTerms().size());
@@ -97,7 +126,7 @@ public class QueryParserTest {
         assertEquals(0, result.getLcPairs().size());
     }
     
-    @Ignore
+    @Test
     public void testParse2() {
         String testQuery = "business_date: [3246883 to kjdfhsdjf] doc_date: [3246883 23432434]";
         QueryParserResult result = QueryParser.parse(testQuery);

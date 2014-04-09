@@ -6,8 +6,12 @@ import java.util.regex.Pattern;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author Alexander_Galibey
+ * 
+ */
 public final class QueryParser {
-	private static final Logger log = LoggerFactory.getLogger(QueryParser.class);
+	private static final Logger LOG = LoggerFactory.getLogger(QueryParserNew.class);
 
 	public static final String PATTERN_ATTRIBUTE = 
         // Attribute name, followed by colon.
@@ -21,47 +25,49 @@ public final class QueryParser {
             + "([\\s]*\\[[\\s[\\p{L}\\p{N}\\p{Pc}]\\p{Punct}&&[^\\]]]+\\][\\s]*)" 
             + "){1})";
 
+	
 	public static final Pattern PATTERN_ATTRIBUTE_PATTERN = Pattern.compile(PATTERN_ATTRIBUTE);
 
-        private static final String wPat1 = "\\w"; // \\p{javaLetterOrDigit}";
-        private static final String wPat2 = wPat1 + "\\^";
-        private static final String wPat3 = wPat2 + "\\<\\:\\>";
-        private static final String wPatNQ = "&&[^\"]";// + "\\^\\<\\:\\>";
+        private static final String wPat1 = "\\w"; // \\p{javaLetterOrDigit}"; //$NON-NLS-1$
+        private static final String wPatCaret = "\\^"; //$NON-NLS-1$
+        private static final String wPat2 = wPat1 + wPatCaret;
+        private static final String wPat3 = wPat2 + "\\<\\:\\>"; //$NON-NLS-1$
+        private static final String wPatNQ = "&&[^\"]"; //$NON-NLS-1$
 
         private static final String PATTERN_SIMPLE_WORD =
-            "([\\s]*[" + wPat2 + "\\_\\&\\@\\#\\-\\/\\'\\~\\.\\d\\$%\\u20ac�*?]+[\\s]*)";
+            "([\\s]*[" + wPat2 + "\\_\\&\\@\\#\\-\\/\\'\\~\\.\\d\\$%\\u20ac�*?]+[\\s]*)"; //$NON-NLS-1$
+
+        //private static final String PATTERN_SIMPLE_WORD_FIXED =
+        //    "(\\s*(?:" + wPat1 + "\\d[" + wPatCaret + "\\_\\&\\@\\#\\-\\/\\'\\~\\.\\$%\\u20ac�*?])+\\s*)"; //$NON-NLS-1$
+        private static final String PATTERN_SIMPLE_WORD_FIXED =
+            "([\\s]*" + wPat1 + "\\d[" + wPatCaret + "\\_\\&\\@\\#\\-\\/\\'\\~\\.\\$%\\u20ac�*?]+[\\s]*)"; //$NON-NLS-1$
 
 	private static final String PATTERN_QUOTED_WORD = 
-	    "([\\s]*\"{1}[" + wPat3 + "\\s\\d\\$%\\u20ac�\\p{Punct}" + wPatNQ + "]+\"{1}[\\s]*)";
+	    "([\\s]*\"{1}[" + wPat3 + "\\s\\d\\$%\\u20ac�\\p{Punct}" + wPatNQ + "]+\"{1}[\\s]*)"; //$NON-NLS-1$
 
 	private static final String PATTERN_SYNTSX_WORD = 
 	    "([\\s]*AND+[\\s]*)|([\\s]*OR+[\\s]*)|"
-			+ "([\\s]*\\&{2}[\\s]*)|([\\s]*\\|{2}[\\s]*)";
+			+ "([\\s]*\\&{2}[\\s]*)|([\\s]*\\|{2}[\\s]*)"; //$NON-NLS-1$ 
+	private static final String PATTERN_SYNTSX_WORD_FIXED = 
+               "(\\s*AND+\\s*)"
+            + "|(\\s*OR+\\s*)"
+            + "|(\\s*\\&{2}\\s*)"
+            + "|(\\s*\\|{2}\\s*)"; //$NON-NLS-1$ 
 
 	private static final String LC_RULE = 
-	    "(\\s*_lc:\\(?\\s*([" + wPat1 + "\\*\\?\\s\\\\]+)\\\\ "
-			+ "-->\\\\ ([" + wPat1 + "\\*\\?\\s\\\\]+)_([0,1,\\?]+)\\s*\\)?\\s*)";
-        
-
-    private static final String NR_REGEXP = // CatRefParserImpl
-        "_catRef\\s*:\\s*\\[((model:)\\s*\"([^\"]+)\")?\\s*((path:)\\s*\"([^\"\\]]+)\")?\\s*((node:)\\s*\"([^\"\\]]+)\")?\\s*(isCatRollUp:true)?\\s*\\]";
-
-    public static final String CATROLLUP_REGEXP_NOT_GROUP = // CatRollupParser
-        "\\s*_catRollup\\s*:\\s*(?:\"[^_,\"\\)]+\"|[^_,\"\\)\\s]+)";	
-
-    public static final String MTOKEN_REGEXP_NOT_GROUP = // MTokenParser
-        "\\s*_mtoken\\s*:\\s*(?:\"[^_,\"\\)]+\"|[^_,\"\\)\\s]+)";
-
-
+	    "(\\s*_lc:\\(?\\s*([" + wPat1 + "\\*\\?\\s\\\\]+)\\\\ " //$NON-NLS-1$
+			+ "-->\\\\ ([" + wPat1 + "\\*\\?\\s\\\\]+)_([0,1,\\?]+)\\s*\\)?\\s*)"; //$NON-NLS-1$
 
 	private static Pattern pattern;
 	
 	private static Pattern negPattern;
 
 	private QueryParser() {
+		super();
 	}
 
 	public static QueryParserResult parse(String origQuery) {
+		// CSI-1352: Prevent highlighting negated words in queries like: (+_words:wash -(+_words:my +_words:pants))
 		String query = omitNegated(origQuery);
 		
 		Matcher matcher = getPattern().matcher(query);
@@ -83,10 +89,9 @@ public final class QueryParser {
 				} else {
 					result.addAttributeTerm(matchedTerm);
 				}
-			//} else if (matcher.group(26) != null) {
-			//	result.addTerm(matchedTerm);
-			//} else if (matcher.group(27) != null) {
 			} else if (matcher.group(26) != null) {
+				result.addTerm(matchedTerm);
+			} else if (matcher.group(27) != null) {
 				result.addQuotedTerm(matchedTerm);
 			} else if ((matcher.group(22) != null)
 					|| (matcher.group(23) != null)
@@ -99,7 +104,54 @@ public final class QueryParser {
 		return result;
 	}
 
-	private static String omitNegated(String s) {
+    public static String replaceFirstAttribute(final String source, final String oldValue,
+                    final String newValue) {
+        final Matcher matcher = getPattern().matcher(source);
+        while (matcher.find()) {
+            final String matchedTerm = matcher.group(0);
+            final boolean isLcPair =
+                            matcher.group(13) != null && matcher.group(14) != null
+                                            && matcher.group(15) != null;
+            final boolean rangeAttribute = !isLcPair && matcher.group(21) != null;
+            if (!rangeAttribute && matcher.group(17) != null
+                            && !matchedTerm.toLowerCase().contains("_lc")) {
+                if (!matcher.group(17).equals("_words") && matchedTerm.equals(oldValue)) {
+                    final int startIndex = matcher.start();
+                    final StringBuilder buffer = new StringBuilder(source);
+                    buffer.delete(startIndex, startIndex + oldValue.length());
+                    buffer.insert(startIndex, newValue.toLowerCase());
+                    return buffer.toString();
+                }
+            }
+        }
+        return source;
+    }
+
+	public static String replaceFirstTerm(final String source, final String oldValue, final String newValue) {
+		
+		final Matcher matcher = getPattern().matcher(source);
+		while (matcher.find()) {
+			final String matchedTerm = matcher.group(0);
+			if ((matcher.group(26) != null || matcher.group(27) != null) && matchedTerm.equals(oldValue)) {
+				final int startIndex = matcher.start();
+				final StringBuilder buffer = new StringBuilder(source);
+				// do not replace fuzzy token
+				if (!matchedTerm.startsWith("~")) {
+					buffer.delete(startIndex, startIndex + oldValue.length());
+					buffer.insert(startIndex, newValue);
+				}
+				return buffer.toString();
+			}
+		}
+		return source;
+	}    
+    
+	/*
+	 * CSI-1352: Prevent highlighting negated words in queries like: (+_words:wash -(+_words:my +_words:pants))
+	 * TODO: this is quick crutch, it does not cover "-(" in attributes, 
+	 *       the best solution is utilizing tools like at JFlex at top level of rule parsing.
+	 */
+	public static String omitNegated(String s) {
 		if (negPattern == null) {
 			negPattern = Pattern.compile("-\\s*(\\()"); 
 		}
@@ -160,15 +212,16 @@ public final class QueryParser {
 	    }
 	        
         if (nesting != 0) {
-        	log.warn("Illegal nesting detected in query: " + s);
+        	LOG.warn("Illegal nesting detected in query: {}", s);
         }
         
         return s.length();
-    }
+	}
 
-    public static boolean isAttribute(String word) {
-        return PATTERN_ATTRIBUTE_PATTERN.matcher(word).find();
-    }
+	public static boolean isAttribute(String word) {
+		return PATTERN_ATTRIBUTE_PATTERN.matcher(word).find();
+	}
+	
 
     public static String extractAttributeValue(String word) {
         Matcher matcher = PATTERN_ATTRIBUTE_PATTERN.matcher(word);
@@ -178,42 +231,46 @@ public final class QueryParser {
             return "";
         }
     }
-
-    public static String replaceFirstAttribute(final String source, final String oldValue,
-                    final String newValue) {
-        final Matcher matcher = getPattern().matcher(source);
-        while (matcher.find()) {
-            final String matchedTerm = matcher.group(0);
-            final boolean isLcPair =
-                            matcher.group(13) != null && matcher.group(14) != null
-                                            && matcher.group(15) != null;
-            final boolean rangeAttribute = !isLcPair && matcher.group(21) != null;
-            if (!rangeAttribute && matcher.group(17) != null
-                            && !matchedTerm.toLowerCase().contains("_lc")) {
-                if (!matcher.group(17).equals("_words") && matchedTerm.equals(oldValue)) {
-                    final int startIndex = matcher.start();
-                    final StringBuilder buffer = new StringBuilder(source);
-                    buffer.delete(startIndex, startIndex + oldValue.length());
-                    buffer.insert(startIndex, newValue.toLowerCase());
-                    return buffer.toString();
-                }
-            }
+    
+    public static String extractAttributeName(String word) {
+        Matcher matcher = PATTERN_ATTRIBUTE_PATTERN.matcher(word);
+        if (matcher.find() && matcher.groupCount() > 2) {
+            return matcher.group(2);
+        } else {
+            return "";
         }
-        return source;
     }
 
-
-
-    private static Pattern getPattern() {
+    private static Pattern getPatternOld() {
         if (pattern == null) {
-            pattern = Pattern.compile("(" + /*CatRefParserImpl.*/NR_REGEXP + "|"
-                    + /*CatRollupParser.*/CATROLLUP_REGEXP_NOT_GROUP + "|"
-                    + /*MTokenParser.*/MTOKEN_REGEXP_NOT_GROUP + ")|" 
+            pattern = Pattern.compile("(" + CatRefParserImpl.NR_REGEXP + "|"
+                    + CatRollupParser.CATROLLUP_REGEXP_NOT_GROUP + "|"
+                    + MTokenParser.MTOKEN_REGEXP_NOT_GROUP + ")|" 
                     + LC_RULE + "|" + PATTERN_ATTRIBUTE + "|"
-                    + PATTERN_SYNTSX_WORD + "|" //+ PATTERN_SIMPLE_WORD + "|"
+                    + PATTERN_SYNTSX_WORD + "|" + PATTERN_SIMPLE_WORD + "|"
                     + PATTERN_QUOTED_WORD, Pattern.UNICODE_CHARACTER_CLASS);
         }
 
         return pattern;
     }
+
+    // private static final String ps = "(?:\\s[,])?";
+
+    public static Pattern getPattern() {
+        if (pattern == null) {
+            pattern = Pattern.compile(""
+                    + "(" + CatRefParserImpl.NR_REGEXP
+                    + "|" + CatRollupParser.CATROLLUP_REGEXP_NOT_GROUP
+                    + "|" + MTokenParser.MTOKEN_REGEXP_NOT_GROUP
+                    + ")"
+                    + "|" + LC_RULE
+                    + "|" + PATTERN_ATTRIBUTE
+                    + "|" + PATTERN_SYNTSX_WORD_FIXED
+                    + "|" + PATTERN_SIMPLE_WORD_FIXED
+                    + "|" + PATTERN_QUOTED_WORD
+                    , Pattern.UNICODE_CHARACTER_CLASS);
+        }
+        return pattern;
+    }
+    
 }
