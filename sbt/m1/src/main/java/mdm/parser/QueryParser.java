@@ -6,12 +6,8 @@ import java.util.regex.Pattern;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * @author Alexander_Galibey
- * 
- */
 public final class QueryParser {
-	private static final Logger LOG = LoggerFactory.getLogger(QueryParserNew.class);
+	private static final Logger LOG = LoggerFactory.getLogger(QueryParser.class);
 
 	public static final String PATTERN_ATTRIBUTE = 
         // Attribute name, followed by colon.
@@ -37,22 +33,17 @@ public final class QueryParser {
         private static final String PATTERN_SIMPLE_WORD =
             "([\\s]*[" + wPat2 + "\\_\\&\\@\\#\\-\\/\\'\\~\\.\\d\\$%\\u20ac�*?]+[\\s]*)"; //$NON-NLS-1$
 
-        //private static final String PATTERN_SIMPLE_WORD_FIXED =
-        //    "(\\s*(?:" + wPat1 + "\\d[" + wPatCaret + "\\_\\&\\@\\#\\-\\/\\'\\~\\.\\$%\\u20ac�*?])+\\s*)"; //$NON-NLS-1$
-        private static final String PATTERN_SIMPLE_WORD_FIXED =
-            "([\\s]*" + wPat1 + "\\d[" + wPatCaret + "\\_\\&\\@\\#\\-\\/\\'\\~\\.\\$%\\u20ac�*?]+[\\s]*)"; //$NON-NLS-1$
-
 	private static final String PATTERN_QUOTED_WORD = 
 	    "([\\s]*\"{1}[" + wPat3 + "\\s\\d\\$%\\u20ac�\\p{Punct}" + wPatNQ + "]+\"{1}[\\s]*)"; //$NON-NLS-1$
 
 	private static final String PATTERN_SYNTSX_WORD = 
 	    "([\\s]*AND+[\\s]*)|([\\s]*OR+[\\s]*)|"
 			+ "([\\s]*\\&{2}[\\s]*)|([\\s]*\\|{2}[\\s]*)"; //$NON-NLS-1$ 
-	private static final String PATTERN_SYNTSX_WORD_FIXED = 
-               "(\\s*AND+\\s*)"
-            + "|(\\s*OR+\\s*)"
-            + "|(\\s*\\&{2}\\s*)"
-            + "|(\\s*\\|{2}\\s*)"; //$NON-NLS-1$ 
+	//private static final String PATTERN_SYNTSX_WORD_FIXED = 
+        //       "(\\s*AND+\\s*)"
+        //    + "|(\\s*OR+\\s*)"
+        //    + "|(\\s*\\&{2}\\s*)"
+        //    + "|(\\s*\\|{2}\\s*)"; //$NON-NLS-1$ 
 
 	private static final String LC_RULE = 
 	    "(\\s*_lc:\\(?\\s*([" + wPat1 + "\\*\\?\\s\\\\]+)\\\\ " //$NON-NLS-1$
@@ -241,36 +232,26 @@ public final class QueryParser {
         }
     }
 
-    private static Pattern getPatternOld() {
+    private static final String pSPC = "\\s*"; //$NON-NLS-1$
+    private static final String pSEP = "|"; //$NON-NLS-1$
+    private static final String pOPB = "("; //$NON-NLS-1$
+    private static final String pCLB = ")"; //$NON-NLS-1$
+
+    private static Pattern getPattern() {
         if (pattern == null) {
-            pattern = Pattern.compile("(" + CatRefParserImpl.NR_REGEXP + "|"
-                    + CatRollupParser.CATROLLUP_REGEXP_NOT_GROUP + "|"
-                    + MTokenParser.MTOKEN_REGEXP_NOT_GROUP + ")|" 
-                    + LC_RULE + "|" + PATTERN_ATTRIBUTE + "|"
-                    + PATTERN_SYNTSX_WORD + "|" + PATTERN_SIMPLE_WORD + "|"
-                    + PATTERN_QUOTED_WORD, Pattern.UNICODE_CHARACTER_CLASS);
-        }
-
-        return pattern;
-    }
-
-    // private static final String ps = "(?:\\s[,])?";
-
-    public static Pattern getPattern() {
-        if (pattern == null) {
-            pattern = Pattern.compile(""
-                    + "(" + CatRefParserImpl.NR_REGEXP
-                    + "|" + CatRollupParser.CATROLLUP_REGEXP_NOT_GROUP
-                    + "|" + MTokenParser.MTOKEN_REGEXP_NOT_GROUP
-                    + ")"
-                    + "|" + LC_RULE
-                    + "|" + PATTERN_ATTRIBUTE
-                    + "|" + PATTERN_SYNTSX_WORD_FIXED
-                    + "|" + PATTERN_SIMPLE_WORD_FIXED
-                    + "|" + PATTERN_QUOTED_WORD
+            // This small space-class addition is indeed a fix for CMP-31478
+            pattern = Pattern.compile(pSPC
+                    + pOPB + CatRefParserImpl.NR_REGEXP
+                    + pSEP + CatRollupParser.CATROLLUP_REGEXP_NOT_GROUP
+                    + pSEP + MTokenParser.MTOKEN_REGEXP_NOT_GROUP
+                    + pCLB
+                    + pSEP + LC_RULE
+                    + pSEP + PATTERN_ATTRIBUTE
+                    + pSEP + PATTERN_SYNTSX_WORD
+                    + pSEP + PATTERN_SIMPLE_WORD
+                    + pSEP + PATTERN_QUOTED_WORD
                     , Pattern.UNICODE_CHARACTER_CLASS);
         }
         return pattern;
     }
-    
 }
