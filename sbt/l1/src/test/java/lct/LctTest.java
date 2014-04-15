@@ -36,7 +36,7 @@ public class LctTest {
 
     @Test
     public void test1() throws Exception {
-        final String idxLocation = "D:\\dev\\PL\\java\\jtools\\clue\\0";
+        final String idxLocation = "D:\\dev\\PL\\java\\jtools\\clue\\1";
 
         Directory dir = FSDirectory.open(new File(idxLocation));
 

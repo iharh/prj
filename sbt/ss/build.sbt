@@ -5,6 +5,7 @@ lazy val dstPath = settingKey[String]("Dst path")
 lazy val copydf    = taskKey[Unit]("Dotfiles copy task")
 lazy val copynotes = taskKey[Unit]("Notes copy task")
 lazy val copyprj = taskKey[Unit]("Prj copy task")
+lazy val copypages = taskKey[Unit]("Github Pages copy task")
 
 dstPath := "D:\\dev\\bin\\dotfiles"
 
@@ -41,19 +42,22 @@ def copy_x(n: String): Unit = {
     IO.copy(rebasedFilesToCopy)
     //p1.lines.foreach(println)
     Process("cmd /c git archive HEAD -o " + dst / (n + ".tar"), src).run()
+    println("finish copy" + n)
 }
 
 copynotes := {
     copy_x("notes")
-    println("finish copynotes")
 }
 
 copyprj := {
     copy_x("prj")
-    println("finish copyprj")
 }
 
-addCommandAlias("copyall", ";copydf;copynotes;copyprj")
+copypages := {
+    copy_x("iharh.github.io")
+}
+
+addCommandAlias("copyall", ";copydf;copynotes;copyprj;copypages")
 
 //libraryDependencies ++= Seq(
 //    "org.apache.commons" % "commons-compress" % "1.8"
