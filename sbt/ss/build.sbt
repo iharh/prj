@@ -5,7 +5,6 @@ lazy val dstPath = settingKey[String]("Dst path")
 lazy val copydf    = taskKey[Unit]("Dotfiles copy task")
 lazy val copynotes = taskKey[Unit]("Notes copy task")
 lazy val copyprj = taskKey[Unit]("Prj copy task")
-lazy val copypages = taskKey[Unit]("Github Pages copy task")
 
 dstPath := "D:\\dev\\bin\\dotfiles"
 
@@ -53,11 +52,7 @@ copyprj := {
     copy_x("prj")
 }
 
-copypages := {
-    copy_x("iharh.github.io")
-}
-
-addCommandAlias("copyall", ";copydf;copynotes;copyprj;copypages")
+addCommandAlias("copyall", ";copydf;copynotes;copyprj")
 
 //libraryDependencies ++= Seq(
 //    "org.apache.commons" % "commons-compress" % "1.8"
