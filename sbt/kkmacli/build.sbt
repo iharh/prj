@@ -20,9 +20,9 @@ testOptions += Tests.Argument(TestFrameworks.JUnit, "-q", "-a")
 packageOptions in (Compile, packageBin) += Package.ManifestAttributes(java.util.jar.Attributes.Name.CLASS_PATH -> "org.snu.ids.ha.jar" )
 
 libraryDependencies ++= Seq(
-    //"org.slf4j"                 % "slf4j-api"      % "1.7.5",
-    //"org.slf4j"                 % "slf4j-log4j12"  % "1.7.5",
-    //"log4j"                     % "log4j"          % "1.2.17"
+    "org.slf4j"                 % "slf4j-api"      % "1.7.5",
+    "org.slf4j"                 % "slf4j-log4j12"  % "1.7.5",
+    "log4j"                     % "log4j"          % "1.2.17",
     // one-jar stuff
     //"commons-lang"              % "commons-lang"   % "2.6"
     //
