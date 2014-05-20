@@ -35,21 +35,19 @@ import static org.junit.Assert.assertNotNull;
 public class KKMATest {
     private static final Logger log = LoggerFactory.getLogger(KKMATest.class);
 
-    private static final String TEXT1 = "🍇D";
-    private static final String TEXT2 = "🍇";
+    private static final String [] TEXTS = { "🍇D", "🍇" };
+
     @Test
     public void testKKMA1() throws Exception {
-        List<Token> tokenList1 = Tokenizer.tokenize(TEXT1);
-        //assertEquals(1, tokenList.size());
-        for (Token t : tokenList1) {
-            assertNotNull(t);
-            log.info("t1: {}", t.toString());
+        for (int i = 0; i < TEXTS.length; ++i) {
+            dumpTokens(i, Tokenizer.tokenize(TEXTS[i]));
         }
-        List<Token> tokenList2 = Tokenizer.tokenize(TEXT2);
-        //assertEquals(1, tokenList.size());
-        for (Token t : tokenList2) {
+    }
+
+    private void dumpTokens(int id, List<Token> tokens) {
+        for (Token t : tokens) {
             assertNotNull(t);
-            log.info("t2: {}", t.toString());
+            log.info("t" + id + ": {}", t.toString());
         }
     }
 };
