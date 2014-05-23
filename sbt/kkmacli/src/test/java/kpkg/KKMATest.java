@@ -19,11 +19,9 @@ import org.snu.ids.ha.constants.POSTag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-//import java.util.Set;
-//import java.util.HashSet;
 import java.util.List;
-//import java.util.ArrayList;
 import javax.xml.bind.DatatypeConverter;
+
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
@@ -45,25 +43,21 @@ public class KKMATest {
         for (int i = 0; i < TEXTS.length; ++i) {
             String t = TEXTS[i];
             log.info("text: {}", DatatypeConverter.printHexBinary(t.getBytes(UTF_8)));
-            dumpTokens(i, Tokenizer.tokenize(t));
+            //DumpUtils.dumpTokens(i, Tokenizer.tokenize(t));
+
+            final int length = t.length();
+
+            for (int offset = 0; offset < length; ) {
+                final int codepoint = s.codePointAt(offset);
+                // do something with the codepoint
+                offset += Character.charCount(codepoint);
+            }
+
+            for (int j = 0; j < length; ++j) {
+                log.info("ch: {}", t.charAt(j));
+                log.info("codePoint: {}", Integer.toHexString(t.codePointAt(j)));
+            }
         }
     }
 
-    private void dumpTokens(int id, List<Token> tokens) {
-        for (Token t : tokens) {
-            assertNotNull(t);
-            log.info("t" + id + ": {}", t.toString());
-            log.info("bytes: {}", DatatypeConverter.printHexBinary(t.getString().getBytes(UTF_8)));
-        }
-    }
-
-/*
-    private static String bytesToHex(byte[] in) {
-        final StringBuilder builder = new StringBuilder();
-        for(byte b : in) {
-            builder.append(String.format("%02x", b));
-        }
-        return builder.toString();
-    }
-*/
 };

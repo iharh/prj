@@ -138,16 +138,23 @@ public class Tokenizer {
 							|| (presentToken == CharSetType.ETC && !(temp.length() > 0 && temp.charAt(temp.length() - 1) == ch))) )
 			{
 				// 이미 추출된 패턴은 따로 추출함.
-				if( lastToken != CharSetType.EMOTICON ) tkList.add(new Token(temp, lastToken, tokenIndex));
+				if( lastToken != CharSetType.EMOTICON ) {
+                                    tkList.add(new Token(temp, lastToken, tokenIndex));
+                                    log.info("add 1");
+                                }
 				
 				tokenIndex = i;
 				temp = "";
 			}
 			temp = temp + ch;
+                        log.info("append ch: {}", ch);
 
 		}//end for i
 
-		if( Util.valid(temp) ) tkList.add(new Token(temp, presentToken, tokenIndex));
+		if( Util.valid(temp) ) {
+                    tkList.add(new Token(temp, presentToken, tokenIndex));
+                    log.info("add 2");
+                }
 		
 		Collections.sort(tkList);
 		
@@ -174,6 +181,7 @@ public class Tokenizer {
 		Matcher matcher = tkptn.pattern.matcher(sb);
 		while( matcher.find() ) {
 			tkList.add(new Token(sb.substring(matcher.start(), matcher.end()), tkptn.charSetType,  matcher.start()));
+                        // not in our case !!! log.info("add 3");
 			for( int i = matcher.start(); i < matcher.end(); i++ ) {
 				sb.setCharAt(i, ' ');
 			}
