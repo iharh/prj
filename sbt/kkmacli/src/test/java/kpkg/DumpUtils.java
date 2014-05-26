@@ -30,6 +30,11 @@ public class DumpUtils {
 
     public static void dumpToken(int id, Token t) {
         log.info("t" + id + ": {}", t.toString());
-        log.info("bytes: {}", DatatypeConverter.printHexBinary(t.getString().getBytes(UTF_8)));
+        String s = t.getString();
+        log.info("t" + id + " bytes: {}", hexBinUTF(s));
+    }
+
+    public static String hexBinUTF(String s) {
+        return DatatypeConverter.printHexBinary(s.getBytes(UTF_8));
     }
 }

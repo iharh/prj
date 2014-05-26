@@ -1,7 +1,7 @@
-package kpkg;
+package org.snu.ids.ha.ma;
 
-import org.snu.ids.ha.ma.CharSetType;
-import org.snu.ids.ha.ma.Token;
+//import org.snu.ids.ha.ma.CharSetType;
+//import org.snu.ids.ha.ma.Token;
 import org.snu.ids.ha.util.Util;
 
 import org.slf4j.Logger;
@@ -87,14 +87,15 @@ public class Tokenizer {
 		
 		
 		char ch;
-		String temp = "";
+		StringBuilder temp = new StringBuilder();
 		CharSetType presentToken = CharSetType.ETC, lastToken = CharSetType.ETC;
 		int tokenIndex = 0;
 		
-		for( int i = 0; i < strlen; i++ ) {
+		for (int i = 0; i < strlen; ++i) {
 			ch = sb.charAt(i);
 			lastToken = presentToken;
 			Character.UnicodeBlock ub = Character.UnicodeBlock.of(ch);
+                        log.info("ub: {}", ub.toString());
 			
 			// 이모티콘 확인
 			if( chkPrednfdPtn[i] ) {
@@ -139,21 +140,29 @@ public class Tokenizer {
 			{
 				// 이미 추출된 패턴은 따로 추출함.
 				if( lastToken != CharSetType.EMOTICON ) {
-                                    tkList.add(new Token(temp, lastToken, tokenIndex));
+                                    tkList.add(new Token(temp.toString(), lastToken, tokenIndex));
                                     log.info("add 1");
                                 }
 				
 				tokenIndex = i;
-				temp = "";
+				temp.setLength(0); // temp = "";
 			}
-			temp = temp + ch;
+
+			temp.append(ch);
                         log.info("append ch: {}", ch);
+
+                        if (ub == Character.UnicodeBlock.HIGH_SURROGATES) {
+			    ch = sb.charAt(++i);
+			    temp.append(ch);
+                            log.info("extra append ch: {}", ch);
+                        }
 
 		}//end for i
 
-		if( Util.valid(temp) ) {
-                    tkList.add(new Token(temp, presentToken, tokenIndex));
-                    log.info("add 2");
+                String finalTokStr = temp.toString();
+		if( Util.valid(finalTokStr) ) {
+                    tkList.add(new Token(finalTokStr, presentToken, tokenIndex));
+                    log.info("add finalTokStr");
                 }
 		
 		Collections.sort(tkList);
