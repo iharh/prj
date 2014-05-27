@@ -1,11 +1,11 @@
+/**
+ * <pre>
+ * </pre>
+ * @author	therocks
+ * @since	2007. 4. 30
+ */
 package org.snu.ids.ha.ma;
 
-//import org.snu.ids.ha.ma.CharSetType;
-//import org.snu.ids.ha.ma.Token;
-import org.snu.ids.ha.util.Util;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,9 +13,18 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Tokenizer {
-    private static final Logger log = LoggerFactory.getLogger(Tokenizer.class);
-    
+import org.snu.ids.ha.util.Util;
+
+
+/**
+ * <pre>
+ *
+ * </pre>
+ * @author 	therocks
+ * @since	2007. 4. 30
+ */
+public class Tokenizer
+{
 	public static final TokenPattern[]	PREDEFINED_TOKEN_PATTERN	= {
 		// model name pattern
 		new TokenPattern("[a-zA-Z0-9]+[-][a-zA-Z0-9]+",CharSetType.COMBINED), 		
@@ -87,15 +96,14 @@ public class Tokenizer {
 		
 		
 		char ch;
-		StringBuilder temp = new StringBuilder();
+		String temp = "";
 		CharSetType presentToken = CharSetType.ETC, lastToken = CharSetType.ETC;
 		int tokenIndex = 0;
 		
-		for (int i = 0; i < strlen; ++i) {
+		for( int i = 0; i < strlen; i++ ) {
 			ch = sb.charAt(i);
 			lastToken = presentToken;
 			Character.UnicodeBlock ub = Character.UnicodeBlock.of(ch);
-                        log.info("ub: {}", ub.toString());
 			
 			// 이모티콘 확인
 			if( chkPrednfdPtn[i] ) {
@@ -139,31 +147,21 @@ public class Tokenizer {
 							|| (presentToken == CharSetType.ETC && !(temp.length() > 0 && temp.charAt(temp.length() - 1) == ch))) )
 			{
 				// 이미 추출된 패턴은 따로 추출함.
-				if( lastToken != CharSetType.EMOTICON ) {
-                                    tkList.add(new Token(temp.toString(), lastToken, tokenIndex));
-                                    log.info("add 1");
-                                }
+				if( lastToken != CharSetType.EMOTICON ) tkList.add(new Token(temp, lastToken, tokenIndex));
 				
 				tokenIndex = i;
-				temp.setLength(0); // temp = "";
+				temp = "";
 			}
+			temp = temp + ch;
 
-			temp.append(ch);
-                        log.info("append ch: {}", ch);
-
+                        // fix for surrogate pairs
                         if (ub == Character.UnicodeBlock.HIGH_SURROGATES) {
 			    ch = sb.charAt(++i);
-			    temp.append(ch);
-                            log.info("extra append ch: {}", ch);
+			    temp = temp + ch;
                         }
-
 		}//end for i
 
-                String finalTokStr = temp.toString();
-		if( Util.valid(finalTokStr) ) {
-                    tkList.add(new Token(finalTokStr, presentToken, tokenIndex));
-                    log.info("add finalTokStr");
-                }
+		if( Util.valid(temp) ) tkList.add(new Token(temp, presentToken, tokenIndex));
 		
 		Collections.sort(tkList);
 		
@@ -190,7 +188,6 @@ public class Tokenizer {
 		Matcher matcher = tkptn.pattern.matcher(sb);
 		while( matcher.find() ) {
 			tkList.add(new Token(sb.substring(matcher.start(), matcher.end()), tkptn.charSetType,  matcher.start()));
-                        // not in our case !!! log.info("add 3");
 			for( int i = matcher.start(); i < matcher.end(); i++ ) {
 				sb.setCharAt(i, ' ');
 			}
@@ -217,9 +214,8 @@ public class Tokenizer {
 
 		for( int i = 0, size = tkList == null ? 0 : tkList.size(); i < size; i++ ) {
 			Token tk = tkList.get(i);
-                        String s = tk.getString();
-			for( int j = 0, jsize = s.length(); j < jsize; j++ ) {
-				bFound[tk.getIndex() + j] = true;
+			for( int j = 0, jsize = tk.string.length(); j < jsize; j++ ) {
+				bFound[tk.index + j] = true;
 			}
 		}
 		return bFound;
@@ -234,7 +230,7 @@ class TokenPattern
 
 	TokenPattern(String strPattern, CharSetType charSetType)
 	{
-		pattern = Pattern.compile(strPattern, Pattern.UNICODE_CHARACTER_CLASS); // ???
+		pattern = Pattern.compile(strPattern);
 		this.charSetType = charSetType;
 	}
 }
