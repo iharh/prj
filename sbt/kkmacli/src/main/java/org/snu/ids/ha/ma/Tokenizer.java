@@ -15,6 +15,8 @@ import java.util.regex.Pattern;
 
 import org.snu.ids.ha.util.Util;
 
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 /**
  * <pre>
@@ -25,6 +27,8 @@ import org.snu.ids.ha.util.Util;
  */
 public class Tokenizer
 {
+    //private static final Logger log = LoggerFactory.getLogger(Tokenizer.class);
+
 	public static final TokenPattern[]	PREDEFINED_TOKEN_PATTERN	= {
 		// model name pattern
 		new TokenPattern("[a-zA-Z0-9]+[-][a-zA-Z0-9]+",CharSetType.COMBINED), 		
@@ -88,14 +92,19 @@ public class Tokenizer
 		
 		for(int i=0, ptnlen = PREDEFINED_TOKEN_PATTERN.length; i < ptnlen; i++) {
 			TokenPattern tkptn = PREDEFINED_TOKEN_PATTERN[i];
-			tkList.addAll(find(sb, tkptn));
+                        List<Token> found = find(sb, tkptn); 
+                        //if (!found.isEmpty()) {
+                        //    log.info("tkList found predef " + i + " : {}", tkptn.pattern.toString());
+                        //}
+			tkList.addAll(found);
 		}
-		
+
 		int strlen = string.length();
 		boolean[] chkPrednfdPtn = checkFound(strlen, tkList);
 		
 		
 		char ch;
+		char preCh = 0;
 		String temp = "";
 		CharSetType presentToken = CharSetType.ETC, lastToken = CharSetType.ETC;
 		int tokenIndex = 0;
@@ -142,22 +151,31 @@ public class Tokenizer
 				presentToken = CharSetType.ETC;
 			}
 
-			if( i != 0 
-					&& (lastToken != presentToken
-							|| (presentToken == CharSetType.ETC && !(temp.length() > 0 && temp.charAt(temp.length() - 1) == ch))) )
+                        if(i != 0
+                                && (lastToken != presentToken
+                                    || presentToken == CharSetType.ETC 
+                                    && (temp.length() <= 0 || temp.charAt(temp.length() - 1) != ch) 
+                                    || presentToken == CharSetType.SYMBOL && preCh != ch))
 			{
 				// 이미 추출된 패턴은 따로 추출함.
-				if( lastToken != CharSetType.EMOTICON ) tkList.add(new Token(temp, lastToken, tokenIndex));
+				if( lastToken != CharSetType.EMOTICON ) {
+                                    tkList.add(new Token(temp, lastToken, tokenIndex));
+                                    //log.info("tkList add non-emoticon");
+                                }
 				
 				tokenIndex = i;
 				temp = "";
 			}
 			temp = temp + ch;
+                        preCh = ch;
+                        //log.info("just append a ch: {}", ch);
 
                         // fix for surrogate pairs
                         if (ub == Character.UnicodeBlock.HIGH_SURROGATES) {
 			    ch = sb.charAt(++i);
 			    temp = temp + ch;
+                            preCh = ch;
+                            //log.info("high surrogates found");
                         }
 		}//end for i
 
