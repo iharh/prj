@@ -49,7 +49,10 @@ public class SpacingPDDictionary
 		String line = null;
 		BufferedReader br = null;
 		try {
-			br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "UTF-8"));
+			br = new BufferedReader(new InputStreamReader(
+                            //new FileInputStream(fileName),
+                            SpacingPDDictionary.class.getResourceAsStream("/" + fileName),
+                        "UTF-8"));
 
 			while( (line = br.readLine()) != null ) {
 				if( !Util.valid(line) || line.startsWith("//") ) continue;

@@ -30,7 +30,10 @@ public class RawDicFileReader
 	public RawDicFileReader(String fileName)
 		throws UnsupportedEncodingException, FileNotFoundException
 	{
-		br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "UTF-8"));
+		br = new BufferedReader(new InputStreamReader(
+                    //new FileInputStream(fileName),
+                    getClass().getResourceAsStream("/" + fileName),
+                "UTF-8"));
 	}
 
 

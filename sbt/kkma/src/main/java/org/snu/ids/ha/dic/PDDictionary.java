@@ -8,7 +8,7 @@ package org.snu.ids.ha.dic;
 
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
+//import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.Hashtable;
 
@@ -55,7 +55,10 @@ final public class PDDictionary
 
 		BufferedReader br = null;
 		try {
-			br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "UTF-8"));
+			br = new BufferedReader(new InputStreamReader(
+                            // new FileInputStream(fileName),
+                            PDDictionary.class.getResourceAsStream("/" + fileName),
+                        "UTF-8"));
 
 			while( (line = br.readLine()) != null ) {
 				if( !Util.valid(line) || line.startsWith("//") ) continue;
