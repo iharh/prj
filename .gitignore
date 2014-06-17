@@ -11,4 +11,5 @@ sbt/*/project/project/target/*
 sbt/knlph/models/*
 sbt/*/lib/*
 sbt/*/*.log
+sbt/*/-.-/*
 mvn/*
