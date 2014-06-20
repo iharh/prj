@@ -84,7 +84,7 @@ public class ModernPostProcessor {
 
         int idx = meList.size() - 1;
         MExpression me = meList.get(idx);
-        me.sortByScoreNProb();
+        me.sortByBestLnpr(); // !!!
         MCandidate mc = me.get(0);
         for (idx--; mc != null && idx >= 0; idx--) {
             mc = mc.prevBestMC;

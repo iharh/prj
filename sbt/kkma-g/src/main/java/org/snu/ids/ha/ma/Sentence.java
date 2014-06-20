@@ -53,7 +53,7 @@ public class Sentence
 		for( int i = 0, stop = size(); i < stop; i++ ) {
 			eojeol = get(i);
 			temp = eojeol.exp;
-			if( i > 0 ) sb.append("$");
+			if( i > 0 ) sb.append(" ");
 			sb.append(temp);
 		}
 		return sb.toString();

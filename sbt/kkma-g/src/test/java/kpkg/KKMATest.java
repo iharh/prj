@@ -34,8 +34,8 @@ import static org.junit.Assert.assertNotNull;
 public class KKMATest {
     private static final Logger log = LoggerFactory.getLogger(KKMATest.class);
 
-    private static final String [] TEXTS = { "01:59" };
-    //{ "($)", "🍇D", "🍇" };
+    private static final String [] TEXTS = { "를 만났." };
+    //{ "($)", "🍇D", "🍇", "01:59" };
 
     @Test
     public void testDumpSent() throws Exception {
