@@ -34,10 +34,10 @@ import static org.junit.Assert.assertNotNull;
 public class KKMATest {
     private static final Logger log = LoggerFactory.getLogger(KKMATest.class);
 
-    private static final String [] TEXTS = { "를 만났." };
-    //{ "($)", "🍇D", "🍇", "01:59" };
+    private static final String [] TEXTS = { "324-35번지" };
+    //{ "($)", "🍇D", "🍇", "를 만났.", "01:59" };
 
-    @Test
+    @Ignore
     public void testDumpSent() throws Exception {
         for (int i = 0; i < TEXTS.length; ++i) {
             String t = TEXTS[i];
@@ -70,7 +70,7 @@ public class KKMATest {
     }
 
 
-    @Ignore
+    @Test
     public void testDumpTokens() throws Exception {
         for (int i = 0; i < TEXTS.length; ++i) {
             String t = TEXTS[i];
