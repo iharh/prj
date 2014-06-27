@@ -34,8 +34,8 @@ import static org.junit.Assert.assertNotNull;
 public class KKMATest {
     private static final Logger log = LoggerFactory.getLogger(KKMATest.class);
 
-    private static final String [] TEXTS = { "7천" };
-    //{ "($)", "🍇D", "🍇", "를 만났.", "01:59", "324-35번지" };
+    private static final String [] TEXTS = { "324-35번지" };
+    //{ "($)", "🍇D", "🍇", "를 만났.", "01:59", "324-35번지", "7천" };
 
     @Test
     public void testDumpSent() throws Exception {
@@ -65,6 +65,12 @@ public class KKMATest {
             for (Sentence sentence : sentences) {
                 String sentStr = sentence.getSentence();
                 log.info("kkma sentence: {}", sentStr);
+                log.info("");
+                log.info("!!! eojeols !!!");
+                log.info("");
+                for (Eojeol eojeol : sentence) {
+                    log.debug("eojeol: {}", eojeol.toString());
+                }
             }
         }
     }
