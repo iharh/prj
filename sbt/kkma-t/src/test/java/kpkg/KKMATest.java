@@ -49,8 +49,23 @@ public class KKMATest {
             log.info("analizng text:\n{}", t);
 
             List<MCandidate> rs = ma.analyze(t);
-            for (int k = 0; k < rs.size(); ++k) {
-                log.info("el: {}", rs.get(k).getMorpStr());
+            for (MCandidate mc : rs) {
+                log.info("morph_str: {}", mc.getMorpStr());
+
+                log.info("size: {}", mc.size());
+                log.info("lastMorpIdx: {}", mc.getLastMorpIdx());
+
+                log.info("start: {}", mc.getStart());
+                log.info("length: {}", mc.getLength());
+                log.info("exp: {}", mc.getExp());
+
+                //log.info("str: {}", mc.toString());
+
+
+                //getTagAt(i) - return POSTag.getTag(getTagNumAt(idx)); - return infoEncArr[idx] & 0x7fffffffffffffffL;
+                //getTagNumAt(i)
+                //
+                //wordArr[i] - char [] getWordAt(idx) - String getStringAt(idx)
             }
 /*
             // analyze morpheme without any post processing 
