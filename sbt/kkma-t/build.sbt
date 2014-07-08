@@ -24,7 +24,7 @@ libraryDependencies ++= Seq(
     "org.slf4j"                 % "slf4j-log4j12"  % "1.7.5",
     "log4j"                     % "log4j"          % "1.2.17",
     // one-jar stuff
-    //"commons-lang"              % "commons-lang"   % "2.6"
+    "commons-net"               % "commons-net"    % "3.3",
     //
     "com.novocode"              % "junit-interface"    % "0.10"    % "test",
     "junit"                     % "junit"              % "4.11"    % "test",

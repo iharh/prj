@@ -5,25 +5,13 @@ import org.junit.Ignore;
 
 import org.snu.ids.ha.core.MAnalyzerFull;
 import org.snu.ids.ha.core.MCandidate;
-
-//import org.snu.ids.ha.ma.ModernPostProcessor;
-//import org.snu.ids.ha.ma.MExpression;
-//import org.snu.ids.ha.ma.MorphemeAnalyzer;
-//import org.snu.ids.ha.ma.Sentence;
-//import org.snu.ids.ha.ma.Eojeol;
-//import org.snu.ids.ha.ma.Morpheme;
-//import org.snu.ids.ha.ma.Token;
-//import org.snu.ids.ha.ma.Tokenizer;
-
-//import org.snu.ids.ha.dic.Dictionary;
-
-//import org.snu.ids.ha.constants.POSTag;
+import org.snu.ids.ha.core.MProcessor;
+import org.snu.ids.ha.core.Sentence;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
-
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
@@ -36,66 +24,43 @@ import static org.junit.Assert.assertNotNull;
 public class KKMATest {
     private static final Logger log = LoggerFactory.getLogger(KKMATest.class);
 
-    private static final String [] TEXTS = { "324-35번지", "7천" };
-    //{ "($)", "🍇D", "🍇", "를 만났.", "01:59", "324-35번지", "7천" };
+    private static final String [] TEXTS = { "어제 유미가 그 남자를 만났어요. 어제 유미가 그 남자를 만났어요." };
+    //{ "($)", "ðŸ‡D", "ðŸ‡", "ë¥¼ ë§Œë‚¬.", "01:59", "324-35ë²ˆì§€", "7ì²œ" };
 
     @Test
     public void testDumpSent() throws Exception {
         MAnalyzerFull ma = new MAnalyzerFull();
+        MProcessor mp = new MProcessor();
 
         for (int i = 0; i < TEXTS.length; ++i) {
             String t = TEXTS[i];
 
             log.info("analizng text:\n{}", t);
 
-            List<MCandidate> rs = ma.analyze(t);
-            for (MCandidate mc : rs) {
-                log.info("morph_str: {}", mc.getMorpStr());
+            List<MCandidate> candidates = ma.analyze(t);
+            List<Sentence> sentences = mp.divide(candidates);
 
-                log.info("size: {}", mc.size());
-                log.info("lastMorpIdx: {}", mc.getLastMorpIdx());
+            for (Sentence sent : sentences) {
+                log.info("sentence: {}", sent.toString());
+                for (MCandidate mc : sent) {
+                    log.info("morph_str: {}", mc.getMorpStr());
 
-                log.info("start: {}", mc.getStart());
-                log.info("length: {}", mc.getLength());
-                log.info("exp: {}", mc.getExp());
+                    log.info("size: {}", mc.size());
+                    log.info("lastMorpIdx: {}", mc.getLastMorpIdx());
 
-                //log.info("str: {}", mc.toString());
+                    log.info("start: {}", mc.getStart());
+                    log.info("length: {}", mc.getLength());
+                    log.info("exp: {}", mc.getExp());
+
+                    //log.info("str: {}", mc.toString());
 
 
-                //getTagAt(i) - return POSTag.getTag(getTagNumAt(idx)); - return infoEncArr[idx] & 0x7fffffffffffffffL;
-                //getTagNumAt(i)
-                //
-                //wordArr[i] - char [] getWordAt(idx) - String getStringAt(idx)
-            }
-/*
-            // analyze morpheme without any post processing 
-            List<MExpression> mexp = ma.analyze(t);
-
-            log.info("after analyze:\n{}", mexp.toString());
-
-            // refine spacing
-            ModernPostProcessor.postProcess(mexp);
-
-            log.info("after post process:\n{}", mexp.toString());
-
-            // leave the best analyzed result
-            mexp = ma.leaveJustBest(mexp);
-
-            // divide result to setences
-            List<Sentence> sentences = ma.divideToSentences(mexp);
-
-            // print the result
-            for (Sentence sentence : sentences) {
-                String sentStr = sentence.getSentence();
-                log.info("kkma sentence: {}", sentStr);
-                log.info("");
-                log.info("!!! eojeols !!!");
-                log.info("");
-                for (Eojeol eojeol : sentence) {
-                    log.debug("eojeol: {}", eojeol.toString());
+                    //getTagAt(i) - return POSTag.getTag(getTagNumAt(idx)); - return infoEncArr[idx] & 0x7fffffffffffffffL;
+                    //getTagNumAt(i)
+                    //
+                    //wordArr[i] - char [] getWordAt(idx) - String getStringAt(idx)
                 }
             }
-*/
         }
     }
 };
