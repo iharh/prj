@@ -1,0 +1,13 @@
+{
+  "fields": [
+    "_timestamp",
+    "_source"
+  ],
+  "query": {
+    "filtered": {
+      "query": {
+        "match_all": {}
+      }
+    }
+  }
+}

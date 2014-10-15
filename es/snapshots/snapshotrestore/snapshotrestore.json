@@ -1,0 +1,6 @@
+{
+  "indices": "idxsrc",
+  "include_global_state": false,
+  "rename_pattern": "idx(.+)",
+  "rename_replacement": "idxdst"
+}

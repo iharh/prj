@@ -1,0 +1,10 @@
+{ "index": { "_index": "idxsrc", "_type": "type1", "_id": "1" }}
+{ "docid": "id1", "msg": "test msg 1" }
+{ "index": { "_index": "idxsrc", "_type": "type1", "_id": "2" }}
+{ "docid": "id2", "msg": "test msg 2" }
+{ "index": { "_index": "idxsrc", "_type": "type1", "_id": "3" }}
+{ "docid": "id3", "msg": "test msg 3" }
+{ "index": { "_index": "idxsrc", "_type": "type1", "_id": "4" }}
+{ "docid": "id4", "msg": "test msg 4" }
+{ "index": { "_index": "idxsrc", "_type": "type1", "_id": "5" }}
+{ "docid": "id5", "msg": "test msg 5" }
