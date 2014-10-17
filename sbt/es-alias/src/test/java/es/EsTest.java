@@ -9,6 +9,7 @@ import org.elasticsearch.common.settings.Settings;
 //import org.elasticsearch.node.NodeBuilder;
 import org.elasticsearch.node.Node;
 import org.elasticsearch.client.Client;
+import org.elasticsearch.cluster.metadata.IndexMetaData;
 
 import org.elasticsearch.action.admin.indices.alias.Alias;
 
@@ -50,6 +51,10 @@ public class EsTest {
             for (long i = 0; i < 3; ++i) {
                 createIndex(client, i);
             } 
+
+            assertTrue(client.admin().indices().prepareUpdateSettings("1")
+                .setSettings(settingsBuilder().put(IndexMetaData.SETTING_READ_ONLY, true))
+                .get().isAcknowledged());
 
             // assertTrue(client.admin().indices().prepareAliases().addAlias("0", "read_2").execute().actionGet().isAcknowledged());
             // removeAlias

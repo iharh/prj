@@ -1,0 +1,14 @@
+{
+  "mappings": {
+    "type1": {
+      "properties": {                
+        "docid": {"type": "string", "store" :"yes" },
+        "msg": {"type": "string", "store": "yes" }
+      },
+      "_timestamp": {
+        "enabled": true, "store": true
+      }
+    }
+  }
+}
+

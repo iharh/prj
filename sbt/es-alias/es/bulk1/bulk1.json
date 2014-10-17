@@ -1,0 +1,2 @@
+{ "index": { "_index": "1", "_type": "type1", "_id": "2" }}
+{ "docid": "id2", "msg": "test msg 2" }
