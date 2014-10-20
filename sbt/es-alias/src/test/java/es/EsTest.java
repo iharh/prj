@@ -40,9 +40,10 @@ public class EsTest {
     }
 
     private void createIndex(Client client, long projectId) {
-        String indexName = Long.toString(projectId);
-        String aliasRead = "read_" + indexName;
-        String aliasWrite = "write_" + indexName;
+        String projectIdStr = Long.toString(projectId);
+        String indexName = projectIdStr = "_cur";
+        String aliasRead = "read_" + projectIdStr;
+        String aliasWrite = "write_" + projectIdStr;
 
         deleteIndexIfExists(client, indexName);
 
@@ -79,8 +80,9 @@ public class EsTest {
     }
 
     private void migrateIndex(Client client, long projectId) throws IOException {
-        String srcIndexName = Long.toString(projectId);
-        String dstIndexName = srcIndexName + "_0";
+        String projectIdStr = Long.toString(projectId);
+        String srcIndexName = projectIdStr + "_cur";
+        String dstIndexName = projectIdStr + "_0";
 
         deleteIndexIfExists(client, dstIndexName);
 
@@ -103,8 +105,10 @@ public class EsTest {
             .put("node.master", false)
             .build();
 
+        //final String clusterName = "elasticsearch";
+        final String clusterName = "epbygomw0024-5432-postgres-win_ss";
         // data(false).
-        try (Node node = nodeBuilder().clusterName("elasticsearch").client(true).settings(settings).node()) {
+        try (Node node = nodeBuilder().clusterName(clusterName).client(true).settings(settings).node()) {
             Client client = node.client();
 
             //for (long i = 0; i < 2; ++i) {
