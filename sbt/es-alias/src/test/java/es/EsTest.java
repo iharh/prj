@@ -96,7 +96,14 @@ public class EsTest {
         );
     }
 
-    private void traverseScroll(Client client, SearchResponse resp) {
+    private void traverseScroll(Client client, String indexName, int batchSize) {
+        SearchResponse resp = client.prepareSearch(indexName)
+            .setSearchType(SearchType.SCAN)
+            .setScroll(TimeValue.timeValueMinutes(2))
+            .setQuery(matchAllQuery())
+            .addFieldDataField(FIELD_ID)
+            .setSize(batchSize/5) // TODO: why do we divide here???
+            .execute().actionGet();
         // log.info("totalHits: {}", resp.getHits().totalHits());
         do {
             for (SearchHit hit : resp.getHits()) {
@@ -145,15 +152,12 @@ public class EsTest {
         // TODO: need to have a YELLOW cluster status
         // TODO: need to disable shards reallocation for our srcIndexName - enable it back again only in case of error
         // TODO: add lock srcIndexName here
-        SearchResponse scrollResp = client.prepareSearch(srcIndexName)
-            .setSearchType(SearchType.SCAN)
-            .setScroll(TimeValue.timeValueMinutes(2))
-            .setQuery(matchAllQuery())
-            .addFieldDataField(FIELD_ID)
-            .setSize(batchSize/5) // TODO: why do we divide here???
-            .execute().actionGet();
 
-        traverseScroll(client, scrollResp);
+        traverseScroll(client, srcIndexName, batchSize);
+
+        //.setReplicationType(ReplicationType.ASYNC)
+        //.setConsistencyLevel(WriteConsistencyLevel.ONE)
+
 
         // TODO: add unlock srcIndexName here
 
