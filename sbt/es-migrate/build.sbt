@@ -1,4 +1,4 @@
-//name := "es-alias"
+//name := "es-migrate"
 
 version := "0.1-SNAPSHOT"
 
@@ -23,7 +23,8 @@ libraryDependencies ++= Seq(
     "org.slf4j"                 % "slf4j-api"      % "1.7.5",
     "org.slf4j"                 % "slf4j-log4j12"  % "1.7.5",
     "log4j"                     % "log4j"          % "1.2.17",
-    "org.elasticsearch"         % "elasticsearch"  % "1.3.4",
+    //"org.elasticsearch"         % "elasticsearch"  % "1.3.4",
+    "org.elasticsearch"         % "elasticsearch"  % "1.2.1",
     // one-jar stuff
     //"commons-lang"              % "commons-lang"   % "2.6"
     //
