@@ -11,9 +11,9 @@ import static org.junit.Assert.assertEquals;
 //import org.elasticsearch.node.NodeBuilder;
 import org.elasticsearch.node.Node;
 import org.elasticsearch.client.Client;
+import org.elasticsearch.client.ClusterAdminClient;
 import org.elasticsearch.client.IndicesAdminClient;
 
-import org.elasticsearch.cluster.metadata.IndexMetaData;
 import org.elasticsearch.cluster.metadata.MappingMetaData;
 
 import org.elasticsearch.common.hppc.cursors.ObjectObjectCursor;
@@ -41,6 +41,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
+import java.util.concurrent.TimeUnit;
 import java.util.Map;
 
 public class EsTest {
@@ -49,13 +50,17 @@ public class EsTest {
     private static final String FIELD_ID = "_id_document";
 
 
+    private void waitForCluster(ClusterAdminClient cac, String indexName) {
+        cac.prepareHealth(indexName).setWaitForYellowStatus().execute().actionGet();
+    }
+
     private void deleteIndexIfExists(IndicesAdminClient iac, String indexName) {
         if (iac.prepareExists(indexName).execute().actionGet().isExists()) {
             boolean ack = iac.prepareDelete(indexName).execute().actionGet().isAcknowledged();
             log.info("index {} deleted: {}", indexName, Boolean.toString(ack));
         }
     }
-
+/*
     private void createIndex(IndicesAdminClient iac, long projectId) {
         String projectIdStr = Long.toString(projectId);
         String indexName = projectIdStr = "_cur";
@@ -71,7 +76,7 @@ public class EsTest {
 
         log.info("index {} created: {}", indexName, Boolean.toString(ack));
     }
-
+*/
     // look for auto-filling stuff:
     // https://github.com/elasticsearch/elasticsearch/blob/master/src/test/java/org/elasticsearch/search/scroll/SearchScrollTests.java
 
@@ -96,7 +101,7 @@ public class EsTest {
         Map<String, String> indexSettingsMap = indexSettings.getAsMap(); // getAsStructuredMap();
         //for (String k : indexSettingsMap.keySet()) { log.info("settings for: {}", k); }
         return rb.setSettings(
-            // "index.uuid" is auto-generated as a new one
+            // Note: "index.uuid" is auto-generated as a new one
             settingsBuilder()
                 .put(indexSettings)
                 .put("number_of_shards", Integer.toString(shards)
@@ -114,18 +119,22 @@ public class EsTest {
             .execute().actionGet();
         do {
             for (SearchHit hit : resp.getHits()) {
-                log.debug("hit type: {}, id: {}", hit.getType(), hit.getId()); // ", srcRef: {},  hit.getSourceRef().toUtf8()
+                String hitType = hit.getType();
+                log.debug("hit type: {}, id: {}", hitType, hit.getId()); // ", srcRef: {},  hit.getSourceRef().toUtf8()
 
                 IndexRequest ir = new IndexRequest(dstIndexName)
-                    //.create(false)
                     .source(hit.getSourceRef(), true)
-                    .type(hit.getType())
+                    .type(hitType)
                     .id(hit.getId());
 
-                if (true) { // includeRouting
+                final boolean useRouting = true;
+                if (useRouting) {
                     Long valIdDoc = hit.field("_id_document").value(); // in-place just use: .<Long>value();
-                    ir.routing(valIdDoc.toString());
                     log.debug("hit _id_document: {}", valIdDoc);
+
+                    if ("verbatim".equals(hitType) || "sentence".equals(hitType)) {
+                        ir.routing(valIdDoc.toString());
+                    }
                 }
 
                 bp.add(ir);
@@ -153,26 +162,22 @@ public class EsTest {
 
         iac.prepareRefresh(srcIndexName).execute().actionGet();
 
-        // TODO: need to have a YELLOW cluster status
-        // TODO: need to disable shards reallocation for our srcIndexName - enable it back again only in case of error
-        // TODO: add lock srcIndexName here
-        // TODO: add BulkProcessor listener
+        waitForCluster(client.admin().cluster(), srcIndexName);
 
-        try (BulkWaiter bw = new BulkWaiter();
+        try (IndexLocker il = new IndexLocker(iac, srcIndexName);
+            BulkWaiter bw = new BulkWaiter();
             BulkProcessor bp = BulkProcessor.builder(client, bw)
                 .setBulkActions(batchSize) 
                 .setBulkSize(new ByteSizeValue(1, ByteSizeUnit.GB)) 
                 .setConcurrentRequests(writeThreads) 
-                .setConcurrentRequests(0)
+                //.setConcurrentRequests(0)
                 .build();
         ) {
             allDocsToBulk(client, bp, srcIndexName, dstIndexName, batchSize);
         }
-        // TODO: add unlock srcIndexName here
 
         // alias stuff
         // assertTrue(client.admin().indices().prepareAliases().addAlias("0", "read_2").execute().actionGet().isAcknowledged());
-        // removeAlias
     }
             
     @Test
@@ -197,11 +202,6 @@ public class EsTest {
             //for (long i = 0; i < 2; ++i) {
             //    createIndex(iac, i);
             //} 
-
-            // locking stuff
-            //boolean ackLock = iac.prepareUpdateSettings(indexName)
-            //    .setSettings(settingsBuilder().put(IndexMetaData.SETTING_READ_ONLY, true))
-            //    .get().isAcknowledged());
 
             migrateIndex(client, projectId, 1000, 4);
         } finally {

@@ -28,6 +28,7 @@ class BulkWaiter implements BulkProcessor.Listener, Closeable {
     }
 
     private synchronized void closeWait() {
+        log.debug("start closing bulk processor");
         while (numBulks.get() != 0) {
             try {
                 final long timeout = 1;
@@ -42,18 +43,24 @@ class BulkWaiter implements BulkProcessor.Listener, Closeable {
     @Override
     public void beforeBulk(long executionId, BulkRequest request) {
         numBulks.incrementAndGet();
-        log.info("beforeBulk");
+        log.debug("beforeBulk");
     }
 
     @Override
     public void afterBulk(long executionId, BulkRequest request, BulkResponse response) {
         numBulks.decrementAndGet();
-        log.info("afterBulk success");
+        if (response.hasFailures()) {
+            String bulkFailureMessage = response.buildFailureMessage();
+            log.error("afterBulk error: {}", bulkFailureMessage);
+            // throw new RuntimeException(bulkFailureMessage);
+        } else {
+            log.debug("afterBulk success");
+        }
     }
 
     @Override
     public void afterBulk(long executionId, BulkRequest request, Throwable failure) {
         numBulks.decrementAndGet();
-        log.error("afterBulk error", failure);
+        log.error("afterBulk throwed error", failure);
     } 
 }
