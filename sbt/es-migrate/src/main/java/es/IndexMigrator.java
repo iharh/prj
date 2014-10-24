@@ -13,9 +13,9 @@ import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.common.unit.ByteSizeUnit;
 import org.elasticsearch.common.unit.ByteSizeValue;
 
-import org.elasticsearch.action.admin.indices.alias.Alias;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequestBuilder;
 import org.elasticsearch.action.bulk.BulkProcessor;
+import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.index.IndexRequest;
@@ -36,37 +36,29 @@ import java.util.Map;
 class IndexMigrator {
     private static final Logger log = LoggerFactory.getLogger(IndexMigrator.class);
 
-    private static final String FIELD_ID = "_id_document";
+    public static final String INDEX_SETTING_NUMBER_OF_SHARDS = "number_of_shards"; //$NON-NLS-1$
 
 
     private Client client;
     private IndicesAdminClient iac;
     private ClusterAdminClient cac;
+    private IndexGenerationFinder igf;
 
     public IndexMigrator(Client client) {
         this.client = client;
-        iac = client.admin().indices();
         cac = client.admin().cluster();
-    }
-
-    private void createIndexCopyMetadata(String srcIndexName, String dstIndexName, int shards) throws IOException {
-        deleteIndexIfExists(dstIndexName);
-
-        CreateIndexRequestBuilder rb = iac.prepareCreate(dstIndexName);
-        rb = addIndexMappings(rb, srcIndexName);
-        rb = addIndexSettings(rb, srcIndexName, shards);
-        boolean ack = rb.get().isAcknowledged();
-        log.info("index {} created: {}", dstIndexName, Boolean.toString(ack));
+        iac = client.admin().indices();
+        igf = new IndexGenerationFinder(iac);
     }
 
     public void migrateIndex(long projectId, int shards, int batchSize, int writeThreads) throws IOException {
         String projectIdStr = Long.toString(projectId);
-        String srcIndexName = projectIdStr + "_cur";
-        String dstIndexName = projectIdStr + "_0";
+        String srcIndexName = igf.findCur(projectIdStr);
+        String dstIndexName = igf.findNext(projectIdStr);
 
         createIndexCopyMetadata(srcIndexName, dstIndexName, shards);
 
-        iac.prepareRefresh(srcIndexName).execute().actionGet();
+        iac.prepareRefresh(srcIndexName).get();
 
         waitForCluster(srcIndexName);
 
@@ -82,31 +74,31 @@ class IndexMigrator {
             allDocsToBulk(bp, srcIndexName, dstIndexName, batchSize);
         }
 
-        // alias stuff
-        // assertTrue(client.admin().indices().prepareAliases().addAlias("0", "read_2").execute().actionGet().isAcknowledged());
+        // TODO: add alias switching stuff !!!
+        // assertTrue(client.admin().indices().prepareAliases().addAlias("0", "read_2").get().isAcknowledged());
     }
 
+    private void createIndexCopyMetadata(String srcIndexName, String dstIndexName, int shards) throws IOException {
+        deleteIndexIfExists(dstIndexName);
 
-    private String getRoutingValue(SearchHit hit) {
-        String hitType = hit.getType();
-
-        Long valIdDoc = hit.field(FIELD_ID).value(); // in-place just use: .<Long>value();
-        log.debug("hit {}: {}", FIELD_ID, valIdDoc);
-
-        if ("verbatim".equals(hitType) || "sentence".equals(hitType)) {
-            return valIdDoc.toString();
-        }
-        return null;
+        CreateIndexRequestBuilder rb = iac.prepareCreate(dstIndexName);
+        rb = addIndexMappings(rb, srcIndexName);
+        rb = addIndexSettings(rb, srcIndexName, shards);
+        boolean ack = rb.get().isAcknowledged();
+        log.info("index {} created: {}", dstIndexName, Boolean.toString(ack));
     }
 
     private void allDocsToBulk(BulkProcessor bp, String srcIndexName, String dstIndexName, int batchSize) {
-        SearchResponse resp = client.prepareSearch(srcIndexName)
+        SearchRequestBuilder srb = client.prepareSearch(srcIndexName)
             .setSearchType(SearchType.SCAN)
             .setScroll(TimeValue.timeValueMinutes(2))
             .setQuery(matchAllQuery())
-            .addFieldDataField(FIELD_ID)
             .setSize(batchSize/5) // TODO: why do we divide here???
-            .execute().actionGet();
+        ;
+        for (int i = 0; i < ClbRoutingFinder.usedESFieldNames.length; ++i) {
+            srb.addFieldDataField(ClbRoutingFinder.usedESFieldNames[i]);
+        }
+        SearchResponse resp = srb.get();
         do {
             for (SearchHit hit : resp.getHits()) {
                 String hitType = hit.getType();
@@ -117,7 +109,7 @@ class IndexMigrator {
                     .type(hitType)
                     .id(hit.getId());
 
-                String routingVal = getRoutingValue(hit);
+                String routingVal = ClbRoutingFinder.getRoutingValue(hit);
                 if (routingVal != null) {
                     ir.routing(routingVal);
                 }
@@ -126,7 +118,7 @@ class IndexMigrator {
             }
             resp = client.prepareSearchScroll(resp.getScrollId())
                 .setScroll(TimeValue.timeValueMinutes(10))
-                .execute().actionGet();
+                .get();
         }
         while (resp.getHits().hits().length > 0);
     }
@@ -155,18 +147,18 @@ class IndexMigrator {
             // Note: "index.uuid" is auto-generated as a new one
             settingsBuilder()
                 .put(indexSettings)
-                .put("number_of_shards", Integer.toString(shards)
+                .put(INDEX_SETTING_NUMBER_OF_SHARDS, Integer.toString(shards)
             )
         );
     }
 
     private void waitForCluster(String indexName) {
-        cac.prepareHealth(indexName).setWaitForYellowStatus().execute().actionGet();
+        cac.prepareHealth(indexName).setWaitForYellowStatus().get();
     }
 
     private void deleteIndexIfExists(String indexName) {
-        if (iac.prepareExists(indexName).execute().actionGet().isExists()) {
-            boolean ack = iac.prepareDelete(indexName).execute().actionGet().isAcknowledged();
+        if (iac.prepareExists(indexName).get().isExists()) {
+            boolean ack = iac.prepareDelete(indexName).get().isAcknowledged();
             log.info("index {} deleted: {}", indexName, Boolean.toString(ack));
         }
     }

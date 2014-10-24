@@ -23,11 +23,10 @@ libraryDependencies ++= Seq(
     "org.slf4j"                 % "slf4j-api"      % "1.7.5",
     "org.slf4j"                 % "slf4j-log4j12"  % "1.7.5",
     "log4j"                     % "log4j"          % "1.2.17",
-    //"org.elasticsearch"         % "elasticsearch"  % "1.3.4",
-    "org.elasticsearch"         % "elasticsearch"  % "1.2.1",
+    "org.elasticsearch"         % "elasticsearch"  % "1.2.1", // "1.3.4"
     // one-jar stuff
-    //"commons-lang"              % "commons-lang"   % "2.6"
-    //
+    "commons-lang"              % "commons-lang"   % "2.6",
+    // testing stuff
     "com.novocode"              % "junit-interface"    % "0.10"    % "test",
     "junit"                     % "junit"              % "4.11"    % "test",
     "org.hamcrest"              % "hamcrest-library"   % "1.3"     % "test"

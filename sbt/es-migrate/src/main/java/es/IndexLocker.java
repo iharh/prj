@@ -37,7 +37,7 @@ class IndexLocker implements Closeable {
     }
 
     private void refresh() {
-        iac.prepareRefresh(indexName).execute().actionGet();
+        iac.prepareRefresh(indexName).get();
         log.info("index {} refresh called", indexName);
     }
 
