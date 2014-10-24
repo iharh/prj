@@ -84,7 +84,7 @@ public class EsTest {
             //} 
 
             IndexMigrator im = new IndexMigrator(client);
-            im.migrateIndex(projectId, 5, 1000, 4);
+            im.migrateIndex(projectId, 7, 1000, 4);
         } finally {
             try {
                 if (node != null) {
