@@ -1,4 +1,4 @@
-package es;
+package com.clarabridge.elasticsearch.ingex.migrate;
 
 import com.clarabridge.common.classification.lucene.LuceneAttributes;
 import com.clarabridge.transformer.indexing.pipe.ElasticSearchIndexer;

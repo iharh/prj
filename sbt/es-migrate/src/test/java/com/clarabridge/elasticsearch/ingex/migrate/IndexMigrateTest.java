@@ -1,4 +1,4 @@
-package es;
+package com.clarabridge.elasticsearch.ingex.migrate;
 
 import org.junit.Test;
 import org.junit.Ignore;
@@ -23,8 +23,8 @@ import static org.elasticsearch.node.NodeBuilder.nodeBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class EsTest {
-    private static final Logger log = LoggerFactory.getLogger(EsTest.class);
+public class IndexMigrateTest {
+    private static final Logger log = LoggerFactory.getLogger(IndexMigrateTest.class);
 
     private void deleteIndexIfExists(IndicesAdminClient iac, String indexName) {
         if (iac.prepareExists(indexName).get().isExists()) {

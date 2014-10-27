@@ -1,4 +1,4 @@
-package es;
+package com.clarabridge.elasticsearch.ingex.migrate;
 
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.ClusterAdminClient;

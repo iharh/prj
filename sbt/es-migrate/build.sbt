@@ -26,6 +26,7 @@ libraryDependencies ++= Seq(
     "org.elasticsearch"         % "elasticsearch"  % "1.2.1", // "1.3.4"
     // one-jar stuff
     "commons-lang"              % "commons-lang"   % "2.6",
+    "commons-cli"               % "commons-cli"    % "1.2",
     // testing stuff
     "com.novocode"              % "junit-interface"    % "0.10"    % "test",
     "junit"                     % "junit"              % "4.11"    % "test",

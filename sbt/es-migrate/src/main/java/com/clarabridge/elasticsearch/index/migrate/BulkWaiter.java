@@ -1,4 +1,4 @@
-package es;
+package com.clarabridge.elasticsearch.ingex.migrate;
 
 import org.elasticsearch.action.bulk.BulkProcessor;
 import org.elasticsearch.action.bulk.BulkRequest;
