@@ -1,5 +1,9 @@
 package es;
 
+import com.clarabridge.common.classification.lucene.LuceneAttributes;
+import com.clarabridge.transformer.indexing.pipe.ElasticSearchIndexer;
+
+
 import org.elasticsearch.search.SearchHit;
 
 import org.apache.commons.lang.StringUtils;
@@ -9,23 +13,10 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
+// TODO: eliminate copy-paste from ElasticSearchRouting by making this class to be a superclass for it
 class ClbRoutingFinder {
     private static final Logger log = LoggerFactory.getLogger(ClbRoutingFinder.class);
 
-    // TODO: move this out of here !!!
-    public static class ElasticSearchIndexer {
-        public static final String TYPE_DOCUMENT = "document"; //$NON-NLS-1$
-        public static final String TYPE_VERBATIM = "verbatim"; //$NON-NLS-1$
-        public static final String TYPE_SENTENCE = "sentence"; //$NON-NLS-1$
-    }
-    public static interface LuceneAttributes { // com.clarabridge.common.classification.lucene
-        String FIELD_NAME_ID_DOCUMENT = "_id_document";
-        // 6.2.0
-        String FIELD_NAME_ID_PARENT_NATURAL = "parent_natural_id";  //$NON-NLS-1$
-        String FIELD_NAME_ID_NATURAL = "natural_id";  //$NON-NLS-1$
-    }
-
-    // com.clarabridge.transformer.indexing.pipe.ElasticSearchRouting
     protected static final String SM_SERVICE = "sm_service"; //$NON-NLS-1$
     protected static final String SM_FACEBOOK = "facebook"; //$NON-NLS-1$
     protected static final String FB_POST_ID = "post_id"; //$NON-NLS-1$
@@ -59,7 +50,6 @@ class ClbRoutingFinder {
         return result;
     }
 
-    // TODO: eliminate copy-paste from ElasticSearchRouting by making this class to be a superclass for it
     public static String getDocumentRouting(String naturalId, String parentDocumentNaturalId, Map<String,String> attributeValues) {
         String value = getUnsafeDocumentRouting(naturalId, parentDocumentNaturalId, attributeValues);
         return StringUtils.isEmpty(value)?  EMPTY_ROUTING : value; 

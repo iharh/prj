@@ -74,8 +74,13 @@ class IndexMigrator {
             allDocsToBulk(bp, srcIndexName, dstIndexName, batchSize);
         }
 
-        // TODO: add alias switching stuff !!!
-        // assertTrue(client.admin().indices().prepareAliases().addAlias("0", "read_2").get().isAcknowledged());
+        String readAliasName = igf.findReadAlias(projectIdStr);
+        boolean ack_read = iac.prepareAliases().addAlias(dstIndexName, readAliasName).removeAlias(srcIndexName, readAliasName).get().isAcknowledged();
+        log.info("alias {} created: {}", readAliasName, Boolean.toString(ack_read));
+
+        String writeAliasName = igf.findWriteAlias(projectIdStr);
+        boolean ack_write = iac.prepareAliases().addAlias(dstIndexName, writeAliasName).removeAlias(srcIndexName, writeAliasName).get().isAcknowledged();
+        log.info("alias {} created: {}", readAliasName, Boolean.toString(ack_write));
     }
 
     private void createIndexCopyMetadata(String srcIndexName, String dstIndexName, int shards) throws IOException {
