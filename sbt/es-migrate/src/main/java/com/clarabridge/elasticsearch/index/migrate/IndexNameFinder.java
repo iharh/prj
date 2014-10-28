@@ -10,7 +10,7 @@ import org.elasticsearch.common.hppc.cursors.ObjectObjectCursor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-class IndexNameFinder {
+public class IndexNameFinder {
     private static final Logger log = LoggerFactory.getLogger(IndexNameFinder.class);
 
     private static final String SEPARATOR = "_"; //$NON-NLS-1$ 
@@ -41,6 +41,7 @@ class IndexNameFinder {
         return projectIdStr + SEPARATOR + Long.toString(findGeneration(projectIdStr) + 1);
     }
 
+    // TODO: implement upgrade stuff - for old projects without any generation
     private long findGeneration(String projectIdStr) {
         int projectIdPrefixLen = projectIdStr.length() + 1;
         ImmutableOpenMap<String, Settings> is = iac.prepareGetSettings(projectIdStr + SEPARATOR + WILDCARD).get().getIndexToSettings();
