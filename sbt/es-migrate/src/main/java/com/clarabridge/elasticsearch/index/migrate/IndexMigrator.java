@@ -33,7 +33,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import java.util.Map;
 
-class IndexMigrator {
+public class IndexMigrator {
     private static final Logger log = LoggerFactory.getLogger(IndexMigrator.class);
 
     public static final String INDEX_SETTING_NUMBER_OF_SHARDS = "number_of_shards"; //$NON-NLS-1$

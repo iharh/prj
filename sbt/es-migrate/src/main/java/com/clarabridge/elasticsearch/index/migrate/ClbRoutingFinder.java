@@ -13,8 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
-// TODO: eliminate copy-paste from ElasticSearchRouting by making this class to be a superclass for it
-class ClbRoutingFinder {
+public class ClbRoutingFinder {
     private static final Logger log = LoggerFactory.getLogger(ClbRoutingFinder.class);
 
     protected static final String SM_SERVICE = "sm_service"; //$NON-NLS-1$
