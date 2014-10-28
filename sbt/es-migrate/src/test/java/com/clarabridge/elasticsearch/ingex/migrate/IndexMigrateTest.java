@@ -53,8 +53,7 @@ public class IndexMigrateTest {
     // look for auto-filling stuff:
     // http://www.elasticsearch.org/guide/en/elasticsearch/client/java-api/current/index_.html
 
-
-    @Test
+    @Ignore
     public void testMigrateIndex() throws Exception {
         final String clusterName = "epbygomw0024-5432-postgres-win_ss";
         final long projectId = 1404;
