@@ -42,19 +42,19 @@ public class IndexMigrator {
     private Client client;
     private IndicesAdminClient iac;
     private ClusterAdminClient cac;
-    private IndexGenerationFinder igf;
+    private IndexNameFinder inf;
 
     public IndexMigrator(Client client) {
         this.client = client;
         cac = client.admin().cluster();
         iac = client.admin().indices();
-        igf = new IndexGenerationFinder(iac);
+        inf = new IndexNameFinder(iac);
     }
 
     public void migrateIndex(long projectId, int shards, int batchSize, int writeThreads) throws IOException {
         String projectIdStr = Long.toString(projectId);
-        String srcIndexName = igf.findCur(projectIdStr);
-        String dstIndexName = igf.findNext(projectIdStr);
+        String srcIndexName = inf.findCur(projectIdStr);
+        String dstIndexName = inf.findNext(projectIdStr);
 
         createIndexCopyMetadata(srcIndexName, dstIndexName, shards);
 
@@ -74,11 +74,11 @@ public class IndexMigrator {
             allDocsToBulk(bp, srcIndexName, dstIndexName, batchSize);
         }
 
-        String readAliasName = igf.findReadAlias(projectIdStr);
+        String readAliasName = inf.findReadAlias(projectIdStr);
         boolean ack_read = iac.prepareAliases().addAlias(dstIndexName, readAliasName).removeAlias(srcIndexName, readAliasName).get().isAcknowledged();
         log.info("alias {} created: {}", readAliasName, Boolean.toString(ack_read));
 
-        String writeAliasName = igf.findWriteAlias(projectIdStr);
+        String writeAliasName = inf.findWriteAlias(projectIdStr);
         boolean ack_write = iac.prepareAliases().addAlias(dstIndexName, writeAliasName).removeAlias(srcIndexName, writeAliasName).get().isAcknowledged();
         log.info("alias {} created: {}", readAliasName, Boolean.toString(ack_write));
     }

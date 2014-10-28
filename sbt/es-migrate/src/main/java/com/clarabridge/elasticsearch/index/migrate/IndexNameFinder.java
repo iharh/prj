@@ -10,8 +10,8 @@ import org.elasticsearch.common.hppc.cursors.ObjectObjectCursor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-class IndexGenerationFinder {
-    private static final Logger log = LoggerFactory.getLogger(IndexGenerationFinder.class);
+class IndexNameFinder {
+    private static final Logger log = LoggerFactory.getLogger(IndexNameFinder.class);
 
     private static final String SEPARATOR = "_"; //$NON-NLS-1$ 
     private static final String WILDCARD = "*"; //$NON-NLS-1$
@@ -21,7 +21,7 @@ class IndexGenerationFinder {
 
     private IndicesAdminClient iac;
 
-    public IndexGenerationFinder(IndicesAdminClient iac) {
+    public IndexNameFinder(IndicesAdminClient iac) {
         this.iac = iac;
     }
 
