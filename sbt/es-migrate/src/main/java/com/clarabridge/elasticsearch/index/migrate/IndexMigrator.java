@@ -51,10 +51,28 @@ public class IndexMigrator {
         inf = new IndexNameFinder(iac);
     }
 
-    public void migrateIndex(long projectId, int shards, int batchSize, int writeThreads) throws IOException {
+    // TODO: move out of here
+    public void checkIndexAliases(long projectId) {
         String projectIdStr = Long.toString(projectId);
         String srcIndexName = inf.findCur(projectIdStr);
-        String dstIndexName = inf.findNext(projectIdStr);
+
+        String readAliasName = inf.findReadAlias(projectIdStr);
+        if (iac.prepareAliasesExist(readAliasName).get().exists()) {
+            boolean ack_read = iac.prepareAliases().addAlias(srcIndexName, readAliasName).get().isAcknowledged();
+            log.info("alias {} created: {}", readAliasName, Boolean.toString(ack_read));
+        }
+
+        String writeAliasName = inf.findWriteAlias(projectIdStr);
+        if (iac.prepareAliasesExist(writeAliasName).get().exists()) {
+            boolean ack_read = iac.prepareAliases().addAlias(srcIndexName, writeAliasName).get().isAcknowledged();
+            log.info("alias {} created: {}", writeAliasName, Boolean.toString(ack_read));
+        }
+    }
+
+    public void migrateIndex(long projectId, int shards, int batchSize, int writeThreads, boolean obsolete) throws IOException {
+        String projectIdStr = Long.toString(projectId);
+        String srcIndexName = inf.findCur(projectIdStr);
+        String dstIndexName = obsolete ? inf.findObsolete(projectIdStr) : inf.findNext(projectIdStr);
 
         createIndexCopyMetadata(srcIndexName, dstIndexName, shards);
 

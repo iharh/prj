@@ -34,11 +34,19 @@ public class IndexNameFinder {
     }
 
     public String findCur(String projectIdStr) {
-        return projectIdStr + SEPARATOR + Long.toString(findGeneration(projectIdStr));
+        long gen = findGeneration(projectIdStr);
+        return gen < 0 ? projectIdStr :
+            projectIdStr + SEPARATOR + Long.toString(gen);
     }
 
     public String findNext(String projectIdStr) {
-        return projectIdStr + SEPARATOR + Long.toString(findGeneration(projectIdStr) + 1);
+        long gen = findGeneration(projectIdStr);
+        gen = gen < 0 ? 1 : gen + 1;
+        return projectIdStr + SEPARATOR + Long.toString(gen);
+    }
+
+    public String findObsolete(String projectIdStr) {
+        return projectIdStr;
     }
 
     // TODO: implement upgrade stuff - for old projects without any generation
@@ -47,15 +55,22 @@ public class IndexNameFinder {
         ImmutableOpenMap<String, Settings> is = iac.prepareGetSettings(projectIdStr + SEPARATOR + WILDCARD).get().getIndexToSettings();
 
         long result = 0;
+        boolean found = false;
         for (ObjectObjectCursor<String, Settings> c : is) {
             //log.debug("traversing index: {}", c.key);
             try {
                 long generation = Long.parseLong(c.key.substring(projectIdPrefixLen));
                 if (generation > result)
                     result = generation;
+                found = true;
             } catch (NumberFormatException e) {
             }
         }
+
+        if (!found && iac.prepareExists(projectIdStr).get().isExists()) {
+            result = -1; // old-style index name (without generation)
+        }
+
         return result;
     }
 }

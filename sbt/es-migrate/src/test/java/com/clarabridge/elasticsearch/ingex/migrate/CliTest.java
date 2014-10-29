@@ -44,7 +44,7 @@ public class CliTest {
         assertFalse(projectIdStr == null || clusterName == null);
     }
     
-    @Test
+    @Ignore
     public void testCli() throws Exception {
         Options opts = new Options();
         opts.addOption("p", O_PRJ      , true, "Project id"); //$NON-NLS-1$
