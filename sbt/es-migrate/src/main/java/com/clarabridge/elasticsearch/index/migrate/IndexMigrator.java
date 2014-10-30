@@ -51,19 +51,19 @@ public class IndexMigrator {
         inf = new IndexNameFinder(iac);
     }
 
-    // TODO: move out of here
+    // TODO: move to the separate class
     public void checkIndexAliases(long projectId) {
         String projectIdStr = Long.toString(projectId);
         String srcIndexName = inf.findCur(projectIdStr);
 
         String readAliasName = inf.findReadAlias(projectIdStr);
-        if (iac.prepareAliasesExist(readAliasName).get().exists()) {
+        if (!iac.prepareAliasesExist(readAliasName).get().exists()) {
             boolean ack_read = iac.prepareAliases().addAlias(srcIndexName, readAliasName).get().isAcknowledged();
             log.info("alias {} created: {}", readAliasName, Boolean.toString(ack_read));
         }
 
         String writeAliasName = inf.findWriteAlias(projectIdStr);
-        if (iac.prepareAliasesExist(writeAliasName).get().exists()) {
+        if (!iac.prepareAliasesExist(writeAliasName).get().exists()) {
             boolean ack_read = iac.prepareAliases().addAlias(srcIndexName, writeAliasName).get().isAcknowledged();
             log.info("alias {} created: {}", writeAliasName, Boolean.toString(ack_read));
         }

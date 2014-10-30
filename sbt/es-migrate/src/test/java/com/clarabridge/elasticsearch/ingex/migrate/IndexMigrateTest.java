@@ -83,7 +83,8 @@ public class IndexMigrateTest {
             //} 
 
             IndexMigrator im = new IndexMigrator(client);
-            im.migrateIndex(projectId, 7, 1000, 4, true);
+            im.migrateIndex(projectId, 5, 1000, 4, false);
+            //im.checkIndexAliases(projectId);
         } finally {
             try {
                 if (node != null) {
