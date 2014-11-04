@@ -49,15 +49,22 @@ public class IndexNameFinder {
         return projectIdStr;
     }
 
+    public String findGeneration(String projectIdStr, long gen) {
+        String indexName = projectIdStr + SEPARATOR + gen;
+        return iac.prepareExists(indexName).get().isExists() ? indexName : null;
+    }
+
     // TODO: implement upgrade stuff - for old projects without any generation
     private long findGeneration(String projectIdStr) {
         int projectIdPrefixLen = projectIdStr.length() + 1;
-        ImmutableOpenMap<String, Settings> is = iac.prepareGetSettings(projectIdStr + SEPARATOR + WILDCARD).get().getIndexToSettings();
+        //log.info("find generation for project: {}", projectIdStr);
+        String indexMask = projectIdStr + SEPARATOR + WILDCARD;
+        ImmutableOpenMap<String, Settings> is = iac.prepareGetSettings(indexMask).get().getIndexToSettings();
 
         long result = 0;
         boolean found = false;
         for (ObjectObjectCursor<String, Settings> c : is) {
-            //log.debug("traversing index: {}", c.key);
+            //log.info("traversing index: {}", c.key);
             try {
                 long generation = Long.parseLong(c.key.substring(projectIdPrefixLen));
                 if (generation > result)
@@ -68,6 +75,7 @@ public class IndexNameFinder {
         }
 
         if (!found && iac.prepareExists(projectIdStr).get().isExists()) {
+            //log.info("found old-format index");
             result = -1; // old-style index name (without generation)
         }
 

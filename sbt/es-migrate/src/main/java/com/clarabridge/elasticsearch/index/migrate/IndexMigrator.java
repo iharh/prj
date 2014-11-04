@@ -14,6 +14,7 @@ import org.elasticsearch.common.unit.ByteSizeUnit;
 import org.elasticsearch.common.unit.ByteSizeValue;
 
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequestBuilder;
+import org.elasticsearch.action.admin.indices.mapping.get.GetMappingsResponse;
 import org.elasticsearch.action.bulk.BulkProcessor;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchType;
@@ -24,6 +25,7 @@ import org.elasticsearch.search.SearchHit;
 
 import static org.elasticsearch.common.settings.ImmutableSettings.settingsBuilder;
 import static org.elasticsearch.index.query.QueryBuilders.matchAllQuery;
+import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +39,9 @@ public class IndexMigrator {
     private static final Logger log = LoggerFactory.getLogger(IndexMigrator.class);
 
     public static final String INDEX_SETTING_NUMBER_OF_SHARDS = "number_of_shards"; //$NON-NLS-1$
+    public static final String TYPE_CLB_META = "clb_meta"; //$NON-NLS-1$
+    public static final String OBJ_META = "_meta"; //$NON-NLS-1$
+    public static final String FIELD_ENABLED = "enabled"; //$NON-NLS-1$
 
 
     private Client client;
@@ -51,7 +56,7 @@ public class IndexMigrator {
         inf = new IndexNameFinder(iac);
     }
 
-    // TODO: move to the separate class
+    /*
     public void checkIndexAliases(long projectId) {
         String projectIdStr = Long.toString(projectId);
         String srcIndexName = inf.findCur(projectIdStr);
@@ -68,11 +73,64 @@ public class IndexMigrator {
             log.info("alias {} created: {}", writeAliasName, Boolean.toString(ack_read));
         }
     }
+    */
+
+    private boolean isEnabledMMD(MappingMetaData mmd) throws IOException {
+        if (mmd == null) {
+            return true;
+        }
+        Map<String, Object> typeMappingsMap = mmd.sourceAsMap();
+        Object metaObj = typeMappingsMap.get(OBJ_META);
+        if (metaObj == null) {
+            return true;
+        }
+        @SuppressWarnings("unchecked")
+        Map<String, Object> meta = (Map<String, Object>)metaObj;
+        Object enabledObj = meta.get(FIELD_ENABLED);
+        if (enabledObj == null) {
+            return true;
+        }
+        return "true".equalsIgnoreCase(enabledObj.toString());
+    }
+
+    private boolean isEnabled(String indexName) throws IOException {
+        GetMappingsResponse resp = iac.prepareGetMappings(indexName).setTypes(TYPE_CLB_META).get();
+        ImmutableOpenMap<String, ImmutableOpenMap<String, MappingMetaData>> indicesToMappings = resp.getMappings();
+        ImmutableOpenMap<String, MappingMetaData> indexMappings = indicesToMappings.get(indexName);
+        return indexMappings == null ? true : isEnabledMMD(indexMappings.get(TYPE_CLB_META));
+    }
+
+    private void changeIndexEnabling(String indexName, boolean val) throws IOException {
+        boolean ack_dst = iac.preparePutMapping().setIndices(indexName).setType(TYPE_CLB_META).setSource(
+            jsonBuilder().startObject().startObject(TYPE_CLB_META).startObject(OBJ_META)
+            .field(FIELD_ENABLED, Boolean.toString(val))
+            .endObject().endObject().endObject()
+        ).get().isAcknowledged();
+        log.info("index: {} metadata(index-enabled) changed: {}", indexName, Boolean.toString(ack_dst));
+    }
+
+    public void switchIndex(long projectId, long generation) throws IOException {
+        String projectIdStr = Long.toString(projectId);
+        String srcIndexName = inf.findCur(projectIdStr);
+        String dstIndexName = inf.findGeneration(projectIdStr, generation);
+        log.info("switching index: {} to index: {}", srcIndexName, dstIndexName);
+        //TODO: check dstIndexName for null
+
+        boolean src_enabled = isEnabled(srcIndexName);
+        log.info("index: {} enabled: {}", srcIndexName, src_enabled);
+
+        boolean dst_enabled = isEnabled(dstIndexName);
+        log.info("index: {} enabled: {}", dstIndexName, dst_enabled);
+
+        changeIndexEnabling(dstIndexName, true);
+        changeIndexEnabling(srcIndexName, false);
+    }
 
     public void migrateIndex(long projectId, int shards, int batchSize, int writeThreads, boolean obsolete) throws IOException {
         String projectIdStr = Long.toString(projectId);
         String srcIndexName = inf.findCur(projectIdStr);
         String dstIndexName = obsolete ? inf.findObsolete(projectIdStr) : inf.findNext(projectIdStr);
+        log.info("migrating index: {} to index: {}", srcIndexName, dstIndexName);
 
         createIndexCopyMetadata(srcIndexName, dstIndexName, shards);
 
