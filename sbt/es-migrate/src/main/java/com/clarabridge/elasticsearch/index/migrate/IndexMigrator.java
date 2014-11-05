@@ -43,17 +43,21 @@ public class IndexMigrator {
     public static final String OBJ_META = "_meta"; //$NON-NLS-1$
     public static final String FIELD_ENABLED = "enabled"; //$NON-NLS-1$
 
+    private static final String ERR_INVALID_GEN = "Invalid generation: %s"; //$NON-NLS-1$
+
 
     private Client client;
     private IndicesAdminClient iac;
     private ClusterAdminClient cac;
     private IndexNameFinder inf;
+    private IndexEnabler ien;
 
     public IndexMigrator(Client client) {
         this.client = client;
         cac = client.admin().cluster();
         iac = client.admin().indices();
         inf = new IndexNameFinder(iac);
+        ien = new IndexEnabler(iac);
     }
 
     /*
@@ -75,55 +79,20 @@ public class IndexMigrator {
     }
     */
 
-    private boolean isEnabledMMD(MappingMetaData mmd) throws IOException {
-        if (mmd == null) {
-            return true;
-        }
-        Map<String, Object> typeMappingsMap = mmd.sourceAsMap();
-        Object metaObj = typeMappingsMap.get(OBJ_META);
-        if (metaObj == null) {
-            return true;
-        }
-        @SuppressWarnings("unchecked")
-        Map<String, Object> meta = (Map<String, Object>)metaObj;
-        Object enabledObj = meta.get(FIELD_ENABLED);
-        if (enabledObj == null) {
-            return true;
-        }
-        return "true".equalsIgnoreCase(enabledObj.toString());
-    }
-
-    private boolean isEnabled(String indexName) throws IOException {
-        GetMappingsResponse resp = iac.prepareGetMappings(indexName).setTypes(TYPE_CLB_META).get();
-        ImmutableOpenMap<String, ImmutableOpenMap<String, MappingMetaData>> indicesToMappings = resp.getMappings();
-        ImmutableOpenMap<String, MappingMetaData> indexMappings = indicesToMappings.get(indexName);
-        return indexMappings == null ? true : isEnabledMMD(indexMappings.get(TYPE_CLB_META));
-    }
-
-    private void changeIndexEnabling(String indexName, boolean val) throws IOException {
-        boolean ack_dst = iac.preparePutMapping().setIndices(indexName).setType(TYPE_CLB_META).setSource(
-            jsonBuilder().startObject().startObject(TYPE_CLB_META).startObject(OBJ_META)
-            .field(FIELD_ENABLED, Boolean.toString(val))
-            .endObject().endObject().endObject()
-        ).get().isAcknowledged();
-        log.info("index: {} metadata(index-enabled) changed: {}", indexName, Boolean.toString(ack_dst));
-    }
-
     public void switchIndex(long projectId, long generation) throws IOException {
         String projectIdStr = Long.toString(projectId);
         String srcIndexName = inf.findCur(projectIdStr);
-        String dstIndexName = inf.findGeneration(projectIdStr, generation);
+        String dstIndexName = inf.findSpecific(projectIdStr, generation);
+        if (dstIndexName == null) {
+            throw new IllegalArgumentException(String.format(ERR_INVALID_GEN, generation));
+        }
         log.info("switching index: {} to index: {}", srcIndexName, dstIndexName);
         //TODO: check dstIndexName for null
-
-        boolean src_enabled = isEnabled(srcIndexName);
-        log.info("index: {} enabled: {}", srcIndexName, src_enabled);
-
-        boolean dst_enabled = isEnabled(dstIndexName);
-        log.info("index: {} enabled: {}", dstIndexName, dst_enabled);
-
-        changeIndexEnabling(dstIndexName, true);
-        changeIndexEnabling(srcIndexName, false);
+        if (!srcIndexName.equals(dstIndexName)) {
+            ien.changeEnabling(srcIndexName, false);
+            ien.changeEnabling(dstIndexName, true);
+            switchAliases(projectIdStr, srcIndexName, dstIndexName);
+        }
     }
 
     public void migrateIndex(long projectId, int shards, int batchSize, int writeThreads, boolean obsolete) throws IOException {
@@ -149,15 +118,9 @@ public class IndexMigrator {
         ) {
             allDocsToBulk(bp, srcIndexName, dstIndexName, batchSize);
         }
-
-        String readAliasName = inf.findReadAlias(projectIdStr);
-        boolean ack_read = iac.prepareAliases().addAlias(dstIndexName, readAliasName).removeAlias(srcIndexName, readAliasName).get().isAcknowledged();
-        log.info("alias {} created: {}", readAliasName, Boolean.toString(ack_read));
-
-        String writeAliasName = inf.findWriteAlias(projectIdStr);
-        boolean ack_write = iac.prepareAliases().addAlias(dstIndexName, writeAliasName).removeAlias(srcIndexName, writeAliasName).get().isAcknowledged();
-        log.info("alias {} created: {}", readAliasName, Boolean.toString(ack_write));
+        switchAliases(projectIdStr, srcIndexName, dstIndexName);
     }
+
 
     private void createIndexCopyMetadata(String srcIndexName, String dstIndexName, int shards) throws IOException {
         deleteIndexIfExists(dstIndexName);
@@ -242,5 +205,15 @@ public class IndexMigrator {
             boolean ack = iac.prepareDelete(indexName).get().isAcknowledged();
             log.info("index {} deleted: {}", indexName, Boolean.toString(ack));
         }
+    }
+
+    private void switchAliases(String projectIdStr, String srcIndexName, String dstIndexName) {
+        String readAliasName = inf.findReadAlias(projectIdStr);
+        boolean ack_read = iac.prepareAliases().addAlias(dstIndexName, readAliasName).removeAlias(srcIndexName, readAliasName).get().isAcknowledged();
+        log.info("alias {} created: {}", readAliasName, Boolean.toString(ack_read));
+
+        String writeAliasName = inf.findWriteAlias(projectIdStr);
+        boolean ack_write = iac.prepareAliases().addAlias(dstIndexName, writeAliasName).removeAlias(srcIndexName, writeAliasName).get().isAcknowledged();
+        log.info("alias {} created: {}", readAliasName, Boolean.toString(ack_write));
     }
 }
