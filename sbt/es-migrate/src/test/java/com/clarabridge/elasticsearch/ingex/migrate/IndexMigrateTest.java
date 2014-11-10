@@ -103,7 +103,9 @@ public class IndexMigrateTest {
         //} 
 
         Set<String> dvFields = new HashSet<String>();
-        dvFields.add("natural_id");
+        //dvFields.add("natural_id");
+        //dvFields.add("_id_source");
+        dvFields.add("_id_sentence");
 
         IndexMigrator im = new IndexMigrator(client);
         im.migrateIndex(projectId, 7, 1000, 4, dvFields, false);

@@ -33,6 +33,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 
 import java.util.concurrent.TimeUnit;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -174,9 +175,8 @@ public class IndexMigrator {
             iac.prepareGetMappings(indexName).get().mappings();
         ImmutableOpenMap<String, MappingMetaData> indexMappings = indicesToMappings.get(indexName);
 
-        ImmutableOpenMap<Object, Object> enableDocValue = ImmutableOpenMap.builder(1)
-            .fPut("format", "doc_values") //$NON-NLS-1$
-            .build();
+        Map<String, Object> enableDocValue = new HashMap<String, Object>(1);
+        enableDocValue.put("format", "doc_values"); //$NON-NLS-1$
 
         for (ObjectObjectCursor<String, MappingMetaData> c : indexMappings) {
             log.debug("mapping for type: {}", c.key);
