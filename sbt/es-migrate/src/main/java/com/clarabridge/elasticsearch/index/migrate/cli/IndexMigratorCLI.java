@@ -81,7 +81,7 @@ public class IndexMigratorCLI {
                 .node(); // data(false).
 
             IndexMigrator im = new IndexMigrator(node.client());
-            im.migrateIndex(projectId, shards, batchsize, threads, false);
+            im.migrateIndex(projectId, shards, batchsize, threads, null, false);
         }
         catch (ParseException e) {
             System.err.println("Options parsing failed: " + e.getMessage()); //$NON-NLS-1$

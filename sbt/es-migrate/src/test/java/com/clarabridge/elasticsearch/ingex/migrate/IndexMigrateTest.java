@@ -25,6 +25,9 @@ import static org.elasticsearch.node.NodeBuilder.nodeBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Set;
+import java.util.HashSet;
+
 public class IndexMigrateTest {
     private static final Logger log = LoggerFactory.getLogger(IndexMigrateTest.class);
 
@@ -92,19 +95,22 @@ public class IndexMigrateTest {
         }
     }
 
-    @Ignore
+    @Test
     public void testMigrateIndex() throws Exception {
         //IndicesAdminClient iac = client.admin().indices();
         //for (long i = 0; i < 3; ++i) {
         //    createIndex(iac, projectId, i);
         //} 
 
+        Set<String> dvFields = new HashSet<String>();
+        dvFields.add("natural_id");
+
         IndexMigrator im = new IndexMigrator(client);
-        im.migrateIndex(projectId, 5, 1000, 4, false);
+        im.migrateIndex(projectId, 7, 1000, 4, dvFields, false);
         //im.checkIndexAliases(projectId);
     }
 
-    @Test
+    @Ignore
     public void testSwitchIndex() throws Exception {
         IndexMigrator im = new IndexMigrator(client);
         im.switchIndex(projectId, 1);

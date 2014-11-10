@@ -34,6 +34,7 @@ import java.io.IOException;
 
 import java.util.concurrent.TimeUnit;
 import java.util.Map;
+import java.util.Set;
 
 public class IndexMigrator {
     private static final Logger log = LoggerFactory.getLogger(IndexMigrator.class);
@@ -42,6 +43,7 @@ public class IndexMigrator {
     public static final String TYPE_CLB_META = "clb_meta"; //$NON-NLS-1$
     public static final String OBJ_META = "_meta"; //$NON-NLS-1$
     public static final String FIELD_ENABLED = "enabled"; //$NON-NLS-1$
+    public static final String MAPPING_PROPERTIES = "properties"; //$NON-NLS-1$
 
     private static final String ERR_INVALID_GEN = "Invalid generation: %s"; //$NON-NLS-1$
 
@@ -95,13 +97,13 @@ public class IndexMigrator {
         }
     }
 
-    public void migrateIndex(long projectId, int shards, int batchSize, int writeThreads, boolean obsolete) throws IOException {
+    public void migrateIndex(long projectId, int shards, int batchSize, int writeThreads, Set<String> dvFields, boolean obsolete) throws IOException {
         String projectIdStr = Long.toString(projectId);
         String srcIndexName = inf.findCur(projectIdStr);
         String dstIndexName = obsolete ? inf.findObsolete(projectIdStr) : inf.findNext(projectIdStr);
         log.info("migrating index: {} to index: {}", srcIndexName, dstIndexName);
 
-        createIndexCopyMetadata(srcIndexName, dstIndexName, shards);
+        createIndexCopyMetadata(srcIndexName, dstIndexName, shards, dvFields);
 
         iac.prepareRefresh(srcIndexName).get();
 
@@ -122,11 +124,11 @@ public class IndexMigrator {
     }
 
 
-    private void createIndexCopyMetadata(String srcIndexName, String dstIndexName, int shards) throws IOException {
+    private void createIndexCopyMetadata(String srcIndexName, String dstIndexName, int shards, Set<String> dvFields) throws IOException {
         deleteIndexIfExists(dstIndexName);
 
         CreateIndexRequestBuilder rb = iac.prepareCreate(dstIndexName);
-        rb = addIndexMappings(rb, srcIndexName);
+        rb = addIndexMappings(rb, srcIndexName, dvFields);
         rb = addIndexSettings(rb, srcIndexName, shards);
         boolean ack = rb.get().isAcknowledged();
         log.info("index {} created: {}", dstIndexName, Boolean.toString(ack));
@@ -167,15 +169,41 @@ public class IndexMigrator {
         while (resp.getHits().hits().length > 0);
     }
 
-    private CreateIndexRequestBuilder addIndexMappings(CreateIndexRequestBuilder rb, String indexName) throws IOException {
+    private CreateIndexRequestBuilder addIndexMappings(CreateIndexRequestBuilder rb, String indexName, Set<String> dvFields) throws IOException {
         ImmutableOpenMap<String, ImmutableOpenMap<String, MappingMetaData>> indicesToMappings =
             iac.prepareGetMappings(indexName).get().mappings();
         ImmutableOpenMap<String, MappingMetaData> indexMappings = indicesToMappings.get(indexName);
 
+        ImmutableOpenMap<Object, Object> enableDocValue = ImmutableOpenMap.builder(1)
+            .fPut("format", "doc_values") //$NON-NLS-1$
+            .build();
+
         for (ObjectObjectCursor<String, MappingMetaData> c : indexMappings) {
-            //log.info("mapping for type: {}", c.key);
+            log.debug("mapping for type: {}", c.key);
             Map<String, Object> typeMappingsMap = c.value.sourceAsMap();
-            //for (String k : typeMappingsMap.keySet()) { log.info("mapping for: {}", k); }
+            if (dvFields != null) {
+                //for (String k : typeMappingsMap.keySet()) { log.debug("mapping for: {}", k); }
+                @SuppressWarnings("unchecked")
+                Map<String, Object> propertiesMap = (Map<String, Object>)typeMappingsMap.get(MAPPING_PROPERTIES);
+                //for (String k : propertiesMap.keySet()) { log.debug("mapping properties for: {}", k); }
+
+                for(Map.Entry<String, Object> entry : propertiesMap.entrySet()) {
+                    String fieldKey = entry.getKey();
+                    if (dvFields.contains(fieldKey)) {
+                        @SuppressWarnings("unchecked")
+                        Map<String, Object> fieldValueMap = (Map<String, Object>)entry.getValue();
+
+                        String type = (String)fieldValueMap.get("type"); //$NON-NLS-1$
+
+                        //String index_analyzer = (String)((Map) f.getValue()).get("index_analyzer");
+                        //String analyzer = (String)((Map) f.getValue()).get("analyzer");
+
+                        //if (type != null && index_analyzer == null && analyzer == null) {
+                            fieldValueMap.put("fielddata", enableDocValue); //$NON-NLS-1$
+                        //}
+                    }
+                }
+            }
             rb = rb.addMapping(c.key, typeMappingsMap);
         }
         return rb;
@@ -186,7 +214,7 @@ public class IndexMigrator {
         Settings indexSettings = indexToSettings.get(indexName);
 
         Map<String, String> indexSettingsMap = indexSettings.getAsMap(); // getAsStructuredMap();
-        //for (String k : indexSettingsMap.keySet()) { log.info("settings for: {}", k); }
+        for (String k : indexSettingsMap.keySet()) { log.debug("settings for: {}", k); }
         return rb.setSettings(
             // Note: "index.uuid" is auto-generated as a new one
             settingsBuilder()
