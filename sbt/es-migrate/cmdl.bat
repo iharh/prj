@@ -24,4 +24,7 @@ set CP=%CP%;%LIB_CB%\slf4j-log4j12-1.7.5.jar
 ::set CP=%CP%;%LIB_CB%\
 
 java.exe -cp %CP% com.clarabridge.elasticsearch.ingex.migrate.cli.IndexMigratorCLI %*
+
+:: -c epbygomw0024-5432-postgres-win_ss -p 1404 -d _mstokenname,_verbatim,_id_source,_tokendata
+
 endlocal

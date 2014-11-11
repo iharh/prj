@@ -16,6 +16,9 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
+import java.util.Set;
+import java.util.HashSet;
+
 public class IndexMigratorCLI {
     private static final String O_PRJ       = "prj";       //$NON-NLS-1$
     private static final String O_CLUSTER   = "cluster";   //$NON-NLS-1$
@@ -23,6 +26,9 @@ public class IndexMigratorCLI {
     private static final String O_SHARDS    = "shards";    //$NON-NLS-1$
     private static final String O_THREADS   = "threads";   //$NON-NLS-1$
     private static final String O_BATCHSIZE = "batchsize"; //$NON-NLS-1$
+    private static final String O_DOCVALUES = "docvalues"; //$NON-NLS-1$
+
+    private static final String COMMA = ","; //$NON-NLS-1$
 
     public static void main(String[] args) {
         Options opts = new Options();
@@ -33,6 +39,8 @@ public class IndexMigratorCLI {
         opts.addOption("s", O_SHARDS   , true, "Number of shards in new index. Optional, default 7"); //$NON-NLS-1$
         opts.addOption("t", O_THREADS  , true, "Number of writer threads. Optional, default 4");  //$NON-NLS-1$
         opts.addOption("b", O_BATCHSIZE, true, "Number of ES documents in the batch for indexing. Optional, default 10000"); //$NON-NLS-1$
+        // docValues
+        opts.addOption("d", O_DOCVALUES, true, "DocValue fields, comma-separated. Optional."); //$NON-NLS-1$
 
         CommandLineParser parser = new GnuParser();
         Node node = null;
@@ -66,6 +74,17 @@ public class IndexMigratorCLI {
             
             String batchsizeStr = line.getOptionValue(O_BATCHSIZE);
             int batchsize = batchsizeStr == null ? 10000 : Integer.decode(batchsizeStr);
+
+            // docValues
+            String docValuesStr = line.getOptionValue(O_DOCVALUES);
+            Set<String> docValuesSet = null;
+            if (docValuesStr != null) {
+                docValuesSet = new HashSet<String>();
+                String [] docValuesArr = docValuesStr.split(COMMA);
+                for (String f : docValuesArr) {
+                    docValuesSet.add(f);
+                }
+            }
             
             Settings settings = settingsBuilder()
                 //.put("http.port", "9200")
@@ -81,7 +100,7 @@ public class IndexMigratorCLI {
                 .node(); // data(false).
 
             IndexMigrator im = new IndexMigrator(node.client());
-            im.migrateIndex(projectId, shards, batchsize, threads, null, false);
+            im.migrateIndex(projectId, shards, batchsize, threads, docValuesSet, false);
         }
         catch (ParseException e) {
             System.err.println("Options parsing failed: " + e.getMessage()); //$NON-NLS-1$
