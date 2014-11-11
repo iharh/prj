@@ -220,9 +220,11 @@ public class IndexMigrator {
         return rb;
     }
 
-/* !!! setting docValue can cause MapperParsingException !!!
+/* 
 
-TODO: check the date type
+integral types can be a docValue by design,
+"string" type - for non-analyzed docs (setting docValue for analyzed fields can cause MapperParsingException)
+"date" type also seems to be able to contain a docValue - checked
 
 works:
     "index" : "not_analyzed", "no"
