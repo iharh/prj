@@ -21,6 +21,8 @@ import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.index.IndexRequest;
 
+import org.elasticsearch.index.fielddata.FieldDataType;
+
 import org.elasticsearch.search.SearchHit;
 
 import static org.elasticsearch.common.settings.ImmutableSettings.settingsBuilder;
@@ -92,9 +94,7 @@ public class IndexMigrator {
         log.info("switching index: {} to index: {}", srcIndexName, dstIndexName);
         //TODO: check dstIndexName for null
         if (!srcIndexName.equals(dstIndexName)) {
-            ien.changeEnabling(srcIndexName, false);
-            ien.changeEnabling(dstIndexName, true);
-            switchAliases(projectIdStr, srcIndexName, dstIndexName);
+            switchAliasesAndEnabling(projectIdStr, srcIndexName, dstIndexName);
         }
     }
 
@@ -121,7 +121,7 @@ public class IndexMigrator {
         ) {
             allDocsToBulk(bp, srcIndexName, dstIndexName, batchSize);
         }
-        switchAliases(projectIdStr, srcIndexName, dstIndexName);
+        switchAliasesAndEnabling(projectIdStr, srcIndexName, dstIndexName);
     }
 
 
@@ -176,7 +176,7 @@ public class IndexMigrator {
         ImmutableOpenMap<String, MappingMetaData> indexMappings = indicesToMappings.get(indexName);
 
         Map<String, Object> enableDocValue = new HashMap<String, Object>(1);
-        enableDocValue.put("format", "doc_values"); //$NON-NLS-1$
+        enableDocValue.put(FieldDataType.FORMAT_KEY, FieldDataType.DOC_VALUES_FORMAT_VALUE);
 
         for (ObjectObjectCursor<String, MappingMetaData> c : indexMappings) {
             log.debug("mapping for type: {}", c.key);
@@ -209,12 +209,61 @@ public class IndexMigrator {
         return rb;
     }
 
+/* !!! setting docValue can cause MapperParsingException !!!
+
+works:
+    "index" : "not_analyzed", "no"
+
+Need to check "index" absence:
+    _languageDetected
+ok  _verbatim, _words
+        +index_analyzer
+        +search_analyzer
+    _mstokenname
+        +analyzer
+
+StringFieldMapper:
+    protected StringFieldMapper(Names names, float boost, FieldType fieldType,FieldType defaultFieldType, Boolean docValues, ... {
+      ...
+        if (fieldType.tokenized() && fieldType.indexed() && hasDocValues()) {
+            throw new MapperParsingException("Field [" + names.fullName() + "] cannot be analyzed and have doc values");
+        }
+      ...
+    }
+
+
+AbstractFieldMapper:
+    protected void doXContentBody(XContentBuilder builder, boolean includeDefaults, Params params) throws IOException {
+        ...
+        FieldType defaultFieldType = defaultFieldType();
+        if (includeDefaults || fieldType.indexed() != defaultFieldType.indexed() ||
+                fieldType.tokenized() != defaultFieldType.tokenized()) {
+            builder.field("index", indexTokenizeOptionToString(fieldType.indexed(), fieldType.tokenized()));
+        }
+        ...
+    }
+
+    protected static String indexTokenizeOptionToString(boolean indexed, boolean tokenized) {
+        if (!indexed) {
+            return "no";
+        } else if (tokenized) {
+            return "analyzed";
+        } else {
+            return "not_analyzed";
+        }
+    }
+*/
+
     private CreateIndexRequestBuilder addIndexSettings(CreateIndexRequestBuilder rb, String indexName, int shards) {
         ImmutableOpenMap<String, Settings> indexToSettings = iac.prepareGetSettings(indexName).get().getIndexToSettings();
         Settings indexSettings = indexToSettings.get(indexName);
 
         Map<String, String> indexSettingsMap = indexSettings.getAsMap(); // getAsStructuredMap();
-        for (String k : indexSettingsMap.keySet()) { log.debug("settings for: {}", k); }
+
+        for (String k : indexSettingsMap.keySet()) {
+            log.debug("settings for: {}", k);
+        }
+
         return rb.setSettings(
             // Note: "index.uuid" is auto-generated as a new one
             settingsBuilder()
@@ -235,7 +284,7 @@ public class IndexMigrator {
         }
     }
 
-    private void switchAliases(String projectIdStr, String srcIndexName, String dstIndexName) {
+    private void switchAliasesAndEnabling(String projectIdStr, String srcIndexName, String dstIndexName) throws IOException {
         String readAliasName = inf.findReadAlias(projectIdStr);
         boolean ack_read = iac.prepareAliases().addAlias(dstIndexName, readAliasName).removeAlias(srcIndexName, readAliasName).get().isAcknowledged();
         log.info("alias {} created: {}", readAliasName, Boolean.toString(ack_read));
@@ -243,5 +292,8 @@ public class IndexMigrator {
         String writeAliasName = inf.findWriteAlias(projectIdStr);
         boolean ack_write = iac.prepareAliases().addAlias(dstIndexName, writeAliasName).removeAlias(srcIndexName, writeAliasName).get().isAcknowledged();
         log.info("alias {} created: {}", readAliasName, Boolean.toString(ack_write));
+
+        ien.changeEnabling(srcIndexName, false);
+        ien.changeEnabling(dstIndexName, true);
     }
 }
