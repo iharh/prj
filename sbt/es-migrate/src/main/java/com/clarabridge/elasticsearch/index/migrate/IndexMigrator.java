@@ -224,57 +224,6 @@ public class IndexMigrator {
         return rb;
     }
 
-/* 
-
-integral types can be a docValue by design,
-"string" type - for non-analyzed docs (setting docValue for analyzed fields can cause MapperParsingException)
-"date" type also seems to be able to contain a docValue - checked
-
-works:
-    "index" : "not_analyzed", "no"
-
-Need to check "index" absence:
-    _languageDetected
-
-Non-DV:
-    _verbatim, _words
-        +index_analyzer
-        ?search_analyzer
-    _mstokenname
-        +analyzer
-
-StringFieldMapper:
-    protected StringFieldMapper(Names names, float boost, FieldType fieldType,FieldType defaultFieldType, Boolean docValues, ... {
-      ...
-        if (fieldType.tokenized() && fieldType.indexed() && hasDocValues()) {
-            throw new MapperParsingException("Field [" + names.fullName() + "] cannot be analyzed and have doc values");
-        }
-      ...
-    }
-
-
-AbstractFieldMapper:
-    protected void doXContentBody(XContentBuilder builder, boolean includeDefaults, Params params) throws IOException {
-        ...
-        FieldType defaultFieldType = defaultFieldType();
-        if (includeDefaults || fieldType.indexed() != defaultFieldType.indexed() ||
-                fieldType.tokenized() != defaultFieldType.tokenized()) {
-            builder.field("index", indexTokenizeOptionToString(fieldType.indexed(), fieldType.tokenized()));
-        }
-        ...
-    }
-
-    protected static String indexTokenizeOptionToString(boolean indexed, boolean tokenized) {
-        if (!indexed) {
-            return "no";
-        } else if (tokenized) {
-            return "analyzed";
-        } else {
-            return "not_analyzed";
-        }
-    }
-*/
-
     private CreateIndexRequestBuilder addIndexSettings(CreateIndexRequestBuilder rb, String indexName, int shards) {
         ImmutableOpenMap<String, Settings> indexToSettings = iac.prepareGetSettings(indexName).get().getIndexToSettings();
         Settings indexSettings = indexToSettings.get(indexName);
