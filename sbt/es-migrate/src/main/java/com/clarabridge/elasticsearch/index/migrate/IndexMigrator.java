@@ -22,12 +22,15 @@ import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.index.IndexRequest;
 
 import org.elasticsearch.index.fielddata.FieldDataType;
+import org.elasticsearch.index.mapper.core.StringFieldMapper;
 
 import org.elasticsearch.search.SearchHit;
 
 import static org.elasticsearch.common.settings.ImmutableSettings.settingsBuilder;
 import static org.elasticsearch.index.query.QueryBuilders.matchAllQuery;
 import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
+
+import org.apache.commons.lang.StringUtils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,6 +50,8 @@ public class IndexMigrator {
     public static final String OBJ_META = "_meta"; //$NON-NLS-1$
     public static final String FIELD_ENABLED = "enabled"; //$NON-NLS-1$
     public static final String MAPPING_PROPERTIES = "properties"; //$NON-NLS-1$
+
+    public static final String FIELDDATA = "fielddata"; //$NON-NLS-1$
 
     private static final String ERR_INVALID_GEN = "Invalid generation: %s"; //$NON-NLS-1$
 
@@ -188,19 +193,25 @@ public class IndexMigrator {
                 //for (String k : propertiesMap.keySet()) { log.debug("mapping properties for: {}", k); }
 
                 for(Map.Entry<String, Object> entry : propertiesMap.entrySet()) {
-                    String fieldKey = entry.getKey();
-                    if (dvFields.contains(fieldKey)) {
+                    String fieldName = entry.getKey();
+                    if (dvFields.contains(fieldName)) {
                         @SuppressWarnings("unchecked")
                         Map<String, Object> fieldValueMap = (Map<String, Object>)entry.getValue();
 
                         String type = (String)fieldValueMap.get("type"); //$NON-NLS-1$
+                        String analyzer = (String)fieldValueMap.get("analyzer"); //$NON-NLS-1$
+                        String index_analyzer = (String)fieldValueMap.get("index_analyzer"); //$NON-NLS-1$
 
-                        //String index_analyzer = (String)((Map) f.getValue()).get("index_analyzer");
-                        //String analyzer = (String)((Map) f.getValue()).get("analyzer");
 
-                        //if (type != null && index_analyzer == null && analyzer == null) {
-                            fieldValueMap.put("fielddata", enableDocValue); //$NON-NLS-1$
-                        //}
+                        //boolean isTypeString = StringUtils.isBlank(type) || StringFieldMapper.CONTENT_TYPE.equals(type);
+                        boolean isAnalyzed = !(StringUtils.isBlank(analyzer) && StringUtils.isBlank(index_analyzer)) ||
+                            "analyzed".equals((String)fieldValueMap.get("index")); //$NON-NLS-1$
+
+                        if (isAnalyzed) { // && isTypeString
+                            log.warn("Can not set a docValue for analyzed field: {}", fieldName);
+                        } else {
+                            fieldValueMap.put(FIELDDATA, enableDocValue); //$NON-NLS-1$
+                        }
                     }
                 }
             }
@@ -211,14 +222,18 @@ public class IndexMigrator {
 
 /* !!! setting docValue can cause MapperParsingException !!!
 
+TODO: check the date type
+
 works:
     "index" : "not_analyzed", "no"
 
 Need to check "index" absence:
     _languageDetected
-ok  _verbatim, _words
+
+Non-DV:
+    _verbatim, _words
         +index_analyzer
-        +search_analyzer
+        ?search_analyzer
     _mstokenname
         +analyzer
 

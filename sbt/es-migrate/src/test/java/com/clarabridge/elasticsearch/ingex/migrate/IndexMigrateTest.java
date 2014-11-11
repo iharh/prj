@@ -109,10 +109,10 @@ public class IndexMigrateTest {
         //dvFields.add("_id_sentence");
         //dvFields.add("_verbatimtype");
 
-        //dvFields.add("_verbatim");
+        dvFields.add("_verbatim");
         //dvFields.add("_mstokenname");
 
-        dvFields.add("_tokendata");
+        //dvFields.add("_tokendata");
 
         IndexMigrator im = new IndexMigrator(client);
         im.migrateIndex(projectId, 7, 1000, 4, dvFields, false);
