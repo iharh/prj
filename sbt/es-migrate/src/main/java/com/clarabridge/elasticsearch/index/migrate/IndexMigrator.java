@@ -46,6 +46,8 @@ public class IndexMigrator {
     private static final Logger log = LoggerFactory.getLogger(IndexMigrator.class);
 
     public static final String INDEX_SETTING_NUMBER_OF_SHARDS = "number_of_shards"; //$NON-NLS-1$
+
+    public static final String TYPE_PERCOLATOR = "percolator_mapping"; //$NON-NLS-1$
     public static final String TYPE_CLB_META = "clb_meta"; //$NON-NLS-1$
     public static final String OBJ_META = "_meta"; //$NON-NLS-1$
     public static final String FIELD_ENABLED = "enabled"; //$NON-NLS-1$
@@ -184,9 +186,10 @@ public class IndexMigrator {
         enableDocValue.put(FieldDataType.FORMAT_KEY, FieldDataType.DOC_VALUES_FORMAT_VALUE);
 
         for (ObjectObjectCursor<String, MappingMetaData> c : indexMappings) {
-            log.debug("mapping for type: {}", c.key);
+            String mappingType = c.key;
+            log.debug("mapping for type: {}", mappingType);
             Map<String, Object> typeMappingsMap = c.value.sourceAsMap();
-            if (dvFields != null) {
+            if (dvFields != null /*&& !TYPE_PERCOLATOR.equals(mappingType)*/) {
                 //for (String k : typeMappingsMap.keySet()) { log.debug("mapping for: {}", k); }
                 @SuppressWarnings("unchecked")
                 Map<String, Object> propertiesMap = (Map<String, Object>)typeMappingsMap.get(MAPPING_PROPERTIES);
@@ -199,17 +202,18 @@ public class IndexMigrator {
                         Map<String, Object> fieldValueMap = (Map<String, Object>)entry.getValue();
 
                         String type = (String)fieldValueMap.get("type"); //$NON-NLS-1$
+                        String index = (String)fieldValueMap.get("index"); //$NON-NLS-1$
                         String analyzer = (String)fieldValueMap.get("analyzer"); //$NON-NLS-1$
                         String index_analyzer = (String)fieldValueMap.get("index_analyzer"); //$NON-NLS-1$
 
-
-                        //boolean isTypeString = StringUtils.isBlank(type) || StringFieldMapper.CONTENT_TYPE.equals(type);
+                        boolean isTypeString = StringUtils.isBlank(type) || StringFieldMapper.CONTENT_TYPE.equals(type);
                         boolean isAnalyzed = !(StringUtils.isBlank(analyzer) && StringUtils.isBlank(index_analyzer)) ||
-                            "analyzed".equals((String)fieldValueMap.get("index")); //$NON-NLS-1$
+                            StringUtils.isBlank(index) || "analyzed".equals(index); //$NON-NLS-1$
 
-                        if (isAnalyzed) { // && isTypeString
-                            log.warn("Can not set a docValue for analyzed field: {}", fieldName);
+                        if (isTypeString && isAnalyzed) {
+                            log.warn("Can not set a docValue for analyzed string field: {}", fieldName);
                         } else {
+                            log.info("Set a docValue for field: {}", fieldName);
                             fieldValueMap.put(FIELDDATA, enableDocValue); //$NON-NLS-1$
                         }
                     }

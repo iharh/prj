@@ -104,22 +104,23 @@ public class IndexMigrateTest {
 
         Set<String> dvFields = new HashSet<String>();
 
-        //dvFields.add("_verbatim");
-        //dvFields.add("_mstokenname");
-        //dvFields.add("_words");
-
-        //dvFields.add("natural_id");
-        //dvFields.add("_id_source");
-
-        //dvFields.add("_id_sentence");
-        //dvFields.add("_verbatimtype");
-
-        //dvFields.add("_tokendata");
-
+        dvFields.add("_verbatim");
+        dvFields.add("_mstokenname");
+        dvFields.add("_words");
         dvFields.add("_languageDetected");
 
-        //dvFields.add("_doc_time");
-        //dvFields.add("_doc_date");
+        dvFields.add("_languagedetected");
+
+        dvFields.add("natural_id");
+        dvFields.add("_id_source");
+
+        dvFields.add("_id_sentence");
+        dvFields.add("_verbatimtype");
+
+        dvFields.add("_tokendata");
+
+        dvFields.add("_doc_time");
+        dvFields.add("_doc_date");
 
         IndexMigrator im = new IndexMigrator(client);
         im.migrateIndex(projectId, 7, 1000, 4, dvFields, false);
