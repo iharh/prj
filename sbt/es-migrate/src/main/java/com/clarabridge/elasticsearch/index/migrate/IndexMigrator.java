@@ -99,10 +99,13 @@ public class IndexMigrator {
             throw new IllegalArgumentException(String.format(ERR_INVALID_GEN, generation));
         }
         log.info("switching index: {} to index: {}", srcIndexName, dstIndexName);
-        //TODO: check dstIndexName for null
+
         if (!srcIndexName.equals(dstIndexName)) {
             switchAliasesAndEnabling(projectIdStr, srcIndexName, dstIndexName);
         }
+    }
+
+    private void refreshIndex(String indexName) {
     }
 
     public void migrateIndex(long projectId, int shards, int batchSize, int writeThreads, Set<String> dvFields, boolean obsolete) throws IOException {
@@ -113,9 +116,8 @@ public class IndexMigrator {
 
         createIndexCopyMetadata(srcIndexName, dstIndexName, shards, dvFields);
 
-        iac.prepareRefresh(srcIndexName).get();
-
-        waitForCluster(srcIndexName);
+        refreshIndex(srcIndexName);
+        waitForClusterAndRefresh(srcIndexName);
 
         try (IndexLocker il = new IndexLocker(iac, srcIndexName);
             BulkWaiter bw = new BulkWaiter();
@@ -128,6 +130,10 @@ public class IndexMigrator {
         ) {
             allDocsToBulk(bp, srcIndexName, dstIndexName, batchSize);
         }
+
+        refreshIndex(dstIndexName);
+        waitForClusterAndRefresh(dstIndexName);
+
         switchAliasesAndEnabling(projectIdStr, srcIndexName, dstIndexName);
     }
 
@@ -243,8 +249,9 @@ public class IndexMigrator {
         );
     }
 
-    private void waitForCluster(String indexName) {
+    private void waitForClusterAndRefresh(String indexName) {
         cac.prepareHealth(indexName).setWaitForYellowStatus().get();
+        iac.prepareRefresh(indexName).get();
     }
 
     private void deleteIndexIfExists(String indexName) {
