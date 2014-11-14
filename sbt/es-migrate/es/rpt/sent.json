@@ -1,0 +1,45 @@
+{
+  "size" : 0,
+  "query" : {
+    "constant_score" : {
+      "query" : {
+        "bool" : {
+          "should" : {
+            "match_all" : { }
+          }
+        }
+      }
+    }
+  },
+  "aggregations" : {
+    "terms" : {
+      "terms" : {
+        "field" : "hotel",
+        "size" : 5000,
+        "order" : {
+          "_count" : "desc"
+        }
+      },
+      "aggregations" : {
+        "avg_sentiment" : {
+          "avg" : {
+            "field" : "_degreesentimentindex"
+          }
+        }
+      }
+    },
+    "docs_without_attribute" : {
+      "missing" : {
+        "field" : "hotel"
+      },
+      "aggregations" : {
+        "avg_sentiment" : {
+          "avg" : {
+            "field" : "_degreesentimentindex"
+          }
+        }
+      }
+    }
+  }
+}
+

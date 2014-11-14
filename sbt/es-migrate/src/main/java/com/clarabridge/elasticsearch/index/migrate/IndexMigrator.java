@@ -174,6 +174,11 @@ public class IndexMigrator {
                     ir.routing(routingVal);
                 }
 
+                String parentVal = hit.field(ClbRoutingFinder.PARENT).<String>value();
+                if (parentVal != null) {
+                    ir.parent(parentVal);
+                }
+
                 bp.add(ir);
             }
             resp = client.prepareSearchScroll(resp.getScrollId())

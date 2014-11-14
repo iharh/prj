@@ -21,13 +21,15 @@ public class ClbRoutingFinder {
     protected static final String FB_POST_ID = "post_id"; //$NON-NLS-1$
     protected static final String EMPTY_ROUTING = "NULL"; //$NON-NLS-1$
 
+    protected static final String PARENT = "_parent"; //$NON-NLS-1$
 
     public static final String [] usedESFieldNames = new String [] {
         LuceneAttributes.FIELD_NAME_ID_DOCUMENT,
         LuceneAttributes.FIELD_NAME_ID_NATURAL,
         LuceneAttributes.FIELD_NAME_ID_PARENT_NATURAL,
         SM_SERVICE,
-        FB_POST_ID
+        FB_POST_ID,
+        PARENT,
     };
 
     public static String getRoutingValue(SearchHit hit) {
