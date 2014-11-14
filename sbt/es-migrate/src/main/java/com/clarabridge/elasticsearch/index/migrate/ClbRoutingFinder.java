@@ -22,6 +22,7 @@ public class ClbRoutingFinder {
     protected static final String EMPTY_ROUTING = "NULL"; //$NON-NLS-1$
 
     protected static final String PARENT = "_parent"; //$NON-NLS-1$
+    protected static final String ROUTING = "_routing"; //$NON-NLS-1$
 
     public static final String [] usedESFieldNames = new String [] {
         LuceneAttributes.FIELD_NAME_ID_DOCUMENT,
@@ -30,6 +31,7 @@ public class ClbRoutingFinder {
         SM_SERVICE,
         FB_POST_ID,
         PARENT,
+        ROUTING
     };
 
     public static String getRoutingValue(SearchHit hit) {

@@ -114,7 +114,9 @@ public class IndexMigrator {
         String dstIndexName = obsolete ? inf.findObsolete(projectIdStr) : inf.findNext(projectIdStr);
         log.info("migrating index: {} to index: {}", srcIndexName, dstIndexName);
 
-        createIndexCopyMetadata(srcIndexName, dstIndexName, shards, dvFields);
+        Map<String, Set<String>> availFields = new HashMap<String, Set<String>>();
+
+        createIndexCopyMetadata(availFields, srcIndexName, dstIndexName, shards, dvFields);
 
         refreshIndex(srcIndexName);
         waitForClusterAndRefresh(srcIndexName);
@@ -128,7 +130,7 @@ public class IndexMigrator {
                 //.setConcurrentRequests(0)
                 .build();
         ) {
-            allDocsToBulk(bp, srcIndexName, dstIndexName, batchSize);
+            allDocsToBulk(bp, availFields, srcIndexName, dstIndexName, batchSize);
         }
 
         refreshIndex(dstIndexName);
@@ -138,17 +140,17 @@ public class IndexMigrator {
     }
 
 
-    private void createIndexCopyMetadata(String srcIndexName, String dstIndexName, int shards, Set<String> dvFields) throws IOException {
+    private void createIndexCopyMetadata(Map<String, Set<String>> availFields, String srcIndexName, String dstIndexName, int shards, Set<String> dvFields) throws IOException {
         deleteIndexIfExists(dstIndexName);
 
         CreateIndexRequestBuilder rb = iac.prepareCreate(dstIndexName);
-        rb = addIndexMappings(rb, srcIndexName, dvFields);
-        rb = addIndexSettings(rb, srcIndexName, shards);
+        rb = addIndexMappings(rb, availFields, srcIndexName, dvFields);
+        rb = addIndexSettings(rb             , srcIndexName, shards);
         boolean ack = rb.get().isAcknowledged();
         log.info("index {} created: {}", dstIndexName, Boolean.toString(ack));
     }
 
-    private void allDocsToBulk(BulkProcessor bp, String srcIndexName, String dstIndexName, int batchSize) {
+    private void allDocsToBulk(BulkProcessor bp, Map<String, Set<String>> availFields, String srcIndexName, String dstIndexName, int batchSize) {
         SearchRequestBuilder srb = client.prepareSearch(srcIndexName)
             .setSearchType(SearchType.SCAN)
             .setScroll(TimeValue.timeValueMinutes(2))
@@ -162,7 +164,8 @@ public class IndexMigrator {
         do {
             for (SearchHit hit : resp.getHits()) {
                 String hitType = hit.getType();
-                log.debug("hit type: {}, id: {}", hitType, hit.getId()); // ", srcRef: {},  hit.getSourceRef().toUtf8()
+                // TODO: debug
+                log.info("hit type: {}, id: {}", hitType, hit.getId()); // ", srcRef: {},  hit.getSourceRef().toUtf8()
 
                 IndexRequest ir = new IndexRequest(dstIndexName)
                     .source(hit.getSourceRef(), true)
@@ -174,9 +177,15 @@ public class IndexMigrator {
                     ir.routing(routingVal);
                 }
 
-                String parentVal = hit.field(ClbRoutingFinder.PARENT).<String>value();
-                if (parentVal != null) {
-                    ir.parent(parentVal);
+                // TODO: ??? what about _parent for retweets?
+                Set<String> availSet = availFields.get(hitType);
+                if (availSet != null && availSet.contains(ClbRoutingFinder.PARENT)) {
+                    String parentVal = hit.field(ClbRoutingFinder.PARENT).<String>value();
+                    if (!StringUtils.isBlank(parentVal)) {
+                        // TODO: debug
+                        log.info("hit parent: {}", parentVal);
+                        ir.parent(parentVal);
+                    }
                 }
 
                 bp.add(ir);
@@ -188,7 +197,7 @@ public class IndexMigrator {
         while (resp.getHits().hits().length > 0);
     }
 
-    private CreateIndexRequestBuilder addIndexMappings(CreateIndexRequestBuilder rb, String indexName, Set<String> dvFields) throws IOException {
+    private CreateIndexRequestBuilder addIndexMappings(CreateIndexRequestBuilder rb, Map<String, Set<String>> availFields, String indexName, Set<String> dvFields) throws IOException {
         ImmutableOpenMap<String, ImmutableOpenMap<String, MappingMetaData>> indicesToMappings =
             iac.prepareGetMappings(indexName).get().mappings();
         ImmutableOpenMap<String, MappingMetaData> indexMappings = indicesToMappings.get(indexName);
@@ -200,8 +209,11 @@ public class IndexMigrator {
             String mappingType = c.key;
             log.debug("mapping for type: {}", mappingType);
             Map<String, Object> typeMappingsMap = c.value.sourceAsMap();
+
+            // for (String k : typeMappingsMap.keySet()) { log.debug("mapping for: {}", k); }
+            availFields.put(mappingType, typeMappingsMap.keySet());
+
             if (dvFields != null /*&& !TYPE_PERCOLATOR.equals(mappingType)*/) {
-                //for (String k : typeMappingsMap.keySet()) { log.debug("mapping for: {}", k); }
                 @SuppressWarnings("unchecked")
                 Map<String, Object> propertiesMap = (Map<String, Object>)typeMappingsMap.get(MAPPING_PROPERTIES);
                 //for (String k : propertiesMap.keySet()) { log.debug("mapping properties for: {}", k); }

@@ -1,0 +1,33 @@
+{
+  "size" : 0,
+  "query" : {
+    "constant_score" : {
+      "query" : {
+        "bool" : {
+          "must" : {
+            "has_child" : {
+              "query" : {
+                "bool" : {
+                  "must" : {
+                    "has_child" : {
+                      "query" : {
+                        "bool" : {
+                          "should" : {
+                            "match_all" : { }
+                          }
+                        }
+                      },
+                      "child_type" : "sentence"
+                    }
+                  }
+                }
+              },
+              "child_type" : "verbatim"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
