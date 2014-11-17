@@ -15,13 +15,11 @@ public class ClbParentFinder {
     private static final Logger log = LoggerFactory.getLogger(ClbParentFinder.class);
 
     protected static final String PARENT = "_parent"; //$NON-NLS-1$
-    protected static final String ROUTING = "_routing"; //$NON-NLS-1$
 
     public static final String [] usedESFieldNames = new String [] {
         //LuceneAttributes.FIELD_NAME_ID_DOCUMENT,
         LuceneAttributes.FIELD_NAME_ID_VERBATIM,
-        PARENT,
-        ROUTING
+        PARENT
     };
 
     public static String getParentValue(SearchHit hit) {

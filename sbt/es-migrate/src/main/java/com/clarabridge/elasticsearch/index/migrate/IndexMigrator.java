@@ -1,6 +1,6 @@
 package com.clarabridge.elasticsearch.ingex.migrate;
 
-import com.clarabridge.transformer.indexing.pipe.ElasticSearchIndexer;
+//import com.clarabridge.transformer.indexing.pipe.ElasticSearchIndexer;
 
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.ClusterAdminClient;
@@ -25,6 +25,7 @@ import org.elasticsearch.action.index.IndexRequest;
 
 import org.elasticsearch.index.fielddata.FieldDataType;
 import org.elasticsearch.index.mapper.core.StringFieldMapper;
+import org.elasticsearch.index.mapper.internal.RoutingFieldMapper;
 
 import org.elasticsearch.search.SearchHit;
 
@@ -124,7 +125,6 @@ public class IndexMigrator {
         refreshIndex(srcIndexName);
         waitForClusterAndRefresh(srcIndexName);
 
-        Map<Long, String> docRouting = new HashMap<Long, String>();
         ClbFieldChecker fieldChecker = null; // new ClbFieldChecker();
 
         try (IndexLocker il = new IndexLocker(iac, srcIndexName);
@@ -136,9 +136,7 @@ public class IndexMigrator {
                 //.setConcurrentRequests(0)
                 .build();
         ) {
-            allDocsToBulk(bp, typesWithParent, docRouting, ElasticSearchIndexer.TYPE_DOCUMENT, fieldChecker, srcIndexName, dstIndexName, batchSize);
-            allDocsToBulk(bp, typesWithParent, docRouting, ElasticSearchIndexer.TYPE_VERBATIM, fieldChecker, srcIndexName, dstIndexName, batchSize);
-            allDocsToBulk(bp, typesWithParent, docRouting, ElasticSearchIndexer.TYPE_SENTENCE, fieldChecker, srcIndexName, dstIndexName, batchSize);
+            allDocsToBulk(bp, typesWithParent, fieldChecker, srcIndexName, dstIndexName, batchSize);
         }
 
         refreshIndex(dstIndexName);
@@ -158,11 +156,10 @@ public class IndexMigrator {
         log.info("index {} created: {}", dstIndexName, Boolean.toString(ack));
     }
 
-    private void allDocsToBulk(BulkProcessor bp, Set<String> typesWithParent, Map<Long, String> docRouting, String type,
-        ClbFieldChecker fieldChecker, String srcIndexName, String dstIndexName, int batchSize) {
+    private void allDocsToBulk(BulkProcessor bp, Set<String> typesWithParent, ClbFieldChecker fieldChecker, String srcIndexName, String dstIndexName, int batchSize) {
 
         SearchRequestBuilder srb = client.prepareSearch(srcIndexName)
-            .setTypes(type)
+            //.setTypes(type)
             .setSearchType(SearchType.SCAN)
             .setScroll(TimeValue.timeValueMinutes(2))
             .setQuery(matchAllQuery())
@@ -193,12 +190,13 @@ public class IndexMigrator {
                     String parentVal = ClbParentFinder.getParentValue(hit);
                     if (!StringUtils.isBlank(parentVal)) {
                         // TODO: debug
-                        log.info("hit parent: {}", parentVal);
+                        // String p = hit.field(ClbParentFinder.PARENT).<String>value();
+                        log.info("hit parent: {}", parentVal); // ", es parent: {}", p
                         ir.parent(parentVal);
                     }
                 }
 
-                String routingVal = ClbRoutingFinder.getUpdateRoutingValue(hit, docRouting);
+                String routingVal = ClbRoutingFinder.getRoutingValue(hit);
                 if (routingVal != null) {
                     ir.routing(routingVal);
                 }

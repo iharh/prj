@@ -3,6 +3,7 @@ package com.clarabridge.elasticsearch.ingex.migrate;
 import com.clarabridge.transformer.indexing.pipe.ElasticSearchIndexer;
 
 import org.elasticsearch.search.SearchHit;
+import org.elasticsearch.index.mapper.internal.RoutingFieldMapper;
 
 import com.clarabridge.common.classification.lucene.LuceneAttributes;
 
@@ -22,6 +23,7 @@ public class ClbRoutingFinder {
     protected static final String EMPTY_ROUTING = "NULL"; //$NON-NLS-1$
 
     public static final String [] usedESFieldNames = new String [] {
+        RoutingFieldMapper.NAME,
         LuceneAttributes.FIELD_NAME_ID_DOCUMENT,
         LuceneAttributes.FIELD_NAME_ID_NATURAL,
         LuceneAttributes.FIELD_NAME_ID_PARENT_NATURAL,
@@ -29,7 +31,12 @@ public class ClbRoutingFinder {
         FB_POST_ID
     };
 
-    public static String getUpdateRoutingValue(SearchHit hit, Map<Long, String> docRouting) {
+    public static String getRoutingValue(SearchHit hit) {
+        return hit.field(RoutingFieldMapper.NAME).<String>value();
+    }
+
+    // not-used
+    private static String getUpdateRoutingValue(SearchHit hit, Map<Long, String> docRouting) {
         String result = null;
 
         String hitType = hit.getType();
