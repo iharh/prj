@@ -1,10 +1,10 @@
 package com.clarabridge.elasticsearch.ingex.migrate;
 
-import com.clarabridge.common.classification.lucene.LuceneAttributes;
 import com.clarabridge.transformer.indexing.pipe.ElasticSearchIndexer;
 
-
 import org.elasticsearch.search.SearchHit;
+
+import com.clarabridge.common.classification.lucene.LuceneAttributes;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -21,17 +21,12 @@ public class ClbRoutingFinder {
     protected static final String FB_POST_ID = "post_id"; //$NON-NLS-1$
     protected static final String EMPTY_ROUTING = "NULL"; //$NON-NLS-1$
 
-    protected static final String PARENT = "_parent"; //$NON-NLS-1$
-    protected static final String ROUTING = "_routing"; //$NON-NLS-1$
-
     public static final String [] usedESFieldNames = new String [] {
         LuceneAttributes.FIELD_NAME_ID_DOCUMENT,
         LuceneAttributes.FIELD_NAME_ID_NATURAL,
         LuceneAttributes.FIELD_NAME_ID_PARENT_NATURAL,
         SM_SERVICE,
-        FB_POST_ID,
-        PARENT,
-        ROUTING
+        FB_POST_ID
     };
 
     public static String getRoutingValue(SearchHit hit) {
