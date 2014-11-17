@@ -125,6 +125,7 @@ public class IndexMigrator {
         waitForClusterAndRefresh(srcIndexName);
 
         Map<Long, String> docRouting = new HashMap<Long, String>();
+        ClbFieldChecker fieldChecker = null; // new ClbFieldChecker();
 
         try (IndexLocker il = new IndexLocker(iac, srcIndexName);
             BulkWaiter bw = new BulkWaiter();
@@ -135,9 +136,9 @@ public class IndexMigrator {
                 //.setConcurrentRequests(0)
                 .build();
         ) {
-            allDocsToBulk(bp, typesWithParent, docRouting, ElasticSearchIndexer.TYPE_DOCUMENT, srcIndexName, dstIndexName, batchSize);
-            allDocsToBulk(bp, typesWithParent, docRouting, ElasticSearchIndexer.TYPE_VERBATIM, srcIndexName, dstIndexName, batchSize);
-            allDocsToBulk(bp, typesWithParent, docRouting, ElasticSearchIndexer.TYPE_SENTENCE, srcIndexName, dstIndexName, batchSize);
+            allDocsToBulk(bp, typesWithParent, docRouting, ElasticSearchIndexer.TYPE_DOCUMENT, fieldChecker, srcIndexName, dstIndexName, batchSize);
+            allDocsToBulk(bp, typesWithParent, docRouting, ElasticSearchIndexer.TYPE_VERBATIM, fieldChecker, srcIndexName, dstIndexName, batchSize);
+            allDocsToBulk(bp, typesWithParent, docRouting, ElasticSearchIndexer.TYPE_SENTENCE, fieldChecker, srcIndexName, dstIndexName, batchSize);
         }
 
         refreshIndex(dstIndexName);
@@ -158,7 +159,7 @@ public class IndexMigrator {
     }
 
     private void allDocsToBulk(BulkProcessor bp, Set<String> typesWithParent, Map<Long, String> docRouting, String type,
-        String srcIndexName, String dstIndexName, int batchSize) {
+        ClbFieldChecker fieldChecker, String srcIndexName, String dstIndexName, int batchSize) {
 
         SearchRequestBuilder srb = client.prepareSearch(srcIndexName)
             .setTypes(type)
@@ -173,8 +174,6 @@ public class IndexMigrator {
         for (int i = 0; i < ClbParentFinder.usedESFieldNames.length; ++i) {
             srb.addFieldDataField(ClbParentFinder.usedESFieldNames[i]);
         }
-
-        ClbFieldChecker fieldChecker = new ClbFieldChecker();
 
         SearchResponse resp = srb.get();
         do {
@@ -206,7 +205,9 @@ public class IndexMigrator {
 
                 bp.add(ir);
 
-                fieldChecker.addHit(hit);
+                if (fieldChecker != null) {
+                    fieldChecker.addHit(hit);
+                }
             }
             resp = client.prepareSearchScroll(resp.getScrollId())
                 .setScroll(TimeValue.timeValueMinutes(10))
