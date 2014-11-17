@@ -1,5 +1,7 @@
 package com.clarabridge.elasticsearch.ingex.migrate;
 
+import com.clarabridge.transformer.indexing.pipe.ElasticSearchIndexer;
+
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.ClusterAdminClient;
 import org.elasticsearch.client.IndicesAdminClient;
@@ -122,6 +124,8 @@ public class IndexMigrator {
         refreshIndex(srcIndexName);
         waitForClusterAndRefresh(srcIndexName);
 
+        Map<Long, String> docRouting = new HashMap<Long, String>();
+
         try (IndexLocker il = new IndexLocker(iac, srcIndexName);
             BulkWaiter bw = new BulkWaiter();
             BulkProcessor bp = BulkProcessor.builder(client, bw)
@@ -131,7 +135,9 @@ public class IndexMigrator {
                 //.setConcurrentRequests(0)
                 .build();
         ) {
-            allDocsToBulk(bp, typesWithParent, srcIndexName, dstIndexName, batchSize);
+            allDocsToBulk(bp, typesWithParent, docRouting, ElasticSearchIndexer.TYPE_DOCUMENT, srcIndexName, dstIndexName, batchSize);
+            allDocsToBulk(bp, typesWithParent, docRouting, ElasticSearchIndexer.TYPE_VERBATIM, srcIndexName, dstIndexName, batchSize);
+            allDocsToBulk(bp, typesWithParent, docRouting, ElasticSearchIndexer.TYPE_SENTENCE, srcIndexName, dstIndexName, batchSize);
         }
 
         refreshIndex(dstIndexName);
@@ -151,8 +157,11 @@ public class IndexMigrator {
         log.info("index {} created: {}", dstIndexName, Boolean.toString(ack));
     }
 
-    private void allDocsToBulk(BulkProcessor bp, Set<String> typesWithParent, String srcIndexName, String dstIndexName, int batchSize) {
+    private void allDocsToBulk(BulkProcessor bp, Set<String> typesWithParent, Map<Long, String> docRouting, String type,
+        String srcIndexName, String dstIndexName, int batchSize) {
+
         SearchRequestBuilder srb = client.prepareSearch(srcIndexName)
+            .setTypes(type)
             .setSearchType(SearchType.SCAN)
             .setScroll(TimeValue.timeValueMinutes(2))
             .setQuery(matchAllQuery())
@@ -165,22 +174,21 @@ public class IndexMigrator {
             srb.addFieldDataField(ClbParentFinder.usedESFieldNames[i]);
         }
 
+        ClbFieldChecker fieldChecker = new ClbFieldChecker();
+
         SearchResponse resp = srb.get();
         do {
             for (SearchHit hit : resp.getHits()) {
                 String hitType = hit.getType();
+                int hitShard = hit.getShard().getShardId();
+
                 // TODO: debug
-                log.info("hit type: {}, id: {}", hitType, hit.getId()); // ", srcRef: {},  hit.getSourceRef().toUtf8()
+                log.info("hit type: {}, id: {}, shard: {}", hitType, hit.getId(), hitShard); // ", srcRef: {},  hit.getSourceRef().toUtf8()
 
                 IndexRequest ir = new IndexRequest(dstIndexName)
                     .source(hit.getSourceRef(), true)
                     .type(hitType)
                     .id(hit.getId());
-
-                String routingVal = ClbRoutingFinder.getRoutingValue(hit);
-                if (routingVal != null) {
-                    ir.routing(routingVal);
-                }
 
                 if (typesWithParent.contains(hitType)) {
                     String parentVal = ClbParentFinder.getParentValue(hit);
@@ -191,7 +199,14 @@ public class IndexMigrator {
                     }
                 }
 
+                String routingVal = ClbRoutingFinder.getUpdateRoutingValue(hit, docRouting);
+                if (routingVal != null) {
+                    ir.routing(routingVal);
+                }
+
                 bp.add(ir);
+
+                fieldChecker.addHit(hit);
             }
             resp = client.prepareSearchScroll(resp.getScrollId())
                 .setScroll(TimeValue.timeValueMinutes(10))

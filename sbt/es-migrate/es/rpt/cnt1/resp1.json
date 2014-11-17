@@ -2,12 +2,12 @@
   "took": 6,
   "timed_out": false,
   "_shards": {
-    "total": 7,
-    "successful": 7,
+    "total": 5,
+    "successful": 5,
     "failed": 0
   },
   "hits": {
-    "total": 6,
+    "total": 21,
     "max_score": 0,
     "hits": []
   },
@@ -15,11 +15,31 @@
     "terms": {
       "buckets": [
         {
+          "key": "omni parker house",
+          "doc_count": 3
+        },
+        {
+          "key": "the lenox hotel",
+          "doc_count": 2
+        },
+        {
+          "key": "braxton hotel",
+          "doc_count": 1
+        },
+        {
+          "key": "capital hilton",
+          "doc_count": 1
+        },
+        {
           "key": "charlesmark hotel",
           "doc_count": 1
         },
         {
-          "key": "club quarters boston",
+          "key": "copley square hotel",
+          "doc_count": 1
+        },
+        {
+          "key": "courtyard boston tremont hotel",
           "doc_count": 1
         },
         {
@@ -27,11 +47,39 @@
           "doc_count": 1
         },
         {
-          "key": "hilton washington embassy row",
+          "key": "hilton boston back bay",
           "doc_count": 1
         },
         {
-          "key": "state plaza hotel",
+          "key": "hilton garden inn washington dc franklin square",
+          "doc_count": 1
+        },
+        {
+          "key": "homewood suites washington, dc",
+          "doc_count": 1
+        },
+        {
+          "key": "hotel monaco washington dc",
+          "doc_count": 1
+        },
+        {
+          "key": "langham hotel boston",
+          "doc_count": 1
+        },
+        {
+          "key": "marriott at metro center",
+          "doc_count": 1
+        },
+        {
+          "key": "omni shoreham hotel",
+          "doc_count": 1
+        },
+        {
+          "key": "ritz-carlton boston",
+          "doc_count": 1
+        },
+        {
+          "key": "st. gregory hotel & suites",
           "doc_count": 1
         },
         {

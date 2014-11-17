@@ -1,0 +1,272 @@
+{
+  "took": 17,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "failed": 0
+  },
+  "hits": {
+    "total": 100,
+    "max_score": 0,
+    "hits": []
+  },
+  "aggregations": {
+    "terms": {
+      "buckets": [
+        {
+          "key": "omni parker house",
+          "doc_count": 8
+        },
+        {
+          "key": "park plaza boston hotel and towers",
+          "doc_count": 5
+        },
+        {
+          "key": "capital hilton",
+          "doc_count": 3
+        },
+        {
+          "key": "charlesmark hotel",
+          "doc_count": 3
+        },
+        {
+          "key": "holiday inn select boston - government center",
+          "doc_count": 3
+        },
+        {
+          "key": "melrose hotel, washington dc",
+          "doc_count": 3
+        },
+        {
+          "key": "omni shoreham hotel",
+          "doc_count": 3
+        },
+        {
+          "key": "sofitel lafayette square",
+          "doc_count": 3
+        },
+        {
+          "key": "the lenox hotel",
+          "doc_count": 3
+        },
+        {
+          "key": "colonnade hotel",
+          "doc_count": 2
+        },
+        {
+          "key": "courtyard boston tremont hotel",
+          "doc_count": 2
+        },
+        {
+          "key": "hilton boston back bay",
+          "doc_count": 2
+        },
+        {
+          "key": "hotel monaco washington dc",
+          "doc_count": 2
+        },
+        {
+          "key": "jurys boston hotel",
+          "doc_count": 2
+        },
+        {
+          "key": "nine zero hotel",
+          "doc_count": 2
+        },
+        {
+          "key": "radisson hotel boston",
+          "doc_count": 2
+        },
+        {
+          "key": "sheraton boston hotel",
+          "doc_count": 2
+        },
+        {
+          "key": "st. gregory hotel & suites",
+          "doc_count": 2
+        },
+        {
+          "key": "the carlyle suites",
+          "doc_count": 2
+        },
+        {
+          "key": "the westin copley place",
+          "doc_count": 2
+        },
+        {
+          "key": "willard intercontinental washington",
+          "doc_count": 2
+        },
+        {
+          "key": "best western boston - the inn at longwood medical",
+          "doc_count": 1
+        },
+        {
+          "key": "best western capitol skyline",
+          "doc_count": 1
+        },
+        {
+          "key": "braxton hotel",
+          "doc_count": 1
+        },
+        {
+          "key": "buckminster hotel",
+          "doc_count": 1
+        },
+        {
+          "key": "capitol hill suites",
+          "doc_count": 1
+        },
+        {
+          "key": "chandler inn",
+          "doc_count": 1
+        },
+        {
+          "key": "club quarters boston",
+          "doc_count": 1
+        },
+        {
+          "key": "copley square hotel",
+          "doc_count": 1
+        },
+        {
+          "key": "crowne plaza the hamilton",
+          "doc_count": 1
+        },
+        {
+          "key": "days inn connecticut avenue",
+          "doc_count": 1
+        },
+        {
+          "key": "embassy suites boston logan airport",
+          "doc_count": 1
+        },
+        {
+          "key": "embassy suites hotel washington, d.c.",
+          "doc_count": 1
+        },
+        {
+          "key": "embassy suites washington-convention center",
+          "doc_count": 1
+        },
+        {
+          "key": "georgetown suites",
+          "doc_count": 1
+        },
+        {
+          "key": "georgetown suites harbour",
+          "doc_count": 1
+        },
+        {
+          "key": "grand hyatt washington",
+          "doc_count": 1
+        },
+        {
+          "key": "hilton garden inn washington dc franklin square",
+          "doc_count": 1
+        },
+        {
+          "key": "hilton washington",
+          "doc_count": 1
+        },
+        {
+          "key": "hilton washington embassy row",
+          "doc_count": 1
+        },
+        {
+          "key": "holiday inn washington - capitol",
+          "doc_count": 1
+        },
+        {
+          "key": "holiday inn washington - georgetown",
+          "doc_count": 1
+        },
+        {
+          "key": "homewood suites washington, dc",
+          "doc_count": 1
+        },
+        {
+          "key": "hyatt regency washington dc",
+          "doc_count": 1
+        },
+        {
+          "key": "jurys washington hotel",
+          "doc_count": 1
+        },
+        {
+          "key": "jw marriott hotel pennsylvania avenue",
+          "doc_count": 1
+        },
+        {
+          "key": "langham hotel boston",
+          "doc_count": 1
+        },
+        {
+          "key": "m street hotel",
+          "doc_count": 1
+        },
+        {
+          "key": "marriott at metro center",
+          "doc_count": 1
+        },
+        {
+          "key": "millennium bostonian hotel",
+          "doc_count": 1
+        },
+        {
+          "key": "onyx hotel",
+          "doc_count": 1
+        },
+        {
+          "key": "renaissance mayflower hotel",
+          "doc_count": 1
+        },
+        {
+          "key": "ritz-carlton boston",
+          "doc_count": 1
+        },
+        {
+          "key": "state plaza hotel",
+          "doc_count": 1
+        },
+        {
+          "key": "the allen lee",
+          "doc_count": 1
+        },
+        {
+          "key": "the henley park hotel",
+          "doc_count": 1
+        },
+        {
+          "key": "the quincy",
+          "doc_count": 1
+        },
+        {
+          "key": "the ritz-carlton, washington dc",
+          "doc_count": 1
+        },
+        {
+          "key": "the westin embassy row, washington d.c.",
+          "doc_count": 1
+        },
+        {
+          "key": "travelodge gateway",
+          "doc_count": 1
+        },
+        {
+          "key": "washington court hotel on capitol hill",
+          "doc_count": 1
+        },
+        {
+          "key": "washington plaza",
+          "doc_count": 1
+        },
+        {
+          "key": "xv beacon",
+          "doc_count": 1
+        }
+      ]
+    }
+  }
+}

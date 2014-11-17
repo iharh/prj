@@ -29,21 +29,26 @@ public class ClbRoutingFinder {
         FB_POST_ID
     };
 
-    public static String getRoutingValue(SearchHit hit) {
+    public static String getUpdateRoutingValue(SearchHit hit, Map<Long, String> docRouting) {
         String result = null;
 
         String hitType = hit.getType();
         if (ElasticSearchIndexer.TYPE_DOCUMENT.equals(hitType)) {
+            Long docId = hit.field(LuceneAttributes.FIELD_NAME_ID_DOCUMENT).<Long>value();
+
             result = getUnsafeDocumentRouting(
                 hit.field(LuceneAttributes.FIELD_NAME_ID_NATURAL).<String>value(),
                 hit.field(LuceneAttributes.FIELD_NAME_ID_PARENT_NATURAL).<String>value(),
                 hit.field(SM_SERVICE).<String>value(),
                 hit.field(FB_POST_ID).<String>value()
             );
-            result = StringUtils.isEmpty(result) ? EMPTY_ROUTING : result; 
 
+            result = StringUtils.isEmpty(result) ? EMPTY_ROUTING : result; 
+            docRouting.put(docId, result);
         } else if (ElasticSearchIndexer.TYPE_VERBATIM.equals(hitType) || ElasticSearchIndexer.TYPE_SENTENCE.equals(hitType)) {
-            result = hit.field(LuceneAttributes.FIELD_NAME_ID_DOCUMENT).value().toString(); // in-place just use: .<Long>value();
+            Long docId = hit.field(LuceneAttributes.FIELD_NAME_ID_DOCUMENT).<Long>value();
+            result = docRouting.get(docId);
+            //result = StringUtils.isEmpty(result) ? EMPTY_ROUTING : result; 
         }
         return result;
     }
