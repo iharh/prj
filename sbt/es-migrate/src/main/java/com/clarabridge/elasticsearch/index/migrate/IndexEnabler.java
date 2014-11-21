@@ -1,4 +1,4 @@
-package com.clarabridge.elasticsearch.ingex.migrate;
+package com.clarabridge.elasticsearch.index.migrate;
 
 import org.elasticsearch.client.IndicesAdminClient;
 

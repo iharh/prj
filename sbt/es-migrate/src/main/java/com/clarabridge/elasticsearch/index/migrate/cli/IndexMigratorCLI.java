@@ -1,6 +1,6 @@
-package com.clarabridge.elasticsearch.ingex.migrate.cli;
+package com.clarabridge.elasticsearch.index.migrate.cli;
 
-import com.clarabridge.elasticsearch.ingex.migrate.IndexMigrator;
+import com.clarabridge.elasticsearch.index.migrate.IndexMigrator;
 
 import org.elasticsearch.node.Node;
 

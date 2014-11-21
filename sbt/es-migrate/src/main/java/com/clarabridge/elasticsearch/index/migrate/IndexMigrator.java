@@ -1,4 +1,4 @@
-package com.clarabridge.elasticsearch.ingex.migrate;
+package com.clarabridge.elasticsearch.index.migrate;
 
 //import com.clarabridge.transformer.indexing.pipe.ElasticSearchIndexer;
 
@@ -178,8 +178,7 @@ public class IndexMigrator {
                 String hitType = hit.getType();
                 int hitShard = hit.getShard().getShardId();
 
-                // TODO: debug
-                log.info("hit type: {}, id: {}, shard: {}", hitType, hit.getId(), hitShard); // ", srcRef: {},  hit.getSourceRef().toUtf8()
+                log.debug("hit type: {}, id: {}, shard: {}", hitType, hit.getId(), hitShard); // ", srcRef: {},  hit.getSourceRef().toUtf8()
 
                 IndexRequest ir = new IndexRequest(dstIndexName)
                     .source(hit.getSourceRef(), true)
@@ -189,9 +188,11 @@ public class IndexMigrator {
                 if (typesWithParent.contains(hitType)) {
                     String parentVal = ClbParentFinder.getParentValue(hit);
                     if (!StringUtils.isBlank(parentVal)) {
-                        // TODO: debug
-                        // String p = hit.field(ClbParentFinder.PARENT).<String>value();
-                        log.info("hit parent: {}", parentVal); // ", es parent: {}", p
+                        String parentES = hit.field(ClbParentFinder.PARENT).<String>value();
+                        log.debug("hit parent: {}, es: {}", parentVal, parentES);
+                        //if (!parentVal.equals(parentES)) {
+                        //    log.info("!!! hit parent: {}, es: {}", parentVal, parentES);
+                        //}
                         ir.parent(parentVal);
                     }
                 }
