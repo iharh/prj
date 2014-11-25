@@ -1,0 +1,6 @@
+{
+    "query" :
+    {
+        "term" : { "natural_id" : "tag:search.twitter.com,2005:524293909925486593" }
+    }
+}

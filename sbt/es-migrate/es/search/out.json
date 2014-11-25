@@ -1,0 +1,71 @@
+{
+  "took": 2,
+  "timed_out": false,
+  "_shards": {
+    "total": 5,
+    "successful": 5,
+    "failed": 0
+  },
+  "hits": {
+    "total": 1,
+    "max_score": 9.669342,
+    "hits": [
+      {
+        "_index": "4551661",
+        "_type": "document",
+        "_id": "3857671",
+        "_score": 9.669342,
+        "_source": {
+          "for_mapping_22": [
+            "date"
+          ],
+          "generator_name": "twitter for websites",
+          "klout": "40.0",
+          "source_url": "http://www.twitter.com",
+          "_doc_day_of_month": 20,
+          "natural_id_hash": "G3IyXNJF9J/NpCpsWg/VavE3GZI=",
+          "_doc_month": 10,
+          "gnip_id": "tag:search.twitter.com,2005:524293909925486593",
+          "natural_id": "tag:search.twitter.com,2005:524293909925486593",
+          "post_id": "524293909925486593",
+          "_doc_time": "20141020161943",
+          "cb_content_subtype": "undefined",
+          "for_mapping_1": [
+            "date"
+          ],
+          "title": "@samsung boasts its #5g mobile network is fast for...",
+          "_id_source": "temp stream",
+          "updated": "20141020",
+          "sm_source_name": "temp stream",
+          "_id_document": 3857671,
+          "expanded_url": "http://www.cnet.com/news/samsung-boasts-its-5g-mobile-network-is-fast-for-cars-too/",
+          "user_id": "2561683573",
+          "_doc_year": 2014,
+          "iso_lang_code": "en",
+          "sm_service": "gnip",
+          "_cb_exp_restrict": "r",
+          "_doc_date": "20141020",
+          "_doc_week": 43,
+          "user_profile_url": "http://www.twitter.com/techg_kb14",
+          "attribute_2": [
+            "fast"
+          ],
+          "time_of_day": "20:00",
+          "_id_batch": 12401324,
+          "user_name": "techg_kb14",
+          "attribute_3": [
+            "many pages",
+            "brand associations"
+          ],
+          "permalink": "http://twitter.com/techg_kb14/statuses/524293909925486593",
+          "cb_content_type": "noncontentful",
+          "_doc_quarter": 4,
+          "user_display_name": "techg kb14",
+          "profile_image_url": "https://pbs.twimg.com/profile_images/476766368260308992/znqsnvjh_normal.jpeg",
+          "provider_name": "twitter",
+          "post_date": "20141020"
+        }
+      }
+    ]
+  }
+}

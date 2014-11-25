@@ -1,0 +1,9 @@
+@echo off
+set ES_HOST=qa10
+set ES_PORT=9200
+set PRJ_ID=4551661
+set GEN=0
+
+set PRJ_INDEX=%PRJ_ID%_%GEN%
+set PRJ_READ_ALIAS=read_%PRJ_ID%
+set ES_HOSTPORT=%ES_HOST%:%ES_PORT%
