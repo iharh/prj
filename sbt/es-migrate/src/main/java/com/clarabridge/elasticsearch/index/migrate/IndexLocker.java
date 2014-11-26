@@ -13,7 +13,11 @@ import java.io.Closeable;
 class IndexLocker implements Closeable {
     private static final Logger log = LoggerFactory.getLogger(IndexLocker.class);
 
-    IndicesAdminClient iac;
+    // return SETTING_READ_ONLY after fixing:
+    //   https://github.com/elasticsearch/elasticsearch/issues/2833
+    private static final String SETTING_TO_LOCK = IndexMetaData.SETTING_BLOCKS_WRITE;
+
+    private IndicesAdminClient iac;
     private String indexName;
     private volatile boolean closed; // = false is by default
 
@@ -22,7 +26,7 @@ class IndexLocker implements Closeable {
         this.indexName = indexName;
         refresh();
         boolean ack = iac.prepareUpdateSettings(indexName)
-            .setSettings(settingsBuilder().put(IndexMetaData.SETTING_READ_ONLY, true))
+            .setSettings(settingsBuilder().put(SETTING_TO_LOCK, true))
             .get().isAcknowledged();
         log.info("index {} chanted to RO: {}", indexName, Boolean.toString(ack));
     }
@@ -43,7 +47,7 @@ class IndexLocker implements Closeable {
 
     private void unlock() {
         boolean ack = iac.prepareUpdateSettings(indexName)
-            .setSettings(settingsBuilder().put(IndexMetaData.SETTING_READ_ONLY, false))
+            .setSettings(settingsBuilder().put(SETTING_TO_LOCK, false))
             .get().isAcknowledged();
         log.info("index {} chanted to RW: {}", indexName, Boolean.toString(ack));
         refresh();

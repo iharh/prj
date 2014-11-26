@@ -95,7 +95,7 @@ public class IndexMigrateTest {
         }
     }
 
-    @Test
+    @Ignore
     public void testMigrateIndex() throws Exception {
         //IndicesAdminClient iac = client.admin().indices();
         //for (long i = 0; i < 3; ++i) {
