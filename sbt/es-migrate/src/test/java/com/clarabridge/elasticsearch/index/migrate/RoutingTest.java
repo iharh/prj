@@ -6,7 +6,10 @@ import org.junit.Before;
 import org.junit.After;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
+
+import com.clarabridge.transformer.indexing.pipe.ElasticSearchIndexer;
 
 //import static org.elasticsearch.test.hamcrest.ElasticsearchAssertions.assertAcked;
 
@@ -16,8 +19,13 @@ import org.elasticsearch.client.Client;
 import org.elasticsearch.client.IndicesAdminClient;
 
 import org.elasticsearch.common.settings.Settings;
+import org.elasticsearch.common.xcontent.XContentBuilder;
 //import org.elasticsearch.common.collect.ImmutableOpenMap;
 //import org.elasticsearch.common.hppc.cursors.ObjectObjectCursor;
+import org.elasticsearch.action.index.IndexRequestBuilder;
+import org.elasticsearch.action.index.IndexResponse;
+import org.elasticsearch.action.delete.DeleteRequestBuilder;
+import org.elasticsearch.action.delete.DeleteResponse;
 
 import static org.elasticsearch.common.settings.ImmutableSettings.settingsBuilder;
 import static org.elasticsearch.node.NodeBuilder.nodeBuilder;
@@ -40,6 +48,7 @@ public class RoutingTest {
 
     private final static String clusterName = "epbygomw0024-5432-postgres-win_ss";
     private final static long projectId = 1738;
+    private final static String documentId = "1";
     //private final static long projectId = 1404;
     //
     //final String clusterName = "elasticsearch";
@@ -73,51 +82,41 @@ public class RoutingTest {
         }
     }
 
+    @Ignore
+    public void testDelDoc() throws Exception {
+        String aliasName = "" + projectId; 
+        String naturalId = "tag:search.twitter.com,2005:524293909925486593";
+        String routing = naturalId.toLowerCase();
+
+        DeleteRequestBuilder reqb = client.prepareDelete(aliasName, ElasticSearchIndexer.TYPE_DOCUMENT, documentId)
+            .setRouting(routing)
+            .setRefresh(true);
+
+        DeleteResponse rsp = reqb.get();
+        assertNotNull(rsp);
+        assertTrue(rsp.isFound());
+    }
+
     @Test
     public void testAddDoc() throws Exception {
-        String s1 = jsonBuilder().startObject().startObject("clb_meta").startObject("obj_meta")
-            .field("enabled", Boolean.toString(true))
-            .endObject().endObject().endObject()
-            .string();
+        String aliasName = "write_" + projectId; 
+        //String aliasName = "" + projectId; 
+        String naturalId = "tag:search.twitter.com,2005:524293909925486593";
+        String routing = naturalId.toLowerCase();
 
-        log.debug("s1: {}", s1);
+        XContentBuilder xcb = jsonBuilder().startObject()
+            .field("naturalId", naturalId) //Boolean.toString(true)
+            .endObject();
 
-        assertTrue(true);
+        log.debug("xcb: {}", xcb.string());
 
-        /*
-        IndexRequestBuilder insertDocument = clientWrapper.getClient()
-            .prepareIndex(clientWrapper.aliasForWrite(), TYPE_DOCUMENT, documentId)
-            .setSource(createDocument(document));
+        IndexRequestBuilder reqb = client.prepareIndex(aliasName, ElasticSearchIndexer.TYPE_DOCUMENT, documentId)
+            .setSource(xcb)
+            .setRouting(routing)
+            .setRefresh(true);
 
-        insertDocument.setRouting(routing);
-
-        documentIds.add(document.getDocumentId());
-
-	private XContentBuilder createDocument(DocumentVO doc) throws IOException {
-		XContentBuilder b = jsonBuilder();
-		b.startObject();
-		doc.populateDocument(b);
-		b.endObject();
-		return b;
-	}
-	
-	private XContentBuilder createVerbatim(DocumentVO doc) throws IOException {
-		XContentBuilder b = jsonBuilder();
-		b.startObject();
-		doc.populateVerbatim(b);
-		b.endObject();
-		return b;
-	}	
-    
-	private XContentBuilder createSentence(DocumentVO doc, Set<Float> sentiments, Set<Integer> words) throws IOException {
-		XContentBuilder b = jsonBuilder();
-		b.startObject();
-		doc.populateSentense(b);
-		b.endObject();
-		return b;
-	}		
-
-        b.field(field.name, field.value);
-        */
+        IndexResponse rsp = reqb.get();
+        assertNotNull(rsp);
+        assertTrue(rsp.isCreated());
     }
 }
