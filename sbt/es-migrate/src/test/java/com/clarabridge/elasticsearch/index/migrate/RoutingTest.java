@@ -108,7 +108,7 @@ public class RoutingTest {
             .field("naturalId", naturalId) //Boolean.toString(true)
             .endObject();
 
-        log.debug("xcb: {}", xcb.string());
+        //log.debug("xcb: {}", xcb.string());
 
         IndexRequestBuilder reqb = client.prepareIndex(aliasName, ElasticSearchIndexer.TYPE_DOCUMENT, documentId)
             .setSource(xcb)
