@@ -97,7 +97,7 @@ public class RoutingTest {
         assertTrue(rsp.isFound());
     }
 
-    @Test
+    @Ignore
     public void testAddDoc() throws Exception {
         String aliasName = "write_" + projectId; 
         //String aliasName = "" + projectId; 

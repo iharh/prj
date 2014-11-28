@@ -1,7 +1,7 @@
 @echo off
 setlocal
 call vars.bat
-call curl.bat -XPOST "http://%AUTH%@%APP_HOSTPORT%/mobile/rest/index/migrate/%PRJ_ID%?shards=7
+call curl.bat -XPOST "http://%AUTH%@%APP_HOSTPORT%/mobile/rest/index/migrate/%PRJ_ID%?shards=20
 ::&docvalues=_lc_tokens,_lc,_tokendata,author,age,rating
 ::usable for DocValues:
 ::  _lc_tokens,_lc,_tokendata
