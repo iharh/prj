@@ -139,7 +139,9 @@ public class IndexMigrator {
                 //.setConcurrentRequests(0)
                 .build();
         ) {
-            allDocsToBulk(bp, typesWithParent, fieldChecker, srcIndexName, dstIndexName, batchSize);
+            allDocsToBulk(bp, bw, typesWithParent, fieldChecker, srcIndexName, dstIndexName, batchSize);
+        } catch (Exception e) {
+            throw new IOException(e.getMessage(), e);
         }
 
         refreshIndex(dstIndexName);
@@ -159,7 +161,8 @@ public class IndexMigrator {
         log.info("index {} created: {}", dstIndexName, Boolean.toString(ack));
     }
 
-    private void allDocsToBulk(BulkProcessor bp, Set<String> typesWithParent, ClbFieldChecker fieldChecker, String srcIndexName, String dstIndexName, int batchSize) {
+    private void allDocsToBulk(BulkProcessor bp, BulkWaiter bw,
+        Set<String> typesWithParent, ClbFieldChecker fieldChecker, String srcIndexName, String dstIndexName, int batchSize) throws Exception {
 
         SearchRequestBuilder srb = client.prepareSearch(srcIndexName)
             //.setTypes(type)
@@ -177,6 +180,7 @@ public class IndexMigrator {
 
         SearchResponse resp = srb.get();
         do {
+            bw.checkErrors();
             for (SearchHit hit : resp.getHits()) {
                 String hitType = hit.getType();
                 int hitShard = hit.getShard().getShardId();

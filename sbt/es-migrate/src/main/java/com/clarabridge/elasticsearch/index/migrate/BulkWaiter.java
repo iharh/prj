@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.AtomicReference;
 
 import java.io.Closeable;
 
@@ -18,6 +19,8 @@ class BulkWaiter implements BulkProcessor.Listener, Closeable {
 
     private AtomicLong numBulks = new AtomicLong(0);
     private volatile boolean closed; // = false is by default
+
+    private AtomicReference<BulkItemResponse.Failure> firstFailure = new AtomicReference<BulkItemResponse.Failure>();
 
     @Override
     public void close() {
@@ -52,21 +55,27 @@ class BulkWaiter implements BulkProcessor.Listener, Closeable {
         numBulks.decrementAndGet();
         for (BulkItemResponse bir : response) { // if (response.hasFailures()) {
             //String bulkFailureMessage = response.buildFailureMessage();
-            //log.error("afterBulk error: {}", bulkFailureMessage);
-            // throw new RuntimeException(bulkFailureMessage);
             BulkItemResponse.Failure failure = bir.getFailure();
             if (failure != null) {
+                firstFailure.compareAndSet(null, failure);
                 log.error("bulk failure id: {} status: {} msg: {}", failure.getId(), failure.getStatus(), failure.getMessage());
-                throw new RuntimeException(failure.getMessage());
             }
         }
-        log.debug("afterBulk success");
+        log.debug("afterBulk completed");
     }
 
     @Override
     public void afterBulk(long executionId, BulkRequest request, Throwable failure) {
         numBulks.decrementAndGet();
-        log.error("afterBulk throwed error", failure);
-        throw new RuntimeException(failure.getMessage(), failure);
+        log.error("afterBulk with failure", failure);
+        // TODO: implement this handling also
+        //throw new RuntimeException(failure.getMessage(), failure);
     } 
+
+    public void checkErrors() throws Exception {
+        BulkItemResponse.Failure failure = firstFailure.get();
+        if (failure != null) {
+            throw new Exception(failure.getMessage());
+        }
+    }
 }
