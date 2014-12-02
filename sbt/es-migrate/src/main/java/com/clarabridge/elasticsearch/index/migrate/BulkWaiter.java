@@ -3,6 +3,7 @@ package com.clarabridge.elasticsearch.index.migrate;
 import org.elasticsearch.action.bulk.BulkProcessor;
 import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.bulk.BulkResponse;
+import org.elasticsearch.action.bulk.BulkItemResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,18 +50,23 @@ class BulkWaiter implements BulkProcessor.Listener, Closeable {
     @Override
     public void afterBulk(long executionId, BulkRequest request, BulkResponse response) {
         numBulks.decrementAndGet();
-        if (response.hasFailures()) {
-            String bulkFailureMessage = response.buildFailureMessage();
-            log.error("afterBulk error: {}", bulkFailureMessage);
+        for (BulkItemResponse bir : response) { // if (response.hasFailures()) {
+            //String bulkFailureMessage = response.buildFailureMessage();
+            //log.error("afterBulk error: {}", bulkFailureMessage);
             // throw new RuntimeException(bulkFailureMessage);
-        } else {
-            log.debug("afterBulk success");
+            BulkItemResponse.Failure failure = bir.getFailure();
+            if (failure != null) {
+                log.error("bulk failure id: {} status: {} msg: {}", failure.getId(), failure.getStatus(), failure.getMessage());
+                throw new RuntimeException(failure.getMessage());
+            }
         }
+        log.debug("afterBulk success");
     }
 
     @Override
     public void afterBulk(long executionId, BulkRequest request, Throwable failure) {
         numBulks.decrementAndGet();
         log.error("afterBulk throwed error", failure);
+        throw new RuntimeException(failure.getMessage(), failure);
     } 
 }
