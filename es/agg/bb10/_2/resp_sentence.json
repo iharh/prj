@@ -1,0 +1,23 @@
+{
+  "took" : 3572,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 91503124,
+    "max_score" : 0.0,
+    "hits" : [ ]
+  },
+  "aggregations" : {
+    "agg_id_sentence" : {
+      "count" : 91503124,
+      "min" : 683301.0,
+      "max" : 1.64968E8,
+      "avg" : 5.550713541711364E7,
+      "sum" : 5.079076294956941E15
+    }
+  }
+}

@@ -8,9 +8,9 @@
     }
   },
   "aggregations": {
-    "max_id": {
-      "max": {
-        "field": "_id_document"
+    "agg_id_verbatim": {
+      "stats": {
+        "field": "_id_verbatim"
       }
     }
   }
