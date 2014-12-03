@@ -1,0 +1,17 @@
+{
+  "size": 0,
+  "query": {
+    "bool": {
+      "should": {
+        "match_all": {}
+      }
+    }
+  },
+  "aggregations": {
+    "max_id": {
+      "max": {
+        "field": "_id_document"
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 {
     "type": "fs",
     "settings": {
-        "location": "D:/es/my_backup",
+        "location": "D:/es_snapshots",
         "compress": true
     }
 }

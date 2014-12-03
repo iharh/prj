@@ -112,9 +112,6 @@ public class IndexMigrator {
         }
     }
 
-    private void refreshIndex(String indexName) {
-    }
-
     public void migrateIndex(long projectId, int shards, int batchSize, int writeThreads, Set<String> dvFields, boolean obsolete) throws IOException {
         String projectIdStr = Long.toString(projectId);
         String srcIndexName = inf.findCur(projectIdStr);
@@ -125,7 +122,6 @@ public class IndexMigrator {
 
         createIndexCopyMetadata(typesWithParent, srcIndexName, dstIndexName, shards, dvFields);
 
-        refreshIndex(srcIndexName);
         waitForClusterAndRefresh(srcIndexName);
 
         ClbFieldChecker fieldChecker = null; // new ClbFieldChecker();
@@ -139,12 +135,11 @@ public class IndexMigrator {
                 //.setConcurrentRequests(0)
                 .build();
         ) {
-            allDocsToBulk(bp, bw, typesWithParent, fieldChecker, srcIndexName, dstIndexName, batchSize);
+            allDocsToBulk(bp, bw, typesWithParent, fieldChecker, srcIndexName, dstIndexName, shards, batchSize);
         } catch (Exception e) {
             throw new IOException(e.getMessage(), e);
         }
 
-        refreshIndex(dstIndexName);
         waitForClusterAndRefresh(dstIndexName);
 
         switchAliasesAndEnabling(projectIdStr, srcIndexName, dstIndexName);
@@ -162,14 +157,14 @@ public class IndexMigrator {
     }
 
     private void allDocsToBulk(BulkProcessor bp, BulkWaiter bw,
-        Set<String> typesWithParent, ClbFieldChecker fieldChecker, String srcIndexName, String dstIndexName, int batchSize) throws Exception {
+        Set<String> typesWithParent, ClbFieldChecker fieldChecker, String srcIndexName, String dstIndexName, int shards, int batchSize) throws Exception {
 
         SearchRequestBuilder srb = client.prepareSearch(srcIndexName)
             //.setTypes(type)
             .setSearchType(SearchType.SCAN)
-            .setScroll(TimeValue.timeValueMinutes(2))
+            .setScroll(TimeValue.timeValueHours(240)) // timeValueMinutes(2)
             .setQuery(matchAllQuery())
-            .setSize(batchSize/5) // TODO: why do we divide here???
+            .setSize(batchSize/shards)
         ;
         for (int i = 0; i < ClbRoutingFinder.usedESFieldNames.length; ++i) {
             srb.addFieldDataField(ClbRoutingFinder.usedESFieldNames[i]);
@@ -181,6 +176,12 @@ public class IndexMigrator {
         SearchResponse resp = srb.get();
         do {
             bw.checkErrors();
+
+            //try {
+            //    Thread.sleep(1000); // TODO: configure this 
+            //} catch (InterruptedException e) {
+            //}
+
             for (SearchHit hit : resp.getHits()) {
                 String hitType = hit.getType();
                 int hitShard = hit.getShard().getShardId();
@@ -216,7 +217,7 @@ public class IndexMigrator {
                 }
             }
             resp = client.prepareSearchScroll(resp.getScrollId())
-                .setScroll(TimeValue.timeValueMinutes(10))
+                .setScroll(TimeValue.timeValueHours(240)) // timeValueMinutes(10)
                 .get();
         }
         while (resp.getHits().hits().length > 0);
@@ -240,17 +241,18 @@ public class IndexMigrator {
                 typesWithParent.add(mappingType);
             }
 
-            if (dvFields != null && !TYPE_PERCOLATOR.equals(mappingType)) {
+            if (!TYPE_PERCOLATOR.equals(mappingType)) {
                 @SuppressWarnings("unchecked")
                 Map<String, Object> propertiesMap = (Map<String, Object>)typeMappingsMap.get(MAPPING_PROPERTIES);
                 //for (String k : propertiesMap.keySet()) { log.debug("mapping properties for: {}", k); }
 
                 for(Map.Entry<String, Object> entry : propertiesMap.entrySet()) {
                     String fieldName = entry.getKey();
-                    if (dvFields.contains(fieldName)) {
-                        @SuppressWarnings("unchecked")
-                        Map<String, Object> fieldValueMap = (Map<String, Object>)entry.getValue();
 
+                    @SuppressWarnings("unchecked")
+                    Map<String, Object> fieldValueMap = (Map<String, Object>)entry.getValue(); // LinkedHashMap
+
+                    if (dvFields != null && dvFields.contains(fieldName)) {
                         String type = (String)fieldValueMap.get("type"); //$NON-NLS-1$
                         String index = (String)fieldValueMap.get("index"); //$NON-NLS-1$
                         String analyzer = (String)fieldValueMap.get("analyzer"); //$NON-NLS-1$
@@ -265,6 +267,23 @@ public class IndexMigrator {
                         } else {
                             log.info("Set a docValue for field: {}", fieldName);
                             fieldValueMap.put(FIELDDATA, enableDocValue); //$NON-NLS-1$
+                        }
+                    } else { // clear DocValue if present
+                        fieldValueMap.remove(FieldDataType.DOC_VALUES_FORMAT_VALUE);
+
+                        @SuppressWarnings("unchecked")
+                        Map<String, Object> fieldDataMap = (Map<String, Object>)fieldValueMap.get(FIELDDATA);
+
+                        if (fieldDataMap != null) {
+                            @SuppressWarnings("unchecked")
+                            String formatVal = (String)fieldDataMap.get(FieldDataType.FORMAT_KEY);
+
+                            if (FieldDataType.DOC_VALUES_FORMAT_VALUE.equalsIgnoreCase(formatVal)) {
+                                fieldDataMap.remove(FieldDataType.FORMAT_KEY);
+                            }
+                            if (fieldDataMap.isEmpty()) {
+                                fieldValueMap.remove(FIELDDATA);
+                            }
                         }
                     }
                 }

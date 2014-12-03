@@ -3,9 +3,9 @@
     "number_of_shards": 3
   },
   "mappings": {
-    "type1": {
+    "document": {
       "properties": {                
-        "docid": {"type": "string", "store" :"yes" },
+        "natural_id": {"type": "string", "store" :"yes" },
         "msg": {"type": "string", "store": "yes" }
       },
       "_timestamp": {
