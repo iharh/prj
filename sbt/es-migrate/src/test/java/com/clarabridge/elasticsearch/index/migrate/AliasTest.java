@@ -17,7 +17,7 @@ public class AliasTest extends ESTestBase {
 
     private final static long projectId = 1404;
 
-    @Test
+    @Ignore
     public void testAlias() throws Exception {
         final String readAliasName = "read_" + projectId;
         assertTrue(iac.prepareAliasesExist(readAliasName).get().exists());

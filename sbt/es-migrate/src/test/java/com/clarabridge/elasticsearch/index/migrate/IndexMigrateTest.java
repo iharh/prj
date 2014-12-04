@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Set;
 import java.util.HashSet;
 
-public class IndexMigrateTest {
+public class IndexMigrateTest extends ESTestBase {
     private static final Logger log = LoggerFactory.getLogger(IndexMigrateTest.class);
 
     private void deleteIndexIfExists(IndicesAdminClient iac, String indexName) {
@@ -55,44 +55,15 @@ public class IndexMigrateTest {
         log.info("index {} created: {}", indexName, Boolean.toString(ack));
     }
 
-    // look for auto-filling stuff:
-    // http://www.elasticsearch.org/guide/en/elasticsearch/client/java-api/current/index_.html
-    
-    private Node node;
-    private Client client;
-
-    private final static String clusterName = "epbygomw0024-5432-postgres-win_ss";
-    private final static long projectId = 1404;
+    private final static long projectId = 2514;
     //
-    //final String clusterName = "elasticsearch";
     //final long projectId = 3;
 
-    @Before
-    public void setUp() {
-        Settings settings = settingsBuilder()
-            //.put("http.port", "9200")
-            .put("discovery.zen.ping.unicast.hosts", "localhost")
-            .put("discovery.zen.ping.multicast.enabled", false)
-            .put("node.master", false)
-            .build();
-
-        node = nodeBuilder()
-            .clusterName(clusterName)
-            .client(true)
-            .settings(settings)
-            .node(); // data(false).
-
-        client = node.client();
-    }
-
-    @After
-    public void tearDown() {
-        try {
-            if (node != null) {
-                node.close();
-            }
-        } catch (Throwable t) {
-        }
+    @Test
+    public void testCreateAliasesIfNeeded() throws Exception {
+        IndexNameFinder inf = new IndexNameFinder(iac);
+        inf.createAliasesIfNeeded(Long.toString(projectId));
+        assertTrue(true);
     }
 
     @Ignore
@@ -104,6 +75,7 @@ public class IndexMigrateTest {
 
         Set<String> dvFields = new HashSet<String>();
 
+        /*
         dvFields.add("_verbatim");
         dvFields.add("_mstokenname");
         dvFields.add("_words");
@@ -121,10 +93,10 @@ public class IndexMigrateTest {
 
         dvFields.add("_doc_time");
         dvFields.add("_doc_date");
+        */
 
         IndexMigrator im = new IndexMigrator(client);
-        im.migrateIndex(projectId, 7, 1000, 4, dvFields, false);
-        //im.checkIndexAliases(projectId);
+        im.migrateIndex(projectId, 5, 1000, 4, dvFields, true);
     }
 
     @Ignore

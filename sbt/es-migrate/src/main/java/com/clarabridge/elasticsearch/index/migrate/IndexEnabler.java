@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.util.Map;
 
 public class IndexEnabler {
+    /*
     private static final Logger log = LoggerFactory.getLogger(IndexEnabler.class);
 
     public static final String TYPE_CLB_META = "clb_meta"; //$NON-NLS-1$
@@ -64,4 +65,5 @@ public class IndexEnabler {
         }
         return "true".equalsIgnoreCase(enabledObj.toString()); //$NON-NLS-1$
     }
+    */
 }

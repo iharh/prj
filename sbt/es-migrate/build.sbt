@@ -23,7 +23,7 @@ libraryDependencies ++= Seq(
     "org.slf4j"                 % "slf4j-api"      % "1.7.5",
     "org.slf4j"                 % "slf4j-log4j12"  % "1.7.5",
     "log4j"                     % "log4j"          % "1.2.17",
-    "org.elasticsearch"         % "elasticsearch"  % "1.2.1", // "1.3.4"
+    "org.elasticsearch"         % "elasticsearch"  % "1.4.0",
     // one-jar stuff
     "commons-lang"              % "commons-lang"   % "2.6",
     "commons-cli"               % "commons-cli"    % "1.2",

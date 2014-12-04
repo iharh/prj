@@ -52,9 +52,6 @@ public class IndexMigrator {
     public static final String INDEX_SETTING_NUMBER_OF_SHARDS = "number_of_shards"; //$NON-NLS-1$
 
     public static final String TYPE_PERCOLATOR = "percolator_mapping"; //$NON-NLS-1$
-    public static final String TYPE_CLB_META = "clb_meta"; //$NON-NLS-1$
-    public static final String OBJ_META = "_meta"; //$NON-NLS-1$
-    public static final String FIELD_ENABLED = "enabled"; //$NON-NLS-1$
     public static final String MAPPING_PROPERTIES = "properties"; //$NON-NLS-1$
 
     public static final String FIELDDATA = "fielddata"; //$NON-NLS-1$
@@ -66,34 +63,13 @@ public class IndexMigrator {
     private IndicesAdminClient iac;
     private ClusterAdminClient cac;
     private IndexNameFinder inf;
-    private IndexEnabler ien;
 
     public IndexMigrator(Client client) {
         this.client = client;
         cac = client.admin().cluster();
         iac = client.admin().indices();
         inf = new IndexNameFinder(iac);
-        ien = new IndexEnabler(iac);
     }
-
-    /*
-    public void checkIndexAliases(long projectId) {
-        String projectIdStr = Long.toString(projectId);
-        String srcIndexName = inf.findCur(projectIdStr);
-
-        String readAliasName = inf.findReadAlias(projectIdStr);
-        if (!iac.prepareAliasesExist(readAliasName).get().exists()) {
-            boolean ack_read = iac.prepareAliases().addAlias(srcIndexName, readAliasName).get().isAcknowledged();
-            log.info("alias {} created: {}", readAliasName, Boolean.toString(ack_read));
-        }
-
-        String writeAliasName = inf.findWriteAlias(projectIdStr);
-        if (!iac.prepareAliasesExist(writeAliasName).get().exists()) {
-            boolean ack_read = iac.prepareAliases().addAlias(srcIndexName, writeAliasName).get().isAcknowledged();
-            log.info("alias {} created: {}", writeAliasName, Boolean.toString(ack_read));
-        }
-    }
-    */
 
     public void switchIndex(long projectId, long generation) throws IOException {
         String projectIdStr = Long.toString(projectId);
@@ -178,7 +154,7 @@ public class IndexMigrator {
             bw.checkErrors();
 
             //try {
-            //    Thread.sleep(1000); // TODO: configure this 
+            //    Thread.sleep(1000); // TODO: configure this
             //} catch (InterruptedException e) {
             //}
 
@@ -333,7 +309,7 @@ public class IndexMigrator {
         boolean ack_write = iac.prepareAliases().addAlias(dstIndexName, writeAliasName).removeAlias(srcIndexName, writeAliasName).get().isAcknowledged();
         log.info("alias {} created: {}", readAliasName, Boolean.toString(ack_write));
 
-        ien.changeEnabling(srcIndexName, false);
-        ien.changeEnabling(dstIndexName, true);
+        //ien.changeEnabling(srcIndexName, false);
+        //ien.changeEnabling(dstIndexName, true);
     }
 }
