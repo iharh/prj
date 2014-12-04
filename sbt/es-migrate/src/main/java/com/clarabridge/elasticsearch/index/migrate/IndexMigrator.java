@@ -323,7 +323,7 @@ public class IndexMigrator {
 
         String writeAliasName = inf.findWriteAlias(projectIdStr);
         IndicesAliasesRequestBuilder iarb_write = iac.prepareAliases().addAlias(dstIndexName, writeAliasName);
-        if (iac.prepareExists(dstIndexName).get().isExists()) {
+        if (iac.prepareExists(srcIndexName).get().isExists()) {
             iarb_write = iarb_write.removeAlias(srcIndexName, writeAliasName);
         }
         boolean ack_write = iarb_write.get().isAcknowledged();
