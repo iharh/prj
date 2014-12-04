@@ -46,10 +46,19 @@ class IndexLocker implements Closeable {
     }
 
     private void unlock() {
-        boolean ack = iac.prepareUpdateSettings(indexName)
-            .setSettings(settingsBuilder().put(SETTING_TO_LOCK, false))
-            .get().isAcknowledged();
-        log.info("index {} chanted to RW: {}", indexName, Boolean.toString(ack));
+        if (iac.prepareExists(indexName).get().isExists()) {
+            boolean ack = false;
+            try {
+                ack = iac.prepareUpdateSettings(indexName)
+                    .setSettings(settingsBuilder().put(SETTING_TO_LOCK, false))
+                    .get().isAcknowledged();
+            } catch (Exception e) {
+                log.error("Index unlocking error: ", e);
+            }
+            log.info("index {} changed to RW: {}", indexName, Boolean.toString(ack));
+        } else {
+            log.warn("index {} does not exist - probably has already been deleted by user externally", indexName);
+        }
         refresh();
     }
 }
