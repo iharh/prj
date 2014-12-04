@@ -15,6 +15,7 @@ import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.common.unit.ByteSizeUnit;
 import org.elasticsearch.common.unit.ByteSizeValue;
 
+import org.elasticsearch.action.admin.indices.alias.IndicesAliasesRequestBuilder;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequestBuilder;
 import org.elasticsearch.action.admin.indices.mapping.get.GetMappingsResponse;
 import org.elasticsearch.action.bulk.BulkProcessor;
@@ -313,12 +314,20 @@ public class IndexMigrator {
 
     private void switchAliasesAndEnabling(String projectIdStr, String srcIndexName, String dstIndexName) throws IOException {
         String readAliasName = inf.findReadAlias(projectIdStr);
-        boolean ack_read = iac.prepareAliases().addAlias(dstIndexName, readAliasName).removeAlias(srcIndexName, readAliasName).get().isAcknowledged();
+        IndicesAliasesRequestBuilder iarb_read = iac.prepareAliases().addAlias(dstIndexName, readAliasName);
+        if (iac.prepareExists(srcIndexName).get().isExists()) {
+            iarb_read = iarb_read.removeAlias(srcIndexName, readAliasName);
+        }
+        boolean ack_read = iarb_read.get().isAcknowledged();
         log.info("alias {} created: {}", readAliasName, Boolean.toString(ack_read));
 
         String writeAliasName = inf.findWriteAlias(projectIdStr);
-        boolean ack_write = iac.prepareAliases().addAlias(dstIndexName, writeAliasName).removeAlias(srcIndexName, writeAliasName).get().isAcknowledged();
-        log.info("alias {} created: {}", readAliasName, Boolean.toString(ack_write));
+        IndicesAliasesRequestBuilder iarb_write = iac.prepareAliases().addAlias(dstIndexName, writeAliasName);
+        if (iac.prepareExists(dstIndexName).get().isExists()) {
+            iarb_write = iarb_write.removeAlias(srcIndexName, writeAliasName);
+        }
+        boolean ack_write = iarb_write.get().isAcknowledged();
+        log.info("alias {} created: {}", writeAliasName, Boolean.toString(ack_write));
 
         //ien.changeEnabling(srcIndexName, false);
         //ien.changeEnabling(dstIndexName, true);
