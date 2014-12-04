@@ -94,7 +94,7 @@ public class IndexMigrator {
         int writeThreads = req.getWriteThreads();
         Set<String> dvFields = req.getDvFields();
         boolean obsolete = req.getObsolete();
-        TimeValue sleepBetweenBatchs = req.getSleepBetweenBatches();
+        TimeValue sleepBetweenBatches = req.getSleepBetweenBatches();
 
         String projectIdStr = Long.toString(projectId);
         String srcIndexName = inf.findCur(projectIdStr);
@@ -118,7 +118,7 @@ public class IndexMigrator {
                 //.setConcurrentRequests(0)
                 .build();
         ) {
-            allDocsToBulk(bp, bw, typesWithParent, fieldChecker, srcIndexName, dstIndexName, shards, batchSize, sleepBetweenBatchs);
+            allDocsToBulk(bp, bw, typesWithParent, fieldChecker, srcIndexName, dstIndexName, shards, batchSize, sleepBetweenBatches);
         } catch (Exception e) {
             throw new IOException(e.getMessage(), e);
         }
@@ -140,7 +140,7 @@ public class IndexMigrator {
     }
 
     private void allDocsToBulk(BulkProcessor bp, BulkWaiter bw,
-        Set<String> typesWithParent, ClbFieldChecker fieldChecker, String srcIndexName, String dstIndexName, int shards, int batchSize, TimeValue sleepBetweenBatchs) throws Exception {
+        Set<String> typesWithParent, ClbFieldChecker fieldChecker, String srcIndexName, String dstIndexName, int shards, int batchSize, TimeValue sleepBetweenBatches) throws Exception {
 
         SearchRequestBuilder srb = client.prepareSearch(srcIndexName)
             //.setTypes(type)
@@ -160,9 +160,11 @@ public class IndexMigrator {
         do {
             bw.checkErrors();
 
-            if (sleepBetweenBatchs != null) {
+            if (sleepBetweenBatches != null) {
                 try {
-                    Thread.sleep(sleepBetweenBatchs.getMillis());
+                    long sleepMillis = sleepBetweenBatches.getMillis();
+                    log.info("sleeping between batches: {}", sleepMillis);
+                    Thread.sleep(sleepMillis);
                 } catch (InterruptedException e) {
                 }
             }
