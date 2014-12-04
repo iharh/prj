@@ -59,7 +59,7 @@ public class IndexMigrateTest extends ESTestBase {
     //
     //final long projectId = 3;
 
-    @Test
+    @Ignore
     public void testCreateAliasesIfNeeded() throws Exception {
         IndexNameFinder inf = new IndexNameFinder(iac);
         inf.createAliasesIfNeeded(Long.toString(projectId));
@@ -96,7 +96,16 @@ public class IndexMigrateTest extends ESTestBase {
         */
 
         IndexMigrator im = new IndexMigrator(client);
-        im.migrateIndex(projectId, 5, 1000, 4, dvFields, true);
+
+        IndexMigrateRequest req = new IndexMigrateRequest();
+        req.setProjectId(projectId);
+        req.setShards(5);
+        req.setBatchSize(1000);
+        req.setWriteThreads(4);
+        req.setDvFields(dvFields);
+        //req.setObsolete(true);
+
+        im.migrateIndex(req);
     }
 
     @Ignore

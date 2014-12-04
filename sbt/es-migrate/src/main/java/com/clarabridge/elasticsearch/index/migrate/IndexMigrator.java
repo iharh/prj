@@ -40,7 +40,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
-import java.util.concurrent.TimeUnit;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.HashSet;
@@ -88,7 +87,14 @@ public class IndexMigrator {
         }
     }
 
-    public void migrateIndex(long projectId, int shards, int batchSize, int writeThreads, Set<String> dvFields, boolean obsolete) throws IOException {
+    public void migrateIndex(IndexMigrateRequest req) throws IOException {
+        long projectId = req.getProjectId();
+        int shards = req.getShards();
+        int batchSize = req.getBatchSize();
+        int writeThreads = req.getWriteThreads();
+        Set<String> dvFields = req.getDvFields();
+        boolean obsolete = req.getObsolete();
+
         String projectIdStr = Long.toString(projectId);
         String srcIndexName = inf.findCur(projectIdStr);
         String dstIndexName = obsolete ? inf.findObsolete(projectIdStr) : inf.findNext(projectIdStr);
