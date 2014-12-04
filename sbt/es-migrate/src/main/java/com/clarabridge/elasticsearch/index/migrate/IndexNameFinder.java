@@ -95,7 +95,7 @@ public class IndexNameFinder {
             log.info("alias: {} traversing index: {}", aliasName, indexName);
             try {
                 result = Math.max(result, Long.parseLong(indexName.substring(projectIdPrefixLen)));
-            } catch (NumberFormatException e) {
+            } catch (StringIndexOutOfBoundsException | NumberFormatException e) {
             }
         }
 
