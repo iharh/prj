@@ -1,6 +1,6 @@
 package com.clarabridge.elasticsearch.index.migrate;
 
-//import org.elasticsearch.common.unit.TimeValue;
+import org.elasticsearch.common.unit.TimeValue;
 //import org.elasticsearch.common.unit.ByteSizeUnit;
 //import org.elasticsearch.common.unit.ByteSizeValue;
 
@@ -16,6 +16,8 @@ public class IndexMigrateRequest {
     private Set<String> dvFields;
 
     private boolean obsolete;
+
+    private TimeValue sleepBetweenBatches;
 
     public void setProjectId(long projectId) {
         this.projectId = projectId;
@@ -57,5 +59,12 @@ public class IndexMigrateRequest {
     }
     public boolean getObsolete() {
         return obsolete;
+    }
+
+    public void setSleepBetweenBatches(TimeValue sleepBetweenBatches) {
+        this.sleepBetweenBatches = sleepBetweenBatches;
+    }
+    public TimeValue getSleepBetweenBatches() {
+        return sleepBetweenBatches;
     }
 }
