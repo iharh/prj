@@ -94,6 +94,7 @@ public class IndexMigrator {
         int writeThreads = req.getWriteThreads();
         Set<String> dvFields = req.getDvFields();
         boolean obsolete = req.getObsolete();
+        TimeValue sleepBetweenBatchs = req.getSleepBetweenBatches();
 
         String projectIdStr = Long.toString(projectId);
         String srcIndexName = inf.findCur(projectIdStr);
@@ -117,7 +118,7 @@ public class IndexMigrator {
                 //.setConcurrentRequests(0)
                 .build();
         ) {
-            allDocsToBulk(bp, bw, typesWithParent, fieldChecker, srcIndexName, dstIndexName, shards, batchSize);
+            allDocsToBulk(bp, bw, typesWithParent, fieldChecker, srcIndexName, dstIndexName, shards, batchSize, sleepBetweenBatchs);
         } catch (Exception e) {
             throw new IOException(e.getMessage(), e);
         }
@@ -139,7 +140,7 @@ public class IndexMigrator {
     }
 
     private void allDocsToBulk(BulkProcessor bp, BulkWaiter bw,
-        Set<String> typesWithParent, ClbFieldChecker fieldChecker, String srcIndexName, String dstIndexName, int shards, int batchSize) throws Exception {
+        Set<String> typesWithParent, ClbFieldChecker fieldChecker, String srcIndexName, String dstIndexName, int shards, int batchSize, TimeValue sleepBetweenBatchs) throws Exception {
 
         SearchRequestBuilder srb = client.prepareSearch(srcIndexName)
             //.setTypes(type)
@@ -159,10 +160,12 @@ public class IndexMigrator {
         do {
             bw.checkErrors();
 
-            //try {
-            //    Thread.sleep(1000); // TODO: configure this
-            //} catch (InterruptedException e) {
-            //}
+            if (sleepBetweenBatchs != null) {
+                try {
+                    Thread.sleep(sleepBetweenBatchs.getMillis());
+                } catch (InterruptedException e) {
+                }
+            }
 
             for (SearchHit hit : resp.getHits()) {
                 String hitType = hit.getType();
