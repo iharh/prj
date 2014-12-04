@@ -52,6 +52,7 @@ class IndexLocker implements Closeable {
                 ack = iac.prepareUpdateSettings(indexName)
                     .setSettings(settingsBuilder().put(SETTING_TO_LOCK, false))
                     .get().isAcknowledged();
+                refresh();
             } catch (Exception e) {
                 log.error("Index unlocking error: ", e);
             }
@@ -59,6 +60,5 @@ class IndexLocker implements Closeable {
         } else {
             log.warn("index {} does not exist - probably has already been deleted by user externally", indexName);
         }
-        refresh();
     }
 }
