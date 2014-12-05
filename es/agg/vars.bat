@@ -8,8 +8,8 @@ set USER=admin
 set PWD=admin
 set PRJ_ID=17666
 ::1404 1738 2084
-::set GEN_SUFF=
-set GEN_SUFF=_2
+set GEN_SUFF=
+::set GEN_SUFF=_1
 
 set APP_HOSTPORT=%APP_HOST%:%APP_PORT%
 set ES_HOSTPORT=%APP_HOST%:%ES_PORT%

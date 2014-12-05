@@ -30,6 +30,9 @@ import org.elasticsearch.index.mapper.internal.RoutingFieldMapper;
 
 import org.elasticsearch.search.SearchHit;
 
+import org.elasticsearch.percolator.PercolatorService;
+
+
 import static org.elasticsearch.common.settings.ImmutableSettings.settingsBuilder;
 import static org.elasticsearch.index.query.QueryBuilders.matchAllQuery;
 import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
@@ -102,9 +105,10 @@ public class IndexMigrator {
         String dstIndexName = obsolete ? inf.findObsolete(projectIdStr) : inf.findNext(projectIdStr);
         log.info("migrating index: {} to index: {}", srcIndexName, dstIndexName);
 
+        Set<String> allTypes = new HashSet<String>();
         Set<String> typesWithParent = new HashSet<String>();
 
-        createIndexCopyMetadata(typesWithParent, srcIndexName, dstIndexName, shards, dvFields);
+        createIndexCopyMetadata(allTypes, typesWithParent, srcIndexName, dstIndexName, shards, dvFields);
 
         waitForClusterAndRefresh(srcIndexName);
 
@@ -119,7 +123,7 @@ public class IndexMigrator {
                 //.setConcurrentRequests(0)
                 .build();
         ) {
-            allDocsToBulk(bp, bw, typesWithParent, fieldChecker, srcIndexName, dstIndexName, shards, batchSize, sleepBetweenBatches);
+            allDocsToBulk(bp, bw, allTypes, typesWithParent, fieldChecker, srcIndexName, dstIndexName, shards, batchSize, sleepBetweenBatches);
         } catch (Exception e) {
             throw new IOException(e.getMessage(), e);
         }
@@ -130,21 +134,23 @@ public class IndexMigrator {
     }
 
 
-    private void createIndexCopyMetadata(Set<String> typesWithParent, String srcIndexName, String dstIndexName, int shards, Set<String> dvFields) throws IOException {
+    private void createIndexCopyMetadata(Set<String> allTypes, Set<String> typesWithParent,
+        String srcIndexName, String dstIndexName, int shards, Set<String> dvFields) throws IOException {
+
         deleteIndexIfExists(dstIndexName);
 
         CreateIndexRequestBuilder rb = iac.prepareCreate(dstIndexName);
-        rb = addIndexMappings(rb, typesWithParent, srcIndexName, dvFields);
-        rb = addIndexSettings(rb                 , srcIndexName, shards);
+        rb = addIndexMappings(rb, allTypes, typesWithParent, srcIndexName, dvFields);
+        rb = addIndexSettings(rb                           , srcIndexName, shards);
         boolean ack = rb.get().isAcknowledged();
         log.info("index {} created: {}", dstIndexName, Boolean.toString(ack));
     }
 
-    private void allDocsToBulk(BulkProcessor bp, BulkWaiter bw,
-        Set<String> typesWithParent, ClbFieldChecker fieldChecker, String srcIndexName, String dstIndexName, int shards, int batchSize, TimeValue sleepBetweenBatches) throws Exception {
+    private void allDocsToBulk(BulkProcessor bp, BulkWaiter bw, Set<String> allTypes, Set<String> typesWithParent,
+        ClbFieldChecker fieldChecker, String srcIndexName, String dstIndexName, int shards, int batchSize, TimeValue sleepBetweenBatches) throws Exception {
 
         SearchRequestBuilder srb = client.prepareSearch(srcIndexName)
-            //.setTypes(type)
+            .setTypes(allTypes.toArray(new String[0]))
             .setSearchType(SearchType.SCAN)
             .setScroll(TimeValue.timeValueHours(240)) // timeValueMinutes(2)
             .setQuery(matchAllQuery())
@@ -211,7 +217,9 @@ public class IndexMigrator {
         while (resp.getHits().hits().length > 0);
     }
 
-    private CreateIndexRequestBuilder addIndexMappings(CreateIndexRequestBuilder rb, Set<String> typesWithParent, String indexName, Set<String> dvFields) throws IOException {
+    private CreateIndexRequestBuilder addIndexMappings(CreateIndexRequestBuilder rb, Set<String> allTypes, Set<String> typesWithParent,
+        String indexName, Set<String> dvFields) throws IOException {
+
         ImmutableOpenMap<String, ImmutableOpenMap<String, MappingMetaData>> indicesToMappings =
             iac.prepareGetMappings(indexName).get().mappings();
         ImmutableOpenMap<String, MappingMetaData> indexMappings = indicesToMappings.get(indexName);
@@ -221,6 +229,7 @@ public class IndexMigrator {
 
         for (ObjectObjectCursor<String, MappingMetaData> c : indexMappings) {
             String mappingType = c.key;
+            allTypes.add(mappingType);
             log.debug("mapping for type: {}", mappingType);
             Map<String, Object> typeMappingsMap = c.value.sourceAsMap();
 
@@ -229,7 +238,7 @@ public class IndexMigrator {
                 typesWithParent.add(mappingType);
             }
 
-            if (!TYPE_PERCOLATOR.equals(mappingType)) {
+            if (!TYPE_PERCOLATOR.equals(mappingType) && !PercolatorService.TYPE_NAME.equals(mappingType)) {
                 @SuppressWarnings("unchecked")
                 Map<String, Object> propertiesMap = (Map<String, Object>)typeMappingsMap.get(MAPPING_PROPERTIES);
                 //for (String k : propertiesMap.keySet()) { log.debug("mapping properties for: {}", k); }

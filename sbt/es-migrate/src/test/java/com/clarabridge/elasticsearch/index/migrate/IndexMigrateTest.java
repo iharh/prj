@@ -18,6 +18,9 @@ import org.elasticsearch.client.IndicesAdminClient;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.collect.ImmutableOpenMap;
 import org.elasticsearch.common.hppc.cursors.ObjectObjectCursor;
+import org.elasticsearch.common.unit.TimeValue;
+
+import org.elasticsearch.search.SearchHit;
 
 import static org.elasticsearch.common.settings.ImmutableSettings.settingsBuilder;
 import static org.elasticsearch.node.NodeBuilder.nodeBuilder;
@@ -55,9 +58,7 @@ public class IndexMigrateTest extends ESTestBase {
         log.info("index {} created: {}", indexName, Boolean.toString(ack));
     }
 
-    private final static long projectId = 2514;
-    //
-    //final long projectId = 3;
+    private final static long projectId = 1900859;
 
     @Ignore
     public void testCreateAliasesIfNeeded() throws Exception {
@@ -66,16 +67,11 @@ public class IndexMigrateTest extends ESTestBase {
         assertTrue(true);
     }
 
-    @Ignore
+    @Test
     public void testMigrateIndex() throws Exception {
-        //IndicesAdminClient iac = client.admin().indices();
-        //for (long i = 0; i < 3; ++i) {
-        //    createIndex(iac, projectId, i);
-        //} 
-
+        /*
         Set<String> dvFields = new HashSet<String>();
 
-        /*
         dvFields.add("_verbatim");
         dvFields.add("_mstokenname");
         dvFields.add("_words");
@@ -100,9 +96,9 @@ public class IndexMigrateTest extends ESTestBase {
         IndexMigrateRequest req = new IndexMigrateRequest();
         req.setProjectId(projectId);
         req.setShards(5);
-        req.setBatchSize(1000);
-        req.setWriteThreads(4);
-        req.setDvFields(dvFields);
+        req.setBatchSize(10000);
+        req.setWriteThreads(8);
+        //req.setDvFields(dvFields);
         //req.setObsolete(true);
 
         im.migrateIndex(req);

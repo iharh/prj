@@ -1,0 +1,17 @@
+{
+  "size": 0,
+  "query": {
+    "bool": {
+      "should": {
+        "match_all": {}
+      }
+    }
+  },
+  "aggregations": {
+    "agg_node_id": {
+      "stats": {
+        "field": "nodeId"
+      }
+    }
+  }
+}

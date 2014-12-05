@@ -1,0 +1,1027 @@
+{
+  "17666" : {
+    "mappings" : {
+      "clb_meta" : {
+        "_meta" : {
+          "enabled" : "false"
+        },
+        "properties" : { }
+      },
+      ".percolator" : {
+        "_id" : {
+          "index" : "not_analyzed"
+        },
+        "properties" : {
+          "modelId" : {
+            "type" : "long"
+          },
+          "nodeId" : {
+            "type" : "long"
+          },
+          "projectId" : {
+            "type" : "long"
+          },
+          "query" : {
+            "type" : "object",
+            "enabled" : false
+          }
+        }
+      },
+      "percolator_mapping" : {
+        "_all" : {
+          "enabled" : false
+        },
+        "_source" : {
+          "compress" : true,
+          "compress_threshold" : "100b"
+        },
+        "properties" : {
+          "_degreeSentimentIndex" : {
+            "type" : "double"
+          },
+          "_degreesentimentindex" : {
+            "type" : "float",
+            "precision_step" : 2147483647
+          },
+          "_doc_date" : {
+            "type" : "date",
+            "store" : true,
+            "precision_step" : 2147483647,
+            "format" : "yyyyMMdd"
+          },
+          "_doc_day_of_month" : {
+            "type" : "byte"
+          },
+          "_doc_month" : {
+            "type" : "byte"
+          },
+          "_doc_quarter" : {
+            "type" : "byte"
+          },
+          "_doc_time" : {
+            "type" : "date",
+            "format" : "yyyyMMddHHmmss"
+          },
+          "_doc_week" : {
+            "type" : "byte"
+          },
+          "_doc_year" : {
+            "type" : "short",
+            "precision_step" : 2147483647
+          },
+          "_exceptionid" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "_id_batch" : {
+            "type" : "long",
+            "precision_step" : 2147483647
+          },
+          "_id_document" : {
+            "type" : "long",
+            "precision_step" : 2147483647
+          },
+          "_id_sentence" : {
+            "type" : "long",
+            "precision_step" : 2147483647
+          },
+          "_id_source" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "_id_verbatim" : {
+            "type" : "long",
+            "precision_step" : 2147483647
+          },
+          "_language" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "_languageDetected" : {
+            "type" : "string"
+          },
+          "_languagedetected" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "_lc" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "_lc_tokens" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "_mstokenname" : {
+            "type" : "string",
+            "norms" : {
+              "enabled" : false
+            },
+            "analyzer" : "keyword"
+          },
+          "_sentimentIndex" : {
+            "type" : "double"
+          },
+          "_sentimentNegCount" : {
+            "type" : "long"
+          },
+          "_sentimentPosCount" : {
+            "type" : "long"
+          },
+          "_sentimentPosNegDeltaCount" : {
+            "type" : "long"
+          },
+          "_sentimentindex" : {
+            "type" : "float",
+            "precision_step" : 2147483647
+          },
+          "_sentimentnegcount" : {
+            "type" : "short",
+            "precision_step" : 2147483647
+          },
+          "_sentimentposcount" : {
+            "type" : "short",
+            "precision_step" : 2147483647
+          },
+          "_sentimentposnegdeltacount" : {
+            "type" : "short",
+            "precision_step" : 2147483647
+          },
+          "_tokendata" : {
+            "type" : "string",
+            "index" : "no",
+            "norms" : {
+              "enabled" : false
+            }
+          },
+          "_verbatim" : {
+            "type" : "string",
+            "norms" : {
+              "enabled" : false
+            },
+            "index_analyzer" : "cmp_sm_tags_analyzer",
+            "search_analyzer" : "cmp_analyzer"
+          },
+          "_verbatimtype" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "_words" : {
+            "type" : "string",
+            "norms" : {
+              "enabled" : false
+            },
+            "index_analyzer" : "cmp_sm_tags_analyzer",
+            "search_analyzer" : "cmp_analyzer"
+          },
+          "attribute" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "attribute_2" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "attribute_3" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "attribute_4" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "attribute_5" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "attribute_6" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "categorization_lib" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "cb_content_subtype" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "cb_content_type" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "comment_count" : {
+            "type" : "double",
+            "precision_step" : 2147483647
+          },
+          "comment_id" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "fb_comment_count" : {
+            "type" : "double",
+            "precision_step" : 2147483647
+          },
+          "fb_like_count" : {
+            "type" : "double",
+            "precision_step" : 2147483647
+          },
+          "fb_page" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "full_name" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "gender" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "ingest_date" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "iso_lang_code" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "like_count" : {
+            "type" : "double",
+            "precision_step" : 2147483647
+          },
+          "locale" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "location" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "media_type" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "natural_id" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "natural_id_hash" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "other_verbatim_2._verbatim" : {
+            "type" : "string"
+          },
+          "other_verbatim_2._verbatimtype" : {
+            "type" : "string"
+          },
+          "other_verbatim_3._verbatim" : {
+            "type" : "string"
+          },
+          "other_verbatim_3._verbatimtype" : {
+            "type" : "string"
+          },
+          "other_verbatim_4._verbatim" : {
+            "type" : "string"
+          },
+          "other_verbatim_4._verbatimtype" : {
+            "type" : "string"
+          },
+          "other_verbatim_5._verbatim" : {
+            "type" : "string"
+          },
+          "other_verbatim_5._verbatimtype" : {
+            "type" : "string"
+          },
+          "parent_comment_id" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "parent_document._doc_date" : {
+            "type" : "string"
+          },
+          "parent_document._doc_day_of_month" : {
+            "type" : "string"
+          },
+          "parent_document._doc_month" : {
+            "type" : "string"
+          },
+          "parent_document._doc_quarter" : {
+            "type" : "string"
+          },
+          "parent_document._doc_time" : {
+            "type" : "string"
+          },
+          "parent_document._doc_week" : {
+            "type" : "string"
+          },
+          "parent_document._doc_year" : {
+            "type" : "string"
+          },
+          "parent_document._id_batch" : {
+            "type" : "string"
+          },
+          "parent_document._id_document" : {
+            "type" : "string"
+          },
+          "parent_document._id_source" : {
+            "type" : "string"
+          },
+          "parent_document._parent_document_verbatims" : {
+            "type" : "string"
+          },
+          "parent_document._verbatimtype" : {
+            "type" : "string"
+          },
+          "parent_document.cb_content_subtype" : {
+            "type" : "string"
+          },
+          "parent_document.cb_content_type" : {
+            "type" : "string"
+          },
+          "parent_document.comment_id" : {
+            "type" : "string"
+          },
+          "parent_document.fb_comment_count" : {
+            "type" : "string"
+          },
+          "parent_document.fb_like_count" : {
+            "type" : "string"
+          },
+          "parent_document.fb_page" : {
+            "type" : "string"
+          },
+          "parent_document.full_name" : {
+            "type" : "string"
+          },
+          "parent_document.gender" : {
+            "type" : "string"
+          },
+          "parent_document.iso_lang_code" : {
+            "type" : "string"
+          },
+          "parent_document.locale" : {
+            "type" : "string"
+          },
+          "parent_document.natural_id" : {
+            "type" : "string"
+          },
+          "parent_document.natural_id_hash" : {
+            "type" : "string"
+          },
+          "parent_document.parent_comment_id" : {
+            "type" : "string"
+          },
+          "parent_document.parent_natural_id" : {
+            "type" : "string"
+          },
+          "parent_document.parent_natural_id_hash" : {
+            "type" : "string"
+          },
+          "parent_document.permalink" : {
+            "type" : "string"
+          },
+          "parent_document.post_date" : {
+            "type" : "string"
+          },
+          "parent_document.post_id" : {
+            "type" : "string"
+          },
+          "parent_document.sm_service" : {
+            "type" : "string"
+          },
+          "parent_document.sm_source_name" : {
+            "type" : "string"
+          },
+          "parent_document.source_url" : {
+            "type" : "string"
+          },
+          "parent_document.time_of_day" : {
+            "type" : "string"
+          },
+          "parent_document.user_id" : {
+            "type" : "string"
+          },
+          "parent_document.user_name" : {
+            "type" : "string"
+          },
+          "parent_document.user_profile_url" : {
+            "type" : "string"
+          },
+          "parent_natural_id" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "parent_natural_id_hash" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "permalink" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "post_date" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "post_id" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "sm_service" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "sm_source_name" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "source_url" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "sov" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "sov_score" : {
+            "type" : "double",
+            "precision_step" : 2147483647
+          },
+          "spam_rating" : {
+            "type" : "double",
+            "precision_step" : 2147483647
+          },
+          "time_of_day" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "topic" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "user_id" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "user_name" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "user_profile_url" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          }
+        }
+      },
+      "verbatim" : {
+        "_all" : {
+          "enabled" : false
+        },
+        "_parent" : {
+          "type" : "document"
+        },
+        "_routing" : {
+          "required" : true
+        },
+        "_source" : {
+          "compress" : true,
+          "compress_threshold" : "100b"
+        },
+        "properties" : {
+          "_id_batch" : {
+            "type" : "long",
+            "precision_step" : 2147483647
+          },
+          "_id_document" : {
+            "type" : "long",
+            "precision_step" : 2147483647
+          },
+          "_id_verbatim" : {
+            "type" : "long",
+            "precision_step" : 2147483647
+          },
+          "_verbatim" : {
+            "type" : "string",
+            "norms" : {
+              "enabled" : false
+            },
+            "index_analyzer" : "cmp_sm_tags_analyzer",
+            "search_analyzer" : "cmp_analyzer"
+          },
+          "_verbatimtype" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          }
+        }
+      },
+      "sentence" : {
+        "_all" : {
+          "enabled" : false
+        },
+        "_parent" : {
+          "type" : "verbatim"
+        },
+        "_routing" : {
+          "required" : true
+        },
+        "_source" : {
+          "compress" : true,
+          "compress_threshold" : "100b"
+        },
+        "properties" : {
+          "_degreesentimentindex" : {
+            "type" : "float",
+            "precision_step" : 2147483647
+          },
+          "_doc_date" : {
+            "type" : "date",
+            "store" : true,
+            "precision_step" : 2147483647,
+            "format" : "yyyyMMdd"
+          },
+          "_doc_day_of_month" : {
+            "type" : "byte"
+          },
+          "_doc_month" : {
+            "type" : "byte"
+          },
+          "_doc_quarter" : {
+            "type" : "byte"
+          },
+          "_doc_time" : {
+            "type" : "date",
+            "format" : "yyyyMMddHHmmss"
+          },
+          "_doc_week" : {
+            "type" : "byte"
+          },
+          "_doc_year" : {
+            "type" : "short",
+            "precision_step" : 2147483647
+          },
+          "_exceptionid" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "_id_batch" : {
+            "type" : "long",
+            "precision_step" : 2147483647
+          },
+          "_id_document" : {
+            "type" : "long",
+            "precision_step" : 2147483647
+          },
+          "_id_sentence" : {
+            "type" : "long",
+            "precision_step" : 2147483647
+          },
+          "_id_source" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "_id_verbatim" : {
+            "type" : "long",
+            "precision_step" : 2147483647
+          },
+          "_language" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "_languagedetected" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "_lc" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "_lc_tokens" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "_mstokenname" : {
+            "type" : "string",
+            "norms" : {
+              "enabled" : false
+            },
+            "analyzer" : "keyword"
+          },
+          "_sentimentindex" : {
+            "type" : "float",
+            "precision_step" : 2147483647
+          },
+          "_sentimentnegcount" : {
+            "type" : "short",
+            "precision_step" : 2147483647
+          },
+          "_sentimentposcount" : {
+            "type" : "short",
+            "precision_step" : 2147483647
+          },
+          "_sentimentposnegdeltacount" : {
+            "type" : "short",
+            "precision_step" : 2147483647
+          },
+          "_tokendata" : {
+            "type" : "string",
+            "index" : "no",
+            "norms" : {
+              "enabled" : false
+            }
+          },
+          "_verbatimtype" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "_words" : {
+            "type" : "string",
+            "norms" : {
+              "enabled" : false
+            },
+            "index_analyzer" : "cmp_sm_tags_analyzer",
+            "search_analyzer" : "cmp_analyzer"
+          },
+          "attribute" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "attribute_2" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "attribute_3" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "attribute_4" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "attribute_5" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "attribute_6" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "categorization_lib" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "cb_content_subtype" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "cb_content_type" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "comment_count" : {
+            "type" : "double",
+            "precision_step" : 2147483647
+          },
+          "comment_id" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "fb_comment_count" : {
+            "type" : "double",
+            "precision_step" : 2147483647
+          },
+          "fb_like_count" : {
+            "type" : "double",
+            "precision_step" : 2147483647
+          },
+          "fb_page" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "full_name" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "gender" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "ingest_date" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "iso_lang_code" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "like_count" : {
+            "type" : "double",
+            "precision_step" : 2147483647
+          },
+          "locale" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "location" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "media_type" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "natural_id" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "natural_id_hash" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "parent_comment_id" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "parent_natural_id" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "parent_natural_id_hash" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "permalink" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "post_date" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "post_id" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "sm_service" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "sm_source_name" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "source_url" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "sov" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "sov_score" : {
+            "type" : "double",
+            "precision_step" : 2147483647
+          },
+          "spam_rating" : {
+            "type" : "double",
+            "precision_step" : 2147483647
+          },
+          "time_of_day" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "topic" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "user_id" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "user_name" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "user_profile_url" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          }
+        }
+      },
+      "document" : {
+        "_all" : {
+          "enabled" : false
+        },
+        "_source" : {
+          "compress" : true,
+          "compress_threshold" : "100b"
+        },
+        "properties" : {
+          "_doc_date" : {
+            "type" : "date",
+            "store" : true,
+            "precision_step" : 2147483647,
+            "format" : "yyyyMMdd"
+          },
+          "_doc_day_of_month" : {
+            "type" : "byte"
+          },
+          "_doc_month" : {
+            "type" : "byte"
+          },
+          "_doc_quarter" : {
+            "type" : "byte"
+          },
+          "_doc_time" : {
+            "type" : "date",
+            "format" : "yyyyMMddHHmmss"
+          },
+          "_doc_week" : {
+            "type" : "byte"
+          },
+          "_doc_year" : {
+            "type" : "short",
+            "precision_step" : 2147483647
+          },
+          "_id_batch" : {
+            "type" : "long",
+            "precision_step" : 2147483647
+          },
+          "_id_document" : {
+            "type" : "long",
+            "precision_step" : 2147483647
+          },
+          "_id_source" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "attribute" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "attribute_2" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "attribute_3" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "attribute_4" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "attribute_5" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "attribute_6" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "categorization_lib" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "cb_content_subtype" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "cb_content_type" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "comment_count" : {
+            "type" : "double",
+            "precision_step" : 2147483647
+          },
+          "comment_id" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "fb_comment_count" : {
+            "type" : "double",
+            "precision_step" : 2147483647
+          },
+          "fb_like_count" : {
+            "type" : "double",
+            "precision_step" : 2147483647
+          },
+          "fb_page" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "full_name" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "gender" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "ingest_date" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "iso_lang_code" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "like_count" : {
+            "type" : "double",
+            "precision_step" : 2147483647
+          },
+          "locale" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "location" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "media_type" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "natural_id" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "natural_id_hash" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "parent_comment_id" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "parent_natural_id" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "parent_natural_id_hash" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "permalink" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "post_date" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "post_id" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "sm_service" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "sm_source_name" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "source_url" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "sov" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "sov_score" : {
+            "type" : "double",
+            "precision_step" : 2147483647
+          },
+          "spam_rating" : {
+            "type" : "double",
+            "precision_step" : 2147483647
+          },
+          "time_of_day" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "topic" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "user_id" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "user_name" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "user_profile_url" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          }
+        }
+      }
+    }
+  }
+}
