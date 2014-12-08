@@ -1,7 +1,5 @@
 package com.clarabridge.elasticsearch.index.migrate;
 
-import com.clarabridge.transformer.indexing.pipe.ElasticSearchIndexer;
-
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.index.mapper.internal.RoutingFieldMapper;
 
@@ -36,11 +34,12 @@ public class ClbRoutingFinder {
     }
 
     // not-used
+    /*
     private static String getUpdateRoutingValue(SearchHit hit, Map<Long, String> docRouting) {
         String result = null;
 
         String hitType = hit.getType();
-        if (ElasticSearchIndexer.TYPE_DOCUMENT.equals(hitType)) {
+        if (ESConstants.TYPE_DOCUMENT.equals(hitType)) {
             Long docId = hit.field(LuceneAttributes.FIELD_NAME_ID_DOCUMENT).<Long>value();
 
             result = getUnsafeDocumentRouting(
@@ -52,13 +51,14 @@ public class ClbRoutingFinder {
 
             result = StringUtils.isEmpty(result) ? EMPTY_ROUTING : result; 
             docRouting.put(docId, result);
-        } else if (ElasticSearchIndexer.TYPE_VERBATIM.equals(hitType) || ElasticSearchIndexer.TYPE_SENTENCE.equals(hitType)) {
+        } else if (ESConstants.TYPE_VERBATIM.equals(hitType) || ESConstants.TYPE_SENTENCE.equals(hitType)) {
             Long docId = hit.field(LuceneAttributes.FIELD_NAME_ID_DOCUMENT).<Long>value();
             result = docRouting.get(docId);
             //result = StringUtils.isEmpty(result) ? EMPTY_ROUTING : result; 
         }
         return result;
     }
+    */
 
     public static String getDocumentRouting(String naturalId, String parentDocumentNaturalId, Map<String,String> attributeValues) {
         String value = getUnsafeDocumentRouting(naturalId, parentDocumentNaturalId, attributeValues);

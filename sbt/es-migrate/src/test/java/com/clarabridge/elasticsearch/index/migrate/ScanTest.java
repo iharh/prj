@@ -47,15 +47,16 @@ public class ScanTest extends ESTestBase {
         indexTypes.put(type, cnt + 1);
     }
 
-    @Ignore
-    public void testMigrateIndex() throws Exception {
+    @Test
+    public void testScanIndex() throws Exception {
         Map<String, Long> indexTypes = new HashMap<String, Long>();
 
         String indexName = Long.toString(projectId);
         SearchRequestBuilder srb = client.prepareSearch(indexName)
             .setTypes(new String [] {PercolatorService.TYPE_NAME, "document", "sentence", "verbatim"})
             .setSearchType(SearchType.SCAN)
-            .setScroll(TimeValue.timeValueHours(240)) // timeValueMinutes(2)
+            //.setScroll(TimeValue.timeValueHours(240))
+            .setScroll(TimeValue.timeValueMillis(100))
             .setQuery(matchAllQuery())
             .setSize(10000)
         ;
@@ -67,8 +68,14 @@ public class ScanTest extends ESTestBase {
                 String hitType = hit.getType();
                 addType(indexTypes, hitType);
             }
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                }
+
             resp = client.prepareSearchScroll(resp.getScrollId())
-                .setScroll(TimeValue.timeValueHours(240)) // timeValueMinutes(10)
+                //.setScroll(TimeValue.timeValueHours(240))
+                .setScroll(TimeValue.timeValueMillis(100))
                 .get();
         }
         while (resp.getHits().hits().length > 0);

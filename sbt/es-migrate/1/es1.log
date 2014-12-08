@@ -1,0 +1,352 @@
+2014-12-08 09:51:04,440  INFO [pool-2-thread-5] (InternalNode.java:139) - [Mercurio] version[1.4.0], pid[5776], build[bc94bd8/2014-11-05T14:26:12Z]
+2014-12-08 09:51:04,444  INFO [pool-2-thread-5] (InternalNode.java:141) - [Mercurio] initializing ...
+2014-12-08 09:51:04,445 DEBUG [pool-2-thread-5] (InternalNode.java:145) - [Mercurio] using home [D:\dev\prj\sbt\es-migrate], config [D:\dev\prj\sbt\es-migrate\config], data [[D:\dev\prj\sbt\es-migrate\data]], logs [D:\dev\prj\sbt\es-migrate\logs], work [D:\dev\prj\sbt\es-migrate\work], plugins [D:\dev\prj\sbt\es-migrate\plugins]
+2014-12-08 09:51:04,449 DEBUG [pool-2-thread-5] (FileSystemUtils.java:168) - [Mercurio] [D:\dev\prj\sbt\es-migrate\plugins] directory does not exist.
+2014-12-08 09:51:04,451  INFO [pool-2-thread-5] (PluginsService.java:150) - [Mercurio] loaded [], sites []
+2014-12-08 09:51:04,471 DEBUG [pool-2-thread-5] (LZFCompressor.java:55) - using encoder [VanillaChunkDecoder] and decoder[{}] 
+2014-12-08 09:51:04,799 DEBUG [pool-2-thread-5] (ScriptModule.java:87) - [Mercurio] failed to load groovy
+java.lang.ClassNotFoundException: groovy.lang.GroovyClassLoader
+	at java.lang.ClassLoader.findClass(ClassLoader.java:531)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sbt.classpath.ClasspathFilter.loadClass(ClassLoaders.scala:53)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at org.elasticsearch.script.ScriptModule.configure(ScriptModule.java:84)
+	at org.elasticsearch.common.inject.AbstractModule.configure(AbstractModule.java:60)
+	at org.elasticsearch.common.inject.spi.Elements$RecordingBinder.install(Elements.java:204)
+	at org.elasticsearch.common.inject.spi.Elements.getElements(Elements.java:85)
+	at org.elasticsearch.common.inject.InjectorShell$Builder.build(InjectorShell.java:130)
+	at org.elasticsearch.common.inject.InjectorBuilder.build(InjectorBuilder.java:99)
+	at org.elasticsearch.common.inject.Guice.createInjector(Guice.java:93)
+	at org.elasticsearch.common.inject.Guice.createInjector(Guice.java:70)
+	at org.elasticsearch.common.inject.ModulesBuilder.createInjector(ModulesBuilder.java:59)
+	at org.elasticsearch.node.internal.InternalNode.<init>(InternalNode.java:197)
+	at org.elasticsearch.node.NodeBuilder.build(NodeBuilder.java:159)
+	at org.elasticsearch.node.NodeBuilder.node(NodeBuilder.java:166)
+	at com.clarabridge.elasticsearch.index.migrate.ESTestBase.setUp(ESTestBase.java:43)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:45)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:42)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:27)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:30)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:263)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:68)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:24)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:136)
+	at com.novocode.junit.JUnitRunner.run(JUnitRunner.java:90)
+	at sbt.RunnerWrapper$1.runRunner2(FrameworkWrapper.java:220)
+	at sbt.RunnerWrapper$1.execute(FrameworkWrapper.java:233)
+	at sbt.TestRunner.runTest$1(TestFramework.scala:84)
+	at sbt.TestRunner.run(TestFramework.scala:94)
+	at sbt.TestFramework$$anon$2$$anonfun$$init$$1$$anonfun$apply$8.apply(TestFramework.scala:224)
+	at sbt.TestFramework$$anon$2$$anonfun$$init$$1$$anonfun$apply$8.apply(TestFramework.scala:224)
+	at sbt.TestFramework$.sbt$TestFramework$$withContextLoader(TestFramework.scala:212)
+	at sbt.TestFramework$$anon$2$$anonfun$$init$$1.apply(TestFramework.scala:224)
+	at sbt.TestFramework$$anon$2$$anonfun$$init$$1.apply(TestFramework.scala:224)
+	at sbt.TestFunction.apply(TestFramework.scala:229)
+	at sbt.Tests$$anonfun$7.apply(Tests.scala:196)
+	at sbt.Tests$$anonfun$7.apply(Tests.scala:196)
+	at sbt.std.Transform$$anon$3$$anonfun$apply$2.apply(System.scala:45)
+	at sbt.std.Transform$$anon$3$$anonfun$apply$2.apply(System.scala:45)
+	at sbt.std.Transform$$anon$4.work(System.scala:64)
+	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:237)
+	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:237)
+	at sbt.ErrorHandling$.wideConvert(ErrorHandling.scala:18)
+	at sbt.Execute.work(Execute.scala:244)
+	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:237)
+	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:237)
+	at sbt.ConcurrentRestrictions$$anon$4$$anonfun$1.apply(ConcurrentRestrictions.scala:160)
+	at sbt.CompletionService$$anon$2.call(CompletionService.scala:30)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+2014-12-08 09:51:04,806 DEBUG [pool-2-thread-5] (ScriptModule.java:101) - [Mercurio] failed to load lucene expressions
+java.lang.ClassNotFoundException: org.apache.lucene.expressions.Expression
+	at java.lang.ClassLoader.findClass(ClassLoader.java:531)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at sbt.classpath.ClasspathFilter.loadClass(ClassLoaders.scala:53)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at org.elasticsearch.script.ScriptModule.configure(ScriptModule.java:98)
+	at org.elasticsearch.common.inject.AbstractModule.configure(AbstractModule.java:60)
+	at org.elasticsearch.common.inject.spi.Elements$RecordingBinder.install(Elements.java:204)
+	at org.elasticsearch.common.inject.spi.Elements.getElements(Elements.java:85)
+	at org.elasticsearch.common.inject.InjectorShell$Builder.build(InjectorShell.java:130)
+	at org.elasticsearch.common.inject.InjectorBuilder.build(InjectorBuilder.java:99)
+	at org.elasticsearch.common.inject.Guice.createInjector(Guice.java:93)
+	at org.elasticsearch.common.inject.Guice.createInjector(Guice.java:70)
+	at org.elasticsearch.common.inject.ModulesBuilder.createInjector(ModulesBuilder.java:59)
+	at org.elasticsearch.node.internal.InternalNode.<init>(InternalNode.java:197)
+	at org.elasticsearch.node.NodeBuilder.build(NodeBuilder.java:159)
+	at org.elasticsearch.node.NodeBuilder.node(NodeBuilder.java:166)
+	at com.clarabridge.elasticsearch.index.migrate.ESTestBase.setUp(ESTestBase.java:43)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:45)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:42)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:27)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:30)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:263)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:68)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:47)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:24)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:231)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:60)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:50)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:222)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:300)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:136)
+	at com.novocode.junit.JUnitRunner.run(JUnitRunner.java:90)
+	at sbt.RunnerWrapper$1.runRunner2(FrameworkWrapper.java:220)
+	at sbt.RunnerWrapper$1.execute(FrameworkWrapper.java:233)
+	at sbt.TestRunner.runTest$1(TestFramework.scala:84)
+	at sbt.TestRunner.run(TestFramework.scala:94)
+	at sbt.TestFramework$$anon$2$$anonfun$$init$$1$$anonfun$apply$8.apply(TestFramework.scala:224)
+	at sbt.TestFramework$$anon$2$$anonfun$$init$$1$$anonfun$apply$8.apply(TestFramework.scala:224)
+	at sbt.TestFramework$.sbt$TestFramework$$withContextLoader(TestFramework.scala:212)
+	at sbt.TestFramework$$anon$2$$anonfun$$init$$1.apply(TestFramework.scala:224)
+	at sbt.TestFramework$$anon$2$$anonfun$$init$$1.apply(TestFramework.scala:224)
+	at sbt.TestFunction.apply(TestFramework.scala:229)
+	at sbt.Tests$$anonfun$7.apply(Tests.scala:196)
+	at sbt.Tests$$anonfun$7.apply(Tests.scala:196)
+	at sbt.std.Transform$$anon$3$$anonfun$apply$2.apply(System.scala:45)
+	at sbt.std.Transform$$anon$3$$anonfun$apply$2.apply(System.scala:45)
+	at sbt.std.Transform$$anon$4.work(System.scala:64)
+	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:237)
+	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:237)
+	at sbt.ErrorHandling$.wideConvert(ErrorHandling.scala:18)
+	at sbt.Execute.work(Execute.scala:244)
+	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:237)
+	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:237)
+	at sbt.ConcurrentRestrictions$$anon$4$$anonfun$1.apply(ConcurrentRestrictions.scala:160)
+	at sbt.CompletionService$$anon$2.call(CompletionService.scala:30)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+2014-12-08 09:51:06,261 DEBUG [pool-2-thread-5] (ThreadPool.java:329) - [Mercurio] creating thread_pool [generic], type [cached], keep_alive [30s]
+2014-12-08 09:51:06,270 DEBUG [pool-2-thread-5] (ThreadPool.java:359) - [Mercurio] creating thread_pool [index], type [fixed], size [4], queue_size [200]
+2014-12-08 09:51:06,272 DEBUG [pool-2-thread-5] (ThreadPool.java:359) - [Mercurio] creating thread_pool [bulk], type [fixed], size [4], queue_size [50]
+2014-12-08 09:51:06,272 DEBUG [pool-2-thread-5] (ThreadPool.java:359) - [Mercurio] creating thread_pool [get], type [fixed], size [4], queue_size [1k]
+2014-12-08 09:51:06,273 DEBUG [pool-2-thread-5] (ThreadPool.java:359) - [Mercurio] creating thread_pool [search], type [fixed], size [12], queue_size [1k]
+2014-12-08 09:51:06,273 DEBUG [pool-2-thread-5] (ThreadPool.java:359) - [Mercurio] creating thread_pool [suggest], type [fixed], size [4], queue_size [1k]
+2014-12-08 09:51:06,273 DEBUG [pool-2-thread-5] (ThreadPool.java:359) - [Mercurio] creating thread_pool [percolate], type [fixed], size [4], queue_size [1k]
+2014-12-08 09:51:06,273 DEBUG [pool-2-thread-5] (ThreadPool.java:402) - [Mercurio] creating thread_pool [management], type [scaling], min [1], size [5], keep_alive [5m]
+2014-12-08 09:51:06,276 DEBUG [pool-2-thread-5] (ThreadPool.java:359) - [Mercurio] creating thread_pool [listener], type [fixed], size [2], queue_size [null]
+2014-12-08 09:51:06,277 DEBUG [pool-2-thread-5] (ThreadPool.java:402) - [Mercurio] creating thread_pool [flush], type [scaling], min [1], size [2], keep_alive [5m]
+2014-12-08 09:51:06,277 DEBUG [pool-2-thread-5] (ThreadPool.java:402) - [Mercurio] creating thread_pool [merge], type [scaling], min [1], size [2], keep_alive [5m]
+2014-12-08 09:51:06,277 DEBUG [pool-2-thread-5] (ThreadPool.java:402) - [Mercurio] creating thread_pool [refresh], type [scaling], min [1], size [2], keep_alive [5m]
+2014-12-08 09:51:06,278 DEBUG [pool-2-thread-5] (ThreadPool.java:402) - [Mercurio] creating thread_pool [warmer], type [scaling], min [1], size [2], keep_alive [5m]
+2014-12-08 09:51:06,278 DEBUG [pool-2-thread-5] (ThreadPool.java:402) - [Mercurio] creating thread_pool [snapshot], type [scaling], min [1], size [2], keep_alive [5m]
+2014-12-08 09:51:06,278 DEBUG [pool-2-thread-5] (ThreadPool.java:359) - [Mercurio] creating thread_pool [optimize], type [fixed], size [1], queue_size [null]
+2014-12-08 09:51:06,278 DEBUG [pool-2-thread-5] (ThreadPool.java:402) - [Mercurio] creating thread_pool [bench], type [scaling], min [1], size [2], keep_alive [5m]
+2014-12-08 09:51:06,298 DEBUG [pool-2-thread-5] (JvmMonitorService.java:111) - [Mercurio] enabled [true], last_gc_enabled [false], interval [1s], gc_threshold [{old=GcThreshold{name='old', warnThreshold=10000, infoThreshold=5000, debugThreshold=2000}, default=GcThreshold{name='default', warnThreshold=10000, infoThreshold=5000, debugThreshold=2000}, young=GcThreshold{name='young', warnThreshold=1000, infoThreshold=700, debugThreshold=400}}]
+2014-12-08 09:51:06,299 DEBUG [pool-2-thread-5] (OsService.java:52) - [Mercurio] Using probe [org.elasticsearch.monitor.os.JmxOsProbe@5b3cdbd] with refresh_interval [1s]
+2014-12-08 09:51:06,300 DEBUG [pool-2-thread-5] (ProcessService.java:51) - [Mercurio] Using probe [org.elasticsearch.monitor.process.JmxProcessProbe@3135adb7] with refresh_interval [1s]
+2014-12-08 09:51:06,305 DEBUG [pool-2-thread-5] (JvmService.java:46) - [Mercurio] Using refresh_interval [1s]
+2014-12-08 09:51:06,305 DEBUG [pool-2-thread-5] (NetworkService.java:51) - [Mercurio] Using probe [org.elasticsearch.monitor.network.JmxNetworkProbe@482e014a] with refresh_interval [5s]
+2014-12-08 09:51:06,517 DEBUG [pool-2-thread-5] (NetworkService.java:101) - [Mercurio] net_info
+host [EPBYGOMW0024]
+lo	display_name [Software Loopback Interface 1]
+		address [/127.0.0.1] [/0:0:0:0:0:0:0:1] 
+		mtu [-1] multicast [true] ptp [false] loopback [true] up [true] virtual [false]
+net0	display_name [WAN Miniport (SSTP)]
+		address 
+		mtu [-1] multicast [true] ptp [false] loopback [false] up [false] virtual [false]
+net1	display_name [WAN Miniport (L2TP)]
+		address 
+		mtu [-1] multicast [true] ptp [false] loopback [false] up [false] virtual [false]
+net2	display_name [WAN Miniport (PPTP)]
+		address 
+		mtu [-1] multicast [true] ptp [false] loopback [false] up [false] virtual [false]
+ppp0	display_name [WAN Miniport (PPPOE)]
+		address 
+		mtu [-1] multicast [true] ptp [false] loopback [false] up [false] virtual [false]
+eth0	display_name [WAN Miniport (IPv6)]
+		address 
+		mtu [-1] multicast [true] ptp [false] loopback [false] up [false] virtual [false]
+eth1	display_name [WAN Miniport (Network Monitor)]
+		address 
+		mtu [-1] multicast [true] ptp [false] loopback [false] up [false] virtual [false]
+eth2	display_name [WAN Miniport (IP)]
+		address 
+		mtu [-1] multicast [true] ptp [false] loopback [false] up [false] virtual [false]
+ppp1	display_name [RAS Async Adapter]
+		address 
+		mtu [-1] multicast [true] ptp [false] loopback [false] up [false] virtual [false]
+net3	display_name [WAN Miniport (IKEv2)]
+		address 
+		mtu [-1] multicast [true] ptp [false] loopback [false] up [false] virtual [false]
+net4	display_name [Microsoft Teredo Tunneling Adapter]
+		address [/fe80:0:0:0:0:100:7f:fffe%11] 
+		mtu [1280] multicast [false] ptp [true] loopback [false] up [false] virtual [false]
+eth3	display_name [Intel(R) 82578DM Gigabit Network Connection]
+		address [/10.9.202.130] 
+		mtu [1500] multicast [true] ptp [false] loopback [false] up [true] virtual [false]
+net5	display_name [Microsoft ISATAP Adapter]
+		address [/fe80:0:0:0:0:5efe:a09:ca82%13] 
+		mtu [1280] multicast [false] ptp [true] loopback [false] up [false] virtual [false]
+eth4	display_name [Bluetooth Device (Personal Area Network)]
+		address 
+		mtu [-1] multicast [true] ptp [false] loopback [false] up [false] virtual [false]
+net6	display_name [Bluetooth Device (RFCOMM Protocol TDI)]
+		address 
+		mtu [-1] multicast [true] ptp [false] loopback [false] up [false] virtual [false]
+net7	display_name [Bluetooth Device (RFCOMM Protocol TDI) #2]
+		address 
+		mtu [-1] multicast [true] ptp [false] loopback [false] up [false] virtual [false]
+eth5	display_name [Bluetooth Device (Personal Area Network) #2]
+		address 
+		mtu [-1] multicast [true] ptp [false] loopback [false] up [false] virtual [false]
+net8	display_name [Microsoft ISATAP Adapter #2]
+		address [/fe80:0:0:0:0:5efe:c0a8:3801%18] 
+		mtu [1280] multicast [false] ptp [true] loopback [false] up [false] virtual [false]
+net9	display_name [Microsoft ISATAP Adapter #3]
+		address 
+		mtu [-1] multicast [true] ptp [false] loopback [false] up [false] virtual [false]
+eth6	display_name [Array Networks SSL VPN Adapter]
+		address 
+		mtu [-1] multicast [true] ptp [false] loopback [false] up [false] virtual [false]
+eth7	display_name [VirtualBox Host-Only Ethernet Adapter]
+		address [/192.168.56.1] 
+		mtu [1500] multicast [true] ptp [false] loopback [false] up [true] virtual [false]
+eth8	display_name [Intel(R) 82578DM Gigabit Network Connection - VirtualBox Bridged Networking Driver Miniport]
+		address 
+		mtu [-1] multicast [true] ptp [false] loopback [false] up [false] virtual [false]
+eth9	display_name [Array Networks SSL VPN Adapter - VirtualBox Bridged Networking Driver Miniport]
+		address 
+		mtu [-1] multicast [true] ptp [false] loopback [false] up [false] virtual [false]
+eth10	display_name [WAN Miniport (Network Monitor)-QoS Packet Scheduler-0000]
+		address 
+		mtu [-1] multicast [true] ptp [false] loopback [false] up [false] virtual [false]
+eth11	display_name [WAN Miniport (IP)-QoS Packet Scheduler-0000]
+		address 
+		mtu [-1] multicast [true] ptp [false] loopback [false] up [false] virtual [false]
+eth12	display_name [WAN Miniport (IPv6)-QoS Packet Scheduler-0000]
+		address 
+		mtu [-1] multicast [true] ptp [false] loopback [false] up [false] virtual [false]
+eth13	display_name [VirtualBox Host-Only Ethernet Adapter-QoS Packet Scheduler-0000]
+		address 
+		mtu [-1] multicast [true] ptp [false] loopback [false] up [false] virtual [false]
+eth14	display_name [VirtualBox Host-Only Ethernet Adapter-WFP LightWeight Filter-0000]
+		address 
+		mtu [-1] multicast [true] ptp [false] loopback [false] up [false] virtual [false]
+eth15	display_name [Intel(R) 82578DM Gigabit Network Connection - VirtualBox Bridged Networking Driver Miniport-QoS Packet Scheduler-0000]
+		address 
+		mtu [-1] multicast [true] ptp [false] loopback [false] up [false] virtual [false]
+eth16	display_name [Intel(R) 82578DM Gigabit Network Connection - VirtualBox Bridged Networking Driver Miniport-WFP LightWeight Filter-0000]
+		address 
+		mtu [-1] multicast [true] ptp [false] loopback [false] up [false] virtual [false]
+
+2014-12-08 09:51:06,519 DEBUG [pool-2-thread-5] (FsService.java:45) - [Mercurio] Using probe [org.elasticsearch.monitor.fs.JmxFsProbe@14fff6e] with refresh_interval [1s]
+2014-12-08 09:51:06,527 DEBUG [pool-2-thread-5] (NettyUtils.java:104) - using gathering [true]
+2014-12-08 09:51:06,562 DEBUG [pool-2-thread-5] (ElectMasterService.java:47) - [Mercurio] using minimum_master_nodes [-1]
+2014-12-08 09:51:06,566 DEBUG [pool-2-thread-5] (UnicastZenPing.java:129) - [Mercurio] using initial hosts [localhost], with concurrent_connects [10]
+2014-12-08 09:51:06,575 DEBUG [pool-2-thread-5] (ZenDiscovery.java:179) - [Mercurio] using ping.timeout [3s], join.timeout [1m], master_election.filter_client [true], master_election.filter_data [false]
+2014-12-08 09:51:06,577 DEBUG [pool-2-thread-5] (MasterFaultDetection.java:77) - [Mercurio] [master] uses ping_interval [1s], ping_timeout [30s], ping_retries [3]
+2014-12-08 09:51:06,580 DEBUG [pool-2-thread-5] (NodesFaultDetection.java:67) - [Mercurio] [node  ] uses ping_interval [1s], ping_timeout [30s], ping_retries [3]
+2014-12-08 09:51:06,899 DEBUG [pool-2-thread-5] (IndicesStore.java:122) - [Mercurio] using indices.store.throttle.type [MERGE], with index.store.throttle.max_bytes_per_sec [20mb]
+2014-12-08 09:51:06,906 DEBUG [pool-2-thread-5] (ScriptService.java:219) - [Mercurio] using script cache with max_size [100], expire [null]
+2014-12-08 09:51:07,051 DEBUG [pool-2-thread-5] (ThrottlingAllocationDecider.java:71) - [Mercurio] using node_concurrent_recoveries [2], node_initial_primaries_recoveries [4]
+2014-12-08 09:51:07,053 DEBUG [pool-2-thread-5] (ClusterRebalanceAllocationDecider.java:108) - [Mercurio] using [cluster.routing.allocation.allow_rebalance] with [indices_all_active]
+2014-12-08 09:51:07,054 DEBUG [pool-2-thread-5] (ConcurrentRebalanceAllocationDecider.java:63) - [Mercurio] using [cluster_concurrent_rebalance] with [2]
+2014-12-08 09:51:07,058 DEBUG [pool-2-thread-5] (LocalGatewayAllocator.java:85) - [Mercurio] using initial_shards [quorum], list_timeout [30s]
+2014-12-08 09:51:07,064 DEBUG [pool-2-thread-5] (RecoverySettings.java:91) - [Mercurio] using max_bytes_per_sec[20mb], concurrent_streams [3], file_chunk_size [512kb], translog_size [512kb], translog_ops [1000], and compress [true]
+2014-12-08 09:51:07,154 DEBUG [pool-2-thread-5] (NettyHttpServerTransport.java:191) - [Mercurio] using max_chunk_size[8kb], max_header_size[8kb], max_initial_line_length[4kb], max_content_length[100mb], receive_predictor[512kb->512kb], pipelining[true], pipelining_max_events[10000]
+2014-12-08 09:51:07,163 DEBUG [pool-2-thread-5] (IndexingMemoryController.java:122) - [Mercurio] using index_buffer_size [136.5mb], with min_shard_index_buffer_size [4mb], max_shard_index_buffer_size [512mb], shard_inactive_time [30m]
+2014-12-08 09:51:07,165 DEBUG [pool-2-thread-5] (IndicesFilterCache.java:125) - [Mercurio] using [node] weighted filter cache with size [10%], actual_size [136.5mb], expire [null], clean_interval [1m]
+2014-12-08 09:51:07,167 DEBUG [pool-2-thread-5] (IndicesFieldDataCache.java:88) - [Mercurio] using size [-1] [-1b], expire [null]
+2014-12-08 09:51:07,194 DEBUG [pool-2-thread-5] (LocalGatewayMetaState.java:147) - [Mercurio] using gateway.local.auto_import_dangled [YES], with gateway.local.dangling_timeout [2h]
+2014-12-08 09:51:07,199 DEBUG [pool-2-thread-5] (BulkUdpService.java:92) - [Mercurio] using enabled [false], host [null], port [9700-9800], bulk_actions [1000], bulk_size [5mb], flush_interval [5s], concurrent_requests [4]
+2014-12-08 09:51:07,214  INFO [pool-2-thread-5] (InternalNode.java:207) - [Mercurio] initialized
+2014-12-08 09:51:07,214  INFO [pool-2-thread-5] (InternalNode.java:226) - [Mercurio] starting ...
+2014-12-08 09:51:07,232 DEBUG [pool-2-thread-5] (NettyInternalESLogger.java:58) - Using select timeout of 500
+2014-12-08 09:51:07,232 DEBUG [pool-2-thread-5] (NettyInternalESLogger.java:58) - Epoll-bug workaround enabled = false
+2014-12-08 09:51:07,275 DEBUG [pool-2-thread-5] (NettyTransport.java:443) - [Mercurio] using profile[default], worker_count[8], port[9300-9400], bind_host[null], publish_host[null], compress[false], connect_timeout[30s], connections_per_node[2/3/6/1/1], receive_predictor[512kb->512kb]
+2014-12-08 09:51:07,312 DEBUG [pool-2-thread-5] (NettyTransport.java:429) - [Mercurio] Bound profile [default] to address [/0:0:0:0:0:0:0:0:9301]
+2014-12-08 09:51:07,394  INFO [pool-2-thread-5] (TransportService.java:93) - [Mercurio] bound_address {inet[/0:0:0:0:0:0:0:0:9301]}, publish_address {inet[/10.9.202.130:9301]}
+2014-12-08 09:51:07,405  INFO [pool-2-thread-5] (DiscoveryService.java:85) - [Mercurio] epbygomw0024-5432-postgres-win_ss/2PW3ncf-RCu8GPWswySv5g
+2014-12-08 09:51:07,405 DEBUG [elasticsearch[Mercurio][clusterService#updateTask][T#1]] (InternalClusterService.java:320) - [Mercurio] processing [initial_join]: execute
+2014-12-08 09:51:07,406 DEBUG [elasticsearch[Mercurio][clusterService#updateTask][T#1]] (InternalClusterService.java:343) - [Mercurio] processing [initial_join]: no change in cluster_state
+2014-12-08 09:51:07,430 DEBUG [elasticsearch[Mercurio][[unicast_connect]][T#1]] (NettyTransport.java:751) - [Mercurio] connected to node [[#zen_unicast_1#][EPBYGOMW0024][inet[localhost/127.0.0.1:9300]]]
+2014-12-08 09:51:10,420 DEBUG [elasticsearch[Mercurio][generic][T#2]] (NettyTransport.java:882) - [Mercurio] disconnecting from [[#zen_unicast_1#][EPBYGOMW0024][inet[localhost/127.0.0.1:9300]]] due to explicit disconnect call
+2014-12-08 09:51:10,425 DEBUG [elasticsearch[Mercurio][generic][T#1]] (ZenDiscovery.java:976) - [Mercurio] filtered ping responses: (filter_client[true], filter_data[false])
+	--> ping_response{node [[Black Talon][YIM2d9pqRT2oAva_8K4efg][EPBYGOMW0024][inet[/10.9.202.130:9300]]], id[12], master [[Black Talon][YIM2d9pqRT2oAva_8K4efg][EPBYGOMW0024][inet[/10.9.202.130:9300]]], hasJoinedOnce [true], cluster_name[epbygomw0024-5432-postgres-win_ss]}
+2014-12-08 09:51:10,445 DEBUG [elasticsearch[Mercurio][generic][T#1]] (NettyTransport.java:751) - [Mercurio] connected to node [[Black Talon][YIM2d9pqRT2oAva_8K4efg][EPBYGOMW0024][inet[/10.9.202.130:9300]]]
+2014-12-08 09:51:10,492 DEBUG [elasticsearch[Mercurio][[transport_server_worker.default]][T#4]{New I/O worker #13}] (PublishClusterStateAction.java:183) - [Mercurio] received cluster state version 20
+2014-12-08 09:51:10,494 DEBUG [elasticsearch[Mercurio][clusterService#updateTask][T#1]] (InternalClusterService.java:320) - [Mercurio] processing [zen-disco-receive(from master [[Black Talon][YIM2d9pqRT2oAva_8K4efg][EPBYGOMW0024][inet[/10.9.202.130:9300]]])]: execute
+2014-12-08 09:51:10,494 DEBUG [elasticsearch[Mercurio][clusterService#updateTask][T#1]] (MasterFaultDetection.java:97) - [Mercurio] [master] restarting fault detection against master [[Black Talon][YIM2d9pqRT2oAva_8K4efg][EPBYGOMW0024][inet[/10.9.202.130:9300]]], reason [new cluster state received and we are monitoring the wrong master [null]]
+2014-12-08 09:51:10,495 DEBUG [elasticsearch[Mercurio][clusterService#updateTask][T#1]] (ZenDiscovery.java:797) - [Mercurio] got first state from fresh master [YIM2d9pqRT2oAva_8K4efg]
+2014-12-08 09:51:10,495 DEBUG [elasticsearch[Mercurio][clusterService#updateTask][T#1]] (InternalClusterService.java:392) - [Mercurio] cluster state updated, version [20], source [zen-disco-receive(from master [[Black Talon][YIM2d9pqRT2oAva_8K4efg][EPBYGOMW0024][inet[/10.9.202.130:9300]]])]
+2014-12-08 09:51:10,496  INFO [elasticsearch[Mercurio][clusterService#updateTask][T#1]] (InternalClusterService.java:401) - [Mercurio] detected_master [Black Talon][YIM2d9pqRT2oAva_8K4efg][EPBYGOMW0024][inet[/10.9.202.130:9300]], added {[Black Talon][YIM2d9pqRT2oAva_8K4efg][EPBYGOMW0024][inet[/10.9.202.130:9300]],}, reason: zen-disco-receive(from master [[Black Talon][YIM2d9pqRT2oAva_8K4efg][EPBYGOMW0024][inet[/10.9.202.130:9300]]])
+2014-12-08 09:51:10,496 DEBUG [elasticsearch[Mercurio][clusterService#updateTask][T#1]] (InternalClusterService.java:428) - [Mercurio] set local cluster state to version 20
+2014-12-08 09:51:10,503 DEBUG [elasticsearch[Mercurio][clusterService#updateTask][T#1]] (InternalClusterService.java:463) - [Mercurio] processing [zen-disco-receive(from master [[Black Talon][YIM2d9pqRT2oAva_8K4efg][EPBYGOMW0024][inet[/10.9.202.130:9300]]])]: done applying updated cluster_state (version: 20)
+2014-12-08 09:51:10,506 DEBUG [elasticsearch[Mercurio][clusterService#updateTask][T#1]] (InternalClusterService.java:320) - [Mercurio] processing [finalize_join ([Black Talon][YIM2d9pqRT2oAva_8K4efg][EPBYGOMW0024][inet[/10.9.202.130:9300]])]: execute
+2014-12-08 09:51:10,506 DEBUG [elasticsearch[Mercurio][clusterService#updateTask][T#1]] (InternalClusterService.java:343) - [Mercurio] processing [finalize_join ([Black Talon][YIM2d9pqRT2oAva_8K4efg][EPBYGOMW0024][inet[/10.9.202.130:9300]])]: no change in cluster_state
+2014-12-08 09:51:10,664  INFO [pool-2-thread-5] (HttpServer.java:91) - [Mercurio] bound_address {inet[/0:0:0:0:0:0:0:0:9201]}, publish_address {inet[/10.9.202.130:9201]}
+2014-12-08 09:51:10,665  INFO [pool-2-thread-5] (InternalNode.java:261) - [Mercurio] started
+2014-12-08 09:51:55,098 DEBUG [elasticsearch[Mercurio][transport_client_worker][T#7]{New I/O worker #7}] (TransportSearchScrollScanAction.java:177) - [Mercurio] [9] Failed to execute query phase
+org.elasticsearch.transport.RemoteTransportException: [Black Talon][inet[/10.9.202.130:9300]][indices:data/read/search[phase/scan/scroll]]
+Caused by: org.elasticsearch.search.SearchContextMissingException: No search context found for id [9]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:502)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:236)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:939)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:930)
+	at org.elasticsearch.transport.netty.MessageChannelHandler$RequestHandler.run(MessageChannelHandler.java:275)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+2014-12-08 09:51:55,098 DEBUG [elasticsearch[Mercurio][transport_client_worker][T#4]{New I/O worker #4}] (TransportSearchScrollScanAction.java:177) - [Mercurio] [6] Failed to execute query phase
+org.elasticsearch.transport.RemoteTransportException: [Black Talon][inet[/10.9.202.130:9300]][indices:data/read/search[phase/scan/scroll]]
+Caused by: org.elasticsearch.search.SearchContextMissingException: No search context found for id [6]
+	at org.elasticsearch.search.SearchService.findContext(SearchService.java:502)
+	at org.elasticsearch.search.SearchService.executeScan(SearchService.java:236)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:939)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchScanScrollTransportHandler.messageReceived(SearchServiceTransportAction.java:930)
+	at org.elasticsearch.transport.netty.MessageChannelHandler$RequestHandler.run(MessageChannelHandler.java:275)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+2014-12-08 09:51:55,102  INFO [pool-2-thread-5] (ScanTest.java:84) - type: verbatim, cnt: 269520
+2014-12-08 09:51:55,102  INFO [pool-2-thread-5] (ScanTest.java:84) - type: document, cnt: 268401
+2014-12-08 09:51:55,103  INFO [pool-2-thread-5] (ScanTest.java:84) - type: .percolator, cnt: 208
+2014-12-08 09:51:55,103  INFO [pool-2-thread-5] (ScanTest.java:84) - type: sentence, cnt: 753722
+2014-12-08 09:51:55,103  INFO [pool-2-thread-5] (InternalNode.java:272) - [Mercurio] stopping ...
+2014-12-08 09:51:55,110 DEBUG [pool-2-thread-5] (MasterFaultDetection.java:139) - [Mercurio] [master] stopping fault detection against master [[Black Talon][YIM2d9pqRT2oAva_8K4efg][EPBYGOMW0024][inet[/10.9.202.130:9300]]], reason [zen disco stop]
+2014-12-08 09:51:55,135  INFO [pool-2-thread-5] (InternalNode.java:310) - [Mercurio] stopped
+2014-12-08 09:51:55,136  INFO [pool-2-thread-5] (InternalNode.java:327) - [Mercurio] closing ...
+2014-12-08 09:51:55,146  INFO [pool-2-thread-5] (InternalNode.java:407) - [Mercurio] closed

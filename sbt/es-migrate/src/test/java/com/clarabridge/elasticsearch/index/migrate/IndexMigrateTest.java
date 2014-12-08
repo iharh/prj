@@ -67,7 +67,7 @@ public class IndexMigrateTest extends ESTestBase {
         assertTrue(true);
     }
 
-    @Test
+    @Ignore
     public void testMigrateIndex() throws Exception {
         /*
         Set<String> dvFields = new HashSet<String>();

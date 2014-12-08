@@ -9,8 +9,6 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
 
-import com.clarabridge.transformer.indexing.pipe.ElasticSearchIndexer;
-
 //import static org.elasticsearch.test.hamcrest.ElasticsearchAssertions.assertAcked;
 
 //import org.elasticsearch.node.NodeBuilder;
@@ -88,7 +86,7 @@ public class RoutingTest {
         String naturalId = "tag:search.twitter.com,2005:524293909925486593";
         String routing = naturalId.toLowerCase();
 
-        DeleteRequestBuilder reqb = client.prepareDelete(aliasName, ElasticSearchIndexer.TYPE_DOCUMENT, documentId)
+        DeleteRequestBuilder reqb = client.prepareDelete(aliasName, ESConstants.TYPE_DOCUMENT, documentId)
             .setRouting(routing)
             .setRefresh(true);
 
@@ -110,7 +108,7 @@ public class RoutingTest {
 
         //log.debug("xcb: {}", xcb.string());
 
-        IndexRequestBuilder reqb = client.prepareIndex(aliasName, ElasticSearchIndexer.TYPE_DOCUMENT, documentId)
+        IndexRequestBuilder reqb = client.prepareIndex(aliasName, ESConstants.TYPE_DOCUMENT, documentId)
             .setSource(xcb)
             .setRouting(routing)
             .setRefresh(true);

@@ -1,7 +1,5 @@
 package com.clarabridge.elasticsearch.index.migrate;
 
-import com.clarabridge.transformer.indexing.pipe.ElasticSearchIndexer;
-
 import org.elasticsearch.search.SearchHit;
 
 import com.clarabridge.common.classification.lucene.LuceneAttributes;
@@ -24,9 +22,9 @@ public class ClbFieldChecker {
         String hitId = hit.getId();
         Integer hitShard = new Integer(hit.getShard().getShardId());
 
-        if (ElasticSearchIndexer.TYPE_DOCUMENT.equals(hitType)) {
+        if (ESConstants.TYPE_DOCUMENT.equals(hitType)) {
             docsShards.put(hitId, hitShard);
-        } else if (ElasticSearchIndexer.TYPE_VERBATIM.equals(hitType)) {
+        } else if (ESConstants.TYPE_VERBATIM.equals(hitType)) {
             verbShards.put(hitId, hitShard);
             String parentId = hit.field(LuceneAttributes.FIELD_NAME_ID_DOCUMENT).value().toString();
 
@@ -36,7 +34,7 @@ public class ClbFieldChecker {
             } else if (!parentShard.equals(hitShard)) {
                 log.error("!!! shard mismatch for verbatim: {}", hitId);
             }
-        } else if (ElasticSearchIndexer.TYPE_SENTENCE.equals(hitType)) {
+        } else if (ESConstants.TYPE_SENTENCE.equals(hitType)) {
             //sentShards.put(hitId, hitShard);
             String parentId = hit.field(LuceneAttributes.FIELD_NAME_ID_VERBATIM).value().toString();
 

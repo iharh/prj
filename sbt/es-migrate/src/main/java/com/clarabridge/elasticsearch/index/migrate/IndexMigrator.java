@@ -1,7 +1,5 @@
 package com.clarabridge.elasticsearch.index.migrate;
 
-//import com.clarabridge.transformer.indexing.pipe.ElasticSearchIndexer;
-
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.ClusterAdminClient;
 import org.elasticsearch.client.IndicesAdminClient;
