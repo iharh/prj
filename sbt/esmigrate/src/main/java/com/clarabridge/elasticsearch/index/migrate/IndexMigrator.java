@@ -75,7 +75,7 @@ public class IndexMigrator {
     public void switchIndex(long projectId, long generation) throws IOException {
         String projectIdStr = Long.toString(projectId);
         String srcIndexName = inf.findCur(projectIdStr);
-        String dstIndexName = inf.findSpecific(projectIdStr, generation);
+        String dstIndexName = inf.findSpecific(projectIdStr, generation); // we open the index if needed there
         if (dstIndexName == null) {
             if (generation > 0) {
                 throw new IllegalArgumentException(String.format(ERR_INVALID_GEN, generation));
@@ -85,7 +85,7 @@ public class IndexMigrator {
         log.info("switching index: {} to index: {}", srcIndexName, dstIndexName);
 
         if (!srcIndexName.equals(dstIndexName)) {
-            switchAliasesAndEnabling(projectIdStr, srcIndexName, dstIndexName);
+            switchAliasesAndCloseSrc(projectIdStr, srcIndexName, dstIndexName);
         }
     }
 
@@ -130,7 +130,7 @@ public class IndexMigrator {
 
         waitForClusterAndRefresh(dstIndexName);
 
-        switchAliasesAndEnabling(projectIdStr, srcIndexName, dstIndexName);
+        switchAliasesAndCloseSrc(projectIdStr, srcIndexName, dstIndexName);
     }
 
 
@@ -322,7 +322,7 @@ public class IndexMigrator {
         }
     }
 
-    private void switchAliasesAndEnabling(String projectIdStr, String srcIndexName, String dstIndexName) throws IOException {
+    private void switchAliasesAndCloseSrc(String projectIdStr, String srcIndexName, String dstIndexName) throws IOException {
         String readAliasName = inf.findReadAlias(projectIdStr);
         IndicesAliasesRequestBuilder iarb_read = iac.prepareAliases().addAlias(dstIndexName, readAliasName);
         if (iac.prepareExists(srcIndexName).get().isExists()) {
@@ -341,5 +341,7 @@ public class IndexMigrator {
 
         //ien.changeEnabling(srcIndexName, false);
         //ien.changeEnabling(dstIndexName, true);
+        boolean ack_close = iac.prepareClose(srcIndexName).get().isAcknowledged();
+        log.info("index {} closed: {}", srcIndexName, Boolean.toString(ack_close));
     }
 }

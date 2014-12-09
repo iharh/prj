@@ -2,18 +2,13 @@ package com.clarabridge.elasticsearch.index.migrate;
 
 import org.elasticsearch.client.IndicesAdminClient;
 
-//import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.collect.ImmutableOpenMap;
 import org.elasticsearch.common.hppc.cursors.ObjectCursor;
-//import org.elasticsearch.common.hppc.cursors.ObjectObjectCursor;
 
-//import org.elasticsearch.cluster.metadata.MappingMetaData;
 import org.elasticsearch.cluster.metadata.AliasMetaData;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-//import java.io.IOException;
 
 import java.util.List;
 
@@ -21,7 +16,6 @@ public class IndexNameFinder {
     private static final Logger log = LoggerFactory.getLogger(IndexNameFinder.class);
 
     private static final String SEPARATOR = "_"; //$NON-NLS-1$ 
-    private static final String WILDCARD = "*"; //$NON-NLS-1$
     private static final String READ_ALIAS_PREFIX = "read"; //$NON-NLS-1$
     private static final String WRITE_ALIAS_PREFIX = "write"; //$NON-NLS-1$
 
@@ -75,7 +69,12 @@ public class IndexNameFinder {
 
     public String findSpecific(String projectIdStr, long gen) {
         String indexName = projectIdStr + SEPARATOR + gen;
-        return iac.prepareExists(indexName).get().isExists() ? indexName : null;
+        if (iac.prepareExists(indexName).get().isExists()) {
+            boolean ack = iac.prepareOpen(indexName).get().isAcknowledged();
+            log.info("index: {} opened: {}", indexName, Boolean.toString(ack));
+            return indexName;
+        }
+        return null;
     }
 
     private long findGeneration(String projectIdStr) {
@@ -107,35 +106,4 @@ public class IndexNameFinder {
 
         return result;
     }
-/*
-    private long findGenerationByMeta(String projectIdStr) {
-        int projectIdPrefixLen = projectIdStr.length() + 1;
-        //log.info("find generation for project: {}", projectIdStr);
-        String indexMask = projectIdStr + SEPARATOR + WILDCARD;
-
-        ImmutableOpenMap<String, ImmutableOpenMap<String, MappingMetaData>> itm = iac.prepareGetMappings(indexMask).get().getMappings();
-
-        long result = 0;
-        for (ObjectObjectCursor<String, ImmutableOpenMap<String, MappingMetaData>> c : itm) {
-            String indexName = c.key;
-            ImmutableOpenMap<String, MappingMetaData> indexMappings = itm.get(indexName);
-            try {
-                boolean enabled = indexMappings == null ? true : ien.isEnabledMMD(indexMappings.get(IndexEnabler.TYPE_CLB_META));
-                //log.info("traversing index: {} enabled: {}", indexName, enabled);
-                if (enabled) {
-                    result = Math.max(result, Long.parseLong(indexName.substring(projectIdPrefixLen)));
-                }
-            } catch (IOException | NumberFormatException e) {
-            }
-        }
-
-        if (result < 0 && !iac.prepareExists(projectIdStr).get().isExists()) {
-            result = 0; // new index - start from generation 0
-        }
-
-        //log.info("found generation: {} for project: {}", result, projectIdStr);
-
-        return result;
-    }
-*/
 }
