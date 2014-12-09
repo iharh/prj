@@ -96,6 +96,7 @@ public class IndexMigrator {
         int writeThreads = req.getWriteThreads();
         Set<String> dvFields = req.getDvFields();
         boolean obsolete = req.getObsolete();
+        TimeValue scrollKeepAlive = req.getScrollKeepAlive();
         TimeValue sleepBetweenBatches = req.getSleepBetweenBatches();
 
         String projectIdStr = Long.toString(projectId);
@@ -121,7 +122,8 @@ public class IndexMigrator {
                 //.setConcurrentRequests(0)
                 .build();
         ) {
-            allDocsToBulk(bp, bw, allTypes, typesWithParent, fieldChecker, srcIndexName, dstIndexName, shards, batchSize, sleepBetweenBatches);
+            allDocsToBulk(bp, bw, allTypes, typesWithParent, fieldChecker, srcIndexName, dstIndexName, shards, batchSize,
+                scrollKeepAlive, sleepBetweenBatches);
         } catch (Exception e) {
             throw new IOException(e.getMessage(), e);
         }
@@ -145,12 +147,13 @@ public class IndexMigrator {
     }
 
     private void allDocsToBulk(BulkProcessor bp, BulkWaiter bw, Set<String> allTypes, Set<String> typesWithParent,
-        ClbFieldChecker fieldChecker, String srcIndexName, String dstIndexName, int shards, int batchSize, TimeValue sleepBetweenBatches) throws Exception {
+        ClbFieldChecker fieldChecker, String srcIndexName, String dstIndexName, int shards, int batchSize,
+        TimeValue scrollKeepAlive, TimeValue sleepBetweenBatches) throws Exception {
 
         SearchRequestBuilder srb = client.prepareSearch(srcIndexName)
             .setTypes(allTypes.toArray(new String[0]))
             .setSearchType(SearchType.SCAN)
-            .setScroll(TimeValue.timeValueHours(240)) // timeValueMinutes(2)
+            .setScroll(scrollKeepAlive)
             .setQuery(matchAllQuery())
             .setSize(batchSize/shards)
         ;
@@ -209,7 +212,7 @@ public class IndexMigrator {
                 }
             }
             resp = client.prepareSearchScroll(resp.getScrollId())
-                .setScroll(TimeValue.timeValueHours(240)) // timeValueMinutes(10)
+                .setScroll(scrollKeepAlive)
                 .get();
         }
         while (resp.getHits().hits().length > 0);

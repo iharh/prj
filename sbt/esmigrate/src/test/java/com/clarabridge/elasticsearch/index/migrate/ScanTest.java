@@ -2,8 +2,6 @@ package com.clarabridge.elasticsearch.index.migrate;
 
 import org.junit.Test;
 import org.junit.Ignore;
-import org.junit.Before;
-import org.junit.After;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
@@ -47,7 +45,7 @@ public class ScanTest extends ESTestBase {
         indexTypes.put(type, cnt + 1);
     }
 
-    @Test
+    @Ignore
     public void testScanIndex() throws Exception {
         Map<String, Long> indexTypes = new HashMap<String, Long>();
 

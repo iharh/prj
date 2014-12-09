@@ -2,8 +2,6 @@ package com.clarabridge.elasticsearch.index.migrate;
 
 import org.junit.Test;
 import org.junit.Ignore;
-import org.junit.Before;
-import org.junit.After;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;

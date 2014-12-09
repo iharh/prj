@@ -18,6 +18,8 @@ public class IndexMigrateRequest {
     private boolean obsolete;
 
     private TimeValue sleepBetweenBatches;
+    private TimeValue scrollKeepAlive;
+
 
     public void setProjectId(long projectId) {
         this.projectId = projectId;
@@ -59,6 +61,13 @@ public class IndexMigrateRequest {
     }
     public boolean getObsolete() {
         return obsolete;
+    }
+
+    public void setScrollKeepAlive(TimeValue scrollKeepAlive) {
+        this.scrollKeepAlive = scrollKeepAlive;
+    }
+    public TimeValue getScrollKeepAlive() {
+        return scrollKeepAlive;
     }
 
     public void setSleepBetweenBatches(TimeValue sleepBetweenBatches) {
