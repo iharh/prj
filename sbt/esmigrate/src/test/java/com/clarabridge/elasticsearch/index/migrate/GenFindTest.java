@@ -26,7 +26,7 @@ public class GenFindTest extends ESTestBase {
 
     private final static long projectId = 1404;
 
-    @Test
+    @Ignore
     public void testClosedIndexExists() throws Exception {
         String projectIdStr = Long.toString(projectId);
         String indexName = projectIdStr + SEPARATOR + "0";

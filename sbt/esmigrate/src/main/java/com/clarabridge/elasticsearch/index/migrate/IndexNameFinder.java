@@ -70,11 +70,19 @@ public class IndexNameFinder {
     public String findSpecific(String projectIdStr, long gen) {
         String indexName = projectIdStr + SEPARATOR + gen;
         if (iac.prepareExists(indexName).get().isExists()) {
+        } else if (gen <= 0) {
+            indexName = projectIdStr; // old-style index name
+        } else {
+            log.info("index: {} not found", indexName);
+            indexName = null;
+        }
+
+        if (indexName != null) {
             boolean ack = iac.prepareOpen(indexName).get().isAcknowledged();
             log.info("index: {} opened: {}", indexName, Boolean.toString(ack));
-            return indexName;
         }
-        return null;
+
+        return indexName;
     }
 
     private long findGeneration(String projectIdStr) {

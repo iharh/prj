@@ -56,7 +56,7 @@ public class IndexMigrateTest extends ESTestBase {
         log.info("index {} created: {}", indexName, Boolean.toString(ack));
     }
 
-    private final static long projectId = 1900859;
+    private final static long projectId = 1404; // 1900859;
 
     @Ignore
     public void testCreateAliasesIfNeeded() throws Exception {
@@ -65,7 +65,7 @@ public class IndexMigrateTest extends ESTestBase {
         assertTrue(true);
     }
 
-    @Ignore
+    @Test
     public void testMigrateIndex() throws Exception {
         /*
         Set<String> dvFields = new HashSet<String>();
@@ -93,11 +93,11 @@ public class IndexMigrateTest extends ESTestBase {
 
         IndexMigrateRequest req = new IndexMigrateRequest();
         req.setProjectId(projectId);
-        req.setShards(5);
+        req.setShards(7);
         req.setBatchSize(10000);
         req.setWriteThreads(8);
         //req.setDvFields(dvFields);
-        //req.setObsolete(true);
+        req.setObsolete(true);
 
         im.migrateIndex(req);
     }

@@ -77,10 +77,7 @@ public class IndexMigrator {
         String srcIndexName = inf.findCur(projectIdStr);
         String dstIndexName = inf.findSpecific(projectIdStr, generation); // we open the index if needed there
         if (dstIndexName == null) {
-            if (generation > 0) {
-                throw new IllegalArgumentException(String.format(ERR_INVALID_GEN, generation));
-            }
-            dstIndexName = projectIdStr; // old-style index name
+            throw new IllegalArgumentException(String.format(ERR_INVALID_GEN, generation));
         }
         log.info("switching index: {} to index: {}", srcIndexName, dstIndexName);
 
