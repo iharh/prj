@@ -10,6 +10,8 @@ import org.elasticsearch.rest.BytesRestResponse;
 
 import org.elasticsearch.indices.IndicesService;
 
+import org.elasticsearch.index.service.IndexService;
+
 import static org.elasticsearch.rest.RestRequest.Method.GET;
 import static org.elasticsearch.rest.RestStatus.OK;
 
@@ -26,7 +28,12 @@ public class MigrateRestHandler implements RestHandler {
     public void handleRequest(final RestRequest request, final RestChannel channel) {
         String who = request.param("who"); // $NON-NLS-1$
         //String whoSafe = (who != null) ? who : "world"; // $NON-NLS-1$
-        String whoSafe = (indicesService != null) ? "indicesService" : "null"; // $NON-NLS-1$ $NON-NLS-2$
+
+        final long projectId = 1404;
+        // indicesService.indexServiceSafe(String index) throws IndexMissingException;
+        final IndexService indexService = indicesService.indexService(Long.toString(projectId)); // indicesService.hasIndex(...)
+
+        String whoSafe = indexService.getClass().getName();
 
         channel.sendResponse(new BytesRestResponse(OK, "Hello, " + whoSafe)); // $NON-NLS-1$
     }
