@@ -165,19 +165,11 @@ public class IndexMigrator {
         do {
             bw.checkErrors();
 
-            if (sleepBetweenBatches != null) {
-                try {
-                    long sleepMillis = sleepBetweenBatches.getMillis();
-                    log.info("sleeping between batches: {}", sleepMillis);
-                    Thread.sleep(sleepMillis);
-                } catch (InterruptedException e) {
-                }
-            }
-
+            int numHits = 0;
             for (SearchHit hit : resp.getHits()) {
                 String hitType = hit.getType();
                 int hitShard = hit.getShard().getShardId();
-
+                ++numHits;
                 log.debug("hit type: {}, id: {}, shard: {}", hitType, hit.getId(), hitShard); // ", srcRef: {},  hit.getSourceRef().toUtf8()
 
                 IndexRequest ir = new IndexRequest(dstIndexName)
@@ -208,6 +200,16 @@ public class IndexMigrator {
                     fieldChecker.addHit(hit);
                 }
             }
+
+            if (sleepBetweenBatches != null) {
+                try {
+                    long sleepMillis = sleepBetweenBatches.getMillis();
+                    log.info("sleeping between batches: {} millis, numHits: {}", sleepMillis, numHits);
+                    Thread.sleep(sleepMillis);
+                } catch (InterruptedException e) {
+                }
+            }
+
             resp = client.prepareSearchScroll(resp.getScrollId())
                 .setScroll(scrollKeepAlive)
                 .get();

@@ -9,19 +9,52 @@ import org.elasticsearch.rest.RestChannel;
 import org.elasticsearch.rest.BytesRestResponse;
 
 import org.elasticsearch.indices.IndicesService;
+import org.elasticsearch.indices.IndicesLifecycle.Listener;
 
 import org.elasticsearch.index.service.IndexService;
+import org.elasticsearch.index.shard.service.IndexShard;
+
 
 import static org.elasticsearch.rest.RestRequest.Method.GET;
 import static org.elasticsearch.rest.RestStatus.OK;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 public class MigrateRestHandler implements RestHandler {
     private IndicesService indicesService;
+    private Map<String, IndexChanges> changes;
 
     @Inject
     public MigrateRestHandler(RestController restController, IndicesService indicesService) {
         restController.registerHandler(GET, "/_hello", this); // $NON-NLS-1$
+
         this.indicesService = indicesService;
+        this.changes = new ConcurrentHashMap<String, IndexChanges>();
+
+        registerLifecycleHandler();
+    }
+
+    private void registerLifecycleHandler() {
+        indicesService.indicesLifecycle().addListener(new Listener() {
+            @Override
+            public void afterIndexShardStarted(IndexShard indexShard) {
+                if (indexShard.routingEntry().primary()) {
+                    final String indexName = indexShard.shardId().index().name();
+
+                    IndexChanges indexChanges;
+                    synchronized (changes) {
+                        indexChanges = changes.get(indexName);
+                        if (indexChanges == null) {
+                            indexChanges = new IndexChanges(indexName);
+                            changes.put(indexName, indexChanges);
+                        }
+                    }
+                    //indexChanges.addShard();
+                    indexShard.indexingService().addListener(indexChanges);
+                }
+            }
+        });
     }
 
     @Override

@@ -99,7 +99,7 @@ public class IndexNameFinder {
         ImmutableOpenMap<String, List<AliasMetaData>> aliasesByIndices = iac.prepareGetAliases(aliasName).get().getAliases();
         for (ObjectCursor<String> c : aliasesByIndices.keys()) {
             final String indexName = c.value;
-            log.info("alias: {} traversing index: {}", aliasName, indexName);
+            log.debug("alias: {} traversing index: {}", aliasName, indexName);
             try {
                 result = Math.max(result, Long.parseLong(indexName.substring(projectIdPrefixLen)));
             } catch (StringIndexOutOfBoundsException | NumberFormatException e) {
@@ -110,7 +110,7 @@ public class IndexNameFinder {
             result = 0; // new index - start from generation 0
         }
 
-        log.info("found generation: {} for project: {}", result, projectIdStr);
+        log.debug("found generation: {} for project: {}", result, projectIdStr);
 
         return result;
     }

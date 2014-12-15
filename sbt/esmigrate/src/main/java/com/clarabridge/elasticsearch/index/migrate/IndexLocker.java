@@ -28,7 +28,7 @@ class IndexLocker implements Closeable {
         boolean ack = iac.prepareUpdateSettings(indexName)
             .setSettings(settingsBuilder().put(SETTING_TO_LOCK, true))
             .get().isAcknowledged();
-        log.info("index {} chanted to RO: {}", indexName, Boolean.toString(ack));
+        log.info("index {} changed to RO: {}", indexName, Boolean.toString(ack));
     }
 
     @Override
