@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.After;
 
 import static org.junit.Assert.assertTrue;
+//import static org.elasticsearch.test.hamcrest.ElasticsearchAssertions.assertAcked;
 
 import org.elasticsearch.node.Node;
 import org.elasticsearch.client.Client;

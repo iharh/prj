@@ -1,5 +1,8 @@
 package com.clarabridge.elasticsearch.index.migrate;
 
+import com.clarabridge.elasticsearch.index.migrate.plugin.IndexChanges;
+import com.clarabridge.elasticsearch.index.migrate.plugin.IndexChangesListener;
+
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.ClusterAdminClient;
 import org.elasticsearch.client.IndicesAdminClient;
@@ -9,6 +12,7 @@ import org.elasticsearch.cluster.metadata.MappingMetaData;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.collect.ImmutableOpenMap;
 import org.elasticsearch.common.hppc.cursors.ObjectObjectCursor;
+import org.elasticsearch.common.bytes.BytesReference;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.common.unit.ByteSizeUnit;
 import org.elasticsearch.common.unit.ByteSizeValue;
@@ -40,6 +44,7 @@ import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.Closeable;
 import java.io.IOException;
 
 import java.util.HashMap;
@@ -86,7 +91,39 @@ public class IndexMigrator {
         }
     }
 
+    private Closeable createLocker(String srcIndexName, final String dstIndexName, final IndexChanges changes) {
+        if (changes == null) {
+            log.info("obtaining lock for index: {}", srcIndexName);
+            return new IndexLocker(iac, srcIndexName);
+        } else {
+            log.info("adding a listener for index: {}", dstIndexName);
+
+            changes.addListener(new IndexChangesListener() {
+                @Override
+                public void onChange(String id, long version, BytesReference srcRef) {
+                    log.info("onChange index: {} id: {} ver: {}", dstIndexName, id, version);
+                }
+
+                @Override
+                public void onDelete(String id, long version) {
+                    log.info("onDelete index: {} id: {} ver: {}", dstIndexName, id, version);
+                }
+            });
+
+            return new Closeable() {
+                @Override
+                public void close() {
+                    changes.removeListener();
+                }
+            };
+        }
+    }
+
     public void migrateIndex(IndexMigrateRequest req) throws IOException {
+        migrateIndex(req, null);
+    }
+
+    public void migrateIndex(IndexMigrateRequest req, IndexChanges changes) throws IOException {
         long projectId = req.getProjectId();
         int shards = req.getShards();
         int batchSize = req.getBatchSize();
@@ -110,7 +147,7 @@ public class IndexMigrator {
 
         ClbFieldChecker fieldChecker = null; // new ClbFieldChecker();
 
-        try (IndexLocker il = new IndexLocker(iac, srcIndexName);
+        try (Closeable locker = createLocker(srcIndexName, dstIndexName, changes);
             BulkWaiter bw = new BulkWaiter();
             BulkProcessor bp = BulkProcessor.builder(client, bw)
                 .setBulkActions(batchSize) 

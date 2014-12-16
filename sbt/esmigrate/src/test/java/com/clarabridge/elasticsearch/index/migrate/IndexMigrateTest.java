@@ -6,9 +6,6 @@ import org.junit.Ignore;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 
-//import static org.elasticsearch.test.hamcrest.ElasticsearchAssertions.assertAcked;
-
-//import org.elasticsearch.node.NodeBuilder;
 import org.elasticsearch.node.Node;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.IndicesAdminClient;
@@ -65,7 +62,7 @@ public class IndexMigrateTest extends ESTestBase {
         assertTrue(true);
     }
 
-    @Test
+    @Ignore
     public void testMigrateIndex() throws Exception {
         /*
         Set<String> dvFields = new HashSet<String>();

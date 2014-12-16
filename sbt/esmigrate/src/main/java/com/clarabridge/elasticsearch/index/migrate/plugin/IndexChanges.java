@@ -1,5 +1,7 @@
 package com.clarabridge.elasticsearch.index.migrate.plugin;
 
+import org.elasticsearch.common.bytes.BytesReference;
+
 import org.elasticsearch.index.indexing.IndexingOperationListener;
 
 import org.elasticsearch.index.engine.Engine.Create;
@@ -14,11 +16,13 @@ import org.elasticsearch.common.logging.Loggers;
 public class IndexChanges extends IndexingOperationListener {
     private static final ESLogger LOG = Loggers.getLogger(IndexChanges.class);
 
-    public enum ChangeType { INDEX, CREATE, DELETE; }
+    //public enum ChangeType { INDEX, CREATE, DELETE; }
 
     private String indexName;
 
     //private AtomicInteger shardCount;
+
+    private volatile IndexChangesListener listener; // only one migrate at a time is supported
 
     public IndexChanges(String indexName) {
         this.indexName = indexName;
@@ -31,27 +35,44 @@ public class IndexChanges extends IndexingOperationListener {
     public int removeShard() {
         return shardCount.decrementAndGet();
     }
-
 */
-    private void addChange(ChangeType changeType, String id, long version) {
-        //lastChange=c.timestamp;
-        //changes.add(c);
-        //triggerWatchers(c);
-        LOG.info("index: " + indexName + " op: " + changeType.toString() + " version: " + version);
+    public void addListener(IndexChangesListener listener) {
+        // TODO: assert this.listener == null
+        this.listener = listener;
+        LOG.info("start listening for changes of index: " + indexName);
+    }
+
+    public void removeListener() {
+        this.listener = null;
+        LOG.info("stop listening for changes of index: " + indexName);
+    }
+
+    private void addChange(String id, long version, BytesReference srcRef) {
+        //LOG.info("index: " + indexName + " change doc version: " + version);
+        if (listener != null) {
+            listener.onChange(id, version, srcRef);
+        }
+    }
+
+    private void addDelete(String id, long version) {
+        //LOG.info("index: " + indexName + " delete doc version: " + version);
+        if (listener != null) {
+            listener.onDelete(id, version);
+        }
     }
 
     @Override
     public void postCreate(Create create) {
-        addChange(ChangeType.CREATE, create.id(), create.version());
-    }
-
-    @Override
-    public void postDelete(Delete delete) {
-        addChange(ChangeType.DELETE, delete.id(), delete.version());
+        addChange(create.id(), create.version(), create.source());
     }
 
     @Override
     public void postIndex(Index index) {
-        addChange(ChangeType.INDEX, index.id(), index.version());
+        addChange(index.id(), index.version(), index.source());
+    }
+
+    @Override
+    public void postDelete(Delete delete) {
+        addDelete(delete.id(), delete.version());
     }
 }

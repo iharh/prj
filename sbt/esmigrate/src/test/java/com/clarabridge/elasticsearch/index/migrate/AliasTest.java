@@ -4,10 +4,6 @@ import org.junit.Test;
 import org.junit.Ignore;
 
 import static org.junit.Assert.assertTrue;
-//import static org.junit.Assert.assertNotNull;
-//import static org.junit.Assert.assertEquals;
-
-//import static org.elasticsearch.test.hamcrest.ElasticsearchAssertions.assertAcked;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
