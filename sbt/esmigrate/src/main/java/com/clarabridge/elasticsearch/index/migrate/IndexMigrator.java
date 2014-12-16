@@ -24,7 +24,9 @@ import org.elasticsearch.action.bulk.BulkProcessor;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.action.index.IndexRequestBuilder;
 import org.elasticsearch.action.index.IndexRequest;
+import org.elasticsearch.action.index.IndexResponse;
 
 import org.elasticsearch.index.fielddata.FieldDataType;
 import org.elasticsearch.index.mapper.core.StringFieldMapper;
@@ -102,6 +104,15 @@ public class IndexMigrator {
                 @Override
                 public void onChange(String id, long version, BytesReference srcRef) {
                     log.info("onChange index: {} id: {} ver: {}", dstIndexName, id, version);
+
+                    IndexRequestBuilder reqb = client.prepareIndex(dstIndexName, ESConstants.TYPE_DOCUMENT, id) // TODO: need to specify a type here
+                        .setSource(srcRef)
+                        //.setRouting(routing)
+                        .setRefresh(true);
+
+                    IndexResponse rsp = reqb.get();
+
+                    log.info("{}", rsp.isCreated());
                 }
 
                 @Override
