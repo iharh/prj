@@ -1,4 +1,4 @@
-package com.clarabridge.elasticsearch.index.migrate.plugin;
+package com.clarabridge.elasticsearch.index.migrate;
 
 import org.elasticsearch.common.bytes.BytesReference;
 

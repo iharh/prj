@@ -1,7 +1,6 @@
 package com.clarabridge.elasticsearch.index.migrate;
 
 import com.clarabridge.elasticsearch.index.migrate.plugin.IndexChanges;
-import com.clarabridge.elasticsearch.index.migrate.plugin.IndexChangesListener;
 
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.ClusterAdminClient;
@@ -24,9 +23,7 @@ import org.elasticsearch.action.bulk.BulkProcessor;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.action.search.SearchResponse;
-import org.elasticsearch.action.index.IndexRequestBuilder;
 import org.elasticsearch.action.index.IndexRequest;
-import org.elasticsearch.action.index.IndexResponse;
 
 import org.elasticsearch.index.fielddata.FieldDataType;
 import org.elasticsearch.index.mapper.core.StringFieldMapper;
@@ -93,40 +90,13 @@ public class IndexMigrator {
         }
     }
 
-    private Closeable createLocker(String srcIndexName, final String dstIndexName, final IndexChanges changes) {
+    private Closeable createLocker(String srcIndexName, String dstIndexName, IndexChanges changes) {
         if (changes == null) {
             log.info("obtaining lock for index: {}", srcIndexName);
             return new IndexLocker(iac, srcIndexName);
         } else {
             log.info("adding a listener for index: {}", dstIndexName);
-
-            changes.addListener(new IndexChangesListener() {
-                @Override
-                public void onChange(String id, long version, BytesReference srcRef) {
-                    log.info("onChange index: {} id: {} ver: {}", dstIndexName, id, version);
-
-                    IndexRequestBuilder reqb = client.prepareIndex(dstIndexName, ESConstants.TYPE_DOCUMENT, id) // TODO: need to specify a type here
-                        .setSource(srcRef)
-                        //.setRouting(routing)
-                        .setRefresh(true);
-
-                    IndexResponse rsp = reqb.get();
-
-                    log.info("{}", rsp.isCreated());
-                }
-
-                @Override
-                public void onDelete(String id, long version) {
-                    log.info("onDelete index: {} id: {} ver: {}", dstIndexName, id, version);
-                }
-            });
-
-            return new Closeable() {
-                @Override
-                public void close() {
-                    changes.removeListener();
-                }
-            };
+            return new IndexChangesApplicator(client, changes, dstIndexName);
         }
     }
 
@@ -152,6 +122,7 @@ public class IndexMigrator {
         Set<String> allTypes = new HashSet<String>();
         Set<String> typesWithParent = new HashSet<String>();
 
+        deleteIndexIfExists(dstIndexName);
         createIndexCopyMetadata(allTypes, typesWithParent, srcIndexName, dstIndexName, shards, dvFields);
 
         waitForClusterAndRefresh(srcIndexName);
@@ -181,8 +152,6 @@ public class IndexMigrator {
 
     private void createIndexCopyMetadata(Set<String> allTypes, Set<String> typesWithParent,
         String srcIndexName, String dstIndexName, int shards, Set<String> dvFields) throws IOException {
-
-        deleteIndexIfExists(dstIndexName);
 
         CreateIndexRequestBuilder rb = iac.prepareCreate(dstIndexName);
         rb = addIndexMappings(rb, allTypes, typesWithParent, srcIndexName, dvFields);

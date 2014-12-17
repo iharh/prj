@@ -1,5 +1,7 @@
 package com.clarabridge.elasticsearch.index.migrate.plugin;
 
+import com.clarabridge.elasticsearch.index.migrate.IndexChangesListener;
+
 import org.elasticsearch.common.bytes.BytesReference;
 
 import org.elasticsearch.index.indexing.IndexingOperationListener;
