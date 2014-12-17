@@ -1,0 +1,17 @@
+{
+  "settings": {
+    "number_of_shards": 3
+  },
+  "mappings": {
+    "document": {
+      "properties": {                
+        "natural_id": {"type": "string", "store" :"yes" },
+        "msg": {"type": "string", "store": "yes" }
+      },
+      "_timestamp": {
+        "enabled": true, "store": true
+      }
+    }
+  }
+}
+
