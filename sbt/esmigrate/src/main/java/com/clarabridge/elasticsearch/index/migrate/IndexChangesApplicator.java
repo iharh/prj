@@ -22,12 +22,18 @@ public class IndexChangesApplicator implements IndexChangesListener, Closeable {
     private IndexChanges changes;
     private String dstIndexName;
 
-    public IndexChangesApplicator(Client client, IndexChanges cnages, String dstIndexName) {
+    public IndexChangesApplicator(Client client, IndexChanges changes, String dstIndexName) {
         this.client = client;
         this.changes = changes;
-
+        this.dstIndexName = dstIndexName;
+        //log.info("Changes {} found", (changes == null ? " not" : ""));
         changes.addListener(this);
     }
+
+    //public IndexChangesApplicator startListen() {
+    //    log.info("Changes {} found", (changes == null ? " not" : ""));
+    //    return this;
+    //}
 
     @Override
     public void onChange(String id, long version, BytesReference srcRef) {
@@ -50,6 +56,8 @@ public class IndexChangesApplicator implements IndexChangesListener, Closeable {
 
     @Override
     public void close() {
-        changes.removeListener();
+        if (changes != null) {
+            changes.removeListener();
+        }
     }
 }

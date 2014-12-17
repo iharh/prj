@@ -29,6 +29,8 @@ import static org.elasticsearch.rest.RestRequest.Method.GET;
 import static org.elasticsearch.rest.RestRequest.Method.POST;
 import static org.elasticsearch.rest.RestStatus.OK;
 
+import org.apache.commons.lang.StringUtils;
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.HashSet;
@@ -75,6 +77,7 @@ public class MigrateRestHandler implements RestHandler {
                         if (indexChanges == null) {
                             indexChanges = new IndexChanges(indexName);
                             changes.put(indexName, indexChanges);
+                            LOG.info("Listening for changes on index : " + indexName);
                         }
                     }
                     //indexChanges.addShard();
@@ -104,14 +107,21 @@ public class MigrateRestHandler implements RestHandler {
         req.setBatchSize(10000);
         req.setDvFields(new HashSet<String>());
         req.setScrollKeepAlive(TimeValue.timeValueMinutes(30));
-        //req.setSleepBetweenBatches(sleepBetweenBatches);
 
         try {
+            final String sleepBetweenBatchesStr = request.param("sleepBetweenBatches"); // $NON-NLS-1$
+            if (StringUtils.isNotBlank(sleepBetweenBatchesStr)) {
+                TimeValue sleepBetweenBatches = TimeValue.parseTimeValue(sleepBetweenBatchesStr, null);
+                req.setSleepBetweenBatches(sleepBetweenBatches);
+            }
+
             LOG.info("migrate called as non-locked for project: " + projectIdStr);
 
-            IndexMigrator im = new IndexMigrator(client);
+            IndexChanges ic = changes.get(indexName);
+            LOG.info("Changes for index : " + indexName + (ic == null ? " not" : "") + " found");
 
-            im.migrateIndex(req, changes.get(indexName));
+            IndexMigrator im = new IndexMigrator(client);
+            im.migrateIndex(req, ic);
         } catch (Throwable e) {
             LOG.error("Cannot process migrate request", e);
             channel.sendResponse(new BytesRestResponse(ExceptionsHelper.status(e)));

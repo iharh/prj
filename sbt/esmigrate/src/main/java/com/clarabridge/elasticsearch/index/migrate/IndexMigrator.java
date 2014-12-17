@@ -96,7 +96,7 @@ public class IndexMigrator {
             return new IndexLocker(iac, srcIndexName);
         } else {
             log.info("adding a listener for index: {}", dstIndexName);
-            return new IndexChangesApplicator(client, changes, dstIndexName);
+            return new IndexChangesApplicator(client, changes, dstIndexName); // .startListen();
         }
     }
 
@@ -187,7 +187,8 @@ public class IndexMigrator {
                 String hitType = hit.getType();
                 int hitShard = hit.getShard().getShardId();
                 ++numHits;
-                log.debug("hit type: {}, id: {}, shard: {}", hitType, hit.getId(), hitShard); // ", srcRef: {},  hit.getSourceRef().toUtf8()
+                // TODO: return back to debug
+                log.info("hit type: {}, id: {}, shard: {}", hitType, hit.getId(), hitShard); // ", srcRef: {},  hit.getSourceRef().toUtf8()
 
                 IndexRequest ir = new IndexRequest(dstIndexName)
                     .source(hit.getSourceRef(), true)

@@ -30,7 +30,7 @@ public class HugeIndexTest extends ESTestBase {
 
     private static final long MAX_DOCS = 1000000;
 
-    private final static long projectId = 3;
+    private final static long projectId = 2;
     private final static String indexName = Long.toString(projectId);
 
     private XContentBuilder getDocContent(String documentId) throws IOException {
