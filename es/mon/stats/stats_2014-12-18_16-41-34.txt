@@ -1,0 +1,427 @@
+{
+  "cluster_name" : "epbygomw0024-5432-postgres-win_ss",
+  "nodes" : {
+    "fhovMe5OQbGHsUnWl5l-4g" : {
+      "timestamp" : 1418910094531,
+      "name" : "Scrier",
+      "transport_address" : "inet[/10.9.202.130:9300]",
+      "host" : "EPBYGOMW0024",
+      "ip" : [ "inet[/10.9.202.130:9300]", "NONE" ],
+      "indices" : {
+        "docs" : {
+          "count" : 1000000,
+          "deleted" : 0
+        },
+        "store" : {
+          "size_in_bytes" : 101009640,
+          "throttle_time_in_millis" : 44
+        },
+        "indexing" : {
+          "index_total" : 1000000,
+          "index_time_in_millis" : 155048,
+          "index_current" : 0,
+          "delete_total" : 0,
+          "delete_time_in_millis" : 0,
+          "delete_current" : 0,
+          "noop_update_total" : 0,
+          "is_throttled" : false,
+          "throttle_time_in_millis" : 0
+        },
+        "get" : {
+          "total" : 0,
+          "time_in_millis" : 0,
+          "exists_total" : 0,
+          "exists_time_in_millis" : 0,
+          "missing_total" : 0,
+          "missing_time_in_millis" : 0,
+          "current" : 0
+        },
+        "search" : {
+          "open_contexts" : 0,
+          "query_total" : 0,
+          "query_time_in_millis" : 0,
+          "query_current" : 0,
+          "fetch_total" : 0,
+          "fetch_time_in_millis" : 0,
+          "fetch_current" : 0
+        },
+        "merges" : {
+          "current" : 0,
+          "current_docs" : 0,
+          "current_size_in_bytes" : 0,
+          "total" : 2,
+          "total_time_in_millis" : 4315,
+          "total_docs" : 400000,
+          "total_size_in_bytes" : 28736395
+        },
+        "refresh" : {
+          "total" : 15,
+          "total_time_in_millis" : 0
+        },
+        "flush" : {
+          "total" : 5,
+          "total_time_in_millis" : 5820
+        },
+        "warmer" : {
+          "current" : 0,
+          "total" : 62,
+          "total_time_in_millis" : 201
+        },
+        "filter_cache" : {
+          "memory_size_in_bytes" : 0,
+          "evictions" : 0
+        },
+        "id_cache" : {
+          "memory_size_in_bytes" : 0
+        },
+        "fielddata" : {
+          "memory_size_in_bytes" : 0,
+          "evictions" : 0
+        },
+        "percolate" : {
+          "total" : 0,
+          "time_in_millis" : 0,
+          "current" : 0,
+          "memory_size_in_bytes" : -1,
+          "memory_size" : "-1b",
+          "queries" : 0
+        },
+        "completion" : {
+          "size_in_bytes" : 0
+        },
+        "segments" : {
+          "count" : 43,
+          "memory_in_bytes" : 792158,
+          "index_writer_memory_in_bytes" : 0,
+          "index_writer_max_memory_in_bytes" : 381779960,
+          "version_map_memory_in_bytes" : 0,
+          "fixed_bit_set_memory_in_bytes" : 0
+        },
+        "translog" : {
+          "operations" : 0,
+          "size_in_bytes" : 17
+        },
+        "suggest" : {
+          "total" : 0,
+          "time_in_millis" : 0,
+          "current" : 0
+        },
+        "query_cache" : {
+          "memory_size_in_bytes" : 0,
+          "evictions" : 0,
+          "hit_count" : 0,
+          "miss_count" : 0
+        }
+      },
+      "os" : {
+        "timestamp" : 1418910094545,
+        "uptime_in_millis" : 2578,
+        "cpu" : {
+          "sys" : 5,
+          "user" : 31,
+          "idle" : 62,
+          "usage" : 36,
+          "stolen" : 0
+        },
+        "mem" : {
+          "free_in_bytes" : 10005901312,
+          "used_in_bytes" : 6963507200,
+          "free_percent" : 64,
+          "used_percent" : 35,
+          "actual_free_in_bytes" : 10976464896,
+          "actual_used_in_bytes" : 5992943616
+        },
+        "swap" : {
+          "used_in_bytes" : 6828146688,
+          "free_in_bytes" : 27108761600
+        }
+      },
+      "process" : {
+        "timestamp" : 1418910094548,
+        "open_file_descriptors" : -1,
+        "cpu" : {
+          "percent" : 67,
+          "sys_in_millis" : 28828,
+          "user_in_millis" : 307072,
+          "total_in_millis" : 335900
+        },
+        "mem" : {
+          "resident_in_bytes" : 2161405952,
+          "share_in_bytes" : -1,
+          "total_virtual_in_bytes" : 1159413760
+        }
+      },
+      "jvm" : {
+        "timestamp" : 1418910094553,
+        "uptime_in_millis" : 507172,
+        "mem" : {
+          "heap_used_in_bytes" : 583875520,
+          "heap_used_percent" : 15,
+          "heap_committed_in_bytes" : 1718878208,
+          "heap_max_in_bytes" : 3817799680,
+          "non_heap_used_in_bytes" : 166055840,
+          "non_heap_committed_in_bytes" : 285868032,
+          "pools" : {
+            "young" : {
+              "used_in_bytes" : 193256248,
+              "max_in_bytes" : 1055784960,
+              "peak_used_in_bytes" : 1284767744,
+              "peak_max_in_bytes" : 1422983168
+            },
+            "survivor" : {
+              "used_in_bytes" : 2494024,
+              "max_in_bytes" : 185335808,
+              "peak_used_in_bytes" : 152272544,
+              "peak_max_in_bytes" : 192217088
+            },
+            "old" : {
+              "used_in_bytes" : 388125248,
+              "max_in_bytes" : 2863333376,
+              "peak_used_in_bytes" : 388125248,
+              "peak_max_in_bytes" : 2863333376
+            }
+          }
+        },
+        "threads" : {
+          "count" : 213,
+          "peak_count" : 214
+        },
+        "gc" : {
+          "collectors" : {
+            "young" : {
+              "collection_count" : 52,
+              "collection_time_in_millis" : 3499
+            },
+            "old" : {
+              "collection_count" : 5,
+              "collection_time_in_millis" : 4018
+            }
+          }
+        },
+        "buffer_pools" : {
+          "direct" : {
+            "count" : 82,
+            "used_in_bytes" : 13883340,
+            "total_capacity_in_bytes" : 13883340
+          },
+          "mapped" : {
+            "count" : 0,
+            "used_in_bytes" : 0,
+            "total_capacity_in_bytes" : 0
+          }
+        }
+      },
+      "thread_pool" : {
+        "generic" : {
+          "threads" : 2,
+          "queue" : 0,
+          "active" : 0,
+          "rejected" : 0,
+          "largest" : 5,
+          "completed" : 105
+        },
+        "index" : {
+          "threads" : 0,
+          "queue" : 0,
+          "active" : 0,
+          "rejected" : 0,
+          "largest" : 0,
+          "completed" : 0
+        },
+        "bench" : {
+          "threads" : 0,
+          "queue" : 0,
+          "active" : 0,
+          "rejected" : 0,
+          "largest" : 0,
+          "completed" : 0
+        },
+        "get" : {
+          "threads" : 0,
+          "queue" : 0,
+          "active" : 0,
+          "rejected" : 0,
+          "largest" : 0,
+          "completed" : 0
+        },
+        "snapshot" : {
+          "threads" : 0,
+          "queue" : 0,
+          "active" : 0,
+          "rejected" : 0,
+          "largest" : 0,
+          "completed" : 0
+        },
+        "merge" : {
+          "threads" : 2,
+          "queue" : 0,
+          "active" : 0,
+          "rejected" : 0,
+          "largest" : 2,
+          "completed" : 194
+        },
+        "suggest" : {
+          "threads" : 0,
+          "queue" : 0,
+          "active" : 0,
+          "rejected" : 0,
+          "largest" : 0,
+          "completed" : 0
+        },
+        "bulk" : {
+          "threads" : 4,
+          "queue" : 0,
+          "active" : 0,
+          "rejected" : 0,
+          "largest" : 4,
+          "completed" : 500
+        },
+        "optimize" : {
+          "threads" : 0,
+          "queue" : 0,
+          "active" : 0,
+          "rejected" : 0,
+          "largest" : 0,
+          "completed" : 0
+        },
+        "warmer" : {
+          "threads" : 2,
+          "queue" : 0,
+          "active" : 0,
+          "rejected" : 0,
+          "largest" : 2,
+          "completed" : 37
+        },
+        "flush" : {
+          "threads" : 2,
+          "queue" : 0,
+          "active" : 0,
+          "rejected" : 0,
+          "largest" : 2,
+          "completed" : 45
+        },
+        "search" : {
+          "threads" : 0,
+          "queue" : 0,
+          "active" : 0,
+          "rejected" : 0,
+          "largest" : 0,
+          "completed" : 0
+        },
+        "listener" : {
+          "threads" : 2,
+          "queue" : 0,
+          "active" : 0,
+          "rejected" : 0,
+          "largest" : 2,
+          "completed" : 65
+        },
+        "percolate" : {
+          "threads" : 0,
+          "queue" : 0,
+          "active" : 0,
+          "rejected" : 0,
+          "largest" : 0,
+          "completed" : 0
+        },
+        "management" : {
+          "threads" : 5,
+          "queue" : 0,
+          "active" : 1,
+          "rejected" : 0,
+          "largest" : 5,
+          "completed" : 114
+        },
+        "refresh" : {
+          "threads" : 2,
+          "queue" : 0,
+          "active" : 0,
+          "rejected" : 0,
+          "largest" : 2,
+          "completed" : 15
+        }
+      },
+      "network" : {
+        "tcp" : {
+          "active_opens" : 754,
+          "passive_opens" : 145,
+          "curr_estab" : 151,
+          "in_segs" : 139814,
+          "out_segs" : 134693,
+          "retrans_segs" : 960,
+          "estab_resets" : 67,
+          "attempt_fails" : 47,
+          "in_errs" : 0,
+          "out_rsts" : 307
+        }
+      },
+      "fs" : {
+        "timestamp" : 1418910094553,
+        "total" : {
+          "total_in_bytes" : 414204841984,
+          "free_in_bytes" : 192003796992,
+          "available_in_bytes" : 192003796992,
+          "disk_reads" : 137750,
+          "disk_writes" : 23003,
+          "disk_io_op" : 160753,
+          "disk_read_size_in_bytes" : 907973120,
+          "disk_write_size_in_bytes" : 677241344,
+          "disk_io_size_in_bytes" : 1585214464,
+          "disk_queue" : "0"
+        },
+        "data" : [ {
+          "path" : "D:\\clb\\inst\\server\\index\\epbygomw0024-5432-postgres-win_ss\\nodes\\0",
+          "mount" : "D:\\",
+          "dev" : "D:\\",
+          "total_in_bytes" : 414204841984,
+          "free_in_bytes" : 192003796992,
+          "available_in_bytes" : 192003796992,
+          "disk_reads" : 137750,
+          "disk_writes" : 23003,
+          "disk_io_op" : 160753,
+          "disk_read_size_in_bytes" : 907973120,
+          "disk_write_size_in_bytes" : 677241344,
+          "disk_io_size_in_bytes" : 1585214464,
+          "disk_queue" : "0"
+        } ]
+      },
+      "transport" : {
+        "server_open" : 13,
+        "rx_count" : 588,
+        "rx_size_in_bytes" : 19212132,
+        "tx_count" : 584,
+        "tx_size_in_bytes" : 26917878
+      },
+      "http" : {
+        "current_open" : 7,
+        "total_opened" : 7
+      },
+      "breakers" : {
+        "request" : {
+          "limit_size_in_bytes" : 1527119872,
+          "limit_size" : "1.4gb",
+          "estimated_size_in_bytes" : 0,
+          "estimated_size" : "0b",
+          "overhead" : 1.0,
+          "tripped" : 0
+        },
+        "fielddata" : {
+          "limit_size_in_bytes" : 2290679808,
+          "limit_size" : "2.1gb",
+          "estimated_size_in_bytes" : 0,
+          "estimated_size" : "0b",
+          "overhead" : 1.03,
+          "tripped" : 0
+        },
+        "parent" : {
+          "limit_size_in_bytes" : 2672459776,
+          "limit_size" : "2.4gb",
+          "estimated_size_in_bytes" : 0,
+          "estimated_size" : "0b",
+          "overhead" : 1.0,
+          "tripped" : 0
+        }
+      }
+    }
+  }
+}

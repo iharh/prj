@@ -187,8 +187,7 @@ public class IndexMigrator {
                 String hitType = hit.getType();
                 int hitShard = hit.getShard().getShardId();
                 ++numHits;
-                // TODO: return back to debug
-                log.info("hit type: {}, id: {}, shard: {}", hitType, hit.getId(), hitShard); // ", srcRef: {},  hit.getSourceRef().toUtf8()
+                log.debug("hit type: {}, id: {}, shard: {}", hitType, hit.getId(), hitShard); // ", srcRef: {},  hit.getSourceRef().toUtf8()
 
                 IndexRequest ir = new IndexRequest(dstIndexName)
                     .source(hit.getSourceRef(), true)
@@ -358,9 +357,7 @@ public class IndexMigrator {
         boolean ack_write = iarb_write.get().isAcknowledged();
         log.info("alias {} created: {}", writeAliasName, Boolean.toString(ack_write));
 
-        //ien.changeEnabling(srcIndexName, false);
-        //ien.changeEnabling(dstIndexName, true);
-        //boolean ack_close = iac.prepareClose(srcIndexName).get().isAcknowledged();
-        //log.info("index {} closed: {}", srcIndexName, Boolean.toString(ack_close));
+        boolean ack_close = iac.prepareClose(srcIndexName).get().isAcknowledged();
+        log.info("index {} closed: {}", srcIndexName, Boolean.toString(ack_close));
     }
 }

@@ -49,8 +49,8 @@ public class IndexChangesApplicator implements IndexChangesListener, Closeable {
         //final IndexRequest idxreq = idxreqb.request();
 
         //if (version <= 1) {
-            final IndexResponse rsp = idxreqb.get();
-            log.info("onChange index: {} id: {} ver: {} created: {}", dstIndexName, id, version, rsp.isCreated());
+            //final IndexResponse rsp = idxreqb.get();
+            //log.info("onChange index: {} id: {} ver: {} created: {}", dstIndexName, id, version, rsp.isCreated());
         //} else {
         //    final UpdateRequestBuilder updreqb = client.prepareUpdate(dstIndexName, type, id)
         //        .setDoc(idxreq)
