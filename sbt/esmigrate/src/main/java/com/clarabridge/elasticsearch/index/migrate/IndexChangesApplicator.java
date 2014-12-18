@@ -7,7 +7,10 @@ import org.elasticsearch.client.Client;
 import org.elasticsearch.common.bytes.BytesReference;
 
 import org.elasticsearch.action.index.IndexRequestBuilder;
+import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
+//import org.elasticsearch.action.update.UpdateRequestBuilder;
+//import org.elasticsearch.action.update.UpdateResponse;
 
 
 import java.io.Closeable;
@@ -26,27 +29,39 @@ public class IndexChangesApplicator implements IndexChangesListener, Closeable {
         this.client = client;
         this.changes = changes;
         this.dstIndexName = dstIndexName;
-        //log.info("Changes {} found", (changes == null ? " not" : ""));
         changes.addListener(this);
     }
 
-    //public IndexChangesApplicator startListen() {
-    //    log.info("Changes {} found", (changes == null ? " not" : ""));
-    //    return this;
-    //}
-
     @Override
     public void onChange(String id, long version, BytesReference srcRef) {
+        // TODO: print srcRef using XContentHelper
         log.info("onChange index: {} id: {} ver: {}", dstIndexName, id, version);
 
-        IndexRequestBuilder reqb = client.prepareIndex(dstIndexName, ESConstants.TYPE_DOCUMENT, id) // TODO: need to specify a type here
+        final String type = ESConstants.TYPE_DOCUMENT; // TODO: need to specify a type here
+
+        try {
+
+        final IndexRequestBuilder idxreqb = client.prepareIndex(dstIndexName, type, id)
             .setSource(srcRef)
             //.setRouting(routing)
-            .setRefresh(true);
+            //.setRefresh(true);
+        ;
+        //final IndexRequest idxreq = idxreqb.request();
 
-        IndexResponse rsp = reqb.get();
-
-        log.info("{}", rsp.isCreated());
+        //if (version <= 1) {
+            final IndexResponse rsp = idxreqb.get();
+            log.info("onChange index: {} id: {} ver: {} created: {}", dstIndexName, id, version, rsp.isCreated());
+        //} else {
+        //    final UpdateRequestBuilder updreqb = client.prepareUpdate(dstIndexName, type, id)
+        //        .setDoc(idxreq)
+        //        .setUpsert(idxreq)
+        //    ;
+        //    final UpdateResponse rsp = updreqb.get();
+        //    log.info("onChange update: {} id: {} ver: {} created: {}", dstIndexName, id, version, rsp.isCreated());
+        //}
+        } catch (Throwable e) {
+            log.error(e.getMessage(), e);
+        }
     }
 
     @Override

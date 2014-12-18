@@ -15,6 +15,8 @@ import org.elasticsearch.common.settings.Settings;
 
 import org.elasticsearch.cluster.metadata.IndexMetaData;
 
+import org.elasticsearch.index.shard.service.InternalIndexShard;
+
 
 import static org.elasticsearch.common.settings.ImmutableSettings.settingsBuilder;
 import static org.elasticsearch.node.NodeBuilder.nodeBuilder;
@@ -74,8 +76,12 @@ public class ESTestBase {
 
     protected void createSimpleIndex(String indexName) {
         boolean ack = iac.prepareCreate(indexName)
-            .setSettings(settingsBuilder().put(IndexMetaData.SETTING_CREATION_DATE, 5l))
-            .addMapping("document", // jsonBuilder();
+            .setSettings(
+                settingsBuilder()
+                    .put(IndexMetaData.SETTING_CREATION_DATE, 5l)
+                    .put(InternalIndexShard.INDEX_REFRESH_INTERVAL, -1)
+            )
+            .addMapping(ESConstants.TYPE_DOCUMENT, // jsonBuilder();
                 "natural_id", "type=string,store=true",
                 "msg"       , "type=string,store=true"
             ).get().isAcknowledged();

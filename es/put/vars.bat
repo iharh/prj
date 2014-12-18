@@ -5,6 +5,7 @@ set PRJ_ID=2
 ::1234
 set GEN=0
 set DOC_ID=999999
+::999999
 
 ::set PRJ_INDEX=%PRJ_ID%_%GEN%
 set PRJ_INDEX=%PRJ_ID%

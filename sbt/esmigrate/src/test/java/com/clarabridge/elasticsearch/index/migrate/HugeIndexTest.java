@@ -73,14 +73,13 @@ public class HugeIndexTest extends ESTestBase {
                 .setBulkActions(10000) 
                 .setBulkSize(new ByteSizeValue(1, ByteSizeUnit.GB)) 
                 .setConcurrentRequests(4) 
-                //.setConcurrentRequests(0)
                 .build();
         ) {
             for (long i = 0; i < MAX_DOCS; ++i) {
                 String id = Long.toString(i);
                 IndexRequest ir = new IndexRequest(indexName)
                     .source(getDocContent(id))
-                    .type("document")
+                    .type(ESConstants.TYPE_DOCUMENT)
                     .id(id);
 
                 bp.add(ir);

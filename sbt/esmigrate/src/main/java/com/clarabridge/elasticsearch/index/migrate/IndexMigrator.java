@@ -193,7 +193,9 @@ public class IndexMigrator {
                 IndexRequest ir = new IndexRequest(dstIndexName)
                     .source(hit.getSourceRef(), true)
                     .type(hitType)
-                    .id(hit.getId());
+                    .id(hit.getId())
+                    .create(true) // just for on-going updates during migration
+                ;
 
                 if (typesWithParent.contains(hitType)) {
                     String parentVal = ClbParentFinder.getParentValue(hit);
@@ -358,7 +360,7 @@ public class IndexMigrator {
 
         //ien.changeEnabling(srcIndexName, false);
         //ien.changeEnabling(dstIndexName, true);
-        boolean ack_close = iac.prepareClose(srcIndexName).get().isAcknowledged();
-        log.info("index {} closed: {}", srcIndexName, Boolean.toString(ack_close));
+        //boolean ack_close = iac.prepareClose(srcIndexName).get().isAcknowledged();
+        //log.info("index {} closed: {}", srcIndexName, Boolean.toString(ack_close));
     }
 }
