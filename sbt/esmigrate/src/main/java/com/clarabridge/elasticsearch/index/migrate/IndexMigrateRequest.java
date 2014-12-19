@@ -20,6 +20,7 @@ public class IndexMigrateRequest {
     private TimeValue sleepBetweenBatches;
     private TimeValue scrollKeepAlive;
 
+    private boolean ignoreBulkErrors;
 
     public void setProjectId(long projectId) {
         this.projectId = projectId;
@@ -75,5 +76,12 @@ public class IndexMigrateRequest {
     }
     public TimeValue getSleepBetweenBatches() {
         return sleepBetweenBatches;
+    }
+
+    public void setIgnoreBulkErrors(boolean ignoreBulkErrors) {
+        this.ignoreBulkErrors = ignoreBulkErrors;
+    }
+    public boolean getIgnoreBulkErrors() {
+        return ignoreBulkErrors;
     }
 }

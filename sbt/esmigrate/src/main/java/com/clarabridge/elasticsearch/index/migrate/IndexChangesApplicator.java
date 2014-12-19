@@ -40,25 +40,24 @@ public class IndexChangesApplicator implements IndexChangesListener, Closeable {
         final String type = ESConstants.TYPE_DOCUMENT; // TODO: need to specify a type here
 
         try {
+            final IndexRequestBuilder idxreqb = client.prepareIndex(dstIndexName, type, id)
+                .setSource(srcRef)
+                //.setRouting(routing)
+                //.setRefresh(true);
+            ;
+            //final IndexRequest idxreq = idxreqb.request();
 
-        final IndexRequestBuilder idxreqb = client.prepareIndex(dstIndexName, type, id)
-            .setSource(srcRef)
-            //.setRouting(routing)
-            //.setRefresh(true);
-        ;
-        //final IndexRequest idxreq = idxreqb.request();
-
-        //if (version <= 1) {
-            //final IndexResponse rsp = idxreqb.get();
-            //log.info("onChange index: {} id: {} ver: {} created: {}", dstIndexName, id, version, rsp.isCreated());
-        //} else {
-        //    final UpdateRequestBuilder updreqb = client.prepareUpdate(dstIndexName, type, id)
-        //        .setDoc(idxreq)
-        //        .setUpsert(idxreq)
-        //    ;
-        //    final UpdateResponse rsp = updreqb.get();
-        //    log.info("onChange update: {} id: {} ver: {} created: {}", dstIndexName, id, version, rsp.isCreated());
-        //}
+            //if (version <= 1) {
+                final IndexResponse rsp = idxreqb.get();
+                log.info("onChange index: {} id: {} ver: {} created: {}", dstIndexName, id, version, rsp.isCreated());
+            //} else {
+            //    final UpdateRequestBuilder updreqb = client.prepareUpdate(dstIndexName, type, id)
+            //        .setDoc(idxreq)
+            //        .setUpsert(idxreq)
+            //    ;
+            //    final UpdateResponse rsp = updreqb.get();
+            //    log.info("onChange update: {} id: {} ver: {} created: {}", dstIndexName, id, version, rsp.isCreated());
+            //}
         } catch (Throwable e) {
             log.error(e.getMessage(), e);
         }

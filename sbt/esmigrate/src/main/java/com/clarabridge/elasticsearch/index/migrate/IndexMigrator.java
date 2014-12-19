@@ -113,6 +113,7 @@ public class IndexMigrator {
         boolean obsolete = req.getObsolete();
         TimeValue scrollKeepAlive = req.getScrollKeepAlive();
         TimeValue sleepBetweenBatches = req.getSleepBetweenBatches();
+        boolean ignoreBulkErrors = req.getIgnoreBulkErrors();
 
         String projectIdStr = Long.toString(projectId);
         String srcIndexName = inf.findCur(projectIdStr);
@@ -138,7 +139,8 @@ public class IndexMigrator {
                 //.setConcurrentRequests(0)
                 .build();
         ) {
-            allDocsToBulk(bp, bw, allTypes, typesWithParent, fieldChecker, srcIndexName, dstIndexName, shards, batchSize,
+            allDocsToBulk(bp, (ignoreBulkErrors ? null : bw),
+                allTypes, typesWithParent, fieldChecker, srcIndexName, dstIndexName, shards, batchSize,
                 scrollKeepAlive, sleepBetweenBatches);
         } catch (Exception e) {
             throw new IOException(e.getMessage(), e);
@@ -180,7 +182,9 @@ public class IndexMigrator {
 
         SearchResponse resp = srb.get();
         do {
-            bw.checkErrors();
+            if (bw != null) {
+                bw.checkErrors();
+            }
 
             int numHits = 0;
             for (SearchHit hit : resp.getHits()) {

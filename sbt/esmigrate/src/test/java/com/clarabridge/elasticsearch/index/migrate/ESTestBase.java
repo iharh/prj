@@ -12,6 +12,7 @@ import org.elasticsearch.client.Client;
 import org.elasticsearch.client.IndicesAdminClient;
 
 import org.elasticsearch.common.settings.Settings;
+import org.elasticsearch.common.xcontent.XContentBuilder;
 
 import org.elasticsearch.cluster.metadata.IndexMetaData;
 
@@ -20,6 +21,9 @@ import org.elasticsearch.index.shard.service.InternalIndexShard;
 
 import static org.elasticsearch.common.settings.ImmutableSettings.settingsBuilder;
 import static org.elasticsearch.node.NodeBuilder.nodeBuilder;
+import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
+
+import java.io.IOException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -79,7 +83,7 @@ public class ESTestBase {
             .setSettings(
                 settingsBuilder()
                     .put(IndexMetaData.SETTING_CREATION_DATE, 5l)
-                    .put(InternalIndexShard.INDEX_REFRESH_INTERVAL, -1)
+                    .put(InternalIndexShard.INDEX_REFRESH_INTERVAL, "600s") // -1 for disabling
             )
             .addMapping(ESConstants.TYPE_DOCUMENT, // jsonBuilder();
                 "natural_id", "type=string,store=true",
@@ -92,5 +96,14 @@ public class ESTestBase {
     protected void reCreateSimpleIndex(String indexName) throws Exception {
         deleteIndexIfExists(indexName);
         createSimpleIndex(indexName);
+    }
+
+    protected XContentBuilder getSimpleDocContent(String documentId, String msgPrefix) throws IOException {
+        XContentBuilder result = jsonBuilder().startObject()
+            .field("natural_id", documentId)
+            .field("msg", msgPrefix + documentId)
+            .endObject();
+        //log.debug("xcb: {}", result.string());
+        return result;
     }
 }
