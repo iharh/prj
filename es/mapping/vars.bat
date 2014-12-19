@@ -1,7 +1,7 @@
 @echo off
 set ES_HOST=epbygomw0024
 set ES_PORT=9200
-set PRJ_ID=2
+set PRJ_ID=3
 ::1900859 1234
 ::set GEN=0
 

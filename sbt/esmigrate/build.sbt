@@ -8,11 +8,13 @@ autoScalaLibrary := false
 
 crossPaths := false
 
-scalacOptions ++= Seq("-encoding", "UTF-8", "-Xlint","-deprecation", "-unchecked")
+scalacOptions ++= Seq("-encoding", "UTF-8", "-Xlint", "-deprecation", "-unchecked", "-Xfatal-warnings")
 
 javacOptions ++= Seq("-encoding", "UTF-8", "-Xlint:unchecked", "-Xlint:deprecation")
 
 testOptions += Tests.Argument(TestFrameworks.JUnit, "-q", "-a")
+
+parallelExecution in Test := false
 
 //logLevel := Level.Debug
 
@@ -29,7 +31,7 @@ libraryDependencies ++= Seq(
     "commons-cli"               % "commons-cli"    % "1.2",
     // testing stuff
     "com.novocode"              % "junit-interface"    % "0.10"    % "test",
-    "junit"                     % "junit"              % "4.11"    % "test",
+    "junit"                     % "junit"              % "4.12"    % "test",
     "org.hamcrest"              % "hamcrest-library"   % "1.3"     % "test"
 )
 
