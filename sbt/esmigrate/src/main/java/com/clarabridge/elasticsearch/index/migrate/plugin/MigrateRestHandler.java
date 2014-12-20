@@ -107,7 +107,7 @@ public class MigrateRestHandler implements RestHandler {
         req.setBatchSize(10000);
         req.setDvFields(new HashSet<String>());
         req.setScrollKeepAlive(TimeValue.timeValueMinutes(30));
-        req.setIgnoreBulkErrors(true);
+        //req.setIgnoreBulkErrors(true);
 
         try {
             final String sleepBetweenBatchesStr = request.param("sleepBetweenBatches"); // $NON-NLS-1$

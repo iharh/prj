@@ -1,5 +1,7 @@
 package com.clarabridge.elasticsearch.index.migrate;
 
+import org.elasticsearch.rest.RestStatus;
+
 import org.elasticsearch.action.bulk.BulkProcessor;
 import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.bulk.BulkResponse;
@@ -57,8 +59,13 @@ class BulkWaiter implements BulkProcessor.Listener, Closeable {
             //String bulkFailureMessage = response.buildFailureMessage();
             BulkItemResponse.Failure failure = bir.getFailure();
             if (failure != null) {
-                firstFailure.compareAndSet(null, failure);
-                log.error("bulk failure id: {} status: {} msg: {}", failure.getId(), failure.getStatus(), failure.getMessage());
+                RestStatus status = failure.getStatus();
+                if (RestStatus.CONFLICT == status) {
+                    log.warn("bulk CONFLICT for id: {} msg: {}", failure.getId(), failure.getMessage());
+                } else {
+                    firstFailure.compareAndSet(null, failure);
+                    log.error("bulk failure id: {} status: {} msg: {}", failure.getId(), status, failure.getMessage());
+                }
             }
         }
         log.debug("afterBulk completed");
