@@ -41,40 +41,38 @@ public class IndexChanges extends IndexingOperationListener {
     public void addListener(IndexChangesListener listener) {
         // TODO: assert this.listener == null
         this.listener = listener;
-        LOG.info("start listening for changes of index: " + indexName);
+        LOG.info("start listening for changes of index: {}", indexName);
     }
 
     public void removeListener() {
         this.listener = null;
-        LOG.info("stop listening for changes of index: " + indexName);
+        LOG.info("stop listening for changes of index: {}", indexName);
     }
 
-    private void addChange(String id, long version, BytesReference srcRef) {
-        //LOG.info("index: " + indexName + " change doc version: " + version);
+    private void addChange(String id, long version, String type, BytesReference srcRef) {
         if (listener != null) {
-            listener.onChange(id, version, srcRef);
+            listener.onChange(id, version, type, srcRef);
         }
     }
 
-    private void addDelete(String id, long version) {
-        //LOG.info("index: " + indexName + " delete doc version: " + version);
+    private void addDelete(String id, long version, String type) {
         if (listener != null) {
-            listener.onDelete(id, version);
+            listener.onDelete(id, version, type);
         }
     }
 
     @Override
     public void postCreate(Create create) {
-        addChange(create.id(), create.version(), create.source());
+        addChange(create.id(), create.version(), create.type(), create.source());
     }
 
     @Override
     public void postIndex(Index index) {
-        addChange(index.id(), index.version(), index.source());
+        addChange(index.id(), index.version(), index.type(), index.source());
     }
 
     @Override
     public void postDelete(Delete delete) {
-        addDelete(delete.id(), delete.version());
+        addDelete(delete.id(), delete.version(), delete.type());
     }
 }
