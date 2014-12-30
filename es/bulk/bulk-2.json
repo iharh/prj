@@ -1,0 +1,4 @@
+{ "index": { "_index": "2", "_type": "document", "_id": "999998" }}
+{ "natural_id": "999998", "msg": "new msg 999998" }
+{ "index": { "_index": "2", "_type": "document", "_id": "999999" }}
+{ "natural_id": "999999", "msg": "new msg 999999" }
