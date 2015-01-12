@@ -33,7 +33,15 @@ import java.util.HashMap;
 public class ScanTest extends ESTestBase {
     private static final Logger log = LoggerFactory.getLogger(ScanTest.class);
 
-    private final static long projectId = 1900859;
+    private final static long projectId = 1428;
+    private final static long generation = 0;
+
+    private void doSleep(long millis) {
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+        }
+    }
 
     private void addType(Map<String, Long> indexTypes, String type) {
         Long cnt = indexTypes.get(type);
@@ -43,16 +51,13 @@ public class ScanTest extends ESTestBase {
         indexTypes.put(type, cnt + 1);
     }
 
-    @Ignore
-    public void testScanIndex() throws Exception {
+    private void doScanIndex(String indexName, String [] typesToScan) {
         Map<String, Long> indexTypes = new HashMap<String, Long>();
 
-        String indexName = Long.toString(projectId);
         SearchRequestBuilder srb = client.prepareSearch(indexName)
-            .setTypes(new String [] {PercolatorService.TYPE_NAME, "document", "sentence", "verbatim"})
+            .setTypes(typesToScan)
             .setSearchType(SearchType.SCAN)
-            //.setScroll(TimeValue.timeValueHours(240))
-            .setScroll(TimeValue.timeValueMillis(100))
+            .setScroll(TimeValue.timeValueMinutes(30))
             .setQuery(matchAllQuery())
             .setSize(10000)
         ;
@@ -64,11 +69,7 @@ public class ScanTest extends ESTestBase {
                 String hitType = hit.getType();
                 addType(indexTypes, hitType);
             }
-                try {
-                    Thread.sleep(200);
-                } catch (InterruptedException e) {
-                }
-
+            //doSleep(200);
             resp = client.prepareSearchScroll(resp.getScrollId())
                 //.setScroll(TimeValue.timeValueHours(240))
                 .setScroll(TimeValue.timeValueMillis(100))
@@ -79,5 +80,13 @@ public class ScanTest extends ESTestBase {
         for (Map.Entry<String, Long> type : indexTypes.entrySet()) {
             log.info("type: {}, cnt: {}", type.getKey(), type.getValue());
         }
+    }
+
+    @Test
+    public void testScanIndex() throws Exception {
+        String indexName = Long.toString(projectId) + "_" + Long.toString(generation);
+        String [] typesToScan = new String [] {PercolatorService.TYPE_NAME, "document", "sentence", "verbatim"};
+
+        doScanIndex(indexName, typesToScan);
     }
 }
