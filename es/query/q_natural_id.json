@@ -1,0 +1,15 @@
+{
+  "fields": [
+    "_timestamp",
+    "_source"
+  ],
+  "query": {
+    "filtered": {
+      "query": {
+         "query_string" : {
+            "query" : "natural_id:20_20150114023030"
+          }
+      }
+    }
+  }
+}
