@@ -7,7 +7,7 @@
     "filtered": {
       "query": {
          "query_string" : {
-            "query" : "_id_document:471062"
+            "query" : "_id_document:10"
           }
       }
     }
