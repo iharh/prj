@@ -1,0 +1,17 @@
+{
+  "constant_score" : {
+    "query" : {
+      "bool" : {
+        "must" : {
+          "bool" : {
+            "must" : {
+              "query_string" : {
+                "query" : "+_doc_time:[20150209120000 TO 20150210115959]"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
