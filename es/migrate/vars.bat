@@ -4,7 +4,7 @@ set APP_PORT=18080
 ::9200
 set USER=admin
 set PWD=admin
-set PRJ_ID=1459
+set PRJ_ID=1444
 :: 1900859 1404 1428 1738 2084 2514
 ::set GEN=0
 set DOC_ID=1
