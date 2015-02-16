@@ -14,5 +14,3 @@ compr := {
     Process("cmd /c 7z.bat a -w -bd -mx=9 -- " + arcFile + " .", wrkBaseDir).run(true).exitValue()
     println("packing DONE.")
 }
-
-
