@@ -1,0 +1,6 @@
+2015-01-21 12:04:24,489 ERROR [] [com.clarabridge.web.server.ReportDataServiceImplV2] com.clarabridge.foundation.client.exception.NoAttributeValuesReportException
+	at com.clarabridge.web.server.ReportDataServiceImplV2.handleReportResult(ReportDataServiceImplV2.java:196)
+	at com.clarabridge.web.server.ReportDataServiceImplV2.getReportData(ReportDataServiceImplV2.java:278)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+
