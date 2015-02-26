@@ -32,7 +32,6 @@ libraryDependencies ++= Seq(
     // testing stuff
     "com.novocode"              % "junit-interface"    % "0.10"    % "test",
     "junit"                     % "junit"              % "4.12"    % "test",
-    "org.hamcrest"              % "hamcrest-library"   % "1.3"     % "test"
 )
 
 //unmanagedJars in Compile ++= {

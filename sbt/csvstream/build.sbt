@@ -13,7 +13,6 @@ testOptions += Tests.Argument(TestFrameworks.JUnit, "-q", "-a")
 libraryDependencies ++= Seq(
   "com.netflix.rxjava"      % "rxjava-core"      % "0.14.2",
   "net.sourceforge.javacsv" % "javacsv"          % "2.0",
-  //"org.hamcrest"            % "hamcrest-library" % "1.3"     % "test",
   //"org.scalatest"           % "scalatest_2.10"   % "1.9.1"   % "test",
   "net.sourceforge.reb4j"   % "net.sourceforge.reb4j" % "2.1.0"  % "test",
   "com.novocode"            % "junit-interface"       % "0.10"   % "test",

@@ -27,6 +27,6 @@ libraryDependencies ++= Seq(
     "commons-net"               % "commons-net"    % "3.3",
     //
     "com.novocode"              % "junit-interface"    % "0.10"    % "test",
-    "junit"                     % "junit"              % "4.11"    % "test",
-    "org.hamcrest"              % "hamcrest-library"   % "1.3"     % "test"
+    "junit"                     % "junit"              % "4.12"    % "test",
+    "org.hamcrest"              % "java-hamcrest"      % "2.0.0.0" % "test"
 )

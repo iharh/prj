@@ -29,8 +29,8 @@ libraryDependencies ++= Seq(
   //"org.scalatest"      % "scalatest_2.10"   % "1.9.1"   % "test",
   //"commons-io"                % "commons-io"         % "2.4"     % "test"
   "com.novocode"              % "junit-interface"    % "0.10"    % "test",
-  "junit"                     % "junit"              % "4.11"    % "test",
-  "org.hamcrest"              % "hamcrest-library"   % "1.3"     % "test",
+  "junit"                     % "junit"              % "4.12"    % "test",
+  "org.hamcrest"              % "java-hamcrest"      % "2.0.0.0" % "test",
   "com.google.guava"          % "guava"              % "15.0"    % "test"
 )
 
