@@ -66,9 +66,12 @@ class LogStash::Outputs::Sveout < LogStash::Outputs::Base
         @codec.encode(event) #codec_on_event triggered here
 
         if tags.include?("endfile")
+            fx_total_dur_millis = 0
             @fx_dur_millis.each do |k, v|
+                fx_total_dur_millis += v
                 puts "#{k}->#{v}"
             end
+            puts "FX total millis: #{fx_total_dur_millis}"
         end
 
         #@logger.debug? && @logger.debug("Date parsing done", :value => value, :timestamp => event["timestamp"])
