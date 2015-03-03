@@ -56,13 +56,17 @@ class LogStash::Outputs::Sveout < LogStash::Outputs::Base
             event["fx_start_millis"] = millis
         elsif tags.include?("fx_stop")
             thread = event["thread"]
-            timestamp = event["timestamp"] #@timestamp
-            millis = @joda_parser.parseMillis(timestamp)
+            start_millis = @fx_start_millis[thread]
+            if start_millis > 0
+                timestamp = event["timestamp"] #@timestamp
+                millis = @joda_parser.parseMillis(timestamp)
 
-            event["fx_stop_millis"] = millis
-            dur = millis - @fx_start_millis[thread]
-            event["fx_dur_millis"] = dur
-            @fx_dur_millis[thread] += dur
+                event["fx_stop_millis"] = millis
+                dur = millis - start_millis
+                event["fx_dur_millis"] = dur
+                @fx_dur_millis[thread] += dur
+                @fx_start_millis[thread] = 0
+            end
         end
 
         @codec.encode(event) #codec_on_event triggered here
