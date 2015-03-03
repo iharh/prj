@@ -13,6 +13,8 @@ class LogStash::Outputs::Sveout < LogStash::Outputs::Base
   
     default :codec, "line"
 
+    config :silent, :validate => :boolean, :default => false
+
     public
     def register
         @joda_parser = org.joda.time.format.DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss,SSS").withDefaultYear(Time.new.year)
@@ -27,8 +29,9 @@ class LogStash::Outputs::Sveout < LogStash::Outputs::Base
         #@logger.info("My info") #, :field => field, :value => value, :exception => e)
 
         @codec.on_event do |event|
-            $stdout.write(event)
-            #$stdout.puts("hello")
+            unless @silent
+                $stdout.write(event)
+            end
         end
     end
 
@@ -43,7 +46,6 @@ class LogStash::Outputs::Sveout < LogStash::Outputs::Base
 
         if tags.include?("fx_start")
             thread = event["thread"]
-            puts(thread)
             timestamp = event["timestamp"] #@timestamp
             millis = @joda_parser.parseMillis(timestamp)
             @fx_start_millis[thread] = millis 
