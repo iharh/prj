@@ -77,6 +77,8 @@ class LogStash::Outputs::Sveout < LogStash::Outputs::Base
 
                 @fx_start_millis[thread] = 0
                 @fx_cnt[thread] += 1
+            else
+                puts "!!! fx_stop does not has corresponding fx_start !!!"
             end
         elsif tags.include?("idx_start")
             thread = event["thread"]
@@ -97,8 +99,6 @@ class LogStash::Outputs::Sveout < LogStash::Outputs::Base
         @codec.encode(event) #codec_on_event triggered here
 
         if tags.include?("endfile")
-
-
             puts "FX duration:"
             fx_total_dur_millis = 0
             @fx_dur_millis.each do |k, v|
