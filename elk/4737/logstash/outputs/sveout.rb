@@ -23,7 +23,12 @@ class LogStash::Outputs::Sveout < LogStash::Outputs::Base
         #@joda_parser = @joda_parser.withLocale(locale)
 
         @fx_start_millis = Hash.new(0)
+        @fx_stop_millis = Hash.new(0)
         @fx_dur_millis = Hash.new(0)
+        @fx_cnt = Hash.new(0)
+
+        @idx_dur_millis = Hash.new(0)
+        @idx_cnt = Hash.new(0)
 
         #warn is by default
         #@logger.info("My info") #, :field => field, :value => value, :exception => e)
@@ -48,36 +53,82 @@ class LogStash::Outputs::Sveout < LogStash::Outputs::Base
             thread = event["thread"]
             timestamp = event["timestamp"] #@timestamp
             millis = @joda_parser.parseMillis(timestamp)
-            @fx_start_millis[thread] = millis 
 
             #puts "t: #{timestamp.inspect()} class: #{timestamp.class}" #, " javaClass: ", timestamp.javaClass
             #puts "m: #{@fx_start_millis} class: #{millis.class}"
 
             event["fx_start_millis"] = millis
+            @fx_start_millis[thread] = millis 
+
+            @fx_stop_millis[thread] = 0
         elsif tags.include?("fx_stop")
             thread = event["thread"]
-            start_millis = @fx_start_millis[thread]
-            if start_millis > 0
+            fx_start_millis = @fx_start_millis[thread]
+            if fx_start_millis > 0
                 timestamp = event["timestamp"] #@timestamp
                 millis = @joda_parser.parseMillis(timestamp)
 
                 event["fx_stop_millis"] = millis
-                dur = millis - start_millis
+                @fx_stop_millis[thread] = millis
+
+                dur = millis - fx_start_millis
                 event["fx_dur_millis"] = dur
                 @fx_dur_millis[thread] += dur
+
                 @fx_start_millis[thread] = 0
+                @fx_cnt[thread] += 1
+            end
+        elsif tags.include?("idx_start")
+            thread = event["thread"]
+            fx_stop_millis = @fx_stop_millis[thread]
+            if fx_stop_millis > 0
+                timestamp = event["timestamp"] #@timestamp
+                millis = @joda_parser.parseMillis(timestamp)
+
+                dur = millis - fx_stop_millis
+                event["idx_dur_millis"] = dur
+                @idx_dur_millis[thread] += dur
+
+                @fx_stop_millis[thread] = 0
+                @idx_cnt[thread] += 1
             end
         end
 
         @codec.encode(event) #codec_on_event triggered here
 
         if tags.include?("endfile")
+
+
+            puts "FX duration:"
             fx_total_dur_millis = 0
             @fx_dur_millis.each do |k, v|
                 fx_total_dur_millis += v
                 puts "#{k}->#{v}"
             end
-            puts "FX total millis: #{fx_total_dur_millis}"
+
+            puts "FX count:"
+            fx_total_cnt = 0
+            @fx_cnt.each do |k, v|
+                fx_total_cnt += v
+                puts "#{k}->#{v}"
+            end
+
+            puts "IDX duration:"
+            idx_total_dur_millis = 0
+            @idx_dur_millis.each do |k, v|
+                idx_total_dur_millis += v
+                puts "#{k}->#{v}"
+            end
+
+            puts "IDX count:"
+            idx_total_cnt = 0
+            @idx_cnt.each do |k, v|
+                idx_total_cnt += v
+                puts "#{k}->#{v}"
+            end
+
+            puts "FX total millis: #{fx_total_dur_millis} total count: #{fx_total_cnt}"
+            puts "IDX total millis: #{idx_total_dur_millis} total count: #{idx_total_cnt}"
         end
 
         #@logger.debug? && @logger.debug("Date parsing done", :value => value, :timestamp => event["timestamp"])
