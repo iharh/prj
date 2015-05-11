@@ -39,7 +39,7 @@ class LogStash::Outputs::Cdaout < LogStash::Outputs::Base
 
         if tags.include?("percolate")
             /\[Operation\:CDAPercolate\-(?<nat_id>\w*),\ count:\ (?<cnt>\d*)\, Total execution time\(ms\)\:\ (?<time_ms>\d*)/ =~ logmessage
-            #puts "perc: #{nat_id} #{cnt} #{time_ms}"
+            #puts "perc: #{time_ms}"
             @perc_cnt += 1
             @perc_time += time_ms.to_i
         end
