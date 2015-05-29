@@ -25,6 +25,7 @@ copydf := {
 	    --- (vimfiles ** ".*")
 	)
         +++ (src * "_*rc")
+	+++ (src / ".gitconfig")
 	+++ (src / ".vimsauce" ***)
 	+++ (src / ".unite" / "bookmark" ***)
     )
