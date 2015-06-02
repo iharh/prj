@@ -1,0 +1,26 @@
+{
+  "took" : 4,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 2,
+    "max_score" : 1.0,
+    "hits" : [ {
+      "_index" : "757399",
+      "_type" : "sentence",
+      "_id" : "21529386",
+      "_score" : 1.0,
+      "_source":{"natural_id":"Contact;R_1NxEWbfsB8dTZN4","_id_batch":3023040,"_id_document":27850861,"_id_source":"contact","_doc_date":"20150516","_doc_time":"20150516000000","time_of_day":"05:00","_doc_year":2015,"_doc_quarter":2,"_doc_month":5,"_doc_day_of_month":16,"_doc_week":20,"cb_content_type":"contentful","cb_content_subtype":"contentful","tran_endr_text":"no","mngr_nm":"dale,ismail rasid","tran_other_text":"no","comment_exists":"0","tran_update_info_text":"no","tran_driver_text":"no","tran_address_text":"no","tran_vehicle_text":"no","report_region":"carmel indianapolis","all_rows":"segments","sat_agent_nbr":"4","tran_poc_text":"yes","tran_payment_type_text":"yes","response_id":"r_1nxewbfsb8dtzn4","region":"r8","policy_number":"4306557994","end_date":"20150516","asct_ful_nm":"lewis,jared","tran_discount_text":"no","sctn_cd":"f844","tran_payment_text":"no","rated_state":"nj","sat_agent_nbr_box":"0","profit_center":"indianapolis","tran_coverage_text":"no","asct_id":"165827","_id_sentence":21529386,"_id_verbatim":62219722,"_verbatimtype":"cb null verb","_language":"english","_languagedetected":"not attempted","natural_id_hash":"cjy4jvuPcRv/KmuUKu3OpHlmDdo=","_sentimentindex":0.5,"_degreesentimentindex":0.0,"_sentimentnegcount":0,"_sentimentposcount":0,"_sentimentposnegdeltacount":0,"_words":"\\<cbnull\\>","_mstokenname":["CBNULL"],"_tokendata":["7L68QgYBBwA="]}
+    }, {
+      "_index" : "757399",
+      "_type" : "sentence",
+      "_id" : "21528478",
+      "_score" : 1.0,
+      "_source":{"natural_id":"Contact;R_1NxEWbfsB8dTZN4","_id_batch":3023040,"_id_document":27850861,"_id_source":"contact","_doc_date":"20150516","_doc_time":"20150516000000","time_of_day":"05:00","_doc_year":2015,"_doc_quarter":2,"_doc_month":5,"_doc_day_of_month":16,"_doc_week":20,"cb_content_type":"contentful","cb_content_subtype":"contentful","tran_endr_text":"no","mngr_nm":"dale,ismail rasid","tran_other_text":"no","comment_exists":"0","tran_update_info_text":"no","tran_driver_text":"no","tran_address_text":"no","tran_vehicle_text":"no","report_region":"carmel indianapolis","all_rows":"segments","sat_agent_nbr":"4","tran_poc_text":"yes","tran_payment_type_text":"yes","response_id":"r_1nxewbfsb8dtzn4","region":"r8","policy_number":"4306557994","end_date":"20150516","asct_ful_nm":"lewis,jared","tran_discount_text":"no","sctn_cd":"f844","tran_payment_text":"no","rated_state":"nj","sat_agent_nbr_box":"0","profit_center":"indianapolis","tran_coverage_text":"no","asct_id":"165827","_id_sentence":21528478,"_id_verbatim":62215392,"_verbatimtype":"cb null verb","_language":"english","_languagedetected":"not attempted","natural_id_hash":"cjy4jvuPcRv/KmuUKu3OpHlmDdo=","_sentimentindex":0.5,"_degreesentimentindex":0.0,"_sentimentnegcount":0,"_sentimentposcount":0,"_sentimentposnegdeltacount":0,"_words":"\\<cbnull\\>","_mstokenname":["CBNULL"],"_tokendata":["zK+8QgYBBwA="]}
+    } ]
+  }
+}

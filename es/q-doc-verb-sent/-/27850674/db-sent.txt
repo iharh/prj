@@ -1,0 +1,4 @@
+SENTENCE_ID SESSION_ID DOCUMENT_ID VERBATIM_ID LANGUAGE_ID ORIGINAL_START_POS ORIGINAL_END_POS ORIGINAL_SENTENCE  PRIMARY_START_POS PRIMARY_END_POS PRIMARY_SENTENCE 
+----------- ---------- ----------- ----------- ----------- ------------------ ---------------- ------------------ ----------------- --------------- ----------------
+   21529339    3023040    27850674    62219487 en                           0                0                                    0               8 <cbnull>           
+

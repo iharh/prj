@@ -1,0 +1,26 @@
+{
+  "took" : 4,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 2,
+    "max_score" : 1.0,
+    "hits" : [ {
+      "_index" : "757399",
+      "_type" : "sentence",
+      "_id" : "21528412",
+      "_score" : 1.0,
+      "_source":{"natural_id":"Contact;R_1dtBr2WaRtgC4nk","_id_batch":3023040,"_id_document":27850801,"_id_source":"contact","_doc_date":"20150516","_doc_time":"20150516000000","time_of_day":"05:00","_doc_year":2015,"_doc_quarter":2,"_doc_month":5,"_doc_day_of_month":16,"_doc_week":20,"cb_content_type":"contentful","cb_content_subtype":"contentful","tran_endr_text":"no","mngr_nm":"bright,kiesha v","tran_other_text":"no","comment_exists":"0","tran_update_info_text":"yes","tran_driver_text":"no","tran_address_text":"no","tran_vehicle_text":"no","report_region":"virginia beach","all_rows":"segments","sat_agent_nbr":"5","tran_poc_text":"no","tran_payment_type_text":"no","response_id":"r_1dtbr2wartgc4nk","region":"r1","policy_number":"4302230182","ease_text":"much more at ease","end_date":"20150516","sat_company_nbr":"5","asct_ful_nm":"struhar,max joseph","tran_discount_text":"no","sctn_cd":"b837","tran_payment_text":"yes","rated_state":"de","sat_agent_nbr_box":"100","profit_center":"07 - virginia beach","sat_company_nbr_box":"100","tran_coverage_text":"no","asct_id":"164872","_id_sentence":21528412,"_id_verbatim":62215097,"_verbatimtype":"cb null verb","_language":"english","_languagedetected":"not attempted","natural_id_hash":"iliwpz6BXbzKIxSwo/6Uw9coieA=","_sentimentindex":0.5,"_degreesentimentindex":0.0,"_sentimentnegcount":0,"_sentimentposcount":0,"_sentimentposnegdeltacount":0,"_words":"\\<cbnull\\>","_mstokenname":["CBNULL"],"_tokendata":["kK68QgYBBwA="]}
+    }, {
+      "_index" : "757399",
+      "_type" : "sentence",
+      "_id" : "21529360",
+      "_score" : 1.0,
+      "_source":{"natural_id":"Contact;R_1dtBr2WaRtgC4nk","_id_batch":3023040,"_id_document":27850801,"_id_source":"contact","_doc_date":"20150516","_doc_time":"20150516000000","time_of_day":"05:00","_doc_year":2015,"_doc_quarter":2,"_doc_month":5,"_doc_day_of_month":16,"_doc_week":20,"cb_content_type":"contentful","cb_content_subtype":"contentful","tran_endr_text":"no","mngr_nm":"bright,kiesha v","tran_other_text":"no","comment_exists":"0","tran_update_info_text":"yes","tran_driver_text":"no","tran_address_text":"no","tran_vehicle_text":"no","report_region":"virginia beach","all_rows":"segments","sat_agent_nbr":"5","tran_poc_text":"no","tran_payment_type_text":"no","response_id":"r_1dtbr2wartgc4nk","region":"r1","policy_number":"4302230182","ease_text":"much more at ease","end_date":"20150516","sat_company_nbr":"5","asct_ful_nm":"struhar,max joseph","tran_discount_text":"no","sctn_cd":"b837","tran_payment_text":"yes","rated_state":"de","sat_agent_nbr_box":"100","profit_center":"07 - virginia beach","sat_company_nbr_box":"100","tran_coverage_text":"no","asct_id":"164872","_id_sentence":21529360,"_id_verbatim":62219597,"_verbatimtype":"cb null verb","_language":"english","_languagedetected":"not attempted","natural_id_hash":"iliwpz6BXbzKIxSwo/6Uw9coieA=","_sentimentindex":0.5,"_degreesentimentindex":0.0,"_sentimentnegcount":0,"_sentimentposcount":0,"_sentimentposnegdeltacount":0,"_words":"\\<cbnull\\>","_mstokenname":["CBNULL"],"_tokendata":["0r68QgYBBwA="]}
+    } ]
+  }
+}

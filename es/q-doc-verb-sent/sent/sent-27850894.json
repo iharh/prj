@@ -1,0 +1,26 @@
+{
+  "took" : 3,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 2,
+    "max_score" : 1.0,
+    "hits" : [ {
+      "_index" : "757399",
+      "_type" : "sentence",
+      "_id" : "21529407",
+      "_score" : 1.0,
+      "_source":{"natural_id":"Contact;R_8vKq5fNKmPVvgGt","_id_batch":3023040,"_id_document":27850894,"_id_source":"contact","_doc_date":"20150518","_doc_time":"20150518000000","time_of_day":"05:00","_doc_year":2015,"_doc_quarter":2,"_doc_month":5,"_doc_day_of_month":18,"_doc_week":21,"cb_content_type":"contentful","cb_content_subtype":"contentful","tran_endr_text":"no","mngr_nm":"de oliveira,juan manuel b","tran_other_text":"no","comment_exists":"0","tran_update_info_text":"no","tran_driver_text":"no","tran_address_text":"no","tran_vehicle_text":"no","report_region":"tucson","all_rows":"segments","sat_agent_nbr":"4","tran_poc_text":"no","tran_payment_type_text":"no","response_id":"r_8vkq5fnkmpvvggt","region":"r4","policy_number":"4099078810","ease_text":"much more at ease","end_date":"20150518","sat_company_nbr":"4","asct_ful_nm":"d'arquea,dominique michele","tran_discount_text":"no","sctn_cd":"o823","tran_payment_text":"no","rated_state":"ca","sat_agent_nbr_box":"0","profit_center":"10 - tucson","sat_company_nbr_box":"0","tran_coverage_text":"no","asct_id":"176869","_id_sentence":21529407,"_id_verbatim":62219817,"_verbatimtype":"cb null verb","_language":"english","_languagedetected":"not attempted","natural_id_hash":"4VhXZmY21NaZNx6PGLSFQ6hyMoc=","_sentimentindex":0.5,"_degreesentimentindex":0.0,"_sentimentnegcount":0,"_sentimentposcount":0,"_sentimentposnegdeltacount":0,"_words":"\\<cbnull\\>","_mstokenname":["CBNULL"],"_tokendata":["jL+8QgYBBwA="]}
+    }, {
+      "_index" : "757399",
+      "_type" : "sentence",
+      "_id" : "21528516",
+      "_score" : 1.0,
+      "_source":{"natural_id":"Contact;R_8vKq5fNKmPVvgGt","_id_batch":3023040,"_id_document":27850894,"_id_source":"contact","_doc_date":"20150518","_doc_time":"20150518000000","time_of_day":"05:00","_doc_year":2015,"_doc_quarter":2,"_doc_month":5,"_doc_day_of_month":18,"_doc_week":21,"cb_content_type":"contentful","cb_content_subtype":"contentful","tran_endr_text":"no","mngr_nm":"de oliveira,juan manuel b","tran_other_text":"no","comment_exists":"0","tran_update_info_text":"no","tran_driver_text":"no","tran_address_text":"no","tran_vehicle_text":"no","report_region":"tucson","all_rows":"segments","sat_agent_nbr":"4","tran_poc_text":"no","tran_payment_type_text":"no","response_id":"r_8vkq5fnkmpvvggt","region":"r4","policy_number":"4099078810","ease_text":"much more at ease","end_date":"20150518","sat_company_nbr":"4","asct_ful_nm":"d'arquea,dominique michele","tran_discount_text":"no","sctn_cd":"o823","tran_payment_text":"no","rated_state":"ca","sat_agent_nbr_box":"0","profit_center":"10 - tucson","sat_company_nbr_box":"0","tran_coverage_text":"no","asct_id":"176869","_id_sentence":21528516,"_id_verbatim":62215562,"_verbatimtype":"cb null verb","_language":"english","_languagedetected":"not attempted","natural_id_hash":"4VhXZmY21NaZNx6PGLSFQ6hyMoc=","_sentimentindex":0.5,"_degreesentimentindex":0.0,"_sentimentnegcount":0,"_sentimentposcount":0,"_sentimentposnegdeltacount":0,"_words":"\\<cbnull\\>","_mstokenname":["CBNULL"],"_tokendata":["/a+8QgYBBwA="]}
+    } ]
+  }
+}

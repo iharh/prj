@@ -1,0 +1,26 @@
+{
+  "took" : 14,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 2,
+    "max_score" : 1.0,
+    "hits" : [ {
+      "_index" : "757399",
+      "_type" : "verbatim",
+      "_id" : "62214632",
+      "_score" : 1.0,
+      "_source":{"_id_batch":3023040,"_id_document":27850709,"_id_verbatim":62214632,"_verbatimtype":"cb null verb","_verbatim":"\\<cbnull\\> "}
+    }, {
+      "_index" : "757399",
+      "_type" : "verbatim",
+      "_id" : "62219497",
+      "_score" : 1.0,
+      "_source":{"_id_batch":3023040,"_id_document":27850709,"_id_verbatim":62219497,"_verbatimtype":"cb null verb","_verbatim":"\\<cbnull\\> "}
+    } ]
+  }
+}

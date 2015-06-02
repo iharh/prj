@@ -23,16 +23,16 @@ public class ConfTest {
         return new File("D:\\dev\\notes\\wrk\\clb\\hosts\\db-csi\\ora\\" + hostId + ".database.system.properties");
     }
 
-    private static void printProp(final Config conf, String propName) {
-        final String propVal = conf.getString("cmpDS." + propName);
-        assertNotNull(propVal);
-        log.info(propName + ": {}", propVal);
-    }
-
     private static Config getOraConf(String hostId) {
         Config result = ConfigFactory.parseFile(getOraPropFile(hostId));
         assertNotNull(result);
         return result;
+    }
+
+    private static void printProp(final Config conf, String propName) {
+        final String propVal = conf.getString("cmpDS." + propName);
+        assertNotNull(propVal);
+        log.info(propName + ": {}", propVal);
     }
 
     @Test

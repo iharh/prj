@@ -1,0 +1,26 @@
+{
+  "took" : 4,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 2,
+    "max_score" : 1.0,
+    "hits" : [ {
+      "_index" : "757399",
+      "_type" : "sentence",
+      "_id" : "21528432",
+      "_score" : 1.0,
+      "_source":{"natural_id":"Contact;R_295QwI7QpUFka93","_id_batch":3023040,"_id_document":27850824,"_id_source":"contact","_doc_date":"20150516","_doc_time":"20150516000000","time_of_day":"05:00","_doc_year":2015,"_doc_quarter":2,"_doc_month":5,"_doc_day_of_month":16,"_doc_week":20,"cb_content_type":"contentful","cb_content_subtype":"contentful","tran_endr_text":"no","mngr_nm":"whittaker,brandon m","tran_other_text":"no","comment_exists":"0","tran_update_info_text":"no","tran_driver_text":"no","tran_address_text":"no","tran_vehicle_text":"no","report_region":"carmel indianapolis","all_rows":"segments","sat_agent_nbr":"4","tran_poc_text":"no","tran_payment_type_text":"no","response_id":"r_295qwi7qpufka93","region":"r2","policy_number":"0195739800","end_date":"20150516","asct_ful_nm":"allgood,lisa marie","tran_discount_text":"no","sctn_cd":"f813","tran_payment_text":"yes","rated_state":"ny","sat_agent_nbr_box":"0","profit_center":"indianapolis","tran_coverage_text":"no","asct_id":"165810","_id_sentence":21528432,"_id_verbatim":62215207,"_verbatimtype":"cb null verb","_language":"english","_languagedetected":"not attempted","natural_id_hash":"8k72eai9qVKni2TeWO6wX0SuCAA=","_sentimentindex":0.5,"_degreesentimentindex":0.0,"_sentimentnegcount":0,"_sentimentposcount":0,"_sentimentposnegdeltacount":0,"_words":"\\<cbnull\\>","_mstokenname":["CBNULL"],"_tokendata":["q668QgYBBwA="]}
+    }, {
+      "_index" : "757399",
+      "_type" : "sentence",
+      "_id" : "21529366",
+      "_score" : 1.0,
+      "_source":{"natural_id":"Contact;R_295QwI7QpUFka93","_id_batch":3023040,"_id_document":27850824,"_id_source":"contact","_doc_date":"20150516","_doc_time":"20150516000000","time_of_day":"05:00","_doc_year":2015,"_doc_quarter":2,"_doc_month":5,"_doc_day_of_month":16,"_doc_week":20,"cb_content_type":"contentful","cb_content_subtype":"contentful","tran_endr_text":"no","mngr_nm":"whittaker,brandon m","tran_other_text":"no","comment_exists":"0","tran_update_info_text":"no","tran_driver_text":"no","tran_address_text":"no","tran_vehicle_text":"no","report_region":"carmel indianapolis","all_rows":"segments","sat_agent_nbr":"4","tran_poc_text":"no","tran_payment_type_text":"no","response_id":"r_295qwi7qpufka93","region":"r2","policy_number":"0195739800","end_date":"20150516","asct_ful_nm":"allgood,lisa marie","tran_discount_text":"no","sctn_cd":"f813","tran_payment_text":"yes","rated_state":"ny","sat_agent_nbr_box":"0","profit_center":"indianapolis","tran_coverage_text":"no","asct_id":"165810","_id_sentence":21529366,"_id_verbatim":62219622,"_verbatimtype":"cb null verb","_language":"english","_languagedetected":"not attempted","natural_id_hash":"8k72eai9qVKni2TeWO6wX0SuCAA=","_sentimentindex":0.5,"_degreesentimentindex":0.0,"_sentimentnegcount":0,"_sentimentposcount":0,"_sentimentposnegdeltacount":0,"_words":"\\<cbnull\\>","_mstokenname":["CBNULL"],"_tokendata":["2L68QgYBBwA="]}
+    } ]
+  }
+}

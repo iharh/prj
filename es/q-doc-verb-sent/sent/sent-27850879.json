@@ -1,0 +1,26 @@
+{
+  "took" : 8,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 2,
+    "max_score" : 1.0,
+    "hits" : [ {
+      "_index" : "757399",
+      "_type" : "sentence",
+      "_id" : "21528498",
+      "_score" : 1.0,
+      "_source":{"natural_id":"Contact;R_3JgypxYn36AWVtq","_id_batch":3023040,"_id_document":27850879,"_id_source":"contact","_doc_date":"20150518","_doc_time":"20150518000000","time_of_day":"05:00","_doc_year":2015,"_doc_quarter":2,"_doc_month":5,"_doc_day_of_month":18,"_doc_week":21,"cb_content_type":"contentful","cb_content_subtype":"contentful","tran_endr_text":"no","mngr_nm":"powell,timothy k","tran_other_text":"no","comment_exists":"0","tran_update_info_text":"no","tran_driver_text":"no","tran_address_text":"no","tran_vehicle_text":"no","report_region":"lakeland","all_rows":"segments","sat_agent_nbr":"1","tran_poc_text":"yes","tran_payment_type_text":"no","response_id":"r_3jgypxyn36awvtq","region":"r6","policy_number":"4331061244","end_date":"20150518","asct_ful_nm":"anderson,jamekia","tran_discount_text":"no","sctn_cd":"n845","tran_payment_text":"no","rated_state":"fl","sat_agent_nbr_box":"0","profit_center":"06 - lakeland","tran_coverage_text":"no","asct_id":"179983","_id_sentence":21528498,"_id_verbatim":62215482,"_verbatimtype":"cb null verb","_language":"english","_languagedetected":"not attempted","natural_id_hash":"FX62j1reHYOJDN8ogr5OSJf6ne4=","_sentimentindex":0.5,"_degreesentimentindex":0.0,"_sentimentnegcount":0,"_sentimentposcount":0,"_sentimentposnegdeltacount":0,"_words":"\\<cbnull\\>","_mstokenname":["CBNULL"],"_tokendata":["66+8QgYBBwA="]}
+    }, {
+      "_index" : "757399",
+      "_type" : "sentence",
+      "_id" : "21529398",
+      "_score" : 1.0,
+      "_source":{"natural_id":"Contact;R_3JgypxYn36AWVtq","_id_batch":3023040,"_id_document":27850879,"_id_source":"contact","_doc_date":"20150518","_doc_time":"20150518000000","time_of_day":"05:00","_doc_year":2015,"_doc_quarter":2,"_doc_month":5,"_doc_day_of_month":18,"_doc_week":21,"cb_content_type":"contentful","cb_content_subtype":"contentful","tran_endr_text":"no","mngr_nm":"powell,timothy k","tran_other_text":"no","comment_exists":"0","tran_update_info_text":"no","tran_driver_text":"no","tran_address_text":"no","tran_vehicle_text":"no","report_region":"lakeland","all_rows":"segments","sat_agent_nbr":"1","tran_poc_text":"yes","tran_payment_type_text":"no","response_id":"r_3jgypxyn36awvtq","region":"r6","policy_number":"4331061244","end_date":"20150518","asct_ful_nm":"anderson,jamekia","tran_discount_text":"no","sctn_cd":"n845","tran_payment_text":"no","rated_state":"fl","sat_agent_nbr_box":"0","profit_center":"06 - lakeland","tran_coverage_text":"no","asct_id":"179983","_id_sentence":21529398,"_id_verbatim":62219772,"_verbatimtype":"cb null verb","_language":"english","_languagedetected":"not attempted","natural_id_hash":"FX62j1reHYOJDN8ogr5OSJf6ne4=","_sentimentindex":0.5,"_degreesentimentindex":0.0,"_sentimentnegcount":0,"_sentimentposcount":0,"_sentimentposnegdeltacount":0,"_words":"\\<cbnull\\>","_mstokenname":["CBNULL"],"_tokendata":["g7+8QgYBBwA="]}
+    } ]
+  }
+}

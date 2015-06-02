@@ -1,0 +1,4 @@
+VERBATIM_ID SESSION_ID DOCUMENT_ID VERBATIM_TYPE_ID ORIGINAL_LANGUAGE  VERBATIM_NATURAL_ID        DETECTED_LANGUAGE_ID LANGUAGE_ID EXTRACTED_ORIGINAL  EXTRACTED_PRIMARY  EXTRACTED_ORIGINAL_SIZE EXTRACTED_PRIMARY_SIZE IS_ENGAGED
+----------- ---------- ----------- ---------------- ------------------ -------------------------- -------------------- ----------- ------------------- ------------------ ----------------------- ---------------------- ----------
+   62219487    3023040    27850674               38 EN                 Contact;R_3NLfzzTvzvYdyvG  @n                   en          <cbnull>                                                     8                      0          0 
+

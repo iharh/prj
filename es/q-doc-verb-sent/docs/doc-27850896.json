@@ -1,0 +1,20 @@
+{
+  "took" : 2,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 1,
+    "max_score" : 1.0,
+    "hits" : [ {
+      "_index" : "757399",
+      "_type" : "document",
+      "_id" : "27850896",
+      "_score" : 1.0,
+      "_source":{"natural_id":"Contact;R_30ufc4A6z80BOVx","_id_batch":3023040,"_id_document":27850896,"_id_source":"contact","_doc_date":"20150519","_doc_time":"20150519000000","time_of_day":"05:00","_doc_year":2015,"_doc_quarter":2,"_doc_month":5,"_doc_day_of_month":19,"_doc_week":21,"cb_content_type":"contentful","cb_content_subtype":"contentful","tran_endr_text":"yes","mngr_nm":"ross,rebecca s","tran_other_text":"no","comment_exists":"0","tran_update_info_text":"no","tran_driver_text":"no","tran_address_text":"no","tran_vehicle_text":"yes","report_region":"carmel indianapolis","all_rows":"segments","sat_agent_nbr":"4","tran_poc_text":"yes","tran_payment_type_text":"no","response_id":"r_30ufc4a6z80bovx","region":"r8","policy_number":"4308139932","ease_text":"more at ease","end_date":"20150519","sat_company_nbr":"4","asct_ful_nm":"lewandowski,kimberly sue","tran_discount_text":"no","sctn_cd":"f811","tran_payment_text":"no","rated_state":"nj","sat_agent_nbr_box":"0","profit_center":"indianapolis","sat_company_nbr_box":"0","tran_coverage_text":"no","asct_id":"165864","natural_id_hash":"OzhbZmBnHyQ4c3k2aNu5ebYwSbw="}
+    } ]
+  }
+}
