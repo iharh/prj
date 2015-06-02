@@ -22,6 +22,8 @@ libraryDependencies ++= Seq(
     //"com.oracle"                % "ojdbc6"         % "11.2.0.3",
     //"cn.guoyukun.jdbc"          % "oracle-ojdbc6"  % "11.2.0.3.0",
 
+    "com.typesafe"              % "config"         % "1.3.0",
+
     "com.github.davidmoten"     % "rxjava-jdbc"    % "0.5.7",
     // one-jar stuff
     //"commons-lang"              % "commons-lang"   % "2.6"
@@ -32,8 +34,10 @@ libraryDependencies ++= Seq(
 )
 
 unmanagedJars in Compile ++= {
-    (file("D:/clb/inst/server/lib.cb") ** "*.jar").classpath
+    //(file("D:/clb/inst/server/lib.cb") ** "*.jar").classpath
+    (file("D:/clb/inst/server/lib.cb") ** "ojdbc6*.jar").classpath
 }
 unmanagedJars in Test ++= {
-    (file("D:/clb/inst/server/lib.cb") ** "*.jar").classpath
+    //(file("D:/clb/inst/server/lib.cb") ** "*.jar").classpath
+    (file("D:/clb/inst/server/lib.cb") ** "ojdbc6*.jar").classpath
 }
