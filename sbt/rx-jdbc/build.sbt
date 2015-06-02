@@ -34,10 +34,13 @@ libraryDependencies ++= Seq(
 )
 
 unmanagedJars in Compile ++= {
-    //(file("D:/clb/inst/server/lib.cb") ** "*.jar").classpath
     (file("D:/clb/inst/server/lib.cb") ** "ojdbc6*.jar").classpath
 }
-unmanagedJars in Test ++= {
-    //(file("D:/clb/inst/server/lib.cb") ** "*.jar").classpath
-    (file("D:/clb/inst/server/lib.cb") ** "ojdbc6*.jar").classpath
+
+unmanagedJars in Compile ++= {
+    (file("D:/clb/inst/server/lib.cb") ** "elasticsearch-*.jar").classpath
+}
+
+unmanagedJars in Compile ++= {
+    (file("D:/clb/inst/server/lib.cb") ** "protobuf-java-*.jar").classpath
 }

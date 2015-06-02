@@ -1,4 +1,4 @@
-package rxjdbc;
+package config;
 
 import org.junit.Test;
 import org.junit.Ignore;
