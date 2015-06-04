@@ -60,6 +60,7 @@ public class OraPSUpdater {
     }
 
     public static void main(String [] args) throws Exception {
+        log.info("start");
         final String propFileName = "database.system.properties";
         final String updSqlFileName = "update.sql";
 
@@ -80,6 +81,8 @@ public class OraPSUpdater {
                 final Database psDB = getOraDb(url, psCred.getUsr(), psCred.getPwd());
                 updateForSinglePS(psDB, updSQL);
             }
+
+            log.info("finish - OK");
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             System.exit(-1);
