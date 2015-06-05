@@ -104,7 +104,7 @@ public class PSUpdater {
 
     public static void main(String [] args) throws Exception {
         log.info("start");
-        final String propFileName = "database.system.properties";
+        final String propFileName = "../../server/conf/database.system.properties";
 
         try {
             Properties props = new Properties();

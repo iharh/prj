@@ -1,16 +1,8 @@
-create or replace function dd1 ( 
-)  returns void 
-as $$
-declare
-begin
-end;
-$$ language 'plpgsql';
-
 create or replace function reprocess_build_staging ( 
 	stg_table_name character varying default 'STG' ,
 	subsql character varying default ''
 )  returns void 
-as $$
+as \$\$
 declare
 
 is_debug boolean default true;
@@ -164,54 +156,4 @@ BEGIN
         raise notice 'started at: %', to_char(v_START_DATE, 'DD-MON-YYYY HH24:MI:SS') || ' and finished at: ' || to_char(now(), 'DD-MON-YYYY HH24:MI:SS');
     end if;
 END;
-$$ language 'plpgsql';
-
-
-create or replace function get_column_type( 
-	tb_owner character varying
-	,tb_name character varying 
-	,col_name character varying
-)  returns character varying
-as $$
-declare
-	ret_value	character varying;
-begin
-
-SELECT
-    pg_catalog.format_type(a.atttypid, a.atttypmod) into ret_value
-FROM
-    pg_catalog.pg_attribute a
-WHERE
-    a.attnum > 0
-    AND a.attname = col_name
-    AND NOT a.attisdropped
-    AND a.attrelid = (        SELECT c.oid
-        FROM pg_catalog.pg_class c
-            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
-            left join pg_catalog.pg_user u on c.relowner = u.usesysid
-        WHERE c.relname = tb_name
-            AND pg_catalog.pg_table_is_visible(c.oid)
-            AND u.usename = tb_owner);
-
-return ret_value;
-end;
-$$ language 'plpgsql';
-
-create or replace function reprocess_validate_staging( 
-    stg_table_name character varying default 'STG' 
-)  returns void 
-as $$
-declare
-	cnt	numeric;
-begin
-	execute 'select cbrp_document_id from ' || stg_table_name || ' limit 1' into cnt;
-	if cnt is null then
-		raise exception 'Staging table % is empty.', stg_table_name;
-	end if;
-	exception
-		when undefined_table then
-			raise exception 'Staging table % is missing.', stg_table_name;
-		when undefined_column then
-			raise exception 'Staging table % has invalid structure.', stg_table_name;
-end;
-$$ language 'plpgsql';
+\$\$ language 'plpgsql';
