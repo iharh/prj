@@ -33,12 +33,14 @@ libraryDependencies ++= Seq(
     "org.hamcrest"              % "hamcrest-library"   % "1.3"     % "test"
 )
 
+val clbIvyCache = file("D:/clb/src/platform/ivy-cache")
+
 unmanagedJars in Compile ++= {
-    (file("D:/clb/inst/server/lib.cb") ** "ojdbc6*.jar").classpath
+    ((clbIvyCache / "com.oracle/ojdbc6/jars") ** "ojdbc6*.jar").classpath
 }
 
 unmanagedJars in Compile ++= {
-    (file("D:/clb/inst/server/lib.cb") ** "postgresql-9*.jar").classpath
+    ((clbIvyCache / "postgresql/postgresql/jars") ** "postgresql-9*.jar").classpath
 }
 
 mainClass in (Compile, run) := Some("rxjdbc.PSUpdater")
