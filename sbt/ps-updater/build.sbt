@@ -23,6 +23,8 @@ libraryDependencies ++= Seq(
     "log4j"                     % "log4j"          % "1.2.17",
 
     "com.github.davidmoten"     % "rxjava-jdbc"    % "0.5.7",
+
+    "org.antlr"                 % "ST4"            % "4.0.8",
     // one-jar stuff
     //"commons-lang"              % "commons-lang"   % "2.6"
     //
@@ -35,4 +37,8 @@ unmanagedJars in Compile ++= {
     (file("D:/clb/inst/server/lib.cb") ** "ojdbc6*.jar").classpath
 }
 
-mainClass in (Compile, run) := Some("rxjdbc.OraPSUpdater")
+unmanagedJars in Compile ++= {
+    (file("D:/clb/inst/server/lib.cb") ** "postgresql-9*.jar").classpath
+}
+
+mainClass in (Compile, run) := Some("rxjdbc.PSUpdater")
