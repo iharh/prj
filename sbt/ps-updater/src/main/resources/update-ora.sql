@@ -116,7 +116,7 @@ begin
             col_name_candidate := col_name || DBMS_RANDOM.STRING('X', 2);
         end loop;
         
-         	for j in (select keyword from ${system_user_name}.SYS_WORDS) loop
+         	for j in (select keyword from $system_user_name$.SYS_WORDS) loop
  	 			IF j.keyword = upper(col_name_candidate) THEN
  	 		  	col_name_candidate := col_name || DBMS_RANDOM.STRING('X', 2);
  	 		  	end if;
