@@ -4,29 +4,18 @@ import com.github.davidmoten.rx.jdbc.Database;
 
 import org.stringtemplate.v4.ST;
 
+import org.apache.commons.io.IOUtils;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.nio.file.Files;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
-import java.nio.file.Paths;
-import java.nio.file.Path;
-
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.IOException;
 
-import java.net.URI;
-
 import java.util.Properties;
 import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
 
 import java.nio.charset.Charset;
 
@@ -40,29 +29,6 @@ public class PSUpdater {
         log.info("connecting to drv: {} db url: {} usr: {}", drv, url, usr);
         return Database.from(url, usr, pwd);
     }
-
-    public static class PSCred {
-        private String usr;
-        private String pwd;
-
-        public PSCred(String usr, String pwd) {
-            this.usr = usr;
-            this.pwd = pwd;
-        }
-
-        public String getUsr() {
-            return usr;
-        }
-
-        public String getPwd() {
-            return pwd;
-        }
-
-        @Override
-        public String toString() {
-            return "usr: " + usr + " pwd: " + pwd;
-        }
-    };
 
     private static List<PSCred> getPSCreds(final Database ssDB) {
         List<PSCred> result = ssDB
@@ -88,20 +54,6 @@ public class PSUpdater {
         }
     }
 
-
-    private static final int BUFFER_SIZE = 4 * 1024;
-
-    private static String inputStreamToString(InputStream inputStream, Charset charset) throws IOException {
-        StringBuilder builder = new StringBuilder();
-        InputStreamReader reader = new InputStreamReader(inputStream, charset);
-        char[] buffer = new char[BUFFER_SIZE];
-        int length;
-        while ((length = reader.read(buffer)) != -1) {
-            builder.append(buffer, 0, length);
-        }
-        return builder.toString();
-    }    
-
     public static void main(String [] args) throws Exception {
         log.info("start");
         final String propFileName = "../../server/conf/database.system.properties";
@@ -121,21 +73,8 @@ public class PSUpdater {
             final String resName = "/" + updSqlFileName;
             log.info("resName: {}", resName);
 
-
-            //InputStream is = getClass().getResourceAsStream(resName);
-            // Opens a resource from the current class' defining class loader
-            InputStream istream = PSUpdater.class.getResourceAsStream(resName); // getClass()
-
-            // Create a NIO ReadableByteChannel from the stream
-            //ReadableByteChannel channel = Channels.newChannel(istream);
-
-            final String updSQLTemplate = inputStreamToString(istream, UTF_8);
-            /*new String(Files.readAllBytes(
-                Paths.get(
-                    PSUpdater.class.getClassLoader().getResource(resName).toURI()
-                )
-            ));*/
-            //final String updSQLTemplate = new String(Files.readAllBytes(Paths.get(updSqlFileName)));
+            InputStream istream = PSUpdater.class.getResourceAsStream(resName);
+            final String updSQLTemplate = IOUtils.toString(istream, UTF_8); // inputStreamToString(istream, UTF_8);
 
             final Database ssDB = getDb(drv, url, usr, pwd);
 

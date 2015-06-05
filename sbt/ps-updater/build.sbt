@@ -25,6 +25,8 @@ libraryDependencies ++= Seq(
     "com.github.davidmoten"     % "rxjava-jdbc"    % "0.5.7",
 
     "org.antlr"                 % "ST4"            % "4.0.8",
+
+    "commons-io"                % "commons-io"     % "2.4",
     // one-jar stuff
     //"commons-lang"              % "commons-lang"   % "2.6"
     //
