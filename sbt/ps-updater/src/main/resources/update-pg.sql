@@ -5,7 +5,7 @@ create or replace function reprocess_build_staging (
 as \$\$
 declare
 
-is_debug boolean default true;
+is_debug boolean default false;
 
 -- variable for dynamically created sql queries
 dynamic_sql character varying(32000);
