@@ -1,0 +1,66 @@
+{
+  "cluster_name" : "citron5_db-1521-cborcl-cbss_citron1",
+  "status" : "yellow",
+  "timed_out" : false,
+  "number_of_nodes" : 2,
+  "number_of_data_nodes" : 2,
+  "active_primary_shards" : 5,
+  "active_shards" : 9,
+  "relocating_shards" : 0,
+  "initializing_shards" : 0,
+  "unassigned_shards" : 1,
+  "indices" : {
+    "10528" : {
+      "status" : "yellow",
+      "number_of_shards" : 5,
+      "number_of_replicas" : 1,
+      "active_primary_shards" : 5,
+      "active_shards" : 9,
+      "relocating_shards" : 0,
+      "initializing_shards" : 0,
+      "unassigned_shards" : 1,
+      "shards" : {
+        "0" : {
+          "status" : "green",
+          "primary_active" : true,
+          "active_shards" : 2,
+          "relocating_shards" : 0,
+          "initializing_shards" : 0,
+          "unassigned_shards" : 0
+        },
+        "1" : {
+          "status" : "yellow",
+          "primary_active" : true,
+          "active_shards" : 1,
+          "relocating_shards" : 0,
+          "initializing_shards" : 0,
+          "unassigned_shards" : 1
+        },
+        "2" : {
+          "status" : "green",
+          "primary_active" : true,
+          "active_shards" : 2,
+          "relocating_shards" : 0,
+          "initializing_shards" : 0,
+          "unassigned_shards" : 0
+        },
+        "3" : {
+          "status" : "green",
+          "primary_active" : true,
+          "active_shards" : 2,
+          "relocating_shards" : 0,
+          "initializing_shards" : 0,
+          "unassigned_shards" : 0
+        },
+        "4" : {
+          "status" : "green",
+          "primary_active" : true,
+          "active_shards" : 2,
+          "relocating_shards" : 0,
+          "initializing_shards" : 0,
+          "unassigned_shards" : 0
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 @echo off
-set ES_HOST=wildblue1
+set ES_HOST=citron5
 ::epbygomw0404.gomel.epam.com
 ::evergreen3
 ::citron5
