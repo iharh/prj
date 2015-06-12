@@ -1,0 +1,26 @@
+{
+  "took" : 2,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 2,
+    "max_score" : 1.2231436,
+    "hits" : [ {
+      "_index" : "1404",
+      "_type" : "sentence",
+      "_id" : "3",
+      "_score" : 1.2231436,
+      "_source":{"natural_id":"100003","_id_batch":1663,"_id_document":4,"_id_source":"en4_xlsx","cb_content_type":"contentful","cb_content_subtype":"contentful","_id_sentence":3,"_id_verbatim":5,"_verbatimtype":"v1","_language":"english","_languagedetected":"not attempted","natural_id_hash":"kGApce4ULENlfCU4lyrIFWdNonc=","_sentimentindex":1.0,"_degreesentimentindex":3.25,"_sentimentnegcount":0,"_sentimentposcount":2,"_sentimentposnegdeltacount":2,"_words":"price cialis 80 mg Best price for cialis 5mg and 10 mg cost of walmart cialis generic cialis pills tadalafil Cialis how long does the erection last cialis uk us generic cialis houston Cialis soft expiration street price cialis mg does cialis keep you","_mstokenname":["PRICE","CIALIS","80 MG","BEST","PRICE","FOR","CIALIS","5MG","AND","10 MG","COST","OF","WAL-MART","CIALIS","GENERIC","CIALIS","PILL","TADALAFIL","CIALIS","HOW","LONG","DO","ERECTION","LAST","CIALIS","UK","WE","GENERIC","CIALIS","HOUSTON CIALIS","SOFT","EXPIRATION","STREET","PRICE","CIALIS","MG","DO","CIALIS","KEEP","YOU"],"_tokendata":["NQYABQA=","AQYGBwA=","AgYHBgA=","AwYGBTAXFw==","BAYFBgA=","BQ8GBAA=","BgYEBwA=","BwYHBAA=","CBAEBAA=","CQYEBgA=","CgYGBQA=","Cw8FAwA=","DAYDCAA=","DQYIBwA=","DgIHCAA=","DwYIBwA=","EAYHBgA=","EQYGCgA=","EgYKBwA=","EwQHBAA=","FAIEBQA=","FQcFBQA=","FgYJDQA=","FwEJBQA=","GAYFBwA=","GQYHAwA=","GgQDAwA=","GwIDCAA=","HAYIBwA=","HQYHDwA=","HgIPBTAPDw==","HwYFCwA=","IAYLBwA=","IQYHBgA=","IgYGBwA=","IwYHAwA=","JAcDBQA=","JQYFBwA=","JgcHBQA=","JwQFBAA="],"_lc":["price --> keep_1","price --> 5mg_1","cialis --> price_1","80 mg --> cialis_1","best --> 80 mg_1","price --> best_1","5mg --> cialis_1","cost --> cialis_1","cost --> 10 mg_1","cialis --> wal-mart_1","cialis --> cialis_1","cialis --> generic_1","pill --> cialis_1","tadalafil --> pill_1","cialis --> tadalafil_1","uk --> cialis_1","houston cialis --> generic_1","houston cialis --> cialis_1","mg --> soft_1","street --> expiration_1","price --> street_1","cialis --> price_1","mg --> cialis_1","keep --> cialis_1"],"_lc_tokens":["57-91","57-60","54-53","55-54","56-55","57-56","60-59","63-71","63-62","66-65","71-66","71-67","69-68","70-69","71-70","78-77","82-80","82-81","88-83","85-84","86-85","87-86","88-87","91-90"]}
+    }, {
+      "_index" : "1404",
+      "_type" : "sentence",
+      "_id" : "18",
+      "_score" : 1.2231436,
+      "_source":{"natural_id":"100003","_id_batch":1663,"_id_document":4,"_id_source":"en4_xlsx","cb_content_type":"contentful","cb_content_subtype":"contentful","_id_sentence":18,"_id_verbatim":6,"_verbatimtype":"v2","_language":"english","_languagedetected":"not attempted","natural_id_hash":"kGApce4ULENlfCU4lyrIFWdNonc=","_sentimentindex":1.0,"_degreesentimentindex":2.0,"_sentimentnegcount":0,"_sentimentposcount":1,"_sentimentposnegdeltacount":1,"_words":"I like my round table","_mstokenname":["I","LIKE","MY","ROUND","TABLE"],"_tokendata":["3AEEAAEA","AQcCBTAPDw==","AgMFAwA=","AwIDBgA=","BAYGBgA="],"_lc":["like --> table_1","table --> round_1"],"_lc_tokens":["221-224","224-223"]}
+    } ]
+  }
+}

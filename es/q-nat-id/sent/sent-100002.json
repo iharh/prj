@@ -1,0 +1,74 @@
+{
+  "took" : 4,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 81,
+    "max_score" : 1.0119762,
+    "hits" : [ {
+      "_index" : "1404",
+      "_type" : "sentence",
+      "_id" : "2",
+      "_score" : 1.0119762,
+      "_source":{"natural_id":"100002","_id_batch":1663,"_id_document":3,"_id_source":"en4_xlsx","cb_content_type":"contentful","cb_content_subtype":"contentful","_id_sentence":2,"_id_verbatim":7,"_verbatimtype":"v1","_language":"english","_languagedetected":"not attempted","natural_id_hash":"PmgjCK1cpqo3lyzPLPWfTKGVuOQ=","_sentimentindex":0.5,"_degreesentimentindex":0.0,"_sentimentnegcount":0,"_sentimentposcount":0,"_sentimentposnegdeltacount":0,"_words":"Phones shopping fashion department as promised…people.","_mstokenname":["PHONE","SHOPPING","FASHION","DEPARTMENT","PROMISED","PEOPLE"],"_tokendata":["AQcABgA=","AQYHCQA=","AgYJCAA=","AwYICwA=","BAILDAA=","BQYMBwA="],"_lc":["phone --> promised_1","phone --> department_1","fashion --> shopping_1","department --> fashion_1"],"_lc_tokens":["1-5","1-4","3-2","4-3"]}
+    }, {
+      "_index" : "1404",
+      "_type" : "sentence",
+      "_id" : "5",
+      "_score" : 1.0119762,
+      "_source":{"natural_id":"100002","_id_batch":1663,"_id_document":3,"_id_source":"en4_xlsx","cb_content_type":"contentful","cb_content_subtype":"contentful","_id_sentence":5,"_id_verbatim":7,"_verbatimtype":"v1","_language":"english","_languagedetected":"not attempted","natural_id_hash":"PmgjCK1cpqo3lyzPLPWfTKGVuOQ=","_sentimentindex":0.5,"_degreesentimentindex":0.0,"_sentimentnegcount":0,"_sentimentposcount":0,"_sentimentposnegdeltacount":0,"_words":"Stores shopping fashion department stores shopping at walmart is having such.","_mstokenname":["STORE","SHOPPING","FASHION","DEPARTMENT","STORE","SHOPPING","AT","WAL-MART","BE","HAVING","SUCH"],"_tokendata":["BwYABgA=","AQYHCQA=","AgYJCAA=","AwYICwA=","BAYLBwA=","BQYHCQA=","Bg8JAwA=","BwYDCAA=","CAcIAwA=","CQYDBwA=","CgMHBQA="],"_lc":["shopping --> store_1","fashion --> shopping_1","department --> fashion_1","store --> department_1","shopping --> store_1"],"_lc_tokens":["8-7","9-8","10-9","11-10","12-11"]}
+    }, {
+      "_index" : "1404",
+      "_type" : "sentence",
+      "_id" : "6",
+      "_score" : 1.0119762,
+      "_source":{"natural_id":"100002","_id_batch":1663,"_id_document":3,"_id_source":"en4_xlsx","cb_content_type":"contentful","cb_content_subtype":"contentful","_id_sentence":6,"_id_verbatim":7,"_verbatimtype":"v1","_language":"english","_languagedetected":"not attempted","natural_id_hash":"PmgjCK1cpqo3lyzPLPWfTKGVuOQ=","_sentimentindex":1.0,"_degreesentimentindex":2.0,"_sentimentnegcount":0,"_sentimentposcount":1,"_sentimentposnegdeltacount":1,"_words":"On the worlds largest or feelings towards your emotions and website that Mother's Day Ring At Walmart.","_mstokenname":["ON","WORLDS","LARGEST","OR","FEELING","TOWARDS","YOUR","EMOTION","AND","WEBSITE","THAT","MOTHER'S DAY RING","AT","WAL-MART"],"_tokendata":["Xg8AAgA=","AQYHCwA=","AgIHCDAPDw==","AxAIAwA=","BAYDCQA=","BQ8JCAA=","BgMIBQA=","BwYFCQA=","CBAJBAA=","CQYECAA=","CgMIBQA=","CwYFEgA=","DA8SAwA=","DQYDCAA="],"_lc":["emotion --> towards_1","mother's day ring --> wal-mart_1"],"_lc_tokens":["101-99","105-107"]}
+    }, {
+      "_index" : "1404",
+      "_type" : "sentence",
+      "_id" : "7",
+      "_score" : 1.0119762,
+      "_source":{"natural_id":"100002","_id_batch":1663,"_id_document":3,"_id_source":"en4_xlsx","cb_content_type":"contentful","cb_content_subtype":"contentful","_id_sentence":7,"_id_verbatim":7,"_verbatimtype":"v1","_language":"english","_languagedetected":"not attempted","natural_id_hash":"PmgjCK1cpqo3lyzPLPWfTKGVuOQ=","_sentimentindex":0.5,"_degreesentimentindex":0.0,"_sentimentnegcount":0,"_sentimentposcount":0,"_sentimentposnegdeltacount":0,"_words":"Available for less at walmart.","_mstokenname":["AVAILABLE","FOR","LESS","AT","WAL-MART"],"_tokendata":["gwECAAkA","AQ8KBAA=","AgEEBQA=","Aw8FAwA=","BAYDCAA="]}
+    }, {
+      "_index" : "1404",
+      "_type" : "sentence",
+      "_id" : "8",
+      "_score" : 1.0119762,
+      "_source":{"natural_id":"100002","_id_batch":1663,"_id_document":3,"_id_source":"en4_xlsx","cb_content_type":"contentful","cb_content_subtype":"contentful","_id_sentence":8,"_id_verbatim":7,"_verbatimtype":"v1","_language":"english","_languagedetected":"not attempted","natural_id_hash":"PmgjCK1cpqo3lyzPLPWfTKGVuOQ=","_sentimentindex":0.5,"_degreesentimentindex":0.0,"_sentimentnegcount":0,"_sentimentposcount":0,"_sentimentposnegdeltacount":0,"_words":"Mobile phones shopping department stores shopping fashion department.","_mstokenname":["MOBILE","PHONE","SHOPPING","DEPARTMENT","STORE","SHOPPING","FASHION","DEPARTMENT"],"_tokendata":["iAEGAAYA","AQcHBwA=","AgYHCQA=","AwYJCwA=","BAYLBwA=","BQYHCQA=","BgYJCAA=","BwYICwA="],"_lc":["phone --> mobile_1","phone --> department_1","department --> shopping_1","store --> department_1","shopping --> store_1","fashion --> shopping_1","department --> fashion_1"],"_lc_tokens":["137-136","137-143","139-138","140-139","141-140","142-141","143-142"]}
+    }, {
+      "_index" : "1404",
+      "_type" : "sentence",
+      "_id" : "10",
+      "_score" : 1.0119762,
+      "_source":{"natural_id":"100002","_id_batch":1663,"_id_document":3,"_id_source":"en4_xlsx","cb_content_type":"contentful","cb_content_subtype":"contentful","_id_sentence":10,"_id_verbatim":7,"_verbatimtype":"v1","_language":"english","_languagedetected":"not attempted","natural_id_hash":"PmgjCK1cpqo3lyzPLPWfTKGVuOQ=","_sentimentindex":0.5,"_degreesentimentindex":0.0,"_sentimentnegcount":0,"_sentimentposcount":0,"_sentimentposnegdeltacount":0,"_words":"Dressed, or Mother's Day Ring At Walmart make creating a promised…people of comedy website that.","_mstokenname":["DRESS","OR","MOTHER'S DAY RING","AT","WAL-MART","MAKE","CREATE","PROMISED","PEOPLE","OF","COMEDY","WEBSITE","THAT"],"_tokendata":["mAEKAAcA","ARAJBAA=","AgYDEgA=","Aw8SAwA=","BAYDCAA=","BQYIBQA=","BgsFCQA=","BwILCwA=","CAYJBwA=","CQ8HAwA=","CgYDBwA=","CwYHCAA=","DAQIBQA="],"_lc":["dress --> promised_1","dress --> make_1","make --> create_1","make --> wal-mart_1","website --> comedy_1"],"_lc_tokens":["152-159","152-157","157-158","157-156","163-162"]}
+    }, {
+      "_index" : "1404",
+      "_type" : "sentence",
+      "_id" : "11",
+      "_score" : 1.0119762,
+      "_source":{"natural_id":"100002","_id_batch":1663,"_id_document":3,"_id_source":"en4_xlsx","cb_content_type":"contentful","cb_content_subtype":"contentful","_id_sentence":11,"_id_verbatim":7,"_verbatimtype":"v1","_language":"english","_languagedetected":"not attempted","natural_id_hash":"PmgjCK1cpqo3lyzPLPWfTKGVuOQ=","_sentimentindex":0.5,"_degreesentimentindex":0.0,"_sentimentnegcount":0,"_sentimentposcount":0,"_sentimentposnegdeltacount":0,"_words":"That day special is by either creating a poem.","_mstokenname":["THAT DAY","SPECIAL","BE BY","BY","EITHER","CREATE","POEM"],"_tokendata":["pQEBAAgA","AQIJCAA=","AgcIAwA=","Aw8DAwA=","BAEDBwA=","BQsHCQA=","BgYLBwA="],"_lc":["be by --> special_1","special --> that day_1","be by --> create_1","be by --> either_1","create --> poem_1"],"_lc_tokens":["167-166","166-165","167-170","167-169","170-171"]}
+    }, {
+      "_index" : "1404",
+      "_type" : "sentence",
+      "_id" : "12",
+      "_score" : 1.0119762,
+      "_source":{"natural_id":"100002","_id_batch":1663,"_id_document":3,"_id_source":"en4_xlsx","cb_content_type":"contentful","cb_content_subtype":"contentful","_id_sentence":12,"_id_verbatim":7,"_verbatimtype":"v1","_language":"english","_languagedetected":"not attempted","natural_id_hash":"PmgjCK1cpqo3lyzPLPWfTKGVuOQ=","_sentimentindex":0.5,"_degreesentimentindex":0.0,"_sentimentnegcount":0,"_sentimentposcount":0,"_sentimentposnegdeltacount":0,"_words":"Day ways to make to make this.","_mstokenname":["DAY","WAY","TO","MAKE","TO","MAKE","THIS"],"_tokendata":["rAEGAAMA","AQYEBQA=","Ah0FAwA=","AwcDBQA=","BB0FAwA=","BQcDBQA=","BgQFBQA="],"_lc":["make --> make_1"],"_lc_tokens":["175-177"]}
+    }, {
+      "_index" : "1404",
+      "_type" : "sentence",
+      "_id" : "13",
+      "_score" : 1.0119762,
+      "_source":{"natural_id":"100002","_id_batch":1663,"_id_document":3,"_id_source":"en4_xlsx","cb_content_type":"contentful","cb_content_subtype":"contentful","_id_sentence":13,"_id_verbatim":7,"_verbatimtype":"v1","_language":"english","_languagedetected":"not attempted","natural_id_hash":"PmgjCK1cpqo3lyzPLPWfTKGVuOQ=","_sentimentindex":0.5,"_degreesentimentindex":0.0,"_sentimentnegcount":0,"_sentimentposcount":0,"_sentimentposnegdeltacount":0,"_words":"Comedy website that fashion department stores shopping.","_mstokenname":["COMEDY","WEBSITE","THAT","FASHION","DEPARTMENT","STORE","SHOPPING"],"_tokendata":["swEGAAYA","AQYHCAA=","AgMIBQA=","AwYFCAA=","BAYICwA=","BQYLBwA=","BgYHCQA="],"_lc":["website --> comedy_1","department --> fashion_1","store --> department_1","shopping --> store_1"],"_lc_tokens":["180-179","183-182","184-183","185-184"]}
+    }, {
+      "_index" : "1404",
+      "_type" : "sentence",
+      "_id" : "14",
+      "_score" : 1.0119762,
+      "_source":{"natural_id":"100002","_id_batch":1663,"_id_document":3,"_id_source":"en4_xlsx","cb_content_type":"contentful","cb_content_subtype":"contentful","_id_sentence":14,"_id_verbatim":7,"_verbatimtype":"v1","_language":"english","_languagedetected":"not attempted","natural_id_hash":"PmgjCK1cpqo3lyzPLPWfTKGVuOQ=","_sentimentindex":0.5,"_degreesentimentindex":0.0,"_sentimentnegcount":0,"_sentimentposcount":0,"_sentimentposnegdeltacount":0,"_words":"Walmart is as promised…people of the ways to make.","_mstokenname":["WAL-MART","BE","PROMISED","PEOPLE","OF","WAY","TO","MAKE"],"_tokendata":["ugEGAAcA","AQcIAwA=","AgIDDAA=","AwYMBwA=","BA8HAwA=","BQYHCQA=","Bh0FAwA=","BwcDBQA="],"_lc":["wal-mart --> promised_1"],"_lc_tokens":["186-188"]}
+    } ]
+  }
+}

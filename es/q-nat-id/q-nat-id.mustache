@@ -1,0 +1,15 @@
+{
+  "fields": [
+    "_timestamp",
+    "natural_id"
+  ],
+  "query": {
+    "filtered": {
+      "query": {
+         "query_string" : {
+            "query" : "natural_id:{{id}}"
+          }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "took" : 1,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 1,
+    "max_score" : 1.1823215,
+    "hits" : [ {
+      "_index" : "1404",
+      "_type" : "document",
+      "_id" : "2",
+      "_score" : 1.1823215,
+      "_source":{"natural_id":"100001","_id_batch":1663,"_id_document":2,"_id_source":"en4_xlsx","cb_content_type":"contentful","cb_content_subtype":"contentful","natural_id_hash":"wtF303qNAYdt0G6RyoGQxdt4bdM="}
+    } ]
+  }
+}

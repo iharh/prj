@@ -1,0 +1,26 @@
+{
+  "took" : 2,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 2,
+    "max_score" : 1.2231436,
+    "hits" : [ {
+      "_index" : "1404",
+      "_type" : "sentence",
+      "_id" : "1",
+      "_score" : 1.2231436,
+      "_source":{"natural_id":"100000","_id_batch":1663,"_id_document":1,"_id_source":"en4_xlsx","cb_content_type":"contentful","cb_content_subtype":"contentful","_id_sentence":1,"_id_verbatim":1,"_verbatimtype":"v1","_language":"english","_languagedetected":"not attempted","natural_id_hash":"Gi2sjxypIZJRSAyPd6goXNlLbx8=","_sentimentindex":1.0,"_degreesentimentindex":3.0,"_sentimentnegcount":0,"_sentimentposcount":1,"_sentimentposnegdeltacount":1,"_words":"day levitra buy brand levitra in australia is generic levitra safe Levitra sales promotion walmart levitra20mg best online levitra Levitra cutting half levitra 20 mg sahte free levitra pills Kamagra oder levitra 5 mg levitra prices generic levitra look","_mstokenname":["DAY","LEVITRA","BUY","BRAND","LEVITRA","IN","AUSTRALIA","BE","GENERIC","LEVITRA","SAFE","LEVITRA","SALE","PROMOTION","WAL-MART","LEVITRA20MG","BEST","ONLINE","LEVITRA","LEVITRA","CUT","HALF","LEVITRA","20 MG","SAHTE FREE","LEVITRA","PILL","KAMAGRA ODER","LEVITRA","5 MG","LEVITRA","PRICE","GENERIC","LEVITRA","LOOK"],"_tokendata":["EgYAAwA=","AQYECAA=","AgYIBAA=","AwYEBgA=","BAYGCAA=","BQ8IAwA=","BgYDCgA=","BwcKAwA=","CAIDCAA=","CQYICAA=","CgIIBQA=","CwYFCAA=","DAYIBgA=","DQYGCgA=","DgYKCAA=","DwYIDAA=","EAYMBTAXFw==","EQYFBwA=","EgYHCAA=","EwYICAA=","FAsICAA=","FQIIBQA=","FgYFCAA=","FwYIBgA=","GAIGCwA=","GQYLCAA=","GgYIBgA=","GwYGDQA=","HAYNCAA=","HQYIBQA=","HgYFCAA=","HwYIBwA=","IAIHCAA=","IQYICAA=","IgYIBQA="],"_lc":["levitra --> australia_1","levitra --> day_1","buy --> levitra_1","brand --> buy_1","levitra --> brand_1","cut --> online_1","online --> generic_1","online --> levitra_1","online --> safe_1","sale --> levitra_1","promotion --> sale_1","wal-mart --> promotion_1","levitra20mg --> wal-mart_1","best --> levitra20mg_1","online --> best_1","cut --> look_1","cut --> levitra_1","cut --> price_1","levitra --> levitra_1","price --> half_1","20 mg --> levitra_1","price --> 20 mg_1","price --> sahte free_1","pill --> levitra_1","kamagra oder --> pill_1","levitra --> kamagra oder_1","5 mg --> levitra_1","levitra --> 5 mg_1","price --> levitra_1","look --> generic_1","look --> levitra_1"],"_lc_tokens":["22-24","19-18","20-19","21-20","22-21","38-35","35-26","35-27","35-28","30-29","31-30","32-31","33-32","34-33","35-34","38-52","38-37","38-49","37-36","49-39","41-40","49-41","49-42","44-43","45-44","46-45","47-46","48-47","49-48","52-50","52-51"]}
+    }, {
+      "_index" : "1404",
+      "_type" : "sentence",
+      "_id" : "17",
+      "_score" : 1.2231436,
+      "_source":{"natural_id":"100000","_id_batch":1663,"_id_document":1,"_id_source":"en4_xlsx","cb_content_type":"contentful","cb_content_subtype":"contentful","_id_sentence":17,"_id_verbatim":2,"_verbatimtype":"v2","_language":"english","_languagedetected":"not attempted","natural_id_hash":"Gi2sjxypIZJRSAyPd6goXNlLbx8=","_sentimentindex":1.0,"_degreesentimentindex":2.0,"_sentimentnegcount":0,"_sentimentposcount":1,"_sentimentposnegdeltacount":1,"_words":"I like my round table","_mstokenname":["I","LIKE","MY","ROUND","TABLE"],"_tokendata":["ygEEAAEA","AQcCBTAPDw==","AgMFAwA=","AwIDBgA=","BAYGBgA="],"_lc":["like --> table_1","table --> round_1"],"_lc_tokens":["203-206","206-205"]}
+    } ]
+  }
+}

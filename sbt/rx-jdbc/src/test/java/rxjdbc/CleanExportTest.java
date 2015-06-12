@@ -6,25 +6,20 @@ import org.junit.Ignore;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertNotNull;
 
-
 import com.typesafe.config.ConfigFactory;
 import com.typesafe.config.Config;
 
 import com.github.davidmoten.rx.jdbc.Database;
-import com.github.davidmoten.rx.jdbc.tuple.Tuple2;
-/*
-import com.github.davidmoten.rx.jdbc.tuple.TupleN;
-import com.github.davidmoten.rx.jdbc.tuple.Tuples;
-*/
+
+import rx.functions.Action1;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
 
-import java.util.List;
-
-public class ProjTest {
-    private static final Logger log = LoggerFactory.getLogger(ProjTest.class);
+public class CleanExportTest {
+    private static final Logger log = LoggerFactory.getLogger(CleanExportTest.class);
 
     private static File getOraPropFile(String hostId) {
         return new File("D:\\dev\\notes\\wrk\\clb\\hosts\\db-csi\\ora\\" + hostId + ".database.system.properties");
@@ -60,27 +55,26 @@ public class ProjTest {
         final Config conf = getOraConf("yellow5");
         return getOraDb(
             getDbProp(conf, "url"),
-            getDbProp(conf, "username"),
-            getDbProp(conf, "password")
+            "STG_BB_ECC",
+            "STG_BB_ECC"
         );
     }
 
     @Test
-    public void testProj() throws Exception {
+    public void testExport() throws Exception {
         Database db = getDb();
 
-        List<Tuple2<Integer, String>> projects = db
-            .select("select id, name from cb_project")
-            .getAs(Integer.class, String.class)
-            .toList()
+        db
+            .select("select natural_id1 from CLEAN_18MONTH_OLD_BKP052915")
+            .getAs(String.class)
             .toBlocking()
-            .single();
+            .forEach(new Action1<String>() {
+                @Override
+                public void call(String s) {
+                    log.info(s);
+                }
+            });
 
-        log.info("start");
-        for (Tuple2<Integer, String> p : projects) {
-            log.info(p.value1() + " -> " + p.value2());
-        }
-        log.info("end");
 // .select("select name from person where name > ? order by name")
 // .parameter("ALEX")
         assertTrue(true);

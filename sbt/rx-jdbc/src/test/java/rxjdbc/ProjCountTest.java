@@ -12,10 +12,7 @@ import com.typesafe.config.Config;
 
 import com.github.davidmoten.rx.jdbc.Database;
 import com.github.davidmoten.rx.jdbc.tuple.Tuple2;
-/*
-import com.github.davidmoten.rx.jdbc.tuple.TupleN;
-import com.github.davidmoten.rx.jdbc.tuple.Tuples;
-*/
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,8 +20,8 @@ import java.io.File;
 
 import java.util.List;
 
-public class ProjTest {
-    private static final Logger log = LoggerFactory.getLogger(ProjTest.class);
+public class ProjCountTest {
+    private static final Logger log = LoggerFactory.getLogger(ProjCountTest.class);
 
     private static File getOraPropFile(String hostId) {
         return new File("D:\\dev\\notes\\wrk\\clb\\hosts\\db-csi\\ora\\" + hostId + ".database.system.properties");
@@ -61,7 +58,7 @@ public class ProjTest {
         return getOraDb(
             getDbProp(conf, "url"),
             getDbProp(conf, "username"),
-            getDbProp(conf, "password")
+            getDbProp(conf, "password") // STG_BB_ECC
         );
     }
 
@@ -69,18 +66,14 @@ public class ProjTest {
     public void testProj() throws Exception {
         Database db = getDb();
 
-        List<Tuple2<Integer, String>> projects = db
-            .select("select id, name from cb_project")
-            .getAs(Integer.class, String.class)
-            .toList()
+        long cnt = db
+            .select("select count(*) from cb_project")
+            .getAs(Long.class)
+            //.doOnEach(RxUtil.log())
             .toBlocking()
             .single();
 
-        log.info("start");
-        for (Tuple2<Integer, String> p : projects) {
-            log.info(p.value1() + " -> " + p.value2());
-        }
-        log.info("end");
+        log.info("project cnt -> " + cnt);
 // .select("select name from person where name > ? order by name")
 // .parameter("ALEX")
         assertTrue(true);

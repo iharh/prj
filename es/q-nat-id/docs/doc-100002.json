@@ -1,0 +1,22 @@
+{
+  "took" : 2,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 1,
+    "max_score" : 1.0119762,
+    "hits" : [ {
+      "_index" : "1404",
+      "_type" : "document",
+      "_id" : "3",
+      "_score" : 1.0119762,
+      "fields" : {
+        "natural_id" : [ "100002" ]
+      }
+    } ]
+  }
+}

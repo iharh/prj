@@ -1,0 +1,32 @@
+{
+  "took" : 2,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 3,
+    "max_score" : 1.1823215,
+    "hits" : [ {
+      "_index" : "1404",
+      "_type" : "sentence",
+      "_id" : "4",
+      "_score" : 1.1823215,
+      "_source":{"natural_id":"100001","_id_batch":1663,"_id_document":2,"_id_source":"en4_xlsx","cb_content_type":"contentful","cb_content_subtype":"contentful","_id_sentence":4,"_id_verbatim":3,"_verbatimtype":"v1","_language":"english","_languagedetected":"not attempted","natural_id_hash":"wtF303qNAYdt0G6RyoGQxdt4bdM=","_sentimentindex":1.0,"_degreesentimentindex":1.0,"_sentimentnegcount":0,"_sentimentposcount":1,"_sentimentposnegdeltacount":1,"_words":"/PRNewswire/ -- As Dallas/Fort Worth prepares for the upcoming Texas Samsung Mobile 500, select Walmart stores will offer authentic NASCAR merchandise and host exclusive fan events starting April 10....","_mstokenname":["PRNEWSWIRE","AS","DALLAS","FORT WORTH","PREPARE","FOR","UPCOMING","TEXAS SAMSUNG","MOBILE 500","SELECT","WAL-MART","STORE","WILL","OFFER","AUTHENTIC","NASCAR","MERCHANDISE","AND","HOST","EXCLUSIVE","FAN","EVENT","START","APRIL 10"],"_tokendata":["XQYBCwA=","DxEPBwA=","EAYDBwA=","EQYHCwA=","EgcLCQA=","Ew8JBAA=","FAIIDQA=","FQYJDgA=","FgYOCwA=","FwIMCAA=","GAYHCAA=","GQYIBwA=","Gg4HBQA=","GwcFBgA=","HAIGCjAHBw==","HQYKBwA=","HgYHDAA=","HxAMBAA=","IAYEBQA=","IQYFCgA=","IgcKBAA=","IwYEBwA=","JAsHCQA=","JQEJCQA="],"_lc":["prepare --> mobile 500_1","mobile 500 --> upcoming_1","mobile 500 --> texas samsung_1","offer --> store_1","store --> select_1","store --> wal-mart_1","offer --> merchandise_1","merchandise --> authentic_1","merchandise --> nascar_1","fan --> exclusive_1","exclusive --> host_1","fan --> april 10_1","fan --> event_1","event --> start_1","prepare --> dallas_1","prepare --> fort worth_1","exclusive --> april 10_1"],"_lc_tokens":["111-115","115-113","115-114","120-118","118-116","118-117","120-123","123-121","123-122","127-126","126-125","127-130","127-128","128-129","111-109","111-110","126-130"]}
+    }, {
+      "_index" : "1404",
+      "_type" : "sentence",
+      "_id" : "9",
+      "_score" : 1.1823215,
+      "_source":{"natural_id":"100001","_id_batch":1663,"_id_document":2,"_id_source":"en4_xlsx","cb_content_type":"contentful","cb_content_subtype":"contentful","_id_sentence":9,"_id_verbatim":3,"_verbatimtype":"v1","_language":"english","_languagedetected":"not attempted","natural_id_hash":"wtF303qNAYdt0G6RyoGQxdt4bdM=","_sentimentindex":1.0,"_degreesentimentindex":2.0,"_sentimentnegcount":0,"_sentimentposcount":1,"_sentimentposnegdeltacount":1,"_words":"\"Walmart is the champion of the racing fan, and we","_mstokenname":["WAL-MART","BE","CHAMPION","OF","RACING","FAN","AND","WE"],"_tokendata":["kAEGAQgA","AQcIAwA=","AgYHDTAPDw==","Aw8JAwA=","BAYHCwA=","BQYHBAA=","BhAFBQA=","BwQEAwA="],"_lc":["champion --> fan_1","fan --> racing_1","wal-mart --> champion_1"],"_lc_tokens":["146-149","149-148","144-146"]}
+    }, {
+      "_index" : "1404",
+      "_type" : "sentence",
+      "_id" : "19",
+      "_score" : 1.1823215,
+      "_source":{"natural_id":"100001","_id_batch":1663,"_id_document":2,"_id_source":"en4_xlsx","cb_content_type":"contentful","cb_content_subtype":"contentful","_id_sentence":19,"_id_verbatim":4,"_verbatimtype":"v2","_language":"english","_languagedetected":"not attempted","natural_id_hash":"wtF303qNAYdt0G6RyoGQxdt4bdM=","_sentimentindex":1.0,"_degreesentimentindex":2.0,"_sentimentnegcount":0,"_sentimentposcount":1,"_sentimentposnegdeltacount":1,"_words":"I like my round table","_mstokenname":["I","LIKE","MY","ROUND","TABLE"],"_tokendata":["zwEEAAEA","AQcCBTAPDw==","AgMFAwA=","AwIDBgA=","BAYGBgA="],"_lc":["like --> table_1","table --> round_1"],"_lc_tokens":["208-211","211-210"]}
+    } ]
+  }
+}
