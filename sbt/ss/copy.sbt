@@ -32,6 +32,7 @@ copydf := {
     val rebasedFilesToCopy = filesToCopy pair Path.rebase(src, dst)
     // rebasedFilesToCopy foreach {tup => println(tup._2) }
     IO.copy(rebasedFilesToCopy)
+    // IO.copyDirectory(src, dst)
 } 
 
 def copy_x_y(src: File, dst: File, name: String): Unit = {
