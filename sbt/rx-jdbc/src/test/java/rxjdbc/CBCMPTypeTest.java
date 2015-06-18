@@ -23,8 +23,8 @@ import java.io.File;
 
 import java.util.List;
 
-public class ProjTest {
-    private static final Logger log = LoggerFactory.getLogger(ProjTest.class);
+public class CBCMPTypeTest {
+    private static final Logger log = LoggerFactory.getLogger(CBCMPTypeTest.class);
 
     private static File getOraPropFile(String hostId) {
         return new File("D:\\dev\\notes\\wrk\\clb\\hosts\\db-csi\\ora\\" + hostId + ".database.system.properties");
@@ -88,7 +88,7 @@ public class ProjTest {
         Database db = getDbFoghorn1();
 
         List<Tuple2<Integer, String>> projects = db
-            .select("select id, name from cb_project")
+            .select("select id, name from cb_cmptype order by id")
             .getAs(Integer.class, String.class)
             .toList()
             .toBlocking()

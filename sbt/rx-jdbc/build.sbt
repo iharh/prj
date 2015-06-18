@@ -38,6 +38,10 @@ unmanagedJars in Compile ++= {
 }
 
 unmanagedJars in Compile ++= {
+    (file("D:/clb/inst/server/lib.cb") ** "postgresql-9*.jar").classpath
+}
+
+unmanagedJars in Compile ++= {
     (file("D:/clb/inst/server/lib.cb") ** "elasticsearch-*.jar").classpath
 }
 
