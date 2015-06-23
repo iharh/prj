@@ -1,8 +1,13 @@
 import Rainbow._
 
+import com.typesafe.config.ConfigFactory;
+import com.typesafe.config.Config;
+
 parallelExecution := false
 
 //traceLevel := -1
+
+lazy val unsvc = taskKey[Unit]("uninstall service")
 
 lazy val hud = taskKey[Unit]("hud echo task")
 lazy val lll = taskKey[Unit]("lll echo task")
@@ -17,6 +22,22 @@ def echo_x(n: String): Unit = {
 hud := echo_x("hud")
 lll := echo_x("lll")
 
+def scdel(svc: String): Unit = {
+    Process("sc delete \"" + svc + "\"").run(true).exitValue()
+}
+
+unsvc := {
+    val clboldsvc = "Clarabridge CMP"
+    scdel(clboldsvc)
+
+    val conf = ConfigFactory.parseFile(file("D:/clb/inst/version.properties"));
+    val ver = conf.getString("version");
+    val rev = conf.getString("revision");
+
+    var clbnewsvc = clboldsvc + "_x64_" + ver + "." + rev;
+    scdel(clbnewsvc)
+}
+
 eee := {
     //val log = streams.value.log
     //log.error("abc defg")
@@ -27,9 +48,9 @@ eee := {
 
     //sys.error(...)
     //error("my error")
-
-    println("some out")
+    println("eee");
 }
+
 
 //addCommandAlias("copyall", ";copydf;copynotes;copyprj")
 
