@@ -1,0 +1,95 @@
+apply plugin: 'com.bmuschko.docker-remote-api'
+
+allprojects {
+    ext.baseVersion = 0.1
+    ext.snapshotVersion = false
+
+    group = "com.github"
+    version = "$baseVersion" + (snapshotVersion ? "-SNAPSHOT" : "")
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+ 
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath("com.bmuschko:gradle-docker-plugin:2.5.1")
+    }
+}
+
+//def registryUrl = 'localhost:5000'
+
+docker {
+// TODO: need to customize
+    url = "https://192.168.99.100:2376"
+    certPath = new File("F:/vbox-dm/certs") // System.properties['user.home'], '.boot2docker/certs/boot2docker-vm')    
+//    registry {
+//        url = 'http://' + registryUrl + '/v1'
+//    }
+}
+
+import com.bmuschko.gradle.docker.tasks.image.DockerListImages
+import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
+
+task listImages(type: DockerListImages) {
+//    doFirst { println "listImages started" }
+}
+
+task buildDocker(type: DockerBuildImage) {
+//    dependsOn shadowJar
+//    doLast { println "buildDocker ended" }
+//    inputDir = project.projectDir
+    tag = "prefix/$project.name:$project.version"
+    noCache = true
+//    doFirst {
+//        copy {
+//            from('cb-cps-app/build/libs/') {
+//                include '*.jar'
+//            }
+//            into inputDir
+//        }
+//    }
+}
+
+//import com.bmuschko.gradle.docker.tasks.image.Dockerfile
+//import com.bmuschko.gradle.docker.tasks.image.DockerTagImage
+//import com.bmuschko.gradle.docker.tasks.image.DockerPushImage
+//import com.bmuschko.gradle.docker.tasks.container.DockerCreateContainer
+//import com.bmuschko.gradle.docker.tasks.container.DockerStartContainer
+//import com.bmuschko.gradle.docker.tasks.container.DockerStopContainer
+
+
+//task tagDocker(type: DockerTagImage) {
+//        dependsOn buildDocker
+//        force = true
+//        imageId = buildDocker.getTag()
+//        repository = "$registryUrl/$project.name"
+//        tag = "$project.version"
+//}
+
+//task pushDocker(type: DockerPushImage ) {
+//        dependsOn tagDocker
+//        imageName = "$registryUrl/$project.name"
+//}
+
+//task createDocker(type: DockerCreateContainer) {
+//        dependsOn buildDocker
+//        imageId = buildDocker.getTag()
+//}
+
+//task runDocker(type: DockerStartContainer) {
+//        dependsOn createDocker
+//        targetContainerId { createDocker.getContainerId() }
+//}
+
+//task stopDocker(type: DockerStopContainer) {
+//        dependsOn createDocker
+//        targetContainerId { createDocker.getContainerId() }
+//}
+
