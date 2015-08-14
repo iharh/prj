@@ -6,12 +6,15 @@ allprojects {
 
     group = "com.github"
     version = "$baseVersion" + (snapshotVersion ? "-SNAPSHOT" : "")
+
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
 }
 
-repositories {
-    mavenCentral()
-    mavenLocal()
-}
+//subprojects {
+//}
  
 buildscript {
     repositories {
