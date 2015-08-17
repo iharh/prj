@@ -8,12 +8,15 @@ import static org.junit.Assert.assertNotNull;
 
 import com.github.dockerjava.api.DockerClient;
 import com.github.dockerjava.api.model.Info;
+import com.github.dockerjava.api.model.Image;
 
 import com.github.dockerjava.core.DockerClientBuilder;
 import com.github.dockerjava.core.DockerClientConfig;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 public class DockerTest {
     private static final Logger log = LoggerFactory.getLogger(DockerTest.class);
@@ -36,10 +39,14 @@ public class DockerTest {
         DockerClient docker = DockerClientBuilder.getInstance(config).build();
 
         Info info = docker.infoCmd().exec();
-
         assertNotNull(info);
-
         log.info("info: {}", info.toString());
+
+        List<Image> images = docker.listImagesCmd().exec();
+        for (Image image : images) {
+            log.info("image: {}", image);
+        }
+        log.info("end");
 
         assertTrue(true);
     }
