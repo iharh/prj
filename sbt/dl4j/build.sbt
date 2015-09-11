@@ -24,14 +24,24 @@ libraryDependencies ++= Seq(
     "junit"                     % "junit"              % "4.12"    % "test",
     "org.hamcrest"              % "hamcrest-library"   % "1.3"     % "test"
 )
-//"0.0.3.3.4.alpha2"
 //http://stackoverflow.com/questions/15560598/play-2-0-sbt-exclude-certain-transitive-dependencies-from-some-all-modules-in
-libraryDependencies += "org.deeplearning4j" % "deeplearning4j-nlp" % "0.4-rc1.2" excludeAll(
+
+//libraryDependencies += "org.deeplearning4j" % "deeplearning4j-nlp" % "0.0.3.3.4.alpha2" excludeAll(
+//libraryDependencies += "org.deeplearning4j" % "deeplearning4j-nlp" % "0.4-rc1.2" excludeAll(
+
+libraryDependencies += "org.deeplearning4j" % "deeplearning4j-nlp" % "0.0.3.3.4.alpha2" excludeAll(
         ExclusionRule(organization = "io.dropwizard"),
         ExclusionRule(organization = "ch.qos.logback")
 )
-//"0.0.3.5.5.5"
-libraryDependencies += "org.nd4j"           % "nd4j-jblas" % "0.4-rc1.2" excludeAll(
+
+//libraryDependencies += "org.nd4j"           % "nd4j-jblas" % "0.4-rc1.2" excludeAll(
+//libraryDependencies += "org.nd4j"           % "nd4j-jblas" % "0.0.3.5.5.5" excludeAll(
+//libraryDependencies += "org.nd4j"           % "nd4j-netlib-blas" % "0.0.3.5.5.5" excludeAll(
+
+// nd4j-jblas
+// nd4j-netlib-blas
+// nd4j-x86
+libraryDependencies += "org.nd4j"           % "nd4j-netlib-blas" % "0.0.3.5.5.5" excludeAll(
         ExclusionRule(organization = "io.dropwizard"),
         ExclusionRule(organization = "ch.qos.logback")
 )

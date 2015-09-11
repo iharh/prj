@@ -2,5 +2,5 @@
 setlocal
 del /Q %~dp0*.log
 ::call sbt.bat test
-call sbt.bat "testOnly *Dl4jTest"
+call sbt-huge.bat "testOnly *Dl4jTest"
 endlocal

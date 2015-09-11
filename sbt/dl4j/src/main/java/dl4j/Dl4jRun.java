@@ -42,9 +42,11 @@ public class Dl4jRun {
     private static final int TEST_ITERATIONS = 100000;
 
     public static void main(String [] args) {
-        //INDArray nd = Nd4j.create(new double[]{1, 2, 3, 4}, new int[]{2, 2});
-        //
         try {
+            java.lang.Thread.currentThread().setContextClassLoader(
+                java.lang.ClassLoader.getSystemClassLoader()
+            );
+            
             final List<String> lines = byLine(
                 from(new FileReader("en-words-100.txt"))
             )
@@ -65,6 +67,8 @@ public class Dl4jRun {
                 for (String word : lines)
                 {
                     log.debug("start iteration: {} word: {}", i, word);
+                    //INDArray words = w2v.getWordVectorMatrix(word);
+                    //w2v.wordsNearest(words, 10);
                     w2v.wordsNearest(word, 10);
                 }
             }

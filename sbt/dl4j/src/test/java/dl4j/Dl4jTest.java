@@ -50,10 +50,14 @@ public class Dl4jTest {
 
     @Test
     public void testDl4j() throws Exception {
+        java.lang.Thread.currentThread().setContextClassLoader(
+            java.lang.ClassLoader.getSystemClassLoader()
+        );
+
         //INDArray nd = Nd4j.create(new double[]{1, 2, 3, 4}, new int[]{2, 2});
         //
         final List<String> lines = byLine(
-            from(new FileReader("D:\\en-words-100.txt"))
+            from(new FileReader("en-words-100.txt"))
         )
         .toList()
         .toBlocking()
@@ -65,8 +69,8 @@ public class Dl4jTest {
 
         String modelFileName = "D:/clb/src/spikes/cb-cps/templates/word2vecModels_bck/GoogleNews";
 
-        //Word2Vec w2v = readBinaryModel(new File(modelFileName));
-        //assertNotNull(w2v);
+        Word2Vec w2v = readBinaryModel(new File(modelFileName));
+        assertNotNull(w2v);
 
         log.info("finish loading model");
         
@@ -74,12 +78,12 @@ public class Dl4jTest {
             for (String word : lines)
             {
                 log.debug("start iteration: {} word: {}", i, word);
-                //w2v.wordsNearest(word, 10);
+                w2v.wordsNearest(word, 10);
             }
         }
 
         log.info("done");
-        assertTrue(true)
+        assertTrue(true);
     }
 
     private static Word2Vec readBinaryModel(File modelFile) throws NumberFormatException, IOException {
