@@ -1,12 +1,5 @@
 package dl4j;
 
-import org.junit.Test;
-import org.junit.Ignore;
-
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertNotNull;
-
-
 import org.deeplearning4j.models.word2vec.Word2Vec;
 import org.deeplearning4j.models.word2vec.VocabWord;
 import org.deeplearning4j.models.embeddings.inmemory.InMemoryLookupTable;
@@ -41,45 +34,45 @@ import java.util.ArrayList;
 import java.util.zip.GZIPInputStream;
 
 
-public class Dl4jTest {
-    private static final Logger log = LoggerFactory.getLogger(Dl4jTest.class);
+public class Dl4jRun {
+    private static final Logger log = LoggerFactory.getLogger(Dl4jRun.class);
 
     private static final int MAX_SIZE = 50;
 
     private static final int TEST_ITERATIONS = 100000;
 
-    @Test
-    public void testDl4j() throws Exception {
+    public static void main(String [] args) {
         //INDArray nd = Nd4j.create(new double[]{1, 2, 3, 4}, new int[]{2, 2});
         //
-        final List<String> lines = byLine(
-            from(new FileReader("D:\\en-words-100.txt"))
-        )
-        .toList()
-        .toBlocking()
-        .single();
+        try {
+            final List<String> lines = byLine(
+                from(new FileReader("en-words-100.txt"))
+            )
+            .toList()
+            .toBlocking()
+            .single();
 
-        log.info("lines size: {}", lines.size());
+            log.info("lines size: {}", lines.size());
 
-        log.info("start loading model");
+            String modelFileName = "D:/clb/src/spikes/cb-cps/templates/word2vecModels_bck/GoogleNews";
+            log.info("start loading model: {}", modelFileName);
 
-        String modelFileName = "D:/clb/src/spikes/cb-cps/templates/word2vecModels_bck/GoogleNews";
+            Word2Vec w2v = readBinaryModel(new File(modelFileName));
 
-        //Word2Vec w2v = readBinaryModel(new File(modelFileName));
-        //assertNotNull(w2v);
-
-        log.info("finish loading model");
-        
-        for (int i = 0; i < TEST_ITERATIONS; ++i) {
-            for (String word : lines)
-            {
-                log.debug("start iteration: {} word: {}", i, word);
-                //w2v.wordsNearest(word, 10);
+            log.info("finish loading model");
+            
+            for (int i = 0; i < TEST_ITERATIONS; ++i) {
+                for (String word : lines)
+                {
+                    log.debug("start iteration: {} word: {}", i, word);
+                    w2v.wordsNearest(word, 10);
+                }
             }
-        }
 
-        log.info("done");
-        assertTrue(true)
+            log.info("done");
+        } catch (Exception e) {
+            log.error("Caught Exception: " + e.getMessage(), e);
+        }
     }
 
     private static Word2Vec readBinaryModel(File modelFile) throws NumberFormatException, IOException {
