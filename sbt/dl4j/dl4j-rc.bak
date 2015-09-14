@@ -1,0 +1,39 @@
+2015-09-14 11:16:13,501  INFO [main] (Dl4jRun.java:59) - lines size: 49
+2015-09-14 11:16:13,501  INFO [main] (Dl4jRun.java:62) - start loading model: D:/clb/src/spikes/cb-cps/templates/word2vecModels_bck/GoogleNews
+2015-09-14 11:16:15,264 DEBUG [main] (Reflections.java:186) - going to scan these urls:
+file:/D:/dev/PL/java/jdk64/jdk1.8.0_60/jre/lib/ext/cldrdata.jar
+file:/D:/dev/PL/java/jdk64/jdk1.8.0_60/jre/lib/ext/sunpkcs11.jar
+file:/D:/dev/PL/java/jdk64/jdk1.8.0_60/jre/lib/ext/dnsns.jar
+file:/D:/dev/prj/sbt/dl4j/target/dl4j-0.1-SNAPSHOT-one-jar.jar
+file:/D:/dev/PL/java/jdk64/jdk1.8.0_60/jre/lib/ext/jfxrt.jar
+file:/D:/dev/PL/java/jdk64/jdk1.8.0_60/jre/lib/ext/zipfs.jar
+file:/D:/dev/PL/java/jdk64/jdk1.8.0_60/jre/lib/ext/localedata.jar
+file:/D:/dev/PL/java/jdk64/jdk1.8.0_60/jre/lib/ext/sunjce_provider.jar
+file:/D:/dev/PL/java/jdk64/jdk1.8.0_60/jre/lib/ext/access-bridge-64.jar
+file:/D:/dev/PL/java/jdk64/jdk1.8.0_60/jre/lib/ext/sunmscapi.jar
+file:/D:/dev/PL/java/jdk64/jdk1.8.0_60/jre/lib/ext/nashorn.jar
+file:/D:/dev/PL/java/jdk64/jdk1.8.0_60/jre/lib/ext/jaccess.jar
+file:/D:/dev/PL/java/jdk64/jdk1.8.0_60/jre/lib/ext/sunec.jar
+2015-09-14 11:16:15,311  INFO [main] (Reflections.java:229) - Reflections took 47 ms to scan 13 urls, producing 0 keys and 0 values 
+2015-09-14 11:24:02,043  INFO [main] (Dl4jRun.java:66) - finish loading model
+2015-09-14 11:24:02,043 DEBUG [main] (Dl4jRun.java:71) - start iteration: 0 word: round
+2015-09-14 11:24:12,682  INFO [main] (Dl4jRun.java:111) - sort.length(): 3000000
+2015-09-14 11:24:12,682  INFO [main] (Dl4jRun.java:112) - sort.offset(): 0
+2015-09-14 11:24:12,682  INFO [main] (Dl4jRun.java:153) - sort.stride len: 2 { 1 1 }
+2015-09-14 11:24:12,682  INFO [main] (Dl4jRun.java:153) - sort.shape len: 2 { 3000000 1 }
+2015-09-14 11:24:12,682  INFO [main] (Dl4jRun.java:118) - iter: 0
+2015-09-14 11:24:12,682 ERROR [main] (Dl4jRun.java:83) - Caught Exception: 1
+java.lang.ArrayIndexOutOfBoundsException: 1
+	at org.nd4j.bytebuddy.shape.OffsetMapper$ByteBuddy$t7BMM1IT.getOffset(Unknown Source)
+	at org.nd4j.linalg.api.shape.Shape.getOffset(Shape.java:170)
+	at org.nd4j.linalg.api.shape.Shape.getDouble(Shape.java:154)
+	at org.nd4j.linalg.api.ndarray.BaseNDArray.getDouble(BaseNDArray.java:1365)
+	at org.nd4j.linalg.api.ndarray.BaseNDArray.getInt(BaseNDArray.java:1353)
+	at dl4j.Dl4jRun.wordsNearest(Dl4jRun.java:119)
+	at dl4j.Dl4jRun.main(Dl4jRun.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at com.simontuffs.onejar.Boot.run(Boot.java:340)
+	at com.simontuffs.onejar.Boot.main(Boot.java:166)

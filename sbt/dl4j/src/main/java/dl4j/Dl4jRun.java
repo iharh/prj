@@ -6,6 +6,7 @@ import org.deeplearning4j.models.embeddings.inmemory.InMemoryLookupTable;
 import org.deeplearning4j.models.word2vec.wordstore.VocabCache;
 import org.deeplearning4j.models.word2vec.wordstore.inmemory.InMemoryLookupCache;
 
+import org.nd4j.linalg.factory.Nd4jBackend;
 import org.nd4j.linalg.factory.Nd4j;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.ops.transforms.Transforms;
@@ -29,6 +30,10 @@ import java.io.FileInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
 //import java.io.;
+import java.util.ServiceLoader;
+import java.util.ServiceConfigurationError;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.zip.GZIPInputStream;
@@ -38,15 +43,14 @@ public class Dl4jRun {
     private static final Logger log = LoggerFactory.getLogger(Dl4jRun.class);
 
     private static final int MAX_SIZE = 50;
+    private static final int TOP_SIZE = 10;
 
     private static final int TEST_ITERATIONS = 100000;
 
     public static void main(String [] args) {
         try {
-            java.lang.Thread.currentThread().setContextClassLoader(
-                java.lang.ClassLoader.getSystemClassLoader()
-            );
-            
+            checkBackends();
+
             final List<String> lines = byLine(
                 from(new FileReader("en-words-100.txt"))
             )
@@ -68,8 +72,10 @@ public class Dl4jRun {
                 {
                     log.debug("start iteration: {} word: {}", i, word);
                     //INDArray words = w2v.getWordVectorMatrix(word);
-                    //w2v.wordsNearest(words, 10);
-                    w2v.wordsNearest(word, 10);
+                    //w2v.wordsNearest(words, TOP_SIZE);
+
+                    w2v.wordsNearest(word, TOP_SIZE);
+                    //wordsNearest(w2v, word, TOP_SIZE);
                 }
             }
 
@@ -79,10 +85,23 @@ public class Dl4jRun {
         }
     }
 
+
+    private static void logIntArr(String prefix, int [] arr) {
+        int len = arr.length;
+        StringBuffer sb = new StringBuffer(prefix);
+        sb.append(" len: ");
+        sb.append(Integer.toString(len));
+        sb.append(" {");
+        for (int i = 0; i < len; ++i) {
+            sb.append(" ");
+            sb.append(Integer.toString(arr[i]));
+        }
+        sb.append(" }");
+        log.info("{}", sb.toString());
+    }
+
     private static Word2Vec readBinaryModel(File modelFile) throws NumberFormatException, IOException {
-        InMemoryLookupTable lookupTable;
-        VocabCache cache;
-        INDArray syn0;
+        Word2Vec ret = new Word2Vec(); // new CustomWord2Vec();
 
         try (BufferedInputStream bis = new BufferedInputStream(
                 GzipUtils.isCompressedFilename(modelFile.getName()) ?
@@ -93,19 +112,23 @@ public class Dl4jRun {
 
             int words = Integer.parseInt(readString(dis));
             int size = Integer.parseInt(readString(dis));
-            syn0 = Nd4j.create(words, size);
-            cache = new InMemoryLookupCache(false);
-            lookupTable = (InMemoryLookupTable) new InMemoryLookupTable.Builder()
-                .cache(cache)
+
+            final INDArray syn0 = Nd4j.create(words, size);
+            VocabCache vocabCache = new InMemoryLookupCache(false);
+            final InMemoryLookupTable lookupTable = (InMemoryLookupTable) new InMemoryLookupTable.Builder()
+                .cache(vocabCache)
                 .vectorLength(size)
                 .build();
+            lookupTable.setSyn0(syn0);
+            ret.setVocab(vocabCache);
+            ret.setLookupTable(lookupTable);
 
             float [] vector = new float[size];
             String word;
 
             for (int i = 0; i < words; ++i) {
                 word = readString(dis);
-                if (cache.wordFrequency(word) > 0) {
+                if (vocabCache.wordFrequency(word) > 0) {
                     throw new IllegalArgumentException("Duplicate word has been found, word: " + word + ", lineNumber: " + i);
                 }
 
@@ -115,16 +138,11 @@ public class Dl4jRun {
 
                 syn0.putRow(i, Transforms.unitVec(Nd4j.create(vector)));
 
-                cache.addWordToIndex(cache.numWords(), word);
-                cache.addToken(new VocabWord(1, word));
-                cache.putVocabWord(word);
+                vocabCache.addWordToIndex(vocabCache.numWords(), word);
+                vocabCache.addToken(new VocabWord(1, word));
+                vocabCache.putVocabWord(word);
             }
         }
-
-        Word2Vec ret = new Word2Vec(); // new CustomWord2Vec();
-        lookupTable.setSyn0(syn0);
-        ret.setVocab(cache);
-        ret.setLookupTable(lookupTable);
         return ret;
     }
 
@@ -175,6 +193,91 @@ public class Dl4jRun {
         accum = accum | (b[2] & 0xff) << 16;
         accum = accum | (b[3] & 0xff) << 24;
         return Float.intBitsToFloat(accum);
+    }
+
+    private static void checkBackends() {
+        final String cn = "org.nd4j.linalg.netlib.NetlibBlasBackend";
+        Class<?> c = null;
+        try {
+            ClassLoader cl = Thread.currentThread().getContextClassLoader();
+            c = Class.forName(cn, false, cl);
+            log.error("Provider {} found", cn);
+        } catch (ClassNotFoundException x) {
+            log.error("Provider {} not found", cn);
+        }
+
+        List<Nd4jBackend> backends = new ArrayList<>(1);
+        ServiceLoader<Nd4jBackend> loader = ServiceLoader.load(Nd4jBackend.class);
+        try {
+
+            Iterator<Nd4jBackend> backendIterator = loader.iterator();
+            while (backendIterator.hasNext()) {
+                Nd4jBackend b = backendIterator.next();
+                //backends.add();
+                log.info("Loaded: {}", b.getClass().getName()); // getSimpleName());
+            }
+
+        } catch (ServiceConfigurationError serviceError) {
+            log.error("ServiceConfigurationError: " + serviceError.getMessage(), serviceError);
+            // a fatal error due to a syntax or provider construction error.
+            // backends mustn't throw an exception during construction.
+            throw new RuntimeException("failed to process available backends", serviceError);
+        }
+    }
+
+    private static Collection<String> wordsNearest(Word2Vec w2v, String word, int top) {
+        final InMemoryLookupTable lookupTable = (InMemoryLookupTable) w2v.lookupTable();
+        final VocabCache vocabCache = w2v.vocab();
+
+        List<String> ret = new ArrayList<>();
+
+        if (!vocabCache.containsWord(word)) {
+            return ret;
+        }
+
+        INDArray words = Nd4j.create(1, lookupTable.layerSize());
+        words.putRow(0, lookupTable.vector(word));
+
+        INDArray mean = words.isMatrix() ? words.mean(0) : words;
+
+        INDArray syn0 = lookupTable.getSyn0();
+
+        INDArray weights = mean;
+        INDArray distances = syn0.mmul(weights.transpose());
+        distances.diviRowVector(distances.norm2(1));
+        INDArray[] sorted = Nd4j.sortWithIndices(distances, 0, false);
+        INDArray sort = sorted[0];
+
+        int sortLen = sort.length();
+        log.info("sort.length(): {}", sortLen);
+        log.info("sort.offset(): {}", sort.offset());
+
+        logIntArr("sort.stride", sort.stride());
+        logIntArr("sort.shape", sort.shape());
+
+        for (int i = 0; i < sortLen; ++i) {
+            log.info("iter: {}", i);
+            int idx = sort.getInt(i);
+            log.info("idx: {}", idx);
+        }
+
+        if (top > sortLen)
+            top = sortLen;
+        //??? there will be a redundant word
+        int end = top; // + 1;
+        for (int i = 0; i < end; ++i) {
+            int idx = sort.getInt(i);
+            String w = vocabCache.wordAtIndex(idx);
+            if (word.equals(w)) {
+                ++end;
+                if (end >= sortLen)
+                    break;
+                continue;
+            }
+            ret.add(w);
+        }
+
+        return ret;
     }
 }
 

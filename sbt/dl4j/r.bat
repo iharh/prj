@@ -1,7 +1,7 @@
 @echo off
 setlocal
-::call vars-java8.bat
-call vars-java7.bat
+call vars-java8.bat
+::call vars-java7.bat
 
 ::set JIT_OPTS=-XX:+UnlockDiagnosticVMOptions -XX:+TraceClassLoading -XX:+LogCompilation 
 set JIT_OPTS=-XX:+UnlockDiagnosticVMOptions -XX:+TraceClassLoading -XX:-TieredCompilation -XX:+PrintCompilation -XX:+PrintInlining
