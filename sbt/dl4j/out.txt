@@ -223,7 +223,7 @@ JarClassLoader: Warning: akka/util/ByteStringBuilder$$anonfun$putLong$1.class in
 JarClassLoader: Warning: akka/util/ByteStringBuilder$$anonfun$putLongPart$1$$anonfun$apply$1.class in lib/akka-actor_2.10-2.3.4.jar is hidden by lib/akka-actor_2.10-2.3.4-spark.jar (with different bytecode)
 JarClassLoader: Warning: akka/util/ByteStringBuilder$$anonfun$putLongPart$1$$anonfun$apply$2.class in lib/akka-actor_2.10-2.3.4.jar is hidden by lib/akka-actor_2.10-2.3.4-spark.jar (with different bytecode)
 JarClassLoader: Warning: akka/util/ByteStringBuilder$$anonfun$putLongPart$1.class in lib/akka-actor_2.10-2.3.4.jar is hidden by lib/akka-actor_2.10-2.3.4-spark.jar (with different bytecode)
-Sep 14, 2015 12:38:05 PM com.github.fommil.netlib.BLAS <clinit>
+Sep 14, 2015 4:24:31 PM com.github.fommil.netlib.BLAS <clinit>
 WARNING: Failed to load implementation from: com.github.fommil.netlib.NativeSystemBLAS
-Sep 14, 2015 12:38:05 PM com.github.fommil.jni.JniLoader liberalLoad
-INFO: successfully loaded D:\Temp\jniloader855062717263832908netlib-native_ref-win-x86_64.dll
+Sep 14, 2015 4:24:31 PM com.github.fommil.jni.JniLoader liberalLoad
+INFO: successfully loaded D:\Temp\jniloader1689120723820322294netlib-native_ref-win-x86_64.dll

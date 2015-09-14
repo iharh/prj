@@ -36,8 +36,11 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 import java.util.zip.GZIPInputStream;
 
+import com.google.common.collect.Lists;
 
 public class Dl4jRun {
     private static final Logger log = LoggerFactory.getLogger(Dl4jRun.class);
@@ -67,6 +70,13 @@ public class Dl4jRun {
 
             log.info("finish loading model");
             
+            final InMemoryLookupTable lookupTable = (InMemoryLookupTable) w2v.lookupTable();
+            final INDArray syn0 = lookupTable.getSyn0();
+            syn0.diviRowVector(syn0.norm2(1));
+            final INDArray syn0transposed = syn0.transpose();
+
+            log.info("finish transposing model");
+
             for (int i = 0; i < TEST_ITERATIONS; ++i) {
                 for (String word : lines)
                 {
@@ -74,8 +84,10 @@ public class Dl4jRun {
                     //INDArray words = w2v.getWordVectorMatrix(word);
                     //w2v.wordsNearest(words, TOP_SIZE);
 
-                    w2v.wordsNearest(word, TOP_SIZE);
-                    //wordsNearest(w2v, word, TOP_SIZE);
+                    //w2v.wordsNearest(word, TOP_SIZE);
+
+                    //wordsNearestOld(w2v, word, TOP_SIZE);
+                    wordsNearestNew(w2v, syn0transposed, word, TOP_SIZE);
                 }
             }
 
@@ -85,20 +97,82 @@ public class Dl4jRun {
         }
     }
 
+    private static Collection<String> wordsNearestNew(Word2Vec w2v, INDArray syn0transposed, String word, int top) {
+        final InMemoryLookupTable lookupTable = (InMemoryLookupTable) w2v.lookupTable();
+        final VocabCache vocabCache = w2v.vocab();
 
-    private static void logIntArr(String prefix, int [] arr) {
-        int len = arr.length;
-        StringBuffer sb = new StringBuffer(prefix);
-        sb.append(" len: ");
-        sb.append(Integer.toString(len));
-        sb.append(" {");
-        for (int i = 0; i < len; ++i) {
-            sb.append(" ");
-            sb.append(Integer.toString(arr[i]));
+        List<String> ret = new ArrayList<>();
+
+        if (!vocabCache.containsWord(word)) {
+            return ret;
         }
-        sb.append(" }");
-        log.info("{}", sb.toString());
+
+        INDArray words = Nd4j.create(1, lookupTable.layerSize());
+        words.putRow(0, lookupTable.vector(word));
+
+        INDArray mean = words.isMatrix() ? words.mean(0) : words;
+        INDArray weights = Transforms.unitVec(mean);
+
+        INDArray similarity = weights.mmul(syn0transposed);
+        // We assume that syn0 is normalized.
+        // Hence, the following division is not needed anymore.
+        // distances.diviRowVector(distances.norm2(1));
+        //INDArray[] sorted = Nd4j.sortWithIndices(distances,0,false);
+        List<Double> highToLowSimList = getTopN(similarity, top);
+
+        for (int i = 0; i < highToLowSimList.size(); i++) {
+            String w = vocabCache.wordAtIndex(highToLowSimList.get(i).intValue());
+            if (w != null && !w.equals("UNK") && !w.equals("STOP") && !w.equals(word)) {
+                ret.add(w);
+                if (ret.size() >= top) {
+                    break;
+                }
+            }
+        }
+
+        return ret;
     }
+    
+    private static class ArrayComparator implements Comparator<Double[]> {
+        @Override
+        public int compare(Double[] o1, Double[] o2) {
+            return Double.compare(o1[0], o2[0]);
+        }
+    }
+
+    /**
+     * Get top N elements
+     *
+     * @param vec the vec to extract the top elements from
+     * @param N the number of elements to extract
+     * @return the indices and the sorted top N elements
+     */
+    private static List<Double> getTopN(INDArray vec, int N) {
+        ArrayComparator comparator = new ArrayComparator();
+        PriorityQueue<Double[]> queue = new PriorityQueue<>(vec.rows(),comparator);
+
+        for (int j = 0; j < vec.length(); j++) {
+            final Double[] pair = new Double[]{vec.getDouble(j), (double) j};
+            if (queue.size() < N) {
+                queue.add(pair);
+            } else {
+                Double[] head = queue.peek();
+                if (comparator.compare(pair, head) > 0) {
+                    queue.poll();
+                    queue.add(pair);
+                }
+            }
+        }
+
+        List<Double> lowToHighSimLst = new ArrayList<>();
+
+        while (!queue.isEmpty()) {
+            double ind = queue.poll()[1];
+            lowToHighSimLst.add(ind);
+        }
+        return Lists.reverse(lowToHighSimLst);
+    }
+
 
     private static Word2Vec readBinaryModel(File modelFile) throws NumberFormatException, IOException {
         Word2Vec ret = new Word2Vec(); // new CustomWord2Vec();
@@ -225,7 +299,7 @@ public class Dl4jRun {
         }
     }
 
-    private static Collection<String> wordsNearest(Word2Vec w2v, String word, int top) {
+    private static Collection<String> wordsNearestOld(Word2Vec w2v, String word, int top) {
         final InMemoryLookupTable lookupTable = (InMemoryLookupTable) w2v.lookupTable();
         final VocabCache vocabCache = w2v.vocab();
 
@@ -278,6 +352,20 @@ public class Dl4jRun {
         }
 
         return ret;
+    }
+
+    private static void logIntArr(String prefix, int [] arr) {
+        int len = arr.length;
+        StringBuffer sb = new StringBuffer(prefix);
+        sb.append(" len: ");
+        sb.append(Integer.toString(len));
+        sb.append(" {");
+        for (int i = 0; i < len; ++i) {
+            sb.append(" ");
+            sb.append(Integer.toString(arr[i]));
+        }
+        sb.append(" }");
+        log.info("{}", sb.toString());
     }
 }
 
