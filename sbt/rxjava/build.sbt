@@ -15,7 +15,8 @@ libraryDependencies ++= Seq(
     "org.slf4j"                 % "slf4j-log4j12"  % "1.7.12",
     "log4j"                     % "log4j"          % "1.2.17",
 
-    "io.reactivex"              % "rxjava"         % "1.0.14",
+    "io.reactivex"              % "rxjava"            % "1.0.14",
+    //"io.reactivex"              % "rxjava-async-util" % "0.21.0",
     // one-jar stuff
     //"commons-lang"              % "commons-lang"   % "2.6"
     //

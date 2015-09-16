@@ -6,8 +6,8 @@ import org.junit.Ignore;
 import static org.junit.Assert.assertTrue;
 
 import rx.Observable;
+import rx.Subscriber;
 import rx.schedulers.Schedulers;
-import rx.functions.Action1;
 
 
 import java.util.concurrent.CountDownLatch;
@@ -18,42 +18,56 @@ import org.slf4j.LoggerFactory;
 public class SchedulerTest {
     private static final Logger log = LoggerFactory.getLogger(SchedulerTest.class);
 
+    static class MySubscriber extends Subscriber<Integer> {
+        private CountDownLatch finish;
+        private String p;
+
+        public MySubscriber(CountDownLatch finish, String p) {
+            this.finish = finish;
+            this.p = p;
+        }
+
+        @Override
+        public void onCompleted() {
+            log.info("onCompleted {}", p);
+            finish.countDown();
+        }
+
+        @Override
+        public void onError(Throwable e) {
+            log.error("onError");
+        }
+
+        @Override
+        public void onNext(Integer arg) {
+            log.info("onNext {} {}", p, arg);
+            try {
+                Thread.currentThread().sleep(20);
+            } catch (InterruptedException e) {
+            }
+        }
+    };
+
     @Test
     public void testScheduler() throws Exception {
-        final CountDownLatch finish = new CountDownLatch(1); 
+        final int NUM_THREADS = 3;
+        final CountDownLatch finish = new CountDownLatch(NUM_THREADS);
 
-        Observable
-            .range(0, 100)
-            .subscribeOn(Schedulers.computation())
-            .observeOn(Schedulers.computation())
-            .forEach(new Action1<Integer>() {
-                @Override
-                public void call(Integer l) {
-                    log.info("call: {}", l);
-                }
-            });
-/*
-            .subscribe(new Subscriber<Long>() {
-                @Override
-                public void onCompleted() {
-                    log.info("onCompleted");
-                }
+        final MySubscriber s1 = new MySubscriber(finish, "s1");
+        final MySubscriber s2 = new MySubscriber(finish, "s2");
+        final MySubscriber s3 = new MySubscriber(finish, "s3");
 
-                @Override
-                public void onError(Throwable e) {
-                    log.error("onError");
-                }
+        Observable<Integer> baseObservable = Observable.range(0, 50)
+            .subscribeOn(Schedulers.computation());
 
-                @Override
-                public void onNext(Long arg) {
-                    log.info("onNext");
-                }
-            })
-            .toBlocking();
-*/
-        log.info("sleep...");
-        Thread.currentThread().sleep(1000);
-        log.info("done");
+        for (int i = 0; i < NUM_THREADS; ++i) {
+            baseObservable
+                .subscribe(new MySubscriber(finish, "s" + i));
+        }
+
+        log.info("done chain creating");
+        finish.await();
+        log.info("done waiting");
 
         assertTrue(true);
     }
