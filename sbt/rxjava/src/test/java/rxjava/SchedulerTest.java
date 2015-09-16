@@ -10,6 +10,10 @@ import rx.Subscriber;
 import rx.schedulers.Schedulers;
 
 
+import java.lang.management.ManagementFactory;
+import java.lang.management.ThreadMXBean;
+
+
 import java.util.concurrent.CountDownLatch;
 
 import org.slf4j.Logger;
@@ -17,6 +21,9 @@ import org.slf4j.LoggerFactory;
 
 public class SchedulerTest {
     private static final Logger log = LoggerFactory.getLogger(SchedulerTest.class);
+    private static final ThreadMXBean THREAD_MXBEAN = ManagementFactory.getThreadMXBean();
+
+    private static final long DIVIDER = 1000000L;
 
     static class MySubscriber extends Subscriber<Integer> {
         private CountDownLatch finish;
@@ -40,11 +47,15 @@ public class SchedulerTest {
 
         @Override
         public void onNext(Integer arg) {
-            log.info("onNext {} {}", p, arg);
+            long exec = System.nanoTime();
+            long cpu = THREAD_MXBEAN.getCurrentThreadCpuTime();
             try {
                 Thread.currentThread().sleep(20);
             } catch (InterruptedException e) {
             }
+            exec = System.nanoTime() - exec;
+            cpu = THREAD_MXBEAN.getCurrentThreadCpuTime() - cpu;
+            log.info("onNext {} {} exec: {}ms cpu: {}ms", p, arg, exec / DIVIDER, cpu / DIVIDER);
         }
     };
 
@@ -52,10 +63,6 @@ public class SchedulerTest {
     public void testScheduler() throws Exception {
         final int NUM_THREADS = 3;
         final CountDownLatch finish = new CountDownLatch(NUM_THREADS);
-
-        final MySubscriber s1 = new MySubscriber(finish, "s1");
-        final MySubscriber s2 = new MySubscriber(finish, "s2");
-        final MySubscriber s3 = new MySubscriber(finish, "s3");
 
         Observable<Integer> baseObservable = Observable.range(0, 50)
             .subscribeOn(Schedulers.computation());

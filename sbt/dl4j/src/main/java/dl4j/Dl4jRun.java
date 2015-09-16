@@ -11,15 +11,15 @@ import org.nd4j.linalg.factory.Nd4j;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.ops.transforms.Transforms;
 
-//import rx.Observable;
+import rx.Observable;
+import rx.schedulers.Schedulers;
+
 import static rx.observables.StringObservable.from;
 import static rx.observables.StringObservable.byLine;
 
 
 import org.apache.commons.compress.compressors.gzip.GzipUtils;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 
 import java.io.File;
@@ -36,23 +36,29 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.PriorityQueue;
 import java.util.zip.GZIPInputStream;
+import java.util.concurrent.CountDownLatch;
 
-import com.google.common.collect.Lists;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Dl4jRun {
     private static final Logger log = LoggerFactory.getLogger(Dl4jRun.class);
 
-    private static final int MAX_SIZE = 50;
-    private static final int TOP_SIZE = 10;
+    private static final String MODEL_FILE_NAME =
+        //"D:/clb/src/spikes/cb-cps/templates/word2vecModels_bck/GoogleNews";
+        //"D:/clb/src/spikes/cb-cps/templates/word2vecModels_bck/GoogleNews_f[41]";
+        "F:/w2v/GoogleNews";
 
-    private static final int TEST_ITERATIONS = 100000;
+    
+    private static final int MAX_SIZE = 50;
+    
+    //private static final int TEST_ITERATIONS = 100000;
+    private static final int NUM_THREADS = 3;
 
     public static void main(String [] args) {
         try {
-            checkBackends();
+            //checkBackends();
 
             final List<String> lines = byLine(
                 from(new FileReader("en-words-100.txt"))
@@ -61,23 +67,27 @@ public class Dl4jRun {
             .toBlocking()
             .single();
 
+
             log.info("lines size: {}", lines.size());
 
-            String modelFileName = "D:/clb/src/spikes/cb-cps/templates/word2vecModels_bck/GoogleNews";
-            log.info("start loading model: {}", modelFileName);
+            final Observable<String> baseObservable = Observable.from(lines)
+                .subscribeOn(Schedulers.computation());
 
-            Word2Vec w2v = readBinaryModel(new File(modelFileName));
 
-            log.info("finish loading model");
-            
+            log.info("start loading model: {}", MODEL_FILE_NAME);
+            final Word2Vec w2v = readBinaryModel(new File(MODEL_FILE_NAME));
             final InMemoryLookupTable lookupTable = (InMemoryLookupTable) w2v.lookupTable();
+            final VocabCache vocabCache = w2v.vocab();
+            log.info("finish loading model and start transposing");
+            
             final INDArray syn0 = lookupTable.getSyn0();
             syn0.diviRowVector(syn0.norm2(1));
             final INDArray syn0transposed = syn0.transpose();
-
             log.info("finish transposing model");
 
-            for (int i = 0; i < TEST_ITERATIONS; ++i) {
+            testWordsNearest(NUM_THREADS, baseObservable, lookupTable, vocabCache, syn0transposed);
+            
+            /*for (int i = 0; i < TEST_ITERATIONS; ++i) {
                 for (String word : lines)
                 {
                     log.debug("start iteration: {} word: {}", i, word);
@@ -86,10 +96,10 @@ public class Dl4jRun {
 
                     //w2v.wordsNearest(word, TOP_SIZE);
 
-                    //wordsNearestOld(w2v, word, TOP_SIZE);
-                    wordsNearestNew(w2v, syn0transposed, word, TOP_SIZE);
+                    //wordsNearestOld(lookupTable, vocabCache, word, TOP_SIZE);
+                    //Utils.wordsNearestNew(lookupTable, vocabCache, syn0transposed, word, TOP_SIZE);
                 }
-            }
+            }*/
 
             log.info("done");
         } catch (Exception e) {
@@ -97,80 +107,26 @@ public class Dl4jRun {
         }
     }
 
-    private static Collection<String> wordsNearestNew(Word2Vec w2v, INDArray syn0transposed, String word, int top) {
-        final InMemoryLookupTable lookupTable = (InMemoryLookupTable) w2v.lookupTable();
-        final VocabCache vocabCache = w2v.vocab();
+    private static void testWordsNearest(int numThreads, final Observable<String> baseObservable, InMemoryLookupTable lookupTable, VocabCache vocabCache, INDArray syn0transposed) {
+        final CountDownLatch finish = new CountDownLatch(numThreads);
 
-        List<String> ret = new ArrayList<>();
-
-        if (!vocabCache.containsWord(word)) {
-            return ret;
+        WordsNearestSubscriber [] subscribers = new WordsNearestSubscriber[numThreads];
+        for (int i = 0; i < numThreads; ++i) {
+            WordsNearestSubscriber subscriber = new WordsNearestSubscriber(finish, "s" + i, lookupTable, vocabCache, syn0transposed);
+            subscribers[i] = subscriber;
+            baseObservable
+                .subscribe(subscriber);
         }
 
-        INDArray words = Nd4j.create(1, lookupTable.layerSize());
-        words.putRow(0, lookupTable.vector(word));
+        //for (int i = 0; i < numThreads; ++i) {
+        //}
 
-        INDArray mean = words.isMatrix() ? words.mean(0) : words;
-        INDArray weights = Transforms.unitVec(mean);
-
-        INDArray similarity = weights.mmul(syn0transposed);
-        // We assume that syn0 is normalized.
-        // Hence, the following division is not needed anymore.
-        // distances.diviRowVector(distances.norm2(1));
-        //INDArray[] sorted = Nd4j.sortWithIndices(distances,0,false);
-        List<Double> highToLowSimList = getTopN(similarity, top);
-
-        for (int i = 0; i < highToLowSimList.size(); i++) {
-            String w = vocabCache.wordAtIndex(highToLowSimList.get(i).intValue());
-            if (w != null && !w.equals("UNK") && !w.equals("STOP") && !w.equals(word)) {
-                ret.add(w);
-                if (ret.size() >= top) {
-                    break;
-                }
-            }
+        log.info("done chain creating");
+        try {
+            finish.await();
+        } catch (InterruptedException e) {
         }
-
-        return ret;
-    }
-    
-    private static class ArrayComparator implements Comparator<Double[]> {
-        @Override
-        public int compare(Double[] o1, Double[] o2) {
-            return Double.compare(o1[0], o2[0]);
-        }
-    }
-
-    /**
-     * Get top N elements
-     *
-     * @param vec the vec to extract the top elements from
-     * @param N the number of elements to extract
-     * @return the indices and the sorted top N elements
-     */
-    private static List<Double> getTopN(INDArray vec, int N) {
-        ArrayComparator comparator = new ArrayComparator();
-        PriorityQueue<Double[]> queue = new PriorityQueue<>(vec.rows(),comparator);
-
-        for (int j = 0; j < vec.length(); j++) {
-            final Double[] pair = new Double[]{vec.getDouble(j), (double) j};
-            if (queue.size() < N) {
-                queue.add(pair);
-            } else {
-                Double[] head = queue.peek();
-                if (comparator.compare(pair, head) > 0) {
-                    queue.poll();
-                    queue.add(pair);
-                }
-            }
-        }
-
-        List<Double> lowToHighSimLst = new ArrayList<>();
-
-        while (!queue.isEmpty()) {
-            double ind = queue.poll()[1];
-            lowToHighSimLst.add(ind);
-        }
-        return Lists.reverse(lowToHighSimLst);
+        log.info("done waiting");
     }
 
 
@@ -239,21 +195,6 @@ public class Dl4jRun {
         return sb.toString();
     }
 
-    private static byte [] readStringBytes(DataInputStream dis) throws IOException {
-        List<Byte> bytes = new ArrayList<>();
-        byte b = dis.readByte();
-        while (b != 32 && b != 10) {
-            bytes.add(b);
-            b = dis.readByte();
-        }
-        byte [] result = new byte[bytes.size()];
-        int i = 0;
-        for (Byte bb : bytes) {
-            result[i++] = bb;
-        }
-        return result;
-    }
-
     private static float readFloat(InputStream is) throws IOException {
         byte[] bytes = new byte[4];
         is.read(bytes);
@@ -299,10 +240,7 @@ public class Dl4jRun {
         }
     }
 
-    private static Collection<String> wordsNearestOld(Word2Vec w2v, String word, int top) {
-        final InMemoryLookupTable lookupTable = (InMemoryLookupTable) w2v.lookupTable();
-        final VocabCache vocabCache = w2v.vocab();
-
+    private static Collection<String> wordsNearestOld(InMemoryLookupTable lookupTable, VocabCache vocabCache, String word, int top) {
         List<String> ret = new ArrayList<>();
 
         if (!vocabCache.containsWord(word)) {

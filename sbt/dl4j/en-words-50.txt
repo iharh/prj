@@ -20,7 +20,6 @@ about
 that
 needful
 dummy
-idiotish
 stuff
 really
 good
