@@ -29,7 +29,6 @@ import org.slf4j.LoggerFactory;
 public class Dl4jRun {
     private static final Logger log = LoggerFactory.getLogger(Dl4jRun.class);
     //private static final int TEST_ITERATIONS = 100000;
-    private static final int NUM_THREADS = 0;
     private static final int TOP_SIZE = 10;
 
     private static final String warmUpFileName = "en-words-warmup.txt";
