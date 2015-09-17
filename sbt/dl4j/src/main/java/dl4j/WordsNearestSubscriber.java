@@ -91,7 +91,7 @@ public class WordsNearestSubscriber extends Subscriber<String> {
     }
 
     public void logStat() {
-        logStatQ("excec", execQueue);
+        logStatQ("exec", execQueue);
         logStatQ("cpu", cpuQueue);
     }
 

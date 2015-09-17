@@ -45,10 +45,7 @@ public class Dl4jRun {
             int numThreads = Integer.parseInt(args[1]);
             log.info("params modelFileName: {} numThreads: {}", modelFileName, numThreads);
 
-            final Reader wordsReader = getReaderCP(wordsFileName);
-            final List<String> wordLines = byLine(from(wordsReader))
-                .toList().toBlocking().single();
-
+            final List<String> wordLines = getLinesCP(wordsFileName);
             int maxSize = wordLines.size();
             log.info("lines size: {}", maxSize);
 
@@ -80,15 +77,19 @@ public class Dl4jRun {
         }
     }
 
+    private static List<String> getLinesCP(String resFileName) {
+        final Reader reader = getReaderCP(resFileName);
+        return byLine(from(reader)).map((String s) -> { return s.trim(); })
+            .toList().toBlocking().single();
+    }
+
     private static Reader getReaderCP(String resFileName) {
         //new FileReader(resFileName);
         return new BufferedReader(new InputStreamReader(Dl4jRun.class.getResourceAsStream("/" + resFileName)));
     }
 
     private static void warmUp(InMemoryLookupTable lookupTable, VocabCache vocabCache, INDArray syn0transposed, int topSize) {
-        final Reader warmupReader = getReaderCP(warmUpFileName);
-        final List<String> warmupLines = byLine(from(warmupReader))
-            .toList().toBlocking().single();
+        final List<String> warmupLines = getLinesCP(warmUpFileName);
 
         int warmupSize = warmupLines.size();
         log.info("warmup size: {}", warmupSize);

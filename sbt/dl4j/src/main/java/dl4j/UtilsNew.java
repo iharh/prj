@@ -36,6 +36,7 @@ public class UtilsNew {
         // Hence, the following division is not needed anymore.
         // distances.diviRowVector(distances.norm2(1));
         //INDArray[] sorted = Nd4j.sortWithIndices(distances,0,false);
+/*
         List<Double> highToLowSimList = getTopN(similarity, top);
 
         for (int i = 0; i < highToLowSimList.size(); i++) {
@@ -47,6 +48,7 @@ public class UtilsNew {
                 }
             }
         }
+*/
         return ret;
     }
 
