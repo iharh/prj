@@ -13,7 +13,7 @@ set JAVA_OPTS=-Xms12G -Xmx12G -Xss1M -XX:+CMSClassUnloadingEnabled -XX:ReservedC
 ::%JIT_OPTS%
 ::-Xms12G -Xmx12G
 
-%JAVA_HOME%/bin/java %JAVA_OPTS% -jar "%~dp0target\dl4j-0.1-SNAPSHOT-one-jar.jar" %EXTRA_ARGS% %* > out.txt 2>&1
+%JAVA_HOME%/bin/java %JAVA_OPTS% -jar "%~dp0target\dl4j-0.1-SNAPSHOT-one-jar.jar" %EXTRA_ARGS% %* > console.log 2>&1
 
 :: sbt "run-main dl4j.Dl4jRun"
 
