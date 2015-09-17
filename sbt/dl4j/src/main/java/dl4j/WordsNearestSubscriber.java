@@ -127,6 +127,6 @@ public class WordsNearestSubscriber extends Subscriber<String> {
         //buf.append(" }");
         //log.info("stat {} min: {} max: {} data: {}", qname, min, max, buf.toString());
 
-        log.info("stat {} min: {}ms max: {}ms", qname, min / DIVIDER, max / DIVIDER);
+        log.info("stat {} {} min: {}ms max: {}ms", p, qname, min / DIVIDER, max / DIVIDER);
     }
 };
