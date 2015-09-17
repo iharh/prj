@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-public class Utils {
+public class UtilsNew {
 
     public static Collection<String> wordsNearestNew(InMemoryLookupTable lookupTable, VocabCache vocabCache, INDArray syn0transposed, String word, int top) {
         List<String> ret = new ArrayList<>();

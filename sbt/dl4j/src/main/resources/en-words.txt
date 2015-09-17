@@ -47,3 +47,4 @@ bed
 room
 skin
 really
+carpet
