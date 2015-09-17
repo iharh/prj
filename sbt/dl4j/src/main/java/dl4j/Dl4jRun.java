@@ -104,7 +104,7 @@ public class Dl4jRun {
     private static void testWordsNearest(int numThreads, final Observable<String> baseObservable, int maxSize
         , InMemoryLookupTable lookupTable, VocabCache vocabCache, INDArray syn0transposed, int topSize) {
 
-        log.info("stat test with threads: {}", numThreads);
+        log.info("stat start test with threads: {}", numThreads);
 
         final CountDownLatch finish = new CountDownLatch(numThreads);
 
@@ -120,6 +120,9 @@ public class Dl4jRun {
             finish.await();
         } catch (InterruptedException e) {
         }
+
+        log.info("stat finish test with threads: {}", numThreads);
+
         //log.info("done waiting");
         for (int i = 0; i < numThreads; ++i) {
             subscribers[i].logStat();
