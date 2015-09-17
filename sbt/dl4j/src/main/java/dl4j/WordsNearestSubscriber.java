@@ -99,8 +99,7 @@ public class WordsNearestSubscriber extends Subscriber<String> {
         //assert maxSize == queue.size();
         int skipFirst = maxSize / 10;
         int skipLast = skipFirst;
-
-        log.info("stat maxSize: {} skipFirst: {} skipLast: {}", maxSize, skipFirst, skipLast);
+        //log.info("stat maxSize: {} skipFirst: {} skipLast: {}", maxSize, skipFirst, skipLast);
 
         // first 10%
         long el = 0;
@@ -126,6 +125,8 @@ public class WordsNearestSubscriber extends Subscriber<String> {
             //buf.append(" ").append(el);
         }
         //buf.append(" }");
-        log.info("stat {} min: {} max: {}", qname, min, max);
+        //log.info("stat {} min: {} max: {} data: {}", qname, min, max, buf.toString());
+
+        log.info("stat {} min: {}ms max: {}ms", qname, min / DIVIDER, max / DIVIDER);
     }
 };
