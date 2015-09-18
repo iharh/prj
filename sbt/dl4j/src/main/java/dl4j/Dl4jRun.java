@@ -66,7 +66,7 @@ public class Dl4jRun {
 
             warmUp(lookupTable, vocabCache, syn0transposed, TOP_SIZE);
 
-            for (int i = 0; i < numThreads; ++i) {
+            for (int i = numThreads - 1; i < numThreads; ++i) {
                 testWordsNearest(i + 1, baseObservable, maxSize, lookupTable, vocabCache, syn0transposed, TOP_SIZE);
             }
 

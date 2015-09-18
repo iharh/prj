@@ -46,9 +46,9 @@ libraryDependencies += "org.deeplearning4j" % "deeplearning4j-nlp" % "0.4-rc1.2"
 // nd4j-netlib-blas
 // nd4j-x86
 //libraryDependencies += "org.nd4j"           % "nd4j-netlib-blas" % "0.0.3.5.5.5" excludeAll(
+//libraryDependencies += "org.nd4j"           % "nd4j-jblas" % "0.4-rc1.2" excludeAll(
 //libraryDependencies += "org.nd4j"           % "nd4j-x86" % "0.4-rc1.2" excludeAll(
-//libraryDependencies += "org.nd4j"           % "nd4j-netlib-blas" % "0.4-rc1.2" excludeAll(
-libraryDependencies += "org.nd4j"           % "nd4j-jblas" % "0.4-rc1.2" excludeAll(
+libraryDependencies += "org.nd4j"           % "nd4j-netlib-blas" % "0.4-rc1.2" excludeAll(
         ExclusionRule(organization = "io.dropwizard"),
         ExclusionRule(organization = "ch.qos.logback"),
         ExclusionRule(organization = "com.typesafe.akka")

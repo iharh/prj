@@ -5,7 +5,8 @@ call vars-java8.bat
 
 del /Q %~dp0*.log
 
-set EXTRA_ARGS="F:\w2v\GoogleNews_f[41]" 0
+::set EXTRA_ARGS="F:\w2v\GoogleNews_f[41]" 0
+set EXTRA_ARGS="F:\w2v\GoogleNews" 3
 
 ::set JIT_OPTS=-XX:+UnlockDiagnosticVMOptions -XX:+TraceClassLoading -XX:+LogCompilation 
 set JIT_OPTS=-XX:+UnlockDiagnosticVMOptions -XX:+TraceClassLoading -XX:-TieredCompilation -XX:+PrintCompilation -XX:+PrintInlining

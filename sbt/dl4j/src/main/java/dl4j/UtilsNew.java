@@ -16,7 +16,11 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class UtilsNew {
+    private static final Logger log = LoggerFactory.getLogger(UtilsNew.class);
 
     public static Collection<String> wordsNearestNew(InMemoryLookupTable lookupTable, VocabCache vocabCache, INDArray syn0transposed, String word, int top) {
         List<String> ret = new ArrayList<>();
@@ -30,6 +34,8 @@ public class UtilsNew {
 
         INDArray mean = words.isMatrix() ? words.mean(0) : words;
         INDArray weights = Transforms.unitVec(mean);
+        log.info("weights.ordering: {}", weights.ordering());
+        log.info("syn0transposed.ordering: {}", syn0transposed.ordering());
 
         INDArray similarity = weights.mmul(syn0transposed);
         // We assume that syn0 is normalized.
