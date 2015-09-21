@@ -1,0 +1,2 @@
+1880564865d82863a7dca274eefe7ca6a57dc3f3ee6239cf4129f779f23a95c8 */jdk-8u60-linux-x64.rpm
+3a8dc4a12ab9f3607a1a2097bbab0150c947ad6719d8f1bb6d5b47d0fb0c4779 */apache-maven-3.3.3-bin.tar.gz
