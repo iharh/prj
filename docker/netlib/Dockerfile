@@ -1,6 +1,6 @@
 FROM centos:centos7
 
-RUN yum -y update && yum -y install curl wget dos2unix git gcc gcc-gfortran libgfortran.x86_64
+RUN yum -y update && yum -y install man curl wget dos2unix git gcc gcc-gfortran libgfortran.x86_64
 
 ENV JAVA_PKG_NAME jdk-8u60-linux-x64
 ENV JAVA_PKG_DIR 8u60-b27
@@ -29,7 +29,17 @@ RUN mkdir -p $MAVEN_ROOT &&\
 ENV JAVA_HOME=/usr/java/latest
 ENV PATH ${PATH}:${MAVEN_HOME}/bin
 
+COPY netlib-privkey.asc /
+RUN dos2unix /netlib-privkey.asc &&\
+    gpg --allow-secret-key-import --import --armor /netlib-privkey.asc
+
+#COPY netlib-pubkey.asc /
+#RUN dos2unix /netlib-pubkey.asc
+
 RUN git clone git://github.com/fommil/netlib-java /usr/local/netlib/netlib-java
+
+RUN cd /usr/local/netlib/netlib-java/generator &&\
+    mvn install -Dgpg.passphrase=
 
 WORKDIR /usr/local/netlib
 #CMD ["java", "-Xmx12g", "-Duser.language=en", "-Duser.country=US", "-Dfile.encoding=UTF-8", "-jar", "cb-cps-app-0.1.jar"]
