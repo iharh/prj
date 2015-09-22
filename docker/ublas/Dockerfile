@@ -28,5 +28,5 @@ RUN cd boost_`echo ${BOOST_VERSION} | sed 's/\\./_/g'` \
 
 COPY a.cpp /usr/local/${PRJ_NAME}/
 
-RUN g++ -std=c++11 -pthread a.cpp \
+RUN g++ -std=c++11 -pthread -O3 a.cpp \
     && ./a.out
