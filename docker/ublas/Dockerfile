@@ -23,9 +23,10 @@ RUN tar xvjf boost_`echo ${BOOST_VERSION} | sed 's/\\./_/g'`.tar.bz2 \
 
 RUN cd boost_`echo ${BOOST_VERSION} | sed 's/\\./_/g'` \
     && ./bootstrap.sh \
-#    && ./b2 --build-type=minimal --with-system --with-thread link=static runtime-link=shared variant=release threading=multi install
+    && ./b2 --build-type=minimal --with-system link=static runtime-link=shared variant=release threading=multi install
+# --with-thread
 
-#COPY a.cpp /usr/local/${PRJ_NAME}/
+COPY a.cpp /usr/local/${PRJ_NAME}/
 
-#RUN g++ -std=c++11 -pthread a.cpp \
-#    && ./a.out
+RUN g++ -std=c++11 -pthread a.cpp \
+    && ./a.out
