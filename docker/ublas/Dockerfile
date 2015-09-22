@@ -9,7 +9,8 @@ WORKDIR /usr/local/${PRJ_NAME}
 # Download latest boost
 # https://hub.docker.com/r/steeve/libtorrent-go/~/dockerfile/
 ENV BOOST_VERSION 1.59.0
-RUN curl -L http://sourceforge.net/projects/boost/files/boost/${BOOST_VERSION}/boost_`echo ${BOOST_VERSION} | sed 's/\\./_/g'`.tar.bz2/download > boost_`echo ${BOOST_VERSION} | sed 's/\\./_/g'`.tar.bz2
+#curl -LO http://sourceforge.net/projects/boost/files/boost/1.59.0/boost_1_59_0.tar.bz2/download > boost_1_59_0.tar.bz2
+RUN curl -LO http://sourceforge.net/projects/boost/files/boost/${BOOST_VERSION}/boost_`echo ${BOOST_VERSION} | sed 's/\\./_/g'`.tar.bz2/download > boost_`echo ${BOOST_VERSION} | sed 's/\\./_/g'`.tar.bz2
 
 COPY sums.txt /usr/local/${PRJ_NAME}/
 RUN dos2unix sums.txt \
