@@ -1,4 +1,7 @@
 #include <iostream>
+#include <chrono>
+#include <random>
+#include <thread>
 
 #include "boost/numeric/ublas/matrix.hpp"
 #include "boost/numeric/ublas/vector.hpp"
@@ -9,7 +12,7 @@ typedef matrix<float> t_matrix;
 typedef vector<float> t_vector;
 
 void
-printM(const std::wstring &sText, t_matrix m)
+printM(const std::wstring &sText, const t_matrix &m)
 {
     size_t s1 = m.size1();
     size_t s2 = m.size2();
@@ -27,7 +30,7 @@ printM(const std::wstring &sText, t_matrix m)
 }
 
 void
-printV(const std::wstring &sText, t_vector v)
+printV(const std::wstring &sText, const t_vector &v)
 {
     size_t s = v.size();
 
@@ -39,27 +42,67 @@ printV(const std::wstring &sText, t_vector v)
     std::wcout << std::endl;
 }
 
+//static size_t s1 = 3000000;
+static size_t s1 = 300000;
+static size_t s2 = 300;
+static t_matrix m(s1, s2);
+
+static std::mt19937_64 gen;
+static std::uniform_real_distribution<float> dist(0.0, 1.0);
+
+void
+doMulti(size_t idx)
+{
+    t_vector v(s2);
+    for (size_t i = 0; i < s2; ++i)
+    {
+        v(i) = dist(gen);
+    }
+    //printV(L"v:", v);
+
+    std::chrono::high_resolution_clock::time_point tstart = std::chrono::high_resolution_clock::now();
+    t_vector z = prod(m, v);
+    //printV(L"z:", z);
+    std::chrono::high_resolution_clock::time_point tfinish = std::chrono::high_resolution_clock::now();
+
+    std::wcout << L"Matrix-vector multiplication [" << idx << L"] took "
+        << std::chrono::duration_cast<std::chrono::duration<double>>(tfinish - tstart).count() << L" seconds." << std::endl;
+}
+
 int
 main()
 {
-    t_matrix a(3, 2);
-    a(0, 0) = 1.;
-    a(0, 1) = 2.;
-    a(1, 0) = 3.;
-    a(1, 1) = 4.;
-    a(2, 0) = 5.;
-    a(2, 1) = 6.;
-    printM(L"a:", a);
+    size_t num_threads = 3;
 
-    t_vector v(2);
-    for (size_t i = 0; i < v.size(); ++i)
+    std::wcout << L"Matrix generation started..." << std::endl;
+    std::chrono::high_resolution_clock::time_point tstart = std::chrono::high_resolution_clock::now();
+
+    for (size_t i = 0; i < s1; ++i)
     {
-        v(i) = i + 1.;
+        for (size_t j = 0; j < s2; ++j)
+        {
+            m(i, j) = dist(gen);
+        }
     }
-    printV(L"v:", v);
+    //printM(L"m:", m);
 
-    t_vector z = prod(a, v);
-    printV(L"z:", z);
+    //std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>>(t2 - t1);
+    std::chrono::high_resolution_clock::time_point tfinish = std::chrono::high_resolution_clock::now();
+    std::wcout << L"Matrix generation took " << std::chrono::duration_cast<std::chrono::duration<double>>(tfinish - tstart).count() << L" seconds." << std::endl;
+
+    typedef std::vector<std::thread> t_thread_vec;
+
+    t_thread_vec threads;
+    for (size_t t = 0; t < num_threads; ++t)
+    {
+        auto r = std::bind(doMulti, t);
+        threads.emplace_back(r);
+    }
+
+    for (t_thread_vec::iterator itr = threads.begin(); itr != threads.end(); ++itr)
+    {
+        itr->join();
+    }
 
     return 0;
 }
