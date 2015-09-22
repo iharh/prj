@@ -1,6 +1,6 @@
 FROM centos:centos7
 
-RUN yum -y update && yum -y install man curl wget bzip2 dos2unix git gcc gcc-c++
+RUN yum -y update && yum -y install man tar curl wget bzip2 dos2unix git gcc gcc-c++
 
 ENV PRJ_NAME ublas
 RUN mkdir -p /usr/local/${PRJ_NAME}
