@@ -42,15 +42,21 @@ WORKDIR /usr/local/${PRJ_NAME}/eigen_build_${EIGEN_VERSION}/
 
 RUN cmake ../eigen_${EIGEN_VERSION} \
     && make \
+    && make blas \
+    && make install
+
+WORKDIR /usr/local/${PRJ_NAME}/eigen_build_${EIGEN_VERSION}/blas
+
+RUN make \
     && make install
 
 WORKDIR /usr/local/${PRJ_NAME}
 
-RUN rm -rf eigen_build_${EIGEN_VERSION} \
-    && rm -rf eigen_${EIGEN_VERSION}
+#RUN rm -rf eigen_build_${EIGEN_VERSION} \
+#    && rm -rf eigen_${EIGEN_VERSION}
 
 COPY a.cpp /usr/local/${PRJ_NAME}/
 # /usr/local/include/eigen3/Eigen/Dense
 
-RUN g++ -std=c++11 -pthread -O3 a.cpp \
+RUN g++ -std=c++11 -pthread -O3 -I /usr/local/include/eigen3 a.cpp \
     && ./a.out

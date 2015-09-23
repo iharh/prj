@@ -1,0 +1,8 @@
+bench\btl\libs\BLAS\CMakeLists.txt
+
+  btl_add_bench(btl_eigenblas main.cpp)
+  if(BUILD_btl_eigenblas)
+    target_link_libraries(btl_eigenblas eigen_blas eigen_lapack )
+    set_target_properties(btl_eigenblas PROPERTIES COMPILE_FLAGS "-DCBLASNAME=EigenBLAS")
+  endif()
+
