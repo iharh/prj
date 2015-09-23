@@ -38,9 +38,13 @@ RUN tar xvjf eigen_${EIGEN_VERSION}.tar.bz2 \
     && mv `find . -maxdepth 1 -type d -name "eigen*"` eigen_${EIGEN_VERSION} \
     && mkdir eigen_build_${EIGEN_VERSION}
 
-WORKDIR /usr/local/eigen_build_${EIGEN_VERSION}/
+WORKDIR /usr/local/${PRJ_NAME}/eigen_build_${EIGEN_VERSION}/
 
-RUN cmake ../eigen_
+RUN cmake ../eigen_${EIGEN_VERSION} \
+    && make \
+    && make install
+
+WORKDIR /usr/local/${PRJ_NAME}
 
 COPY a.cpp /usr/local/${PRJ_NAME}/
 # /usr/local/include/eigen3/Eigen/Dense
