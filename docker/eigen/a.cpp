@@ -2,6 +2,7 @@
 //include <chrono>
 //include <random>
 //include <thread>
+#include <Eigen/Dense>
 
 int
 main()
