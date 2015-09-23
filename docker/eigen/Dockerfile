@@ -46,6 +46,9 @@ RUN cmake ../eigen_${EIGEN_VERSION} \
 
 WORKDIR /usr/local/${PRJ_NAME}
 
+RUN rm -rf eigen_build_${EIGEN_VERSION} \
+    && rm -rf eigen_${EIGEN_VERSION}
+
 COPY a.cpp /usr/local/${PRJ_NAME}/
 # /usr/local/include/eigen3/Eigen/Dense
 
