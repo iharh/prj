@@ -13,6 +13,7 @@ public class SimpleTest {
 
     @Test
     public void testSimple() throws Exception {
+        log.info("simple");
         assertTrue(true);
     }
 }
