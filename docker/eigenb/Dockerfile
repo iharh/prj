@@ -2,7 +2,7 @@ FROM centos:centos7
 
 RUN yum -y update && yum -y install man tar curl bzip2 dos2unix git make gcc gcc-c++ gcc-gfortran libgfortran.x86_64
 
-ENV PRJ_NAME eigen
+ENV PRJ_NAME eigenb
 RUN mkdir -p /usr/local/${PRJ_NAME}
 WORKDIR /usr/local/${PRJ_NAME}
 
@@ -42,6 +42,12 @@ WORKDIR /usr/local/${PRJ_NAME}/eigen_build_${EIGEN_VERSION}/
 
 RUN cmake ../eigen_${EIGEN_VERSION} \
     && make \
+    && make blas \
+    && make install
+
+WORKDIR /usr/local/${PRJ_NAME}/eigen_build_${EIGEN_VERSION}/blas
+
+RUN make \
     && make install
 
 WORKDIR /usr/local/${PRJ_NAME}

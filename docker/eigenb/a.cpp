@@ -15,26 +15,12 @@ doMulti(const Eigen::MatrixXd &m, size_t idx)
     // std::chrono::high_resolution_clock::time_point
     auto tstart = std::chrono::high_resolution_clock::now();
 
-    Eigen::VectorXd z = m * v;
-
-    float maxRes = 0.;
-    // assert(z.size() == s1)
-    //for (size_t i = 0; i < s1; ++i)
-    //for (Eigen::VectorXd::InnerIterator itr(z); itr; ++itr)
-    //{
-    //    // itr.index(); itr.value();
-    //    float v = itr.value();
-    //    float v = z(i);
-    //    maxRes = std::max(v, maxRes);
-    //}
+    auto z = m * v;
 
     auto tfinish = std::chrono::high_resolution_clock::now();
 
-    std::wcout << L"Matrix-vector multiplication [" << idx << L"] took "
-        << std::chrono::duration_cast<std::chrono::duration<double>>(tfinish - tstart).count() << L" seconds." << std::endl
-        //<< L"size: " << z.size() << std::endl
-        //<< L"max: " << maxRes << std::endl
-    ;
+    std::cout << "Matrix-vector multiplication [" << idx << "] took "
+        << std::chrono::duration_cast<std::chrono::duration<double>>(tfinish - tstart).count() << " seconds." << std::endl;
 
     //std::cout << "z:" << std::endl << z << std::endl;
 }
@@ -54,7 +40,7 @@ main()
 */
     //std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>>(t2 - t1);
     auto tfinish = std::chrono::high_resolution_clock::now();
-    std::cout << L"Matrix generation took " << std::chrono::duration_cast<std::chrono::duration<double>>(tfinish - tstart).count() << L" seconds." << std::endl;
+    std::cout << "Matrix generation took " << std::chrono::duration_cast<std::chrono::duration<double>>(tfinish - tstart).count() << " seconds." << std::endl;
 
     doMulti(m, 0);
 
