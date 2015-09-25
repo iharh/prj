@@ -1,2 +1,0 @@
-ParserRuleContext[cb_rule, clause_or, clause_and, clause_not, clause_basic, atom, value]{start=[@0,0:3='ab?c',<36>,1:0], stop=null}
-ParserRuleContext[cb_rule, clause_or, clause_and, clause_not, clause_basic, atom, value]{start=[@0,0:3='ab?c',<36>,1:0], stop=[@0,0:3='ab?c',<36>,1:0]}
