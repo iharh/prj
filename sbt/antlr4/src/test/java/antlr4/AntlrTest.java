@@ -38,6 +38,8 @@ public class AntlrTest {
         final TokenStream tokenStream = new CommonTokenStream(lexer);
 
         final Parser parser = new RuleParser(tokenStream);
+        assertNotNull(parser);
+
         final ParseTreeListener ruleTreeListener = new RuleBaseListener() {
             @Override
             public void enterValue(RuleParser.ValueContext ctx) {
@@ -50,10 +52,12 @@ public class AntlrTest {
             }
         };
         parser.addParseListener(ruleTreeListener);
+        parser.setTrace(true);
 
-        assertNotNull(parser);
+	Cb_ruleContext ctx = parser.cb_rule(); // throws RecognitionException
+        assertNotNull(ctx);
 
-        assertTrue(true);
+        //assertTrue(true);
         log.info("finish");
     }
 }

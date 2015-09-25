@@ -21,10 +21,13 @@ RUN dos2unix sums.txt \
 RUN tar xvjf boost_`echo ${BOOST_VERSION} | sed 's/\\./_/g'`.tar.bz2 \
     && rm boost_`echo ${BOOST_VERSION} | sed 's/\\./_/g'`.tar.bz2
 
-RUN cd boost_`echo ${BOOST_VERSION} | sed 's/\\./_/g'` \
-    && ./bootstrap.sh \
+WORKDIR /usr/local/${PRJ_NAME}/boost_`echo ${BOOST_VERSION} | sed 's/\\./_/g'`
+
+RUN ./bootstrap.sh \
     && ./b2 --build-type=minimal --with-system link=static runtime-link=shared variant=release threading=multi install
 # --with-thread
+
+WORKDIR /usr/local/${PRJ_NAME}
 
 COPY a.cpp /usr/local/${PRJ_NAME}/
 

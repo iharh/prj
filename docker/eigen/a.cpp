@@ -7,6 +7,8 @@
 static size_t s1 = 3000000;
 static size_t s2 = 300;
 
+//static size_t
+
 void
 doMulti(const Eigen::MatrixXd &m, size_t idx)
 {
