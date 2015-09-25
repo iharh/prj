@@ -27,7 +27,7 @@ antlr4PackageName in Antlr4 := Some("antlr4")
 
 antlr4GenListener in Antlr4 := true
 
-antlr4GenVisitor in Antlr4 := true
+//antlr4GenVisitor in Antlr4 := true
 
 antlr4Dependency in Antlr4 := "org.antlr" % "antlr4" % "4.5.1-1"
 
