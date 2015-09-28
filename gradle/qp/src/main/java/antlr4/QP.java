@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 public class QP {
     private static final Logger log = LoggerFactory.getLogger(QP.class);
 
-    public static Set<String> parse(String inputString) throws IOException {
+    public static void parse(String inputString, Set<String> simple, Set<String> quoted) throws IOException {
         log.info("start");
         final Reader inputReader = new StringReader(inputString);
         final CharStream inputStream = new ANTLRInputStream(inputReader);
@@ -34,7 +34,7 @@ public class QP {
         //assertNotNull(parser);
 
         // ParseTreeListener 
-        final SwimlineParseTreeListener parseTreeListener = new SwimlineParseTreeListener(parser);
+        final SwimlineParseTreeListener parseTreeListener = new SwimlineParseTreeListener(parser, simple, quoted);
         parser.addParseListener(parseTreeListener);
         //parser.setTrace(true);
 
@@ -43,7 +43,5 @@ public class QP {
         //log.info("ParseTree: {}", t.toStringTree(parser));
         //log.info("finish");
         parser.cb_rule();
-
-        return parseTreeListener.getValues();
     }
 }

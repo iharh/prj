@@ -3,14 +3,31 @@ package antlr4
 import spock.lang.Specification
 
 class Antlr4Tests extends Specification {
+    def s = [] as Set
+    def q = [] as Set
+
     def "basic"() {
         when:
-            def r1 = QP.parse("w1 or w2 or w3 and w4 and (w5 or w6 and (w7 and w8)) and w9 or (w10 and w11)")
-            def r2 = QP.parse("w1, w2, w3 and w4 and (w5, w6 and (w7 and w8)) and w9 or (w10, w11)")
+            QP.parse("Wo*rd1, wprds2?, \"wasdh^&^or*d3\"", s, q)
         then:
-            r1 as Set == ["w1", "w2", "w3", "w4", "w9"] as Set
-            r2 as Set == ["w1", "w2", "w3", "w4", "w9"] as Set
+            s == ["Wo*rd1", "wprds2?"] as Set
+            q == ["\"wasdh^&^or*d3\""] as Set
     }
+    def "levels1"() {
+        when:
+            QP.parse("w1 or w2 or w3 and w4 and (w5 or w6 and (w7 and w8)) and w9 or (w10 and w11)", s, q)
+        then:
+            s == ["w1", "w2", "w3", "w4", "w9"] as Set
+            q == [] as Set
+    }
+    def "levels2"() {
+        when:
+            QP.parse("w1, w2, w3 and w4 and (w5, w6 and (w7 and w8)) and w9 or (w10, w11)")
+        then:
+            s == ["w1", "w2", "w3", "w4", "w9"] as Set
+            q == [] as Set
+    }
+/*
     def "catref"() {
         when:
             def r = QP.parse("_catRef:[model:\"v1Products Model - Tuning Base Model\" path:\"v1Enterprise|Poweredge Modular Servers\" node:\"v1Mellanox IB m2401g\"], w1")
@@ -41,4 +58,5 @@ class Antlr4Tests extends Specification {
         then:
             r as Set == ["\" AND ()asjd \""] as Set
     }
+*/
 }
