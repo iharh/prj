@@ -1,13 +1,12 @@
 #include <iostream>
 #include <chrono>
+#include <functional>
 //include <random>
 //include <thread>
 #include <Eigen/Dense>
 
 static size_t s1 = 3000000;
 static size_t s2 = 300;
-
-//static size_t
 
 void
 doMulti(const Eigen::MatrixXd &m, size_t idx)
@@ -44,6 +43,8 @@ doMulti(const Eigen::MatrixXd &m, size_t idx)
 int
 main()
 {
+    std::wcout << L"Start matrix generation ..." << std::endl;
+
     auto tstart = std::chrono::high_resolution_clock::now();
 
     Eigen::MatrixXd m = Eigen::MatrixXd::Random(s1, s2);
@@ -56,9 +57,12 @@ main()
 */
     //std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>>(t2 - t1);
     auto tfinish = std::chrono::high_resolution_clock::now();
-    std::cout << L"Matrix generation took " << std::chrono::duration_cast<std::chrono::duration<double>>(tfinish - tstart).count() << L" seconds." << std::endl;
+    std::wcout << L"Matrix generation took " << std::chrono::duration_cast<std::chrono::duration<double>>(tfinish - tstart).count() << L" seconds." << std::endl;
 
-    doMulti(m, 0);
+    // std::placeholders::_1, _2, ...
+    size_t idx = 0;
+    auto bbb = std::bind(doMulti, std::cref(m), idx); // std::placeholders::_1
+    bbb();
 
     return 0;
 }

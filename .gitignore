@@ -14,5 +14,7 @@ sbt/knlph/models/*
 sbt/*/lib/*
 sbt/*/*.log
 sbt/*/-.-/*
+gradle/*/build/*
+gradle/*/.gradle/*
 mvn/*
 elk/*/.ls/*

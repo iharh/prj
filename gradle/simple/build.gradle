@@ -1,0 +1,29 @@
+apply plugin: 'java'
+apply plugin: 'groovy'
+ 
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+//    maven {
+//        url new File('libs').toURI().toURL()
+//    }
+}
+
+dependencies {
+
+    //compile('org.codehaus.groovy:groovy:2.4.3')
+    //compile('org.codehaus.groovy:groovy-all:2.4.3')
+    compile('org.codehaus.groovy:groovy-all:2.4.4') // 2.4.5
+
+    //testCompile('org.codehaus.groovy:groovy:2.4.3') 
+    testCompile('org.spockframework:spock-core:1.0-groovy-2.4')
+}
+
+//compile('org.codehaus.groovy:groovy-all:2.3.11')
+
+//testCompile('org.spockframework:spock-core:1.0-groovy-2.3')
+//testCompile('org.spockframework:spock-spring:1.0-groovy-2.3')
+

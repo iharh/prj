@@ -74,7 +74,7 @@ WORKDIR /usr/local/${PRJ_NAME}
 COPY a.cpp /usr/local/${PRJ_NAME}/
 # /usr/local/include/eigen3/Eigen/Dense
 
-RUN g++ -std=c++11 -pthread -O3 -fomit-frame-pointer -funroll-all-loops -I /usr/local/include/eigen3 a.cpp \
+RUN g++ -std=c++11 -pthread -O3 -I /usr/local/include/eigen3 a.cpp \
     && ./a.out
 
 #-fomit-frame-pointer
