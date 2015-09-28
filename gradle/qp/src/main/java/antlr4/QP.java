@@ -16,9 +16,14 @@ import java.io.IOException;
 
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class QP {
+    private static final Logger log = LoggerFactory.getLogger(QP.class);
+
     public static Set<String> parse(String inputString) throws IOException {
-        //log.info("start");
+        log.info("start");
         final Reader inputReader = new StringReader(inputString);
         final CharStream inputStream = new ANTLRInputStream(inputReader);
         final Lexer lexer = new RuleLexer(inputStream);

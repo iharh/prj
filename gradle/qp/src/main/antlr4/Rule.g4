@@ -23,19 +23,36 @@ clause_not
     ;
 
 clause_basic
-	:
-	modifier? LPAREN clause_or+ RPAREN term_modifier?
-	| LPAREN clause_or+ RPAREN
-	| atom
-	;
+    :
+    modifier? LPAREN clause_or+ RPAREN term_modifier?
+    | LPAREN clause_or+ RPAREN
+    | atom
+    ;
 
 atom
-	:
-	modifier? cb_lc
-	| modifier? cb_catref
-	| modifier? field multi_value term_modifier?
-	| modifier? field? value term_modifier?
-	;
+    :
+    modifier? cb_lc
+    | modifier? cb_catref
+    | modifier? cb_catrollup
+    | modifier? cb_value
+    | modifier? cb_field_single
+    | modifier? cb_field_multi
+    ;
+
+cb_value
+    :
+    value term_modifier?
+    ;
+
+cb_field_single
+    :
+    field value term_modifier?
+    ;
+
+cb_field_multi
+    :
+    field multi_value term_modifier?
+    ;
 
 // cb linguistic connection
 cb_lc
@@ -44,20 +61,20 @@ cb_lc
     ;
 
 cb_lc_range
-	:
+    :
     LBRACK cb_lc_lvalue COMMA modifier? cb_lc_rvalue RBRACK
-	;
+    ;
 
 cb_lc_lvalue
     :
-	normal*
-	| quoted
+    normal*
+    | quoted
     ;
 
 cb_lc_rvalue
     :
-	normal*
-	| quoted
+    normal*
+    | quoted
     ;
 
 // cb category reference
@@ -81,36 +98,47 @@ cb_catref_node
     CATREF_NODE COLON PHRASE
     ;
 
+// cb category rollup
+cb_catrollup
+    :
+    CATROLLUP COLON cb_catrollup_id
+    ;
+
+cb_catrollup_id
+    :
+    normal | quoted
+    ;
+
 field
-	:
-	TERM_NORMAL COLON
-	;
+    :
+    TERM_NORMAL COLON
+    ;
 
 value
-	:
-	range_term_incl
-	| range_term_excl
-	| normal
-	| truncated
-	| quoted
-	| quoted_truncated
-	| cb_period_func
-	| cb_hour_period_func
-	| cb_current_period_func
-	| QMARK
-	| STAR COLON
+    :
+    range_term_incl
+    | range_term_excl
+    | normal
+    | truncated
+    | quoted
+    | quoted_truncated
+    | cb_period_func
+    | cb_hour_period_func
+    | cb_current_period_func
+    | QMARK
+    | STAR COLON
     | STAR
     ;
 
 range_term_incl
-	:
+    :
     LBRACK range_value TO? range_value RBRACK
-	;
+    ;
 
 range_term_excl
-	:
+    :
     LCURLY range_value TO? range_value RCURLY
-	;
+    ;
 
 range_value
 	:
@@ -201,14 +229,14 @@ truncated
 	;
 
 quoted_truncated
-	:
-	PHRASE_ANYTHING
-	;
+    :
+    PHRASE_ANYTHING
+    ;
 
 quoted
     :
-	PHRASE
-	;
+    PHRASE
+    ;
 
 operator
     :
@@ -231,8 +259,8 @@ term_modifier
 
 date
     :
-	DATE_TOKEN
-	;
+    DATE_TOKEN
+    ;
 
 /* lexical rules */
 
@@ -356,6 +384,11 @@ CATREF_NODE
     'node'
     ;
 
+CATROLLUP
+    :
+    '_' ('c' | 'C') ('a' | 'A') ('t' | 'T') ('r' | 'R') ('o' | 'O') ('l' | 'L') ('l' | 'L') ('u' | 'U') ('p' | 'P')
+    ;
+
 AND
     :
     (('a' | 'A') ('n' | 'N') ('d' | 'D') | (AMPER AMPER?))
@@ -384,29 +417,29 @@ WS
     ;
 
 DATE_SIMPLE
-	:
-	'_DATE'
-	;
+    :
+    '_DATE'
+    ;
 
 DATE_ADD
-	:
-	'_DATEADD'
-	;
+    :
+    '_DATEADD'
+    ;
 
 DATE_PERIOD
-	:
-	'_PERIOD'
-	;
+    :
+    '_PERIOD'
+    ;
 
 HOUR_PERIOD
-	:
-	'_HOUR_PERIOD'
-	;
+    :
+    '_HOUR_PERIOD'
+    ;
 
 CURRENT_PERIOD
-	:
-	'_CURRENTPERIOD'
-	;
+    :
+    '_CURRENTPERIOD'
+    ;
 
 
 DATE_MATH_UNIT
@@ -446,28 +479,28 @@ NUMBER
 	;
 
 DATE_TOKEN
-	:
-	INT INT? ('/'|'-'|'.') INT INT? ('/'|'-'|'.') INT INT (INT INT)?
-	;
+    :
+    INT INT? ('/'|'-'|'.') INT INT? ('/'|'-'|'.') INT INT (INT INT)?
+    ;
 
 TERM_NORMAL
-	:
-	TERM_START_CHAR ( TERM_CHAR )*
-	;
+    :
+    TERM_START_CHAR ( TERM_CHAR )*
+    ;
 
 TERM_TRUNCATED
     :
-	(STAR|QMARK) (TERM_CHAR+ (QMARK|STAR))+ (TERM_CHAR)*
-	| TERM_START_CHAR (TERM_CHAR* (QMARK|STAR))+ (TERM_CHAR)*
-	| (STAR|QMARK) TERM_CHAR+
-	;
+    (STAR|QMARK) (TERM_CHAR+ (QMARK|STAR))+ (TERM_CHAR)*
+    | TERM_START_CHAR (TERM_CHAR* (QMARK|STAR))+ (TERM_CHAR)*
+    | (STAR|QMARK) TERM_CHAR+
+    ;
 
 PHRASE
-	:
-	DQUOTE (ESC_CHAR|~('\"'|'\\'|'?'|'*'))+ DQUOTE
-	;
+    :
+    DQUOTE (ESC_CHAR|~('\"'|'\\'|'?'|'*'))+ DQUOTE
+    ;
 
 PHRASE_ANYTHING
     :
-	DQUOTE (ESC_CHAR|~('\"'|'\\'))+ DQUOTE
-	;
+    DQUOTE (ESC_CHAR|~('\"'|'\\'))+ DQUOTE
+    ;

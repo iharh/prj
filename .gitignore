@@ -16,5 +16,6 @@ sbt/*/*.log
 sbt/*/-.-/*
 gradle/*/build/*
 gradle/*/.gradle/*
+gradle/*/*.log
 mvn/*
 elk/*/.ls/*
