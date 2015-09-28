@@ -81,6 +81,9 @@ public class SwimlineParseTreeListener extends RuleBaseListener {
     @Override
     public void exitQuoted(@NotNull RuleParser.QuotedContext ctx) {
         log.debug("exit quoted level: {}", level);
+        if (inValue && level == 1) {
+            quoted.add(ctx.getText());
+        }
     }
 
     // quoted_truncated
