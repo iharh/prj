@@ -1,6 +1,6 @@
-package antlr4;
+package simple;
 
-public class QP {
+public class Simple {
     public int getN() {
         return 5;
     }
