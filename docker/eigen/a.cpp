@@ -1,4 +1,6 @@
 #include <iostream>
+#include <iterator>
+#include <algorithm>
 #include <chrono>
 #include <functional>
 //include <random>
@@ -8,40 +10,64 @@
 static size_t s1 = 3000000;
 static size_t s2 = 300;
 
-void
-doMulti(const Eigen::MatrixXd &m, size_t idx)
+static size_t numThreads = 1;
+static size_t numIters = 10;
+
+//static double minTime[numThreads];
+//static double maxTime[numThreads];
+
+std::chrono::duration<double>
+mulIter(const Eigen::MatrixXd &m)
 {
-    auto v = Eigen::VectorXd::Random(s2);
+    auto vec = Eigen::VectorXd::Random(s2);
 
     // std::chrono::high_resolution_clock::time_point
     auto tstart = std::chrono::high_resolution_clock::now();
 
-    Eigen::VectorXd z = m * v;
-
+    Eigen::VectorXd z = m * vec;
+/*
     float maxRes = 0.;
     // assert(z.size() == s1)
-    //for (size_t i = 0; i < s1; ++i)
-    //for (Eigen::VectorXd::InnerIterator itr(z); itr; ++itr)
-    //{
-    //    // itr.index(); itr.value();
-    //    float v = itr.value();
-    //    float v = z(i);
-    //    maxRes = std::max(v, maxRes);
-    //}
-
+    for (Eigen::VectorXd::InnerIterator itr(z); itr; ++itr)
+    {
+        // itr.index(); itr.value();
+        float val = itr.value();
+        //float val = z(i);
+        maxRes = std::max(val, maxRes);
+    }
+*/
     auto tfinish = std::chrono::high_resolution_clock::now();
-
-    std::wcout << L"Matrix-vector multiplication [" << idx << L"] took "
-        << std::chrono::duration_cast<std::chrono::duration<double>>(tfinish - tstart).count() << L" seconds." << std::endl
-        //<< L"size: " << z.size() << std::endl
-        //<< L"max: " << maxRes << std::endl
-    ;
-
-    //std::cout << "z:" << std::endl << z << std::endl;
+    std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>>(tfinish - tstart);
+    return time_span;
 }
 
-int
-main()
+void
+doMulti(const Eigen::MatrixXd &m, size_t idx)
+{
+    std::vector<float> times;
+
+    for (size_t i = 0; i < numIters; ++i)
+    {
+        std::chrono::duration<double> time_span = mulIter(m);
+        times.emplace_back(time_span.count());
+    }
+
+    std::sort(times.begin(), times.end());
+    size_t numSkip = numIters / 10;
+
+    std::wcout << L"Matrix-vector multiplication [" << idx << L"] took seconds:" << std::endl;
+    std::copy(times.begin(), times.end(), std::ostream_iterator<float, wchar_t>(std::wcout, L" "));
+    std::wcout << std::endl;
+    std::wcout << L"skip: " << numSkip << std::endl;
+    std::wcout << L"min: " << times[numSkip] << std::endl;
+    std::wcout << L"max: " << times[numIters - numSkip * 2] << std::endl;
+
+        //<< L"size: " << z.size() << std::endl
+        //<< L"max: " << maxRes << std::endl
+}
+
+void
+testMmul()
 {
     std::wcout << L"Start matrix generation ..." << std::endl;
 
@@ -59,10 +85,34 @@ main()
     auto tfinish = std::chrono::high_resolution_clock::now();
     std::wcout << L"Matrix generation took " << std::chrono::duration_cast<std::chrono::duration<double>>(tfinish - tstart).count() << L" seconds." << std::endl;
 
-    // std::placeholders::_1, _2, ...
     size_t idx = 0;
-    auto bbb = std::bind(doMulti, std::cref(m), idx); // std::placeholders::_1
-    bbb();
+    auto boundMulti = std::bind(doMulti, std::cref(m), idx); // std::placeholders::_1
+    boundMulti();
+}
 
+void
+testSort()
+{
+    std::vector<float> vec;
+
+    vec.emplace_back(5.1);
+    vec.emplace_back(1.2);
+    vec.emplace_back(1.);
+    vec.emplace_back(3.2);
+
+    std::wcout << L"vec: ";
+    std::copy(vec.begin(), vec.end(), std::ostream_iterator<float, wchar_t>(std::wcout, L" "));
+    std::wcout << std::endl;
+
+    std::wcout << L"sorted vec: ";
+    std::sort(vec.begin(), vec.end());
+    std::copy(vec.begin(), vec.end(), std::ostream_iterator<float, wchar_t>(std::wcout, L" "));
+    std::wcout << std::endl;
+}
+
+int
+main()
+{
+    testMmul();
     return 0;
 }
