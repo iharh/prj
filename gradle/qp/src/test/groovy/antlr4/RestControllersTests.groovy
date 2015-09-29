@@ -46,53 +46,20 @@ class Antlr4Tests extends Specification {
             s == [] as Set
             q == ["\"<:)>\""] as Set
     }
-    def "lc"() {
+    def "table"() {
         when:
-            QP.parse("_lc:(acheter\\ -->\\ fleur_?) _lc:(hello\\ -->\\ word_1) _lc:(good*\\ -->\\ xxx_?)", s, q)
+            QP.parse(input, s, q)
         then:
-            s == [] as Set
-            q == [] as Set
-    }
-    def "field range"() {
-        when:
-            QP.parse(" business_date: [3246883 to kjdfhsdjf] doc_date: [3246883 23432434] (Cuban AND Crisis ) \" AND ()asjd \"  Location: \"New York\"  CUSTOMER: Apple   &&", s, q)
-        then:
-            s == [] as Set
-            q == ["\" AND ()asjd \""] as Set
-    }
-    def "field url"() {
-        when:
-            QP.parse("REF_URL:http\\://mail.aol*, REF_URL:http\\://mail.aol?, REF_URL:\"http://mail.aol\"", s, q)
-        then:
-            s == [] as Set
-            q == [] as Set
-    }
-    def "field escaped"() {
-        when:
-            QP.parse("ATTR:\\+\\-\\!\\(\\)\\{\\}\\[\\]\\^\\\"\\~\\*\\?\\:\\\\", s, q)
-        then:
-            s == [] as Set
-            q == [] as Set
-    }
-    def "field no escape inside quotes"() {
-        when:
-            QP.parse("ATTR:\"+-!(){}[]^\\\"~*?\\ \"", s, q)
-        then:
-            s == [] as Set
-            q == [] as Set
-    }
-    def "field last quote"() {
-        when:
-            QP.parse("ATTR:\"abc\\\"def\"", s, q)
-        then:
-            s == [] as Set
-            q == [] as Set
-    }
-    def "tricky1"() {
-        when:
-            QP.parse("&& || OR AND and or | |", s, q)
-        then:
-            s == [] as Set
-            q == [] as Set
+            s == simple as Set
+            q == quoted as Set
+        where:
+            input                           | simple | quoted
+            "&& || OR AND and or | |"       | [] | [] // tricky
+            "ATTR:\"abc\\\"def\""           | [] | [] // field last quote
+            "ATTR:\"+-!(){}[]^\\\"~*?\\ \"" | [] | [] // field no escape inside quotes
+            "ATTR:\\+\\-\\!\\(\\)\\{\\}\\[\\]\\^\\\"\\~\\*\\?\\:\\\\"                             | [] | [] // field escaped
+            "REF_URL:http\\://mail.aol*, REF_URL:http\\://mail.aol?, REF_URL:\"http://mail.aol\"" | [] | [] // field url
+            "business_date: [32 to kjdfhsdjf] doc_date: [32 23] (Cuban AND Crisis ) \" AND ()asjd \"  Location: \"New York\" &&" | [] | ["\" AND ()asjd \""] // range
+            "_lc:(acheter\\ -->\\ fleur_?) _lc:(hello\\ -->\\ word_1) _lc:(good*\\ -->\\ xxx_?)"  | [] | [] // lc
     }
 }
