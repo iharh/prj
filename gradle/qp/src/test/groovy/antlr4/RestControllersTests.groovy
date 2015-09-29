@@ -67,6 +67,27 @@ class Antlr4Tests extends Specification {
             s == [] as Set
             q == [] as Set
     }
+    def "field escaped"() {
+        when:
+            QP.parse("ATTR:\\+\\-\\!\\(\\)\\{\\}\\[\\]\\^\\\"\\~\\*\\?\\:\\\\", s, q)
+        then:
+            s == [] as Set
+            q == [] as Set
+    }
+    def "field no escape inside quotes"() {
+        when:
+            QP.parse("ATTR:\"+-!(){}[]^\\\"~*?\\ \"", s, q)
+        then:
+            s == [] as Set
+            q == [] as Set
+    }
+    def "field last quote"() {
+        when:
+            QP.parse("ATTR:\"abc\\\"def\"", s, q)
+        then:
+            s == [] as Set
+            q == [] as Set
+    }
     def "tricky1"() {
         when:
             QP.parse("&& || OR AND and or | |", s, q)
