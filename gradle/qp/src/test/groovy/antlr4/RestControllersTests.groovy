@@ -48,21 +48,28 @@ class Antlr4Tests extends Specification {
     }
     def "lc"() {
         when:
-            QP.parse("_lc:(acheter\\ -->\\ fleur_?)", s, q)
+            QP.parse("_lc:(acheter\\ -->\\ fleur_?) _lc:(hello\\ -->\\ word_1) _lc:(good*\\ -->\\ xxx_?)", s, q)
         then:
             s == [] as Set
             q == [] as Set
     }
-    def "fields"() {
+    def "field range"() {
         when:
-            QP.parse(" business_date: [3246883 to kjdfhsdjf]  (Cuban AND Crisis ) \" AND ()asjd \"  Location: \"New York\"  CUSTOMER: Apple   &&", s, q)
+            QP.parse(" business_date: [3246883 to kjdfhsdjf] doc_date: [3246883 23432434] (Cuban AND Crisis ) \" AND ()asjd \"  Location: \"New York\"  CUSTOMER: Apple   &&", s, q)
         then:
             s == [] as Set
             q == ["\" AND ()asjd \""] as Set
     }
-    def "range"() {
+    def "field url"() {
         when:
-            QP.parse("business_date: [3246883 to kjdfhsdjf] doc_date: [3246883 23432434]", s, q)
+            QP.parse("REF_URL:http\\://mail.aol*, REF_URL:http\\://mail.aol?, REF_URL:\"http://mail.aol\"", s, q)
+        then:
+            s == [] as Set
+            q == [] as Set
+    }
+    def "tricky1"() {
+        when:
+            QP.parse("&& || OR AND and or | |", s, q)
         then:
             s == [] as Set
             q == [] as Set
