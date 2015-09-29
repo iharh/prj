@@ -60,4 +60,11 @@ class Antlr4Tests extends Specification {
             s == [] as Set
             q == ["\" AND ()asjd \""] as Set
     }
+    def "range"() {
+        when:
+            QP.parse("business_date: [3246883 to kjdfhsdjf] doc_date: [3246883 23432434]", s, q)
+        then:
+            s == [] as Set
+            q == [] as Set
+    }
 }
