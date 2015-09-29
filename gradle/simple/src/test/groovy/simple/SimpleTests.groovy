@@ -1,6 +1,7 @@
 package simple
 
 import spock.lang.Specification
+import spock.lang.Unroll
 
 class SimpleTests extends Specification {
     def "basic stuff"() {
@@ -10,7 +11,8 @@ class SimpleTests extends Specification {
         then:
             s.getN() == 5
     }
-    def "length of crew member names"() {
+    @Unroll
+    def "crew member name: '#name' length: #length"() {
         expect:
             name.length() == length
         where:
