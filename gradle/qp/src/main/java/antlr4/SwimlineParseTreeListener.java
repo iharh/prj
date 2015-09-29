@@ -3,6 +3,7 @@ package antlr4;
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.misc.NotNull;
 
+import java.util.List;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -19,10 +20,13 @@ public class SwimlineParseTreeListener extends RuleBaseListener {
     private int level;
     private boolean inValue;
 
-    public SwimlineParseTreeListener(final Parser parser, Set<String> simple, Set<String> quoted) {
+    public SwimlineParseTreeListener(final Parser parser, Set<String> simple, Set<String> quoted, List<String> errors) {
         this.parser = parser;
         this.simple = simple;
         this.quoted = quoted;
+
+        parser.removeErrorListeners();
+        parser.addErrorListener(new SwimlineErrorListener(errors));
     }
 
     // value
@@ -51,7 +55,7 @@ public class SwimlineParseTreeListener extends RuleBaseListener {
     public void exitNormal(@NotNull RuleParser.NormalContext ctx) {
         log.debug("exit normal inValue: {} level: {} text: {}", inValue, level, ctx.getText());
         //log.debug("exit normal ctx: {}", ctx.toInfoString(parser));
-        if (inValue && level == 1) {
+        if (inValue && level == 1 && simple != null) {
             simple.add(ctx.getText());
         }
     }
@@ -66,7 +70,7 @@ public class SwimlineParseTreeListener extends RuleBaseListener {
     @Override
     public void exitTruncated(@NotNull RuleParser.TruncatedContext ctx) {
         log.debug("exit truncated level: {}", level);
-        if (inValue && level == 1) {
+        if (inValue && level == 1 && simple != null) {
             simple.add(ctx.getText());
         }
     }
@@ -81,7 +85,7 @@ public class SwimlineParseTreeListener extends RuleBaseListener {
     @Override
     public void exitQuoted(@NotNull RuleParser.QuotedContext ctx) {
         log.debug("exit quoted level: {}", level);
-        if (inValue && level == 1) {
+        if (inValue && level == 1 && quoted != null) {
             quoted.add(ctx.getText());
         }
     }
@@ -96,7 +100,7 @@ public class SwimlineParseTreeListener extends RuleBaseListener {
     @Override
     public void exitQuoted_truncated(@NotNull RuleParser.Quoted_truncatedContext ctx) {
         log.debug("exit quoted_truncated level: {}", level);
-        if (inValue && level == 1) {
+        if (inValue && level == 1 && quoted != null) {
             quoted.add(ctx.getText());
         }
     }
