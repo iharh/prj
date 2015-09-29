@@ -13,9 +13,6 @@ static size_t s2 = 300;
 static size_t numThreads = 1;
 static size_t numIters = 10;
 
-//static double minTime[numThreads];
-//static double maxTime[numThreads];
-
 std::chrono::duration<double>
 mulIter(const Eigen::MatrixXd &m)
 {
@@ -42,7 +39,7 @@ mulIter(const Eigen::MatrixXd &m)
 }
 
 void
-doMulti(const Eigen::MatrixXd &m, size_t idx)
+doMulti(const Eigen::MatrixXd &m, size_t idx, double &minTime, double &maxTime)
 {
     std::vector<float> times;
 
@@ -54,16 +51,13 @@ doMulti(const Eigen::MatrixXd &m, size_t idx)
 
     std::sort(times.begin(), times.end());
     size_t numSkip = numIters / 10;
-
-    std::wcout << L"Matrix-vector multiplication [" << idx << L"] took seconds:" << std::endl;
-    std::copy(times.begin(), times.end(), std::ostream_iterator<float, wchar_t>(std::wcout, L" "));
-    std::wcout << std::endl;
-    std::wcout << L"skip: " << numSkip << std::endl;
-    std::wcout << L"min: " << times[numSkip] << std::endl;
-    std::wcout << L"max: " << times[numIters - numSkip * 2] << std::endl;
-
+    minTime = times[numSkip];
+    maxTime = times[numIters - numSkip * 2];
         //<< L"size: " << z.size() << std::endl
         //<< L"max: " << maxRes << std::endl
+    //std::wcout << L"Matrix-vector multiplication [" << idx << L"] took seconds:" << std::endl;
+    //std::copy(times.begin(), times.end(), std::ostream_iterator<float, wchar_t>(std::wcout, L" "));
+    //std::wcout << std::endl;
 }
 
 void
@@ -86,8 +80,12 @@ testMmul()
     std::wcout << L"Matrix generation took " << std::chrono::duration_cast<std::chrono::duration<double>>(tfinish - tstart).count() << L" seconds." << std::endl;
 
     size_t idx = 0;
-    auto boundMulti = std::bind(doMulti, std::cref(m), idx); // std::placeholders::_1
+    double minTime = 0.;
+    double maxTime = 0.;
+    auto boundMulti = std::bind(doMulti, std::cref(m), idx, std::ref(minTime), std::ref(maxTime)); // std::placeholders::_1
     boundMulti();
+
+    std::wcout << L"Matrix-vector multiplication [" << idx << L"] took " << minTime << L" - " << maxTime << L" seconds" << std::endl;
 }
 
 void
