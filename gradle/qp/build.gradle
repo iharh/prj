@@ -32,6 +32,8 @@ dependencies {
 
     testCompile('org.codehaus.groovy:groovy-all:2.4.5')
     testCompile('org.spockframework:spock-core:1.0-groovy-2.4')
+
+    testCompile('io.reactivex:rxjava-string:1.0.1')
 }
 
 compileJava.dependsOn antlr4
