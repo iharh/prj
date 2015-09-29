@@ -1,6 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'groovy'
 apply plugin: 'me.champeau.gradle.antlr4'
+apply plugin: 'com.github.ben-manes.versions'
  
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
@@ -11,6 +12,7 @@ buildscript {
     }
     dependencies {
         classpath 'me.champeau.gradle:antlr4-gradle-plugin:0.1'
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.11.3'
     }
 }
 
@@ -21,12 +23,14 @@ repositories {
 }
 
 dependencies {
-    compile('org.codehaus.groovy:groovy-all:2.4.4') // 2.4.5
+    compile('org.antlr:antlr4:4.5.1-1')
+    //compile('org.codehaus.groovy:groovy-all:2.4.5')
 
     compile('org.slf4j:slf4j-api:1.7.12')
     compile('org.slf4j:slf4j-log4j12:1.7.12')
     compile('log4j:log4j:1.2.17')
 
+    testCompile('org.codehaus.groovy:groovy-all:2.4.5')
     testCompile('org.spockframework:spock-core:1.0-groovy-2.4')
 }
 
