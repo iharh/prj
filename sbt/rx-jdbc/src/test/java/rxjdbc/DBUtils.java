@@ -47,14 +47,18 @@ public class DBUtils {
         log.debug(propName + ": {}", result);
         return result;
     }
-    
-    public static Database getDbLocal() throws ClassNotFoundException {
-        //return getOraDb("jdbc:oracle:thin:@//localhost:1521/ihorcl", "win_ss", "clb");
-        final Config conf = getOraConf("epbygomw0024");
+
+    public static Database getOraConfDB(String hostId) throws ClassNotFoundException {
+        final Config conf = getOraConf(hostId);
         return getOraDb(
             getDbProp(conf, "url"),
             getDbProp(conf, "username"),
             getDbProp(conf, "password")
         );
+    }
+    
+    public static Database getDb() throws ClassNotFoundException {
+        //return getOraConfDB("epbygomw0024");
+        return getOraConfDB("qa10");
     }
 }

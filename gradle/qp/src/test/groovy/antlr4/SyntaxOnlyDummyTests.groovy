@@ -5,7 +5,7 @@ import spock.lang.Specification
 import static rx.observables.StringObservable.from
 import static rx.observables.StringObservable.byLine
 
-class SintaxOnlyQPTests extends Specification {
+class SyntaxOnlyDummyTests extends Specification {
     def s = [] as Set
     def q = [] as Set
     def e = []

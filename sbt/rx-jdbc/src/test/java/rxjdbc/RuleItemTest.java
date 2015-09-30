@@ -22,6 +22,8 @@ import java.nio.file.StandardOpenOption;
 
 import java.util.List;
 
+import java.io.IOException;
+
 import static java.nio.charset.StandardCharsets.*;
 
 public class RuleItemTest {
@@ -29,25 +31,37 @@ public class RuleItemTest {
 
     @Test
     public void testRuleItems() throws Exception {
-        Database db = DBUtils.getDbLocal();
+        Database db = DBUtils.getDb();
 
-        List<Tuple2<Integer, String>> ruleItems = db
+        log.info("start");
+
+        //final String sql = "select id, value from cb_ruleitem";
+        //final int prjId = 8452;
+        final int prjId = 8516782;
+        final String sql = "select id, value from cb_ruleitem where id_rule in (select id from cb_rule where id_model in (select id from cb_class_model where id_project = " + prjId + "))";
+
+        /*List<Tuple2<Integer, String>> ruleItems = db
             .select("select id, value from cb_ruleitem")
             .getAs(Integer.class, String.class)
             .toList()
             .toBlocking()
-            .single();
-
-        log.info("start");
+            .single();*/
 
         Path path = FileSystems.getDefault().getPath(".", "out.txt");
         try (BufferedWriter wr = Files.newBufferedWriter(path, UTF_8, StandardOpenOption.CREATE)) { // Charset.defaultCharset()
-            for (Tuple2<Integer, String> i : ruleItems) {
-                String ruleItem = i.value2();
-                log.info(i.value1() + " -> " + ruleItem);
-                wr.write(ruleItem);
-                wr.newLine();
-            }
+            db
+                .select(sql)
+                .getAs(Integer.class, String.class)
+                .subscribe((Tuple2<Integer, String> i) -> {
+                    try {
+                        String ruleItem = i.value2();
+                        log.info(i.value1() + " -> " + ruleItem);
+                        wr.write(ruleItem);
+                        wr.newLine();
+                    } catch (IOException e) {
+                        log.error(e.getMessage(), e);
+                    }
+                });
         }
         log.info("end");
 

@@ -23,7 +23,7 @@ public class ProjTest {
 
     @Test
     public void testProj() throws Exception {
-        Database db = DBUtils.getDbLocal();
+        Database db = DBUtils.getDb();
 
         List<Tuple2<Integer, String>> projects = db
             .select("select id, name from cb_project")
