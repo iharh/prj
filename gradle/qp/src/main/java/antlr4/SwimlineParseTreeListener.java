@@ -98,7 +98,7 @@ public class SwimlineParseTreeListener extends RuleBaseListener {
     @Override
     public void exitTruncated(@NotNull RuleParser.TruncatedContext ctx) {
         log.debug("exit truncated level: {}", level);
-        processSet(ctx, simple);
+        processSet(ctx, wildcard);
     }
 
     // quoted
