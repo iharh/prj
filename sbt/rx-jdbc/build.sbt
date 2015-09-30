@@ -24,7 +24,7 @@ libraryDependencies ++= Seq(
 
     "com.typesafe"              % "config"         % "1.3.0",
 
-    "com.github.davidmoten"     % "rxjava-jdbc"    % "0.6.3",
+    "com.github.davidmoten"     % "rxjava-jdbc"    % "0.6.7",
     // one-jar stuff
     //"commons-lang"              % "commons-lang"   % "2.6"
     //
