@@ -7,12 +7,14 @@ import static rx.observables.StringObservable.byLine
 
 class SyntaxOnlyRealTests extends Specification {
     def s = [] as Set
+    def w = [] as Set
     def q = [] as Set
+    def m = [] as Set
     def e = []
 
     def "error input"() {
         when:
-            QP.parse("l", s, q, e)
+            QP.parse("l", s, w, q, m, e)
             //def l = Utils.getLinesCP("q-epbygomw0024.txt")
         then:
             e.size() == 0

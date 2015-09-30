@@ -7,12 +7,14 @@ import static rx.observables.StringObservable.byLine
 
 class SyntaxOnlyDummyTests extends Specification {
     def s = [] as Set
+    def w = [] as Set
     def q = [] as Set
+    def m = [] as Set
     def e = []
 
     def "error input"() {
         when:
-            QP.parse(")(", s, q, e)
+            QP.parse(")(", s, w, q, m, e)
             def l = Utils.getLinesCP("queries.txt")
         then:
             e.size() > 0 //notThrown(Exception)

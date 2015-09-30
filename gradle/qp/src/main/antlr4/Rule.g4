@@ -35,8 +35,7 @@ atom
     | modifier? cb_catref
     | modifier? cb_catrollup
     | modifier? cb_value
-    | modifier? cb_field_single
-    | modifier? cb_field_multi
+    | modifier? cb_field
     ;
 
 cb_value
@@ -44,14 +43,15 @@ cb_value
     value term_modifier?
     ;
 
-cb_field_single
+cb_field
     :
-    field value term_modifier?
+    field cb_singleormulti_value term_modifier?
     ;
 
-cb_field_multi
+cb_singleormulti_value
     :
-    field multi_value term_modifier?
+    value
+    | multi_value
     ;
 
 // cb linguistic connection
