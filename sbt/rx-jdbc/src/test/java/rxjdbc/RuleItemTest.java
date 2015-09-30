@@ -46,6 +46,7 @@ public class RuleItemTest {
                 String ruleItem = i.value2();
                 log.info(i.value1() + " -> " + ruleItem);
                 wr.write(ruleItem);
+                wr.newLine();
             }
         }
         log.info("end");
