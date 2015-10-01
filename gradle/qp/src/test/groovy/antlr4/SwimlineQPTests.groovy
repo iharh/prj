@@ -24,6 +24,9 @@ class SwimlineQPTests extends Specification {
             e.size() == ecnt
         where:
             input                                | simple | wildcard              | quoted                | mtoken     | ecnt
+            "S:d"                                | []     | []                    | []                    | []         | 1
+            "S:w"                                | []     | []                    | []                    | []         | 1
+            "\"found bug\" ~2,"                  | []     | []                    | ["\"found bug\""]     | []         | 1
             "&"                                  | []     | []                    | []                    | []         | 1
             "FIELD:v"                            | []     | []                    | []                    | []         | 0
             "_mtoken:\":)\""                     | []     | []                    | []                    | ["\":)\""] | 0

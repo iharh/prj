@@ -62,21 +62,13 @@ Cicken ~
 "park hankerin" ~3
 "Chicken SALAD" ~2
 "Food Atmosphere" ~3
-"found bug" ~2, "found bugs" ~2,
+"found bug" ~2, "found bugs" ~2
 "plate finished" ~3
-"found bug" ~2, "found bugs" ~2,
+"found bug" ~2, "found bugs" ~2
 "plate finished" ~3
 "\(for French\)"
 Mood\(y\)
 SHIRT
-[location, look]
-{location, look}
-[location, look], [treat, trouble]
-{location, look}, {treat, trouble}
-[location, look]
-[say, sick]
-{say, sick}
-{location, look}
 _id_source:yelp, _id_source:"new source", _id_source:moe
 snack
 Chick-Fil-A
@@ -130,7 +122,7 @@ CHICKEN, PASTA
 CHICKEN, PASTA
 HEALTHIER, "CREAMY-LOOKING"
 creamy-looking
-snack, Chick-Fil-A, chicken, SALAD, TASTY, plate, 由,
+snack, Chick-Fil-A, chicken, SALAD, TASTY, plate, 由
 original, omelet, grits, pasta, PRIMAVERA, VEGGIES, establishment, 於, community
 pie, homemade, to, HEALTHIER, burgers, 新, beautiful, Hapeville, great
 _catRef:[model:"New classification" path:"Parent - No Rule" node:"Child - Single Lane - 1"]
@@ -182,7 +174,6 @@ BURRITO, BURRITOS
 SATSCORE:s
 _catRef:[model:"New classification" path:"Various Attribute combinations" node:"Not Satscore"]
 BURRITO, BURRITOS
-SATSCORE:p, SATSCORE:d
 chi~
 food
 OVERALL_RATING:4
@@ -193,14 +184,9 @@ DATE_RANGE_ROLLUP:"2012-2013"
 "McDonald's"
 7*
 COUNTRY:belarus
-_degreeSentimentIndex:[-5 TO -1]
 CITY:venice
-_degreeSentimentIndex:[1.0 TO 5.0]
 CITY:venice
-_degreeSentimentIndex:[-0.99 TO 0.99]
 CITY:paris
-_degreeSentimentIndex:[-0.99 TO 0.99]
-_degreeSentimentIndex:[-2.2 TO 2.2]
 CITY:venice
 7*
 COUNTRY:france
@@ -255,10 +241,8 @@ _LC:[OMELET, BACON]
 _LC:[ORDER, ALWAYS]
 _LC:[OMELET, SPICY]
 _LC:[OMELET, BACON]
-[always, wrong]
-{always, wrong}
 _LC:[BREAD, HOMEMADE]
-_LC:[OMELET, BACON],
+_LC:[OMELET, BACON]
 BREAD
 _LC:[BREAD, HOMEMADE], _LC:[OMELET, BACON]
 _LC:[BREAD, HOMEMADE], _LC:[OMELET, BACON]
@@ -267,8 +251,8 @@ _LC:[ORDER, ALWAYS]
 _LC:[OMELET, SPICY]
 _LC:[BREAD, HOMEMADE]
 _LC:[OMELET, SPICY]
-_LC:[OMELET, BACON],
-_LC:[OMELET, BACON],
+_LC:[OMELET, BACON]
+_LC:[OMELET, BACON]
 _LC:[OMELET, SPICY]
 _LC:[ORDER, ALWAYS]
 _LC:[BREAD, HOMEMADE]
@@ -298,7 +282,6 @@ ANYTIME NOT CHEAP
 (PLACE AND GREAT) OR (SOUP AND BUG)
 (PLACE AND GREAT) OR (ANYTIME NOT CHEAP)
 Bug*
-NOT Soup, plate
 (chicken OR burrito) AND OVERALL_RATING:4
 mexican OR BUG
 SOUP OR CHIPOTLE, "CHIPOTLE'S"

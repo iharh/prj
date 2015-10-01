@@ -1,0 +1,8 @@
+[location, look]
+{location, look}
+[location, look], [treat, trouble]
+{location, look}, {treat, trouble}
+[location, look]
+[say, sick]
+{say, sick}
+{location, look}

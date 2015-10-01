@@ -1,0 +1,5 @@
+_degreeSentimentIndex:[-5 TO -1]
+_degreeSentimentIndex:[1.0 TO 5.0]
+_degreeSentimentIndex:[-0.99 TO 0.99]
+_degreeSentimentIndex:[-0.99 TO 0.99]
+_degreeSentimentIndex:[-2.2 TO 2.2]
