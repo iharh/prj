@@ -791,7 +791,7 @@ people, folks, shoppers, shopper, customer*, guest*, women, men
 "disabled items", "blind spot", "disabled in", "have disabled"
 "designed for", oriented, "geared for", "great for", "good for", "would recommend", "recommended for", "perfect for", "suits the needs of", "caters to", "suited for", "convenient for", "frequented by", "good choice for", "good option for", ideal, "doesn't suit the needs", "does not suit the needs", "designed for"
 singles, "single women", "single woman", "single ladies", "single lady", "single men", "single man", "single guy", "single guys" "single person", "single people", "who live alone", "who lives alone", "single moms", "single dads", "single mothers", "single fathers", "single mom", "single dad", "single mother", "single father"
-"i am single"~5, "i live alone",
+"i am single"~5, "i live alone"
 "designed for", oriented, "geared for", "great for", "good for", "would recommend", "recommended for", "perfect for", "suits the needs of", "caters to", "suited for", "convenient for", "frequented by", "good choice for", "good option for", ideal, "doesn't suit the needs", "does not suit the needs", "designed for"
 couples, "in a relationship", "married people", "life partners"
 "for couples", "couple oriented", "for married"
@@ -799,20 +799,19 @@ couples, "in a relationship", "married people", "life partners"
 mom, moms, mother, mothers, mommy, mommies, "women with children"
 "mother in law", "mothers in law" "my mother", "my mom", "our mother", "our mom", "mother nature", "mother earth"
 "i am a mom"~5, "i am a mother"~5, "for mom", "for mother", "for moms", "for mothers", "for single moms", "for single mothers", "for working moms", "for working mothers"
-((no, not, never) AND (getting, receiving, recieving, get, good, enough, see, think, believe)), "not a great",
+((no, not, never) AND (getting, receiving, recieving, get, good, enough, see, think, believe)), "not a great"
 "money's worth", "moneys worth", "dollar's worth", "dollars worth"
-ethical, moral,
-"un ethical", "not ethical"~2, "not moral"~2,
+ethical, moral
+"un ethical", "not ethical"~2, "not moral"~2
 "not worth"~2, "not a great", "not great", "not worth the money", "worth checking", "worth questioning", "worth wondering", "worth asking", "not feel like it was worth", "worth the read", "worth a read", "worth reading", "not sure", _LC:[VALUE, -BETTER], _LC:[VALUE, -GREAT], "is it worth", "for better value"
 "not worth", "hardly worth", "need more value", "little value", "any value", "not worth", "not save money", "not save us money", "not save me money", "not saving money", (wast* AND (money, time)), "no value", "not getting value"~2, "not receiving value"~2, _LC:[VALUE, -BETTER], _LC:[VALUE, -GREAT]
-"never a waste", "never wasted", "not a waste",
+"never a waste", "never wasted", "not a waste"
 unethical, immoral, "un ethical", "not ethical"~2, "not moral"~2, "no ethics"
-not, never
 "as advertised", "as presented", "my standards", "our standards", ((do, did, does, doing) AND ("not the job"~2, "not its job"~2)), "my expectations", "our expectations"
-"job fair", "job search",
-"not live up", "not lived up", "not living up to", "fall short", "falls short", "falling short", "fell short", "not cut it", "not cutting it", "let down", "let us down", "let me down", letdown,
+"job fair", "job search"
+"not live up", "not lived up", "not living up to", "fall short", "falls short", "falling short", "fell short", "not cut it", "not cutting it", "let down", "let us down", "let me down", letdown
 "wont let", "not let", "never let"
-"not really lived up to", "not exceed"~2, "not surpass"~2,
+"not really lived up to", "not exceed"~2, "not surpass"~2
 ((exceed*, surpass*) AND ("my hopes", "my standards", "our standards", expectations)), "really lived up to", "more than lived up to", "above and beyond", "above & beyond", "extra mile", "pleasantly surprised"
 honest, truthful, "man of his word", "woman of her word", "of their word", "true to their word", "true to its word"
 "I am honest"~2, "Im honest"~2, "to be honest"~2, "honest truth", "I will be honest", "gotta be honest", ((husband, daughter, wife, mother, father, son, friend) AND "was honest"), "have been more", "not honest"~2, "dis honest", "not truthful", "un truthful", "not true"~2, "never true"~2
