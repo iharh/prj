@@ -21,6 +21,6 @@ class SyntaxOnlyRealTests extends Specification {
             e.size() == 0
         where:
             l << Utils.getLinesCP("q-qa10.txt")
-            n << 1..
+            n << 1..5000
     }
 }
