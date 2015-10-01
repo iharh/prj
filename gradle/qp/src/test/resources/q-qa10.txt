@@ -901,7 +901,6 @@ Good, notebook
 "\(for French\)"
 "price little" ~5
 "Appology sent" ~2
-{location, look}, {treat, trouble}
 NEW_OVERALL_RATING:*
 OVERALL_RATING:*
 "Appology sent" ~1
@@ -915,7 +914,6 @@ Thank
 Soup
 park
 Atmosphere
-[location, look], [treat, trouble]
 Thank
 sent
 Atlanta
@@ -928,7 +926,7 @@ Good, notebook
 Welcome, strong
 never, fantastic
 tasty, desserts
-RESTAURANT_NAME:"chick-fil-a", RESTAURANT_NAME:"chick-fil-a dwarf house", RESTAURANT_NAME:"salad pangea", RESTAURANT_NAME:met, RESTAURANT_NAME:"five guys famous burgers and fries", RESTAURANT_NAME:"grand café", RESTAURANT_NAME:"cafã© du jour", RESTAURANT_NAME:"willy's mexicana grill", RESTAURANT_NAME:turist, RESTAURANT_NAME:"comic con", RESTAURANT_NAME:"best place", RESTAURANT_NAME:"beijing hotel", RESTAURANT_NAME:stolica, RESTAURANT_NAME:"le meurice", RESTAURANT_NAME:"borchardt", 
+RESTAURANT_NAME:"chick-fil-a", RESTAURANT_NAME:"chick-fil-a dwarf house", RESTAURANT_NAME:"salad pangea", RESTAURANT_NAME:met, RESTAURANT_NAME:"five guys famous burgers and fries", RESTAURANT_NAME:"grand café", RESTAURANT_NAME:"cafã© du jour", RESTAURANT_NAME:"willy's mexicana grill", RESTAURANT_NAME:turist, RESTAURANT_NAME:"comic con", RESTAURANT_NAME:"best place", RESTAURANT_NAME:"beijing hotel", RESTAURANT_NAME:stolica, RESTAURANT_NAME:"le meurice", RESTAURANT_NAME:"borchardt" 
 Sorry
 cheap
 _LC:[DECK, PARKING]
