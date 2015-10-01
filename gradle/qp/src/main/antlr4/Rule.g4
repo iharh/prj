@@ -19,7 +19,7 @@ clause_and
 
 clause_not
     :
-    clause_basic (NOT clause_basic)*
+    NOT? clause_basic
     ;
 
 clause_basic

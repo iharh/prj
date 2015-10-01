@@ -24,6 +24,8 @@ class SwimlineQPTests extends Specification {
             e.size() == ecnt
         where:
             input                                | simple | wildcard              | quoted                | mtoken     | ecnt
+            "NOT w1"                             | ["w1"] | []                    | []                    | []         | 0 // not
+            "NOT w1, w2"                         | ["w1", "w2"] | []              | []                    | []         | 0 // not
             "w1,"                                | ["w1"] | []                    | []                    | []         | 0 // tail-coma
             "w1 and (w2 and (w3 , w4,))"         | ["w1"] | []                    | []                    | []         | 0 // tail-coma
             "S:d"                                | []     | []                    | []                    | []         | 1
