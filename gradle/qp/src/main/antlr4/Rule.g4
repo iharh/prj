@@ -1,6 +1,6 @@
 grammar Rule;
 
-/* parser rules */
+// parser rules
 
 cb_rule
     :
@@ -34,18 +34,20 @@ atom
     modifier? cb_lc
     | modifier? cb_catref
     | modifier? cb_catrollup
-    | modifier? cb_value
     | modifier? cb_field
+    | modifier? cb_value
     ;
 
-cb_value
-    :
-    value term_modifier?
-    ;
+// field rules
 
 cb_field
     :
     field cb_singleormulti_value term_modifier?
+    ;
+
+field
+    :
+    TERM_NORMAL COLON
     ;
 
 cb_singleormulti_value
@@ -53,6 +55,57 @@ cb_singleormulti_value
     value
     | multi_value
     ;
+
+// value rules
+
+
+multi_value
+	:
+	LPAREN multi_clause RPAREN
+	;
+
+multi_clause
+	:
+	clause_or+
+	;
+
+/*
+multi_default
+	:
+	multi_or+
+	;
+
+multi_or
+	:
+	multi_and ((OR|COMMA+)? multi_and)*
+	;
+
+multi_and
+	:
+	multi_not (AND multi_not)*
+	;
+
+multi_not
+	:
+	multi_basic (NOT multi_basic)*
+	;
+
+multi_basic
+	:
+	mterm
+	;
+
+mterm
+	:
+	modifier? value
+	;
+*/
+
+cb_value
+    :
+    value term_modifier?
+    ;
+
 
 // cb linguistic connection
 cb_lc
@@ -109,19 +162,15 @@ cb_catrollup_id
     normal | quoted
     ;
 
-field
-    :
-    TERM_NORMAL COLON
-    ;
 
 value
     :
-    range_term_incl
-    | range_term_excl
-    | normal
+    normal
     | truncated
     | quoted
     | quoted_truncated
+    | range_term_incl
+    | range_term_excl
     | cb_period_func
     | cb_hour_period_func
     | cb_current_period_func
@@ -141,16 +190,16 @@ range_term_excl
     ;
 
 range_value
-	:
-	truncated
-	| quoted
-	| quoted_truncated
-	| date
-	| normal
+    :
+    normal
+    | truncated
+    | quoted
+    | quoted_truncated
+    | date
     | cb_date_func
     | cb_dateadd_func
     | STAR
-	;
+    ;
 
 cb_date_func
     :
@@ -177,45 +226,6 @@ cb_current_period_func
     CURRENT_PERIOD LPAREN DATE_MATH_UNIT RPAREN
     ;
 
-multi_value
-	:
-	LPAREN multi_clause RPAREN
-	;
-
-multi_clause
-	:
-	clause_or+
-	;
-
-multi_default
-	:
-	multi_or+
-	;
-
-multi_or
-	:
-	multi_and ((OR|COMMA+)? multi_and)*
-	;
-
-multi_and
-	:
-	multi_not (AND multi_not)*
-	;
-
-multi_not
-	:
-	multi_basic (NOT multi_basic)*
-	;
-
-multi_basic
-	:
-	mterm
-	;
-
-mterm
-	:
-	modifier? value
-	;
 
 normal
 	:
@@ -349,10 +359,12 @@ DQUOTE
     '\"'
     ;
 
+/*
 SQUOTE
     :
     '\''
     ;
+*/
 
 TO
     :
