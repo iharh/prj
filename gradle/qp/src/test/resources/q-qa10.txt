@@ -389,8 +389,6 @@ déjeuner
 14
 75*
 100*
-&
-&
 u.s.a, o.k
 SPECIFICALY ~
 CITY:"new york"
@@ -413,23 +411,13 @@ Cicken ~
 "park hankerin" ~3
 "Chicken SALAD" ~2
 "Food Atmosphere" ~3
-"found bug" ~2, "found bugs" ~2,
+"found bug" ~2, "found bugs" ~2
 "plate finished" ~3
-"found bug" ~2, "found bugs" ~2,
+"found bug" ~2, "found bugs" ~2
 "plate finished" ~3
 "\(for French\)"
 Mood\(y\)
 SHIRT
-[location, look]
-{location, look}
-[location, look], [treat, trouble]
-{location, look}, {treat, trouble}
-[location, look]
-[say, sick]
-{say, sick}
-{location, look}
-[always, wrong]
-{always, wrong}
 _LC:[BURGER, AS WELL AS]
 _LC:[SALAD, PASTA]
 _LC:[PRIMAVERA, PASTA]
