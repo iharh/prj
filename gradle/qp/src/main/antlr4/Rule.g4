@@ -25,9 +25,10 @@ clause_not
 clause_basic
     :
     modifier? LPAREN clause_or+ RPAREN term_modifier?
-    | LPAREN clause_or+ RPAREN
-    | atom
+    | atom COMMA?
     ;
+
+// | LPAREN clause_or+ RPAREN
 
 atom
     :

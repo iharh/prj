@@ -14,13 +14,15 @@ class SyntaxOnlyRealTests extends Specification {
     def e = []
 
     @Unroll
-    def "qa10 idx: #n rule: #l"() {
+    def "qa10 idx: n rule: #l"() {
         when:
             QP.parse(l, s, w, q, m, e)
         then:
             e.size() == 0
         where:
-            l << Utils.getLinesCP("q-qa10.txt")
-            n << (1 .. 5000)
+            //l << Utils.getLinesCP("q-qa10.txt")
+            //l << Utils.getLinesCP("q-epbygomw0024.txt")
+            l << Utils.getLinesCP("q-one-line.txt")
+            //n << (1 .. 5000)
     }
 }

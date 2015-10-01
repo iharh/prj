@@ -1,2 +1,3 @@
-NOT Soup, plate
+NOT w1, w2
+w1 AND NOT (w2, w3)
 

@@ -1,3 +1,5 @@
+[abc, def]
+{abc, def}
 [location, look]
 {location, look}
 [location, look], [treat, trouble]
