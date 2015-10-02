@@ -4,7 +4,7 @@ grammar Rule;
 
 cb_rule
     :
-    clause_or+ EOF
+    clause_or+ COMMA? EOF
     ;
 
 clause_or
@@ -24,8 +24,8 @@ clause_not
 
 clause_basic
     :
-    modifier? LPAREN clause_or+ RPAREN term_modifier?
-    | atom COMMA?
+    modifier? LPAREN clause_or+ COMMA? RPAREN term_modifier?
+    | atom
     ;
 
 // | LPAREN clause_or+ RPAREN
@@ -140,9 +140,9 @@ value
     | quoted_truncated
     | range_term_incl
     | range_term_excl
-//    | cb_period_func
+    | cb_period_func
     | cb_hour_period_func
-//    | cb_current_period_func
+    | cb_current_period_func
     | QMARK
     | STAR COLON
     | STAR
@@ -206,6 +206,7 @@ normal
     TERM_NORMAL
     | NUMBER
     | DATE_MATH_UNIT
+    | NOT
     ;
 
 truncated

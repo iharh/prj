@@ -17,13 +17,18 @@ class SwimlineQPTests extends Specification {
         when:
             QP.parse(input, s, w, q, m, e)
         then:
-            e.size() == ecnt
+            e.size() == exceptioncount
             s == simple as Set
             w == wildcard as Set
             q == quoted as Set
             m == mtoken as Set
         where:
-            input                                | simple       | wildcard              | quoted                | mtoken     | ecnt
+            input                                | simple       | wildcard              | quoted                | mtoken     | exceptioncount
+            "not"                                | ["not"]      | []                    | []                    | []         | 0 // not 1
+            "NOT w1"                             | ["w1"]       | []                    | []                    | []         | 0 // not 2
+            "NOT w1, w2"                         | ["w1", "w2"] | []                    | []                    | []         | 0 // not 3
+            "w1 AND NOT (w2, w3)"                | ["w1"]       | []                    | []                    | []         | 0 // not 4
+            "S:_PERIOD(w, -1)"                   | []           | []                    | []                    | []         | 0
             "S:d"                                | []           | []                    | []                    | []         | 0
             "S:w"                                | []           | []                    | []                    | []         | 0
             "@abc's"                             | ["@abc's"]   | []                    | []                    | []         | 0 // spec-char 1
@@ -39,9 +44,6 @@ class SwimlineQPTests extends Specification {
             "field:[1.0 TO 5.0]"                 | []           | []                    | []                    | []         | 0 // range 8
             "field:[-2.2 TO 2.2]"                | []           | []                    | []                    | []         | 0 // range 9
             "field:[-0.99 TO 0.99]"              | []           | []                    | []                    | []         | 0 // range 10
-            "NOT w1"                             | ["w1"]       | []                    | []                    | []         | 0 // not 1
-            "NOT w1, w2"                         | ["w1", "w2"] | []                    | []                    | []         | 0 // not 2
-            "w1 AND NOT (w2, w3)"                | ["w1"]       | []                    | []                    | []         | 0 // not 3
             "w1,"                                | ["w1"]       | []                    | []                    | []         | 0 // tail-coma
             "w1 and (w2 and (w3 , w4,))"         | ["w1"]       | []                    | []                    | []         | 0 // tail-coma
             "&"                                  | []           | []                    | []                    | []         | 1
