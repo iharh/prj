@@ -20,9 +20,8 @@ class SyntaxOnlyRealTests extends Specification {
         then:
             e.size() == 0
         where:
-            //l << Utils.getLinesCP("q-qa10.txt")
+            l << Utils.getLinesCP("q-qa10.txt")
             //l << Utils.getLinesCP("q-epbygomw0024.txt")
-            l << Utils.getLinesCP("q-one-line.txt")
             //n << (1 .. 5000)
     }
 }

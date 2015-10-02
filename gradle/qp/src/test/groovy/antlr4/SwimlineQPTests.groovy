@@ -48,7 +48,7 @@ class SwimlineQPTests extends Specification {
             "ATTR:\"+-!(){}[]^\\\"~*?\\ \""      | []     | []                    | []                    | []         | 0 // field no escape inside quotes
             "ATTR:\\+\\-\\!\\(\\)\\{\\}\\[\\]\\^\\\"\\~\\*\\?\\:\\\\"                                                          | [] | [] | []                   | [] | 0 // field escaped
             "REF_URL:http\\://mail.aol*, REF_URL:http\\://mail.aol?, REF_URL:\"http://mail.aol\""                              | [] | [] | []                   | [] | 0 // field url
-            "business_date: [32 TO kjdfhsdjf] doc_date: [32 23] (Cuban AND Crisis ) \" AND ()asjd \"  Location: \"New York\" " | [] | [] | ["\" AND ()asjd \""] | [] | 2 // range &&
+            "business_date: [32 TO kjdfhsdjf] doc_date: [32 23] (Cuban AND Crisis ) \" AND ()asjd \"  Location: \"New York\" " | [] | [] | ["\" AND ()asjd \""] | [] | 0 // range &&
             "_catRef:[model:\"v1Products Model - Tuning Base Model\" path:\"v1Enterprise|Poweredge Modular Servers\" node:\"v1Mellanox IB m2401g\"], w1" | ["w1"] | [] | [] | [] | 0 // catref
             "_lc:[room, clean]"     | [] | [] | [] | [] | 0 // lc 1
             "_lc:[abc\\ -->\\ def]" | [] | [] | [] | [] | 1 // lc 2

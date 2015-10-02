@@ -1,0 +1,6 @@
+_doc_date:[ * TO 20100701]
+_doc_date:[ * 20100701]
+_doc_date:[* TO 20131119 ]
+_doc_date:[20131120 TO *]
+_doc_date:[20131120 *]
+_doc_date:[20100701 TO *]

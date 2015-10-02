@@ -70,38 +70,6 @@ multi_clause
 	clause_or+
 	;
 
-/*
-multi_default
-	:
-	multi_or+
-	;
-
-multi_or
-	:
-	multi_and ((OR|COMMA+)? multi_and)*
-	;
-
-multi_and
-	:
-	multi_not (AND multi_not)*
-	;
-
-multi_not
-	:
-	multi_basic (NOT multi_basic)*
-	;
-
-multi_basic
-	:
-	mterm
-	;
-
-mterm
-	:
-	modifier? value
-	;
-*/
-
 cb_value
     :
     value term_modifier?
@@ -192,7 +160,7 @@ range_term_excl
 
 range_values
     :
-    modifier? range_value (TO modifier? range_value)?
+    range_value TO? range_value
     ;
 
 range_value
@@ -494,9 +462,9 @@ fragment TERM_CHAR
 	;
 
 NUMBER
-	:
-	INT+ ('.' INT+)?
-	;
+    :
+    ('-')? INT+ ('.' INT+)?
+    ;	
 
 DATE_TOKEN
     :
