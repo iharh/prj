@@ -140,9 +140,9 @@ value
     | quoted_truncated
     | range_term_incl
     | range_term_excl
-    | cb_period_func
+//    | cb_period_func
     | cb_hour_period_func
-    | cb_current_period_func
+//    | cb_current_period_func
     | QMARK
     | STAR COLON
     | STAR
@@ -202,15 +202,16 @@ cb_current_period_func
 
 
 normal
-	:
-	TERM_NORMAL
-	| NUMBER
-	;
+    :
+    TERM_NORMAL
+    | NUMBER
+    | DATE_MATH_UNIT
+    ;
 
 truncated
-	:
-	TERM_TRUNCATED
-	;
+    :
+    TERM_TRUNCATED
+    ;
 
 quoted_truncated
     :
@@ -246,7 +247,26 @@ date
     DATE_TOKEN
     ;
 
+//all_tokens
+//    :
+//    TO
+//    | LC
+//    | CATREF
+//    | CATREF_PATH
+//    | CATROLLUP
+//    | AND
+//    | AND1
+//    | OR1
+//    | NOT
+//    | DATE_SIMPLE
+//    | DATE_ADD
+//    | DATE_PERIOD
+//    | HOUR_PERIOD
+//    | CURRENT_PERIOD
+//    ;
+
 /* lexical rules */
+
 
 LPAREN
     :
@@ -379,12 +399,22 @@ CATROLLUP
 
 AND
     :
-    (('a' | 'A') ('n' | 'N') ('d' | 'D') | (AMPER AMPER?))
+    (AND1 | (AMPER AMPER?))
+    ;
+
+AND1
+    :
+    ('a' | 'A') ('n' | 'N') ('d' | 'D')
     ;
 
 OR
     :
-    (('o' | 'O') ('r' | 'R') | (VBAR VBAR?))
+    (OR1 | (VBAR VBAR?))
+    ;
+
+OR1
+    :
+    ('o' | 'O') ('r' | 'R')
     ;
 
 NOT
@@ -434,6 +464,7 @@ DATE_MATH_UNIT
     :
     ( 'd' | 'D' | 'w' | 'W' | 'm' | 'M' | 'q' | 'Q' | 'y' | 'Y' )
     ;
+
 
 fragment INT
     :

@@ -24,6 +24,8 @@ class SwimlineQPTests extends Specification {
             m == mtoken as Set
         where:
             input                                | simple       | wildcard              | quoted                | mtoken     | ecnt
+            "S:d"                                | []           | []                    | []                    | []         | 0
+            "S:w"                                | []           | []                    | []                    | []         | 0
             "@abc's"                             | ["@abc's"]   | []                    | []                    | []         | 0 // spec-char 1
             "#abc's"                             | ["#abc's"]   | []                    | []                    | []         | 0 // spec-char 2
             "abc's"                              | ["abc's"]    | []                    | []                    | []         | 0 // spec-char 3
@@ -42,8 +44,6 @@ class SwimlineQPTests extends Specification {
             "w1 AND NOT (w2, w3)"                | ["w1"]       | []                    | []                    | []         | 0 // not 3
             "w1,"                                | ["w1"]       | []                    | []                    | []         | 0 // tail-coma
             "w1 and (w2 and (w3 , w4,))"         | ["w1"]       | []                    | []                    | []         | 0 // tail-coma
-            "S:d"                                | []           | []                    | []                    | []         | 1
-            "S:w"                                | []           | []                    | []                    | []         | 1
             "&"                                  | []           | []                    | []                    | []         | 1
             "\"found bug\" ~2"                   | []           | []                    | ["\"found bug\""]     | []         | 0 // proximity
             "FIELD:v"                            | []           | []                    | []                    | []         | 0
