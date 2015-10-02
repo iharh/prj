@@ -15,7 +15,7 @@ class SyntaxOnlyDummyTests extends Specification {
     def "error input"() {
         when:
             QP.parse(")(", s, w, q, m, e)
-            def l = Utils.getLinesCP("queries.txt")
+            def l = Utils.getLinesCP("q-dummy.txt")
         then:
             e.size() > 0 //notThrown(Exception)
             l.size() == 3;

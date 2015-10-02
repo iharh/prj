@@ -24,6 +24,9 @@ class SwimlineQPTests extends Specification {
             e.size() == ecnt
         where:
             input                                | simple | wildcard              | quoted                | mtoken     | ecnt
+            "field:[1 TO 5]"                     | []     | []                    | []                    | []         | 0 // range 1
+            "field:[-1 TO 5]"                    | []     | []                    | []                    | []         | 0 // range 2
+            "field:[-5 TO -1]"                   | []     | []                    | []                    | []         | 0 // range 2
             "NOT w1"                             | ["w1"] | []                    | []                    | []         | 0 // not 1
             "NOT w1, w2"                         | ["w1", "w2"] | []              | []                    | []         | 0 // not 2
             "w1 AND NOT (w2, w3)"                | ["w1"] | []                    | []                    | []         | 0 // not 3
@@ -42,7 +45,7 @@ class SwimlineQPTests extends Specification {
             "ATTR:\"+-!(){}[]^\\\"~*?\\ \""      | []     | []                    | []                    | []         | 0 // field no escape inside quotes
             "ATTR:\\+\\-\\!\\(\\)\\{\\}\\[\\]\\^\\\"\\~\\*\\?\\:\\\\"                                                          | [] | [] | []                   | [] | 0 // field escaped
             "REF_URL:http\\://mail.aol*, REF_URL:http\\://mail.aol?, REF_URL:\"http://mail.aol\""                              | [] | [] | []                   | [] | 0 // field url
-            "business_date: [32 to kjdfhsdjf] doc_date: [32 23] (Cuban AND Crisis ) \" AND ()asjd \"  Location: \"New York\" " | [] | [] | ["\" AND ()asjd \""] | [] | 1 // range &&
+            "business_date: [32 TO kjdfhsdjf] doc_date: [32 23] (Cuban AND Crisis ) \" AND ()asjd \"  Location: \"New York\" " | [] | [] | ["\" AND ()asjd \""] | [] | 2 // range &&
             "_catRef:[model:\"v1Products Model - Tuning Base Model\" path:\"v1Enterprise|Poweredge Modular Servers\" node:\"v1Mellanox IB m2401g\"], w1" | ["w1"] | [] | [] | [] | 0 // catref
             "_lc:[room, clean]"     | [] | [] | [] | [] | 0 // lc 1
             "_lc:[abc\\ -->\\ def]" | [] | [] | [] | [] | 1 // lc 2

@@ -182,12 +182,17 @@ value
 
 range_term_incl
     :
-    LBRACK range_value TO? range_value RBRACK
+    LBRACK range_values RBRACK
     ;
 
 range_term_excl
     :
-    LCURLY range_value TO? range_value RCURLY
+    LCURLY range_values RCURLY
+    ;
+
+range_values
+    :
+    modifier? range_value (TO modifier? range_value)?
     ;
 
 range_value
@@ -366,6 +371,8 @@ SQUOTE
     '\''
     ;
 */
+
+// ? why not upcase
 
 TO
     :
