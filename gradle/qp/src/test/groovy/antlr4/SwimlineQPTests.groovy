@@ -17,35 +17,40 @@ class SwimlineQPTests extends Specification {
         when:
             QP.parse(input, s, w, q, m, e)
         then:
+            e.size() == ecnt
             s == simple as Set
             w == wildcard as Set
             q == quoted as Set
             m == mtoken as Set
-            e.size() == ecnt
         where:
-            input                                | simple | wildcard              | quoted                | mtoken     | ecnt
-            "field:[1 TO 5]"                     | []     | []                    | []                    | []         | 0 // range 1
-            "field:[-1 TO 5]"                    | []     | []                    | []                    | []         | 0 // range 2
-            "field:[-5 TO -1]"                   | []     | []                    | []                    | []         | 0 // range 3
-            "field:[1.0 TO 5.0]"                 | []     | []                    | []                    | []         | 0 // range 4
-            "field:[-2.2 TO 2.2]"                | []     | []                    | []                    | []         | 0 // range 5
-            "field:[-0.99 TO 0.99]"              | []     | []                    | []                    | []         | 0 // range 6
-            "NOT w1"                             | ["w1"] | []                    | []                    | []         | 0 // not 1
-            "NOT w1, w2"                         | ["w1", "w2"] | []              | []                    | []         | 0 // not 2
-            "w1 AND NOT (w2, w3)"                | ["w1"] | []                    | []                    | []         | 0 // not 3
-            "w1,"                                | ["w1"] | []                    | []                    | []         | 0 // tail-coma
-            "w1 and (w2 and (w3 , w4,))"         | ["w1"] | []                    | []                    | []         | 0 // tail-coma
-            "S:d"                                | []     | []                    | []                    | []         | 1
-            "S:w"                                | []     | []                    | []                    | []         | 1
-            "&"                                  | []     | []                    | []                    | []         | 1
-            "\"found bug\" ~2"                   | []     | []                    | ["\"found bug\""]     | []         | 0 // proximity
-            "FIELD:v"                            | []     | []                    | []                    | []         | 0
-            "_mtoken:\":)\""                     | []     | []                    | []                    | ["\":)\""] | 0
-            "Wo*rd1, wprds2?, \"wasdh^&^or*d3\"" | []     | ["Wo*rd1", "wprds2?"] | ["\"wasdh^&^or*d3\""] | []         | 0 // basic
-            "\"<:)>\""                           | []     | []                    | ["\"<:)>\""]          | []         | 0 // smiley and quoted
-            "&& || OR AND and or | |"            | []     | []                    | []                    | []         | 1 // tricky
-            "ATTR:\"abc\\\"def\""                | []     | []                    | []                    | []         | 0 // field last quote
-            "ATTR:\"+-!(){}[]^\\\"~*?\\ \""      | []     | []                    | []                    | []         | 0 // field no escape inside quotes
+            input                                | simple       | wildcard              | quoted                | mtoken     | ecnt
+            "abc's"                              | ["abc's"]    | []                    | []                    | []         | 0 // range 1
+            "field:[* TO 20131120]"              | []           | []                    | []                    | []         | 0 // range 1
+            "field:[* 20131120]"                 | []           | []                    | []                    | []         | 0 // range 2
+            "field:[20131120 TO *]"              | []           | []                    | []                    | []         | 0 // range 3
+            "field:[20131120 *]"                 | []           | []                    | []                    | []         | 0 // range 4
+            "field:[1 TO 5]"                     | []           | []                    | []                    | []         | 0 // range 5
+            "field:[-1 TO 5]"                    | []           | []                    | []                    | []         | 0 // range 6
+            "field:[-5 TO -1]"                   | []           | []                    | []                    | []         | 0 // range 7
+            "field:[1.0 TO 5.0]"                 | []           | []                    | []                    | []         | 0 // range 8
+            "field:[-2.2 TO 2.2]"                | []           | []                    | []                    | []         | 0 // range 9
+            "field:[-0.99 TO 0.99]"              | []           | []                    | []                    | []         | 0 // range 10
+            "NOT w1"                             | ["w1"]       | []                    | []                    | []         | 0 // not 1
+            "NOT w1, w2"                         | ["w1", "w2"] | []                    | []                    | []         | 0 // not 2
+            "w1 AND NOT (w2, w3)"                | ["w1"]       | []                    | []                    | []         | 0 // not 3
+            "w1,"                                | ["w1"]       | []                    | []                    | []         | 0 // tail-coma
+            "w1 and (w2 and (w3 , w4,))"         | ["w1"]       | []                    | []                    | []         | 0 // tail-coma
+            "S:d"                                | []           | []                    | []                    | []         | 1
+            "S:w"                                | []           | []                    | []                    | []         | 1
+            "&"                                  | []           | []                    | []                    | []         | 1
+            "\"found bug\" ~2"                   | []           | []                    | ["\"found bug\""]     | []         | 0 // proximity
+            "FIELD:v"                            | []           | []                    | []                    | []         | 0
+            "_mtoken:\":)\""                     | []           | []                    | []                    | ["\":)\""] | 0
+            "Wo*rd1, wprds2?, \"wasdh^&^or*d3\"" | []           | ["Wo*rd1", "wprds2?"] | ["\"wasdh^&^or*d3\""] | []         | 0 // basic
+            "\"<:)>\""                           | []           | []                    | ["\"<:)>\""]          | []         | 0 // smiley and quoted
+            "&& || OR AND and or | |"            | []           | []                    | []                    | []         | 1 // tricky
+            "ATTR:\"abc\\\"def\""                | []           | []                    | []                    | []         | 0 // field last quote
+            "ATTR:\"+-!(){}[]^\\\"~*?\\ \""      | []           | []                    | []                    | []         | 0 // field no escape inside quotes
             "ATTR:\\+\\-\\!\\(\\)\\{\\}\\[\\]\\^\\\"\\~\\*\\?\\:\\\\"                                                          | [] | [] | []                   | [] | 0 // field escaped
             "REF_URL:http\\://mail.aol*, REF_URL:http\\://mail.aol?, REF_URL:\"http://mail.aol\""                              | [] | [] | []                   | [] | 0 // field url
             "business_date: [32 TO kjdfhsdjf] doc_date: [32 23] (Cuban AND Crisis ) \" AND ()asjd \"  Location: \"New York\" " | [] | [] | ["\" AND ()asjd \""] | [] | 0 // range &&

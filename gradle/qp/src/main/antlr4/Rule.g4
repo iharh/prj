@@ -237,8 +237,8 @@ modifier
 
 term_modifier
     :
-    TILDE CARAT?
-    | CARAT TILDE?
+    TILDE
+    | CARAT
     ;
 
 date
@@ -280,7 +280,7 @@ PLUS
 
 MINUS
     :
-    ('-'|'\\!')
+    ('-'|'!')
     ;
 
 STAR
@@ -458,7 +458,7 @@ fragment TERM_START_CHAR
 
 fragment TERM_CHAR
 	:
-	(TERM_START_CHAR | '-' | '+')
+	(TERM_START_CHAR | '-' | '+' | '\'')
 	;
 
 NUMBER
