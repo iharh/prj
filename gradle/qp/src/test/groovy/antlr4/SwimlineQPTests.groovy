@@ -24,7 +24,9 @@ class SwimlineQPTests extends Specification {
             m == mtoken as Set
         where:
             input                                | simple       | wildcard              | quoted                | mtoken     | ecnt
-            "abc's"                              | ["abc's"]    | []                    | []                    | []         | 0 // range 1
+            "@abc's"                             | ["@abc's"]   | []                    | []                    | []         | 0 // spec-char 1
+            "#abc's"                             | ["#abc's"]   | []                    | []                    | []         | 0 // spec-char 2
+            "abc's"                              | ["abc's"]    | []                    | []                    | []         | 0 // spec-char 3
             "field:[* TO 20131120]"              | []           | []                    | []                    | []         | 0 // range 1
             "field:[* 20131120]"                 | []           | []                    | []                    | []         | 0 // range 2
             "field:[20131120 TO *]"              | []           | []                    | []                    | []         | 0 // range 3
