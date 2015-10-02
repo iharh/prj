@@ -26,7 +26,10 @@ class SwimlineQPTests extends Specification {
             input                                | simple | wildcard              | quoted                | mtoken     | ecnt
             "field:[1 TO 5]"                     | []     | []                    | []                    | []         | 0 // range 1
             "field:[-1 TO 5]"                    | []     | []                    | []                    | []         | 0 // range 2
-            "field:[-5 TO -1]"                   | []     | []                    | []                    | []         | 0 // range 2
+            "field:[-5 TO -1]"                   | []     | []                    | []                    | []         | 0 // range 3
+            "field:[1.0 TO 5.0]"                 | []     | []                    | []                    | []         | 0 // range 4
+            "field:[-2.2 TO 2.2]"                | []     | []                    | []                    | []         | 0 // range 5
+            "field:[-0.99 TO 0.99]"              | []     | []                    | []                    | []         | 0 // range 6
             "NOT w1"                             | ["w1"] | []                    | []                    | []         | 0 // not 1
             "NOT w1, w2"                         | ["w1", "w2"] | []              | []                    | []         | 0 // not 2
             "w1 AND NOT (w2, w3)"                | ["w1"] | []                    | []                    | []         | 0 // not 3
