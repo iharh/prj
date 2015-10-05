@@ -9,15 +9,21 @@ cb_rule
 
 clause_or
     :
-    clause_and ((OR|COMMA+)? clause_and)*
+    clause_maybe_and ((OR|COMMA+)? clause_maybe_and)*
+    ;
+
+clause_maybe_and
+    :
+    clause_maybe_not
+    | clause_and
     ;
 
 clause_and
     :
-    clause_not_or_basic (AND clause_not_or_basic)*
+    clause_maybe_not (AND clause_maybe_not)+
     ;
 
-clause_not_or_basic
+clause_maybe_not
     :
     clause_not
     | clause_basic

@@ -21,6 +21,7 @@ public class SwimlineParseTreeListener extends RuleBaseListener {
     private Set<String> mtokens;
 
     private int level;
+    private boolean inAndClause;
     private boolean inValue;
     private boolean inMtoken;
 
@@ -41,7 +42,7 @@ public class SwimlineParseTreeListener extends RuleBaseListener {
         }
         final String v = ctx.getText();
 
-        if (inValue && s != null) {
+        if (inValue && !inAndClause && s != null) {
             s.add(v);
         } else if (inMtoken && mtokens != null) {
             mtokens.add(v);
@@ -120,6 +121,17 @@ public class SwimlineParseTreeListener extends RuleBaseListener {
     public void exitQuoted_truncated(@NotNull RuleParser.Quoted_truncatedContext ctx) {
         log.debug("exit quoted_truncated level: {}", level);
         processSet(ctx, quoted);
+    }
+
+    // clause_and
+    @Override
+    public void enterClause_and(@NotNull RuleParser.Clause_andContext ctx) {
+        inAndClause = true;
+    }
+
+    @Override
+    public void exitClause_and(@NotNull RuleParser.Clause_andContext ctx) {
+        inAndClause = false;
     }
     
     // clause_or
