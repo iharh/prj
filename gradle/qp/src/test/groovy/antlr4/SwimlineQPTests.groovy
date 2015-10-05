@@ -24,6 +24,9 @@ class SwimlineQPTests extends Specification {
             m == mtoken as Set
         where:
             input                                | simple       | wildcard              | quoted                | mtoken     | exceptioncount
+            "sony~2"                             | []           | []                    | []                    | []         | 0 // fuzzy 1
+            "\"playstation 3\"~4"                | []           | []                    | []                    | []         | 0 // fuzzy 2
+            "not"                                | ["not"]      | []                    | []                    | []         | 0 // not 1
             "not"                                | ["not"]      | []                    | []                    | []         | 0 // not 1
             "NOT w1"                             | []           | []                    | []                    | []         | 0 // not 2
             "NOT w1, w2"                         | ["w2"]       | []                    | []                    | []         | 0 // not 3
@@ -47,7 +50,6 @@ class SwimlineQPTests extends Specification {
             "w1,"                                | ["w1"]       | []                    | []                    | []         | 0 // tail-coma
             "w1 and (w2 and (w3 , w4,))"         | ["w1"]       | []                    | []                    | []         | 0 // tail-coma
             "&"                                  | []           | []                    | []                    | []         | 1
-            "\"found bug\" ~2"                   | []           | []                    | ["\"found bug\""]     | []         | 0 // proximity
             "FIELD:v"                            | []           | []                    | []                    | []         | 0
             "_mtoken:\":)\""                     | []           | []                    | []                    | ["\":)\""] | 0
             "Wo*rd1, wprds2?, \"wasdh^&^or*d3\"" | []           | ["Wo*rd1", "wprds2?"] | ["\"wasdh^&^or*d3\""] | []         | 0 // basic

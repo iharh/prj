@@ -42,7 +42,7 @@ atom
     | modifier? cb_catref
     | modifier? cb_catrollup
     | modifier? cb_field
-    | modifier? cb_value
+    | modifier? cb_value_term_mod
     ;
 
 // field rules
@@ -76,11 +76,16 @@ multi_clause
 	clause_or+
 	;
 
-cb_value
+cb_value_term_mod
     :
-    value term_modifier?
+    cb_value
+    | value term_modifier
     ;
 
+cb_value
+    :
+    value
+    ;
 
 // cb linguistic connection
 cb_lc
