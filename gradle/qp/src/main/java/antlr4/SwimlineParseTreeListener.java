@@ -122,7 +122,7 @@ public class SwimlineParseTreeListener extends RuleBaseListener {
         processSet(ctx, quoted);
     }
     
-    //clause_or
+    // clause_or
 
     @Override
     public void enterClause_or(@NotNull RuleParser.Clause_orContext ctx) {
@@ -131,6 +131,20 @@ public class SwimlineParseTreeListener extends RuleBaseListener {
 
     @Override
     public void exitClause_or(@NotNull RuleParser.Clause_orContext ctx) {
+        --level;
+    }
+
+    // clause_not
+
+    @Override
+    public void enterClause_not(@NotNull RuleParser.Clause_notContext ctx) {
+        //log.debug("enter clause_not");
+        ++level;
+    }
+    
+    @Override
+    public void exitClause_not(@NotNull RuleParser.Clause_notContext ctx) {
+        //log.debug("exit clause_not");
         --level;
     }
 }

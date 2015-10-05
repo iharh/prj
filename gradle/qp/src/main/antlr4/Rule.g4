@@ -14,12 +14,18 @@ clause_or
 
 clause_and
     :
-    clause_not (AND clause_not)*
+    clause_not_or_basic (AND clause_not_or_basic)*
+    ;
+
+clause_not_or_basic
+    :
+    clause_not
+    | clause_basic
     ;
 
 clause_not
     :
-    NOT? clause_basic
+    NOT clause_basic
     ;
 
 clause_basic

@@ -25,8 +25,8 @@ class SwimlineQPTests extends Specification {
         where:
             input                                | simple       | wildcard              | quoted                | mtoken     | exceptioncount
             "not"                                | ["not"]      | []                    | []                    | []         | 0 // not 1
-            "NOT w1"                             | ["w1"]       | []                    | []                    | []         | 0 // not 2
-            "NOT w1, w2"                         | ["w1", "w2"] | []                    | []                    | []         | 0 // not 3
+            "NOT w1"                             | []           | []                    | []                    | []         | 0 // not 2
+            "NOT w1, w2"                         | ["w2"]       | []                    | []                    | []         | 0 // not 3
             "w1 AND NOT (w2, w3)"                | ["w1"]       | []                    | []                    | []         | 0 // not 4
             "S:_PERIOD(w, -1)"                   | []           | []                    | []                    | []         | 0
             "S:d"                                | []           | []                    | []                    | []         | 0
