@@ -9,8 +9,7 @@ compr := {
     val dateFmt = new SimpleDateFormat ("yyyy-MM-dd")
     val arcFileName = System.getenv("USERNAME") + "-" + dateFmt.format(d) + ".7z"
     val arcFile = file("D:/dev/backup") / arcFileName
-    val wrkBaseDirStr = "D:/dev/backup/-";
-    val wrkBaseDir = file(wrkBaseDirStr)
+    val wrkBaseDir = file("D:/dev/backup/-")
     Process("cmd /c 7z.bat a -w -bd -mx=9 -- " + arcFile + " .", wrkBaseDir).run(true).exitValue()
     println("packing DONE.")
 }
