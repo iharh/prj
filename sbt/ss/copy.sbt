@@ -43,7 +43,7 @@ def copy_x_y(src: File, dst: File, name: String): Unit = {
 }
 
 def copy_x(n: String): Unit = {
-    val dst = file("D:\\Knova\\-\\backup") / n
+    val dst = file("D:\\dev\\backup\\-\\backup") / n
     val src = file("D:\\dev") / n
     IO.delete(dst)
     IO.createDirectory(dst)
@@ -68,7 +68,7 @@ copybin := {
 }
 
 copykeepass := {
-    val dst = file("D:\\Knova\\-\\backup\\auto\\KeePassDB")
+    val dst = file("D:\\dev\\backup\\-\\backup\\auto\\KeePassDB")
     IO.delete(dst)
     IO.createDirectory(dst)
 
@@ -81,7 +81,7 @@ copykeepass := {
 }
 
 copyff := {
-    val dst = file("D:\\Knova\\-\\backup\\auto\\FFBookmarks")
+    val dst = file("D:\\dev\\backup\\-\\backup\\auto\\FFBookmarks")
     IO.delete(dst)
     IO.createDirectory(dst)
 
