@@ -3,8 +3,8 @@
 #include <algorithm>
 #include <chrono>
 #include <functional>
+#include <thread>
 //include <random>
-//include <thread>
 #include <Eigen/Dense>
 
 static size_t s1 = 3000000;
@@ -66,7 +66,35 @@ doMulti(const Eigen::MatrixXd &m, size_t idx)
 }
 
 void
-testMmul()
+testMmulIter(const Eigen::MatrixXd &m, ssize_t numThreads)
+{
+    std::wcout << L"Iteration with threads number: " << numThreads << std::endl;
+    minTimes.resize(numThreads);
+    maxTimes.resize(numThreads);
+
+    typedef std::vector<std::thread> t_thread_vec;
+    t_thread_vec threads;
+
+    for (size_t idx = 0; idx < numThreads; ++idx)
+    {
+        // std::ref, std::placeholders::_1
+        auto boundMulti = std::bind(doMulti, std::cref(m), idx);
+        threads.emplace_back(boundMulti);
+    }
+
+    for (t_thread_vec::iterator itr = threads.begin(); itr != threads.end(); ++itr)
+    {
+        itr->join();
+    }
+
+    for (size_t idx = 0; idx < numThreads; ++idx)
+    {
+        std::wcout << L"Matrix-vector multiplication [" << idx << L"] took " << minTimes[idx] << L" - " << maxTimes[idx] << L" seconds" << std::endl;
+    }
+}
+
+void
+testMmul(size_t maxThreads)
 {
     std::wcout << L"Start matrix generation ..." << std::endl;
 
@@ -84,20 +112,9 @@ testMmul()
     auto tfinish = std::chrono::high_resolution_clock::now();
     std::wcout << L"Matrix generation took " << std::chrono::duration_cast<std::chrono::duration<double>>(tfinish - tstart).count() << L" seconds." << std::endl;
 
-    static size_t MAX_THREADS = 2;
-    minTimes.resize(MAX_THREADS);
-    maxTimes.resize(MAX_THREADS);
-
-    for (size_t idx = 0; idx < MAX_THREADS; ++idx)
+    for (size_t n = 1; n <= maxThreads; ++n)
     {
-        // std::ref, std::placeholders::_1
-        auto boundMulti = std::bind(doMulti, std::cref(m), idx);
-        boundMulti();
-    }
-
-    for (size_t idx = 0; idx < MAX_THREADS; ++idx)
-    {
-        std::wcout << L"Matrix-vector multiplication [" << idx << L"] took " << minTimes[idx] << L" - " << maxTimes[idx] << L" seconds" << std::endl;
+        testMmulIter(m, n);
     }
 }
 
@@ -124,6 +141,6 @@ testSort()
 int
 main()
 {
-    testMmul();
+    testMmul(5);
     return 0;
 }
