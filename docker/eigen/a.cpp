@@ -13,6 +13,9 @@ static size_t s2 = 300;
 static size_t numThreads = 1;
 static size_t numIters = 10;
 
+std::vector<double> minTimes;
+std::vector<double> maxTimes;
+
 std::chrono::duration<double>
 mulIter(const Eigen::MatrixXd &m)
 {
@@ -39,7 +42,7 @@ mulIter(const Eigen::MatrixXd &m)
 }
 
 void
-doMulti(const Eigen::MatrixXd &m, size_t idx, double &minTime, double &maxTime)
+doMulti(const Eigen::MatrixXd &m, size_t idx)
 {
     std::vector<float> times;
 
@@ -51,13 +54,15 @@ doMulti(const Eigen::MatrixXd &m, size_t idx, double &minTime, double &maxTime)
 
     std::sort(times.begin(), times.end());
     size_t numSkip = numIters / 10;
-    minTime = times[numSkip];
-    maxTime = times[numIters - numSkip * 2];
+    double minTime = times[numSkip];
+    double maxTime = times[numIters - numSkip * 2];
         //<< L"size: " << z.size() << std::endl
         //<< L"max: " << maxRes << std::endl
     //std::wcout << L"Matrix-vector multiplication [" << idx << L"] took seconds:" << std::endl;
     //std::copy(times.begin(), times.end(), std::ostream_iterator<float, wchar_t>(std::wcout, L" "));
     //std::wcout << std::endl;
+    minTimes[idx] = minTime;
+    maxTimes[idx] = maxTime;
 }
 
 void
@@ -79,13 +84,21 @@ testMmul()
     auto tfinish = std::chrono::high_resolution_clock::now();
     std::wcout << L"Matrix generation took " << std::chrono::duration_cast<std::chrono::duration<double>>(tfinish - tstart).count() << L" seconds." << std::endl;
 
-    size_t idx = 0;
-    double minTime = 0.;
-    double maxTime = 0.;
-    auto boundMulti = std::bind(doMulti, std::cref(m), idx, std::ref(minTime), std::ref(maxTime)); // std::placeholders::_1
-    boundMulti();
+    static size_t MAX_THREADS = 2;
+    minTimes.resize(MAX_THREADS);
+    maxTimes.resize(MAX_THREADS);
 
-    std::wcout << L"Matrix-vector multiplication [" << idx << L"] took " << minTime << L" - " << maxTime << L" seconds" << std::endl;
+    for (size_t idx = 0; idx < MAX_THREADS; ++idx)
+    {
+        // std::ref, std::placeholders::_1
+        auto boundMulti = std::bind(doMulti, std::cref(m), idx);
+        boundMulti();
+    }
+
+    for (size_t idx = 0; idx < MAX_THREADS; ++idx)
+    {
+        std::wcout << L"Matrix-vector multiplication [" << idx << L"] took " << minTimes[idx] << L" - " << maxTimes[idx] << L" seconds" << std::endl;
+    }
 }
 
 void
