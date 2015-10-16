@@ -72,7 +72,7 @@ copykeepass := {
     IO.delete(dst)
     IO.createDirectory(dst)
 
-    val src = file("F:\\pvt\\Backup\\KeePassDB")
+    val src = file("D:\\pvt\\backup\\KeePassDB")
 
     val cFiles = (src ) ***
     val rFiles = cFiles pair Path.rebase(src, dst)
