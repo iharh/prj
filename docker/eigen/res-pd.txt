@@ -1,0 +1,46 @@
+Start matrix generation ...
+Matrix generation took 6.89139 seconds.
+Iteration with threads number: 1
+Matrix-vector multiplication [0] took 0.536094 - 0.538713 seconds
+Iteration with threads number: 2
+Matrix-vector multiplication [0] took 0.694114 - 0.702545 seconds
+Matrix-vector multiplication [1] took 0.693967 - 0.702453 seconds
+Iteration with threads number: 3
+Matrix-vector multiplication [0] took 0.898933 - 1.11033 seconds
+Matrix-vector multiplication [1] took 0.898984 - 1.1103 seconds
+Matrix-vector multiplication [2] took 0.879903 - 1.33735 seconds
+Iteration with threads number: 4
+Matrix-vector multiplication [0] took 1.85985 - 1.96835 seconds
+Matrix-vector multiplication [1] took 1.90755 - 1.96498 seconds
+Matrix-vector multiplication [2] took 1.92115 - 1.99208 seconds
+Matrix-vector multiplication [3] took 1.87358 - 2.00181 seconds
+Iteration with threads number: 5
+Matrix-vector multiplication [0] took 0.998894 - 3.20227 seconds
+Matrix-vector multiplication [1] took 1.28736 - 1.8579 seconds
+Matrix-vector multiplication [2] took 1.28735 - 1.56382 seconds
+Matrix-vector multiplication [3] took 0.999237 - 3.23345 seconds
+Matrix-vector multiplication [4] took 1.28804 - 1.56255 seconds
+Iteration with threads number: 6
+Matrix-vector multiplication [0] took 1.85513 - 2.00418 seconds
+Matrix-vector multiplication [1] took 1.5299 - 3.41447 seconds
+Matrix-vector multiplication [2] took 1.94184 - 2.3378 seconds
+Matrix-vector multiplication [3] took 1.81303 - 2.84012 seconds
+Matrix-vector multiplication [4] took 1.75272 - 2.72465 seconds
+Matrix-vector multiplication [5] took 1.01237 - 3.45494 seconds
+Iteration with threads number: 7
+Matrix-vector multiplication [0] took 2.02009 - 3.371 seconds
+Matrix-vector multiplication [1] took 1.71907 - 3.45646 seconds
+Matrix-vector multiplication [2] took 1.95689 - 3.81757 seconds
+Matrix-vector multiplication [3] took 1.72079 - 3.76383 seconds
+Matrix-vector multiplication [4] took 1.95326 - 3.69779 seconds
+Matrix-vector multiplication [5] took 1.95878 - 3.8179 seconds
+Matrix-vector multiplication [6] took 1.83696 - 3.40116 seconds
+Iteration with threads number: 8
+Matrix-vector multiplication [0] took 2.10297 - 3.6987 seconds
+Matrix-vector multiplication [1] took 2.10337 - 3.43721 seconds
+Matrix-vector multiplication [2] took 2.23974 - 3.34065 seconds
+Matrix-vector multiplication [3] took 2.58525 - 3.3383 seconds
+Matrix-vector multiplication [4] took 2.58025 - 3.32639 seconds
+Matrix-vector multiplication [5] took 2.10407 - 3.3404 seconds
+Matrix-vector multiplication [6] took 2.10308 - 3.64574 seconds
+Matrix-vector multiplication [7] took 2.22146 - 3.65258 seconds
