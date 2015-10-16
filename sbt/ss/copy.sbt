@@ -86,7 +86,9 @@ copyff := {
     IO.createDirectory(dst)
 
     val appdata = Path.userHome / "AppData/Roaming" // %APPDATA"
-    val profile = "1ifa5jee.default" // **
+    val profile_hash = "jr2zyn95" // "1ifa5jee" // **
+    val profile_name = "default"
+    val profile = profile_hash + "." + profile_name
     val src = appdata / "Mozilla/Firefox/Profiles" / profile / "bookmarkbackups"
     val allBms = src * "*.jsonlz4" // sbt.ChildPathFinder
     val seqBms = allBms.get // Seq[File]
