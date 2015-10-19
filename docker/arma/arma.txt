@@ -1,0 +1,5 @@
+http://kent.dl.sourceforge.net/project/arma/armadillo-6.100.0.tar.gz
+
+http://arma.sourceforge.net/download.html#linux
+
+cmake, blas-devel, lapack-devel, arpack-devel, atlas-devel
