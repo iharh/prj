@@ -20,3 +20,6 @@ RUN /bin/bash ${CONDA_SCRIPT} -b -p /opt/anaconda \
 
 # --update-deps is true by default -> update even conda
 RUN /opt/anaconda/bin/conda install -qy gensim flask
+
+# TODO: create a dep-list
+RUN /opt/anaconda/bin/pip install flask-restful
