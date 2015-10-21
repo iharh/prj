@@ -7,9 +7,9 @@ RUN mkdir -p /usr/local/${PRJ_NAME}
 WORKDIR /usr/local/${PRJ_NAME}
 
 
-#ENV CMAKE_MAJOR_VERSION 3.3
-#ENV CMAKE_MINOR_VERSION 2
-#RUN curl -LO http://cmake.org/files/v${CMAKE_MAJOR_VERSION}/cmake-${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}.tar.gz
+ENV CMAKE_MAJOR_VERSION 3.3
+ENV CMAKE_MINOR_VERSION 2
+RUN curl -LO http://cmake.org/files/v${CMAKE_MAJOR_VERSION}/cmake-${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}.tar.gz
 
 
 # Download latest boost
@@ -26,14 +26,14 @@ RUN dos2unix sums.txt \
     && sha256sum -c --strict sums.txt \
     && rm sums.txt
 
-#RUN tar xvf cmake-${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}.tar.gz \
-#    && rm cmake-${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}.tar.gz
+RUN tar xvf cmake-${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}.tar.gz \
+    && rm cmake-${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}.tar.gz
 
-#WORKDIR /usr/local/${PRJ_NAME}/cmake-${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}
+WORKDIR /usr/local/${PRJ_NAME}/cmake-${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}
 
-#RUN ./bootstrap \
-#    && make \
-#    && make install 
+RUN ./bootstrap \
+    && make \
+    && make install 
 
 
 #WORKDIR /usr/local/${PRJ_NAME}
@@ -47,8 +47,8 @@ RUN dos2unix sums.txt \
 #    && ./b2 --build-type=minimal --with-system --with-thread link=static runtime-link=shared variant=release threading=multi install
 
 
-#WORKDIR /usr/local/${PRJ_NAME}
-#RUN tar xvjf eigen_${EIGEN_VERSION}.tar.bz2 \
+WORKDIR /usr/local/${PRJ_NAME}
+RUN tar xvf armadillo-${ARMA_VERSION}.tar.gz \
 #    && rm eigen_${EIGEN_VERSION}.tar.bz2 \
 #    && mv `find . -maxdepth 1 -type d -name "eigen*"` eigen_${EIGEN_VERSION} \
 #    && mkdir eigen_build_${EIGEN_VERSION}
