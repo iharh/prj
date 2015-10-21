@@ -1,0 +1,2 @@
+#pip requirements with a FIXED/tested versions
+flask-restful==0.3.4

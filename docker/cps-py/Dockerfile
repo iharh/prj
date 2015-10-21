@@ -22,4 +22,5 @@ RUN /bin/bash ${CONDA_SCRIPT} -b -p /opt/anaconda \
 RUN /opt/anaconda/bin/conda install -qy gensim flask
 
 # TODO: create a dep-list
-RUN /opt/anaconda/bin/pip install flask-restful
+RUN /opt/anaconda/bin/pip install -r /usr/local/${PRJ_NAME}/cps-pip-requirements.txt
+
