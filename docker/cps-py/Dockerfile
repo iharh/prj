@@ -18,9 +18,11 @@ RUN /bin/bash ${CONDA_SCRIPT} -b -p /opt/anaconda \
     && rm ${CONDA_SCRIPT} \
     && echo 'export PATH=/opt/anaconda/bin:$PATH' >> ~/.bashrc
 
+RUN /opt/anaconda/bin/conda install -qy conda=3.18.3
+
+COPY cps-conda-requirements.txt /usr/local/${PRJ_NAME}/
 # --update-deps is true by default -> update even conda
-RUN /opt/anaconda/bin/conda install -qy gensim flask
+RUN /opt/anaconda/bin/conda install -qy --no-update-deps --file /usr/local/${PRJ_NAME}/cps-conda-requirements.txt
 
-# TODO: create a dep-list
+COPY cps-pip-requirements.txt /usr/local/${PRJ_NAME}/
 RUN /opt/anaconda/bin/pip install -r /usr/local/${PRJ_NAME}/cps-pip-requirements.txt
-
