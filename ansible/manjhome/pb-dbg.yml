@@ -1,6 +1,29 @@
 ---
 - hosts: "{{host}}"
 
+  # move to separate vars file later 
+  vars:
+    env: 
+      HI: test2
+      https_proxy: https://proxy-us.clarabridge.net:3128
+      http_proxy: http://proxy-us.clarabridge.net:3128
+
+  environment: env
+
   tasks:
     - name: dbg variables trace
       debug: 'msg="host: {{host}} user: {{user}}"'
+
+    - name: "cmd1"
+      command: 'echo HI: $HI http_proxy: $http_proxy'
+
+    - name: "cmd2"
+      command: 'sudo yum repolist'
+      become: yes
+      become_method: sudo
+
+    #- name: "cmd2"
+    #  command: 'sudo http_proxy=$http_proxy https_proxy=$https_proxy yum repolist'
+
+    #- name: "cmd2"
+    #  command: 'java -version'
