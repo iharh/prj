@@ -1,0 +1,9 @@
+---
+- hosts: "{{host}}"
+  user: "{{user}}"
+  #sudo: sorry, you must have a tty to run sudo
+  #  #sudo: true
+
+  tasks:
+    - name: dbg variables trace
+      debug: 'msg="host: {{host}} user: {{user}}"'
