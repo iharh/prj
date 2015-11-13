@@ -1,0 +1,31 @@
+---
+- hosts: "{{host}}"
+  user: "{{user}}"
+  #sudo: sorry, you must have a tty to run sudo
+  #sudo: true
+ 
+  tasks:
+    - name: adduser variable trace
+      debug: msg="host-{{host}} user-{{user}} new_user-{{new_user}}"
+
+      #RUN adduser ${USER_NAME} && gpasswd -a ${USER_NAME} wheel
+      #RUN ansible localhost -m user -a "name=${USER_NAME} groups=wheel"
+    - name: add user 
+      user: name="{{new_user}}" groups="wheel"
+
+    - name: Create sudoers.bak
+      command: cp /etc/sudoers /etc/sudoers.bak              
+      # it's also possible to add backup=yes to lineinfile module, but file name is really ugly in that case
+
+    - name: Copy sudoers for safety
+      command: cp /etc/sudoers /etc/sudoers.tmp
+
+      ## Same thing without a password
+      # %wheel        ALL=(ALL)       NOPASSWD: ALL
+    - name: Ensure admin group is in sudoers with NOPASSWD
+      lineinfile: "dest=/etc/sudoers.tmp state=present regexp='^# %wheel' line='%wheel ALL=(ALL) NOPASSWD: ALL' validate='/usr/sbin/visudo -cf %s'"
+      register: sudoers_tmp_ok
+
+    - name: Copy sudoers.tmp to sudoers
+      when: sudoers_tmp_ok|success
+      command: cp /etc/sudoers.tmp /etc/sudoers

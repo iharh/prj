@@ -1,0 +1,18 @@
+---
+- include: pb-dbg.yml 
+
+- hosts: "{{hosts}}"
+
+  vars:
+    env: 
+      https_proxy: https://proxy-us.clarabridge.net:3128
+      http_proxy: http://proxy-us.clarabridge.net:3128
+
+  environment: env
+
+  # move to separate vars file later 
+
+  tasks:
+    - name: site-full var trace
+      debug: 'msg="hosts: {{hosts}} user: {{user}}"'
+
