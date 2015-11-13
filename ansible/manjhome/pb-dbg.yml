@@ -14,13 +14,18 @@
     - name: dbg variables trace
       debug: 'msg="host: {{host}} user: {{user}}"'
 
-    - name: "cmd1"
+    - name: cmd1
       command: 'echo HI: $HI http_proxy: $http_proxy'
 
-    - name: "cmd2"
-      command: 'sudo yum repolist'
+    - name: remove prediction user if any
+      user: name=prediction state=absent remove=yes
       become: yes
-      become_method: sudo
+      #become_method: sudo
+
+    #- name: "cmd2"
+    #  command: 'sudo yum repolist'
+    #  become: yes
+    #  become_method: sudo
 
     #- name: "cmd2"
     #  command: 'sudo http_proxy=$http_proxy https_proxy=$https_proxy yum repolist'
