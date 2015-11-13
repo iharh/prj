@@ -7,7 +7,7 @@
  
   tasks:
     - name: adduser var trace
-      debug: 'msg="hosts: {{hosts}} new_user: {{new_user}}"'
+      debug: 'msg="hosts: {{hosts}} user: {{user}} new_user: {{new_user}}"'
 
     #- name: remove prediction user if any
     #  user: name="{{new_user}} state=absent remove=yes
@@ -15,3 +15,8 @@
 
     - name: add user 
       user: name="{{new_user}}" groups="wheel" state="present"
+
+    #- name: copy oracle java role
+    #  copy: src="files/williamyeh-oracle-java.tar.gz" dest="/home/{{user}}/williamyeh-oracle-java.tar.gz" owner="{{user}}" group="{{user}}"
+    ## mode=0644
+

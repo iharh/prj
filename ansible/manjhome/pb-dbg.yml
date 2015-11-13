@@ -11,5 +11,7 @@
     #- name: run sudo cmd with proxy env vars
     #  command: 'sudo http_proxy=$http_proxy https_proxy=$https_proxy yum repolist'
 
+    # sudo rpm -e --allmatches "jdk1.8.0_65-1.8.0_65-fcs"
+
     #- name: check the java version
     #  command: 'java -version'

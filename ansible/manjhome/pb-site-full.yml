@@ -1,6 +1,7 @@
 ---
 - include: pb-dbg.yml 
-- include: pb-adduser.yml 
+#- include: pb-adduser.yml 
+- include: pb-jdk.yml 
 
 - hosts: "{{hosts}}"
 
