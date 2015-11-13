@@ -8,15 +8,6 @@
     - name: dbg evn trace
       command: 'echo http_proxy: $http_proxy'
 
-    #- name: remove prediction user if any
-    #  user: name=prediction state=absent remove=yes
-    #  become: yes
-
-    #- name: run sudo cmd
-    #  command: 'sudo yum repolist'
-    #  become: yes
-    #  become_method: sudo
-
     #- name: run sudo cmd with proxy env vars
     #  command: 'sudo http_proxy=$http_proxy https_proxy=$https_proxy yum repolist'
 

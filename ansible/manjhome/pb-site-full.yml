@@ -1,7 +1,10 @@
 ---
 - include: pb-dbg.yml 
+- include: pb-adduser.yml 
 
 - hosts: "{{hosts}}"
+
+  # move to separate vars file later 
 
   vars:
     env: 
@@ -10,9 +13,6 @@
 
   environment: env
 
-  # move to separate vars file later 
-
   tasks:
     - name: site-full var trace
       debug: 'msg="hosts: {{hosts}} user: {{user}}"'
-
