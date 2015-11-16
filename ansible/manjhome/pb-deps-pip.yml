@@ -1,0 +1,14 @@
+---
+- hosts: "{{host}}"
+  user: "{{user}}"
+  sudo: false
+
+  tasks:
+    - name: deps-conda variable trace
+      debug: msg="host-{{host}} user-{{user}}"
+
+    - name: prepare pip libs installer
+      shell: "dos2unix ~/inst_pip.sh"
+
+    - name: install pip libs
+      shell: "~/inst_pip.sh"

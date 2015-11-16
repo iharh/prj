@@ -1,19 +1,8 @@
 ---
 - hosts: "{{hosts}}"
 
-  # move to separate vars file later 
-
-  vars:
-    env: 
-      https_proxy: https://proxy-us.clarabridge.net:3128
-      http_proxy: http://proxy-us.clarabridge.net:3128
-
-  environment: env
-
-  tasks:
-    - name: site-full var trace
-      debug: 'msg="hosts: {{hosts}} user: {{user}}"'
-
 #- include: pb-dbg.yml 
+#- include: pb-yum.yml 
 #- include: pb-adduser.yml 
-- include: pb-jdk.yml 
+#- include: pb-jdk.yml 
+- include: pb-conda.yml 

@@ -1,0 +1,27 @@
+---
+- hosts: "{{hosts}}"
+  user: "{{user}}"
+  become: yes
+ 
+  pre_tasks:
+    - name: yum variable trace
+      debug: 'msg="hosts: {{hosts}} user:{{user}}"'
+
+    - name: PreInstall RPMS
+      yum: name={{item}} state=present
+      with_items:
+        - bzip2
+
+  tasks:
+    - name: Install packages
+      yum: name={{item}} state=present
+      with_items:
+        - man
+        - tar
+        - curl
+        - git
+        - vim
+        #- make gcc gcc-c++ gcc-gfortran libgfortran.x86_64
+
+    - name: yum variable trace
+      debug: 'msg="hosts: {{hosts}} user: {{user}}"'

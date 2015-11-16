@@ -1,0 +1,14 @@
+#conda requirements with a FIXED/tested versions
+gensim==0.12.2
+flask==0.10.1
+
+#what about transitive deps versions, which are auto-installed ???
+#itsdangerous: 0.24-py27_0        
+#jinja2:       2.8-py27_0         
+#libgfortran:  1.0-0              
+#markupsafe:   0.23-py27_0        
+#numpy:        1.10.1-py27_0      
+#openblas:     0.2.14-3           
+#scipy:        0.16.0-np110py27_1 
+#six:          1.10.0-py27_0      
+#werkzeug:     0.10.4-py27_0

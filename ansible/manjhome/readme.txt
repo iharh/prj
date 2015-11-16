@@ -20,6 +20,10 @@
 #  when: sudoers_tmp_ok|success
 #  command: cp /etc/sudoers.tmp /etc/sudoers
 
+    #- name: copy oracle java role
+    #  copy: src="files/williamyeh-oracle-java.tar.gz" dest="/home/{{user}}/williamyeh-oracle-java.tar.gz" owner="{{user}}" group="{{user}}"
+    ## mode=0644
+
 curl -k
 
 other jdk roles

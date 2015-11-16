@@ -1,0 +1,20 @@
+# flask requirements
+flask-restful==0.3.4
+
+# robot requirements
+#robotframework>=2.9
+##robotframework-databaselibrary==0.6
+#robotframework-selenium2library>=1.7.0
+#selenium>=2.47.1
+#suds==0.4
+#requests==2.7.0
+
+# build and test stuff
+#PyBuilder==0.11.1
+
+# test-only stuff.
+# can be installed by pybuilder build script also
+#xmlrunner==1.7.7
+#unittest-xml-reporting==1.12.0
+#Flask-Testing==0.4.2
+##mockito==0.5.2

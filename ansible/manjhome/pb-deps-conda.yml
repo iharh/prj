@@ -1,0 +1,14 @@
+---
+- hosts: "{{host}}"
+  user: "{{user}}"
+  sudo: false
+
+  tasks:
+    - name: deps-conda variable trace
+      debug: msg="host-{{host}} user-{{user}}"
+
+    - name: prepare conda libs installer
+      shell: "dos2unix ~/inst_conda.sh"
+
+    - name: install conda libs
+      shell: "~/inst_conda.sh"
