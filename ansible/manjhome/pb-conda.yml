@@ -1,6 +1,5 @@
 ---
 - hosts: "{{hosts}}"
-  #become: no
   become: yes
   become_user: "{{new_user}}"
  
@@ -50,7 +49,7 @@
 
 
     - name: install base condarc
-      copy: src=files/{{item}} dest="~/.{{item}}"
+      copy: src=files/{{item}} dest="/home/{{new_user}}/.{{item}}"
       with_items:
         - condarc
       when: miniconda_add_condarc

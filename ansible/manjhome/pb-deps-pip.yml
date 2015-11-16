@@ -1,14 +1,23 @@
 ---
-- hosts: "{{host}}"
-  user: "{{user}}"
-  sudo: false
+- hosts: "{{hosts}}"
+  become: yes
+  become_user: "{{new_user}}"
+
+  environment: env
 
   tasks:
-    - name: deps-conda variable trace
-      debug: msg="host-{{host}} user-{{user}}"
+    - name: deps-pip variable trace
+      debug: 'msg="hosts: {{hosts}} user: {{user}}"'
 
-    - name: prepare pip libs installer
-      shell: "dos2unix ~/inst_pip.sh"
+    - name: copy pip requirements file
+      copy: src=files/{{item}} dest="/home/{{new_user}}/{{item}}"
+      with_items:
+        - pip-requirements.txt
+
+    - name: copy pip requirements installer file
+      copy: src=files/{{item}} dest="/home/{{new_user}}/{{item}}" mode=0755
+      with_items:
+        - inst_pip.sh
 
     - name: install pip libs
-      shell: "~/inst_pip.sh"
+      shell: "/home/{{new_user}}/inst_pip.sh"

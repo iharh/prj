@@ -1,14 +1,23 @@
 ---
-- hosts: "{{host}}"
-  user: "{{user}}"
-  sudo: false
+- hosts: "{{hosts}}"
+  become: yes
+  become_user: "{{new_user}}"
+
+  environment: env
 
   tasks:
     - name: deps-conda variable trace
-      debug: msg="host-{{host}} user-{{user}}"
+      debug: 'msg="hosts: {{hosts}} user: {{user}}"'
 
-    - name: prepare conda libs installer
-      shell: "dos2unix ~/inst_conda.sh"
+    - name: copy conda requirements file
+      copy: src=files/{{item}} dest="/home/{{new_user}}/{{item}}"
+      with_items:
+        - conda-requirements.txt
+
+    - name: copy conda requirements installer file
+      copy: src=files/{{item}} dest="/home/{{new_user}}/{{item}}" mode=0755
+      with_items:
+        - inst_conda.sh
 
     - name: install conda libs
-      shell: "~/inst_conda.sh"
+      shell: "/home/{{new_user}}/inst_conda.sh"
