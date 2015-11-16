@@ -20,9 +20,6 @@
 #  when: sudoers_tmp_ok|success
 #  command: cp /etc/sudoers.tmp /etc/sudoers
 
-https://gist.github.com/marktheunissen/2979474
-      #get_url: url=http://download.oracle.com/otn-pub/java/jdk/8u5-b13/jdk-8u5-linux-x64.tar.gz dest="home/{{user}}/" headers='Cookie:oraclelicense=accept-securebackup-cookie'
-
 curl -k
 
 other jdk roles
@@ -36,3 +33,19 @@ other jdk roles
     #util_local_action_sudo_enable: false
     ##util_action_become_user: ihar.hancharenka
     ##util_local_action_become_user: iharh
+
+
+williamyeah-jdk:
+
+    - name: set internal vars for 1.8.0_65
+      set_fact:
+        jdk_version:      1.8.0_65
+        jdk_tarball_file: jdk-8u65-linux-x64
+        jdk_tarball_url:  http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64
+      when: java_version == 8 and java_subversion == 65
+
+    - name: get JDK tarball (as RPM file)
+      command: curl -L -H 'Cookie:oraclelicense=accept-securebackup-cookie'  -o {{ jdk_tarball_file }}.rpm  {{ jdk_tarball_url }}.rpm
+      args:
+        creates: "{{ java_download_path }}/jdk-tarball-{{ jdk_version }}"
+        chdir:   "{{ java_download_path }}"
