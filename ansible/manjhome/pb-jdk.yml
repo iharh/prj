@@ -3,29 +3,33 @@
   become: yes
  
   #roles:
-    #- ansiblebit.oracle-java
-
-    #- groover.java
     #- williamyeh.oracle-java
 
   vars:
-    #util_epel_enable: false
-    #util_action_become_enable: false
-    #util_local_action_become_enable: false
-    #util_local_action_sudo_enable: false
-    ##util_action_become_user: ihar.hancharenka
-    ##util_local_action_become_user: iharh
-
-    #java_version: 8
-    #java_subversion: 65
+    java_version: 8
+    java_subversion: 65
     #java_download_path: '/tmp'
-    #java_remove_download: true
+    java_download_path: '/home/ihar.hancharenka'
+    java_remove_download: true
+
+  environment: env
 
   tasks:
     - name: jdk var trace
       debug: 'msg="host: {{hosts}}"'
 
-    - name: jdk install
-      command: "curl -Lk -H 'Cookie:oraclelicense=accept-securebackup-cookie' -o /home/{{ user  }}/jdk-8u5-linux-x64.tar.gz http://download.oracle.com/otn-pub/java/jdk/8u5-b13/jdk-8u5-linux-x64.tar.gz"
+    - name: jdk evn trace
+      command: 'echo http_proxy: $http_proxy  https_proxy: $https_proxy'
 
-      #get_url: url=http://download.oracle.com/otn-pub/java/jdk/8u5-b13/jdk-8u5-linux-x64.tar.gz dest="home/{{user}}/" headers='Cookie:oraclelicense=accept-securebackup-cookie'
+    - name: set internal vars for 1.8.0_65
+      set_fact:
+        jdk_version:      1.8.0_65
+        jdk_tarball_file: jdk-8u65-linux-x64
+        jdk_tarball_url:  http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64
+      when: java_version == 8 and java_subversion == 65
+
+    #- name: get JDK tarball (as RPM file)
+    #  command: curl -L -H 'Cookie:oraclelicense=accept-securebackup-cookie'  -o {{ jdk_tarball_file }}.rpm  {{ jdk_tarball_url }}.rpm
+    #  args:
+    #    creates: "{{ java_download_path }}/jdk-tarball-{{ jdk_version }}"
+    #    chdir:   "{{ java_download_path }}"

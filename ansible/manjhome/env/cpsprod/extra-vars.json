@@ -1,0 +1,6 @@
+{
+  "env": {
+    "http_proxy": "http://proxy-us.clarabridge.net:3128",
+    "https_proxy": "https://proxy-us.clarabridge.net:3128"
+  }
+}

@@ -1,8 +1,4 @@
 ---
-- include: pb-dbg.yml 
-#- include: pb-adduser.yml 
-- include: pb-jdk.yml 
-
 - hosts: "{{hosts}}"
 
   # move to separate vars file later 
@@ -17,3 +13,7 @@
   tasks:
     - name: site-full var trace
       debug: 'msg="hosts: {{hosts}} user: {{user}}"'
+
+#- include: pb-dbg.yml 
+#- include: pb-adduser.yml 
+- include: pb-jdk.yml 
