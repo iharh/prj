@@ -5,9 +5,10 @@ RUN yum -y update && yum -y install sudo dos2unix openssh-clients
 #bzip2 sudo shadow-utils(useradd/del/mod)
 RUN yum -y install epel-release
 RUN yum -y install ansible
-RUN yum -y install man tar curl bzip2 dos2unix git make
+RUN yum -y groupinstall "Development tools"
 RUN yum -y install clang clang-analyzer
 #gcc gcc-c++ gcc-gfortran libgfortran.x86_64
+RUN yum -y install vim man tar curl bzip2 dos2unix git make
 
 # Edit sudoers file
 # To avoid error: sudo: sorry, you must have a tty to run sudo
@@ -42,3 +43,7 @@ USER ${USER_NAME}
 #
 
 COPY a.cpp /home/${USER_NAME}
+RUN sudo chown $(id -un):$(id -gn) ${USER_HOME}/a.cpp
+
+RUN clang++ -std=c++11 a.cpp
+RUN ./a.out 
