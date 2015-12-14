@@ -19,3 +19,5 @@ gradle/*/.gradle/*
 gradle/*/*.log
 mvn/*
 elk/*/.ls/*
+#provis stuff
+docker/clang/filesci/add_host_user.sh

@@ -1,2 +1,2 @@
 #! /bin/sh
-sudo docker run --rm -ti iharh/clang:0.1 /bin/bash
+docker run --rm -ti iharh/clang-c1:0.1 /bin/bash
