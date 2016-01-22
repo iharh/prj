@@ -11,28 +11,29 @@ static std::string parseQuotedString(int &nStart, const std::string &strText)
 
     ++nStart;
     std::cout << "nStart1: " << nStart  << std::endl;
-    while (nStart < strText.length() && strText[nStart] != L'\"')
+    while (nStart < strText.length() && strText[nStart] != '\"')
     {
-        if (L'\\' == strText[nStart])
+        if ('\\' == strText[nStart])
         {
             ++nStart;
             std::cout << "nStart2: " << nStart  << std::endl;
             switch (strText[nStart])
             {
-            case L'\\':
+            case '\\':
+                strRes += strText[nStart];
+                std::cout << "escaped back-slash" << std::endl;
+                break;
+            case '"':
                 strRes += strText[nStart];
                 break;
-            case L'"':
-                strRes += strText[nStart];
+            case 'n':
+                strRes += '\n';
                 break;
-            case L'n':
-                strRes += L'\n';
+            case 'r':
+                strRes += '\r';
                 break;
-            case L'r':
-                strRes += L'\r';
-                break;
-            case L't':
-                strRes += L'\t';
+            case 't':
+                strRes += '\t';
                 break;
             default:
                 std::cout << "Unknown escape sequence" << std::endl;
@@ -60,7 +61,7 @@ int
 main(void)
 {
   std::cout << "start" << std::endl;
-  std::string s1("\"//O-O\\\\\\\\\\\\\"");
+  std::string s1("\"//O-O\\\\\\\\\"");
   std::cout << "s1: " << s1 << std::endl;
   int nStart = 0;
   std::string s2 = parseQuotedString(nStart, s1);
