@@ -2,11 +2,11 @@
 - hosts: "{{hosts}}"
 
   tasks:
-    - name: dbg var trace
+    - name: dpg vars
       debug: 'msg="hosts: {{hosts}} user: {{user}}"'
 
-    - name: dbg evn trace
-      command: 'echo http_proxy: $http_proxy'
+    #- name: dbg evn trace
+    #  command: 'echo http_proxy: $http_proxy'
 
     #- name: run sudo cmd with proxy env vars
     #  command: 'sudo http_proxy=$http_proxy https_proxy=$https_proxy yum repolist'

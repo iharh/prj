@@ -2,9 +2,9 @@
 #- hosts: "{{hosts}}"
 
 - include: pb-dbg.yml 
-- include: pb-yum.yml 
-- include: pb-adduser.yml 
-- include: pb-jdk.yml 
-- include: pb-conda.yml 
-- include: pb-deps-conda.yml 
-- include: pb-deps-pip.yml 
+#- include: pb-yum.yml 
+#- include: pb-adduser.yml 
+#- include: pb-jdk.yml 
+#- include: pb-conda.yml 
+#- include: pb-deps-conda.yml 
+#- include: pb-deps-pip.yml 
