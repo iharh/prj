@@ -17,6 +17,8 @@ libraryDependencies ++= Seq(
     "org.slf4j"                 % "slf4j-log4j12"  % "1.7.12",
     "log4j"                     % "log4j"          % "1.2.17",
 
+    "org.elasticsearch"         % "elasticsearch"  % "1.4.0",
+
     "com.novocode"              % "junit-interface"    % "0.11"    % "test",
     "junit"                     % "junit"              % "4.12"    % "test",
     "org.hamcrest"              % "hamcrest-library"   % "1.3"     % "test"
