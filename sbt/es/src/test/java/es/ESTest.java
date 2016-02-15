@@ -29,8 +29,6 @@ import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.search.SearchType;
 
 import org.elasticsearch.search.aggregations.AggregationBuilders;
-//import org.elasticsearch.search.aggregations.bucket.filter.Filter;
-import org.elasticsearch.search.aggregations.bucket.filter.FilterAggregationBuilder;
 import org.elasticsearch.search.aggregations.bucket.filters.Filters;
 import org.elasticsearch.search.aggregations.bucket.filters.FiltersAggregationBuilder;
 
@@ -103,22 +101,22 @@ public class ESTest {
         final String readAliasName = "read_" + clusterId + "$" + projectId;
         assertTrue(iac.prepareAliasesExist(readAliasName).get().exists());
 
-        final String AGG_NAME = "agg";
+	final String aggregationName = "detectedFeaturesAggregation"; //$NON-NLS-1$
         final String [] fields = new String [] { "cb_bc_brand", "cb_bc_product" };
 
-        final FiltersAggregationBuilder aggregation = AggregationBuilders.filters(AGG_NAME);
+        final FiltersAggregationBuilder aggregations = AggregationBuilders.filters(aggregationName);
 
-        Stream.of(fields).forEach(field -> aggregation.filter(field, FilterBuilders.existsFilter(field)));
+        Stream.of(fields).forEach(field -> aggregations.filter(field, FilterBuilders.existsFilter(field)));
 
         SearchRequestBuilder reqB = client.prepareSearch(readAliasName)
             .setTypes("sentence")
-            .setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
-	    .addAggregation(aggregation)
+            .setSearchType(SearchType.COUNT) // SearchType.DFS_QUERY_THEN_FETCH
+	    .addAggregation(aggregations)
 	    .setSize(0);
 
         SearchResponse resp = reqB.execute().actionGet();
 	    				
-	Filters agg = resp.getAggregations().get(AGG_NAME);
+	Filters agg = resp.getAggregations().get(aggregationName);
 
         Stream.of(fields).forEach(field -> {
             log.info("field: {}", field);
