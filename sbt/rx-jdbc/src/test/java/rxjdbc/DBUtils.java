@@ -32,7 +32,7 @@ public class DBUtils {
         return ConfigFactory.parseFile(getPgPropFile(hostId));
     }
 
-    private static Database getPgDb(String url, String usr, String pwd) throws ClassNotFoundException {
+    public static Database getPgDb(String url, String usr, String pwd) throws ClassNotFoundException {
         Class.forName("org.postgresql.Driver");
         return Database.from(url, usr, pwd);
     }
@@ -57,8 +57,18 @@ public class DBUtils {
         );
     }
     
+    public static Database getPgConfDB(String hostId) throws ClassNotFoundException {
+        final Config conf = getPgConf(hostId);
+        return getPgDb(
+            getDbProp(conf, "url"),
+            getDbProp(conf, "username"),
+            getDbProp(conf, "password")
+        );
+    }
+
     public static Database getDb() throws ClassNotFoundException {
         //return getOraConfDB("epbygomw0024");
-        return getOraConfDB("qa10");
+        return getPgConfDB("epbygomw0024");
+        //return getOraConfDB("qa10");
     }
 }
