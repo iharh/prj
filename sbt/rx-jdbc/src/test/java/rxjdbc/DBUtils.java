@@ -67,8 +67,8 @@ public class DBUtils {
     }
 
     public static Database getDb() throws ClassNotFoundException {
-        //return getOraConfDB("epbygomw0024");
-        return getPgConfDB("epbygomw0024");
+        return getOraConfDB("epbygomw0024");
+        //return getPgConfDB("epbygomw0024");
         //return getOraConfDB("qa10");
     }
 }
