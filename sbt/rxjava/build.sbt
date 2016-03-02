@@ -11,11 +11,11 @@ javacOptions ++= Seq("-encoding", "UTF-8", "-Xlint:unchecked", "-Xlint:deprecati
 testOptions += Tests.Argument(TestFrameworks.JUnit, "-q", "-a")
 
 libraryDependencies ++= Seq(
-    "org.slf4j"                 % "slf4j-api"      % "1.7.12",
-    "org.slf4j"                 % "slf4j-log4j12"  % "1.7.12",
+    "org.slf4j"                 % "slf4j-api"      % "1.7.18",
+    "org.slf4j"                 % "slf4j-log4j12"  % "1.7.18",
     "log4j"                     % "log4j"          % "1.2.17",
 
-    "io.reactivex"              % "rxjava"            % "1.0.14",
+    "io.reactivex"              % "rxjava"            % "1.1.1",
     //"io.reactivex"              % "rxjava-async-util" % "0.21.0",
     // one-jar stuff
     //"commons-lang"              % "commons-lang"   % "2.6"

@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration
+    xmlns="http://clarabridge.com/fx/config"
+>
+    <scheme>english</scheme>
+
+    <types>
+        <untyped priority="10"/>
+        <type name="Informal" priority="15" status="on"/>
+        <type name="Slang" priority="15" status="off"/>
+        <type name="Sentiment" priority="100" status="on"/>
+        <type name="Person" priority="200" status="on"/>
+        <type name="Organization" priority="200" status="on"/>
+        <type name="Location" priority="200" status="on"/>
+        <type name="NamedObject" priority="200" status="on"/>
+        <type name="NamedEntity" priority="300" status="on"/>
+        <type name="Company" priority="300" status="on"/>
+        <type name="Brand" priority="300" status="on"/>
+        <type name="Product" priority="300" status="on"/>
+        <type name="DrugsEntity" priority="8" status="off"/>
+        <type name="Financial" priority="400" status="on" depends-on="Numeric"/>
+        <type name="Phone" priority="70" status="on"/>
+        <type name="Address" priority="100" status="on" depends-on="Numeric"/>
+        <type name="Email" priority="100" status="on" depends-on="Numeric"/>
+        <type name="URL" priority="100" status="on" depends-on="Numeric"/>
+        <type name="Date" priority="100" status="on" depends-on="Numeric"/>
+        <type name="Age" priority="100" status="on" depends-on="Date"/>
+        <type name="Measure" priority="100" status="on"/>
+        <type name="Coordinate" priority="100" status="on"/>
+        <type name="OtherSpecialEntity" priority="500" status="on"/>
+        <type name="Numeric" priority="50" status="on"/>
+        <type name="Chunks" priority="600" status="on"/>
+        <type name="Clause" priority="600" status="on"/>
+        <type name="NonReferential" priority="500" status="on"/>
+        <type name="Emoticon" priority="100" status="on"/>
+		<type name="SocialURL" priority="600" status="on"/>
+    </types>
+
+    <module path="text-parser.jar">
+        <parameters>
+            <!-- Text segment break match pattern:
+                new line, then one more new line or
+                zero-width lookahed for more then two spaces or spaces and dash
+              -->
+            <param name="plain-text.block">\r?\n(?:\r?\n|(?=(?:[ \t]+(?:\-|[ ]{2,}))))</param>
+        </parameters>
+    </module>
+
+    <module path="break-detector">
+        <parameters>
+            <param name="source-axis">MAIN</param>
+            <param name="source-level">HEAD</param>
+            <param name="target-axis">MAIN</param>
+            <param name="target-level">0</param>
+            <param name="target-type">Annotation</param>
+            <param name="mode">split</param>
+            <param name="block-range">SentenceStart;ParagraphStart;BlockStart</param>
+            <param name="chained-rules">false</param>
+            <param name="max-chars">255</param>
+        </parameters>
+        <resource kind="break-rule">shortcuts</resource>
+        <resource kind="break-rule">token-common</resource>
+        <resource kind="break-rule">token-mixed</resource>
+        <resource kind="break-rule" status="off">token-fix-quoted</resource>
+        <resource kind="break-rule" group="lower">shortcuts</resource>
+        <resource kind="break-rule" group="lower">token-common</resource>
+        <resource kind="break-rule" group="lower">token-lower</resource>
+        <resource kind="break-rule" group="lower" status = "off">token-fix-quoted</resource>
+    </module>
+
+    <module path="regexp">
+        <parameters>
+            <param name="max-chars">255</param>
+        </parameters>
+        <resource kind="regexp">clitics</resource>
+        <resource kind="regexp">reg_misspellings</resource>
+        <resource kind="regexp" type="Informal">reg_informal</resource>
+        <resource kind="regexp" type="Slang">reg_slang</resource>
+
+        <resource kind="regexp" type="Financial" priority="500">reg_tickers</resource>
+        <resource kind="regexp" type="Email" priority="500">reg_email</resource>
+        <resource kind="regexp" type="URL" priority="500">reg_url</resource>
+        <resource kind="regexp" type="Date" priority="500">reg_date</resource>
+
+        <resource kind="regexp" type="Financial" priority="500">reg_creditcard</resource>
+        <resource kind="regexp" type="Financial" priority="500">reg_money</resource>
+        <resource kind="regexp" type="Phone">reg_phone</resource>
+        <resource kind="regexp" type="Coordinate" priority="500">reg_latitude</resource>
+        <resource kind="regexp" type="Coordinate" priority="500">reg_longitude</resource>
+        <resource kind="regexp" type="OtherSpecialEntity">reg_iban</resource>
+        <resource kind="regexp" type="OtherSpecialEntity">reg_passport</resource>
+        <resource kind="regexp" type="OtherSpecialEntity">reg_vrn</resource>
+        <resource kind="regexp" type="OtherSpecialEntity">reg_version</resource>
+        <resource kind="regexp">reg_social_media</resource>
+        <resource kind="regexp" type="Emoticon">reg_social_media_smiley</resource>
+	<resource kind="regexp" type="Slang">reg_slang2</resource>
+	<resource kind="regexp" type="Slang">reg_social_media_en</resource>
+	<resource kind="regexp" type="Informal">reg_social_media_en2</resource>
+    </module>
+
+    <module path="break-detector">
+        <parameters>
+            <param name="source-axis">MAIN</param>
+            <param name="source-level">HEAD</param>
+            <param name="target-axis">TextSegmentAxis</param>
+            <param name="target-level">0</param>
+            <param name="target-type">Sentence</param>
+            <param name="mode">merge</param>
+            <param name="block-range">SentenceStart;ParagraphStart;BlockStart</param>
+            <param name="chained-rules">true</param>
+            <param name="max-words">200</param>
+            <param name="max-chars">1000</param>
+            <param name="skip-on-sentence-detection">[ Lexeme: EntityType=="Emoticon" ]</param>
+            <param name="term-set">[[:SentenceBreak=ATerm:][:SentenceBreak=STerm:]]</param>
+            <param name="lower-case-threshold">0.05</param>
+            <param name="upper-case-threshold">0.05</param>
+        </parameters>
+        <resource kind="break-rule">shortcuts</resource>
+        <resource kind="break-rule">sentence-common</resource>
+        <resource kind="break-rule">sentence-mixed</resource>
+        <resource kind="break-rule" status="off">sentence-strict</resource>
+        <resource kind="break-rule" group="lower">shortcuts</resource>
+        <resource kind="break-rule" group="lower">sentence-common</resource>
+        <resource kind="break-rule" group="lower">sentence-lower</resource>
+    </module>
+
+    <module path="regexp">
+        <resource kind="regexp">reg_hyphen</resource>
+        <resource kind="regexp">reg_list_labels</resource>
+    </module>
+
+    <module path="morph">
+        <parameters>
+            <param name="attribute.speech-part">SpeechPart</param>
+            <param name="value.unknown">Unknown</param>
+            <param name="value.delimiter">Delimiter</param>
+        </parameters>
+        <resource kind="morph">Default</resource>
+        <resource kind="morph">Default-CS</resource>
+    </module>
+
+    <module path="gazetteer">
+        <parameters>
+            <param name="attribute.speech-part">SpeechPart</param>
+            <param name="value.unknown">Unknown</param>
+        </parameters>
+        <!-- compound words  -->
+        <resource kind="lexicon">Adjective</resource>
+        <resource kind="lexicon">Adverb</resource>
+        <resource kind="lexicon">Conjunction</resource>
+        <resource kind="lexicon">Noun</resource>
+        <resource kind="lexicon">Numeral</resource>
+        <resource kind="lexicon">Preposition</resource>
+        <resource kind="lexicon" status="off">Pronoun</resource>
+        <resource kind="lexicon">Special</resource>
+        <resource kind="lexicon">Verb</resource>
+	<resource kind="lexicon" status="off">VerbPhrasal</resource>
+
+        <resource kind="lexicon">SentimentModifiers</resource>
+        <resource kind="lexicon">Negative</resource>
+        <resource kind="lexicon">Introductory</resource>
+        <resource kind="lexicon">Misspellings</resource>
+        <resource kind="lexicon">Misspellings2</resource>
+
+        <resource kind="lexicon" type="Slang">Slang</resource>
+        <resource kind="lexicon" type="Informal">Informal</resource>
+        <resource kind="lexicon" type="Informal">SocialMedia</resource>
+
+        <resource kind="lexicon" type="Location">Geography</resource>
+
+        <resource kind="lexicon" type="Company">Organization</resource>
+        <resource kind="lexicon" type="NamedEntity">OrganizationStrongKey</resource>
+        <resource kind="lexicon" type="NamedEntity">PersonStrongKey</resource>
+        <resource kind="lexicon" type="Product">Products</resource>
+        <resource kind="lexicon">Products_ambig</resource>
+        <resource kind="lexicon" type="Brand">Brands</resource>
+        <resource kind="lexicon">Brands_ambig</resource>
+
+        <resource kind="lexicon" type="Financial">Currency</resource>
+        <resource kind="lexicon" type="Financial" priority="1" status="off">_tickers</resource>
+
+        <resource kind="lexicon" type="Date">_Holidays</resource>
+    </module>
+
+    <module path="unkword_en">
+        <resource kind="morph">Default</resource>
+        <resource kind="word-suffixes">wordends</resource>
+        <resource kind="word-prefixes">prefixes</resource>
+    </module>
+
+    <module path="cape">
+
+        <resource kind="engine-config">cape</resource>
+
+        <resource kind="cape-rule">service</resource>
+
+        <resource kind="cape-rule">pos</resource>
+        <resource kind="cape-rule">pos2</resource>
+        <resource kind="cape-rule" type="OtherSpecialEntity">_social_security_number</resource>
+        <resource kind="cape-rule" type="Phone">_phone</resource>
+        <resource kind="cape-rule" type="OtherSpecialEntity">_account_number</resource>
+        <resource kind="cape-rule" type="Address">_address</resource>
+        <resource kind="cape-rule" type="Location">_city_state</resource>
+        <resource kind="cape-rule" type="OtherSpecialEntity">_passport_number</resource>
+        <resource kind="cape-rule" type="OtherSpecialEntity">_vehicle_identification_number</resource>
+        <resource kind="cape-rule" type="OtherSpecialEntity">_vehicle_registration_number</resource>
+        <resource kind="cape-rule" type="Coordinate">_part_coordinate</resource>
+
+        <resource kind="cape-rule" type="Coordinate">_full_coordinate</resource>
+
+        <resource kind="cape-rule" type="Numeric">numeric</resource>
+
+        <resource kind="cape-rule" type="Measure">_measure-nrg</resource>
+        <resource kind="cape-rule" type="Measure">_measure-oth</resource>
+
+        <resource kind="cape-rule" type="Measure">measure_adj</resource>
+
+        <resource kind="cape-rule" type="Date">date_absolute</resource>
+        <resource kind="cape-rule" type="Date">date_relative</resource>
+        <resource kind="cape-rule" type="Date">date_duration</resource>
+        <resource kind="cape-rule" type="Date">_date_holidays</resource>
+
+        <resource kind="cape-rule" type="Date">date_allyears</resource>
+        <resource kind="cape-rule" type="Date">date_twonum</resource>
+
+        <resource kind="cape-rule" type="Date">date_ended</resource>
+
+        <resource kind="cape-rule" type="Date">date_prep</resource>
+
+        <resource kind="cape-rule" type="Age">age</resource>
+
+        <resource kind="cape-rule" type="Numeric">numeric2</resource>
+
+        <resource kind="cape-rule" type="Date">date2</resource>
+        <resource kind="cape-rule" type="Financial">money</resource>
+        <resource kind="cape-rule" type="Numeric">percent</resource>
+
+        <resource kind="cape-rule" type="Numeric">numeral_special</resource>
+
+        <resource kind="cape-rule" type="Financial">money2</resource>
+
+        <resource kind="cape-rule" type="Person">person</resource>
+        <resource kind="cape-rule" type="Organization">organization</resource>
+        <resource kind="cape-rule" type="Location">location</resource>
+
+        <resource kind="cape-rule" type="Slang">slang</resource>
+        <resource kind="cape-rule" type="Informal">informal</resource>
+
+        <resource kind="cape-rule" type="NonReferential">it_nonref</resource>
+		<resource kind="cape-rule">socialmedia</resource>
+        <resource kind="cape-rule">socialmedia2</resource>
+		<resource kind="cape-rule">pos3</resource>
+		<resource kind="cape-rule">ner_product</resource>
+		<resource kind="cape-rule">ner_product2</resource>
+        <resource kind="filter" type="Address">_address_secondary_unit</resource>
+        <resource kind="filter" type="Address">_address_street_suffix</resource>
+        <resource kind="filter" type="Location">states_suffixes</resource>
+        <resource kind="filter" type="Measure">_area_measure</resource>
+        <resource kind="filter" type="Measure">_distance_measure</resource>
+        <resource kind="filter" type="Measure">_energy_measure</resource>
+        <resource kind="filter" type="Measure">_speed_measure</resource>
+        <resource kind="filter" type="Measure">_volume_measure</resource>
+        <resource kind="filter" type="Measure">_weight_measure</resource>
+        <resource kind="filter" type="Measure">_other_measure</resource>
+        <resource kind="filter" type="NonReferential">_dummy_adjective</resource>
+        <resource kind="filter" type="NonReferential">_dummy_adverb</resource>
+        <resource kind="filter" type="NonReferential">_dummy_passive</resource>
+        <resource kind="filter">name_elements</resource>
+        <resource kind="filter">name_elements_cap</resource>
+
+    </module>
+
+    <module path="regexp">
+        <resource kind="regexp" type="Informal">reg_informal2</resource>
+	<resource kind="regexp" type="SocialURL">reg_social_url</resource>
+    </module>
+
+    <module path="postagger_en.jar">
+        <parameters>
+            <param name="num-best">1</param>
+            <param name="ambig.words">that,this,you,your,it,its,to,@,~,&amp;</param>
+            <param name="ambig.speech-parts">Preposition=ConjunctionSubordinate;Aux=Verb;Gerund=ParticipleI;Adjective=ParticipleII;Adverb=NumeralCardinal</param>
+        </parameters>
+        <resource kind="model">pos-generic</resource>
+        <resource kind="pos-dictionary">pos</resource>
+    </module>
+
+    <module path="ner.jar" type="NamedEntity" status = "on">
+        <!--parameters>
+            <param name="trace-file">ner-features.txt</param>
+        </parameters-->
+        <resource kind="model">ner-generic</resource>
+    </module>
+
+    <module path="product.jar" type="DrugsEntity">
+        <parameters>
+            <param name="restrict.SpeechPart">Adjective,Adverb,Noun,Verb,Unknown</param>
+            <!--param name="trace-file">product-features.txt</param-->
+        </parameters>
+        <resource kind="model">drugs</resource>
+    </module>
+
+    <module path="cape" type="Chunks">
+        <resource kind="engine-config">shallow-syntax</resource>
+
+        <resource kind="filter">adverb_preposition</resource>
+        <resource kind="filter">phrasal_preposition</resource>
+        <resource kind="filter">adv_phr_preposition</resource>
+        <resource kind="filter">adv_exclamations</resource>
+
+        <resource kind="cape-rule">syntax_service</resource>
+
+        <resource kind="cape-rule">syntax_idioms</resource>
+		<resource kind="cape-rule">ner_brand</resource>
+
+        <resource kind="cape-rule">np_1</resource>
+        <resource kind="cape-rule">np_2</resource>
+        <resource kind="cape-rule">np_3</resource>
+        <resource kind="cape-rule">np_4</resource>
+
+        <resource kind="cape-rule">np_s</resource>
+        <resource kind="cape-rule">np_coord</resource>
+        <resource kind="cape-rule">np_socialmedia</resource>
+
+        <resource kind="cape-rule">pp</resource>
+        <resource kind="cape-rule">pp_coord</resource>
+
+        <resource kind="cape-rule">np_of</resource>
+        <resource kind="cape-rule">np_spec</resource>
+
+        <resource kind="cape-rule">vp_macro</resource>
+        <resource kind="cape-rule">vp_tenses</resource>
+        <resource kind="cape-rule">vp_tenses_neg</resource>
+        <resource kind="cape-rule">vp_inf</resource>
+        <resource kind="cape-rule">vp_inf_neg</resource>
+        <resource kind="cape-rule">vp_2</resource>
+        <resource kind="cape-rule">vp_modal</resource>
+        <resource kind="cape-rule">vp_3</resource>
+        <resource kind="cape-rule">vp_coord</resource>
+
+        <resource kind="cape-rule">ger_p1</resource>
+        <resource kind="cape-rule">ger_p2</resource>
+
+        <resource kind="cape-rule">advp</resource>
+        <resource kind="cape-rule">adjp</resource>
+
+        <resource kind="cape-rule">thanp</resource>
+
+        <resource kind="cape-rule">ap</resource>
+        <resource kind="cape-rule">ap_coord</resource>
+
+        <resource kind="cape-rule">relp</resource>
+
+        <resource kind="cape-rule">sbar</resource>
+
+        <resource kind="cape-rule">syntax_term</resource>
+    </module>
+
+
+
+    <module path="syntax">
+        <resource kind="engine-config">grammar</resource>
+        <resource kind="filter">phrasal_preposition</resource>
+        <resource kind="filter">adverb_preposition</resource>
+        <resource kind="filter">adv_phr_preposition</resource>
+        <resource kind="filter">mental_verbs</resource>
+        <resource kind="grammar">gram_np</resource>
+        <resource kind="grammar">gram_vp</resource>
+        <resource kind="grammar">gram_pp</resource>
+        <resource kind="grammar">gram_ap</resource>
+        <resource kind="grammar">gram_part</resource>
+        <resource kind="grammar">gram_sbar</resource>
+        <resource kind="grammar">gram_speech</resource>
+    </module>
+
+
+    <module path="post-syntax">
+        <resource kind="engine-config">post-syntax</resource>
+        <resource kind="filter">modality_nonfactive</resource>
+        <resource kind="filter">modality_possibility</resource>
+        <resource kind="filter">modality_necessity</resource>
+        <resource kind="filter">modal_verbs</resource>
+        <resource kind="filter">mental_verbs</resource>
+        <resource kind="filter">phrasal_preposition</resource>
+        <resource kind="filter">conj_but_and</resource>
+        <resource kind="filter">conj</resource>
+        <resource kind="post-syntax">sent_type</resource>
+        <resource kind="post-syntax">np_post</resource>
+        <resource kind="post-syntax">phrasal_verb</resource>
+        <resource kind="post-syntax">pp_str</resource>
+        <resource kind="post-syntax">vp_post</resource>
+        <resource kind="post-syntax">ap_post</resource>
+        <resource kind="post-syntax">coord_post</resource>
+        <resource kind="post-syntax">sbar_post</resource>
+        <resource kind="post-syntax" type="Clause">clause</resource>
+        <resource kind="post-syntax">tam</resource>
+        <resource kind="post-syntax">negation</resource>
+        <resource kind="post-syntax">terminal</resource>
+    </module>
+
+    <module path="pe">
+		<resource kind="engine-config">pe</resource>
+		<resource status="on" kind="template" group="none">service_1</resource>
+		<resource status="on" kind="template" group="none">service_2</resource>
+		<resource status="on" kind="template" group="none">object_attribute_relative</resource>
+		<resource status="on" kind="template" group="object_predicate_infinitive_attribute">object_predicate_infinitive_attribute</resource>
+		<resource status="on" kind="template" group="object_predicate_attribute">object_predicate_attribute</resource>
+		<resource status="on" kind="template" group="attribute_object_subordinatesubject">attribute_object_subordinatesubject</resource>
+		<resource status="on" kind="template" group="object_attribute_predicative">object_attribute_predicative</resource>
+		<resource status="off" kind="template" group="attribute_object_predicative">attribute_object_predicative</resource>
+		<resource status="off" kind="template" group="object_attribute_np_simple">object_attribute_np_simple</resource>
+		<resource status="off" kind="template" group="object_attribute_np_simple">object_attribute_np_simple_predicate</resource>
+		<resource status="off" kind="template" group="object_attribute_infinitive">object_attribute_infinitive</resource>
+		<resource status="off" kind="template" group="object_attribute_infinitive">object_attribute_infinitive_predicate</resource>
+		<resource status="off" kind="template" group="object_attribute_preposition">object_attribute_preposition</resource>
+		<resource status="off" kind="template" group="object_attribute_preposition">object_attribute_preposition_predicate</resource>
+		<resource status="off" kind="template" group="object_attribute_predicate_preposition">object_attribute_predicate_preposition</resource>
+		<resource status="off" kind="template" group="object_attribute_predicate_object">object_attribute_predicate_object</resource>
+		<resource status="off" kind="template" group="object_attribute_predicate_subject">object_attribute_predicate_subject</resource>
+		<resource status="off" kind="template" group="object_attribute_predicate_function">object_attribute_predicate_function</resource>
+		<resource status="on" kind="template" group="object_come_with_attribute">object_come_with_attribute</resource>
+		<resource status="off" kind="template" group="object_come_without_attribute">object_come_without_attribute</resource>
+		<resource status="off" kind="template" group="attribute_of_object">attribute_of_object</resource>
+		<resource status="off" kind="template" group="attribute_to_object">attribute_to_object</resource>
+		<resource status="off" kind="template" group="attribute_objectparticiple">attribute_objectparticiple</resource>
+		<resource status="off" kind="template" group="attribute_objectparticiplesubject">attribute_objectparticiplesubject</resource>
+		<resource status="on" kind="template" group="subordinatewh_attribute_object">subordinatewh_attribute_object</resource>
+		<resource status="on" kind="template" group="object_attribute_predicative_circ">object_attribute_predicative_circ</resource>
+		<resource kind="filter">verb_circumstance</resource>
+		<resource kind="filter">verb_function</resource>
+		<resource kind="filter">verb_experiencer_subject</resource>
+		<resource kind="filter">verb_experiencer_object</resource>
+		<resource kind="filter">noun_lack</resource>
+	</module>
+
+    <module path="anaphora.jar">
+    </module>
+
+    <module path="ctevaluation.jar">
+        <parameters>
+            <param name="cb_content_type">true</param>
+            <param name="cb_content_subtype">true</param>
+        </parameters>
+    	<resource kind="engine-config">ctevaluation</resource>
+    </module>
+</configuration>
