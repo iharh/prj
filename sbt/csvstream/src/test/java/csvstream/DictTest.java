@@ -6,9 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import com.csvreader.CsvWriter;
 
-//import rx.Observable;
 import rx.Observer;
-//import rx.observables.ConnectableObservable;
 import static rx.observables.StringObservable.from;
 import static rx.observables.StringObservable.byLine;
 
@@ -18,14 +16,16 @@ import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.Writer;
 import java.io.OutputStreamWriter;
+import java.io.FileReader;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-//import java.util.List;
-//import java.util.ArrayList;
 
 import static java.nio.charset.StandardCharsets.*;
 
 public class DictTest {
+    private static final Logger log = LoggerFactory.getLogger(DictTest.class);
 
     private class DictItem {
         private String word;
@@ -77,22 +77,20 @@ public class DictTest {
 
     @Test
     public void test1() throws Exception {
-        //final int IDS_SIZE = 7;
-        //List<StatItem> items = new ArrayList<StatItem>(IDS_SIZE);
-        //for (int i = 0; i < IDS_SIZE; ++i)
-        //	items.add(new StatItem(i, i + 1));
-
         //ConnectableObservable<StatItem> o = Observable.from(items).publish();
         //o.subscribe(createStatWriteObserver("w1"));
         //o.subscribe(createStatWriteObserver("w2"));
         //o.connect();
 
-        //final List<String> lines = byLine(
-        //    from(new FileReader("en-words-100.txt"))
-        //)
-        //.toList()
-        //.toBlocking()
-        //.single();
+        byLine(
+            from(new FileReader("dict/in1.txt"))
+        )
+        .filter(
+            (line) -> { return !line.startsWith("#"); }
+        )
+        .subscribe(
+            (line) -> { log.info(line); }
+        );
 
         assertTrue(true);
     }
