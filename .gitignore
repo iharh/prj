@@ -22,3 +22,4 @@ elk/*/.ls/*
 #provis stuff
 docker/clang/filesci/add_host_user.sh
 vagrant/*/.vagrant/*
+vagrant/*/.vagrant
