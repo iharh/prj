@@ -1,9 +1,10 @@
 @echo off
 setlocal
 del /Q %~dp0*.log
-del /Q %~dp0config.xml
+del /Q %~dp0out\*.xml
 ::call sbt.bat test
-call sbt.bat "testOnly *MappingTest"
+call sbt.bat "testOnly *ComponentTest"
+::call sbt.bat "testOnly *MappingTest"
 ::call sbt.bat "testOnly *ConnectTest"
 ::call sbt.bat "testOnly *BaseDecodeTest"
 ::call sbt.bat "testOnly *ConfTest"
