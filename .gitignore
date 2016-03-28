@@ -20,7 +20,9 @@ gradle/*/.gradle/*
 gradle/*/*.log
 mvn/*
 elk/*/.ls/*
+
 #provis stuff
-docker/clang/filesci/add_host_user.sh
+docker/*/filesci/add_host_user.sh
+
 vagrant/*/.vagrant/*
 vagrant/*/.vagrant
