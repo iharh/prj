@@ -30,3 +30,4 @@ docker run $RUN_FLAGS\
  -w /prj\
  $CUR_GROUP/$CUR_NAME_CI:$CUR_VER\
  $RUN_PREF "$RUN_CMD"
+# TODO: use $(realpath --relative-to=/data/wrk/svnmain $(pwd)
