@@ -1,0 +1,5 @@
+[WandiscoGIT]
+name=Wandisco GIT Repo
+baseurl=http://opensource.wandisco.com/centos/$releasever/git/$basearch/
+enabled=1
+gpgcheck=0
