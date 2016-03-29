@@ -31,3 +31,4 @@ docker run $RUN_FLAGS\
  $CUR_GROUP/$CUR_NAME_CI:$CUR_VER\
  $RUN_PREF "$RUN_CMD"
 # TODO: use $(realpath --relative-to=/data/wrk/svnmain $(pwd)
+# http://stackoverflow.com/questions/2172352/in-bash-how-can-i-check-if-a-string-begins-with-some-value
