@@ -2,7 +2,7 @@ FROM centos:7
 # 7 - is the latest one like: centos7.2.1511
 
 RUN yum -y update
-RUN yum -y install sudo which vim curl tar
+RUN yum -y install sudo which vim curl tar unzip
 
 # Edit sudoers file
 # To avoid error: sudo: sorry, you must have a tty to run sudo
@@ -18,16 +18,17 @@ RUN yum -y install epel-release
 #
 # vcs
 #
-RUN rpm --import http://opensource.wandisco.com/RPM-GPG-KEY-WANdisco 
+#RUN rpm --import http://opensource.wandisco.com/RPM-GPG-KEY-WANdisco # later yum warns
+#gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-WANdisco'\
+#gpgkey=http://opensource.wandisco.com/RPM-GPG-KEY-WANdisco'\
 
 RUN echo $'[WandiscoSVN]\n\
 name=Wandisco SVN Repo\n\
 baseurl=http://opensource.wandisco.com/centos/$releasever/svn-1.9/RPMS/$basearch/\n\
 enabled=1\n\
 gpgcheck=1\n\
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-WANdisco'\
+gpgkey=http://opensource.wandisco.com/RPM-GPG-KEY-WANdisco'\
 >> /etc/yum.repos.d/wandisco-svn.repo
-#gpgkey=http://opensource.wandisco.com/RPM-GPG-KEY-WANdisco
 
 RUN yum -y install subversion.x86_64
 
@@ -36,10 +37,36 @@ name=Wandisco GIT Repo\n\
 baseurl=http://opensource.wandisco.com/centos/$releasever/git/$basearch/\n\
 enabled=1\n\
 gpgcheck=1\n\
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-WANdisco'\
+gpgkey=http://opensource.wandisco.com/RPM-GPG-KEY-WANdisco'\
 >> /etc/yum.repos.d/wandisco-git.repo
 
 RUN yum -y install git
+
+#
+# JDK
+#
+
+ENV JAVA_PKG_NAME jdk-8u77-linux-x64
+ENV JAVA_PKG_DIR 8u77-b03
+
+RUN curl -LO http://download.oracle.com/otn-pub/java/jdk/$JAVA_PKG_DIR/$JAVA_PKG_NAME.rpm -H 'Cookie: oraclelicense=accept-securebackup-cookie'\
+  && rpm -i ${JAVA_PKG_NAME}.rpm\
+  && rm -f ${JAVA_PKG_NAME}.rpm\
+  && yum clean all
+
+#
+# gradle
+#
+#  gradle_version: "2.12"
+#  gradle_url: "https://services.gradle.org/distributions/gradle-{{gradle_version}}-all.zip"
+#
+ENV GRADLE_PKG_NAME gradle-2.12-all
+RUN curl -LO https://services.gradle.org/distributions/$GRADLE_PKG_NAME.zip\
+  && unzip $GRADLE_PKG_NAME.zip -d /opt\
+  && rm -f $GRADLE_PKG_NAME.zip
+
+ENV GRADLE_HOME /opt/${GRADLE_PKG_NAME}
+ENV PATH ${PATH}:${GRADLE_HOME}/bin
 
 #
 # create user

@@ -1,0 +1,34 @@
+apply plugin: "cpp"
+
+model {
+    buildTypes {
+        release
+    }
+    //repositories {
+    //    libs(PrebuiltLibraries) {
+    //        scws {
+    //            headers.srcDir "/usr/local/include"
+    //            binaries.withType(SharedLibraryBinary) {
+    //                //sharedLibraryFile = file("/usr/local/lib/libscws.so")
+    //                sharedLibraryFile = file("/usr/local/lib/libscws.so.1")
+    //            }
+    //        }
+    //    }
+    //}
+    components {
+        merge(NativeExecutableSpec) {
+            sources {
+		//c.lib library: 'scws' //, linkage: 'api'
+            }
+        }
+        norm(NativeExecutableSpec) {
+        }
+    }
+}
+
+task inst {
+}
+
+inst.dependsOn {
+    tasks.findAll { task -> task.name.startsWith('install') }
+}
