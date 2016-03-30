@@ -77,6 +77,7 @@ RUN curl -LO https://services.gradle.org/distributions/$GRADLE_PKG_NAME.zip\
 ENV GRADLE_HOME /opt/${GRADLE_NAME}
 ENV PATH ${PATH}:${GRADLE_HOME}/bin
 
+
 #
 # create user
 #
@@ -91,6 +92,12 @@ ENV USER_NAME cld
 ENV USER_HOME /home/${USER_NAME}
 
 USER ${USER_NAME}
+
+#
+# cld2
+#
+
+RUN git clone https://github.com/CLD2Owners/cld2.git ${USER_HOME}/cld2
 
 #
 # volumes
