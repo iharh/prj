@@ -22,6 +22,8 @@ mvn/*
 elk/*/.ls/*
 
 #provis stuff
+docker/*/.gradle
+docker/*/*/.gradle
 docker/*/filesci/add_host_user.sh
 
 vagrant/*/.vagrant/*
