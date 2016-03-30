@@ -4,9 +4,17 @@ FROM centos:7
 RUN yum -y update
 RUN yum -y install sudo which vim curl tar unzip
 
+# ansible
+RUN yum -y install python-setuptools python-paramiko
+RUN easy_install pip
+RUN pip install ansible
+
 # Edit sudoers file
 # To avoid error: sudo: sorry, you must have a tty to run sudo
 RUN sed -i -e "s/Defaults    requiretty.*/Defaults    !requiretty/g" /etc/sudoers
+
+# Fully quoted because of the ': ' on the line
+RUN ansible localhost -m lineinfile -a "dest=/etc/sudoers state=present regexp='^%wheel' line='%wheel ALL=(ALL) NOPASSWD: ALL'"
 
 RUN yum -y install gcc gcc-c++
 
