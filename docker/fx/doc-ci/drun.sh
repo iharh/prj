@@ -29,9 +29,7 @@ fi
 
 #-v $CACHE_DIR/.gradle:$USER_HOME/.gradle\
 docker run $RUN_FLAGS\
- -v $(pwd):/prj\
- -w /prj\
+ -v $SVN_BASE:/prj\
+ -w /prj/$(realpath --relative-to=/data/wrk/svnmain $PWD)\
  $CUR_GROUP/$CUR_NAME_CI:$CUR_VER\
  $RUN_PREF "$RUN_CMD"
-
-# TODO: use $(realpath --relative-to=/data/wrk/svnmain $(pwd)
