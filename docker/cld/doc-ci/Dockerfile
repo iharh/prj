@@ -60,12 +60,13 @@ RUN curl -LO http://download.oracle.com/otn-pub/java/jdk/$JAVA_PKG_DIR/$JAVA_PKG
 #  gradle_version: "2.12"
 #  gradle_url: "https://services.gradle.org/distributions/gradle-{{gradle_version}}-all.zip"
 #
-ENV GRADLE_PKG_NAME gradle-2.12-all
+ENV GRADLE_NAME gradle-2.12
+ENV GRADLE_PKG_NAME ${GRADLE_NAME}-all
 RUN curl -LO https://services.gradle.org/distributions/$GRADLE_PKG_NAME.zip\
   && unzip $GRADLE_PKG_NAME.zip -d /opt\
   && rm -f $GRADLE_PKG_NAME.zip
 
-ENV GRADLE_HOME /opt/${GRADLE_PKG_NAME}
+ENV GRADLE_HOME /opt/${GRADLE_NAME}
 ENV PATH ${PATH}:${GRADLE_HOME}/bin
 
 #
