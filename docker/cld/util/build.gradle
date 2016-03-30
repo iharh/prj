@@ -16,12 +16,10 @@ model {
     //    }
     //}
     components {
-        merge(NativeExecutableSpec) {
-            sources {
+        cld2(NativeExecutableSpec) {
+            //sources {
 		//c.lib library: 'scws' //, linkage: 'api'
-            }
-        }
-        norm(NativeExecutableSpec) {
+            //}
         }
     }
 }
