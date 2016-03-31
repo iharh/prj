@@ -67,9 +67,8 @@ model {
             }
         }
         cld2cli(NativeExecutableSpec) {
-            headers.srcDir '/home/cld/cld2/internal'
             sources {
-		c.lib library: 'cld2' //, linkage: 'api'
+		cpp.lib library: 'cld2' //, linkage: 'api'
                 cpp {
                     source {
                         srcDirs 'src/cld2/cpp'
