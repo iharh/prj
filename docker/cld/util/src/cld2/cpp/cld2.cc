@@ -8,7 +8,8 @@
 int
 main(int argc, char **argv)
 {
-    const char *buffer = "I like my round table";
+    //const char *buffer = "I like my round table";
+    const char *buffer = "我喜欢我的圆桌";
     int buffer_length = strlen(buffer);
 
     bool is_plain_text = true;
@@ -50,7 +51,6 @@ main(int argc, char **argv)
     //}
 
     printf("Detected lang: %d\n", lang);
-    //return lang;
 
     return 0;
 }
