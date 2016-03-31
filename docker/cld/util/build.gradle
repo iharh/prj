@@ -61,7 +61,7 @@ model {
                         include 'compact_lang_det_impl.cc'
                     }
                     exportedHeaders {
-                        srcDirs '/home/cld/cld2/internal'
+                        srcDirs '/home/cld/cld2/public', '/home/cld/cld2/internal'
                     }
                 }
             }
