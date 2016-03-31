@@ -16,13 +16,13 @@ model {
     //    }
     //}
     components {
-        cld2(NativeExecutableSpec) {
+ 	cld2(NativeLibrarySpec) {
             sources {
-		//c.lib library: 'scws' //, linkage: 'api'
                 cpp {
                     source {
-                        srcDirs 'src/cld2/cpp', '/home/cld/cld2/internal'
+                        srcDirs '/home/cld/cld2/internal'
 
+                        //include "**/*.cpp"
                         include 'debug.cc'
 
                         include 'generated_ulscript.cc'
@@ -59,6 +59,20 @@ model {
                         include 'compact_lang_det_hint_code.cc'
 
                         include 'compact_lang_det_impl.cc'
+                    }
+                    exportedHeaders {
+                        srcDirs '/home/cld/cld2/internal'
+                    }
+                }
+            }
+        }
+        cld2cli(NativeExecutableSpec) {
+            headers.srcDir '/home/cld/cld2/internal'
+            sources {
+		c.lib library: 'cld2' //, linkage: 'api'
+                cpp {
+                    source {
+                        srcDirs 'src/cld2/cpp'
 
                         include 'cld2.cc'
                     }

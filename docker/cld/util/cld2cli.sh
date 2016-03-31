@@ -1,5 +1,5 @@
 #! /bin/bash
-EXE=cld2
+EXE=cld2cli
 
 #build/exe/$EXE/$EXE "$@"
 
