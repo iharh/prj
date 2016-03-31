@@ -29,7 +29,7 @@ main(int argc, char **argv)
 
     bool is_reliable = false;
 
-    /*Language lang =*/ CLD2::DetectLanguageSummaryV2(
+    CLD2::Language lang = CLD2::DetectLanguageSummaryV2(
         buffer,
         buffer_length,
         is_plain_text,
@@ -49,7 +49,7 @@ main(int argc, char **argv)
     //    lang = ENGLISH;
     //}
 
-    printf("Hello cld2\n");
+    printf("Detected lang: %d\n", lang);
     //return lang;
 
     return 0;
