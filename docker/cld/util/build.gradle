@@ -15,6 +15,17 @@ model {
     //        }
     //    }
     //}
+
+    binaries {
+        all {
+            cppCompiler.define "NDEBUG"
+            // Define toolchain-specific compiler and linker options
+            if (toolChain in Gcc) {
+                cppCompiler.args '-std=c++11' // "-O2", "-fno-access-control"
+            }
+        }
+    }
+
     components {
  	cld2(NativeLibrarySpec) {
             sources {
@@ -75,6 +86,7 @@ model {
 
                         include 'cld2.cc'
                     }
+
                 }
             }
         }

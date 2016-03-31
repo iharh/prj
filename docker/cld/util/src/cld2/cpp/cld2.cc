@@ -1,9 +1,14 @@
 #include <stdio.h>
 #include <string.h>
 
+#include <memory>
+
 //include "/home/cld/cld2/internal/compact_lang_det_impl.h"
 #include "encodings.h"
 #include "compact_lang_det_impl.h"
+
+#define CSV_IO_NO_THREAD
+#include "csv.h"
 
 int
 main(int argc, char **argv)
