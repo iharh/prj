@@ -13,6 +13,14 @@
 int
 main(int argc, char **argv)
 {
+    io::CSVReader<2> in("a.csv");
+    //in.read_header(io::ignore_extra_column, "vendor", "size", "speed");
+    int n;
+    std::string s;
+    while (in.read_row(n, s)) {
+        printf("readen: %d, %s\n", n, s.c_str());
+    }
+/*
     //const char *buffer = "I like my round table";
     const char *buffer = "我喜欢我的圆桌";
     int buffer_length = strlen(buffer);
@@ -56,6 +64,6 @@ main(int argc, char **argv)
     //}
 
     printf("Detected lang: %d\n", lang);
-
+*/
     return 0;
 }

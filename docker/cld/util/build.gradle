@@ -21,7 +21,7 @@ model {
             cppCompiler.define "NDEBUG"
             // Define toolchain-specific compiler and linker options
             if (toolChain in Gcc) {
-                cppCompiler.args '-std=c++11' // "-O2", "-fno-access-control"
+                cppCompiler.args '-std=c++0x' // "-O2", "-fno-access-control"
             }
         }
     }
