@@ -78,6 +78,9 @@ model {
             }
         }
         cld2cli(NativeExecutableSpec) {
+            binaries.all {
+                cppCompiler.define 'CSV_IO_NO_THREAD'
+            }
             sources {
 		cpp.lib library: 'cld2' //, linkage: 'api'
                 cpp {
@@ -86,7 +89,6 @@ model {
 
                         include 'cld2.cc'
                     }
-
                 }
             }
         }

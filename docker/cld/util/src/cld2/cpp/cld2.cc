@@ -1,29 +1,21 @@
+#include <memory>
+
 #include <stdio.h>
 #include <string.h>
 
-#include <memory>
-
-//include "/home/cld/cld2/internal/compact_lang_det_impl.h"
 #include "encodings.h"
 #include "compact_lang_det_impl.h"
 
-#define CSV_IO_NO_THREAD
 #include "csv.h"
 
 int
 main(int argc, char **argv)
 {
-    io::CSVReader<2> in("a.csv");
+    io::CSVReader<2> in("in.csv");
     //in.read_header(io::ignore_extra_column, "vendor", "size", "speed");
-    int n;
-    std::string s;
-    while (in.read_row(n, s)) {
-        printf("readen: %d, %s\n", n, s.c_str());
-    }
-/*
-    //const char *buffer = "I like my round table";
-    const char *buffer = "我喜欢我的圆桌";
-    int buffer_length = strlen(buffer);
+
+    std::string expectedLang("");
+    std::string text;
 
     bool is_plain_text = true;
 
@@ -43,27 +35,34 @@ main(int argc, char **argv)
 
     bool is_reliable = false;
 
-    CLD2::Language lang = CLD2::DetectLanguageSummaryV2(
-        buffer,
-        buffer_length,
-        is_plain_text,
-        &cldhints,
-        allow_extended_lang,
-        flags,
-        plus_one,
-        language3,
-        percent3,
-        normalized_score3,
-        NULL,
-        &text_bytes,
-        &is_reliable);
+    while (in.read_row(expectedLang, text))
+    {
+        //const char *buffer = "I like my round table";
+        //const char *buffer = "我喜欢我的圆桌";
 
+        CLD2::Language detectedLangCode = CLD2::DetectLanguageSummaryV2(
+            //buffer,
+            //strlen(buffer),
+            text.c_str(),
+            text.size(),
+            is_plain_text,
+            &cldhints,
+            allow_extended_lang,
+            flags,
+            plus_one,
+            language3,
+            percent3,
+            normalized_score3,
+            NULL,
+            &text_bytes,
+            &is_reliable);
+
+        printf("%s, %d, %s\n", expectedLang.c_str(), detectedLangCode, text.c_str());
+    }
     // Default to English
     //if (lang == CLD2::UNKNOWN_LANGUAGE) {
     //    lang = ENGLISH;
     //}
 
-    printf("Detected lang: %d\n", lang);
-*/
     return 0;
 }
