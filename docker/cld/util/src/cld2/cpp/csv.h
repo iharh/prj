@@ -460,9 +460,10 @@ namespace io{
                         }
 
                         int line_end = data_begin;
-                        while(buffer[line_end] != '\n' && line_end != data_end){
+                        while(buffer[line_end] != '\n' && line_end != data_end){ // TODO: '\r'
                                 ++line_end;
                         }
+                        //++line_end; // TODO: on assumption that \r is followed by \n
 
                         if(line_end - data_begin + 1 > block_len){
                                 error::line_length_limit_exceeded err;
@@ -769,6 +770,7 @@ namespace io{
                                         do{
                                                 ++col_begin;
                                                 while(*col_begin != quote){
+                                                        // TODO
                                                         if(*col_begin == '\0')
                                                                 throw error::escaped_string_not_closed();
                                                         ++col_begin;
