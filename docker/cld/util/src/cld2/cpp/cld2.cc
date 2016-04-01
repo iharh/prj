@@ -4,6 +4,7 @@
 #include <string.h>
 
 #include "encodings.h"
+#include "lang_script.h"
 #include "compact_lang_det_impl.h"
 
 #include "csv.h"
@@ -35,12 +36,11 @@ main(int argc, char **argv)
 
     bool is_reliable = false;
 
+    printf("exp-code, exp-id, det-code, det-id, text\n");
     while (in.read_row(expectedLang, text))
     {
-        //const char *buffer = "I like my round table";
-        //const char *buffer = "我喜欢我的圆桌";
-
-        CLD2::Language detectedLangCode = CLD2::DetectLanguageSummaryV2(
+        CLD2::Language expectedLangId = CLD2::GetLanguageFromName(expectedLang.c_str());
+        CLD2::Language detectedLangId = CLD2::DetectLanguageSummaryV2(
             //buffer,
             //strlen(buffer),
             text.c_str(),
@@ -57,12 +57,12 @@ main(int argc, char **argv)
             &text_bytes,
             &is_reliable);
 
-        printf("%s, %d, %s\n", expectedLang.c_str(), detectedLangCode, text.c_str());
+        printf("%s, %d, %s, %d, %s\n"
+            , expectedLang.c_str()
+            , expectedLangId
+            , CLD2::LanguageCode(detectedLangId)
+            , detectedLangId
+            , text.c_str());
     }
-    // Default to English
-    //if (lang == CLD2::UNKNOWN_LANGUAGE) {
-    //    lang = ENGLISH;
-    //}
-
     return 0;
 }
