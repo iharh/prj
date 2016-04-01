@@ -12,8 +12,19 @@
 int
 main(int argc, char **argv)
 {
-    io::CSVReader<2> in("in.csv");
-    //in.read_header(io::ignore_extra_column, "vendor", "size", "speed");
+    if (argc < 1)
+    {
+        printf("Usage: %s <in.csv>\n", argv[0]);
+        return 1;
+    }
+    // template<unsigned column_count,
+    //   class trim_policy = trim_chars<' ', '\t'>,
+    //   class quote_policy = no_quote_escape<','>,
+    //   class overflow_policy = throw_on_overflow,
+    //   class comment_policy = no_comment
+    // >
+    io::CSVReader<2, io::trim_chars<' ', '\t'>, io::double_quote_escape<',','"'> > in(argv[1]);
+    in.read_header(io::ignore_extra_column, "CODE", "TEXT");
 
     std::string expectedLang("");
     std::string text;
@@ -37,8 +48,11 @@ main(int argc, char **argv)
     bool is_reliable = false;
 
     printf("exp-code, exp-id, det-code, det-id, text\n");
-    while (in.read_row(expectedLang, text))
+    size_t rows = 0;
+    size_t rowsMismatch = 0;
+    for (rows = 0; in.read_row(expectedLang, text); ++rows)
     {
+        // printf("%s, %s\n", expectedLang.c_str(), text.c_str());
         CLD2::Language expectedLangId = CLD2::GetLanguageFromName(expectedLang.c_str());
         CLD2::Language detectedLangId = CLD2::DetectLanguageSummaryV2(
             //buffer,
@@ -57,12 +71,18 @@ main(int argc, char **argv)
             &text_bytes,
             &is_reliable);
 
-        printf("%s, %d, %s, %d, %s\n"
-            , expectedLang.c_str()
-            , expectedLangId
-            , CLD2::LanguageCode(detectedLangId)
-            , detectedLangId
-            , text.c_str());
+        if (expectedLangId != detectedLangId)
+        {
+            ++rowsMismatch;
+            printf("%s, %s, %s\n"
+                , expectedLang.c_str()
+                //, expectedLangId
+                , CLD2::LanguageCode(detectedLangId)
+                //, detectedLangId
+                , text.c_str());
+        }
     }
+    printf("\n");
+    printf("rows: %d, rowsMismatch: %d\n", rows, rowsMismatch);
     return 0;
 }
