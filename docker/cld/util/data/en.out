@@ -1,4 +1,4 @@
-exp-code, exp-id, det-code, det-id, text
+#expected, detected, text
 en, un, Came broken.
 en, un, cute
 en, un, pretty doll!
