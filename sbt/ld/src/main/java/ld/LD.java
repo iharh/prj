@@ -39,14 +39,16 @@ public class LD {
         return new NormLangDetector(crossModel, DESIRED_CONFIDENCE_LEVEL);
     }
 
-    public static void process(final NormLangDetector langDetector, String inFileName) throws IOException, ModelCreatorException, MathException {
-        final String expectedCode = "en";
+    public static void process(final NormLangDetector langDetector, String inFileDir, String expectedCode) throws IOException, ModelCreatorException, MathException {
+        System.out.println("#LINE, EXPECTED, DETECTED, TEXT");
 
         final CSVFormat csvFormat = CSVFormat.DEFAULT
             .withIgnoreSurroundingSpaces(true)
             .withHeader("TEXT");
 
+        final String inFileName = inFileDir + "/" + expectedCode + ".csv";
         final CSVParser csvParser = CSVParser.parse(new File(inFileName), UTF_8, csvFormat);
+        int rows = 0;
         for (final CSVRecord r : csvParser) {
             final String text = r.get(0);
 
@@ -58,8 +60,23 @@ public class LD {
             final String detectedCode = res.getConfidenceLevel() > DESIRED_CONFIDENCE_LEVEL ? res.getLangCode() : "un";
 
             if (!expectedCode.equals(detectedCode)) {
-                log.info("expected: {} detected: {}, text: {}", expectedCode, detectedCode, text);
+                System.out.println(Integer.toString(rows + 2) + "," + expectedCode + ","); // + detectedCode + "," text);
             }
+            ++rows;
+        }
+    }
+
+    public static void Main(String [] args) {
+        try {
+            final NormLangDetector langDetector = LD.getLangDetector("/data/wrk/clb/ld");
+
+            final String inFileDir = "/data/wrk/prj/docker/cld/util/data/";
+            final String expectedCode = "en";
+            LD.process(langDetector, inFileDir, expectedCode);
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+            e.printStackTrace(System.err);
+            System.exit(1);
         }
     }
 }

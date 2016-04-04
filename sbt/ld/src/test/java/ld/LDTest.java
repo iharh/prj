@@ -16,8 +16,9 @@ public class LDTest {
     @Test
     public void testDetect() throws Exception {
         final NormLangDetector langDetector = LD.getLangDetector("/data/wrk/clb/ld");
-        final String inFileName = "/data/wrk/prj/docker/cld/util/data/en.csv";
-        LD.process(langDetector, inFileName);
+        final String inFileDir = "/data/wrk/prj/docker/cld/util/data";
+        final String expectedCode = "en";
+        LD.process(langDetector, inFileDir, expectedCode);
         assertTrue(true);
     }
 }
