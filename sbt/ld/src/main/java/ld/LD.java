@@ -23,6 +23,8 @@ import org.slf4j.LoggerFactory;
 
 public class LD {
     private static final Logger log = LoggerFactory.getLogger(LD.class);
+    
+    private static final double DESIRED_CONFIDENCE_LEVEL = 0.01; // 0.5;
 
     public static NormLangDetector getLangDetector(String modelDirName) throws IOException, ModelCreatorException {
         FileNamesCollector modelCollector = new FileNamesCollector();
@@ -34,11 +36,12 @@ public class LD {
         log.info("Found {} model(s)", modelCollector.getFiles().size());
 
         CrossModel crossModel = Compiler.createModel(modelCollector.getFiles());
-        final double desiredConfidenceLevel = 0.01; // 0.5;
-        return new NormLangDetector(crossModel, desiredConfidenceLevel);
+        return new NormLangDetector(crossModel, DESIRED_CONFIDENCE_LEVEL);
     }
 
     public static void process(final NormLangDetector langDetector, String inFileName) throws IOException, ModelCreatorException, MathException {
+        final String expectedCode = "en";
+
         final CSVFormat csvFormat = CSVFormat.DEFAULT
             .withIgnoreSurroundingSpaces(true)
             .withHeader("TEXT");
@@ -52,7 +55,11 @@ public class LD {
 
             Result res = langDetector.analyse(sourceIterator); // throws ModelCreatorException, MathException
 
-            log.info("lang code: {}, conf: {}", res.getLangCode(), Double.toString(res.getConfidenceLevel()));
+            final String detectedCode = res.getConfidenceLevel() > DESIRED_CONFIDENCE_LEVEL ? res.getLangCode() : "un";
+
+            if (!expectedCode.equals(detectedCode)) {
+                log.info("expected: {} detected: {}, text: {}", expectedCode, detectedCode, text);
+            }
         }
     }
 }
