@@ -48,7 +48,7 @@ main(int argc, char **argv)
 
     bool is_reliable = false;
 
-    printf("#expected, detected, text\n");
+    printf("#line, expected, detected, text\n");
     CLD2::Language expectedLangId = CLD2::GetLanguageFromName(expectedLang);
     size_t rows = 0;
     size_t rowsMismatch = 0;
@@ -78,7 +78,8 @@ main(int argc, char **argv)
         if (expectedLangId != detectedLangId)
         {
             ++rowsMismatch;
-            printf("%s, %s, %s\n"
+            printf("%d, %s, %s, %s\n"
+                , (rows + 2)
                 , expectedLang //.c_str()
                 //, expectedLangId
                 , CLD2::LanguageCode(detectedLangId)
