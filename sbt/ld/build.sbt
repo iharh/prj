@@ -18,6 +18,7 @@ libraryDependencies ++= Seq(
 
     "commons-pool"              % "commons-pool"   % "1.6",
     "com.ibm.icu"               % "icu4j"          % "4.6",
+    "org.apache.commons"        % "commons-csv"    % "1.2",
 
     "com.novocode"              % "junit-interface"    % "0.11"    % "test",
     "junit"                     % "junit"              % "4.12"    % "test",
