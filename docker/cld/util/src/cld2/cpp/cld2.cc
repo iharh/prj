@@ -48,6 +48,7 @@ main(int argc, char **argv)
 
     bool is_reliable = false;
 
+    printf("#google cld2\n");
     printf("#line, expected, detected, text\n");
     CLD2::Language expectedLangId = CLD2::GetLanguageFromName(expectedLang);
     size_t rows = 0;

@@ -12,8 +12,8 @@ javacOptions ++= Seq("-encoding", "UTF-8", "-Xlint:unchecked", "-Xlint:deprecati
 testOptions += Tests.Argument(TestFrameworks.JUnit, "-q", "-a")
 
 libraryDependencies ++= Seq(
-    "org.slf4j"                 % "slf4j-api"      % "1.7.12",
-    "org.slf4j"                 % "slf4j-log4j12"  % "1.7.12",
+    "org.slf4j"                 % "slf4j-api"      % "1.7.21",
+    "org.slf4j"                 % "slf4j-log4j12"  % "1.7.21",
     "log4j"                     % "log4j"          % "1.2.17",
 
     "commons-pool"              % "commons-pool"   % "1.6",
@@ -28,3 +28,8 @@ libraryDependencies ++= Seq(
 unmanagedJars in Compile ++= {
     (file("/data/wrk/clb/lib.cb") ** "*.jar").classpath
 }
+
+// sbt one-jar
+seq(com.github.retronym.SbtOneJar.oneJarSettings: _*)
+
+mainClass in (Compile, run) := Some("ld.LD")

@@ -40,6 +40,7 @@ public class LD {
     }
 
     public static void process(final NormLangDetector langDetector, String inFileDir, String expectedCode) throws IOException, ModelCreatorException, MathException {
+        System.out.println("#CLB LD");
         System.out.println("#LINE, EXPECTED, DETECTED, TEXT");
 
         final CSVFormat csvFormat = CSVFormat.DEFAULT
@@ -49,6 +50,7 @@ public class LD {
         final String inFileName = inFileDir + "/" + expectedCode + ".csv";
         final CSVParser csvParser = CSVParser.parse(new File(inFileName), UTF_8, csvFormat);
         int rows = 0;
+        int rowsMismatch = 0;
         for (final CSVRecord r : csvParser) {
             final String text = r.get(0);
 
@@ -60,17 +62,20 @@ public class LD {
             final String detectedCode = res.getConfidenceLevel() > DESIRED_CONFIDENCE_LEVEL ? res.getLangCode() : "un";
 
             if (!expectedCode.equals(detectedCode)) {
-                System.out.println(Integer.toString(rows + 2) + "," + expectedCode + ","); // + detectedCode + "," text);
+                ++rowsMismatch;
+                System.out.println(Integer.toString(rows + 2) + "," + expectedCode + "," + detectedCode + "," + text);
             }
             ++rows;
         }
+        System.out.println("");
+        System.out.println("rows: " + rows + ", rowsMismatch: " + rowsMismatch);
     }
 
-    public static void Main(String [] args) {
+    public static void main(String [] args) {
         try {
             final NormLangDetector langDetector = LD.getLangDetector("/data/wrk/clb/ld");
 
-            final String inFileDir = "/data/wrk/prj/docker/cld/util/data/";
+            final String inFileDir = "/data/wrk/clb/spikes/iharh/ld/selected";
             final String expectedCode = "en";
             LD.process(langDetector, inFileDir, expectedCode);
         } catch (Exception e) {
