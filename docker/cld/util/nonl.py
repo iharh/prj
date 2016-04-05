@@ -10,6 +10,7 @@ with open(ofilename, 'w', newline='') as ofile:
         rdr = csv.reader(ifile, delimiter=',', quotechar='"')
         try:
             for row in rdr:
-                wrtr.writerow(map(lambda x : x.replace('\n', ' '), row))
+                if ''.join(row).strip():
+                    wrtr.writerow(map(lambda x : x.replace('\n', ' '), row))
         except csv.Error as e:
             sys.exit('error at file {}, line {}: {}'.format(ifilename, rdr.line_num, e))
