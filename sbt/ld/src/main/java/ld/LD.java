@@ -30,10 +30,10 @@ public class LD {
         FileNamesCollector modelCollector = new FileNamesCollector();
 
         File modelDir = new File(modelDirName);
-        log.info("Loading language detector models from \"{}\"", modelDir.getCanonicalPath());
+        log.debug("Loading language detector models from \"{}\"", modelDir.getCanonicalPath());
 
         modelCollector.addFileMask(modelDir, "*.ldm");
-        log.info("Found {} model(s)", modelCollector.getFiles().size());
+        log.debug("Found {} model(s)", modelCollector.getFiles().size());
 
         CrossModel crossModel = Compiler.createModel(modelCollector.getFiles());
         return new NormLangDetector(crossModel, DESIRED_CONFIDENCE_LEVEL);
@@ -73,7 +73,8 @@ public class LD {
 
     public static void main(String [] args) {
         try {
-            final NormLangDetector langDetector = LD.getLangDetector("/data/wrk/clb/ld");
+            final String modelDirName = args[1]; // "/data/wrk/clb/ld"
+            final NormLangDetector langDetector = LD.getLangDetector(modelDirName);
 
             final String inFileDir = "/data/wrk/clb/spikes/iharh/ld/selected";
             final String expectedCode = "en";

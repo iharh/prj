@@ -2,6 +2,8 @@
 CUR_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 (cd $CUR_DIR\
     && rm -f *.log\
-    && sbt "run-main ld.LD"\
+    && java -jar $CUR_DIR/target/ld-assembly-0.1-SNAPSHOT.jar ld.LD /data/wrk/clb/ld "$@"\
 )
-#java %JAVA_OPTS% -jar "%~dp0target\dl4j-0.1-SNAPSHOT-one-jar.jar" %EXTRA_ARGS% %* > console.log 2>&1
+    #&& java -jar $CUR_DIR/target/ld-assembly-0.1-SNAPSHOT.jar ld.LD /data/wrk/clb/ld "$@"\
+    #&& sbt "run ld.LD /data/wrk/clb/ld $@"\
+    #&& sbt "run-main ld.LD"\

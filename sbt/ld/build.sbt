@@ -29,7 +29,8 @@ unmanagedJars in Compile ++= {
     (file("/data/wrk/clb/lib.cb") ** "*.jar").classpath
 }
 
-// sbt one-jar
-seq(com.github.retronym.SbtOneJar.oneJarSettings: _*)
+//mainClass in (Compile, run, assembly) := Some("ld.LD")
+mainClass in assembly := Some("ld.LD")
 
-mainClass in (Compile, run) := Some("ld.LD")
+// assembly
+// dependencyUpdates

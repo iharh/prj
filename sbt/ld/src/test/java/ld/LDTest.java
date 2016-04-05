@@ -16,7 +16,7 @@ public class LDTest {
     @Test
     public void testDetect() throws Exception {
         final NormLangDetector langDetector = LD.getLangDetector("/data/wrk/clb/ld");
-        final String inFileDir = "/data/wrk/prj/docker/cld/util/data";
+        final String inFileDir = "/data/wrk/clb/spikes/iharh/ld/selected";
         final String expectedCode = "en";
         LD.process(langDetector, inFileDir, expectedCode);
         assertTrue(true);
