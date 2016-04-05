@@ -45,6 +45,8 @@ public class LD {
 
         final CSVFormat csvFormat = CSVFormat.DEFAULT
             .withIgnoreSurroundingSpaces(true)
+            .withIgnoreEmptyLines(false)
+            .withSkipHeaderRecord(true)
             .withHeader("TEXT");
 
         final String inFileName = inFileDir + "/" + expectedCode + ".csv";
@@ -76,8 +78,8 @@ public class LD {
             final String modelDirName = args[1]; // "/data/wrk/clb/ld"
             final NormLangDetector langDetector = LD.getLangDetector(modelDirName);
 
-            final String inFileDir = "/data/wrk/clb/spikes/iharh/ld/selected";
-            final String expectedCode = "en";
+            final String inFileDir = args[2]; // "/data/wrk/clb/spikes/iharh/ld/selected";
+            final String expectedCode = args[3]; // "en";
             LD.process(langDetector, inFileDir, expectedCode);
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
