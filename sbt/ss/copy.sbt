@@ -22,6 +22,7 @@ copydf := {
         (
 	    (vimfiles ***)
 	    --- (vimfiles / "bundle" ***)
+	    --- (vimfiles / "plugged" ***)
 	    --- (vimfiles ** ".*")
 	)
         +++ (src * "_*rc")
