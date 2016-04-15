@@ -12,7 +12,8 @@ lazy val copyff = taskKey[Unit]("FF bookmarks copy task")
 dstPath := "D:\\dev\\bin\\dotfiles"
 
 copydf := {
-    val dst = file(dstPath.value)
+    //val dst = file(dstPath.value)
+    val dst = file("D:\\dev\\bin\\dotfiles")
     IO.delete(dst)
     IO.createDirectory(dst)
     // IO.copy(...).get map {f => (f, dst / f.getName)})
