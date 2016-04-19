@@ -12,8 +12,7 @@ lazy val copyff = taskKey[Unit]("FF bookmarks copy task")
 dstPath := "D:\\dev\\bin\\dotfiles"
 
 copydf := {
-    //val dst = file(dstPath.value)
-    val dst = file("D:\\dev\\bin\\dotfiles")
+    val dst = file(dstPath.value)
     IO.delete(dst)
     IO.createDirectory(dst)
     // IO.copy(...).get map {f => (f, dst / f.getName)})
@@ -32,7 +31,7 @@ copydf := {
 	//+++ (src / ".unite" / "bookmark" ***)
     )
     val rebasedFilesToCopy = filesToCopy pair Path.rebase(src, dst)
-    // rebasedFilesToCopy foreach {tup => println(tup._2) }
+    //rebasedFilesToCopy foreach {tup => println(tup._2) }
     IO.copy(rebasedFilesToCopy)
     // IO.copyDirectory(src, dst)
 } 
