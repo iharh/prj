@@ -24,6 +24,7 @@ dependencies {
     //compile('org.projectlombok:lombok:1.16.8') // 6
 
     testCompile('org.spockframework:spock-core:1.0-groovy-2.4')
+    testCompile('org.apache.commons:commons-csv:1.2')
 
     testRuntime('commons-lang:commons-lang:2.6')
 }

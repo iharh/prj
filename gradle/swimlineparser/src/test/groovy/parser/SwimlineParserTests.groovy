@@ -6,12 +6,18 @@ import com.clarabridge.common.parser.RuleParserBase
 import com.clarabridge.common.parser.listeners.SwimlineSuggestionParserListener
 import com.clarabridge.common.parser.listeners.SimpleErrorListener
 
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
+
 //import lombok.extern.slf4j.Slf4j
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 import spock.lang.Specification
 import spock.lang.Unroll
+
+import static java.nio.charset.StandardCharsets.*;
 
 //@Slf4j
 class SwimlineParserTests extends Specification {
@@ -20,40 +26,37 @@ class SwimlineParserTests extends Specification {
     SwimlineSuggestionParserListener listener
     SimpleErrorListener errorListener
     
+    CSVFormat csvFormat
+
     def setup() {
         listener = new SwimlineSuggestionParserListener()
         errorListener = new SimpleErrorListener()
-        log.info("SwimlineParserTests setup called !!!")
+        
+        csvFormat = CSVFormat.DEFAULT
+            .withIgnoreSurroundingSpaces(true)
+            .withIgnoreEmptyLines(false)
+            .withSkipHeaderRecord(true)
+            //.withHeader("TEXT");
+
     }
     
     @Unroll
     def "token extraction for suggestion test"() {
         when:
-            def result = RuleParserBase.parse(swimline, listener, errorListener)
+            //def result = RuleParserBase.parse(swimline, listener, errorListener)
+
+            def inFileName = '/data/wrk/industry-templates/categorization/en/lodging/Lodging.csv'
+            def csvParser = CSVParser.parse(new File(inFileName), UTF_8, csvFormat);
+            for (final CSVRecord r : csvParser) {
+                final String text = r.get(0);
+                log.info("text: {}", text)
+            }
+
         then:
             errorListener.getErrors().size() == 0
-            listener.getParserResult().getSimpleTokens().size() == simpleSize
-            listener.getParserResult().getQuotedTokens().size() == quotedSize
-            listener.getParserResult().getWildcardTokens().size() == wildcardSize
-            listener.getParserResult().getMasterTokens().size() == mtokensSize
-        where:
-            swimline << [
-                "",
-                "sony, playstation, ps3 ps4",
-                "sony, \"sony playstation\", ps3 ps4 \"ps \\\" 4\"",
-                "sony \"ps \\\" 4\", sony~2 \"playstation 3\"~4 \"psp\"",
-                "sony sony~2 sony* son?",
-                "sony CITY:\"GOMEL\" ps4 _natural_id:12345",
-                "sony, (playstation  (CITY:\"GOMEL\", ps4))",
-                "((cancel, cancels, cancells, canceled, cancell, canceling, cancelling, cancelled, cancellation, cancellations, cancelation, cancelations) AND (subscription, subscriptions)), unsubscrib*,",
-                "_mtoken:SONY, NOT bad",
-                "_LC:[SONY, NIKON], _doc_time:[20150819180000 TO 20150820175959], _PERIOD(y, -1), SOURCE_URL:\"http://twitter.com\", _mtoken:SONY,, TIME_OF_DAY:\"12:00 UTC\", _catRef:[model:\"Website Online Experience\" path:\"Usability\" node:\"Account Modification\"]",
-                "word, NOT word1 word2",
-                "word, word1 AND word2, word3"
-            ]
-            simpleSize   << [0, 4, 3, 1, 1, 2, 1, 0, 0, 0, 2, 2]
-            quotedSize   << [0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0]
-            wildcardSize << [0, 0, 0, 0, 2, 0, 0, 1, 0, 0, 0, 0]
-            mtokensSize	 << [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0]
+            //listener.getParserResult().getSimpleTokens()
+            //listener.getParserResult().getQuotedTokens()
+            //listener.getParserResult().getWildcardTokens()
+            //listener.getParserResult().getMasterTokens()
     }
 }
