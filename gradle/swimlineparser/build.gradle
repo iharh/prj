@@ -10,15 +10,18 @@ repositories {
 }
 
 dependencies {
+    compile files('/data/wrk/platform/cmp/common/build/libs/clarabridge-common.jar')
+
     compile('org.codehaus.groovy:groovy-all:2.4.5')
 
     compile('org.antlr:antlr4:4.5.1')
 
     compile('org.slf4j:slf4j-api:1.7.12')
-    compile('org.slf4j:slf4j-log4j12:1.7.12')
     compile('log4j:log4j:1.2.17')
+    //compile('org.slf4j:slf4j-log4j12:1.7.12')
+    compile('ch.qos.logback:logback-classic:1.1.7')
 
-    compile files('/data/wrk/platform/cmp/common/build/libs/clarabridge-common.jar')
+    //compile('org.projectlombok:lombok:1.16.8') // 6
 
     testCompile('org.spockframework:spock-core:1.0-groovy-2.4')
 

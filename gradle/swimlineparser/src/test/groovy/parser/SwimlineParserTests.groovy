@@ -6,16 +6,24 @@ import com.clarabridge.common.parser.RuleParserBase
 import com.clarabridge.common.parser.listeners.SwimlineSuggestionParserListener
 import com.clarabridge.common.parser.listeners.SimpleErrorListener
 
+//import lombok.extern.slf4j.Slf4j
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+
 import spock.lang.Specification
 import spock.lang.Unroll
 
+//@Slf4j
 class SwimlineParserTests extends Specification {
+    private static final Logger log = LoggerFactory.getLogger(SwimlineParserTests.class)
+
     SwimlineSuggestionParserListener listener
     SimpleErrorListener errorListener
     
     def setup() {
         listener = new SwimlineSuggestionParserListener()
         errorListener = new SimpleErrorListener()
+        log.info("SwimlineParserTests setup called !!!")
     }
     
     @Unroll
