@@ -33,12 +33,12 @@ class SwimlineParserTests extends Specification {
 
     SimpleErrorListener errorListener
     
-    CSVFormat csvFormat
+    CSVFormat inCsvFormat
 
     def setup() {
         errorListener = new SimpleErrorListener()
         
-        csvFormat = CSVFormat.DEFAULT
+        inCsvFormat = CSVFormat.DEFAULT
             .withIgnoreSurroundingSpaces(true)
             .withIgnoreEmptyLines(false)
             .withSkipHeaderRecord(true)
@@ -49,12 +49,13 @@ class SwimlineParserTests extends Specification {
     @Unroll
     def "token extraction for suggestion test"() {
         when:
-            def inFileName = inFileDir + '/en/lodging/Lodging.csv'
-            def csvParser = CSVParser.parse(new File(inFileName), UTF_8, csvFormat)
+            def inFileName = inFileDir + '/' + lang + '/' + fileFolder + '/' + fileName
+            def csvParser = CSVParser.parse(new File(inFileName), UTF_8, inCsvFormat)
 
             def dataHeaderIndices = []
             def dataHeaderNames = []
 
+            def nodes = []
 
             for (r in csvParser) {
                 if (r.size() < dataHeaderColumns.size()) // skip info
@@ -73,8 +74,17 @@ class SwimlineParserTests extends Specification {
                     continue
                 }
 
+                int idx = 0
+                for (; idx < r.size(); ++idx) { // parse node
+                    if (idx >= levels)
+                        break;
+                    def n = r.get(idx)
+                    if (StringUtils.isNotBlank(n))
+                        nodes[idx] = n
+                }
+
                 int curIdx = 0
-                for (int idx = 0; idx < r.size(); ++idx) { // parse data
+                for (; idx < r.size(); ++idx) { // parse data
                     if (curIdx >= dataHeaderColumns.size())
                         break
 
@@ -99,9 +109,10 @@ class SwimlineParserTests extends Specification {
                     if (tokens.isEmpty())
                         continue
                     
-                    def tokensStr = tokens.stream().collect(Collectors.joining(" "))
+                    def tokensStr = tokens.stream().collect(Collectors.joining(' '))
 
-                    log.info('{} : {}', dataHeaderNames[curIdx], tokensStr)
+                    def node = nodes.stream().collect(Collectors.joining(' -> '))
+                    log.info('{}[{}] : {}', node, dataHeaderNames[curIdx], tokensStr)
 
                     ++curIdx;
                 }
@@ -109,8 +120,11 @@ class SwimlineParserTests extends Specification {
 
         then:
             errorListener.getErrors().size() == 0
-            //listener.getParserResult().getQuotedTokens()
             //listener.getParserResult().getWildcardTokens()
+        where:
+            lang | fileFolder         | fileName              | levels
+            'en' | 'insurance_model'  | 'Insurance_Model.csv' | 3
+            'en' | 'lodging'          | 'Lodging.csv'         | 4
     }
 
     def unquote(String s) {
