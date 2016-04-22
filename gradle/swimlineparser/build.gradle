@@ -25,6 +25,7 @@ dependencies {
 
     testCompile('org.spockframework:spock-core:1.0-groovy-2.4')
     testCompile('org.apache.commons:commons-csv:1.2')
+    testCompile('org.apache.commons:commons-lang3:3.4')
 
     testRuntime('commons-lang:commons-lang:2.6')
 }
