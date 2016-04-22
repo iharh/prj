@@ -27,6 +27,7 @@ import java.util.stream.Collectors
 
 import spock.lang.Specification
 import spock.lang.Unroll
+//import spock.lang.Shared
 
 import static java.nio.charset.StandardCharsets.*;
 
@@ -46,6 +47,10 @@ class SwimlineParserTests extends Specification {
 
     static final double DESIRED_CONFIDENCE_LEVEL = 0.01; // 0.5;
 
+    def setupSpec() {
+        log.info('{}, {}, {}, {}, {}', 'MODEL', 'LANG', 'TOTAL', 'UN', 'WRONG')
+    }
+
     def setup() {
         errorListener = new SimpleErrorListener()
         
@@ -58,6 +63,7 @@ class SwimlineParserTests extends Specification {
         def modelDirName = '/data/wrk/clb/ld'
         langDetector = getLangDetector(modelDirName);
     }
+
 
     def getLangDetector(String modelDirName) { //throws IOException, ModelCreatorException {
         def modelCollector = new FileNamesCollector()
@@ -170,11 +176,12 @@ class SwimlineParserTests extends Specification {
             errorListener.getErrors().size() >= 0
             //listener.getParserResult().getWildcardTokens()
         where:
-            lang | fileFolder             | fileName               | levels
-            'en' | 'high_tech_computing'  | 'High_Tech_Computing'  | 3
-            'en' | 'hr_employee_feedback' | 'HR_Employee_Feedback' | 2
-            'en' | 'insurance_model'      | 'Insurance_Model'      | 3
-            'en' | 'lodging'              | 'Lodging'              | 4
+            lang | fileFolder                       | fileName                         | levels
+            'en' | 'food_beverage_experience_model' | 'Food_Beverage_Experience_Model' | 3
+            'en' | 'high_tech_computing'            | 'High_Tech_Computing'            | 3
+            'en' | 'hr_employee_feedback'           | 'HR_Employee_Feedback'           | 2
+            'en' | 'insurance_model'                | 'Insurance_Model'                | 3
+            'en' | 'lodging'                        | 'Lodging'                        | 4
     }
 
     def unquote(String s) {
