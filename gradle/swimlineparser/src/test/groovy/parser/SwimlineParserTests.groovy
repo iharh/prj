@@ -177,11 +177,46 @@ class SwimlineParserTests extends Specification {
             //listener.getParserResult().getWildcardTokens()
         where:
             lang | fileFolder                       | fileName                         | levels
+            'de' | 'basic_emotions'                 | 'Basic_Emotions'                 | 3
+            'de' | 'high_tech_computing'            | 'High_Tech_Computing'            | 3
+            'de' | 'lodging'                        | 'Lodging'                        | 3
+            'de' | 'restaurants'                    | 'Restaurants'                    | 3
+            'de' | 'retail_online'                  | 'Retail_Online'                  | 3
+            'de' | 'retail_store'                   | 'Retail_Store'                   | 3
+            //
+            'en' | 'automotive'                     | 'Automotive'                     | 3
+            'en' | 'banking_institutional'          | 'Banking_Institutional'          | 3
+            'en' | 'banking_retail'                 | 'Banking_Retail'                 | 3
+            'en' | 'basic_emotions'                 | 'Basic_Emotions'                 | 3
+            'en' | 'categorization_library'         | 'Categorization_Library'         | 4
+            'en' | 'customer_escalation'            | 'Customer_Escalation'            | 3
+            'en' | 'customer_profiles'              | 'Customer_Profiles'              | 4
+            'en' | 'customer_support'               | 'Customer_Support'               | 3
+            'en' | 'engage_model'                   | 'Engage_Model'                   | 3
             'en' | 'food_beverage_experience_model' | 'Food_Beverage_Experience_Model' | 3
             'en' | 'high_tech_computing'            | 'High_Tech_Computing'            | 3
             'en' | 'hr_employee_feedback'           | 'HR_Employee_Feedback'           | 2
             'en' | 'insurance_model'                | 'Insurance_Model'                | 3
             'en' | 'lodging'                        | 'Lodging'                        | 4
+            'en' | 'loyalty_programs'               | 'Loyalty_Programs'               | 3
+            'en' | 'marketing_and_advertising'      | 'Marketing_and_Advertising'      | 3
+            'en' | 'restaurants'                    | 'Restaurants'                    | 3
+            //
+            'es' | 'automotive'                     | 'Automotive'                     | 3
+            'es' | 'banking_institutional'          | 'Banking_Institutional'          | 3
+            'es' | 'banking_retail'                 | 'Banking_Retail'                 | 3
+            'es' | 'basic_emotions'                 | 'Basic_Emotions'                 | 3
+            'es' | 'categorization_library'         | 'Categorization_Library'         | 2
+            'es' | 'customer_escalation'            | 'Customer_Escalation'            | 3
+            'es' | 'customer_profiles'              | 'Customer_Profiles'              | 4
+            'es' | 'customer_support'               | 'Customer_Support'               | 3
+            //
+            'fr' | 'basic_emotions'                 | 'Basic_Emotions'                 | 3
+            'fr' | 'high_tech_computing'            | 'High_Tech_Computing'            | 3
+            'fr' | 'lodging'                        | 'Lodging'                        | 3
+            'fr' | 'restaurants'                    | 'Restaurants'                    | 3
+            'fr' | 'retail_online'                  | 'Retail_Online'                  | 3
+            'fr' | 'retail_store'                   | 'Retail_Store'                   | 3
     }
 
     def unquote(String s) {
