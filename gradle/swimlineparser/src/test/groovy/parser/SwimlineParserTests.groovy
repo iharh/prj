@@ -176,47 +176,75 @@ class SwimlineParserTests extends Specification {
             errorListener.getErrors().size() >= 0
             //listener.getParserResult().getWildcardTokens()
         where:
-            lang | fileFolder                       | fileName                         | levels
-            'de' | 'basic_emotions'                 | 'Basic_Emotions'                 | 3
-            'de' | 'high_tech_computing'            | 'High_Tech_Computing'            | 3
-            'de' | 'lodging'                        | 'Lodging'                        | 3
-            'de' | 'restaurants'                    | 'Restaurants'                    | 3
-            'de' | 'retail_online'                  | 'Retail_Online'                  | 3
-            'de' | 'retail_store'                   | 'Retail_Store'                   | 3
+            lang | fileFolder                            | fileName                              | levels
+            'de' | 'basic_emotions'                      | 'Basic_Emotions'                      | 3
+            'de' | 'high_tech_computing'                 | 'High_Tech_Computing'                 | 3
+            'de' | 'lodging'                             | 'Lodging'                             | 3
+            'de' | 'restaurants'                         | 'Restaurants'                         | 3
+            'de' | 'retail_online'                       | 'Retail_Online'                       | 3
+            'de' | 'retail_store'                        | 'Retail_Store'                        | 3
             //
-            'en' | 'automotive'                     | 'Automotive'                     | 3
-            'en' | 'banking_institutional'          | 'Banking_Institutional'          | 3
-            'en' | 'banking_retail'                 | 'Banking_Retail'                 | 3
-            'en' | 'basic_emotions'                 | 'Basic_Emotions'                 | 3
-            'en' | 'categorization_library'         | 'Categorization_Library'         | 4
-            'en' | 'customer_escalation'            | 'Customer_Escalation'            | 3
-            'en' | 'customer_profiles'              | 'Customer_Profiles'              | 4
-            'en' | 'customer_support'               | 'Customer_Support'               | 3
-            'en' | 'engage_model'                   | 'Engage_Model'                   | 3
-            'en' | 'food_beverage_experience_model' | 'Food_Beverage_Experience_Model' | 3
-            'en' | 'high_tech_computing'            | 'High_Tech_Computing'            | 3
-            'en' | 'hr_employee_feedback'           | 'HR_Employee_Feedback'           | 2
-            'en' | 'insurance_model'                | 'Insurance_Model'                | 3
-            'en' | 'lodging'                        | 'Lodging'                        | 4
-            'en' | 'loyalty_programs'               | 'Loyalty_Programs'               | 3
-            'en' | 'marketing_and_advertising'      | 'Marketing_and_Advertising'      | 3
-            'en' | 'restaurants'                    | 'Restaurants'                    | 3
+            'en' | 'automotive'                          | 'Automotive'                          | 3
+            'en' | 'banking_institutional'               | 'Banking_Institutional'               | 3
+            'en' | 'banking_retail'                      | 'Banking_Retail'                      | 3
+            'en' | 'basic_emotions'                      | 'Basic_Emotions'                      | 3
+            'en' | 'categorization_library'              | 'Categorization_Library'              | 4
+            'en' | 'customer_escalation'                 | 'Customer_Escalation'                 | 3
+            'en' | 'customer_profiles'                   | 'Customer_Profiles'                   | 4
+            'en' | 'customer_support'                    | 'Customer_Support'                    | 3
+            'en' | 'engage_model'                        | 'Engage_Model'                        | 3
+            'en' | 'food_beverage_experience_model'      | 'Food_Beverage_Experience_Model'      | 3
+            'en' | 'high_tech_computing'                 | 'High_Tech_Computing'                 | 3
+            'en' | 'hr_employee_feedback'                | 'HR_Employee_Feedback'                | 2
+            'en' | 'insurance_model'                     | 'Insurance_Model'                     | 3
+            'en' | 'lodging'                             | 'Lodging'                             | 4
+            'en' | 'loyalty_programs'                    | 'Loyalty_Programs'                    | 3
+            'en' | 'marketing_and_advertising'           | 'Marketing_and_Advertising'           | 3
+            'en' | 'restaurants'                         | 'Restaurants'                         | 3
+            'en' | 'retail_online'                       | 'Retail_Online'                       | 3
+            'en' | 'retail_product_evaluation'           | 'Retail_Product_Evaluation'           | 3
+            'en' | 'retail_store'                        | 'Retail_Store'                        | 3
+            'en' | 'social_media_categorization_library' | 'Social_Media_Categorization_Library' | 3
+            'en' | 'suggestions'                         | 'Suggestions'                         | 3
+            'en' | 'telecom_mobile'                      | 'Telecom_Mobile'                      | 3
+            'en' | 'transportation'                      | 'Transportation'                      | 3
+            'en' | 'website_online_experience'           | 'Website_Online_Experience'           | 3
             //
-            'es' | 'automotive'                     | 'Automotive'                     | 3
-            'es' | 'banking_institutional'          | 'Banking_Institutional'          | 3
-            'es' | 'banking_retail'                 | 'Banking_Retail'                 | 3
-            'es' | 'basic_emotions'                 | 'Basic_Emotions'                 | 3
-            'es' | 'categorization_library'         | 'Categorization_Library'         | 2
-            'es' | 'customer_escalation'            | 'Customer_Escalation'            | 3
-            'es' | 'customer_profiles'              | 'Customer_Profiles'              | 4
-            'es' | 'customer_support'               | 'Customer_Support'               | 3
+            'es' | 'automotive'                          | 'Automotive'                          | 3
+            'es' | 'banking_institutional'               | 'Banking_Institutional'               | 3
+            'es' | 'banking_retail'                      | 'Banking_Retail'                      | 3
+            'es' | 'basic_emotions'                      | 'Basic_Emotions'                      | 3
+            'es' | 'categorization_library'              | 'Categorization_Library'              | 2
+            'es' | 'customer_escalation'                 | 'Customer_Escalation'                 | 3
+            'es' | 'customer_profiles'                   | 'Customer_Profiles'                   | 4
+            'es' | 'customer_support'                    | 'Customer_Support'                    | 3
+            'es' | 'high_tech_computing'                 | 'High_Tech_Computing'                 | 3
+            'es' | 'hr_employee_feedback'                | 'HR_Employee_Feedback'                | 2
+            'es' | 'lodging'                             | 'Lodging'                             | 3
+            'es' | 'marketing_and_advertising'           | 'Marketing_and_Advertising'           | 3
+            'es' | 'restaurants'                         | 'Restaurants'                         | 3
+            'es' | 'retail_online'                       | 'Retail_Online'                       | 3
+            'es' | 'retail_store'                        | 'Retail_Store'                        | 3
+            'es' | 'social_media_categorization_library' | 'Social_Media_Categorization_Library' | 3
+            'es' | 'suggestions'                         | 'Suggestions'                         | 3
+            'es' | 'telecom_mobile'                      | 'Telecom_Mobile'                      | 3
+            'es' | 'transportation'                      | 'Transportation'                      | 3
+            'en' | 'website_online_experience'           | 'Website_Online_Experience'           | 3
             //
-            'fr' | 'basic_emotions'                 | 'Basic_Emotions'                 | 3
-            'fr' | 'high_tech_computing'            | 'High_Tech_Computing'            | 3
-            'fr' | 'lodging'                        | 'Lodging'                        | 3
-            'fr' | 'restaurants'                    | 'Restaurants'                    | 3
-            'fr' | 'retail_online'                  | 'Retail_Online'                  | 3
-            'fr' | 'retail_store'                   | 'Retail_Store'                   | 3
+            'fr' | 'basic_emotions'                      | 'Basic_Emotions'                      | 3
+            'fr' | 'high_tech_computing'                 | 'High_Tech_Computing'                 | 3
+            'fr' | 'lodging'                             | 'Lodging'                             | 3
+            'fr' | 'restaurants'                         | 'Restaurants'                         | 3
+            'fr' | 'retail_online'                       | 'Retail_Online'                       | 3
+            'fr' | 'retail_store'                        | 'Retail_Store'                        | 3
+            //
+            'it' | 'basic_emotions'                      | 'Basic_Emotions'                      | 3
+            'it' | 'high_tech_computing'                 | 'High_Tech_Computing'                 | 3
+            'it' | 'lodging'                             | 'Lodging'                             | 3
+            'it' | 'restaurants'                         | 'Restaurants'                         | 3
+            'it' | 'retail_online'                       | 'Retail_Online'                       | 3
+            'it' | 'retail_store'                        | 'Retail_Store'                        | 3
+            //
     }
 
     def unquote(String s) {
