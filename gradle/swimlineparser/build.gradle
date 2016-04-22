@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     compile files('/data/wrk/platform/cmp/common/build/libs/clarabridge-common.jar')
+    compile files('/data/wrk/clb/lib.cb/lang-detector.jar')
 
     compile('org.codehaus.groovy:groovy-all:2.4.5')
 
@@ -28,4 +29,6 @@ dependencies {
     testCompile('org.apache.commons:commons-lang3:3.4')
 
     testRuntime('commons-lang:commons-lang:2.6')
+    testRuntime('commons-pool:commons-pool:1.6')
+    testRuntime('com.ibm.icu:icu4j:4.6')
 }

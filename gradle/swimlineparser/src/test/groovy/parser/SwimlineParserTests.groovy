@@ -1,6 +1,13 @@
 package parser
 
-import simple.Simple
+import com.clarabridge.transformer.ld.CrossModel;
+import com.clarabridge.transformer.ld.NormLangDetector;
+import com.clarabridge.transformer.ld.StringSourceIterator;
+import com.clarabridge.transformer.ld.NormCrossModelScorer.Result;
+import com.clarabridge.transformer.ld.compiler.Compiler;
+import com.clarabridge.transformer.ld.utils.FileNamesCollector;
+//import com.clarabridge.transformer.ld.exceptions.ModelCreatorException;
+//import com.clarabridge.transformer.ld.exceptions.MathException;
 
 import com.clarabridge.common.parser.RuleParserBase
 import com.clarabridge.common.parser.listeners.SwimlineSuggestionParserListener
@@ -35,6 +42,10 @@ class SwimlineParserTests extends Specification {
     
     CSVFormat inCsvFormat
 
+    NormLangDetector langDetector
+
+    static final double DESIRED_CONFIDENCE_LEVEL = 0.01; // 0.5;
+
     def setup() {
         errorListener = new SimpleErrorListener()
         
@@ -44,8 +55,23 @@ class SwimlineParserTests extends Specification {
             .withSkipHeaderRecord(true)
             //.withHeader("TEXT");
 
+        def modelDirName = '/data/wrk/clb/ld'
+        langDetector = getLangDetector(modelDirName);
     }
-    
+
+    def getLangDetector(String modelDirName) { //throws IOException, ModelCreatorException {
+        def modelCollector = new FileNamesCollector()
+
+        def modelDir = new File(modelDirName)
+        log.debug('Loading language detector models from "{}"', modelDir.getCanonicalPath())
+
+        modelCollector.addFileMask(modelDir, '*.ldm');
+        log.debug('Found {} model(s)', modelCollector.getFiles().size());
+
+        def crossModel = Compiler.createModel(modelCollector.getFiles());
+        new NormLangDetector(crossModel, DESIRED_CONFIDENCE_LEVEL);
+    }
+
     @Unroll
     def "token extraction for suggestion test"() {
         when:
@@ -92,6 +118,9 @@ class SwimlineParserTests extends Specification {
                         continue
 
                     def swimline = r.get(idx)
+                    def headerName = dataHeaderNames[curIdx]
+                    ++curIdx;
+
                     if (StringUtils.isBlank(swimline))
                         continue
 
@@ -109,12 +138,18 @@ class SwimlineParserTests extends Specification {
                     if (tokens.isEmpty())
                         continue
                     
-                    def tokensStr = tokens.stream().collect(Collectors.joining(' '))
+                    def text = tokens.stream().collect(Collectors.joining(' '))
 
+                    int maxWidthToTest = text.length()
+                    def sourceIterator =  new StringSourceIterator(text, maxWidthToTest)
+                    def res = langDetector.analyse(sourceIterator) // throws ModelCreatorException, MathException
+
+                    def detectedCode = res.getConfidenceLevel() > DESIRED_CONFIDENCE_LEVEL ? res.getLangCode() : "un";
+                    if (detectedCode == lang)
+                        continue
+                    
                     def node = nodes.stream().collect(Collectors.joining(' -> '))
-                    log.info('{}[{}] : {}', node, dataHeaderNames[curIdx], tokensStr)
-
-                    ++curIdx;
+                    log.info('{} : {}[{}] : {}', detectedCode, node, headerName, text)
                 }
             }
 
