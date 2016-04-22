@@ -75,13 +75,17 @@ class SwimlineParserTests extends Specification {
     @Unroll
     def "token extraction for suggestion test"() {
         when:
-            def inFileName = inFileDir + '/' + lang + '/' + fileFolder + '/' + fileName
+            def inFileName = inFileDir + '/' + lang + '/' + fileFolder + '/' + fileName + '.csv'
             def csvParser = CSVParser.parse(new File(inFileName), UTF_8, inCsvFormat)
 
             def dataHeaderIndices = []
             def dataHeaderNames = []
 
             def nodes = []
+
+            int slTotal = 0
+            int slUnknown = 0
+            int slWrong = 0
 
             for (r in csvParser) {
                 if (r.size() < dataHeaderColumns.size()) // skip info
@@ -143,23 +147,33 @@ class SwimlineParserTests extends Specification {
                     int maxWidthToTest = text.length()
                     def sourceIterator =  new StringSourceIterator(text, maxWidthToTest)
                     def res = langDetector.analyse(sourceIterator) // throws ModelCreatorException, MathException
+                    ++slTotal
 
-                    def detectedCode = res.getConfidenceLevel() > DESIRED_CONFIDENCE_LEVEL ? res.getLangCode() : "un";
+                    def node = nodes.stream().collect(Collectors.joining(' -> '))
+                    if (res.getConfidenceLevel() <= DESIRED_CONFIDENCE_LEVEL) {
+                        log.debug('{} : {}[{}] : {}', 'un', node, headerName, text)
+                        ++slUnknown
+                        continue
+                    }
+
+                    def detectedCode = res.getLangCode()
                     if (detectedCode == lang)
                         continue
                     
-                    def node = nodes.stream().collect(Collectors.joining(' -> '))
-                    log.info('{} : {}[{}] : {}', detectedCode, node, headerName, text)
+                    ++slWrong
+                    log.debug('{} : {}[{}] : {}', detectedCode, node, headerName, text)
                 }
             }
+            log.info('{}, {}, {}, {}, {}', fileName, lang, slTotal, slUnknown, slWrong)
 
         then:
-            errorListener.getErrors().size() == 0
+            errorListener.getErrors().size() >= 0
             //listener.getParserResult().getWildcardTokens()
         where:
-            lang | fileFolder         | fileName              | levels
-            'en' | 'insurance_model'  | 'Insurance_Model.csv' | 3
-            'en' | 'lodging'          | 'Lodging.csv'         | 4
+            lang | fileFolder             | fileName               | levels
+            'en' | 'hr_employee_feedback' | 'HR_Employee_Feedback' | 2
+            'en' | 'insurance_model'      | 'Insurance_Model'      | 3
+            'en' | 'lodging'              | 'Lodging'              | 4
     }
 
     def unquote(String s) {
