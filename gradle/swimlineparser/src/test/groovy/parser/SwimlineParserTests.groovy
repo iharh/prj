@@ -171,6 +171,7 @@ class SwimlineParserTests extends Specification {
             //listener.getParserResult().getWildcardTokens()
         where:
             lang | fileFolder             | fileName               | levels
+            'en' | 'high_tech_computing'  | 'High_Tech_Computing'  | 3
             'en' | 'hr_employee_feedback' | 'HR_Employee_Feedback' | 2
             'en' | 'insurance_model'      | 'Insurance_Model'      | 3
             'en' | 'lodging'              | 'Lodging'              | 4
