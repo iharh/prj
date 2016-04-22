@@ -245,6 +245,33 @@ class SwimlineParserTests extends Specification {
             'it' | 'retail_online'                       | 'Retail_Online'                       | 3
             'it' | 'retail_store'                        | 'Retail_Store'                        | 3
             //
+            'ja' | 'basic_emotions'                      | 'Basic_Emotions'                      | 3
+            'ja' | 'high_tech_computing'                 | 'High_Tech_Computing'                 | 3
+            'ja' | 'lodging'                             | 'Lodging'                             | 3
+            'ja' | 'restaurants'                         | 'Restaurants'                         | 3
+            'ja' | 'retail_online'                       | 'Retail_Online'                       | 3
+            'ja' | 'retail_store'                        | 'Retail_Store'                        | 3
+            //
+            'nl' | 'basic_emotions'                      | 'Basic_Emotions'                      | 3
+            'nl' | 'high_tech_computing'                 | 'High_Tech_Computing'                 | 3
+            'nl' | 'lodging'                             | 'Lodging'                             | 3
+            'nl' | 'restaurants'                         | 'Restaurants'                         | 3
+            'nl' | 'retail_online'                       | 'Retail_Online'                       | 3
+            'nl' | 'retail_store'                        | 'Retail_Store'                        | 3
+            //
+            'pt' | 'basic_emotions'                      | 'Basic_Emotions'                      | 3
+            'pt' | 'high_tech_computing'                 | 'High_Tech_Computing'                 | 3
+            'pt' | 'lodging'                             | 'Lodging'                             | 3
+            'pt' | 'restaurants'                         | 'Restaurants'                         | 3
+            'pt' | 'retail_online'                       | 'Retail_Online'                       | 3
+            'pt' | 'retail_store'                        | 'Retail_Store'                        | 3
+            //
+            'zh' | 'basic_emotions'                      | 'Basic_Emotions'                      | 3
+            'zh' | 'high_tech_computing'                 | 'High_Tech_Computing'                 | 3
+            'zh' | 'lodging'                             | 'Lodging'                             | 3
+            'zh' | 'restaurants'                         | 'Restaurants'                         | 3
+            'zh' | 'retail_online'                       | 'Retail_Online'                       | 3
+            'zh' | 'retail_store'                        | 'Retail_Store'                        | 3
     }
 
     def unquote(String s) {
