@@ -25,7 +25,7 @@ def single_file_preprocessing(input_filename, output_filename, return_option='bo
             exclude = set(string.punctuation)
             s = ''.join(ch for ch in sentence if ch not in exclude)
             sentences.append(s)
-            if (count % 1000 == 0):
+            if (count % 100000 == 0):
                 print str(count) + "/" + str(total) + " lines processed"
         if return_option == "boolean":
             f_out = open(output_filename, 'w')
@@ -68,20 +68,20 @@ def files_preprocessing(input_files, output_files, combined=True):
         print "Not all files were successfully processed."
     return valid
 
-def test():
+def prepare():
     print "start preparation"
     out_data = 'out/data/de_data'
     files_preprocessing([
-        'in/news.2015.de.shuffled'
-        , 'in/news.2014.de.shuffled'
-        , 'in/news.2013.de.shuffled'
-        , 'in/news.2012.de.shuffled'
-        , 'in/news.2011.de.shuffled'
-        , 'in/news.2010.de.shuffled'
-        , 'in/news.2009.de.shuffled'
-        , 'in/news.2008.de.shuffled'
-        , 'in/news.2007.de.shuffled'
+        'in/de/news.2015.de.shuffled'
+        , 'in/de/news.2014.de.shuffled'
+        , 'in/de/news.2013.de.shuffled'
+        , 'in/de/news.2012.de.shuffled'
+        , 'in/de/news.2011.de.shuffled'
+        , 'in/de/news.2010.de.shuffled'
+        , 'in/de/news.2009.de.shuffled'
+        , 'in/de/news.2008.de.shuffled'
+        , 'in/de/news.2007.de.shuffled'
     ], [out_data])
     print "complete preparation"
 
-test()
+prepare()
