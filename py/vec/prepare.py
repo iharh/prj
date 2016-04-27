@@ -68,10 +68,9 @@ def files_preprocessing(input_files, output_files, combined=True):
         print "Not all files were successfully processed."
     return valid
 
-def prepare():
+def test():
     print "start preparation"
-    out_data = 'out/data/de_data'
-    files_preprocessing([
+    de_in_data = [
         'in/de/news.2015.de.shuffled'
         , 'in/de/news.2014.de.shuffled'
         , 'in/de/news.2013.de.shuffled'
@@ -81,7 +80,28 @@ def prepare():
         , 'in/de/news.2009.de.shuffled'
         , 'in/de/news.2008.de.shuffled'
         , 'in/de/news.2007.de.shuffled'
-    ], [out_data])
+    ]
+    fr_in_data = [
+        'in/fr/news.2014.fr.shuffled.v2'
+        , 'in/fr/news.2013.fr.shuffled'
+        , 'in/fr/news.2012.fr.shuffled'
+        , 'in/fr/news.2011.fr.shuffled'
+        , 'in/fr/news.2010.fr.shuffled'
+        , 'in/fr/news.2009.fr.shuffled'
+        , 'in/fr/news.2008.fr.shuffled'
+        , 'in/fr/news.2007.fr.shuffled'
+    ]
+    es_in_data = [
+        'in/es/news.2011.es.shuffled'
+        , 'in/es/news.2010.es.shuffled'
+        , 'in/es/news.2009.es.shuffled'
+        , 'in/es/news.2008.es.shuffled'
+        , 'in/es/news.2007.es.shuffled'
+    ]
+    de_out_data = ['out/data/de/de_data']
+    fr_out_data = ['out/data/fr/fr_data']
+    es_out_data = ['out/data/es/es_data']
+    files_preprocessing(es_in_data, es_out_data)
     print "complete preparation"
 
-prepare()
+test()

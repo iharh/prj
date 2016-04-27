@@ -34,7 +34,7 @@ def build_model_en(files, model_name):
 
 
 def train():
-    out_data = 'out/data/de_data'
+    out_data = 'out/data/fr/fr_data'
     print "loading sentences..."
     sentences = LineSentence(out_data);
     print "phrases..."
@@ -42,7 +42,7 @@ def train():
     print "start training..."
     model = Word2Vec(bigram_transformer[sentences], size=300, window=10, min_count=10, workers=6)
     print "saving the model..."
-    model.save_word2vec_format("out/News_" + out_data + ".bin", binary=True)
+    model.save_word2vec_format("out/model/News_" + out_data + ".bin", binary=True)
     print "All complete"
 
 train()
