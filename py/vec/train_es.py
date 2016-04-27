@@ -34,15 +34,15 @@ def build_model_en(files, model_name):
 
 
 def train():
-    out_data = 'out/data/es/es_data'
+    out_data = "es/es_data"
     print "loading sentences..."
-    sentences = LineSentence(out_data);
+    sentences = LineSentence("out/data/" + out_data);
     print "phrases..."
     bigram_transformer = gensim.models.Phrases(sentences)
     print "start training..."
-    model = Word2Vec(bigram_transformer[sentences], size=300, window=10, min_count=10, workers=6)
+    model = Word2Vec(bigram_transformer[sentences], size=300, window=10, min_count=10, workers=4)
     print "saving the model..."
-    model.save_word2vec_format("out/model/News_" + out_data + ".bin", binary=True)
+    model.save_word2vec_format("out/model/" + out_data + ".bin", binary=True)
     print "All complete"
 
 train()
