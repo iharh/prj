@@ -39,11 +39,11 @@ class SwimlineParserTests extends Specification {
 
     static final dataHeaderColumns = ["Keywords", "And Words", "And(2) Words", "Not Words", "Verbatim Keywords", "Verbatim And Words", "Verbatim And(2) Words", "Verbatim Not Words"]
 
-    SimpleErrorListener errorListener
     
     CSVFormat inCsvFormat
 
     NormLangDetector langDetector
+    //SimpleErrorListener errorListener
 
     static final double DESIRED_CONFIDENCE_LEVEL = 0.01; // 0.5;
 
@@ -52,8 +52,8 @@ class SwimlineParserTests extends Specification {
     }
 
     def setup() {
-        errorListener = new SimpleErrorListener()
-        
+        //errorListener = new SimpleErrorListener()
+
         inCsvFormat = CSVFormat.DEFAULT
             .withIgnoreSurroundingSpaces(true)
             .withIgnoreEmptyLines(false)
@@ -135,6 +135,7 @@ class SwimlineParserTests extends Specification {
                         continue
 
                     def listener = new SwimlineSuggestionParserListener()
+                    def errorListener = new SimpleErrorListener()
                     def result = RuleParserBase.parse(swimline, listener, errorListener)
 
                     def tokens = []
@@ -168,13 +169,18 @@ class SwimlineParserTests extends Specification {
                     
                     ++slWrong
                     log.debug('{} : {}[{}] : {}', detectedCode, node, headerName, text)
+
+                    errorListener.getErrors().each {
+                        log.info('parse error: {}', it)
+                    }
                 }
             }
             log.info('{}, {}, {}, {}, {}', fileName, lang, slTotal, slUnknown, slWrong)
 
         then:
-            errorListener.getErrors().size() >= 0
-            //listener.getParserResult().getWildcardTokens()
+            1 == 1
+            // errorListener.getErrors().size() == 0
+            // listener.getParserResult().getWildcardTokens()
         where:
             lang | fileFolder                            | fileName                              | levels
             'de' | 'basic_emotions'                      | 'Basic_Emotions'                      | 3
