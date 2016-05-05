@@ -5,7 +5,7 @@ CTX_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 . $CTX_DIR/env-vars.sh
 
 #TODO: move to env-vars
-SVN_BASE=/data/wrk/svnmain
+SVN_BASE=/data/wrk/clb/svnmain
 
 RUN_CMD="$@"
 if [[ -z "$RUN_CMD" ]]; then
