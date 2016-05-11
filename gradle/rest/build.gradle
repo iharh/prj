@@ -1,0 +1,16 @@
+apply plugin: 'java'
+apply plugin: 'groovy'
+ 
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    //jcenter() // spock-reports
+}
+
+dependencies {
+    compile('org.codehaus.groovy:groovy-all:2.4.4') // 2.4.5
+    testCompile('org.spockframework:spock-core:1.0-groovy-2.4')
+}
