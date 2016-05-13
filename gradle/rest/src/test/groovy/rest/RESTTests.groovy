@@ -15,7 +15,7 @@ import spock.lang.Specification
 //import spock.lang.Unroll
 
 class RESTTests extends Specification {
-    def suggestSimilarWords() {
+    def suggestSimilarWords(String langCode) {
         def cl = new RESTClient('https://prediction-engines.dev.clarabridge.net:8443/')
         cl.defaultRequestHeaders['Authorization'] = 'Bearer ZGV2OjEyMzQ1'
         def encoder = cl.getEncoder() // = new EncoderRegistry()
@@ -26,12 +26,15 @@ class RESTTests extends Specification {
             top: '2',
             communityTop: '2'
         ], null)
+        //lang: "${langCode}",
         def json = entity.content.text
         cl.post(
             path: 'v1/csls/suggestSimilarWords',
             contentType: ContentType.JSON,
             body: json)
     }
+
+    def enSSW() { suggestSimilarWords('en') }
 
     def assertResp(HttpResponse resp) {
         assert 200 == resp.status
@@ -44,16 +47,15 @@ class RESTTests extends Specification {
         ]
     }
 
-    def "test rest"() {
+    def "test rest en"() {
         when:
-            def resp = suggestSimilarWords()
-
-            GParsExecutorsPool.withPool(12) {
+            def resp = enSSW()
+            /*GParsExecutorsPool.withPool(12) {
                 (1..1000).eachParallel { // parallel.each
-                    def itResp = suggestSimilarWords()
+                    def itResp = enSSW()
                     assertResp(itResp)
                 }
-            }
+            }*/
         then:
             assertResp(resp)
     }
