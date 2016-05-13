@@ -37,6 +37,7 @@ class RESTTests extends Specification {
     def enSSW() { suggestSimilarWords('en', ['phone', 'phones']) }
     def deSSW() { suggestSimilarWords('de', ['hoh']) }
     def frSSW() { suggestSimilarWords('fr', ['lamour']) }
+    def esSSW() { suggestSimilarWords('es', ['honda']) }
 
     def assertResp(HttpResponse resp, String hash, List words) {
         assert 200 == resp.status
@@ -64,17 +65,23 @@ class RESTTests extends Specification {
             [ name: 'DAMOUR' , similarity: 0.7053097337264178],
             [ name: 'L’AMOUR', similarity: 0.0               ]
         ])}
+    def esAssert(HttpResponse resp) { assertResp(resp,
+        '08c495f642e2a7da1ca37260090ccd5073c92fc8b7aea9eaed0f6cb4b791acaf',
+        [
+            [ name: 'PROFUNDA' , similarity: 0.7073650296815003],
+            [ name: 'EXPRESIVA', similarity: 0.6827207931351051]
+        ])}
 
     def "test rest"() {
         when:
-            def resp = frSSW()
-            /*GParsExecutorsPool.withPool(12) {
+            def resp = esSSW()
+            GParsExecutorsPool.withPool(12) {
                 (1..1000).eachParallel { // parallel.each
-                    def itResp = deSSW()
-                    deAssert(itResp)
+                    def itResp = esSSW()
+                    esAssert(itResp)
                 }
-            }*/
+            }
         then:
-            frAssert(resp)
+            esAssert(resp)
     }
 }
