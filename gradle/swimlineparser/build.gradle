@@ -12,6 +12,7 @@ repositories {
 dependencies {
     compile files('/data/wrk/platform/cmp/common/build/libs/clarabridge-common.jar')
     compile files('/data/wrk/clb/lib.cb/lang-detector.jar')
+    //compile files('/data/wrk/clb/lib.cb.patched/lang-detector-patched.jar')
 
     compile('org.codehaus.groovy:groovy-all:2.4.5')
 
