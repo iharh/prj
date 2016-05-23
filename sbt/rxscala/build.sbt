@@ -1,3 +1,5 @@
+import org.apache.commons.lang3.SystemUtils
+
 version := "0.1-SNAPSHOT"
 
 scalaVersion := "2.11.8"
@@ -39,11 +41,12 @@ libraryDependencies ++= Seq(
     //"org.scalacheck"              %% "scalacheck"      % "1.12.5"
 )
 
-//val libcb = file("D:/clb/inst/server/lib.cb")
-val libcb = file("/data/wrk/clb/lib.cb")
+val libcb = if (SystemUtils.IS_OS_LINUX)
+    "/data/wrk/clb/lib.cb" else
+    "D:/clb/inst/server/lib.cb"
 
 unmanagedJars in Compile ++= {
-    (libcb ** "ojdbc*.jar").classpath // ojdbc6* ojdbc7*
+    (file(libcb) ** "ojdbc*.jar").classpath // ojdbc6* ojdbc7*
 }
 
 //unmanagedJars in Compile ++= {

@@ -20,8 +20,8 @@ object DBUtils {
 
     private def getOraPropFile(hostId: String): File = {
         // File.separator
-        val cfgFileName = DB_CFG_ROOT + "ora/" + hostId + DB_CFG_SUFFIX
-        log.info("cfgFileName: {}", cfgFileName)
+        val cfgFileName = DB_CFG_ROOT + "ora" + File.separator + hostId + DB_CFG_SUFFIX
+        //log.info("cfgFileName: {}", cfgFileName)
         new File(cfgFileName)
     }
 
