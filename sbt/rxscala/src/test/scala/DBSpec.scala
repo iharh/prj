@@ -44,7 +44,7 @@ order by pj.name"""
         log.info("end")
     }
 
-    "DB" should "get project list" in {
+    "DB" should "get sentiment export" in {
         //getOraConfDB("tangerine6")
         def db = DBUtils.getOraProcessingDB("tangerine6", "Gap Ratings Reviews")
 
