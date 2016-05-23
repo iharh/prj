@@ -11,14 +11,19 @@ import org.slf4j.LoggerFactory
 object DBUtils {
     private val log = LoggerFactory.getLogger(this.getClass.getName)
 
-    private val DB_CFG_ROOT = "D:\\dev\\notes\\wrk\\clb\\hosts\\db\\"
-    private val DB_CFG_NAME = ".database.system.properties"
+    //private val DB_CFG_ROOT = "D:\\dev\\notes\\wrk\\clb\\hosts\\db\\"
+    private val DB_CFG_ROOT = "/data/wrk/clb/hosts/db/"
+    private val DB_CFG_SUFFIX = ".database.system.properties"
 
-    private def getOraPropFile(hostId: String): File =
-        new File(DB_CFG_ROOT + "ora\\" + hostId + DB_CFG_NAME)
+    private def getOraPropFile(hostId: String): File = {
+        // File.separator
+        val cfgFileName = DB_CFG_ROOT + "ora/" + hostId + DB_CFG_SUFFIX
+        log.info("cfgFileName: {}", cfgFileName)
+        new File(cfgFileName)
+    }
 
 //    private static File getPgPropFile(String hostId) {
-//        return new File(DB_CFG_ROOT + "pg\\" + hostId + DB_CFG_NAME);
+//        return new File(DB_CFG_ROOT + "pg\\" + hostId + DB_CFG_SUFFIX);
 //    }
 
     private def getOraConf(hostId: String): Config = 
