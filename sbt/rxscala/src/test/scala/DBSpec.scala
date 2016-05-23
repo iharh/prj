@@ -10,28 +10,29 @@ import java.util.List
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
+import scala.collection.JavaConversions._
+
 
 class DBSpec extends FlatSpec {
-    private val log = LoggerFactory.getLogger(this.getClass.getName)
+    private val log = LoggerFactory.getLogger(classOf[DBSpec])
 
     "DB" should "get project list" in {
         def db = DBUtils.getDb()
 
-        //List<Tuple2<Integer, String>>
+        // projects: List<Tuple2<Integer, String>>
         val projects = db
             .select("select id, name from cb_project")
             .getAs(classOf[Integer], classOf[String])
             .toList()
             .toBlocking()
-            .single();
+            .single()
 
-        /*log.info("start");
-        for (Tuple2<Integer, String> p : projects) {
-            log.info(p.value1() + " -> " + p.value2());
-        }
-        log.info("end");*/
-// .select("select name from person where name > ? order by name")
-// .parameter("ALEX")
+        log.info("start")
+        projects.foreach(p => //: Tuple2<Integer, String>
+            log.info(p.value1() + " -> " + p.value2()) 
+        )
+        log.info("end")
+
         assert(true === true)
     }
 }

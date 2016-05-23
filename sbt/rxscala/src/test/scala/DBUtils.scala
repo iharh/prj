@@ -14,14 +14,14 @@ object DBUtils {
     private val DB_CFG_ROOT = "D:\\dev\\notes\\wrk\\clb\\hosts\\db\\"
     private val DB_CFG_NAME = ".database.system.properties"
 
-    private def getOraPropFile(hostId : String) : File =
+    private def getOraPropFile(hostId: String): File =
         new File(DB_CFG_ROOT + "ora\\" + hostId + DB_CFG_NAME)
 
 //    private static File getPgPropFile(String hostId) {
 //        return new File(DB_CFG_ROOT + "pg\\" + hostId + DB_CFG_NAME);
 //    }
 
-    private def getOraConf(hostId : String) : Config = 
+    private def getOraConf(hostId: String): Config = 
         ConfigFactory.parseFile(getOraPropFile(hostId))
 
 //    private static Config getPgConf(String hostId) {
@@ -34,19 +34,19 @@ object DBUtils {
 //    }
 
     // throws ClassNotFoundException
-    private def getOraDb(url : String, usr : String, pwd : String) : Database = {
+    private def getOraDb(url: String, usr: String, pwd: String): Database = {
         Class.forName("oracle.jdbc.OracleDriver")
         Database.from(url, usr, pwd)
     }
 
-    private def getDbProp(conf : Config, propName : String) : String = {
+    private def getDbProp(conf: Config, propName: String): String = {
         val result = conf.getString("cmpDS." + propName)
         log.debug(propName + ": {}", result)
         result;
     }
 
     //throws ClassNotFoundException 
-    private def getOraConfDB(hostId : String) : Database = {
+    private def getOraConfDB(hostId: String): Database = {
         val conf = getOraConf(hostId);
         getOraDb(
             getDbProp(conf, "url"),
@@ -65,7 +65,7 @@ object DBUtils {
     }
 */
     // throws ClassNotFoundException
-    def getDb() : Database = 
+    def getDb(): Database = 
         getOraConfDB("epbygomw0024")
         //getOraConfDB("tangerine6");
         //getPgConfDB("epbygomw0024");

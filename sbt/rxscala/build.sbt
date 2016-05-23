@@ -38,9 +38,9 @@ libraryDependencies ++= Seq(
     //"org.scalacheck"              %% "scalacheck"      % "1.12.5"
 )
 
-//unmanagedJars in Compile ++= {
-//    (file("D:/clb/inst/server/lib.cb") ** "ojdbc*.jar").classpath // ojdbc6* ojdbc7*
-//}
+unmanagedJars in Compile ++= {
+    (file("D:/clb/inst/server/lib.cb") ** "ojdbc*.jar").classpath // ojdbc6* ojdbc7*
+}
 
 //unmanagedJars in Compile ++= {
 //    (file("D:/clb/inst/server/lib.cb") ** "postgresql-9*.jar").classpath
