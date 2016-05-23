@@ -3,6 +3,8 @@ import com.typesafe.config.Config
 
 import com.github.davidmoten.rx.jdbc.Database
 
+import org.apache.commons.lang3.SystemUtils
+
 import java.io.File
 
 import org.slf4j.Logger
@@ -11,8 +13,9 @@ import org.slf4j.LoggerFactory
 object DBUtils {
     private val log = LoggerFactory.getLogger(this.getClass.getName)
 
-    //private val DB_CFG_ROOT = "D:\\dev\\notes\\wrk\\clb\\hosts\\db\\"
-    private val DB_CFG_ROOT = "/data/wrk/clb/hosts/db/"
+    private val DB_CFG_ROOT = if (SystemUtils.IS_OS_LINUX)
+        "/data/wrk/clb/hosts/db/" else
+        "D:\\dev\\notes\\wrk\\clb\\hosts\\db\\"
     private val DB_CFG_SUFFIX = ".database.system.properties"
 
     private def getOraPropFile(hostId: String): File = {

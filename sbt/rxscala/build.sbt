@@ -21,6 +21,7 @@ libraryDependencies ++= Seq(
     "log4j"                     % "log4j"          % "1.2.17",
 
     "commons-io"                % "commons-io"     % "2.5",
+    "org.apache.commons"        % "commons-lang3"  % "3.4",
     //"com.oracle"                % "ojdbc6"         % "11.2.0.3",
     //"cn.guoyukun.jdbc"          % "oracle-ojdbc6"  % "11.2.0.3.0",
 
@@ -28,7 +29,7 @@ libraryDependencies ++= Seq(
 
     "com.github.davidmoten"     % "rxjava-jdbc"    % "0.7.1",
     // one-jar stuff
-    //"commons-lang"              % "commons-lang"   % "2.6"
+    //"commons-lang"              % "commons-lang"   % "2.6",
     //
     "com.novocode"              % "junit-interface"    % "0.11"    % "test",
     "junit"                     % "junit"              % "4.12"    % "test",
