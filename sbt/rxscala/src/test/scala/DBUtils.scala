@@ -46,7 +46,7 @@ object DBUtils {
     }
 
     //throws ClassNotFoundException 
-    private def getOraConfDB(hostId: String): Database = {
+    def getOraConfDB(hostId: String): Database = {
         val conf = getOraConf(hostId);
         getOraDb(
             getDbProp(conf, "url"),
@@ -70,4 +70,36 @@ object DBUtils {
         //getOraConfDB("tangerine6");
         //getPgConfDB("epbygomw0024");
         //getOraConfDB("qa10");
+
+    def getOraProcessingDB(hostId: String, prj: String): Database = {
+        val conf = getOraConf(hostId);
+        val url = getDbProp(conf, "url")
+        val db = getOraDb(
+            url,
+            getDbProp(conf, "username"),
+            getDbProp(conf, "password")
+        )
+        def sqlQuery = s"""select
+    ds.username, ds.pwd
+from
+    cb_project pj,
+    cb_datflow_ds_xref dx,
+    cb_datasource ds
+where
+    pj.name = '$prj'
+    and pj.id = dx.project_id
+    and dx.id_datasource = ds.id
+    and dx.id_conntype = 1"""
+
+        val p = db
+            .select(sqlQuery)
+            .getAs(classOf[String], classOf[String])
+            .take(1)
+            .toBlocking()
+            .single()
+        val login = p.value1()
+        val pwd = p.value2()
+        //log.info("getOraProcessingDB login: {}, pwd: {}", login, pwd:Any) 
+        getOraDb(url, login, pwd)
+    }
 }

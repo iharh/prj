@@ -16,22 +16,6 @@ import scala.collection.JavaConversions._
 class DBSpec extends FlatSpec {
     private val log = LoggerFactory.getLogger(classOf[DBSpec])
 
-    private def listProj(db: Database): Unit = {
-        // projects: List<Tuple2<Integer, String>>
-        val projects = db
-            .select("select id, name from cb_project")
-            .getAs(classOf[Integer], classOf[String])
-            .toList()
-            .toBlocking()
-            .single()
-
-        log.info("start")
-        projects.foreach(p => //: Tuple2<Integer, String>
-            log.info(p.value1() + " -> " + p.value2()) 
-        )
-        log.info("end")
-    }
-
     private def listProjWithPwd(db: Database): Unit = {
         def sqlQuery = """select
     pj.id, pj.name,
@@ -61,11 +45,46 @@ order by pj.name"""
     }
 
     "DB" should "get project list" in {
-        def db = DBUtils.getDb()
+        //getOraConfDB("tangerine6")
+        def db = DBUtils.getOraProcessingDB("tangerine6", "Gap Ratings Reviews")
 
-        //listProj(db)
-        listProjWithPwd(db)
+        //listProjWithPwd(db)
+/*
+        val cnt = db
+            .select("select count(*) from p_ms_token")
+            .getAs(classOf[Integer])
+            .take(1)
+            .toBlocking()
+            .single()
+        log.info("ms tokens cnt: {}", cnt)
+*/
+        def sqlQuery = """select
+    ms.ms_token_name as WORD,
+    ms.sentiment as SENTIMENT
+from
+    P_MS_TOKEN ms
+left outer join
+    PU_POSITIVE_NEGATIVE pn
+on
+    pn.WORD = ms.MS_TOKEN_NAME
+where
+    (pn.SENTIMENT is null and ms.sentiment <> 0)
+    or (pn.SENTIMENT <> ms.sentiment)
+order by
+    WORD"""
 
+        val items = db
+            .select(sqlQuery)
+            .getAs(classOf[String], classOf[Double])
+            .toList()
+            .toBlocking()
+            .single()
+
+        items.foreach(i =>
+            log.info("{} -> {}", i.value1(), i.value2()) 
+        )
+        // full - 1322
+    
         assert(true === true)
     }
 }
