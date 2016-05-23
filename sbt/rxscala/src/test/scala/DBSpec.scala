@@ -20,7 +20,7 @@ class DBSpec extends FlatSpec {
         //List<Tuple2<Integer, String>>
         val projects = db
             .select("select id, name from cb_project")
-            .getAs(classOf(Integer), classOf(String))
+            .getAs(classOf[Integer], classOf[String])
             .toList()
             .toBlocking()
             .single();
