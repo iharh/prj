@@ -1,23 +1,25 @@
 import org.scalatest._
 
+import rx.functions.Action1
+
 import com.github.davidmoten.rx.jdbc.Database
 import com.github.davidmoten.rx.jdbc.tuple.Tuple2
+import com.github.davidmoten.rx.jdbc.tuple.Tuple4
 
-import collection.mutable.Stack
+import kantan.csv.ops._
 
-import java.util.List
+import java.io.File
+//import java.util.List
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
-import scala.collection.JavaConversions._
+//import scala.collection.JavaConversions._
 
 
 class DBSpec extends FlatSpec {
     private val log = LoggerFactory.getLogger(classOf[DBSpec])
-
-    private def listProjWithPwd(db: Database): Unit = {
-        def sqlQuery = """select
+    private val listProjWithPwdSqlQuery = """select
     pj.id, pj.name,
     ds.username, ds.pwd
 from
@@ -30,35 +32,18 @@ where
     and dx.id_conntype = 1
 order by pj.name"""
 
-        val projects = db
-            .select(sqlQuery)
+
+    private def listProjWithPwd(db: Database): Unit =
+        db
+            .select(listProjWithPwdSqlQuery)
             .getAs(classOf[Integer], classOf[String], classOf[String], classOf[String])
-            .toList()
-            .toBlocking()
-            .single()
+            .subscribe(new Action1[Tuple4[Integer, String, String, String]] {
+                override def call(p: Tuple4[Integer, String, String, String]): Unit = 
+                    log.info("{} -> {} login: {} pwd: {}", p.value1(), p.value2(), p.value3(), p.value4()) 
+            })
 
-        log.info("start")
-        projects.foreach(p => //: Tuple2<Integer, String>
-            log.info("{} -> {} login: {} pwd: {}", p.value1(), p.value2(), p.value3(), p.value4()) 
-        )
-        log.info("end")
-    }
-
-    "DB" should "get sentiment export" in {
-        //getOraConfDB("tangerine6")
-        def db = DBUtils.getOraProcessingDB("tangerine6", "Gap Ratings Reviews")
-
-        //listProjWithPwd(db)
-/*
-        val cnt = db
-            .select("select count(*) from p_ms_token")
-            .getAs(classOf[Integer])
-            .take(1)
-            .toBlocking()
-            .single()
-        log.info("ms tokens cnt: {}", cnt)
-*/
-        def sqlQuery = """select
+    private def listExportTokens(db: Database, fileN: String, pred: String): Unit = {
+        val listExportTokensSqlQuery = s"""select
     ms.ms_token_name as WORD,
     ms.sentiment as SENTIMENT
 from
@@ -68,23 +53,36 @@ left outer join
 on
     pn.WORD = ms.MS_TOKEN_NAME
 where
-    (pn.SENTIMENT is null and ms.sentiment <> 0)
-    or (pn.SENTIMENT <> ms.sentiment)
+    $pred
 order by
     WORD"""
 
-        val items = db
-            .select(sqlQuery)
-            .getAs(classOf[String], classOf[Double])
-            .toList()
+        val out = new File("out" + File.separator + fileN + ".csv")
+        val writer = out.asCsvWriter[(String, Int)](',', List("key", "val")) // problems with Integer
+        db
+            .select(listExportTokensSqlQuery)
+            .getAs(classOf[String], classOf[Integer])
             .toBlocking()
-            .single()
-
-        items.foreach(i =>
-            log.info("{} -> {}", i.value1(), i.value2()) 
-        )
+            .subscribe(new Action1[Tuple2[String, Integer]] {
+                override def call(p: Tuple2[String, Integer]): Unit =
+                    writer.write((p.value1(), p.value2(): Int))
+            })
         // full - 1322
-    
+        writer.close()
+    }
+
+    "DB" should "get sentiment export" in {
+        //log.info("start")
+        def db =
+            //DBUtils.getOraConfDB("tangerine6")
+            DBUtils.getOraProcessingDB("tangerine6", "Gap Ratings Reviews")
+
+        //listProjWithPwd(db)
+        listExportTokens(db, "out", "(pn.SENTIMENT is null and ms.sentiment <> 0) or (pn.SENTIMENT <> ms.sentiment)")
+        listExportTokens(db, "out1", "pn.SENTIMENT is null and ms.sentiment <> 0")
+        listExportTokens(db, "out2", "pn.SENTIMENT <> ms.sentiment")
+
+        //log.info("end")
         assert(true === true)
     }
 }
