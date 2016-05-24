@@ -79,8 +79,8 @@ order by
 
         //listProjWithPwd(db)
         listExportTokens(db, "out", "(pn.SENTIMENT is null and ms.sentiment <> 0) or (pn.SENTIMENT <> ms.sentiment)")
-        listExportTokens(db, "out1", "pn.SENTIMENT is null and ms.sentiment <> 0")
-        listExportTokens(db, "out2", "pn.SENTIMENT <> ms.sentiment")
+        listExportTokens(db, "new_non_zero", "pn.SENTIMENT is null and ms.sentiment <> 0")
+        listExportTokens(db, "modified", "pn.SENTIMENT <> ms.sentiment")
 
         //log.info("end")
         assert(true === true)
