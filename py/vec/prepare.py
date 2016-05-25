@@ -2,6 +2,9 @@ import re
 import string
 import itertools, logging
 
+from os import listdir
+from os.path import isfile, isdir, join
+
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
 # preprocessing the word2vec training documents, removing all non-character symbols.
@@ -68,6 +71,9 @@ def files_preprocessing(input_files, output_files, combined=True):
         print "Not all files were successfully processed."
     return valid
 
+def files_in_folder(root):
+    return [join(root, f) for f in listdir(root) if isfile(join(root, f))]
+
 def test():
     print "start preparation"
     de_in_data = [
@@ -101,7 +107,11 @@ def test():
     de_out_data = ['out/data/de/de_data']
     fr_out_data = ['out/data/fr/fr_data']
     es_out_data = ['out/data/es/es_data']
-    files_preprocessing(es_in_data, es_out_data)
+
+    in_data = files_in_folder('in')
+    out_data = 'en/en_small_data'
+    files_preprocessing(in_data, ['out/data/' + out_data])
     print "complete preparation"
+
 
 test()
