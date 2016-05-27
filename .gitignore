@@ -12,6 +12,7 @@ sbt/*/dic/*
 sbt/*/src/main/resources/dic/*
 sbt/knlph/models/*
 sbt/*/lib/*
+sbt/*/in/*
 sbt/*/out/*
 sbt/*/*.log
 sbt/*/-.-/*
