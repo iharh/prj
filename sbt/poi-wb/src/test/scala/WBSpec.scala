@@ -5,6 +5,10 @@ import org.apache.poi.ss.util._
 import org.apache.poi.ss.usermodel._
 import org.apache.poi.xssf.usermodel._
 
+import org.json4s._
+//import org.json4s.native.JsonMethods._ // UTF-8 problems here
+import org.json4s.jackson.JsonMethods._
+
 import java.io.File
 
 import org.slf4j.Logger
@@ -26,11 +30,21 @@ class WBSpec extends FlatSpec with Matchers {
         val sheet = wb.getSheetAt(0)
         sheet should not be (null)
 
-        //val i = sheet.rowIterator().asScala // for scalaj
-        val i = asScalaIterator(sheet.rowIterator())
-        i should not be (null)
+        //val itr = sheet.rowIterator().asScala // for scalaj
+        val itr:Iterator[Row] = asScalaIterator(sheet.rowIterator())
+        itr should not be (null)
 
-        i.foreach(r => onRow(r))
+        val oList: List[JField] = itr
+            .map(mapRow(_))
+            .filter(_._2 != JNothing)
+            .toList
+
+        val o = JObject(List(
+            "Language"     -> JString("es"),
+            "Taxonomy Name"-> JString("CB Universe (Std)"),
+            "Word Bucket"  -> JObject(oList)
+        ))
+        log.info("{}", pretty(render(o)))
 
         log.info("finish")
     }
@@ -39,7 +53,7 @@ class WBSpec extends FlatSpec with Matchers {
     private val IDX_PREBUILT_RULE = 4
     private val IDX_WORD_COUNT    = 9
 
-    def onRow(row: Row): Unit = {
+    def mapRow(row: Row): JField = {
         val firstN = row.getFirstCellNum()
         val lastN  = row.getLastCellNum()
 
@@ -49,13 +63,19 @@ class WBSpec extends FlatSpec with Matchers {
             //val cWordCount = row.getCell(IDX_WORD_COUNT)
 
             if (isStr(cNodeName) && isStr(cPrebuiltRule) /*&& isNum(cWordCount)*/) {
+                // row.getRowNum()
                 val nodeName = cNodeName.getStringCellValue()
                 val prebuiltRule = cPrebuiltRule.getStringCellValue()
                 //val wordCount = cWordCount.getNumericCellValue()
-                // row.getRowNum()
-                log.info("Name: {} Rule: {}", nodeName, prebuiltRule: Any)
-                //log.info("Word cnt: {}", wordCount)
+
+                val jWords = prebuiltRule.split(",").map(_.trim).map(new JString(_)).toList
+
+                JField(nodeName, JArray(jWords)) // (nodeName -> JArray(jWords))
+            } else {
+                JField("", JNothing)
             }
+        } else {
+            JField("", JNothing)
         }
     }
 
@@ -66,4 +86,3 @@ class WBSpec extends FlatSpec with Matchers {
         cell.getCellType() == Cell.CELL_TYPE_NUMERIC
     }
 }
-

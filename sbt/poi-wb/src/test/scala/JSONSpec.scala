@@ -1,7 +1,8 @@
 import org.scalatest._
 
 import org.json4s._
-import org.json4s.native.JsonMethods._
+//import org.json4s.native.JsonMethods._
+import org.json4s.jackson.JsonMethods._
 
 import java.io.File
 
@@ -14,14 +15,14 @@ class JSONSpec extends FlatSpec with Matchers {
     private val log = LoggerFactory.getLogger(classOf[JSONSpec])
 
     "JSON" should "write a string" in {
-        var a: List[JString] = Nil
-        a = JString("def") :: a
-        a = JString("abc") :: a
-        a should not be (null)
+        var jWords: List[JString] = Nil
+        jWords = JString("def") :: jWords
+        jWords = JString("abc") :: jWords
+        jWords should not be (null)
 
         var f: List[(String, JValue)] = Nil
         f = "postId" -> JInt(1) :: f
-        f = "arr" -> JArray(a) :: f
+        f = "arr" -> JArray(jWords) :: f
         f should not be (null)
 
         val o = JObject(f)
