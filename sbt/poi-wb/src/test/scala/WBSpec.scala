@@ -37,6 +37,7 @@ class WBSpec extends FlatSpec with Matchers {
         val oList: List[JField] = itr
             .map(mapRow(_))
             .filter(_._2 != JNothing)
+            .filter(_._1 != "Node Name")
             .toList
 
         val o = JObject(List(
