@@ -32,7 +32,14 @@ class WBSpec extends FlatSpec with Matchers {
         firstRow.createCell(0).setCellValue("id") // XSSFCell
         firstRow.createCell(1).setCellValue("verb")
 
-        private var row: Int = 1
+        private var rowNum: Int = 1
+
+        def writeSent(sent: String) {
+            val row = outSheet.createRow(rowNum)
+            row.createCell(0).setCellValue(rowNum)
+            row.createCell(1).setCellValue(sent)
+            rowNum += 1;
+        }
 
         def done() = {
             val fileOut = new FileOutputStream("out" + File.separator + "o.xlsx")
@@ -107,7 +114,9 @@ class WBSpec extends FlatSpec with Matchers {
                     .toList
 
                 if (isStr(cSampleSent)) {
-                    log.info("sample: {}", cSampleSent.getStringCellValue())
+                    val sent = cSampleSent.getStringCellValue()
+                    log.info("sample: {}", sent)
+                    XlsxWriter.writeSent(sent)
                 }
 
                 JField(nodeName, JArray(jWords)) // (nodeName -> JArray(jWords))
