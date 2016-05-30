@@ -65,7 +65,7 @@ class WBSpec extends FlatSpec with Matchers {
 
     private val IDX_NODE_NAME     = 1
     private val IDX_PREBUILT_RULE = 4
-    //private val IDX_WORD_COUNT    = 9
+    private val IDX_SAMPLE_SENT   = 9
 
     def mapRow(row: Row): JField = {
         val firstN = row.getFirstCellNum()
@@ -74,9 +74,9 @@ class WBSpec extends FlatSpec with Matchers {
         if (firstN <= IDX_NODE_NAME && IDX_PREBUILT_RULE <= lastN) {
             val cNodeName = row.getCell(IDX_NODE_NAME)
             val cPrebuiltRule = row.getCell(IDX_PREBUILT_RULE)
-            //val cWordCount = row.getCell(IDX_WORD_COUNT)
+            val cSampleSent = row.getCell(IDX_SAMPLE_SENT)
 
-            if (isStr(cNodeName) && isStr(cPrebuiltRule) /*&& isNum(cWordCount)*/) {
+            if (isStr(cNodeName) && isStr(cPrebuiltRule)) {
                 // row.getRowNum()
                 val nodeName = cNodeName.getStringCellValue()
                 val prebuiltRule = cPrebuiltRule.getStringCellValue()
@@ -85,6 +85,10 @@ class WBSpec extends FlatSpec with Matchers {
                     .map(_.trim)
                     .map(s => new JString(StringUtils.strip(s, "\"")))
                     .toList
+
+                if (isStr(cSampleSent)) {
+                    log.info("sample: {}", cSampleSent.getStringCellValue())
+                }
 
                 JField(nodeName, JArray(jWords)) // (nodeName -> JArray(jWords))
             } else {
