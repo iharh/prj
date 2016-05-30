@@ -43,14 +43,6 @@ ENV PATH ${PATH}:${ANT_HOME}/bin
 #
 # create user
 #
-#ENV CUR_USER ...
-#ENV CUR_USER_ID ...
-## don't create home folder, don't add to to the lastlog database (too big of a number, runs out of space https://github.com/docker/docker/issues/5419)
-#RUN useradd ${CUR_USER} -M -l -u ${CUR_USER_ID} -s /bin/bash
-
-#WORKDIR /home/${CUR_USER}/
-#ENV HOME /home/${CUR_USER}
-
 ENV USER_NAME root
 ENV USER_HOME /${USER_NAME}
 
@@ -60,7 +52,7 @@ RUN chown -R ${USER_NAME}:${USER_NAME} ${USER_HOME}/${CISCRIPT}.sh
 RUN chmod +x ${USER_HOME}/${CISCRIPT}.sh
 RUN ${USER_HOME}/${CISCRIPT}.sh && rm ${USER_HOME}/${CISCRIPT}.sh
 
-ENV USER_NAME fx
+ENV USER_NAME nlp
 ENV USER_HOME /home/${USER_NAME}
 
 USER ${USER_NAME}
@@ -71,5 +63,6 @@ USER ${USER_NAME}
 #
 #"${USER_HOME}/.gradle"\
 VOLUME  [\
-  "/prj"\
+  "/cmp"\
+  , "/fx"\
 ]

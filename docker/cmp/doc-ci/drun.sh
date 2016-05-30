@@ -4,8 +4,10 @@ set -e
 CTX_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 . $CTX_DIR/env-vars.sh
 
-#TODO: move to env-vars
-SVN_BASE=/data/wrk/clb/svnmain
+#CLB_BASE=/data/wrk/clb
+CLB_BASE="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../../../clb" && pwd )"
+SVN_BASE=$CLB_BASE/svnmain
+GIT_BASE=$CLB_BASE/platform
 
 RUN_CMD="$@"
 if [[ -z "$RUN_CMD" ]]; then
@@ -16,20 +18,24 @@ else
   RUN_PREF="/bin/bash -cl"
 fi
 
-#WRK_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../.." && pwd )"
 #CMN_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../.." && pwd )"
 #CACHE_DIR=$CMN_DIR/docker-cache
 
 #USER_HOME=/home/$GUEST_USER_NAME
 
-if [[ "${PWD:0:${#SVN_BASE}}" != "$SVN_BASE" ]]; then
-    echo Able to work only inside: $SVN_BASE
+if [[ "${PWD:0:${#GIT_BASE}}" == "$GIT_BASE" ]]; then
+    WRK_BASE=/cmp/$(realpath --relative-to=$GIT_BASE $PWD)
+elif [[ "${PWD:0:${#SVN_BASE}}" == "$SVN_BASE" ]]; then
+    WRK_BASE=/fx/$(realpath --relative-to=$SVN_BASE $PWD)
+else
+    echo Able to work only inside: $GIT_BASE or $SVN_BASE
     exit 1
 fi
 
 #-v $CACHE_DIR/.gradle:$USER_HOME/.gradle\
 docker run $RUN_FLAGS\
- -v $SVN_BASE:/prj\
- -w /prj/$(realpath --relative-to=$SVN_BASE $PWD)\
+ -v $SVN_BASE:/fx\
+ -v $GIT_BASE:/cmp\
+ -w $WRK_BASE\
  $CUR_GROUP/$CUR_NAME_CI:$CUR_VER\
  $RUN_PREF "$RUN_CMD"
