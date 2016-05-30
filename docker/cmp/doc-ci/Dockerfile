@@ -61,8 +61,8 @@ USER ${USER_NAME}
 #
 ## volumes
 #
-#"${USER_HOME}/.gradle"\
 VOLUME  [\
-  "/cmp"\
+  "${USER_HOME}/.gradle"\
+  , "/cmp"\
   , "/fx"\
 ]

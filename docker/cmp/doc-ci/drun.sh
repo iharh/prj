@@ -4,8 +4,9 @@ set -e
 CTX_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 . $CTX_DIR/env-vars.sh
 
-#CLB_BASE=/data/wrk/clb
-CLB_BASE="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../../../clb" && pwd )"
+CMN_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../../.." && pwd )"
+CACHE_DIR=$CMN_DIR/docker-cache
+CLB_BASE=$CMN_DIR/clb
 SVN_BASE=$CLB_BASE/svnmain
 GIT_BASE=$CLB_BASE/platform
 
@@ -18,10 +19,7 @@ else
   RUN_PREF="/bin/bash -cl"
 fi
 
-#CMN_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../.." && pwd )"
-#CACHE_DIR=$CMN_DIR/docker-cache
-
-#USER_HOME=/home/$GUEST_USER_NAME
+USER_HOME=/home/$GUEST_USER_NAME
 
 if [[ "${PWD:0:${#GIT_BASE}}" == "$GIT_BASE" ]]; then
     WRK_BASE=/cmp/$(realpath --relative-to=$GIT_BASE $PWD)
@@ -32,8 +30,8 @@ else
     exit 1
 fi
 
-#-v $CACHE_DIR/.gradle:$USER_HOME/.gradle\
 docker run $RUN_FLAGS\
+ -v $CACHE_DIR/.gradle:$USER_HOME/.gradle\
  -v $SVN_BASE:/fx\
  -v $GIT_BASE:/cmp\
  -w $WRK_BASE\
