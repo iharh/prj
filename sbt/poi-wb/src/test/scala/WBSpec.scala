@@ -5,6 +5,8 @@ import org.apache.poi.ss.util._
 import org.apache.poi.ss.usermodel._
 import org.apache.poi.xssf.usermodel._
 
+import org.apache.commons.lang3.StringUtils
+
 import org.json4s._
 //import org.json4s.native.JsonMethods._ // UTF-8 problems here
 import org.json4s.jackson.JsonMethods._
@@ -23,8 +25,8 @@ class WBSpec extends FlatSpec with Matchers {
     "WB" should "read a spreadsheet" in {
         log.info("start")
 
-        //val sheetName = "Spanish Taxonomy with Sentences"
-        val sheetName = "Taxonomies"
+        val sheetName = "Spanish Taxonomy with Sentences"
+        //val sheetName = "Taxonomies"
         val inFile = new File("in" + File.separator + sheetName + ".xlsx")
         val wb = new XSSFWorkbook(inFile)
 
@@ -68,9 +70,11 @@ class WBSpec extends FlatSpec with Matchers {
                 // row.getRowNum()
                 val nodeName = cNodeName.getStringCellValue()
                 val prebuiltRule = cPrebuiltRule.getStringCellValue()
-                //val wordCount = cWordCount.getNumericCellValue()
 
-                val jWords = prebuiltRule.split(",").map(_.trim).map(new JString(_)).toList
+                val jWords = prebuiltRule.split(",")
+                    .map(_.trim)
+                    .map(s => new JString(StringUtils.strip(s, "\"")))
+                    .toList
 
                 JField(nodeName, JArray(jWords)) // (nodeName -> JArray(jWords))
             } else {
@@ -84,7 +88,7 @@ class WBSpec extends FlatSpec with Matchers {
     def isStr(cell: Cell): Boolean = {
         cell != null && cell.getCellType() == Cell.CELL_TYPE_STRING
     }
-    def isNum(cell: Cell): Boolean = {
-        cell != null && cell.getCellType() == Cell.CELL_TYPE_NUMERIC
-    }
+    //def isNum(cell: Cell): Boolean = {
+    //    cell != null && cell.getCellType() == Cell.CELL_TYPE_NUMERIC
+    //}
 }

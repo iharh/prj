@@ -12,16 +12,17 @@ testOptions += Tests.Argument(TestFrameworks.ScalaTest, "-oDF")
 // > test-only org.acme.RedSuite -- -oD
 
 libraryDependencies ++= Seq(
-    //"org.scalaj"      %% "scalaj-collection" % "1.6",
-    "org.apache.poi"  % "poi"                % "3.14",
-    "org.apache.poi"  % "poi-ooxml"          % "3.14",
-    //"com.nrinaudo"             %% "kantan.csv"     % "0.1.11",
-    //"org.json4s"                %% "json4s-native"  % "3.3.0",
-    "org.json4s"      %% "json4s-jackson"    % "3.3.0",
+    //"org.scalaj"         %% "scalaj-collection"  % "1.6",
+    "org.apache.poi"     % "poi"                % "3.14",
+    "org.apache.poi"     % "poi-ooxml"          % "3.14",
+    "org.apache.commons" % "commons-lang3"      % "3.4",
+    //"com.nrinaudo"       %% "kantan.csv"        % "0.1.11",
+    //"org.json4s"         %% "json4s-native"     % "3.3.0",
+    "org.json4s"         %% "json4s-jackson"    % "3.3.0",
 
-    "org.slf4j"       % "slf4j-api"          % "1.7.21",
-    "org.slf4j"       % "slf4j-log4j12"      % "1.7.21",
-    "log4j"           % "log4j"              % "1.2.17",
+    "org.slf4j"          % "slf4j-api"          % "1.7.21",
+    "org.slf4j"          % "slf4j-log4j12"      % "1.7.21",
+    "log4j"              % "log4j"              % "1.2.17",
 
-    "org.scalatest"   % "scalatest_2.11"     % "2.2.6" % "test"
+    "org.scalatest"      % "scalatest_2.11"     % "2.2.6" % "test"
 )
