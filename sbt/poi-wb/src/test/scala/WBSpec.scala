@@ -12,6 +12,8 @@ import org.json4s._
 import org.json4s.jackson.JsonMethods._
 
 import java.io.File
+//import java.io.StringWriter
+import java.io.PrintWriter
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -48,7 +50,15 @@ class WBSpec extends FlatSpec with Matchers {
             "Taxonomy Name"-> JString("CB Universe (Std)"),
             "Word Bucket"  -> JObject(oList)
         ))
-        log.info("{}", pretty(render(o)))
+        val d = render(o)
+
+        //val res = pretty(r)
+        //val w = new StringWriter
+        val w = new PrintWriter(new File("out/o.json"))
+        val objWriter = mapper.writerWithDefaultPrettyPrinter() // com.fasterxml.jackson.databind.ObjectWriter
+        objWriter.writeValue(w, d)
+
+        //log.info("{}", w.toString)
 
         log.info("finish")
     }
