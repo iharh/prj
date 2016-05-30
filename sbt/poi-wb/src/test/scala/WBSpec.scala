@@ -12,6 +12,7 @@ import org.json4s._
 import org.json4s.jackson.JsonMethods._
 
 import java.io.File
+import java.io.FileOutputStream
 //import java.io.StringWriter
 import java.io.PrintWriter
 
@@ -24,20 +25,38 @@ import scala.collection.JavaConversions._
 class WBSpec extends FlatSpec with Matchers {
     private val log = LoggerFactory.getLogger(classOf[WBSpec])
 
+    private object XlsxWriter {
+        private val outWb = new XSSFWorkbook()
+        private val outSheet = outWb.createSheet("samples")
+        private val firstRow = outSheet.createRow(0) // XSSFRow
+        firstRow.createCell(0).setCellValue("id") // XSSFCell
+        firstRow.createCell(1).setCellValue("verb")
+
+        private var row: Int = 1
+
+        def done() = {
+            val fileOut = new FileOutputStream("out" + File.separator + "o.xlsx")
+            outWb.write(fileOut)
+            fileOut.flush()
+            fileOut.close()
+        }
+    }
+
     "WB" should "read a spreadsheet" in {
         log.info("start")
 
         val sheetName = "Spanish Taxonomy with Sentences"
         //val sheetName = "Taxonomies"
         val inFile = new File("in" + File.separator + sheetName + ".xlsx")
-        val wb = new XSSFWorkbook(inFile)
+        val inWb = new XSSFWorkbook(inFile)
 
-        val sheet = wb.getSheetAt(0)
-        sheet should not be (null)
+        val inSheet = inWb.getSheetAt(0)
+        inSheet should not be (null)
 
-        //val itr = sheet.rowIterator().asScala // for scalaj
-        val itr:Iterator[Row] = asScalaIterator(sheet.rowIterator())
+        //val itr = inSheet.rowIterator().asScala // for scalaj
+        val itr:Iterator[Row] = asScalaIterator(inSheet.rowIterator())
         itr should not be (null)
+
 
         val oList: List[JField] = itr
             .map(mapRow(_))
@@ -54,11 +73,12 @@ class WBSpec extends FlatSpec with Matchers {
 
         //val res = pretty(r)
         //val w = new StringWriter
-        val w = new PrintWriter(new File("out/o.json"))
+        val w = new PrintWriter(new File("out" + File.separator + "o.json"))
         val objWriter = mapper.writerWithDefaultPrettyPrinter() // com.fasterxml.jackson.databind.ObjectWriter
         objWriter.writeValue(w, d)
 
         //log.info("{}", w.toString)
+        XlsxWriter.done()
 
         log.info("finish")
     }
