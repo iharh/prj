@@ -23,7 +23,8 @@ class WBSpec extends FlatSpec with Matchers {
     "WB" should "read a spreadsheet" in {
         log.info("start")
 
-        val sheetName = "Spanish Taxonomy with Sentences"
+        //val sheetName = "Spanish Taxonomy with Sentences"
+        val sheetName = "Taxonomies"
         val inFile = new File("in" + File.separator + sheetName + ".xlsx")
         val wb = new XSSFWorkbook(inFile)
 
@@ -52,13 +53,13 @@ class WBSpec extends FlatSpec with Matchers {
 
     private val IDX_NODE_NAME     = 1
     private val IDX_PREBUILT_RULE = 4
-    private val IDX_WORD_COUNT    = 9
+    //private val IDX_WORD_COUNT    = 9
 
     def mapRow(row: Row): JField = {
         val firstN = row.getFirstCellNum()
         val lastN  = row.getLastCellNum()
 
-        if (firstN <= IDX_NODE_NAME && IDX_WORD_COUNT <= lastN) {
+        if (firstN <= IDX_NODE_NAME && IDX_PREBUILT_RULE <= lastN) {
             val cNodeName = row.getCell(IDX_NODE_NAME)
             val cPrebuiltRule = row.getCell(IDX_PREBUILT_RULE)
             //val cWordCount = row.getCell(IDX_WORD_COUNT)
@@ -81,9 +82,9 @@ class WBSpec extends FlatSpec with Matchers {
     }
 
     def isStr(cell: Cell): Boolean = {
-        cell.getCellType() == Cell.CELL_TYPE_STRING
+        cell != null && cell.getCellType() == Cell.CELL_TYPE_STRING
     }
     def isNum(cell: Cell): Boolean = {
-        cell.getCellType() == Cell.CELL_TYPE_NUMERIC
+        cell != null && cell.getCellType() == Cell.CELL_TYPE_NUMERIC
     }
 }
