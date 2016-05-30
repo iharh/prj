@@ -63,6 +63,7 @@ USER ${USER_NAME}
 #
 VOLUME  [\
   "${USER_HOME}/.gradle"\
+  , "${USER_HOME}/.ssh"\
   , "/cmp"\
   , "/fx"\
 ]

@@ -32,6 +32,7 @@ fi
 
 docker run $RUN_FLAGS\
  -v $CACHE_DIR/.gradle:$USER_HOME/.gradle\
+ -v ~/.ssh-clb:$USER_HOME/.ssh\
  -v $SVN_BASE:/fx\
  -v $GIT_BASE:/cmp\
  -w $WRK_BASE\
