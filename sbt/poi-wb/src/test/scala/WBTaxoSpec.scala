@@ -1,6 +1,5 @@
 import org.scalatest._
 
-//import kantan.csv.ops._
 import org.apache.poi.ss.util._
 import org.apache.poi.ss.usermodel._
 import org.apache.poi.xssf.usermodel._
@@ -8,27 +7,26 @@ import org.apache.poi.xssf.usermodel._
 import org.apache.commons.lang3.StringUtils
 
 import org.json4s._
-//import org.json4s.native.JsonMethods._ // UTF-8 problems here
 import org.json4s.jackson.JsonMethods._
+
+import com.fasterxml.jackson.databind.ObjectWriter
 
 import java.io.File
 import java.io.FileOutputStream
-//import java.io.StringWriter
 import java.io.PrintWriter
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 import scala.collection.JavaConversions._
-//import scalaj.collection.Imports._
 
-class WBSpec extends FlatSpec with Matchers {
-    private val log = LoggerFactory.getLogger(classOf[WBSpec])
+class WBTaxoSpec extends FlatSpec with Matchers {
+    private val log = LoggerFactory.getLogger(classOf[WBTaxoSpec])
 
     private object XlsxWriter {
         private val outWb = new XSSFWorkbook()
         private val outSheet = outWb.createSheet("samples")
-        private val firstRow = outSheet.createRow(0) // XSSFRow
+        private val firstRow: XSSFRow = outSheet.createRow(0)
         firstRow.createCell(0).setCellValue("id") // XSSFCell
         firstRow.createCell(1).setCellValue("verb")
 
@@ -49,11 +47,10 @@ class WBSpec extends FlatSpec with Matchers {
         }
     }
 
-    "WB" should "read a spreadsheet" in {
+    "WBTaxo" should "read a spreadsheet" in {
         log.info("start")
 
         val sheetName = "Spanish Taxonomy with Sentences"
-        //val sheetName = "Taxonomies"
         val inFile = new File("in" + File.separator + sheetName + ".xlsx")
         val inWb = new XSSFWorkbook(inFile)
 
@@ -78,13 +75,10 @@ class WBSpec extends FlatSpec with Matchers {
         ))
         val d = render(o)
 
-        //val res = pretty(r)
-        //val w = new StringWriter
         val w = new PrintWriter(new File("out" + File.separator + "o.json"))
-        val objWriter = mapper.writerWithDefaultPrettyPrinter() // com.fasterxml.jackson.databind.ObjectWriter
+        val objWriter: ObjectWriter = mapper.writerWithDefaultPrettyPrinter()
         objWriter.writeValue(w, d)
 
-        //log.info("{}", w.toString)
         XlsxWriter.done()
 
         log.info("finish")
@@ -131,7 +125,4 @@ class WBSpec extends FlatSpec with Matchers {
     def isStr(cell: Cell): Boolean = {
         cell != null && cell.getCellType() == Cell.CELL_TYPE_STRING
     }
-    //def isNum(cell: Cell): Boolean = {
-    //    cell != null && cell.getCellType() == Cell.CELL_TYPE_NUMERIC
-    //}
 }
