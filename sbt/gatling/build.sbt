@@ -1,17 +1,18 @@
 enablePlugins(GatlingPlugin)
 
-version := "0.1-SNAPSHOT"
+//version := "0.1-SNAPSHOT"
 
 scalaVersion := "2.11.8"
     //"org.scala-lang"            % "scala-library"  % "2.11.8",
-
 //autoScalaLibrary := false
 
 crossPaths := false
 
-scalacOptions ++= Seq("-encoding", "UTF-8", "-target:jvm-1.8", "-Xlint","-deprecation", "-unchecked")
+scalacOptions ++= Seq("-encoding", "UTF-8", "-target:jvm-1.8", "-Xlint", "-deprecation", "-unchecked")
 
 javacOptions ++= Seq("-encoding", "UTF-8", "-Xlint:unchecked", "-Xlint:deprecation")
+
+javaOptions in Gatling := overrideDefaultJavaOptions("-Xms1024m", "-Xmx2048m")
 
 //testOptions += Seq("-encoding", "UTF-8")
 
