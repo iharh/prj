@@ -13,8 +13,8 @@ testOptions += Tests.Argument(TestFrameworks.JUnit, "-q", "-a")
 
 
 libraryDependencies ++= Seq(
-    "org.slf4j"                 % "slf4j-api"      % "1.7.12",
-    "org.slf4j"                 % "slf4j-log4j12"  % "1.7.12",
+    "org.slf4j"                 % "slf4j-api"      % "1.7.21",
+    "org.slf4j"                 % "slf4j-log4j12"  % "1.7.21",
     "log4j"                     % "log4j"          % "1.2.17",
 
     "com.novocode"              % "junit-interface"    % "0.11"    % "test",
