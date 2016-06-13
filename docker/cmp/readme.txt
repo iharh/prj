@@ -7,3 +7,6 @@ cmp/installer
 $GIT
 cmp/installer
     ant clean dist
+
+QAAutomation/ci/ci_cluster
+    postgres_cb_release
