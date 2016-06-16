@@ -33,7 +33,7 @@ class ProcessMultiVerbatimSpec extends GatlingHttpFunSpec {
                         </verbatimSet>
                         <limitByWordRank>true</limitByWordRank>
                         <includeNRelations>false</includeNRelations>
-                        <includeWorldAwareness>{includeWA}</includeWorldAwareness>
+                        {if (includeWA) <includeWorldAwareness>{includeWA}</includeWorldAwareness> else null}
                     </processMultiVerbatimDocumentRequest>
                 </real:processMultiVerbatimDocument>
             </soapenv:Body>
@@ -46,8 +46,12 @@ class ProcessMultiVerbatimSpec extends GatlingHttpFunSpec {
         //.asXML
         .header(HeaderNames.ContentType, HeaderValues.TextXml) //.header("Content-Type", "text/xml; charset=utf-8")
 
+    def xpathPrefix: String =
+        "//*/*/*/return/"
+    def xpathStatus: String =
+        xpathPrefix + "status"
     def xpathSentAttrName: String =
-        "//*/*/*/return/verbatimSet/verbatim/sentences/sentence/attributes/attributeValues/attributeName"
+        xpathPrefix + "verbatimSet/verbatim/sentences/sentence/attributes/attributeValues/attributeName"
 
     spec {
         apiStart("processMultiVerbatim-WA", "/cbapi/realtime?wsdl")
@@ -63,8 +67,7 @@ class ProcessMultiVerbatimSpec extends GatlingHttpFunSpec {
             .body(StringBody(bodyPMV("en1", textPMV, false).toString))
 
             .check(status.is(200))
-            .check(
-                xpath(xpathSentAttrName).notExists
-            )
+            .check(xpath(xpathStatus).is("SUCCESS"))
+            .check(xpath(xpathSentAttrName).notExists)
     }
 }
