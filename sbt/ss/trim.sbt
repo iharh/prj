@@ -32,4 +32,3 @@ trimall := {
     archAndTrim(fileToArch, archDstDir1)
     archAndTrim(fileToArch, archDstDir2)
 }
-
