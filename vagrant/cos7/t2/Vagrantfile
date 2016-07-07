@@ -1,19 +1,50 @@
 Vagrant.configure("2") do |config|
-  config.vm.box = "hfm4/centos7"
-  config.vm.hostname = "epbygomw0024t2"
-  #config.vm.network "private_network", ip: "192.168.56.2"
-  config.ssh.insert_key = false
+  hname = "epbygomw0024t2"
 
+  config.vm.box = "hfm4/centos7"
+  config.vm.hostname = "#{hname}"
+
+  #config.vm.boot_timeout = 300
+
+  #config.vm.network "private_network", ip: "192.168.56.2"
+ 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
   #config.vm.box_url = "file:///F:/vagrant-boxes/CentOS-6.4-x86_64-v20130731.box"
 
+  config.ssh.insert_key = false
+  config.ssh.paranoid = false
+  #config.ssh.username = "vagrant"
+  #config.ssh.password = "vagrant"
   #config.ssh.private_key_path = "~/.ssh/id_rsa"
 
   config.vm.provider :virtualbox do |vb, override|
-    vb.name = "epbygomw0024t2"
+    vb.name = "#{hname}"
+
+    vb.gui = true
 
     vb.customize ["modifyvm", :id, "--memory", "4096"]
     vb.customize ['modifyvm', :id, '--clipboard', 'bidirectional']
+
+    # UserManual.pdf 8.2.2 Networking settings
+
+    vb.customize ["modifyvm", :id, "--nic1", "nat"]
+    vb.customize ["modifyvm", :id, "--cableconnected1", "on"]
+
+    vb.customize ["modifyvm", :id, "--nic2", "hostonly"]
+    vb.customize ["modifyvm", :id, "--cableconnected2", "on"]
+    vb.customize ["modifyvm", :id, "--nictype2", "82543GC"] # T
+    vb.customize ["modifyvm", :id, "--nicpromisc2", "allow-all"]
+    vb.customize ["modifyvm", :id, "--hostonlyadapter2", "VirtualBox Host-Only Ethernet Adapter"]
   end
+
+  config.vm.provision "shell", inline: "hostnamectl set-hostname #{hname}"
 end
+
+# INFO ssh: Attempting SSH connection...
+# INFO ssh: Attempting to connect to SSH...
+# INFO ssh:   - Host: 127.0.0.1
+# INFO ssh:   - Port: 2222
+# INFO ssh:   - Username: vagrant
+# INFO ssh:   - Password? false
+# INFO ssh:   - Key Path: ["C:/Users/Ihar_Hancharenka/.vagrant.d/insecure_private_key"]
