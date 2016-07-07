@@ -4,19 +4,8 @@ Vagrant.configure("2") do |config|
   config.vm.box = "hfm4/centos7"
   config.vm.hostname = "#{hname}"
 
-  #config.vm.boot_timeout = 300
-
-  #config.vm.network "private_network", ip: "192.168.56.2"
- 
-  # The url from where the 'config.vm.box' box will be fetched if it
-  # doesn't already exist on the user's system.
-  #config.vm.box_url = "file:///F:/vagrant-boxes/CentOS-6.4-x86_64-v20130731.box"
-
   config.ssh.insert_key = false
   config.ssh.paranoid = false
-  #config.ssh.username = "vagrant"
-  #config.ssh.password = "vagrant"
-  #config.ssh.private_key_path = "~/.ssh/id_rsa"
 
   config.vm.provider :virtualbox do |vb, override|
     vb.name = "#{hname}"
@@ -40,6 +29,8 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision "shell", inline: "hostnamectl set-hostname #{hname}"
+  # TODO: deal with copy-paste
+  config.vm.provision "shell", inline: "echo '192.168.235.102 epbygomw0024t1 epbygomw0024t1.gomel.epam.com' >> /etc/hosts"
 end
 
 # INFO ssh: Attempting SSH connection...
