@@ -1,0 +1,27 @@
+Vagrant.configure("2") do |config|
+  hname = "epbygomw0024t3"
+
+  config.vm.box = "hfm4/centos7"
+  config.vm.hostname = "#{hname}"
+
+  config.vm.network :private_network, type: 'dhcp'
+    #vb.customize ["modifyvm", :id, "--nic1", "nat"]
+    #vb.customize ["modifyvm", :id, "--nic2", "hostonly"]
+    #vb.customize ["modifyvm", :id, "--hostonlyadapter2", "VirtualBox Host-Only Ethernet Adapter #???"]
+
+  config.ssh.insert_key = false
+  config.ssh.paranoid = false
+
+  config.vm.provider :virtualbox do |vb, override|
+    vb.name = "#{hname}"
+
+    vb.gui = true
+
+    vb.customize ["modifyvm", :id, "--memory", "4096"]
+    vb.customize ['modifyvm', :id, '--vram', '9']
+    vb.customize ['modifyvm', :id, '--clipboard', 'bidirectional']
+  end
+
+  config.vm.provision "shell", inline: "hostnamectl set-hostname #{hname}"
+  config.vm.provision "shell", inline: "echo '192.168.235.102 epbygomw0024t1 epbygomw0024t1.gomel.epam.com' >> /etc/hosts"
+end
