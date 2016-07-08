@@ -6,6 +6,8 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+include_recipe 'yum'
+
 file '/home/vagrant/hello-world.txt' do
     content 'hello world'
 end

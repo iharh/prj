@@ -6,5 +6,6 @@ CUR_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 #RECIPE=-r 'recipe[s1]'
 RECIPE='recipe[cb-template-service]'
 
-knife bootstrap $FQDN -N t2 --ssh-user 'vagrant' --ssh-password 'vagrant' --sudo -r $RECIPE
+knife bootstrap $FQDN -N epbygomw0024t2 --ssh-user 'vagrant' --ssh-password 'vagrant' --sudo -r $RECIPE -E iharh
 #--use-sudo-password
+#-E --environment ENV
