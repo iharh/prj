@@ -35,8 +35,8 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: "echo '#{p_ip} #{pname} #{pname}.#{dname}' >> /etc/hosts"
 
   config.vm.provision "chef_client" do |chef|
-    #chef.chef_server_url = "https://#{pname}.#{dname}/organizations/cheforg"
-    chef.chef_server_url = "https://#{p_ip}/organizations/cheforg"
+    #chef.chef_server_url = "https://#{p_ip}/organizations/cheforg"
+    chef.chef_server_url = "https://#{pname}.#{dname}/organizations/cheforg"
 
     chef.validation_client_name = "cheforg-validator"
     chef.validation_key_path = "cheforg-validator.pem"
@@ -47,7 +47,7 @@ Vagrant.configure("2") do |config|
     # the local chef-server can't be accessed via proxy
     chef.http_proxy = "http://192.168.235.101:3128"
     chef.https_proxy = "https://192.168.235.101:3128"
-    chef.no_proxy = "#{p_ip} #{pname} #{pname}.gomel.epam.com"
+    chef.no_proxy = "#{p_ip},#{pname},#{pname}.#{dname}"
 
     chef.delete_node = true
     chef.delete_client = true
