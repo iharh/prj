@@ -15,23 +15,22 @@ case class CbProject(id: Long, name: String)
 class DBSpec extends FlatSpec {
     private val log = LoggerFactory.getLogger(classOf[DBSpec])
 
-    def dodo = {
-        //lazy val ctx = new JdbcContext[PostgresDialect, PostgresEscape]("db")
+    def getProjects: List[CbProject] = {
+        //PostgresEscape
         lazy val ctx = new JdbcContext[PostgresDialect, SnakeCase]("db")
 
         import ctx._
 
-        //val q = quote {
-        //    query[CbProject]
-        //}
-        ctx.run(quote(query[CbProject]))
+        //ctx.run(quote(query[CbProject]))
+        val q = quote {
+            query[CbProject]
+        }
+        ctx.run(q)
     }
 
     "DB" should "do some dumb assert" in {
         log.info("start")
-
-        dodo
-
+        getProjects.foreach(p => log.info("id: {} name: {}", p.id, p.name))
         log.info("end")
 
         assert(true === true)
