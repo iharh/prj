@@ -28,7 +28,7 @@ libraryDependencies ++= Seq(
 
     //"io.getquill"               %% "quillc"        % "0.8.0",
     "io.getquill"               %% "quill-jdbc"     % "0.8.0",
-    "org.postgresql"            % "postgresql"      % "9.4.1209",
+    //"org.postgresql"            % "postgresql"      % "9.4.1209",
     // one-jar stuff
     //"commons-lang"              % "commons-lang"   % "2.6",
     //
