@@ -34,3 +34,6 @@ vagrant/*/.vagrant
 # py
 py/vec/in
 py/vec/out
+
+# stack
+stack/*/*/.stack-work
