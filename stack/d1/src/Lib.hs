@@ -10,8 +10,8 @@ someFunc :: IO ()
 someFunc = putStrLn "someFunc"
 
 someDiag :: Diagram SVG
-someDiag = circle 1
-    # fc blue
+someDiag = c ||| strutX 1 ||| c
+    where c = text "ab" <> circle 1 # fc blue
 
 --square 3
 --    # fc green
