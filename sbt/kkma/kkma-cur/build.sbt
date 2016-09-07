@@ -17,6 +17,7 @@ libraryDependencies ++= Seq(
     //"ch.qos.logback"            % "logback-core"      % "1.1.7",
     "ch.qos.logback"            % "logback-classic"   % "1.1.7",
     "ch.qos.logback"            % "logback-core"   % "1.1.7",
+    "org.codehaus.groovy"       % "groovy"         % "2.4.7",
 
     "org.apache.commons"        % "commons-lang3"   % "3.4",
 

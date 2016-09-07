@@ -1,0 +1,10 @@
+INFO KKMASpec - start
+INFO KKMASpec - end
+INFO KKMASpec - start
+INFO KKMASpec - end
+20:43:35.563 [pool-4-thread-4-ScalaTest-running-KKMASpec] INFO  KKMASpec - start
+20:43:35.565 [pool-4-thread-4-ScalaTest-running-KKMASpec] INFO  KKMASpec - end
+20:48:16.695 [pool-4-thread-4-ScalaTest-running-KKMASpec] INFO  KKMASpec - start
+20:48:16.697 [pool-4-thread-4-ScalaTest-running-KKMASpec] INFO  KKMASpec - end
+20:49:44.663 [pool-4-thread-5-ScalaTest-running-KKMASpec] INFO  KKMASpec - start
+20:49:44.665 [pool-4-thread-5-ScalaTest-running-KKMASpec] INFO  KKMASpec - end
