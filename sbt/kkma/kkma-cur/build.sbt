@@ -27,10 +27,10 @@ libraryDependencies ++= Seq(
     "org.scalatest"             %% "scalatest"      % "3.0.0"   % "test"
 )
 
-//val libcb = if (SystemUtils.IS_OS_LINUX)
-//    "/data/wrk/clb/lib.cb" else
-//    "D:/clb/inst/server/lib.cb"
+val libcb = if (SystemUtils.IS_OS_LINUX)
+    "/data/wrk/clb/lib.cb" else
+    "D:/clb/inst/server/lib.cb"
 
-//unmanagedJars in Compile ++= {
-//    (file(libcb) ** "postgresql-9*.jar").classpath
-//}
+unmanagedJars in Compile ++= {
+    (file(libcb) ** "org.snu.ids.ha-patch1.jar").classpath
+}
