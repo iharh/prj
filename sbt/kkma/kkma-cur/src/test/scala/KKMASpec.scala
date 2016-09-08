@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory
 
 class KKMASpec extends FlatSpec {
     private val log = LoggerFactory.getLogger(classOf[KKMASpec]) // ??? .getClass()
+    private val fileName = "238" // "lines"
     //private val TEXTS = List("나라마다", "abc");
 
     def getR(resName: String): BufferedReader =
@@ -32,8 +33,8 @@ class KKMASpec extends FlatSpec {
         log.info("start")
 
         Observable
-            .fromLinesReader(getR("lines.txt")) // .fromIterable(TEXTS.seq) // 0 until 10   .range(0, 10)
-            .subscribe(new LogObserver("item", log))
+            .fromLinesReader(getR(fileName + ".txt"))
+            .subscribe(new KKMAObserver(log))
 
         log.info("end")
 
