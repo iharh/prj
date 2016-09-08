@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory
 
 class KKMASpec extends FlatSpec {
     private val log = LoggerFactory.getLogger(classOf[KKMASpec]) // ??? .getClass()
-    private val fileName = "238" // "lines"
+    private val fileName = "lines" // "238"
     //private val TEXTS = List("나라마다", "abc");
 
     def getR(resName: String): BufferedReader =
