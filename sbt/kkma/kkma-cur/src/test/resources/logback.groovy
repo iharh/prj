@@ -1,7 +1,7 @@
 appender("CONSOLE", ConsoleAppender) {
     withJansi = true
     encoder(PatternLayoutEncoder) {
-        pattern = "%d{HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{15}) - %msg%n"
+        pattern = "%d{HH:mm:ss.SSS} [%.10thread] %highlight(%-5level) %cyan(%logger{15}) - %msg%n"
         //pattern = "[%thread] %highlight(%-5level) %cyan(%logger{15}) - %msg %n"
     }
 }
