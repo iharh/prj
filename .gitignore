@@ -18,6 +18,7 @@ sbt/*/out/*
 sbt/*/*/out/*
 sbt/*/dic/*
 sbt/*/*.log
+sbt/*/*/*.log
 sbt/*/-.-/*
 sbt/knlph/models/*
 gradle/*/build/*

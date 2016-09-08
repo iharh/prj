@@ -21,6 +21,9 @@ libraryDependencies ++= Seq(
 
     "org.apache.commons"        % "commons-lang3"   % "3.4",
 
+    // TODO: try only monix-reactive
+    "io.monix"                  %% "monix"          % "2.0.0",
+
     "org.scalatest"             %% "scalatest"      % "3.0.0"   % "test"
 )
 
