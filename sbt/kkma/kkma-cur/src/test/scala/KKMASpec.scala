@@ -3,9 +3,6 @@ import org.scalatest._
 //import monix.eval._
 import monix.reactive._
 
-import monix.execution.Ack
-import monix.execution.Ack.Continue
-
 import monix.execution.Scheduler.Implicits.global
 
 import org.snu.ids.ha.ma.Token;
@@ -22,8 +19,7 @@ import org.slf4j.LoggerFactory
 
 class KKMASpec extends FlatSpec {
     private val log = LoggerFactory.getLogger(classOf[KKMASpec]) // ??? .getClass()
-
-    private val TEXTS = List("나라마다", "abc");
+    //private val TEXTS = List("나라마다", "abc");
 
     def getR(resName: String): BufferedReader =
         new BufferedReader(
@@ -42,26 +38,5 @@ class KKMASpec extends FlatSpec {
         log.info("end")
 
         assert(true === true)
-    }
-
-    private class LogObserver[-A](prefix: String, log: Logger) extends Observer.Sync[A] {
-
-        private[this] var pos = 0
-
-        def onNext(elem: A): Ack = {
-          log.info("{}: {}-->{}", pos.toString(), prefix, elem.toString())
-          pos += 1
-          Continue
-        }
-
-        def onError(ex: Throwable) = {
-          log.error("{}: {}-->{}", pos.toString(), prefix, ex.toString())
-          pos += 1
-        }
-
-        def onComplete() = {
-          log.info("{}: {} completed", pos.toString(), prefix: Any)
-          pos += 1
-        }
     }
 }
