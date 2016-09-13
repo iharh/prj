@@ -28,7 +28,12 @@ libraryDependencies ++= Seq(
 
     //"io.getquill"               %% "quillc"        % "0.8.0",
     "io.getquill"               %% "quill-jdbc"     % "0.8.0",
+    //https://jdbc.postgresql.org/download.html
+    //https://mvnrepository.com/artifact/postgresql/postgresql
+    //https://mvnrepository.com/artifact/org.postgresql/postgresql
     //"org.postgresql"            % "postgresql"      % "9.4.1209",
+    //https://www.versioneye.com/java/postgresql:postgresql/9.1-902.jdbc4
+    //"postgresql"                % "postgresql"      % "9.1-902.jdbc4",
     // one-jar stuff
     //"commons-lang"              % "commons-lang"   % "2.6",
     //
@@ -41,7 +46,7 @@ val libcb = if (SystemUtils.IS_OS_LINUX)
     "D:/clb/inst/server/lib.cb"
 
 unmanagedJars in Compile ++= {
-    (file(libcb) ** "postgresql-9*.jar").classpath
+    (file(libcb) ** "postgresql-9*.jar").classpath // postgresql-9.1-902.jdbc4.jar
 }
 //    (file(libcb) ** "ojdbc*.jar").classpath // ojdbc6* ojdbc7*
 //    (file("D:/clb/inst/server/lib.cb") ** "protobuf-java-*.jar").classpath
