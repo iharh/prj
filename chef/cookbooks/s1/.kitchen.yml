@@ -1,0 +1,25 @@
+---
+driver:
+  name: vagrant
+  require_chef_omnibus: true
+  customize: 
+    memory: 4096
+provisioner:
+  name: chef_zero
+  require_chef_omnibus: 12.4.1
+platforms:
+  - name: centos-7.2
+    driver:
+      box: bento/centos-7.2
+      #box_version:
+suites:
+  - name: linux
+    run_list:
+      - recipe[s1::default]
+    attributes:
+      cb:
+        s1:
+          chef-test: "true"
+          ids: ["01", "02", "03"]
+    excludes:
+      - windows2012r2min
