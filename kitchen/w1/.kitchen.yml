@@ -1,0 +1,9 @@
+---
+driver:
+  name: vagrant
+
+platforms:
+  - name: windows-2012r2
+
+suites:
+  - name: default
