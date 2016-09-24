@@ -1,3 +1,6 @@
 Testing win box
+===
+
+Mostly from the following article:
 
 http://kitchen.ci/blog/test-kitchen-windows-test-flight-with-vagrant/
