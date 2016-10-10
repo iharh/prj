@@ -25,3 +25,8 @@ write.over(wd/"a.out", r2.out.lines)
 
 //val r2 = Seq("l1", "l2")
 //write.over(wd/"a.out", r2)
+
+//https://github.com/lihaoyi/Ammonite/blob/master/ops/src/test/scala/test/ammonite/ops/ShelloutTests.scala
+//implicit val clbWd = /'data/'wrk/'clb/'svnmain
+//implicit val clbWd = pwd/'out
+%ls(pwd/'out)
