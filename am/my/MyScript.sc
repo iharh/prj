@@ -17,7 +17,8 @@ println(s"now: $dt")
 //%.ls()
 //ls!
 
-val wd: Path = pwd
+//val wd: Path = pwd
+val wd: Path = Path("/data/wrk/prj/am/my")
 val r1 = %echo("abc")
 val r2: CommandResult = %%echo("abc")
 write.over(wd/"a.out", r2.out.lines)
