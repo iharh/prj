@@ -25,11 +25,13 @@ public class MappingTest {
         db
             .select("select content from cb_file_repository where language_id=? and name=?")
             .parameters(lang, name)
-            .getAs(InputStream.class)
+            //.getAs(InputStream.class)
+            .getAs(byte[].class)
             .subscribe(
-                contentStream -> {
+                arr -> { // contentStream
                     try {
-                        FileUtils.copyInputStreamToFile(contentStream, new File(name + ".xml"));
+                        //FileUtils.copyInputStreamToFile(contentStream, new File("out/" + name + ".xml"));
+                        FileUtils.writeByteArrayToFile(new File("out/" + name + ".xml"), arr);
                     } catch (IOException e) {
                         log.error("IO error:", e);
                     }
@@ -42,7 +44,7 @@ public class MappingTest {
         Database db = DBUtils.getDb();
 
         //update cb_lp set LP_VERSION=? where language_id=?
-        dumpContent(db, "en", "config");
+        dumpContent(db, "en", "scheme"); // config
         // ?? cb_shared_file_repository
     }
 }

@@ -22,12 +22,12 @@ libraryDependencies ++= Seq(
     "org.slf4j"                 % "slf4j-log4j12"   % "1.7.21",
     "log4j"                     % "log4j"           % "1.2.17",
 
-    "org.apache.commons"        % "commons-lang3"   % "3.4",
+    "org.apache.commons"        % "commons-lang3"   % "3.5",
 
-    "com.typesafe"              % "config"          % "1.3.0",
+    "com.typesafe"              % "config"          % "1.3.1",
 
     //"io.getquill"               %% "quillc"        % "0.8.0",
-    "io.getquill"               %% "quill-jdbc"     % "0.8.0",
+    "io.getquill"               %% "quill-jdbc"     % "0.10.0",
     //https://jdbc.postgresql.org/download.html
     //https://mvnrepository.com/artifact/postgresql/postgresql
     //https://mvnrepository.com/artifact/org.postgresql/postgresql

@@ -15,17 +15,17 @@ javacOptions ++= Seq("-encoding", "UTF-8", "-Xlint:unchecked", "-Xlint:deprecati
 testOptions += Tests.Argument(TestFrameworks.JUnit, "-q", "-a")
 
 libraryDependencies ++= Seq(
-    "org.slf4j"                 % "slf4j-api"      % "1.7.18",
-    "org.slf4j"                 % "slf4j-log4j12"  % "1.7.18",
+    "org.slf4j"                 % "slf4j-api"      % "1.7.21",
+    "org.slf4j"                 % "slf4j-log4j12"  % "1.7.21",
     "log4j"                     % "log4j"          % "1.2.17",
 
-    "commons-io"                % "commons-io"     % "2.4",
+    "commons-io"                % "commons-io"     % "2.5",
     //"com.oracle"                % "ojdbc6"         % "11.2.0.3",
     //"cn.guoyukun.jdbc"          % "oracle-ojdbc6"  % "11.2.0.3.0",
 
-    "com.typesafe"              % "config"         % "1.3.0",
+    "com.typesafe"              % "config"         % "1.3.1",
 
-    "com.github.davidmoten"     % "rxjava-jdbc"    % "0.7",
+    "com.github.davidmoten"     % "rxjava-jdbc"    % "0.7.2",
     // one-jar stuff
     //"commons-lang"              % "commons-lang"   % "2.6"
     //
