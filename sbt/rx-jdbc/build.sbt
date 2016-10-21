@@ -1,3 +1,4 @@
+import org.apache.commons.lang3.SystemUtils
 //name := "rx-jdbc"
 
 version := "0.1-SNAPSHOT"
@@ -34,18 +35,36 @@ libraryDependencies ++= Seq(
     "org.hamcrest"              % "hamcrest-library"   % "1.3"     % "test"
 )
 
+val libroot = if (SystemUtils.IS_OS_LINUX)
+    "/data/wrk/clb" else
+    "D:/clb/inst/server"
+
+val libcb = libroot + "/lib.cb"
+
+val libfx = libroot + "/lib.fx"
+
 unmanagedJars in Compile ++= {
-    (file("D:/clb/inst/server/lib.cb") ** "ojdbc*.jar").classpath // ojdbc6* ojdbc7*
+    (file(libcb) ** "ojdbc*.jar").classpath // ojdbc6* ojdbc7*
 }
 
 unmanagedJars in Compile ++= {
-    (file("D:/clb/inst/server/lib.cb") ** "postgresql-9*.jar").classpath
+    (file(libcb) ** "postgresql-9*.jar").classpath
 }
 
 unmanagedJars in Compile ++= {
-    (file("D:/clb/inst/server/lib.cb") ** "elasticsearch-*.jar").classpath
+    (file(libcb) ** "elasticsearch-*.jar").classpath
 }
 
 unmanagedJars in Compile ++= {
-    (file("D:/clb/inst/server/lib.cb") ** "protobuf-java-*.jar").classpath
+    (file(libcb) ** "protobuf-java-*.jar").classpath
 }
+
+unmanagedJars in Compile ++= {
+    (file(libcb) ** "protobuf-java-*.jar").classpath
+}
+
+unmanagedJars in Compile ++= {
+    (file(libfx) ** "*.jar").classpath
+}
+
+// javaOptions in test_or_run += "-Djava.library.path=D:/clb/inst/fx"
