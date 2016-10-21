@@ -1,0 +1,16 @@
+*/target/*
+*/*/target/*
+*/project/target/*
+*/*/project/target/*
+*/project/project/target/*
+*/*/project/project/target/*
+*/src/main/resources/dic/*
+*/lib/*
+*/in/*
+*/out/*
+*/*/out/*
+*/dic/*
+*/*.log
+*/*/*.log
+*/-.-/*
+knlph/models/*
