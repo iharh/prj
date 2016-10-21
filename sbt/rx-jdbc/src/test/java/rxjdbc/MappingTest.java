@@ -44,7 +44,7 @@ public class MappingTest {
         Database db = DBUtils.getDb();
 
         //update cb_lp set LP_VERSION=? where language_id=?
-        dumpContent(db, "en", "scheme"); // config
+        dumpContent(db, "en", "english"); // config
         // ?? cb_shared_file_repository
     }
 }
