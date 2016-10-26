@@ -1,0 +1,29 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'de.richsource.gradle.plugins:gwt-gradle-plugin:0.6'
+    }
+}
+
+apply plugin: 'war'
+apply plugin: 'gwt'
+
+// sourceCompatibility = 1.7
+// targetCompatibility = 1.7
+
+gwt {
+    //gwtVersion='2.7.0'
+    gwtVersion='2.6.0'
+
+    // ???
+    modules 'mygwt.Example'
+
+    compiler {
+	strict = true;                  // ???
+	enableClosureCompiler = true;   // activates -XenableClosureCompiler
+	disableClassMetadata = true;    // activates -XdisableClassMetadata
+	disableCastChecking = true;     // activates -XdisableCastChecking
+    }
+}
