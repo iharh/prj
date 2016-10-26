@@ -9,21 +9,25 @@ buildscript {
 
 apply plugin: 'war'
 apply plugin: 'gwt'
+//apply plugin: 'gwt-compiler'
 
-// sourceCompatibility = 1.7
-// targetCompatibility = 1.7
+repositories {
+    jcenter()
+}
+
+//sourceCompatibility = 1.7
+//targetCompatibility = 1.7
 
 gwt {
-    //gwtVersion='2.7.0'
-    gwtVersion='2.6.0'
+    gwtVersion='2.7.0'
+    //gwtVersion='2.6.0'
 
-    // ???
     modules 'mygwt.Example'
 
     compiler {
-	strict = true;                  // ???
-	enableClosureCompiler = true;   // activates -XenableClosureCompiler
-	disableClassMetadata = true;    // activates -XdisableClassMetadata
-	disableCastChecking = true;     // activates -XdisableCastChecking
+        strict = true;                  // ???
+	//enableClosureCompiler = true;   // activates -XenableClosureCompiler
+	//disableClassMetadata = true;    // activates -XdisableClassMetadata
+	//disableCastChecking = true;     // activates -XdisableCastChecking
     }
 }
