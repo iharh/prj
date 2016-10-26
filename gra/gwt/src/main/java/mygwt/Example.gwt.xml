@@ -26,5 +26,5 @@
     <source path="foundation/client/widget/dialog"/>
     <source path="web/client/utils"/>
 
-    <entry-point class="mygwt.client.ExampleEntryPoint"/>
+    <entry-point class="mygwt.client.MyEntryPoint"/>
 </module>
