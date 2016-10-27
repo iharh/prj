@@ -16,12 +16,15 @@ apply plugin: 'org.akhikhl.gretty'
 repositories {
     jcenter()
 }
+dependencies {
+    //compile group: 'com.google.gwt', name: 'gwt-incubator', version: '2.0.1'
+}
 
 //sourceCompatibility = 1.7
 //targetCompatibility = 1.7
 
 gwt {
-    gwtVersion = '2.7.0' // '2.6.0'
+    gwtVersion = '2.5.1' // '2.7.0'
     //logLevel = 'INFO'
 
     modules 'mygwt.Example'

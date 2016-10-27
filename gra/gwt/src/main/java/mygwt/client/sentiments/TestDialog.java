@@ -29,12 +29,16 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.Widget;
 
+//import com.google.gwt.gen2.table.client.FixedWidthFlexTable;
+
 public class TestDialog extends BaseDialogBox {
     private static final String divNbsp = "<div style=\"height: 10px;\">&nbsp;</div>";
 
-    private static final int allW = 640;
-    private static final int allH = 370;
+    private static final int allW   = 640;
+    private static final int allH   = 370;
     private static final String textBoxW = "470px"; // 450px
+    private static final int labelW = 150;
+    private static final int sp1    = 12;
 
     private CheckBox exportWords;
     private CheckBox exportRules;
@@ -51,39 +55,48 @@ public class TestDialog extends BaseDialogBox {
 
     protected Widget createDialogContents() {
         DockLayoutPanel panel = new DockLayoutPanel(Unit.PX);
+
         panel.setWidth(allW + "px");
         panel.setHeight(allH + "px");
 
-        VerticalPanel dlgPanel = new VerticalPanel();
-	dlgPanel.setSpacing(20);
-
-        dlgPanel.add(createNamePanel());
-        dlgPanel.add(createDescriptionPanel());
-        dlgPanel.add(createContentPanel());
-
-        panel.addNorth(dlgPanel, 250);
-
-        Panel buttonPanel = createButtonPanel();
-        //dlgPanel.add(buttonPanel);
-        //dlgPanel.setCellHorizontalAlignment(buttonPanel, HasHorizontalAlignment.ALIGN_RIGHT);
-        panel.addSouth(buttonPanel, 50);
+        panel.addNorth(createExportInfoPanel(), 250);
+        panel.addSouth(createButtonPanel(), 50);
 
         return panel;
     }
 
+    private Panel createExportInfoPanel() {
+        VerticalPanel infoPanel = new VerticalPanel();
+        //infoPanel.setBorderWidth(1);
+	// infoPanel.setSpacing(sp1); // too rough
+
+        infoPanel.add(createNamePanel());
+        infoPanel.add(createDescriptionPanel());
+        infoPanel.add(createContentPanel());
+
+        return infoPanel;
+    }
+
     private Panel createNamePanel() {
-        Panel namePanel = new HorizontalPanel();
+        HorizontalPanel namePanel = new HorizontalPanel();
+        //namePanel.setBorderWidth(1);
+        namePanel.setSpacing(sp1);
+
         InlineLabel labelName = new InlineLabel("Export Name:");
         namePanel.add(labelName);
         exportName = new TextBox();
         exportName.setWidth(textBoxW);
         namePanel.add(exportName);
-        alignLabelW(labelName);
+        alignLabelW(labelName, labelW);
+
         return namePanel;
     }
 
     private Panel createDescriptionPanel() {
-        Panel descriptionPanel = new HorizontalPanel();
+        HorizontalPanel descriptionPanel = new HorizontalPanel();
+        //descriptionPanel.setBorderWidth(1);
+        descriptionPanel.setSpacing(sp1);
+
         InlineLabel labelDescription = new InlineLabel("Export Description:");
         descriptionPanel.add(labelDescription);
         exportDescription = new TextArea();
@@ -93,7 +106,8 @@ public class TestDialog extends BaseDialogBox {
         exportDescription.setHeight("80px");
         exportDescription.addStyleName("descr-TextArea");
         descriptionPanel.add(exportDescription);
-        alignLabelW(labelDescription);
+        alignLabelW(labelDescription, labelW);
+
         return descriptionPanel;
     }
 
@@ -104,14 +118,26 @@ public class TestDialog extends BaseDialogBox {
         exportRules = new CheckBox(" Include Exception Rules.");
         exportRules.setValue(true);
 
-        Panel contentPanel = new HorizontalPanel();
+        HorizontalPanel contentPanel = new HorizontalPanel();
+        //contentPanel.setBorderWidth(1);
+        //contentPanel.setSpacing(sp1);
+
+        HorizontalPanel ppp = new HorizontalPanel();
+        ppp.setSpacing(sp1);
+
         InlineLabel labelContent = new InlineLabel("Content:");
-        contentPanel.add(labelContent);
-        alignLabelW(labelContent);
-        Panel rbPanel = new VerticalPanel();
+        ppp.add(labelContent);
+        alignLabelW(labelContent, labelW - sp1);
+
+        contentPanel.add(ppp);
+
+        VerticalPanel rbPanel = new VerticalPanel();
+        //rbPanel.setBorderWidth(1);
+
         rbPanel.add(new HTML(divNbsp));
         rbPanel.add(exportWords);
         rbPanel.add(exportRules);
+
         contentPanel.add(rbPanel);
         return contentPanel;
     }
@@ -130,21 +156,27 @@ public class TestDialog extends BaseDialogBox {
         exportBtn.addClickHandler(closeButtonHandler);
         cancelBtn.addClickHandler(closeButtonHandler);
 
+        DockLayoutPanel btnPanel = new DockLayoutPanel(Unit.PX);
+        btnPanel.setWidth(allW + "px");
+        btnPanel.setHeight("50px");
+
         HorizontalPanel buttonPanel = new HorizontalPanel();
-        buttonPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
-        // does nothing
-        buttonPanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_BOTTOM);
+        //buttonPanel.setBorderWidth(1);
+
         buttonPanel.add(exportBtn);
         buttonPanel.add(new HTML(divNbsp));
         buttonPanel.add(cancelBtn);
-        return buttonPanel;
+
+        btnPanel.addEast(buttonPanel, 165);
+
+        return btnPanel;
     }
 
-    private void alignLabelW(InlineLabel label) {
+    private void alignLabelW(InlineLabel label, final int w) {
         StyleUtils.changeStyle(label.getElement(), StyleUtils.FIRST_PARENT, new StyleUtils.StyleChanger() {
             @Override
 	    public void changeStyle(Style style) {
-                style.setWidth(150, Style.Unit.PX);
+                style.setWidth(w, Style.Unit.PX);
             }
         });
     }
