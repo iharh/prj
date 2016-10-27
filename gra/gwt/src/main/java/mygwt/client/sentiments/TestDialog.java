@@ -7,6 +7,7 @@ import mygwt.foundation.client.widget.button.OkButton;
 import mygwt.web.client.utils.StyleUtils;
 
 import com.google.gwt.dom.client.Style;
+import com.google.gwt.dom.client.Style.Unit;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -21,6 +22,7 @@ import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.TextBox;
@@ -30,6 +32,8 @@ import com.google.gwt.user.client.ui.Widget;
 public class TestDialog extends BaseDialogBox {
     private static final String divNbsp = "<div style=\"height: 10px;\">&nbsp;</div>";
 
+    private static final int allW = 640;
+    private static final int allH = 370;
     private static final String textBoxW = "470px"; // 450px
 
     private CheckBox exportWords;
@@ -40,25 +44,31 @@ public class TestDialog extends BaseDialogBox {
     private ClickHandler closeButtonHandler;
 
     public TestDialog() {
-        super("Sentiment Export", 640, 370);
+        super("Sentiment Export", allW, allH);
         setWidget(createDialogContents());
         hide();
     }
 
     protected Widget createDialogContents() {
+        DockLayoutPanel panel = new DockLayoutPanel(Unit.PX);
+        panel.setWidth(allW + "px");
+        panel.setHeight(allH + "px");
+
         VerticalPanel dlgPanel = new VerticalPanel();
-        dlgPanel.setWidth("640px");
-	dlgPanel.setSpacing(5);
+	dlgPanel.setSpacing(20);
 
         dlgPanel.add(createNamePanel());
         dlgPanel.add(createDescriptionPanel());
         dlgPanel.add(createContentPanel());
 
-        Panel buttonPanel = createButtonPanel();
-        dlgPanel.add(buttonPanel);
-        //dlgPanel.setCellHorizontalAlignment(buttonPanel, HasHorizontalAlignment.ALIGN_RIGHT);
+        panel.addNorth(dlgPanel, 250);
 
-        return dlgPanel;
+        Panel buttonPanel = createButtonPanel();
+        //dlgPanel.add(buttonPanel);
+        //dlgPanel.setCellHorizontalAlignment(buttonPanel, HasHorizontalAlignment.ALIGN_RIGHT);
+        panel.addSouth(buttonPanel, 50);
+
+        return panel;
     }
 
     private Panel createNamePanel() {
