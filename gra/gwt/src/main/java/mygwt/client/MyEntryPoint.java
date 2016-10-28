@@ -1,7 +1,6 @@
 package mygwt.client;
 
-//import mygwt.client.sentiments.ExportSentimentsDialog;
-import mygwt.client.sentiments.TestDialog;
+import mygwt.client.sentiments.ExportSentimentsDialog;
 
 import mygwt.foundation.client.widget.dialog.BaseDialogBox;
 
@@ -14,7 +13,7 @@ public class MyEntryPoint implements EntryPoint {
     public void onModuleLoad() {
 	RootPanel.get().add(new Label("Hello GWT World!"));
 
-        final BaseDialogBox popup = new TestDialog();
+        final BaseDialogBox popup = new ExportSentimentsDialog();
         popup.show();
     }
 }
