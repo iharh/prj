@@ -34,11 +34,12 @@ import com.google.gwt.user.client.ui.Widget;
 public class TestDialog extends BaseDialogBox {
     private static final String divNbsp = "<div style=\"height: 10px;\">&nbsp;</div>";
 
-    private static final int allW   = 640;
-    private static final int allH   = 370;
+    private static final int borderW     = 0; // 1 for borders vis-n
+    private static final int allW        = 640;
+    private static final int allH        = 370;
     private static final String textBoxW = "470px"; // 450px
-    private static final int labelW = 150;
-    private static final int sp1    = 12;
+    private static final int labelW      = 150;
+    private static final int spacing     = 12;
 
     private CheckBox exportWords;
     private CheckBox exportRules;
@@ -67,8 +68,8 @@ public class TestDialog extends BaseDialogBox {
 
     private Panel createExportInfoPanel() {
         VerticalPanel infoPanel = new VerticalPanel();
-        //infoPanel.setBorderWidth(1);
-	// infoPanel.setSpacing(sp1); // too rough
+        infoPanel.setBorderWidth(borderW);
+	// infoPanel.setSpacing(spacint); // too rough
 
         infoPanel.add(createNamePanel());
         infoPanel.add(createDescriptionPanel());
@@ -79,8 +80,8 @@ public class TestDialog extends BaseDialogBox {
 
     private Panel createNamePanel() {
         HorizontalPanel namePanel = new HorizontalPanel();
-        //namePanel.setBorderWidth(1);
-        namePanel.setSpacing(sp1);
+        namePanel.setBorderWidth(borderW);
+        namePanel.setSpacing(spacing);
 
         InlineLabel labelName = new InlineLabel("Export Name:");
         namePanel.add(labelName);
@@ -94,8 +95,8 @@ public class TestDialog extends BaseDialogBox {
 
     private Panel createDescriptionPanel() {
         HorizontalPanel descriptionPanel = new HorizontalPanel();
-        //descriptionPanel.setBorderWidth(1);
-        descriptionPanel.setSpacing(sp1);
+        descriptionPanel.setBorderWidth(borderW);
+        descriptionPanel.setSpacing(spacing);
 
         InlineLabel labelDescription = new InlineLabel("Export Description:");
         descriptionPanel.add(labelDescription);
@@ -112,27 +113,28 @@ public class TestDialog extends BaseDialogBox {
     }
 
     private Panel createContentPanel() {
-        exportWords = new CheckBox(" Include Tuned Sentiment Words.");
+        exportWords = new CheckBox("Include Tuned Sentiment Words");
         exportWords.setValue(true);
 
-        exportRules = new CheckBox(" Include Exception Rules.");
+        exportRules = new CheckBox("Include Exception Rules");
         exportRules.setValue(true);
 
         HorizontalPanel contentPanel = new HorizontalPanel();
-        //contentPanel.setBorderWidth(1);
-        //contentPanel.setSpacing(sp1);
+        contentPanel.setBorderWidth(borderW);
+        //contentPanel.setSpacing(spacing);
 
-        HorizontalPanel ppp = new HorizontalPanel();
-        ppp.setSpacing(sp1);
+        HorizontalPanel contentLabelPanel = new HorizontalPanel();
+        contentLabelPanel.setBorderWidth(borderW);
+        contentLabelPanel.setSpacing(spacing);
 
         InlineLabel labelContent = new InlineLabel("Content:");
-        ppp.add(labelContent);
-        alignLabelW(labelContent, labelW - sp1);
+        contentLabelPanel.add(labelContent);
+        alignLabelW(labelContent, labelW - spacing);
 
-        contentPanel.add(ppp);
+        contentPanel.add(contentLabelPanel);
 
         VerticalPanel rbPanel = new VerticalPanel();
-        //rbPanel.setBorderWidth(1);
+        rbPanel.setBorderWidth(borderW);
 
         rbPanel.add(new HTML(divNbsp));
         rbPanel.add(exportWords);
@@ -161,7 +163,7 @@ public class TestDialog extends BaseDialogBox {
         btnPanel.setHeight("50px");
 
         HorizontalPanel buttonPanel = new HorizontalPanel();
-        //buttonPanel.setBorderWidth(1);
+        buttonPanel.setBorderWidth(borderW);
 
         buttonPanel.add(exportBtn);
         buttonPanel.add(new HTML(divNbsp));

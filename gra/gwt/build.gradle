@@ -30,10 +30,18 @@ gwt {
     modules 'mygwt.Example'
 
     compiler {
-        strict = true;                  // ???
+        //strict = true;                  // ???
 	//enableClosureCompiler = true;   // activates -XenableClosureCompiler
 	//disableClassMetadata = true;    // activates -XdisableClassMetadata
 	//disableCastChecking = true;     // activates -XdisableCastChecking
+    }
+    // ???
+    sourceSets {
+        main {
+            java {
+                srcDir 'src'
+            }
+        }
     }
 }
 
