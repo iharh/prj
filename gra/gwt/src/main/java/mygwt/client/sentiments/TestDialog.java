@@ -6,6 +6,8 @@ import mygwt.foundation.client.widget.button.OkButton;
 
 import mygwt.web.client.utils.StyleUtils;
 
+import mygwt.web.client.sentiments.resources.SentimentsMessages;
+
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.dom.client.Style.Unit;
 
@@ -32,8 +34,6 @@ import com.google.gwt.user.client.ui.Widget;
 //import com.google.gwt.gen2.table.client.FixedWidthFlexTable;
 
 public class TestDialog extends BaseDialogBox {
-    private static final String divNbsp = "<div style=\"height: 10px;\">&nbsp;</div>";
-
     private static final int borderW     = 0; // 1 for borders vis-n
     private static final int allW        = 640;
     private static final int allH        = 370;
@@ -49,7 +49,7 @@ public class TestDialog extends BaseDialogBox {
     private ClickHandler closeButtonHandler;
 
     public TestDialog() {
-        super("Sentiment Export", allW, allH);
+        super(SentimentsMessages.INSTANCE.sentimentExport(), allW, allH);
         setWidget(createDialogContents());
         hide();
     }
@@ -83,7 +83,7 @@ public class TestDialog extends BaseDialogBox {
         namePanel.setBorderWidth(borderW);
         namePanel.setSpacing(spacing);
 
-        InlineLabel labelName = new InlineLabel("Export Name:");
+        InlineLabel labelName = new InlineLabel(SentimentsMessages.INSTANCE.exportName());
         namePanel.add(labelName);
         exportName = new TextBox();
         exportName.setWidth(textBoxW);
@@ -98,7 +98,7 @@ public class TestDialog extends BaseDialogBox {
         descriptionPanel.setBorderWidth(borderW);
         descriptionPanel.setSpacing(spacing);
 
-        InlineLabel labelDescription = new InlineLabel("Export Description:");
+        InlineLabel labelDescription = new InlineLabel(SentimentsMessages.INSTANCE.exportDescription());
         descriptionPanel.add(labelDescription);
         exportDescription = new TextArea();
         exportDescription.setCharacterWidth(80);
@@ -113,10 +113,10 @@ public class TestDialog extends BaseDialogBox {
     }
 
     private Panel createContentPanel() {
-        exportWords = new CheckBox("Include Tuned Sentiment Words");
+        exportWords = new CheckBox(SentimentsMessages.INSTANCE.includeTunedWords());
         exportWords.setValue(true);
 
-        exportRules = new CheckBox("Include Exception Rules");
+        exportRules = new CheckBox(SentimentsMessages.INSTANCE.includeExceptionRules());
         exportRules.setValue(true);
 
         HorizontalPanel contentPanel = new HorizontalPanel();
@@ -127,7 +127,7 @@ public class TestDialog extends BaseDialogBox {
         contentLabelPanel.setBorderWidth(borderW);
         contentLabelPanel.setSpacing(spacing);
 
-        InlineLabel labelContent = new InlineLabel("Content:");
+        InlineLabel labelContent = new InlineLabel(SentimentsMessages.INSTANCE.exportContent());
         contentLabelPanel.add(labelContent);
         alignLabelW(labelContent, labelW - spacing);
 
@@ -136,7 +136,7 @@ public class TestDialog extends BaseDialogBox {
         VerticalPanel rbPanel = new VerticalPanel();
         rbPanel.setBorderWidth(borderW);
 
-        rbPanel.add(new HTML(divNbsp));
+        rbPanel.add(new HTML(SentimentsMessages.INSTANCE.divNbsp()));
         rbPanel.add(exportWords);
         rbPanel.add(exportRules);
 
@@ -152,8 +152,8 @@ public class TestDialog extends BaseDialogBox {
             }
         };
 
-        final OkButton     exportBtn = new OkButton("Export");
-        final CancelButton cancelBtn = new CancelButton("Cancel");
+        final OkButton     exportBtn = new OkButton(SentimentsMessages.INSTANCE.export());
+        final CancelButton cancelBtn = new CancelButton(SentimentsMessages.INSTANCE.cancel());
 
         exportBtn.addClickHandler(closeButtonHandler);
         cancelBtn.addClickHandler(closeButtonHandler);
@@ -166,7 +166,7 @@ public class TestDialog extends BaseDialogBox {
         buttonPanel.setBorderWidth(borderW);
 
         buttonPanel.add(exportBtn);
-        buttonPanel.add(new HTML(divNbsp));
+        buttonPanel.add(new HTML(SentimentsMessages.INSTANCE.nbsp()));
         buttonPanel.add(cancelBtn);
 
         btnPanel.addEast(buttonPanel, 165);

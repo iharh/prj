@@ -36,13 +36,7 @@ gwt {
 	//disableCastChecking = true;     // activates -XdisableCastChecking
     }
     // ???
-    sourceSets {
-        main {
-            java {
-                srcDir 'src'
-            }
-        }
-    }
+    sourceSets { main { java { srcDir 'src' } } }
 }
 
 //compileGwt {
