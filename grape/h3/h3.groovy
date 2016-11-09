@@ -35,7 +35,13 @@ def publishToNexusHttpClient(usr, pass, artifact, version, fileName, url) {
         AuthScope.ANY,
         new UsernamePasswordCredentials(usr, pass)
     )
-    def method = new PutMethod("${url}/${group}/${artifact}/${version}/${fileName}")
+    client.getParams().setConnectionManagerTimeout(20000);
+    client.getParams().setSoTimeout(10 * 60 * 1000);
+    def finalUrl = "${url}/${group}/${artifact}/${version}/${fileName}"
+    println("PUT: ${finalUrl}")
+
+    def method = new PutMethod(finalUrl)
+
     def file = new File(fileName)
 
     print("using file: ${fileName}")
@@ -44,17 +50,19 @@ def publishToNexusHttpClient(usr, pass, artifact, version, fileName, url) {
 
     method.setRequestEntity(new InputStreamRequestEntity(fis, file.length()))
     method.setContentChunked(true);
+    method.getParams().setBooleanParameter("http.protocol.expect-continue", true);
+
     try {
         client.executeMethod(method);
 
         if (method.getStatusCode() == HttpStatus.SC_OK) {
-            error "PUBLISH RESP: ${method.getResponseBodyAsString()}"
+            println("PUBLISH RESP: ${method.getResponseBodyAsString()}")
         } else {
-            error "FAILED: ${method.getStatusLine().toString()}"
+            println("FAILED: ${method.getStatusLine().toString()}")
         }
     } finally {
         method.releaseConnection();
     }
 }
 
-publishToNexusHttpClient('admin', 'admin123', )
+publishToNexusHttpClient('admin', 'admin123', 'cb-template-service', '1.0.0', 'a.txt', 'http://10.120.167.243:8081/content/repositories/snapshots')
