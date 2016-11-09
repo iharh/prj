@@ -50,7 +50,7 @@ def publishToNexusHttpClient(usr, pass, artifact, version, fileName, url) {
 
     method.setRequestEntity(new InputStreamRequestEntity(fis, file.length()))
     method.setContentChunked(true);
-    method.getParams().setBooleanParameter("http.protocol.expect-continue", true);
+    method.setUseExpectHeader(true); // method.getParams().setBooleanParameter("http.protocol.expect-continue", true);
 
     try {
         client.executeMethod(method);
