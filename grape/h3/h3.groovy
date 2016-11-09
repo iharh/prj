@@ -51,9 +51,8 @@ def publishToNexusHttpClient(usr, pass, artifact, version, fileName, url) {
 
     def file = new File(fileName)
 
-    println("using file: ${fileName}")
     def fis = new FileInputStream(file)
-    println("done with using file: ${fileName} len: ${file.length()}")
+    println("using file: ${fileName} len: ${file.length()}")
 
     method.setRequestEntity(new InputStreamRequestEntity(fis, file.length()))
     method.setContentChunked(true);
