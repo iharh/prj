@@ -1,12 +1,16 @@
 #! /usr/local/bin/amm
 import $file.MyFmt, MyFmt._
+import $file.svn, svn._
 
 import ammonite.ops.ImplicitWd._
 //import ammonite.runtime.tools._
 
 import org.joda.time.LocalDateTime 
 
+val pwd = cfg.getString("pwd")
+println(s"pwd: $pwd")
 
+/*
 val clbDir = Path("/data/wrk/clb")
 val logbDir = clbDir/'logb
 val svnDir = clbDir/'svnmain
@@ -35,3 +39,4 @@ if (svnRevOld == svnRevNew) {
     //set /A old_revision+=1
     %%.svn("log", "-v", "-r", s"$svnRevOld:$svnRevNew")(svnDir).out.lines | (_ + "\n") |> write.append! logBuild
 }
+*/
