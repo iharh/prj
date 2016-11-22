@@ -1,7 +1,5 @@
 package mygwt.client.sentiments;
 
-import mygwt.web.client.report.ExportPanel;
-
 import mygwt.foundation.client.widget.dialog.BaseDialogBox;
 import mygwt.foundation.client.widget.button.CancelButton;
 import mygwt.foundation.client.widget.button.OkButton;
@@ -33,9 +31,7 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.Widget;
 
-//import com.google.gwt.gen2.table.client.FixedWidthFlexTable;
-
-public class ExportSentimentsDialog extends BaseDialogBox {
+public class GetPreviousSentimentsExportDialog extends BaseDialogBox {
     private static final int borderW     = 0; // 1 for borders vis-n
     private static final int allW        = 640;
     private static final int allH        = 370;
@@ -50,9 +46,9 @@ public class ExportSentimentsDialog extends BaseDialogBox {
 
     private ClickHandler closeButtonHandler;
 
-    private ExportPanel hiddenPanel;
+    //private ExportPanel hiddenPanel;
 
-    public ExportSentimentsDialog() {
+    public GetPreviousSentimentsExportDialog() {
         super(SentimentsMessages.INSTANCE.sentimentExport(), allW, allH);
         setWidget(createDialogContents());
         hide();
@@ -159,14 +155,13 @@ public class ExportSentimentsDialog extends BaseDialogBox {
         final OkButton     exportBtn = new OkButton(SentimentsMessages.INSTANCE.export());
         final CancelButton cancelBtn = new CancelButton(SentimentsMessages.INSTANCE.cancel());
 
-        exportBtn.addClickHandler(new ClickHandler() {
+        /*exportBtn.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
                 buildExportPanel();
                 hiddenPanel.submit();
             }
-        });
-
+        });*/
         exportBtn.addClickHandler(closeButtonHandler);
         cancelBtn.addClickHandler(closeButtonHandler);
 
@@ -195,7 +190,7 @@ public class ExportSentimentsDialog extends BaseDialogBox {
         });
     }
 
-    private void buildExportPanel() {
+    /*private void buildExportPanel() {
         if (null != hiddenPanel)
             hiddenPanel.removeFromParent();
         hiddenPanel = new ExportPanel("sentiment_export.action");
@@ -207,5 +202,5 @@ public class ExportSentimentsDialog extends BaseDialogBox {
         hiddenPanel.setField(ExportPanel.SENT_EXPORT_DESCR, exportDescription.getValue());
         
         RootPanel.get().add(hiddenPanel);
-    }
+    }*/
 }
