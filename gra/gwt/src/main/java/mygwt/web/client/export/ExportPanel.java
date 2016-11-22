@@ -1,11 +1,11 @@
 package mygwt.web.client.report;
 
-import com.clarabridge.common.client.context.ApplicationContext;
-//import com.clarabridge.common.client.widget.dialog.MessageDialog;
+import mygwt.common.client.context.ApplicationContext;
+//import mygwt.common.client.widget.dialog.MessageDialog;
 
-import com.clarabridge.foundation.client.csrf.CsrfFormPanel;
-//import com.clarabridge.foundation.client.widget.dialog.SessionExpiredDialog;
-import com.clarabridge.foundation.shared.model.StringUtilHelper;
+import mygwt.foundation.client.csrf.CsrfFormPanel;
+//import mygwt.foundation.client.widget.dialog.SessionExpiredDialog;
+import mygwt.foundation.shared.model.StringUtilHelper;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.FormPanel;

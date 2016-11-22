@@ -1,6 +1,6 @@
 package mygwt.foundation.client.csrf;
 
-import com.clarabridge.foundation.shared.model.StringUtilHelper;
+import mygwt.foundation.shared.model.StringUtilHelper;
 
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FormPanel;
