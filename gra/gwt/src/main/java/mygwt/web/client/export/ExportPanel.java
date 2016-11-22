@@ -1,10 +1,10 @@
 package mygwt.web.client.report;
 
 import com.clarabridge.common.client.context.ApplicationContext;
-import com.clarabridge.common.client.widget.dialog.MessageDialog;
+//import com.clarabridge.common.client.widget.dialog.MessageDialog;
 
 import com.clarabridge.foundation.client.csrf.CsrfFormPanel;
-import com.clarabridge.foundation.client.widget.dialog.SessionExpiredDialog;
+//import com.clarabridge.foundation.client.widget.dialog.SessionExpiredDialog;
 import com.clarabridge.foundation.shared.model.StringUtilHelper;
 
 import com.google.gwt.core.client.GWT;
@@ -48,11 +48,12 @@ public class ExportPanel extends CsrfFormPanel {
             public void onSubmitComplete(SubmitCompleteEvent event) {
                 String error = event.getResults();
                 if (!(StringUtilHelper.isNullOrEmpty(error)) && !(error.startsWith("<pre"))) {
-                    if (error.contains("j_spring_security_check")) { // session timeout marker
-                        SessionExpiredDialog.showDialog();
-                    } else {
-                        MessageDialog.showError(error);
-                    }
+                    // TODO: impl later !!!
+                    //if (error.contains("j_spring_security_check")) { // session timeout marker
+                    //    SessionExpiredDialog.showDialog();
+                    //} else {
+                    //    MessageDialog.showError(error);
+                    //}
                 }
             }
         });

@@ -1,6 +1,6 @@
 package mygwt.foundation.client.csrf;
 
-//import com.clarabridge.foundation.shared.model.StringUtilHelper;
+import com.clarabridge.foundation.shared.model.StringUtilHelper;
 
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FormPanel;
@@ -43,19 +43,6 @@ public class CsrfFormPanel extends FormPanel {
 //		setOpenInNewWindow(false);
 //	}
 	
-    private boolean isValidPageToken(String pageTokenName, String pageTokenValue) {
-        return !isNullOrEmpty(pageTokenName) && !isNullOrEmpty(pageTokenValue);
-    }
-
-    // manually inlining StringUtilHelper.isNullOrEmpty(String string)
-    /**
-     * Browser specific. IE passes string "null" in field values for null argument while FF passes just empty string "".
-     */
-    public static boolean isNullOrEmpty(String string) {
-        return string == null || "".equals(string) || "null".equalsIgnoreCase(string)
-                || "undefined".equalsIgnoreCase(string);
-    }
-
     @Override
     public void submit() {
         //Window.alert("Submit:" + getAction());
@@ -70,7 +57,7 @@ public class CsrfFormPanel extends FormPanel {
         
         String pageTokenName = CsrfUtils.getTokenName();
         String pageTokenValue = CsrfUtils.getTokenValue();
-        if (isValidPageToken(pageTokenName, pageTokenValue)) {
+        if (!StringUtilHelper.isNullOrEmpty(pageTokenName) && !StringUtilHelper.isNullOrEmpty(pageTokenValue)) {
             // Add security token parameter as part of URL for multipart forms.
             if (FormPanel.ENCODING_MULTIPART.equals(getEncoding())) {
                 String csrfParam = pageTokenName + '=' + pageTokenValue;
