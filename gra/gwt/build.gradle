@@ -8,6 +8,20 @@ buildscript {
     }
 }
 
+ext {
+    versions = [:]
+    libraries = [:]
+}
+
+versions.spring = '4.3.3.RELEASE'
+
+// spring framework
+libraries += [
+    //spring_aop:   "org.springframework:spring-aop:${versions.spring}",
+    spring_beans: "org.springframework:spring-beans:${versions.spring}",
+    spring_web:   "org.springframework:spring-web:${versions.spring}"
+]
+
 apply plugin: 'war'
 apply plugin: 'gwt'
 //apply plugin: 'gwt-compiler'
@@ -17,6 +31,9 @@ repositories {
     jcenter()
 }
 dependencies {
+    compile libraries.spring_beans
+    compile libraries.spring_web
+
     //compile group: 'com.google.gwt', name: 'gwt-incubator', version: '2.0.1'
 }
 
