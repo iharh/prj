@@ -1,5 +1,7 @@
 package mygwt.client.sentiments;
 
+import mygwt.common.client.context.ApplicationContext;
+
 import mygwt.web.client.report.ExportPanel;
 
 import mygwt.foundation.client.widget.dialog.BaseDialogBox;
