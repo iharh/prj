@@ -1,14 +1,12 @@
 package mygwt.web.export;
 
-import com.clarabridge.web.server.CmpRemoteServletSupport;
+import mygwt.web.server.CmpRemoteServletSupport;
 
-import com.clarabridge.common.dto.Project;
-import com.clarabridge.common.exception.CMPException;
-import com.clarabridge.common.i18n.ResUtils;
-import com.clarabridge.foundation.client.exception.AccessDeniedClientException;
-import com.clarabridge.web.customexport.server.CustomExportDataflowService;
+import mygwt.common.exception.CMPException;
+//import mygwt.common.i18n.ResUtils;
+//import mygwt.web.customexport.server.CustomExportDataflowService;
 
-import mygwt.web.export.resources.ExpMsgKeys;
+//import mygwt.web.export.resources.ExpMsgKeys;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -22,7 +20,7 @@ import org.apache.commons.io.IOUtils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-//import java.io.InputStream;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -37,31 +35,24 @@ public class ExportController extends CmpRemoteServletSupport implements ExportS
 
     private static final long serialVersionUID = 1L;
 	
-    private CustomExportDataflowService customExportDataflowService;
+    //private CustomExportDataflowService customExportDataflowService;
     
-    public void setCustomExportDataflowService(CustomExportDataflowService customExportDataflowService) {
-        this.customExportDataflowService = customExportDataflowService;
-    }
+    //public void setCustomExportDataflowService(CustomExportDataflowService customExportDataflowService) {
+    //    this.customExportDataflowService = customExportDataflowService;
+    //}
 
     public void downloadCustomExport(final long projectId, long sessionId, final HttpServletResponse response) {       
         try {
-            boolean hasAccess = getSecurityService().hasAccess(projectId, "PROJECT", false, "READ");
-            if (hasAccess) {        
-                String cextFileName = customExportDataflowService.getFileNameByDataflowSessionId(projectId, sessionId);
-                response.setContentType("application/octet-stream"); //$NON-NLS-1$
-                response.setHeader("Content-Disposition", "attachment; filename=\"" //$NON-NLS-1$ //$NON-NLS-2$
-                        + URLEncoder.encode(cextFileName, "UTF-8") + "\"");
-                response.setCharacterEncoding("UTF-8");
-                OutputStream out = response.getOutputStream();
-                File expFile = new File(System.getProperty("customExport.targetDir") + "/" +  projectId + "/"
-                        + cextFileName);
-                out.write(IOUtils.toByteArray(new FileInputStream(expFile)));
-                
-            } else {
-                String msg = ResUtils.getMessage(ExpMsgKeys.EXPORT_MSG_BUNDLE, ExpMsgKeys.CALLBACK_ERR_ACCESS_DENIED,
-                        String.valueOf(projectId));             
-                throw new AccessDeniedClientException(msg);
-            }
+            String cextFileName = "~/.bashrc"; // customExportDataflowService.getFileNameByDataflowSessionId(projectId, sessionId);
+            response.setContentType("application/octet-stream"); //$NON-NLS-1$
+            response.setHeader("Content-Disposition", "attachment; filename=\"" 
+                + URLEncoder.encode(cextFileName, "UTF-8") + "\"");
+            response.setCharacterEncoding("UTF-8");
+            OutputStream out = response.getOutputStream();
+            File expFile = new File(
+                //System.getProperty("customExport.targetDir") + "/" +  projectId + "/" +
+                cextFileName);
+            out.write(IOUtils.toByteArray(new FileInputStream(expFile)));
         } catch (Throwable e) { // which is ClientAbortException also
             try {
                 LOG.error("Internal error.", e);  // just log and swallow //$NON-NLS-1$
@@ -73,10 +64,10 @@ public class ExportController extends CmpRemoteServletSupport implements ExportS
                     // was transferred, in case of XLS and PDF files might be corrupted.
                 } finally {
                     ServletOutputStream stream = response.getOutputStream();
-                    PrintWriter writer = new PrintWriter(new OutputStreamWriter(stream,
-                                    Charset.forName("UTF-8"))); //$NON-NLS-1$
-                    String msg = ResUtils.getMessage(ExpMsgKeys.EXPORT_MSG_BUNDLE, ExpMsgKeys.CALLBACK_ERR_SAVE_REPORT,
-                                    e.getMessage());
+                    PrintWriter writer = new PrintWriter(new OutputStreamWriter(stream, Charset.forName("UTF-8")));
+                    String msg = ( //ResUtils.getMessage(ExpMsgKeys.EXPORT_MSG_BUNDLE, ExpMsgKeys.CALLBACK_ERR_SAVE_REPORT,
+                        e.getMessage()
+                    );
                     writer.write(msg);
                     writer.flush();
                 }
@@ -87,9 +78,11 @@ public class ExportController extends CmpRemoteServletSupport implements ExportS
     }
 	
     public void exportSharedLexicon(ExportSharedLexiconProperties properties, HttpServletResponse response) {
-        //final InputStream input = fxSharedResourcesService.openSharedResource(properties.getSlType(), "lexicon",
+        /*final*/ InputStream input = null;
+        //fxSharedResourcesService.openSharedResource(properties.getSlType(), "lexicon",
         //    new SearchCriteria(Type.ACCOUNT, properties.getAccountId()));
         try {
+            input = new FileInputStream(new File("~/.bashrc"));
             response.setContentType("application/octet-stream; charset=utf-8");
             response.setHeader("Content-Disposition", "attachment; filename=\"" + properties.getSlType() + ".dct\"");
             IOUtils.copy(input, response.getOutputStream());

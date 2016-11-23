@@ -1,4 +1,4 @@
-package com.clarabridge.web.export;
+package mygwt.web.export;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
@@ -11,15 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.clarabridge.common.security.annotation.SecureParameter;
-import com.clarabridge.common.security.model.PermissionName;
-import com.clarabridge.portal.treeaudit.AudtiProperties;
-import com.clarabridge.reports.metadata.ExportReportRunProperties;
-
 @Controller
 @RequestMapping("/export/*")
 public interface ExportService {
-    @SecureParameter(permission = PermissionName.READ, strategyName = "PROJECT")
     @RequestMapping(value = "custom_export", method = RequestMethod.POST)
     void downloadCustomExport(@RequestParam("projectId") long projectId, @RequestParam("sessionId") long sessionId, HttpServletResponse response);
 

@@ -17,6 +17,7 @@ versions.spring = '4.3.3.RELEASE'
 
 // spring framework
 libraries += [
+    log4j:          'log4j:log4j:1.2.17',
     commons_io:     "commons-io:commons-io:2.4",
 
     spring_aop:     "org.springframework:spring-aop:${versions.spring}",
@@ -35,6 +36,7 @@ repositories {
     jcenter()
 }
 dependencies {
+    compile libraries.log4j
     compile libraries.commons_io
 
     compile libraries.spring_aop
