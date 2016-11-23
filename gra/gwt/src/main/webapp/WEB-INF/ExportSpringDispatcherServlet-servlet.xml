@@ -12,7 +12,7 @@
 
     <!-- context:component-scan base-package="mygwt.web.export"/ -->
 
-    <-- component-scan does not work because ExportController is annotated via the ExportService interface -->
+    <!-- component-scan does not work because ExportController is annotated via the ExportService interface -->
     <bean id="exportController" class="mygwt.web.export.ExportController" autowire="byName" />
 
     <!-- bean id='exportSecurityInterceptor' class="com.clarabridge.web.export.security.ExportSecurityInterceptor">
