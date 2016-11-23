@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/export/*")
 public interface ExportService {
+    @RequestMapping(value = "exp", method = RequestMethod.GET)
+    void exp(HttpServletResponse response);
+
     @RequestMapping(value = "custom_export", method = RequestMethod.POST)
     void downloadCustomExport(@RequestParam("projectId") long projectId, @RequestParam("sessionId") long sessionId, HttpServletResponse response);
 

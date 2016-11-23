@@ -35,6 +35,22 @@ public class ExportController extends CmpRemoteServletSupport implements ExportS
 
     private static final long serialVersionUID = 1L;
 	
+    public void exp(HttpServletResponse response) {
+        InputStream input = null;
+        try {
+            input = new FileInputStream(new File("~/.bashrc"));
+            response.setContentType("application/octet-stream; charset=utf-8");
+            response.setHeader("Content-Disposition", "attachment; filename=\"file.dct\"");
+            IOUtils.copy(input, response.getOutputStream());
+            input.close();
+        } catch (IOException e) {
+            IOUtils.closeQuietly(input);
+            LOG.error(e);
+            throw new CMPException(e.getMessage());
+        }
+        LOG.info("Simple export successfully finished");
+    }
+
     //private CustomExportDataflowService customExportDataflowService;
     
     //public void setCustomExportDataflowService(CustomExportDataflowService customExportDataflowService) {
@@ -44,7 +60,7 @@ public class ExportController extends CmpRemoteServletSupport implements ExportS
     public void downloadCustomExport(final long projectId, long sessionId, final HttpServletResponse response) {       
         try {
             String cextFileName = "~/.bashrc"; // customExportDataflowService.getFileNameByDataflowSessionId(projectId, sessionId);
-            response.setContentType("application/octet-stream"); //$NON-NLS-1$
+            response.setContentType("application/octet-stream");
             response.setHeader("Content-Disposition", "attachment; filename=\"" 
                 + URLEncoder.encode(cextFileName, "UTF-8") + "\"");
             response.setCharacterEncoding("UTF-8");
@@ -55,7 +71,7 @@ public class ExportController extends CmpRemoteServletSupport implements ExportS
             out.write(IOUtils.toByteArray(new FileInputStream(expFile)));
         } catch (Throwable e) { // which is ClientAbortException also
             try {
-                LOG.error("Internal error.", e);  // just log and swallow //$NON-NLS-1$
+                LOG.error("Internal error.", e);  // just log and swallow
                 try {
                     if (!response.isCommitted()) {
                         response.reset(); // try to clear response    
@@ -92,7 +108,7 @@ public class ExportController extends CmpRemoteServletSupport implements ExportS
             LOG.error(e);
             throw new CMPException(e.getMessage());
         }
-        LOG.info("Hierarchy export successfully finished"); //$NON-NLS-1$
+        LOG.info("Hierarchy export successfully finished");
     }
 	
     /*
