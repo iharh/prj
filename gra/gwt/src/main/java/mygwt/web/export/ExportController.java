@@ -8,6 +8,14 @@ import mygwt.common.exception.CMPException;
 
 //import mygwt.web.export.resources.ExpMsgKeys;
 
+import org.springframework.stereotype.Controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RequestMethod;
+//import org.springframework.web.bind.annotation.RequestParam;
+
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
@@ -30,11 +38,15 @@ import java.nio.charset.Charset;
 
 import org.apache.log4j.Logger;
 
-public class ExportController extends CmpRemoteServletSupport implements ExportService {
+
+@Controller
+@RequestMapping("/export") // /*
+public class ExportController extends CmpRemoteServletSupport { // implements ExportService {
     private static final Logger LOG = Logger.getLogger(ExportController.class);
 
     private static final long serialVersionUID = 1L;
 	
+    @GetMapping(value = "exp")
     public void exp(HttpServletResponse response) {
         InputStream input = null;
         try {
@@ -57,6 +69,7 @@ public class ExportController extends CmpRemoteServletSupport implements ExportS
     //    this.customExportDataflowService = customExportDataflowService;
     //}
 
+    @PostMapping(value = "custom_export")
     public void downloadCustomExport(final long projectId, long sessionId, final HttpServletResponse response) {       
         try {
             String cextFileName = "~/.bashrc"; // customExportDataflowService.getFileNameByDataflowSessionId(projectId, sessionId);
@@ -93,6 +106,7 @@ public class ExportController extends CmpRemoteServletSupport implements ExportS
         }
     }
 	
+    @PostMapping(value = "sharedlexicon")
     public void exportSharedLexicon(ExportSharedLexiconProperties properties, HttpServletResponse response) {
         /*final*/ InputStream input = null;
         //fxSharedResourcesService.openSharedResource(properties.getSlType(), "lexicon",

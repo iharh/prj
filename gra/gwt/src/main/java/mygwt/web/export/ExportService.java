@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/export/*")
+//@RequestMapping("/export/*")
 public interface ExportService {
     @RequestMapping(value = "exp", method = RequestMethod.GET)
     void exp(HttpServletResponse response);
