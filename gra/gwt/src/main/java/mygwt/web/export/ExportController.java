@@ -41,7 +41,24 @@ public class ExportController extends CmpRemoteServletSupport implements ExportS
     private static final String TEST_FILE_NAME = SystemUtils.IS_OS_LINUX ? "~/.bashrc" : "D:/en1.txt";
 
     @Override
-    public void exp(HttpServletResponse response) {
+    public void exp1(HttpServletResponse response) {
+        InputStream input = null;
+        try {
+            input = new FileInputStream(new File(TEST_FILE_NAME));
+            response.setContentType("application/octet-stream; charset=utf-8");
+            response.setHeader("Content-Disposition", "attachment; filename=\"file.dct\"");
+            IOUtils.copy(input, response.getOutputStream());
+            input.close();
+        } catch (IOException e) {
+            IOUtils.closeQuietly(input);
+            LOG.error(e);
+            throw new CMPException(e.getMessage());
+        }
+        LOG.info("Simple export successfully finished");
+    }
+
+    @Override
+    public void exp2(HttpServletResponse response) {
         InputStream input = null;
         try {
             input = new FileInputStream(new File(TEST_FILE_NAME));
@@ -62,7 +79,7 @@ public class ExportController extends CmpRemoteServletSupport implements ExportS
     //public void setCustomExportDataflowService(CustomExportDataflowService customExportDataflowService) {
     //    this.customExportDataflowService = customExportDataflowService;
     //}
-
+/*
     @Override
     public void downloadCustomExport(final long projectId, long sessionId, final HttpServletResponse response) {       
         try {
@@ -103,7 +120,7 @@ public class ExportController extends CmpRemoteServletSupport implements ExportS
     @Override
     public void exportSharedLexicon(ExportSharedLexiconProperties properties, HttpServletResponse response) {
         final String slType = "abc"; // properties.getSlType()
-        /*final*/ InputStream input = null;
+        InputStream input = null; // final
         //fxSharedResourcesService.openSharedResource(properties.getSlType(), "lexicon",
         //    new SearchCriteria(Type.ACCOUNT, properties.getAccountId()));
         try {
@@ -119,7 +136,7 @@ public class ExportController extends CmpRemoteServletSupport implements ExportS
         }
         LOG.info("Hierarchy export successfully finished");
     }
-	
+*/	
     /*
     @InitBinder
     public void initBinder(WebDataBinder binder) {
