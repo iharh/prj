@@ -10,20 +10,15 @@ import mygwt.common.exception.CMPException;
 
 import org.springframework.stereotype.Controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RequestMethod;
-//import org.springframework.web.bind.annotation.RequestParam;
-
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.lang3.SystemUtils;
 
 import org.apache.commons.io.IOUtils;
 //import org.springframework.web.bind.WebDataBinder;
 //import org.springframework.web.bind.annotation.InitBinder;
 //import java.beans.PropertyEditorSupport;
-//import com.clarabridge.common.date.TimezoneInfo;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -38,19 +33,18 @@ import java.nio.charset.Charset;
 
 import org.apache.log4j.Logger;
 
-
-@Controller
-@RequestMapping("/export") // /*
-public class ExportController extends CmpRemoteServletSupport { // implements ExportService {
+public class ExportController extends CmpRemoteServletSupport implements ExportService {
     private static final Logger LOG = Logger.getLogger(ExportController.class);
 
     private static final long serialVersionUID = 1L;
 	
-    @GetMapping(value = "exp")
+    private static final String TEST_FILE_NAME = SystemUtils.IS_OS_LINUX ? "~/.bashrc" : "D:/en1.txt";
+
+    @Override
     public void exp(HttpServletResponse response) {
         InputStream input = null;
         try {
-            input = new FileInputStream(new File("~/.bashrc"));
+            input = new FileInputStream(new File(TEST_FILE_NAME));
             response.setContentType("application/octet-stream; charset=utf-8");
             response.setHeader("Content-Disposition", "attachment; filename=\"file.dct\"");
             IOUtils.copy(input, response.getOutputStream());
@@ -69,10 +63,10 @@ public class ExportController extends CmpRemoteServletSupport { // implements Ex
     //    this.customExportDataflowService = customExportDataflowService;
     //}
 
-    @PostMapping(value = "custom_export")
+    @Override
     public void downloadCustomExport(final long projectId, long sessionId, final HttpServletResponse response) {       
         try {
-            String cextFileName = "~/.bashrc"; // customExportDataflowService.getFileNameByDataflowSessionId(projectId, sessionId);
+            String cextFileName = TEST_FILE_NAME; // customExportDataflowService.getFileNameByDataflowSessionId(projectId, sessionId);
             response.setContentType("application/octet-stream");
             response.setHeader("Content-Disposition", "attachment; filename=\"" 
                 + URLEncoder.encode(cextFileName, "UTF-8") + "\"");
@@ -106,15 +100,16 @@ public class ExportController extends CmpRemoteServletSupport { // implements Ex
         }
     }
 	
-    @PostMapping(value = "sharedlexicon")
+    @Override
     public void exportSharedLexicon(ExportSharedLexiconProperties properties, HttpServletResponse response) {
+        final String slType = "abc"; // properties.getSlType()
         /*final*/ InputStream input = null;
         //fxSharedResourcesService.openSharedResource(properties.getSlType(), "lexicon",
         //    new SearchCriteria(Type.ACCOUNT, properties.getAccountId()));
         try {
-            input = new FileInputStream(new File("~/.bashrc"));
+            input = new FileInputStream(new File(TEST_FILE_NAME));
             response.setContentType("application/octet-stream; charset=utf-8");
-            response.setHeader("Content-Disposition", "attachment; filename=\"" + properties.getSlType() + ".dct\"");
+            response.setHeader("Content-Disposition", "attachment; filename=\"" + slType + ".dct\"");
             IOUtils.copy(input, response.getOutputStream());
             input.close();
         } catch (IOException e) {

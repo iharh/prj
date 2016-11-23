@@ -18,8 +18,9 @@ versions.springSecurity = '4.1.3.RELEASE'
 
 // spring framework
 libraries += [
-    log4j:      'log4j:log4j:1.2.17',
-    commons_io: 'commons-io:commons-io:2.4',
+    log4j:         'log4j:log4j:1.2.17',
+    commons_io:    'commons-io:commons-io:2.4',
+    commons_lang3: 'org.apache.commons:commons-lang3:3.1',
 
     // spring
     spring_aop:     "org.springframework:spring-aop:${versions.spring}",
@@ -47,6 +48,7 @@ repositories {
 dependencies {
     compile libraries.log4j
     compile libraries.commons_io
+    compile libraries.commons_lang3
 
     compile libraries.spring_aop
     compile libraries.spring_beans

@@ -10,10 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+//import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-//@RequestMapping("/export/*")
+@RequestMapping("/export/*")
 public interface ExportService {
+    //@GetMapping(value = "exp")
     @RequestMapping(value = "exp", method = RequestMethod.GET)
     void exp(HttpServletResponse response);
 
