@@ -6,13 +6,13 @@ import com.google.gwt.user.client.ui.RootPanel;
 
 import mygwt.foundation.client.widget.dialog.BaseDialogBox;
 //import mygwt.client.sentiments.ExportSentimentsDialog;
-import mygwt.client.sentiments.GetPreviousSentimentsExportDialog;
+import mygwt.client.sentiments.RecentSentimentExportsDialog;
 
 public class MyEntryPoint implements EntryPoint {
 
     private BaseDialogBox getDialogBox() {
         //return new ExportSentimentsDialog();
-        return new GetPreviousSentimentsExportDialog();
+        return new RecentSentimentExportsDialog();
     }
 
     @Override

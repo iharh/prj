@@ -127,7 +127,7 @@ public class RecentSentimentExportsDialog extends BaseDialogBox {
         closeButtonHandler = new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                GetPreviousSentimentsExportDialog.this.hide();
+                RecentSentimentExportsDialog.this.hide();
             }
         };
 
