@@ -38,4 +38,14 @@ public interface SentimentsMessages extends com.google.gwt.i18n.client.Messages 
     String exportName();
     String exportDescription();
     String exportContent();
+
+    // Recent Sentiment Exports
+
+    String rceTitle();
+    String rceText();
+    String rceColumnName();
+    String rceColumnDescription();
+    String rceColumnTimestamp();
+    String rceColumnParameters();
+    String rceColumnFile();
 }

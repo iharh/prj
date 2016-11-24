@@ -31,7 +31,7 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.Widget;
 
-public class GetPreviousSentimentsExportDialog extends BaseDialogBox {
+public class RecentSentimentExportsDialog extends BaseDialogBox {
     private static final int borderW     = 0; // 1 for borders vis-n
     private static final int allW        = 640;
     private static final int allH        = 370;
@@ -47,14 +47,23 @@ public class GetPreviousSentimentsExportDialog extends BaseDialogBox {
     private ClickHandler closeButtonHandler;
 
     //private ExportPanel hiddenPanel;
+    private SentimentsMessages msgs;
 
-    public GetPreviousSentimentsExportDialog() {
-        super(SentimentsMessages.INSTANCE.sentimentExport(), allW, allH);
+    public RecentSentimentExportsDialog() {
+        //String rceText();
+        //String rceColumnName();
+        //String rceColumnDescription();
+        //String rceColumnTimestamp();
+        //String rceColumnParameters();
+        //String rceColumnFile();
+
+        super(SentimentsMessages.INSTANCE.rceTitle(), allW, allH);
+        msgs = SentimentsMessages.INSTANCE;
         setWidget(createDialogContents());
         hide();
     }
 
-    protected Widget createDialogContents() {
+    private Widget createDialogContents() {
         DockLayoutPanel panel = new DockLayoutPanel(Unit.PX);
 
         panel.setWidth(allW + "px");
@@ -69,15 +78,17 @@ public class GetPreviousSentimentsExportDialog extends BaseDialogBox {
     private Panel createExportInfoPanel() {
         VerticalPanel infoPanel = new VerticalPanel();
         infoPanel.setBorderWidth(borderW);
-	// infoPanel.setSpacing(spacint); // too rough
+	// infoPanel.setSpacing(spacing); // too rough
 
-        infoPanel.add(createNamePanel());
-        infoPanel.add(createDescriptionPanel());
-        infoPanel.add(createContentPanel());
+        infoPanel.add(new InlineLabel(msgs.rceText()));
+
+        //infoPanel.add(createNamePanel());
+        //infoPanel.add(createDescriptionPanel());
+        //infoPanel.add(createContentPanel());
 
         return infoPanel;
     }
-
+/*
     private Panel createNamePanel() {
         HorizontalPanel namePanel = new HorizontalPanel();
         namePanel.setBorderWidth(borderW);
@@ -111,39 +122,7 @@ public class GetPreviousSentimentsExportDialog extends BaseDialogBox {
 
         return descriptionPanel;
     }
-
-    private Panel createContentPanel() {
-        exportWords = new CheckBox(SentimentsMessages.INSTANCE.includeTunedWords());
-        exportWords.setValue(true);
-
-        exportRules = new CheckBox(SentimentsMessages.INSTANCE.includeExceptionRules());
-        exportRules.setValue(true);
-
-        HorizontalPanel contentPanel = new HorizontalPanel();
-        contentPanel.setBorderWidth(borderW);
-        //contentPanel.setSpacing(spacing);
-
-        HorizontalPanel contentLabelPanel = new HorizontalPanel();
-        contentLabelPanel.setBorderWidth(borderW);
-        contentLabelPanel.setSpacing(spacing);
-
-        InlineLabel labelContent = new InlineLabel(SentimentsMessages.INSTANCE.exportContent());
-        contentLabelPanel.add(labelContent);
-        alignLabelW(labelContent, labelW - spacing);
-
-        contentPanel.add(contentLabelPanel);
-
-        VerticalPanel rbPanel = new VerticalPanel();
-        rbPanel.setBorderWidth(borderW);
-
-        rbPanel.add(new HTML(SentimentsMessages.INSTANCE.divNbsp()));
-        rbPanel.add(exportWords);
-        rbPanel.add(exportRules);
-
-        contentPanel.add(rbPanel);
-        return contentPanel;
-    }
-
+*/
     private Panel createButtonPanel() {
         closeButtonHandler = new ClickHandler() {
             @Override
