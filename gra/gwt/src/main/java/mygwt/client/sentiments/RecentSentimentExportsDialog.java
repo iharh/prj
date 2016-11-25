@@ -1,5 +1,7 @@
 package mygwt.client.sentiments;
 
+import mygwt.client.sentiments.RecentSentimentExportsInfo;
+
 import mygwt.foundation.client.widget.dialog.BaseDialogBox;
 import mygwt.foundation.client.widget.button.CancelButton;
 import mygwt.foundation.client.widget.button.OkButton;
@@ -14,6 +16,9 @@ import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
+
+import com.google.gwt.user.cellview.client.DataGrid;
+import com.google.gwt.user.cellview.client.TextColumn;
 
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Grid;
@@ -30,6 +35,10 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.Widget;
+
+import java.util.Arrays;
+import java.util.List;
+
 
 public class RecentSentimentExportsDialog extends BaseDialogBox {
     private static final int borderW     = 0; // 1 for borders vis-n
@@ -50,13 +59,6 @@ public class RecentSentimentExportsDialog extends BaseDialogBox {
     private SentimentsMessages msgs;
 
     public RecentSentimentExportsDialog() {
-        //String rceText();
-        //String rceColumnName();
-        //String rceColumnDescription();
-        //String rceColumnTimestamp();
-        //String rceColumnParameters();
-        //String rceColumnFile();
-
         super(SentimentsMessages.INSTANCE.rceTitle(), allW, allH);
         msgs = SentimentsMessages.INSTANCE;
         setWidget(createDialogContents());
@@ -78,51 +80,54 @@ public class RecentSentimentExportsDialog extends BaseDialogBox {
     private Panel createExportInfoPanel() {
         VerticalPanel infoPanel = new VerticalPanel();
         infoPanel.setBorderWidth(borderW);
-	// infoPanel.setSpacing(spacing); // too rough
+        //infoPanel.setBorderWidth(borderW);
+	infoPanel.setSpacing(spacing); // too rough
 
         infoPanel.add(new InlineLabel(msgs.rceText()));
 
-        //infoPanel.add(createNamePanel());
-        //infoPanel.add(createDescriptionPanel());
-        //infoPanel.add(createContentPanel());
+        DataGrid<RecentSentimentExportsInfo> dataGrid = new DataGrid<RecentSentimentExportsInfo>();
+	dataGrid.setSize("100%", "400px");
+
+        TextColumn<RecentSentimentExportsInfo> colId = new TextColumn<RecentSentimentExportsInfo>() {
+            @Override public String getValue(RecentSentimentExportsInfo i) { return i.getId(); }
+        };
+        TextColumn<RecentSentimentExportsInfo> colDescription = new TextColumn<RecentSentimentExportsInfo>() {
+            @Override public String getValue(RecentSentimentExportsInfo i) { return i.getDescription(); }
+        };
+        TextColumn<RecentSentimentExportsInfo> colTimestamp = new TextColumn<RecentSentimentExportsInfo>() {
+            @Override public String getValue(RecentSentimentExportsInfo i) { return i.getTimestamp(); }
+        };
+        TextColumn<RecentSentimentExportsInfo> colParameters = new TextColumn<RecentSentimentExportsInfo>() {
+            @Override public String getValue(RecentSentimentExportsInfo i) { return i.getParameters(); }
+        };
+        TextColumn<RecentSentimentExportsInfo> colFileName = new TextColumn<RecentSentimentExportsInfo>() {
+            @Override public String getValue(RecentSentimentExportsInfo i) { return i.getFileName(); }
+        };
+
+        Unit u = Unit.PCT;
+        dataGrid.addColumn(colId, msgs.rceColumnName());
+	dataGrid.setColumnWidth(colId, 15, u);
+        dataGrid.addColumn(colDescription, msgs.rceColumnDescription());
+	dataGrid.setColumnWidth(colDescription, 20, u);
+        dataGrid.addColumn(colTimestamp, msgs.rceColumnTimestamp());
+	dataGrid.setColumnWidth(colTimestamp, 25, u);
+        dataGrid.addColumn(colParameters, msgs.rceColumnParameters());
+	dataGrid.setColumnWidth(colParameters, 20, u);
+        dataGrid.addColumn(colFileName, msgs.rceColumnFile());
+	dataGrid.setColumnWidth(colFileName, 20, u);
+
+        final List<RecentSentimentExportsInfo> rowData = Arrays.asList(
+            new RecentSentimentExportsInfo("export1", "descr1", "2016/05/19", "p1", "f1"),
+            new RecentSentimentExportsInfo("export2", "descr1", "2016/05/19", "p2", "f2")
+        );
+
+        dataGrid.setRowData(rowData);
+
+        infoPanel.add(dataGrid);
 
         return infoPanel;
     }
-/*
-    private Panel createNamePanel() {
-        HorizontalPanel namePanel = new HorizontalPanel();
-        namePanel.setBorderWidth(borderW);
-        namePanel.setSpacing(spacing);
 
-        InlineLabel labelName = new InlineLabel(SentimentsMessages.INSTANCE.exportName());
-        namePanel.add(labelName);
-        exportName = new TextBox();
-        exportName.setWidth(textBoxW);
-        namePanel.add(exportName);
-        alignLabelW(labelName, labelW);
-
-        return namePanel;
-    }
-
-    private Panel createDescriptionPanel() {
-        HorizontalPanel descriptionPanel = new HorizontalPanel();
-        descriptionPanel.setBorderWidth(borderW);
-        descriptionPanel.setSpacing(spacing);
-
-        InlineLabel labelDescription = new InlineLabel(SentimentsMessages.INSTANCE.exportDescription());
-        descriptionPanel.add(labelDescription);
-        exportDescription = new TextArea();
-        exportDescription.setCharacterWidth(80);
-        exportDescription.setVisibleLines(3);
-        exportDescription.setWidth(textBoxW);
-        exportDescription.setHeight("80px");
-        exportDescription.addStyleName("descr-TextArea");
-        descriptionPanel.add(exportDescription);
-        alignLabelW(labelDescription, labelW);
-
-        return descriptionPanel;
-    }
-*/
     private Panel createButtonPanel() {
         closeButtonHandler = new ClickHandler() {
             @Override
@@ -158,15 +163,6 @@ public class RecentSentimentExportsDialog extends BaseDialogBox {
         btnPanel.addEast(buttonPanel, 165);
 
         return btnPanel;
-    }
-
-    private void alignLabelW(InlineLabel label, final int w) {
-        StyleUtils.changeStyle(label.getElement(), StyleUtils.FIRST_PARENT, new StyleUtils.StyleChanger() {
-            @Override
-	    public void changeStyle(Style style) {
-                style.setWidth(w, Style.Unit.PX);
-            }
-        });
     }
 
     /*private void buildExportPanel() {
