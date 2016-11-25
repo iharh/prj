@@ -48,4 +48,6 @@ public interface SentimentsMessages extends com.google.gwt.i18n.client.Messages 
     String rceColumnTimestamp();
     String rceColumnParameters();
     String rceColumnFile();
+
+    String rceNoExportsDefined();
 }

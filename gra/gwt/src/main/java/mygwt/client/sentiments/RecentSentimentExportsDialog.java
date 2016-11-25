@@ -1,6 +1,10 @@
 package mygwt.client.sentiments;
 
 import mygwt.client.sentiments.RecentSentimentExportsInfo;
+import mygwt.client.sentiments.service.RecentSentimentExportsService;
+import mygwt.client.sentiments.service.RecentSentimentExportsServiceAsync;
+
+//import mygwt.foundation.client.rpc.AbstractAsyncCallback;
 
 import mygwt.foundation.client.widget.dialog.BaseDialogBox;
 import mygwt.foundation.client.widget.button.CancelButton;
@@ -9,6 +13,8 @@ import mygwt.foundation.client.widget.button.OkButton;
 import mygwt.web.client.utils.StyleUtils;
 
 import mygwt.web.client.sentiments.resources.SentimentsMessages;
+
+import com.google.gwt.core.client.GWT;
 
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.dom.client.Style.Unit;
@@ -19,6 +25,8 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 
 import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.cellview.client.TextColumn;
+
+import com.google.gwt.user.client.Window;
 
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Grid;
@@ -35,6 +43,8 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.Widget;
+
+import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import java.util.Arrays;
 import java.util.List;
@@ -85,8 +95,10 @@ public class RecentSentimentExportsDialog extends BaseDialogBox {
 
         infoPanel.add(new InlineLabel(msgs.rceText()));
 
-        DataGrid<RecentSentimentExportsInfo> dataGrid = new DataGrid<RecentSentimentExportsInfo>();
+        final DataGrid<RecentSentimentExportsInfo> dataGrid = new DataGrid<RecentSentimentExportsInfo>();
 	dataGrid.setSize("100%", "400px");
+
+	dataGrid.setEmptyTableWidget(new HTML(msgs.rceNoExportsDefined()));
 
         TextColumn<RecentSentimentExportsInfo> colId = new TextColumn<RecentSentimentExportsInfo>() {
             @Override public String getValue(RecentSentimentExportsInfo i) { return i.getId(); }
@@ -116,16 +128,29 @@ public class RecentSentimentExportsDialog extends BaseDialogBox {
         dataGrid.addColumn(colFileName, msgs.rceColumnFile());
 	dataGrid.setColumnWidth(colFileName, 20, u);
 
-        final List<RecentSentimentExportsInfo> rowData = Arrays.asList(
-            new RecentSentimentExportsInfo("export1", "descr1", "2016/05/19", "p1", "f1"),
-            new RecentSentimentExportsInfo("export2", "descr1", "2016/05/19", "p2", "f2")
-        );
-
-        dataGrid.setRowData(rowData);
+        getSvcAsync().getExports(0, new AsyncCallback<List<RecentSentimentExportsInfo>>() {
+            @Override
+            public void onSuccess(List<RecentSentimentExportsInfo> rowData) {
+                dataGrid.setRowData(rowData);
+            }
+            public void onFailure(Throwable t) {
+                Window.alert(t.getMessage());
+            }
+        });
 
         infoPanel.add(dataGrid);
 
         return infoPanel;
+    }
+
+    private RecentSentimentExportsServiceAsync svcAsync;
+
+    public RecentSentimentExportsServiceAsync getSvcAsync() {
+        if (svcAsync == null) {
+            svcAsync = (RecentSentimentExportsServiceAsync) GWT.create(RecentSentimentExportsService.class);
+            // injectRpcBuilder(((ServiceDefTarget) svcAsync), Service.THEME_DETECTION_SERVICE);
+        }
+        return svcAsync;
     }
 
     private Panel createButtonPanel() {
