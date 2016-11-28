@@ -5,6 +5,8 @@ import mygwt.client.sentiments.RecentSentimentExportsInfo;
 
 import mygwt.web.server.CmpRemoteServletSupport;
 
+import mygwt.foundation.client.exception.ServiceException;
+
 //import mygwt.common.exception.CMPException;
 
 //import org.apache.commons.io.IOUtils;
