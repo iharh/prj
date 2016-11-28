@@ -153,7 +153,7 @@ public class RecentSentimentExportsDialog extends BaseDialogBox implements Proje
         svcAsync.getExports(0, new AsyncCallback<String>() {
             @Override
             public void onSuccess(String rowData) {
-                Window.alert("done");
+                Window.alert("done: " + rowData);
                 //dataGrid.setRowData(rowData);
             }
             public void onFailure(Throwable t) {

@@ -55,8 +55,8 @@ public class CsrfFormPanel extends FormPanel {
             add(widget);
         }
         
-        String pageTokenName = CsrfUtils.getTokenName();
-        String pageTokenValue = CsrfUtils.getTokenValue();
+        String pageTokenName = null; // CsrfUtils.getTokenName();
+        String pageTokenValue = null; // CsrfUtils.getTokenValue();
         if (!StringUtilHelper.isNullOrEmpty(pageTokenName) && !StringUtilHelper.isNullOrEmpty(pageTokenValue)) {
             // Add security token parameter as part of URL for multipart forms.
             if (FormPanel.ENCODING_MULTIPART.equals(getEncoding())) {
