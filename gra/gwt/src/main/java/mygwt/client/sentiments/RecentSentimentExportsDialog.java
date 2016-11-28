@@ -54,6 +54,9 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 
+import com.google.gwt.view.client.ProvidesKey;
+import com.google.gwt.view.client.SingleSelectionModel;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -115,7 +118,14 @@ public class RecentSentimentExportsDialog extends BaseDialogBox implements Proje
 
         infoPanel.add(new InlineLabel(msgs.rceText()));
 
-        final DataGrid<RecentSentimentExportsInfo> dataGrid = new DataGrid<RecentSentimentExportsInfo>();
+        ProvidesKey<RecentSentimentExportsInfo> keyProvider = new ProvidesKey<RecentSentimentExportsInfo>() {
+            public Object getKey(RecentSentimentExportsInfo i) {
+                // Always do a null check.
+                return (i == null) ? null : i.getId();
+            }
+        };
+
+        final DataGrid<RecentSentimentExportsInfo> dataGrid = new DataGrid<RecentSentimentExportsInfo>(2, keyProvider);
 	dataGrid.setSize("100%", "400px");
 
 	dataGrid.setEmptyTableWidget(new HTML(msgs.rceNoExportsDefined()));
@@ -147,6 +157,10 @@ public class RecentSentimentExportsDialog extends BaseDialogBox implements Proje
 	dataGrid.setColumnWidth(colParameters, 20, u);
         dataGrid.addColumn(colFileName, msgs.rceColumnFile());
 	dataGrid.setColumnWidth(colFileName, 20, u);
+
+        SingleSelectionModel<RecentSentimentExportsInfo> selectionModel = new SingleSelectionModel<RecentSentimentExportsInfo>(keyProvider);
+
+        dataGrid.setSelectionModel(selectionModel);
 
         getSvcAsync().getExports(0, new AsyncCallback<List<RecentSentimentExportsInfo>>() {
             @Override
