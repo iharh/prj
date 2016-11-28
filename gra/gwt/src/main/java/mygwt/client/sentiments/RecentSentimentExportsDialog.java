@@ -145,9 +145,6 @@ public class RecentSentimentExportsDialog extends BaseDialogBox implements Proje
         dataGrid.addColumn(colFileName, msgs.rceColumnFile());
 	dataGrid.setColumnWidth(colFileName, 20, u);
 
-        dataGrid.setRowData(Arrays.asList(
-            new RecentSentimentExportsInfo("1", "2", "3", "4", "5")
-        ));
         getSvcAsync().getExports(0, new AsyncCallback<List<RecentSentimentExportsInfo>>() {
             @Override
             public void onSuccess(List<RecentSentimentExportsInfo> rowData) {
@@ -157,7 +154,6 @@ public class RecentSentimentExportsDialog extends BaseDialogBox implements Proje
                 Window.alert(t.getMessage());
             }
         });
-        Window.alert("after");
 
         infoPanel.add(dataGrid);
 
