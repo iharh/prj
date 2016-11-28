@@ -1,6 +1,4 @@
-package mygwt.client.sentiments.service;
-
-import mygwt.client.sentiments.RecentSentimentExportsInfo;
+package mygwt.web.client.sentiments;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 

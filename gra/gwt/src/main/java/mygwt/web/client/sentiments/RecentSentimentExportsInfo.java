@@ -1,6 +1,8 @@
-package mygwt.client.sentiments;
+package mygwt.web.client.sentiments;
 
-public class RecentSentimentExportsInfo {
+import java.io.Serializable;
+
+public class RecentSentimentExportsInfo implements Serializable {
     private String id;
     private String description;
     private String timestamp;

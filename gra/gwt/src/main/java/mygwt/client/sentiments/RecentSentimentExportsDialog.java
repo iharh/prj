@@ -1,8 +1,8 @@
 package mygwt.client.sentiments;
 
-import mygwt.client.sentiments.RecentSentimentExportsInfo;
-import mygwt.client.sentiments.service.RecentSentimentExportsService;
-import mygwt.client.sentiments.service.RecentSentimentExportsServiceAsync;
+import mygwt.web.client.sentiments.RecentSentimentExportsInfo;
+import mygwt.web.client.sentiments.RecentSentimentExportsService;
+import mygwt.web.client.sentiments.RecentSentimentExportsServiceAsync;
 
 import mygwt.common.client.url.Service;
 
@@ -149,15 +149,18 @@ public class RecentSentimentExportsDialog extends BaseDialogBox implements Proje
             new RecentSentimentExportsInfo("1", "2", "3", "4", "5")
         ));
         getSvcAsync();
+        Window.alert("before");
         svcAsync.getExports(0, new AsyncCallback<List<RecentSentimentExportsInfo>>() {
             @Override
             public void onSuccess(List<RecentSentimentExportsInfo> rowData) {
+                Window.alert("done");
                 dataGrid.setRowData(rowData);
             }
             public void onFailure(Throwable t) {
                 Window.alert(t.getMessage());
             }
         });
+        Window.alert("after");
 
         infoPanel.add(dataGrid);
 

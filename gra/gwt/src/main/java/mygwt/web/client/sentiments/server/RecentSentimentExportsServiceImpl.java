@@ -1,7 +1,7 @@
-package mygwt.web.server.sentiments;
+package mygwt.web.client.sentiments.server;
 
-import mygwt.client.sentiments.service.RecentSentimentExportsService;
-import mygwt.client.sentiments.RecentSentimentExportsInfo;
+import mygwt.web.client.sentiments.RecentSentimentExportsInfo;
+import mygwt.web.client.sentiments.RecentSentimentExportsService;
 
 import mygwt.web.server.CmpRemoteServletSupport;
 
@@ -32,7 +32,7 @@ public class RecentSentimentExportsServiceImpl extends CmpRemoteServletSupport i
 	
     @Override
     public List<RecentSentimentExportsInfo> getExports(long projectId) throws ServiceException {
-
+        log.info("getExports called");
         List<RecentSentimentExportsInfo> result = null;
         //try {
             result = Arrays.asList(
