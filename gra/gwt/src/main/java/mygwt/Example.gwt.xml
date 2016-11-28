@@ -6,6 +6,7 @@
     <inherits name="com.google.gwt.http.HTTP"/>
 
     <source path="client"/>
+    <source path="common/client/context"/>
     <source path="common/client/url"/>
     <source path="foundation/client/csrf"/>
     <source path="foundation/client/exception"/>
@@ -13,7 +14,6 @@
     <source path="foundation/client/widget/button"/>
     <source path="foundation/client/widget/dialog"/>
     <source path="foundation/shared/model"/>
-    <source path="web/client"/>
     <source path="web/client/utils"/>
     <source path="web/client/report"/>
     <source path="web/client/sentiments"/>

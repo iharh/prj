@@ -36,7 +36,7 @@ public class ExportController extends CmpRemoteServletSupport implements ExportS
 
     private static final long serialVersionUID = 1L;
 	
-    private static final String TEST_FILE_NAME = SystemUtils.getUserHome() + File.pathSeparator + ".gitconfig"; // SystemUtils.IS_OS_LINUX
+    private static final String TEST_FILE_NAME = SystemUtils.getUserHome() + File.separator + ".gitconfig"; // SystemUtils.IS_OS_LINUX
 
     @Override
     public void sampleExp(HttpServletResponse response) {
