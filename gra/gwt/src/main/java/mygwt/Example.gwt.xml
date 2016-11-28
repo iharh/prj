@@ -10,6 +10,7 @@
     <source path="foundation/client/util"/>
     <source path="foundation/client/widget/button"/>
     <source path="foundation/client/widget/dialog"/>
+    <source path="foundation/shared/model"/>
     <source path="web/client/utils"/>
     <source path="web/client/sentiments"/>
     <source path="web/client/sentiments/server"/>
