@@ -31,19 +31,20 @@ public class RecentSentimentExportsServiceImpl extends CmpRemoteServletSupport i
     private static final long serialVersionUID = 1L;
 	
     @Override
-    public List<RecentSentimentExportsInfo> getExports(long projectId) throws ServiceException {
+    public String/*List<RecentSentimentExportsInfo>*/ getExports(long projectId) /*throws ServiceException*/ {
         log.info("getExports called");
-        List<RecentSentimentExportsInfo> result = null;
+        /*List<RecentSentimentExportsInfo>*/ String result = null;
         //try {
-            result = Arrays.asList(
+            /*result = Arrays.asList(
                 new RecentSentimentExportsInfo("export1", "descr1", "2016/05/19", "p1", "f1"),
                 new RecentSentimentExportsInfo("export2", "descr1", "2016/05/19", "p2", "f2")
-            );
+            );*/
         //} catch (IOException e) {
         //    IOUtils.closeQuietly(input);
         //    LOG.error(e);
         //    throw new ServiceException(e.getMessage());
         //} 
+        result = "abc";
         return result;
     }
 }

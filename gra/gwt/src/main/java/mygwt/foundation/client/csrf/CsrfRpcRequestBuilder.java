@@ -8,6 +8,16 @@ import com.google.gwt.user.client.rpc.RpcRequestBuilder;
 import java.util.HashSet;
 import java.util.Set;
 
+// http://www.gwtproject.org/javadoc/latest/com/google/gwt/user/client/rpc/RpcRequestBuilder.html
+// http://www.programcreek.com/java-api-examples/index.php?api=com.google.gwt.user.client.rpc.RpcRequestBuilder
+
+// http://stackoverflow.com/questions/6135590/gwt-rpc-data-format
+// https://docs.google.com/document/d/1eG0YocsYYbNAtivkLtcaiEE5IOF5u4LUol8-LL0TIKU/edit
+
+// http://blog.daniel-kurka.de/2016/07/gwt-rpcs-future.html
+
+import com.google.gwt.user.client.Window;
+
 public final class CsrfRpcRequestBuilder extends RpcRequestBuilder {
 	
 	private ProjectIdAware projectIdProvider;
@@ -50,8 +60,10 @@ public final class CsrfRpcRequestBuilder extends RpcRequestBuilder {
 	protected void doSetRequestData(RequestBuilder rb, String data) {
 		super.doSetRequestData(rb, data);
 		
+		final String methodName = extractMethodName(data);
+                Window.alert("calling: " + methodName);
+
 		if (realSessionIgnoreMethods != null) {
-			String methodName = extractMethodName(data);
 			if (methodName != null && realSessionIgnoreMethods.contains(methodName)) {
 				rb.setHeader("X-RealSessionIgnore", methodName);
 			}
