@@ -148,13 +148,10 @@ public class RecentSentimentExportsDialog extends BaseDialogBox implements Proje
         dataGrid.setRowData(Arrays.asList(
             new RecentSentimentExportsInfo("1", "2", "3", "4", "5")
         ));
-        getSvcAsync();
-        Window.alert("before");
-        svcAsync.getExports(0, new AsyncCallback<String>() {
+        getSvcAsync().getExports(0, new AsyncCallback<List<RecentSentimentExportsInfo>>() {
             @Override
-            public void onSuccess(String rowData) {
-                Window.alert("done: " + rowData);
-                //dataGrid.setRowData(rowData);
+            public void onSuccess(List<RecentSentimentExportsInfo> rowData) {
+                dataGrid.setRowData(rowData);
             }
             public void onFailure(Throwable t) {
                 Window.alert(t.getMessage());

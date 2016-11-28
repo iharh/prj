@@ -9,6 +9,10 @@ public class RecentSentimentExportsInfo implements Serializable {
     private String parameters;
     private String fileName;
 
+    // need for Serializable
+    public RecentSentimentExportsInfo() {
+    }
+
     public RecentSentimentExportsInfo(String id, String description, String timestamp, String parameters, String fileName) {
         this.id = id;
         this.description = description;
