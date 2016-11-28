@@ -128,7 +128,7 @@ public class RecentSentimentExportsDialog extends BaseDialogBox {
         dataGrid.addColumn(colFileName, msgs.rceColumnFile());
 	dataGrid.setColumnWidth(colFileName, 20, u);
 
-        getSvcAsync().getExports(0, new AsyncCallback<List<RecentSentimentExportsInfo>>() {
+        /*getSvcAsync().getExports(0, new AsyncCallback<List<RecentSentimentExportsInfo>>() {
             @Override
             public void onSuccess(List<RecentSentimentExportsInfo> rowData) {
                 dataGrid.setRowData(rowData);
@@ -136,7 +136,10 @@ public class RecentSentimentExportsDialog extends BaseDialogBox {
             public void onFailure(Throwable t) {
                 Window.alert(t.getMessage());
             }
-        });
+        });*/
+        dataGrid.setRowData(Arrays.asList(
+            new RecentSentimentExportsInfo("1", "2", "3", "4", "5")
+        ));
 
         infoPanel.add(dataGrid);
 
