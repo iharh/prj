@@ -169,10 +169,9 @@ public class RecentSentimentExportsDialog extends BaseDialogBox implements Proje
         getSvcAsync().getExports(0, new AsyncCallback<List<RecentSentimentExportsInfo>>() {
             @Override
             public void onSuccess(List<RecentSentimentExportsInfo> rowData) {
+                // dataGrid.setRowData(rowData); // does not preserve page size
                 dataProvider.getList().addAll(rowData);
                 dataProvider.addDataDisplay(dataGrid);
-                // dataGrid.setRowData(rowData); // invalidates a pager
-                // need to create a DataProvider and fill it via its setList method 
             }
             public void onFailure(Throwable t) {
                 Window.alert(t.getMessage());
