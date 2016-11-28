@@ -13,11 +13,12 @@
     <source path="foundation/client/widget/button"/>
     <source path="foundation/client/widget/dialog"/>
     <source path="foundation/shared/model"/>
+    <source path="web/client"/>
     <source path="web/client/utils"/>
+    <source path="web/client/report"/>
     <source path="web/client/sentiments"/>
     <source path="web/client/sentiments/server"/>
     <source path="web/client/sentiments/service"/>
-    <source path="web/client/sentiments/resources"/>
     <source path="web/client/sentiments/resources"/>
 
     <entry-point class="mygwt.client.MyEntryPoint"/>

@@ -19,6 +19,8 @@ import mygwt.web.client.utils.StyleUtils;
 
 import mygwt.web.client.sentiments.resources.SentimentsMessages;
 
+import mygwt.web.client.report.ExportPanel;
+
 import com.google.gwt.core.client.GWT;
 
 import com.google.gwt.dom.client.Style;
@@ -73,7 +75,8 @@ public class RecentSentimentExportsDialog extends BaseDialogBox implements Proje
 
     private ClickHandler closeButtonHandler;
 
-    //private ExportPanel hiddenPanel;
+    private ExportPanel hiddenPanel;
+
     private SentimentsMessages msgs;
 
     public RecentSentimentExportsDialog() {
@@ -190,13 +193,13 @@ public class RecentSentimentExportsDialog extends BaseDialogBox implements Proje
         final OkButton     exportBtn = new OkButton(SentimentsMessages.INSTANCE.export());
         final CancelButton cancelBtn = new CancelButton(SentimentsMessages.INSTANCE.cancel());
 
-        /*exportBtn.addClickHandler(new ClickHandler() {
+        exportBtn.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
                 buildExportPanel();
                 hiddenPanel.submit();
             }
-        });*/
+        });
         exportBtn.addClickHandler(closeButtonHandler);
         cancelBtn.addClickHandler(closeButtonHandler);
 
@@ -216,17 +219,17 @@ public class RecentSentimentExportsDialog extends BaseDialogBox implements Proje
         return btnPanel;
     }
 
-    /*private void buildExportPanel() {
+    private void buildExportPanel() {
         if (null != hiddenPanel)
             hiddenPanel.removeFromParent();
-        hiddenPanel = new ExportPanel("sentiment_export.action");
+        hiddenPanel = new ExportPanel("exporting/export/sampleExp"); // sentiment_export.action
 
-        hiddenPanel.setField(ExportPanel.SENT_EXPORT_PROJECTID, ApplicationContext.get().getProjectId());
-        hiddenPanel.setField(ExportPanel.SENT_EXPORT_RULES, exportRules.getValue());
-        hiddenPanel.setField(ExportPanel.SENT_EXPORT_WORDS, exportWords.getValue());
-        hiddenPanel.setField(ExportPanel.SENT_EXPORT_NAME, exportName.getValue());
-        hiddenPanel.setField(ExportPanel.SENT_EXPORT_DESCR, exportDescription.getValue());
+        //hiddenPanel.setField(ExportPanel.SENT_EXPORT_PROJECTID, ApplicationContext.get().getProjectId());
+        //hiddenPanel.setField(ExportPanel.SENT_EXPORT_RULES, exportRules.getValue());
+        //hiddenPanel.setField(ExportPanel.SENT_EXPORT_WORDS, exportWords.getValue());
+        //hiddenPanel.setField(ExportPanel.SENT_EXPORT_NAME, exportName.getValue());
+        //hiddenPanel.setField(ExportPanel.SENT_EXPORT_DESCR, exportDescription.getValue());
         
         RootPanel.get().add(hiddenPanel);
-    }*/
+    }
 }

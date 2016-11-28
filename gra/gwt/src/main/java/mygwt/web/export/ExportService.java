@@ -8,8 +8,8 @@ import org.springframework.stereotype.Controller;
 //import org.springframework.web.bind.WebDataBinder;
 //import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+//import org.springframework.web.bind.annotation.RequestMethod;
+//import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -17,11 +17,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequestMapping("/export/*")
 public interface ExportService {
     //@RequestMapping(value = "exp", method = RequestMethod.GET)
-    @GetMapping("exp1")
-    void exp1(HttpServletResponse response);
+    //@GetMapping("sampleExp")
 
     @PostMapping("exp2")
-    void exp2(HttpServletResponse response);
+    void sampleExp(HttpServletResponse response);
 /*
     //@RequestMapping(value = "custom_export", method = RequestMethod.POST)
     @PostMapping("custom_export")
