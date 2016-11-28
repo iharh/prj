@@ -8,8 +8,6 @@ import mygwt.common.exception.CMPException;
 
 //import mygwt.web.export.resources.ExpMsgKeys;
 
-import org.springframework.stereotype.Controller;
-
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 

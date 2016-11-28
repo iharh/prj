@@ -11,6 +11,11 @@ import mygwt.foundation.client.exception.ServiceException;
 
 //import org.apache.commons.io.IOUtils;
 
+// import org.springframework.stereotype.Controller;
+//import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.PostMapping;
+
 //import java.io.IOException;
 
 import java.util.Arrays;
@@ -18,13 +23,16 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+//@Controller
+//@RequestMapping("/.../*")
 public class RecentSentimentExportsServiceImpl extends CmpRemoteServletSupport implements RecentSentimentExportsService {
-    private static final Logger LOG = Logger.getLogger(RecentSentimentExportsServiceImpl.class);
+    private static final Logger log = Logger.getLogger(RecentSentimentExportsServiceImpl.class);
 
     private static final long serialVersionUID = 1L;
 	
     @Override
     public List<RecentSentimentExportsInfo> getExports(long projectId) throws ServiceException {
+
         List<RecentSentimentExportsInfo> result = null;
         //try {
             result = Arrays.asList(

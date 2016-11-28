@@ -4,6 +4,8 @@
     <inherits name="com.google.gwt.user.User"/>
 
     <source path="client"/>
+    <source path="common/client/url"/>
+    <source path="foundation/client/csrf"/>
     <source path="foundation/client/exception"/>
     <source path="foundation/client/util"/>
     <source path="foundation/client/widget/button"/>

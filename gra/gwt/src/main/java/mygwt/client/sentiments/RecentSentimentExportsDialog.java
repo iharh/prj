@@ -4,7 +4,12 @@ import mygwt.client.sentiments.RecentSentimentExportsInfo;
 import mygwt.client.sentiments.service.RecentSentimentExportsService;
 import mygwt.client.sentiments.service.RecentSentimentExportsServiceAsync;
 
+import mygwt.common.client.url.Service;
+
 //import mygwt.foundation.client.rpc.AbstractAsyncCallback;
+
+import mygwt.foundation.client.csrf.ProjectIdAware;
+import mygwt.foundation.client.csrf.CsrfRpcRequestBuilder;
 
 import mygwt.foundation.client.widget.dialog.BaseDialogBox;
 import mygwt.foundation.client.widget.button.CancelButton;
@@ -45,18 +50,21 @@ import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.Widget;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.rpc.ServiceDefTarget;
 
 import java.util.Arrays;
 import java.util.List;
 
 
-public class RecentSentimentExportsDialog extends BaseDialogBox {
+public class RecentSentimentExportsDialog extends BaseDialogBox implements ProjectIdAware {
     private static final int borderW     = 0; // 1 for borders vis-n
     private static final int allW        = 640;
     private static final int allH        = 370;
     private static final String textBoxW = "470px"; // 450px
     private static final int labelW      = 150;
     private static final int spacing     = 12;
+
+    private long projectId;
 
     private CheckBox exportWords;
     private CheckBox exportRules;
@@ -73,6 +81,15 @@ public class RecentSentimentExportsDialog extends BaseDialogBox {
         msgs = SentimentsMessages.INSTANCE;
         setWidget(createDialogContents());
         hide();
+    }
+
+    @Override
+	public long getProjectId() {
+        return projectId;
+    }
+    
+    public void setProjectId(long projectId) {
+        this.projectId = projectId;
     }
 
     private Widget createDialogContents() {
@@ -151,10 +168,16 @@ public class RecentSentimentExportsDialog extends BaseDialogBox {
     public RecentSentimentExportsServiceAsync getSvcAsync() {
         if (svcAsync == null) {
             svcAsync = (RecentSentimentExportsServiceAsync) GWT.create(RecentSentimentExportsService.class);
-            // injectRpcBuilder(((ServiceDefTarget) svcAsync), Service.THEME_DETECTION_SERVICE);
+            injectRpcBuilder(((ServiceDefTarget) svcAsync), Service.RECENT_SENTIMENT_EXPORTS_SERVICE);
         }
         return svcAsync;
     }
+
+    private void injectRpcBuilder(final ServiceDefTarget target, final Service service) {
+        target.setServiceEntryPoint(service.getAbsoluteUrl());
+        target.setRpcRequestBuilder(CsrfRpcRequestBuilder.getInstance(this));
+    }
+
 
     private Panel createButtonPanel() {
         closeButtonHandler = new ClickHandler() {
