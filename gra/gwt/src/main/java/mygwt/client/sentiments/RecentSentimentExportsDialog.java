@@ -54,6 +54,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 
+import com.google.gwt.view.client.ListDataProvider;
 import com.google.gwt.view.client.ProvidesKey;
 import com.google.gwt.view.client.SingleSelectionModel;
 
@@ -125,7 +126,8 @@ public class RecentSentimentExportsDialog extends BaseDialogBox implements Proje
             }
         };
 
-        final DataGrid<RecentSentimentExportsInfo> dataGrid = new DataGrid<RecentSentimentExportsInfo>(2, keyProvider);
+        final DataGrid<RecentSentimentExportsInfo> dataGrid = new DataGrid<RecentSentimentExportsInfo>(5, keyProvider);
+        //dataGrid.setPageSize(5);
 	dataGrid.setSize("100%", "400px");
 
 	dataGrid.setEmptyTableWidget(new HTML(msgs.rceNoExportsDefined()));
@@ -162,10 +164,15 @@ public class RecentSentimentExportsDialog extends BaseDialogBox implements Proje
 
         dataGrid.setSelectionModel(selectionModel);
 
+        final ListDataProvider<RecentSentimentExportsInfo> dataProvider = new ListDataProvider<RecentSentimentExportsInfo>();
+
         getSvcAsync().getExports(0, new AsyncCallback<List<RecentSentimentExportsInfo>>() {
             @Override
             public void onSuccess(List<RecentSentimentExportsInfo> rowData) {
-                dataGrid.setRowData(rowData);
+                dataProvider.getList().addAll(rowData);
+                dataProvider.addDataDisplay(dataGrid);
+                // dataGrid.setRowData(rowData); // invalidates a pager
+                // need to create a DataProvider and fill it via its setList method 
             }
             public void onFailure(Throwable t) {
                 Window.alert(t.getMessage());

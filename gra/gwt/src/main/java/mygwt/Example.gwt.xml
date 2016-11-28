@@ -18,7 +18,6 @@
     <source path="web/client/report"/>
     <source path="web/client/sentiments"/>
     <source path="web/client/sentiments/server"/>
-    <source path="web/client/sentiments/service"/>
     <source path="web/client/sentiments/resources"/>
 
     <entry-point class="mygwt.client.MyEntryPoint"/>
