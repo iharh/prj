@@ -163,6 +163,8 @@ public class RecentSentimentExportsDialog extends BaseDialogBox implements Proje
         SingleSelectionModel<RecentSentimentExportsInfo> selectionModel = new SingleSelectionModel<RecentSentimentExportsInfo>(keyProvider);
 
         dataGrid.setSelectionModel(selectionModel);
+        //dataGrid.setAlwaysShowScrollBars(true);
+        //http://samples.gwtproject.org/samples/Showcase/Showcase.html#!CwDataGrid
 
         final ListDataProvider<RecentSentimentExportsInfo> dataProvider = new ListDataProvider<RecentSentimentExportsInfo>();
 
