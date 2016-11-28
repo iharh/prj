@@ -148,7 +148,8 @@ public class RecentSentimentExportsDialog extends BaseDialogBox implements Proje
         dataGrid.setRowData(Arrays.asList(
             new RecentSentimentExportsInfo("1", "2", "3", "4", "5")
         ));
-        getSvcAsync().getExports(0, new AsyncCallback<List<RecentSentimentExportsInfo>>() {
+        getSvcAsync();
+        svcAsync.getExports(0, new AsyncCallback<List<RecentSentimentExportsInfo>>() {
             @Override
             public void onSuccess(List<RecentSentimentExportsInfo> rowData) {
                 dataGrid.setRowData(rowData);
@@ -174,7 +175,10 @@ public class RecentSentimentExportsDialog extends BaseDialogBox implements Proje
     }
 
     private void injectRpcBuilder(final ServiceDefTarget target, final Service service) {
-        target.setServiceEntryPoint(service.getAbsoluteUrl());
+        final String absUrl = service.getAbsoluteUrl();
+        //Window.alert(absUrl);
+        // we typically use this instead of the @com.google.gwt.user.client.rpc.RemoteServiceRelativePath
+        target.setServiceEntryPoint(absUrl); 
         target.setRpcRequestBuilder(CsrfRpcRequestBuilder.getInstance(this));
     }
 
