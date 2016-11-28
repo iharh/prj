@@ -15,6 +15,7 @@ import java.util.Set;
 // https://docs.google.com/document/d/1eG0YocsYYbNAtivkLtcaiEE5IOF5u4LUol8-LL0TIKU/edit
 
 // http://blog.daniel-kurka.de/2016/07/gwt-rpcs-future.html
+// https://dzone.com/articles/making-gwt-remote-procedure-ca
 
 import com.google.gwt.user.client.Window;
 
@@ -38,23 +39,25 @@ public final class CsrfRpcRequestBuilder extends RpcRequestBuilder {
 		return new CsrfRpcRequestBuilder(projectIdProvider); // Currently, new instance for each service.
 	}
 	
-	@Override
-	protected void doFinish(RequestBuilder rb) {
-		rb.setHeader("X-Requested-With", this.getClass().getName());
-		String tokenName = CsrfUtils.getTokenName();
-		String tokenValue = CsrfUtils.getTokenValue();
-			
-		if (!StringUtilHelper.isNullOrEmpty(tokenName) 
-				&& !StringUtilHelper.isNullOrEmpty(tokenValue)) { // IE fix.
-			rb.setHeader(tokenName, tokenValue);
-		}
-		
-		if (projectIdProvider != null) {
-		//	rb.setHeader("X-ProjectId", String.valueOf(projectIdProvider.getProjectId()));
-		}
-		
-		super.doFinish(rb);
-	}
+    @Override
+    protected void doFinish(RequestBuilder rb) {
+        /*rb.setHeader("X-Requested-With", this.getClass().getName());
+        String tokenName = CsrfUtils.getTokenName();
+        String tokenValue = CsrfUtils.getTokenValue();
+                
+        if (!StringUtilHelper.isNullOrEmpty(tokenName) 
+                        && !StringUtilHelper.isNullOrEmpty(tokenValue)) { // IE fix.
+                rb.setHeader(tokenName, tokenValue);
+        }
+        
+        if (projectIdProvider != null) {
+        //	rb.setHeader("X-ProjectId", String.valueOf(projectIdProvider.getProjectId()));
+        }*/
+        
+        Window.alert("doFinish start");
+        super.doFinish(rb);
+        Window.alert("doFinish done");
+    }
 
 	@Override
 	protected void doSetRequestData(RequestBuilder rb, String data) {
