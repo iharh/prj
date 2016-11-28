@@ -1,20 +1,26 @@
-package com.clarabridge.web.sharedlexicon.wizard.server;
+package mygwt.web.server.sentiments;
 
-import mygwt.client.sentiments.RecentSentimentExportsInfo;
 import mygwt.client.sentiments.service.RecentSentimentExportsService;
+import mygwt.client.sentiments.RecentSentimentExportsInfo;
 
-import mygwt.foundation.client.exception.ServiceException;
+import mygwt.web.server.CmpRemoteServletSupport;
+
+//import mygwt.common.exception.CMPException;
+
+//import org.apache.commons.io.IOUtils;
+
+//import java.io.IOException;
 
 import java.util.Arrays;
 import java.util.List;
-//import java.io.IOException;
 
 import org.apache.log4j.Logger;
 
-public class RecentSentimentExportsServiceAction implements RecentSentimentExportsService {
-    private static final Logger LOG = Logger.getLogger(RecentSentimentExportsServiceAction.class);
-    private static final long serialVersionUID = 1L;
+public class RecentSentimentExportsServiceImpl extends CmpRemoteServletSupport implements RecentSentimentExportsService {
+    private static final Logger LOG = Logger.getLogger(RecentSentimentExportsServiceImpl.class);
 
+    private static final long serialVersionUID = 1L;
+	
     @Override
     public List<RecentSentimentExportsInfo> getExports(long projectId) throws ServiceException {
         List<RecentSentimentExportsInfo> result = null;
@@ -30,4 +36,4 @@ public class RecentSentimentExportsServiceAction implements RecentSentimentExpor
         //} 
         return result;
     }
-}	
+}
