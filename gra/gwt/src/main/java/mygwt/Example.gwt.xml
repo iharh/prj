@@ -6,7 +6,6 @@
     <inherits name="com.google.gwt.http.HTTP"/>
     <inherits name="com.google.gwt.logging.Logging"/>
 
-    <source path="client"/>
     <source path="common/client/context"/>
     <source path="common/client/url"/>
     <source path="foundation/client/csrf"/>
@@ -19,6 +18,7 @@
     <source path="foundation/shared/model"/>
     <source path="web/client/utils"/>
     <source path="web/client/report"/>
+    <source path="web/client/sentiments"/>
     <source path="web/client/sentiments/rse"/>
     <source path="web/client/sentiments/rse/server"/>
     <source path="web/client/sentiments/resources"/>

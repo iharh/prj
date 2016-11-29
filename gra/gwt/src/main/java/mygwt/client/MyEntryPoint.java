@@ -5,8 +5,8 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 
 import mygwt.foundation.client.widget.dialog.BaseDialogBox;
-//import mygwt.client.sentiments.ExportSentimentsDialog;
-import mygwt.client.sentiments.RecentSentimentExportsDialog;
+//import mygwt.web.client.sentiments.ExportSentimentsDialog;
+import mygwt.web.client.sentiments.rse.RecentSentimentExportsDialog;
 
 public class MyEntryPoint implements EntryPoint {
 
