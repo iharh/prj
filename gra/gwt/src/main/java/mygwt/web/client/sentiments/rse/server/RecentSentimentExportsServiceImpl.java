@@ -1,20 +1,13 @@
-package mygwt.web.client.sentiments.server;
+package mygwt.web.client.sentiments.rse.server;
 
-import mygwt.web.client.sentiments.RecentSentimentExportsInfo;
-import mygwt.web.client.sentiments.RecentSentimentExportsService;
+import mygwt.web.client.sentiments.rse.RecentSentimentExportsInfo;
+import mygwt.web.client.sentiments.rse.RecentSentimentExportsService;
 
 import mygwt.web.server.CmpRemoteServletSupport;
 
 import mygwt.foundation.client.exception.ServiceException;
 
-//import mygwt.common.exception.CMPException;
-
 //import org.apache.commons.io.IOUtils;
-
-// import org.springframework.stereotype.Controller;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.PostMapping;
 
 //import java.io.IOException;
 
@@ -23,8 +16,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-//@Controller
-//@RequestMapping("/.../*")
 public class RecentSentimentExportsServiceImpl extends CmpRemoteServletSupport implements RecentSentimentExportsService {
     private static final Logger log = Logger.getLogger(RecentSentimentExportsServiceImpl.class);
 
@@ -43,7 +34,9 @@ public class RecentSentimentExportsServiceImpl extends CmpRemoteServletSupport i
                 new RecentSentimentExportsInfo("export4", "descr4", "2016/05/19", "p4", "f4"),
                 new RecentSentimentExportsInfo("export5", "descr5", "2016/05/19", "p5", "f5"),
                 new RecentSentimentExportsInfo("export6", "descr6", "2016/05/19", "p6", "f6"),
-                new RecentSentimentExportsInfo("export7", "descr7", "2016/05/19", "p7", "f7")
+                new RecentSentimentExportsInfo("export7", "descr7", "2016/05/19", "p7", "f7"),
+                new RecentSentimentExportsInfo("export8", "descr8", "2016/05/19", "p8", "f8"),
+                new RecentSentimentExportsInfo("export9", "descr9", "2016/05/19", "p9", "f9")
             );
         //} catch (IOException e) {
         //    IOUtils.closeQuietly(input);

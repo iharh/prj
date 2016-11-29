@@ -1,8 +1,8 @@
 package mygwt.client.sentiments;
 
-import mygwt.web.client.sentiments.RecentSentimentExportsInfo;
-import mygwt.web.client.sentiments.RecentSentimentExportsService;
-import mygwt.web.client.sentiments.RecentSentimentExportsServiceAsync;
+import mygwt.web.client.sentiments.rse.RecentSentimentExportsInfo;
+import mygwt.web.client.sentiments.rse.RecentSentimentExportsService;
+import mygwt.web.client.sentiments.rse.RecentSentimentExportsServiceAsync;
 
 import mygwt.common.client.url.Service;
 

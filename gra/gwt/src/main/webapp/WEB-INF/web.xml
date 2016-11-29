@@ -5,7 +5,7 @@
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
     version="2.5">
 
-    // Spring web mvc
+    <!-- Spring web mvc -->
 
     <servlet>
 	<servlet-name>ExportSpringDispatcherServlet</servlet-name>
@@ -18,11 +18,11 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	<url-pattern>/exporting/*</url-pattern>
     </servlet-mapping>
 
-    // gwt rpc
+    <!-- gwt rpc -->
 
     <servlet>
 	<servlet-name>RecentSentimentExportsServlet</servlet-name>
-	<servlet-class>mygwt.web.client.sentiments.server.RecentSentimentExportsServiceImpl</servlet-class>
+	<servlet-class>mygwt.web.client.sentiments.rse.server.RecentSentimentExportsServiceImpl</servlet-class>
     </servlet>
 
     <servlet-mapping>

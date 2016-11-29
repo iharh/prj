@@ -1,4 +1,4 @@
-package mygwt.web.client.sentiments;
+package mygwt.web.client.sentiments.rse;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
