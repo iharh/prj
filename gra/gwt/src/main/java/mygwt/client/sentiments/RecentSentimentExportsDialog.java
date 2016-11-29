@@ -6,7 +6,7 @@ import mygwt.web.client.sentiments.RecentSentimentExportsServiceAsync;
 
 import mygwt.common.client.url.Service;
 
-//import mygwt.foundation.client.rpc.AbstractAsyncCallback;
+import mygwt.foundation.client.rpc.AbstractAsyncCallback;
 
 import mygwt.foundation.client.csrf.ProjectIdAware;
 import mygwt.foundation.client.csrf.CsrfRpcRequestBuilder;
@@ -168,15 +168,12 @@ public class RecentSentimentExportsDialog extends BaseDialogBox implements Proje
 
         final ListDataProvider<RecentSentimentExportsInfo> dataProvider = new ListDataProvider<RecentSentimentExportsInfo>();
 
-        getSvcAsync().getExports(0, new AsyncCallback<List<RecentSentimentExportsInfo>>() {
+        getSvcAsync().getExports(0, new AbstractAsyncCallback<List<RecentSentimentExportsInfo>>() {
             @Override
             public void onSuccess(List<RecentSentimentExportsInfo> rowData) {
                 // dataGrid.setRowData(rowData); // does not preserve page size
                 dataProvider.getList().addAll(rowData);
                 dataProvider.addDataDisplay(dataGrid);
-            }
-            public void onFailure(Throwable t) {
-                Window.alert(t.getMessage());
             }
         });
 

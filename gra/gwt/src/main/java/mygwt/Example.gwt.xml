@@ -4,12 +4,15 @@
     <inherits name="com.google.gwt.user.User"/>
     <!-- http://www.gwtproject.org/javadoc/latest/com/google/gwt/http/client/RequestBuilder.html -->
     <inherits name="com.google.gwt.http.HTTP"/>
+    <inherits name="com.google.gwt.logging.Logging"/>
 
     <source path="client"/>
     <source path="common/client/context"/>
     <source path="common/client/url"/>
     <source path="foundation/client/csrf"/>
     <source path="foundation/client/exception"/>
+    <source path="foundation/client/resources"/>
+    <source path="foundation/client/rpc"/>
     <source path="foundation/client/util"/>
     <source path="foundation/client/widget/button"/>
     <source path="foundation/client/widget/dialog"/>
@@ -19,6 +22,12 @@
     <source path="web/client/sentiments"/>
     <source path="web/client/sentiments/server"/>
     <source path="web/client/sentiments/resources"/>
+
+    <set-property name="gwt.logging.simpleRemoteHandler" value="ENABLED" />
+    <set-property name="gwt.logging.logLevel" value="SEVERE"/>
+    <set-property name="gwt.logging.enabled" value="TRUE"/>
+    <set-property name="gwt.logging.consoleHandler" value="ENABLED" />
+    <set-property name="gwt.logging.popupHandler" value="DISABLED" />
 
     <entry-point class="mygwt.client.MyEntryPoint"/>
 </module>
