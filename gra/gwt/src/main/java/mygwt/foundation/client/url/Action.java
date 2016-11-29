@@ -1,4 +1,4 @@
-package com.clarabridge.foundation.client.url;
+package mygwt.foundation.client.url;
 
 import mygwt.foundation.client.csrf.CsrfFormPanel;
 import mygwt.foundation.client.csrf.CsrfFormPanel.Target;

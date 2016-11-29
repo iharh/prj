@@ -34,8 +34,7 @@ import java.util.logging.Level;
 import java.util.logging.LogRecord;
 
 public abstract class AbstractAsyncCallback<T> implements AsyncCallback<T> {
-
-    // private static final String LOGIN_PAGE_PART = "<script ";
+    private static final String LOGIN_PAGE_PART = "<script ";
 
     /*public static final AbstractAsyncCallback<Void> VOID_CALLBACK = new AbstractAsyncCallback<Void>() {
         @Override
@@ -52,7 +51,7 @@ public abstract class AbstractAsyncCallback<T> implements AsyncCallback<T> {
 
     public static void setShowServerNotAvailableException(boolean showStatusCodeException) {
         AbstractAsyncCallback.showServerNotAvailableException = showStatusCodeException;
-    }
+    }*/
 
     private HasHTML messageOutput;
 
@@ -62,7 +61,7 @@ public abstract class AbstractAsyncCallback<T> implements AsyncCallback<T> {
 
     protected void setMessageOutput(HasHTML messageOutput) {
         this.messageOutput = messageOutput;
-    }*/
+    }
 
     private class ErrorOkHandler implements ClickHandler {
         @Override
@@ -148,7 +147,7 @@ public abstract class AbstractAsyncCallback<T> implements AsyncCallback<T> {
             handleObjectNotFoundError((ObjectNotFoundClientException) caught);
         } else if (caught instanceof LockedNodeException) {
             handleLockedNodeException((LockedNodeException) caught);
-        } else*/ if (caught instanceof StatusCodeException) {
+        } else if (caught instanceof StatusCodeException) {
             processStatusCodeException(message, (StatusCodeException) caught);
         } else if (caught instanceof InvocationException) {
             //if (isLoginPage(caught.getLocalizedMessage())) {
@@ -173,18 +172,20 @@ public abstract class AbstractAsyncCallback<T> implements AsyncCallback<T> {
                 processOtherExceptions(caught, message);
             //}
         }
+        */
     }
 
     protected void processOtherExceptions(Throwable caught, String newMessage) {
-        showErrorMessageAlert(CommonClientMessages.INSTANCE.errorMsgAlert(newMessage, caught.getClass().toString(),
-                        caught.getLocalizedMessage()).asString());
+        showErrorMessageAlert(
+            CommonClientMessages.INSTANCE.errorMsgAlert(newMessage, caught.getClass().toString(),
+                caught.getLocalizedMessage()).asString());
     }
-
+/*
     protected void processStatusCodeException(String currentMessage, StatusCodeException sce) {
-        /*if (sce.getStatusCode() == 403) {
+        if (sce.getStatusCode() == 403) {
             // StatusCodeException.getLocalizedMessage() contains HTML page.
             handleAuthenticateError();
-        } else*/ if (sce.getStatusCode() == 410) { // TODO: ADM: Use specialized Exception class instead!!!
+        } else if (sce.getStatusCode() == 410) { // TODO: ADM: Use specialized Exception class instead!!!
             showErrorMessageAlert(sce.getEncodedResponse(), new ErrorOkHandler() {
 				@Override
 				public void onClick(ClickEvent event) {
@@ -242,6 +243,13 @@ public abstract class AbstractAsyncCallback<T> implements AsyncCallback<T> {
         //}
     }
     
+    private String generateMessage(ObjectNotFoundClientException clientException) {
+        String name = clientException.getName() != null ?
+            CommonClientMessages.INSTANCE.boldMessage(clientException.getName()) : CommonConstants.EMPTY_STRING;
+        String message = CommonClientMessages.INSTANCE.nodeDoesNotExists(name);
+        return message;
+    }
+
     private void handleLockedNodeException(final LockedNodeException exception) {
         String message = CommonClientMessages.INSTANCE.nodeLocked();
 
@@ -262,17 +270,9 @@ public abstract class AbstractAsyncCallback<T> implements AsyncCallback<T> {
         }
     }
 */
-    private String generateMessage(ObjectNotFoundClientException clientException) {
-        String name = clientException.getName() != null ? CommonClientMessages.INSTANCE.boldMessage(clientException.getName())
-                        : CommonConstants.EMPTY_STRING;
-        String message = CommonClientMessages.INSTANCE.nodeDoesNotExists(name);
-        return message;
+    private boolean isLoginPage(final String message) {
+        return message != null && message.indexOf(LOGIN_PAGE_PART) >= 0;
     }
-
-
-    //private boolean isLoginPage(final String message) {
-    //    return message != null && message.indexOf(LOGIN_PAGE_PART) >= 0;
-    //}
     
     private static String getMessage(Throwable throwable) {
         String ret="";
