@@ -1,39 +1,43 @@
-package com.clarabridge.foundation.client.rpc;
+package mygwt.foundation.client.rpc;
 
+//import mygwt.foundation.client.exception.ServiceException;
+//import mygwt.foundation.client.exception.AccessDeniedClientException;
+//import mygwt.foundation.client.exception.AuthenticationClientException;
+//import mygwt.foundation.client.exception.ObjectNotFoundClientException;
+//import mygwt.foundation.client.exception.LockedNodeException;
 
-import java.util.logging.Level;
-import java.util.logging.LogRecord;
+import mygwt.foundation.client.resources.CommonClientMessages;
+import mygwt.foundation.client.resources.CommonConstants;
 
-import com.clarabridge.foundation.client.exception.ServiceException;
-//import com.clarabridge.foundation.client.exception.AccessDeniedClientException;
-//import com.clarabridge.foundation.client.exception.AuthenticationClientException;
-//import com.clarabridge.foundation.client.exception.ObjectNotFoundClientException;
-//import com.clarabridge.foundation.client.exception.LockedNodeException;
-import com.clarabridge.foundation.client.resources.CommonClientMessages;
-import com.clarabridge.foundation.client.resources.CommonConstants;
-import com.clarabridge.foundation.client.url.Action;
-import com.clarabridge.foundation.client.util.SimpleHtmlSanitizerEx;
+import mygwt.foundation.client.url.Action;
 
-import com.clarabridge.foundation.client.widget.dialog.AlertDialog;
-import com.clarabridge.foundation.client.widget.dialog.SessionExpiredDialog;
+import mygwt.foundation.client.util.SimpleHtmlSanitizerEx;
 
-import com.clarabridge.foundation.shared.model.StringUtilHelper;
+import mygwt.foundation.client.widget.dialog.AlertDialog;
+//import mygwt.foundation.client.widget.dialog.SessionExpiredDialog;
+
+import mygwt.foundation.shared.model.StringUtilHelper;
 
 import com.google.gwt.core.client.GWT;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+
 import com.google.gwt.logging.client.SimpleRemoteLogHandler;
+
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.rpc.InvocationException;
-import com.google.gwt.user.client.rpc.StatusCodeException;
+//import com.google.gwt.user.client.rpc.InvocationException;
+//import com.google.gwt.user.client.rpc.StatusCodeException;
 import com.google.gwt.user.client.ui.HasHTML;
+
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
 
 public abstract class AbstractAsyncCallback<T> implements AsyncCallback<T> {
 
-    private static final String LOGIN_PAGE_PART = "<script "; //$NON-NLS-1$
+    // private static final String LOGIN_PAGE_PART = "<script ";
 
-    public static final AbstractAsyncCallback<Void> VOID_CALLBACK = new AbstractAsyncCallback<Void>() {
+    /*public static final AbstractAsyncCallback<Void> VOID_CALLBACK = new AbstractAsyncCallback<Void>() {
         @Override
         public void onSuccess(Void arg0) {
         }
@@ -58,6 +62,16 @@ public abstract class AbstractAsyncCallback<T> implements AsyncCallback<T> {
 
     protected void setMessageOutput(HasHTML messageOutput) {
         this.messageOutput = messageOutput;
+    }*/
+
+    private class ErrorOkHandler implements ClickHandler {
+        @Override
+        public void onClick(ClickEvent event) {
+            AbstractAsyncCallback.this.onErrorOkClick(event);
+        }
+    }
+
+    protected void onErrorOkClick(ClickEvent event) {
     }
 
     /**
@@ -69,28 +83,21 @@ public abstract class AbstractAsyncCallback<T> implements AsyncCallback<T> {
         proccessException(caught);
     }
     
-    /**
-     * DO NOT OVERRIDE unless you want to override generic exception handling like authentication errors!
-     * Override processOtherExceptions instead.
-     */
+    // DO NOT OVERRIDE unless you want to override generic exception handling like authentication errors!
+    // Override processOtherExceptions instead.
     public void onFailure(Throwable caught, String newMessage) {
         proccessException(caught, newMessage);
     }
 
-    /**
-     * Override to specify error message.
-     */
+    // Override to specify error message.
     protected String errorMessage() {
         return "Your Last Operation Failed"; // !!!CommonClientMessages.INSTANCE.yourLastOpFailed();
     }
     
-    /**
-     * Override to change behavior.
-     */
+    // Override to change behavior.
     protected void showErrorMessageAlert(String mess, ErrorOkHandler okHandler) {
         if (messageOutput == null) {
-            AlertDialog alertDialog = new AlertDialog(CommonConstants.INSTANCE.error(),
-                            SimpleHtmlSanitizerEx.sanitizeHtml(mess).asString());
+            AlertDialog alertDialog = new AlertDialog(CommonConstants.INSTANCE.error(), SimpleHtmlSanitizerEx.sanitizeHtml(mess).asString());
             alertDialog.addOkHandler(okHandler);
             alertDialog.show(false);
         } else {
@@ -112,7 +119,7 @@ public abstract class AbstractAsyncCallback<T> implements AsyncCallback<T> {
     private void proccessException(Throwable caught, String newMessage) {
         String message = newMessage;
         if (null != message && !message.isEmpty()) {
-            //message = CommonClientMessages.INSTANCE.boldMessage(SimpleHtmlSanitizerEx.sanitizeHtml(message).asString());
+            message = CommonClientMessages.INSTANCE.boldMessage(SimpleHtmlSanitizerEx.sanitizeHtml(message).asString());
         } else {
             message = CommonConstants.EMPTY_STRING;
         }
@@ -120,17 +127,15 @@ public abstract class AbstractAsyncCallback<T> implements AsyncCallback<T> {
         GWT.log(message, caught);
         
         // Remote logging block:START
-        try{
-        	// Try to log same exception remotely
-	        SimpleRemoteLogHandler remoteLog = new SimpleRemoteLogHandler();
-	        LogRecord lr = new LogRecord(Level.INFO, message + "\r\n Obfuscated trace: \r\n" +getMessage(caught) +"\r\n");//$NON-NLS-1$
-	        lr.setThrown(caught);
-	        lr.setLoggerName("com.google.gwt.logging.server"); //$NON-NLS-1$
-	        remoteLog.publish(lr);
-	        
-	        
+        try {
+            // Try to log same exception remotely
+            SimpleRemoteLogHandler remoteLog = new SimpleRemoteLogHandler();
+            LogRecord lr = new LogRecord(Level.INFO, message + "\r\n Obfuscated trace: \r\n" +getMessage(caught) +"\r\n");//$NON-NLS-1$
+            lr.setThrown(caught);
+            lr.setLoggerName("com.google.gwt.logging.server"); //$NON-NLS-1$
+            remoteLog.publish(lr);
         } catch (Throwable th){
-        	// nothing
+            // nothing
         }
         // Remote logging block:END
 
@@ -196,10 +201,7 @@ public abstract class AbstractAsyncCallback<T> implements AsyncCallback<T> {
             showErrorMessageAlert(message);
         }
     }
-
-    protected void onErrorOkClick(ClickEvent event) {
-    }
-
+/*
     private void handleAuthenticateError() {
         if (messageOutput == null) {
             SessionExpiredDialog.showDialog();
@@ -259,7 +261,7 @@ public abstract class AbstractAsyncCallback<T> implements AsyncCallback<T> {
             messageOutput.setHTML(message);
         }
     }
-
+*/
     private String generateMessage(ObjectNotFoundClientException clientException) {
         String name = clientException.getName() != null ? CommonClientMessages.INSTANCE.boldMessage(clientException.getName())
                         : CommonConstants.EMPTY_STRING;
@@ -267,46 +269,37 @@ public abstract class AbstractAsyncCallback<T> implements AsyncCallback<T> {
         return message;
     }
 
-    private class ErrorOkHandler implements ClickHandler {
-
-        @Override
-        public void onClick(ClickEvent event) {
-            AbstractAsyncCallback.this.onErrorOkClick(event);
-        }
-
-    }
 
     //private boolean isLoginPage(final String message) {
     //    return message != null && message.indexOf(LOGIN_PAGE_PART) >= 0;
     //}
     
-    private static String getMessage (Throwable throwable) {
+    private static String getMessage(Throwable throwable) {
         String ret="";
         while (throwable!=null) {
                 if (throwable instanceof com.google.gwt.event.shared.UmbrellaException){
                         for (Throwable thr2 :((com.google.gwt.event.shared.UmbrellaException)throwable).getCauses()){
-                                if (ret != "") //$NON-NLS-1$
-                                        ret += "\nCaused by: "; //$NON-NLS-1$
+                                if (ret != "")
+                                        ret += "\nCaused by: ";
                                 ret += thr2.toString();
-                                ret += "\n  at "+getMessage(thr2); //$NON-NLS-1$
+                                ret += "\n  at "+getMessage(thr2);
                         }
                 } else if (throwable instanceof com.google.web.bindery.event.shared.UmbrellaException){
                         for (Throwable thr2 :((com.google.web.bindery.event.shared.UmbrellaException)throwable).getCauses()){
-                                if (ret != "") //$NON-NLS-1$
-                                        ret += "\nCaused by: "; //$NON-NLS-1$ 
+                                if (ret != "")
+                                        ret += "\nCaused by: ";
                                 ret += thr2.toString();
-                                ret += "\n  at "+getMessage(thr2); //$NON-NLS-1$
+                                ret += "\n  at "+getMessage(thr2);
                         }
                 } else {
-                        if (ret != "") //$NON-NLS-1$
-                                ret += "\nCaused by: "; //$NON-NLS-1$
+                        if (ret != "")
+                                ret += "\nCaused by: ";
                         ret += throwable.toString();
                         for (StackTraceElement sTE : throwable.getStackTrace())
-                                ret += "\n  at "+sTE; //$NON-NLS-1$
+                                ret += "\n  at "+sTE;
                 }
                 throwable = throwable.getCause();
         }
-
         return ret;
     }
 }
