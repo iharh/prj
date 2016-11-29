@@ -29,5 +29,5 @@
     <set-property name="gwt.logging.consoleHandler" value="ENABLED" />
     <set-property name="gwt.logging.popupHandler" value="DISABLED" />
 
-    <entry-point class="mygwt.client.MyEntryPoint"/>
+    <entry-point class="mygwt.web.client.MyEntryPoint"/>
 </module>

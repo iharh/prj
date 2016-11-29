@@ -1,4 +1,4 @@
-package mygwt.client.sentiments;
+package mygwt.web.client.sentiments.rse;
 
 import mygwt.web.client.sentiments.rse.RecentSentimentExportsInfo;
 import mygwt.web.client.sentiments.rse.RecentSentimentExportsService;
