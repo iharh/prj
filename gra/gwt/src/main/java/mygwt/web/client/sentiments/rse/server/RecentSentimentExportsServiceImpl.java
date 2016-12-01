@@ -1,6 +1,7 @@
 package mygwt.web.client.sentiments.rse.server;
 
-import mygwt.web.client.sentiments.rse.RecentSentimentExportsInfo;
+import mygwt.portal.dto.sentiments.rse.RecentSentimentExportsInfo;
+
 import mygwt.web.client.sentiments.rse.RecentSentimentExportsService;
 
 import mygwt.web.server.CmpRemoteServletSupport;

@@ -1,4 +1,4 @@
-package mygwt.web.client.sentiments.rse;
+package mygwt.portal.dto.sentiments.rse;
 
 import java.io.Serializable;
 
