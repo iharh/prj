@@ -1,5 +1,7 @@
 package mygwt.web.client;
 
+import mygwt.common.security.model.PermissionName;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -17,7 +19,7 @@ public class MyEntryPoint implements EntryPoint {
 
     @Override
     public void onModuleLoad() {
-	RootPanel.get().add(new Label("Hello GWT World!"));
+	RootPanel.get().add(new Label("Hello: " + PermissionName.NONE.name()));
         final BaseDialogBox popup = getDialogBox();
         popup.show();
     }

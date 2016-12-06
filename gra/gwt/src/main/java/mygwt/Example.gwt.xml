@@ -8,6 +8,7 @@
 
     <source path="common/client/context"/>
     <source path="common/client/url"/>
+    <source path="common/security/model"/>
     <source path="foundation/client/csrf"/>
     <source path="foundation/client/exception"/>
     <source path="foundation/client/resources"/>
