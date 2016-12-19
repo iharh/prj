@@ -16,8 +16,8 @@ javacOptions ++= Seq("-encoding", "UTF-8", "-Xlint:unchecked", "-Xlint:deprecati
 testOptions += Tests.Argument(TestFrameworks.JUnit, "-q", "-a")
 
 libraryDependencies ++= Seq(
-    "org.slf4j"                 % "slf4j-api"      % "1.7.21",
-    "org.slf4j"                 % "slf4j-log4j12"  % "1.7.21",
+    "org.slf4j"                 % "slf4j-api"      % "1.7.22",
+    "org.slf4j"                 % "slf4j-log4j12"  % "1.7.22",
     "log4j"                     % "log4j"          % "1.2.17",
 
     "commons-io"                % "commons-io"     % "2.5",
@@ -26,7 +26,7 @@ libraryDependencies ++= Seq(
 
     "com.typesafe"              % "config"         % "1.3.1",
 
-    "com.github.davidmoten"     % "rxjava-jdbc"    % "0.7.2",
+    "com.github.davidmoten"     % "rxjava-jdbc"    % "0.7.3",
     // one-jar stuff
     //"commons-lang"              % "commons-lang"   % "2.6"
     //
@@ -39,28 +39,28 @@ val libroot = if (SystemUtils.IS_OS_LINUX)
     "/data/wrk/clb" else
     "D:/clb/inst/server"
 
-val libcb = libroot + "/lib.cb"
+val lib3rd = libroot + "/lib.3rd"
 
 val libfx = libroot + "/lib.fx"
 
 unmanagedJars in Compile ++= {
-    (file(libcb) ** "ojdbc*.jar").classpath // ojdbc6* ojdbc7*
+    (file(lib3rd) ** "ojdbc*.jar").classpath // ojdbc6* ojdbc7*
 }
 
 unmanagedJars in Compile ++= {
-    (file(libcb) ** "postgresql-9*.jar").classpath
+    (file(lib3rd) ** "postgresql-9*.jar").classpath
 }
 
 unmanagedJars in Compile ++= {
-    (file(libcb) ** "elasticsearch-*.jar").classpath
+    (file(lib3rd) ** "elasticsearch-*.jar").classpath
 }
 
 unmanagedJars in Compile ++= {
-    (file(libcb) ** "protobuf-java-*.jar").classpath
+    (file(lib3rd) ** "protobuf-java-*.jar").classpath
 }
 
 unmanagedJars in Compile ++= {
-    (file(libcb) ** "protobuf-java-*.jar").classpath
+    (file(lib3rd) ** "protobuf-java-*.jar").classpath
 }
 
 unmanagedJars in Compile ++= {

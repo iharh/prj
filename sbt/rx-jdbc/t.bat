@@ -4,7 +4,8 @@ del /Q %~dp0*.log
 del /Q %~dp0out\*.xml
 ::call sbt.bat test
 set EXTRA_OPTS="-Djava.library.path=D:/clb/inst/fx"
-call sbt.bat "testOnly *MappingTest"
+call sbt.bat "testOnly *FileRepoListTest"
+::call sbt.bat "testOnly *MappingTest"
 ::call sbt.bat %EXTRA_OPTS% "testOnly *SchemeDumpTest"
 ::call sbt.bat "testOnly *ComponentTest"
 ::call sbt.bat "testOnly *ConnectTest"
