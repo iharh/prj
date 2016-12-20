@@ -23,8 +23,7 @@ public class ConnectTest {
 
     @Test
     public void testConnect() throws Exception {
-        Database db = DBUtils.getPgDb("jdbc:postgresql://epbygomw0024/postgres", "postgres", "PGSQL-123");
-            //getDb();
+        Database db = DBUtils.getDb();
 
         List<String> versions = db
             .select("select version()")

@@ -16,50 +16,20 @@ public class DBUtils {
     private static final String DB_CFG_ROOT = "D:\\dev\\notes\\wrk\\clb\\hosts\\db\\"; 
     private static final String DB_CFG_NAME = ".database.system.properties";
 
-    private static File getOraPropFile(String hostId) {
-        return new File(DB_CFG_ROOT + "ora\\" + hostId + DB_CFG_NAME);
-    }
-
-    private static File getPgPropFile(String hostId) {
-        return new File(DB_CFG_ROOT + "pg\\" + hostId + DB_CFG_NAME);
-    }
-
-    private static Config getOraConf(String hostId) {
-        return ConfigFactory.parseFile(getOraPropFile(hostId));
-    }
-
-    private static Config getPgConf(String hostId) {
-        return ConfigFactory.parseFile(getPgPropFile(hostId));
-    }
-
-    public static Database getPgDb(String url, String usr, String pwd) throws ClassNotFoundException {
-        Class.forName("org.postgresql.Driver");
-        return Database.from(url, usr, pwd);
-    }
-
-    private static Database getOraDb(String url, String usr, String pwd) throws ClassNotFoundException {
-        Class.forName("oracle.jdbc.OracleDriver");
-        return Database.from(url, usr, pwd);
-    }
-
     private static String getDbProp(final Config conf, String propName) {
         final String result = conf.getString("cmpDS." + propName);
         log.debug(propName + ": {}", result);
         return result;
     }
 
-    public static Database getOraConfDB(String hostId) throws ClassNotFoundException {
-        final Config conf = getOraConf(hostId);
-        return getOraDb(
-            getDbProp(conf, "url"),
-            getDbProp(conf, "username"),
-            getDbProp(conf, "password")
-        );
-    }
-    
-    public static Database getPgConfDB(String hostId) throws ClassNotFoundException {
-        final Config conf = getPgConf(hostId);
-        return getPgDb(
+    public static Database getConfDB(String hostId) throws ClassNotFoundException {
+        final File cfgFile = new File(DB_CFG_ROOT + hostId + DB_CFG_NAME);
+        final Config conf = ConfigFactory.parseFile(cfgFile);
+
+        final String driverName = getDbProp(conf, "driver");
+        Class.forName(driverName);
+
+        return Database.from(
             getDbProp(conf, "url"),
             getDbProp(conf, "username"),
             getDbProp(conf, "password")
@@ -67,11 +37,8 @@ public class DBUtils {
     }
 
     public static Database getDb() throws ClassNotFoundException {
-        return getPgConfDB("epbygomw0024");
-        //return getPgConfDB("qa1");
-        //return getPgConfDB("blackbox25");
-        //return getOraConfDB("tangerine6");
-        //return getOraConfDB("epbygomw0024");
-        //return getOraConfDB("qa10");
+        final String dbcfg = System.getProperty("dbcfg", "pg/epbygomw0024");
+        log.info("dbcfg: {}", dbcfg);
+        return getConfDB(dbcfg);
     }
 }
