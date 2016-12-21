@@ -22,13 +22,24 @@ public class SchemeDumpTest {
 
     @Test
     public void testDump() throws Exception {
-        String schemeFileName = "in/english_bb25_db.scheme";
-        // "in/english_local.scheme";
-        // "out/english.xml";
-        // "d:/clb/inst/fx/en/scheme/english.scheme";
+        final String schemeFileName = System.getProperty("schemeFile", "out/english.xml");
+        log.info("schemeFileName: {}", schemeFileName);
+
         FileInputStream schemeStream = new FileInputStream(schemeFileName);
         Scheme scheme = Scheme.load(schemeStream);
         assertNotNull(scheme);
+
+        checkTextSeg(scheme);
+    }
+
+    private void checkTextSeg(final Scheme scheme) throws Exception {
+        TypeInfo typeInfo = scheme.getType("TextSegment"); // TextSegment Clause
+        assertNotNull(typeInfo);
+        Attribute attrAccessor = typeInfo.getAttribute("WordCount");
+        assertNotNull(attrAccessor);
+    }
+
+    private void checkAnn(final Scheme scheme) throws Exception {
         TypeInfo annTypeInfo = scheme.getType("Annotation");
         assertNotNull(annTypeInfo);
         Attribute numberAccessor = annTypeInfo.getAttribute("GrammarForm.Number");

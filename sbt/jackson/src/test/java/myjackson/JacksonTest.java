@@ -9,11 +9,10 @@ import static org.junit.Assert.assertNotNull;
 import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import java.util.Collection;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Collection;
 
 public class JacksonTest {
     private static final Logger log = LoggerFactory.getLogger(JacksonTest.class);
