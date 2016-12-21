@@ -7,7 +7,8 @@ set EXTRA_OPTS="-Djava.library.path=D:/clb/inst/fx"
 :: pg/epbygomw0024
 :: pg/qa-mohamed
 :: "-DschemeFile=in/en-new1.xml"
-call sbt.bat %EXTRA_OPTS% "-DschemeFile=in/en-new1.xml" "testOnly *SchemeDumpTest"
+::call sbt.bat %EXTRA_OPTS% "-DschemeFile=in/en-new1.xml" "testOnly *SchemeDumpTest"
+call sbt.bat %EXTRA_OPTS% "-DschemeFile=d:/clb/src/main/lang-packs/english/installer/target/Content/fx/en/scheme/english.scheme" "testOnly *SchemeDumpTest"
 ::call sbt.bat "-Ddbcfg=pg/epbygomw0024" "testOnly *MappingTest"
 ::call sbt.bat "-Ddbcfg=pg/qa-mohamed" "testOnly *FileRepoListTest"
 ::call sbt.bat "testOnly *ComponentTest"
