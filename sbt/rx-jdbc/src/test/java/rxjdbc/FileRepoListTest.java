@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class FileRepoListTest {
-    private static final Logger log = LoggerFactory.getLogger(ProjTest.class);
+    private static final Logger log = LoggerFactory.getLogger(FileRepoListTest.class);
 
     @Test
     public void testFileRepoList() throws Exception {
