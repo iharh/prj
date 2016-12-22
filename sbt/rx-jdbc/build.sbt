@@ -40,7 +40,6 @@ val libroot = if (SystemUtils.IS_OS_LINUX)
     "D:/clb/inst/server"
 
 val lib3rd = libroot + "/lib.3rd"
-
 val libfx = libroot + "/lib.fx"
 
 unmanagedJars in Compile ++= {
@@ -64,7 +63,7 @@ unmanagedJars in Compile ++= {
 }
 
 unmanagedJars in Compile ++= {
-    (file(libfx) ** "*.jar").classpath
+    (file(libfx) ** "jfoundation.jar").classpath
 }
 
 // javaOptions in test_or_run += "-Djava.library.path=D:/clb/inst/fx"
