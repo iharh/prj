@@ -31,6 +31,4 @@ val cfgcfg = if (SystemUtils.IS_OS_LINUX)
     "/data/wrk/notes/wrk/config" else
     "D:/dev/notes/wrk/config"
 
-// unmanagedJars in Compile ++= {
-//    (file(libcb) ** "ojdbc*.jar").classpath // ojdbc6* ojdbc7*
-// }
+unmanagedClasspath in Test += file(cfgcfg)

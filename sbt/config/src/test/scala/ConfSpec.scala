@@ -1,6 +1,6 @@
 import org.scalatest._
 
-import java.io.File
+import com.typesafe.config.ConfigFactory
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -10,7 +10,10 @@ class ConfSpec extends FlatSpec {
 
     "conf" should "match" in {
         log.info("start")
-        assert(true === true)
+
+        val config = ConfigFactory.load()
+        assert("value" === config.getString("config.value"))
+
         log.info("end")
     }
 }
