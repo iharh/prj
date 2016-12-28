@@ -40,8 +40,10 @@ public class LD {
     }
 
     public static void process(final NormLangDetector langDetector, String inFileDir, String expectedCode) throws IOException, ModelCreatorException, MathException {
-        System.out.println("#CLB LD");
-        System.out.println("#LINE, EXPECTED, DETECTED, TEXT");
+        //System.out.println("#CLB LD");
+        //System.out.println("#LINE, EXPECTED, DETECTED, TEXT");
+        log.debug("#CLB LD");
+        log.debug("#LINE, EXPECTED, DETECTED, TEXT");
 
         final CSVFormat csvFormat = CSVFormat.DEFAULT
             .withIgnoreSurroundingSpaces(true)
@@ -65,12 +67,14 @@ public class LD {
 
             if (!expectedCode.equals(detectedCode)) {
                 ++rowsMismatch;
-                System.out.println(Integer.toString(rows + 2) + "," + expectedCode + "," + detectedCode + "," + text);
+                //System.out.println(Integer.toString(rows + 2) + "," + expectedCode + "," + detectedCode + "," + text);
+                log.info("{},{},{},{}", Integer.toString(rows + 2), expectedCode, detectedCode, text);
             }
             ++rows;
         }
-        System.out.println("");
-        System.out.println("rows: " + rows + ", rowsMismatch: " + rowsMismatch);
+        //System.out.println("");
+        //System.out.println("rows: " + rows + ", rowsMismatch: " + rowsMismatch);
+        log.info("rows: {}, rowsMismatch: {}", rows, rowsMismatch);
     }
 
     public static void main(String [] args) {
@@ -80,6 +84,8 @@ public class LD {
 
             final String inFileDir = args[2]; // "/data/wrk/clb/spikes/iharh/ld/selected";
             final String expectedCode = args[3]; // "en";
+
+            log.debug("modelDirName: {}, inFileDir: {}, expectedCode: {}", modelDirName, inFileDir, expectedCode);
             LD.process(langDetector, inFileDir, expectedCode);
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
