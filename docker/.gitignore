@@ -1,0 +1,4 @@
+*/.gradle
+*/*/.gradle
+*/*/build
+*/filesci/add_host_user.sh

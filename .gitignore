@@ -1,28 +1,2 @@
 .*.swp
 wrk/*
-cabal/*/dist/*
-cabal/*/.cabal-sandbox/*
-cabal/*/cabal.sandbox.config
-cabal/*/*.exe
-cabal/*/*.nsi
-gradle/*/build/*
-gradle/*/.gradle/*
-gradle/*/*.log
-mvn/*
-elk/*/.ls/*
-
-#provis stuff
-docker/*/.gradle
-docker/*/*/.gradle
-docker/*/*/build
-docker/*/filesci/add_host_user.sh
-
-vagrant/*/.vagrant/*
-vagrant/*/.vagrant
-
-# py
-py/vec/in
-py/vec/out
-
-# stack
-stack/*/.stack-work
