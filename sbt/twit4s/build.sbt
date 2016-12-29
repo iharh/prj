@@ -1,6 +1,6 @@
 import org.apache.commons.lang3.SystemUtils
 
-scalaVersion := "2.12.1"
+scalaVersion := "2.11.8" // 2.12.1
 
 crossPaths := false
 
@@ -17,6 +17,7 @@ libraryDependencies ++= Seq(
     "log4j"                     % "log4j"          % "1.2.17",
 
     "com.typesafe"              % "config"         % "1.3.1",
+    "com.danielasfregola"      %% "twitter4s"      % "3.0",
     //
     "org.scalatest"            %% "scalatest"      % "3.0.1"   % "test"
 )
