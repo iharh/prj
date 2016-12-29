@@ -1,10 +1,6 @@
 import org.apache.commons.lang3.SystemUtils
 
-//version := "0.1-SNAPSHOT"
-
 scalaVersion := "2.12.1"
-
-//autoScalaLibrary := false
 
 crossPaths := false
 
@@ -14,8 +10,6 @@ javacOptions ++= Seq("-encoding", "UTF-8", "-Xlint:unchecked", "-Xlint:deprecati
 
 testOptions += Tests.Argument(TestFrameworks.JUnit, "-q", "-a")
 testOptions += Tests.Argument(TestFrameworks.ScalaTest, "-oDF")
-//testOptions in Test += ...
-// > test-only org.acme.RedSuite -- -oD
 
 libraryDependencies ++= Seq(
     "org.slf4j"                 % "slf4j-api"      % "1.7.22",
@@ -27,8 +21,8 @@ libraryDependencies ++= Seq(
     "org.scalatest"            %% "scalatest"      % "3.0.1"   % "test"
 )
 
-val cfgcfg = if (SystemUtils.IS_OS_LINUX)
+val cfgtwitter = if (SystemUtils.IS_OS_LINUX)
     "/data/wrk/notes/wrk/config" else
-    "D:/dev/notes/wrk/conf/config"
+    "D:/dev/notes/wrk/clb/hosts/twitter"
 
-unmanagedClasspath in Test += file(cfgcfg)
+unmanagedClasspath in Test += file(cfgtwitter)
