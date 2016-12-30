@@ -21,14 +21,24 @@ import scala.concurrent.Await
 //import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
 
+
+import com.clarabridge.transformer.ld.CrossModel
+import com.clarabridge.transformer.ld.NormLangDetector
+//import com.clarabridge.transformer.ld.StringSourceIterator
+//import com.clarabridge.transformer.ld.NormCrossModelScorer.Result
+import com.clarabridge.transformer.ld.compiler.Compiler
+import com.clarabridge.transformer.ld.utils.FileNamesCollector
+//import com.clarabridge.transformer.ld.exceptions.ModelCreatorException
+//import com.clarabridge.transformer.ld.exceptions.MathException
+
+import java.io.File
+
 import org.slf4j.LoggerFactory
 
 class TwitSpec extends FlatSpec with Matchers {
     private val log = LoggerFactory.getLogger(getClass)
 
-    val client = TwitterRestClient()
-
-    case class TwitSearchState(query: String, lang: Language.Value, maxId: Option[Long] = None)
+    case class TwitSearchState(client: TwitterRestClient, query: String, lang: Language.Value, maxId: Option[Long] = None)
 
     def searchTweets(s: TwitSearchState) : Task[(Seq[Tweet], TwitSearchState)] = {
         def extractNextMaxId(params: Option[String]): Option[Long] = {
@@ -36,7 +46,7 @@ class TwitSpec extends FlatSpec with Matchers {
             params.getOrElse("").split("&").find(_.contains("max_id")).map(_.split("=")(1).toLong)
         }
 
-        val resultFuture = client.searchTweet(s.query, count = 10, language = Some(s.lang), result_type = ResultType.Recent, max_id = s.maxId)
+        val resultFuture = s.client.searchTweet(s.query, count = 10, language = Some(s.lang), result_type = ResultType.Recent, max_id = s.maxId)
             .flatMap { result => // case class StatusSearch(statuses: List[Tweet], search_metadata: SearchMetadata)
                 val metadata = result.search_metadata
                 // metadata.count sometimes more than result.statuses.size
@@ -49,19 +59,38 @@ class TwitSpec extends FlatSpec with Matchers {
                 }
 
                 val nextMaxId = extractNextMaxId(metadata.next_results)
-                Future { (tweets, TwitSearchState(s.query, s.lang, nextMaxId)) }
+                Future { (tweets, TwitSearchState(s.client, s.query, s.lang, nextMaxId)) }
             //} recover {
             //    case _ => Seq.empty
             }
 
         Task.fromFuture(resultFuture)
     }
+
+    // private static final
+    val DESIRED_CONFIDENCE_LEVEL: Double = 0.01; // 0.5;
+
+    def getLangDetector(modelDirName: String): NormLangDetector = { // throws IOException, ModelCreatorException
+        val modelCollector = new FileNamesCollector();
+
+        val modelDir = new File(modelDirName);
+        log.debug("Loading language detector models from \"{}\"", modelDir.getCanonicalPath());
+
+        modelCollector.addFileMask(modelDir, "*.ldm");
+        log.debug("Found {} model(s)", modelCollector.getFiles().size());
+
+        val crossModel: CrossModel = Compiler.createModel(modelCollector.getFiles());
+        new NormLangDetector(crossModel, DESIRED_CONFIDENCE_LEVEL);
+    }
+
         
     "twit" should "search" in {
         log.info("start")
 
+        val client = TwitterRestClient()
+
         val awaitable = Observable
-            .fromAsyncStateAction(searchTweets)(TwitSearchState("addidas", Language.Spanish))
+            .fromAsyncStateAction(searchTweets)(TwitSearchState(client, "addidas", Language.Spanish))
             .concatMap { Observable.fromIterable(_) } // Seq[Tweet] => Observable[Tweet]
             .filter { _.lang == Some(Language.Spanish.toString()) }
             .take(33)
