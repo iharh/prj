@@ -75,22 +75,16 @@ class TwitSpec extends FlatSpec with Matchers {
     "twit" should "search" in {
         log.info("start")
 
-        val obs = Observable
-            .fromAsyncStateAction(searchTweets)(TwitSearchState("addidas", Language.Spanish, None))
-            // .take(5) // 5 portions in our case
-            //.subscribe(new TwitObserver(log)) //   ---> Cancellable
-
-        val f = obs
-            .consumeWith(Consumer.complete)
+        val awaitable = Observable
+            .fromAsyncStateAction(searchTweets)(TwitSearchState("addidas", Language.Spanish, None))  // Spanish
+            .concatMap { Observable.fromIterable(_) } // Seq[Tweet] => Observable[Tweet]
+            .filter { _.lang == Some(Language.Spanish.toString())}
+            .take(33)
+            // Consumer.complete
+            .consumeWith(Consumer.foreach { t: Tweet => log.info("lang: {}, text: {}", t.lang, t.text: Any) })
             .runAsync
 
-        Await.result(f, Duration.Inf) // 0 nanos
-
-        //val res = searchTweets("addidas", Language.Spanish, 100).map { tweets =>
-        //    log.info("Downloaded {} tweets", tweets.size)
-        //    tweets.foreach { tweet => log.info("text: {}", tweet.text) }
-        //}
-        //Await.result(res, Duration.Inf) // 0 nanos
+        Await.result(awaitable, Duration.Inf) // 0 nanos
 
         log.info("end")
     }
