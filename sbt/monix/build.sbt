@@ -23,6 +23,7 @@ libraryDependencies ++= Seq(
     //"io.monix"                 %% "minitest-laws"  % "0.27"    % "test"
 )
 
-testFrameworks ++= Seq(new TestFramework("minitest.runner.Framework"))
+// ++= needed if we have other test frameworks
+testFrameworks := Seq(new TestFramework("minitest.runner.Framework"))
 
-parallelExecution in Test := false
+//parallelExecution in Test := false

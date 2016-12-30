@@ -1,7 +1,5 @@
-//import org.scalatest._
-
 import minitest.TestSuite
-import minitest.SimpleTestSuite
+//import minitest.SimpleTestSuite
 
 import monix.eval.Task
 
@@ -15,13 +13,14 @@ import monix.reactive.Observable
 
 import org.slf4j.LoggerFactory
 
+/*
 object MonixTests extends SimpleTestSuite {
     test("monix") {
         assertEquals(true, true)
     }
-}
-/*
-class MonixTests extends TestSuite[TestScheduler] {
+}*/
+
+object MonixTests extends TestSuite[TestScheduler] {
     private val log = LoggerFactory.getLogger(getClass)
 
     def setup() = TestScheduler()
@@ -66,4 +65,3 @@ class MonixTests extends TestSuite[TestScheduler] {
         (n, nextRNG)
     }
 }
-*/
