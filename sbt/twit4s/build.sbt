@@ -18,6 +18,8 @@ libraryDependencies ++= Seq(
 
     "com.typesafe"              % "config"         % "1.3.1",
     "com.danielasfregola"      %% "twitter4s"      % "3.0",
+    // TODO: try only monix-reactive
+    "io.monix"                 %% "monix"          % "2.1.2",
     //
     "org.scalatest"            %% "scalatest"      % "3.0.1"   % "test"
 )

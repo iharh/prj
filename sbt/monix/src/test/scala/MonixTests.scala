@@ -13,13 +13,6 @@ import monix.reactive.Observable
 
 import org.slf4j.LoggerFactory
 
-/*
-object MonixTests extends SimpleTestSuite {
-    test("monix") {
-        assertEquals(true, true)
-    }
-}*/
-
 object MonixTests extends TestSuite[TestScheduler] {
     private val log = LoggerFactory.getLogger(getClass)
 
