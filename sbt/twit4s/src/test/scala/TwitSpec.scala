@@ -31,6 +31,9 @@ import com.clarabridge.transformer.ld.utils.FileNamesCollector
 //import com.clarabridge.transformer.ld.exceptions.ModelCreatorException
 //import com.clarabridge.transformer.ld.exceptions.MathException
 
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
 import java.io.File
 
 import org.slf4j.LoggerFactory
@@ -84,6 +87,30 @@ class TwitSpec extends FlatSpec with Matchers {
         val res: Result = langDetector.analyse(sourceIterator); // throws ModelCreatorException, MathException
         if (res.getConfidenceLevel() > DESIRED_CONFIDENCE_LEVEL) res.getLangCode() else "un";
     }
+
+    val oldURLS = Pattern.compile(
+        "(?:[\\p{Nd}a-z\\._\\-]+@[\\p{Nd}a-z\\._\\-]+)|" //email
+        + "(?:(?:(?:ht|f)tp(?:s?)\\:\\/\\/|~\\/|\\/)?" //protocol
+        + "(?:\\w+:\\w+@)?" //Username:Password@
+        + "(([a-z0-9\\-\\.]+\\.(com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum|travel|[a-z]{2}))|" //$NON-NLS-1$ // Domains with subdomains
+        + "(?:(?:\\d{1,3}\\.){3}\\d{1,3}))" //Top level domain as IP address
+        + "(?::[\\d]{1,5})?" //Port
+        + "([^\\s]*))" //$NON-NLS-1$ //Directories queries and anchors
+        , Pattern.CASE_INSENSITIVE
+    )
+
+    val newPat = Pattern.compile(
+        "(?:[#|@][\\p{Nd}A-Za-z_0-9]+)" //hashtags and mentions
+        , Pattern.CASE_INSENSITIVE
+    )
+
+    def hasHashtagOrMention(text: String): Boolean = {
+        val oldMatcher: Matcher = oldURLS.matcher(text)
+        val filteredText = oldMatcher.replaceAll("")
+
+        val newMatcher: Matcher = newPat.matcher(filteredText)
+        newMatcher.find()
+    }
         
     "twit" should "search" in {
         log.info("start")
@@ -98,10 +125,12 @@ class TwitSpec extends FlatSpec with Matchers {
             .fromAsyncStateAction(searchTweets)(TwitSearchState(client, "addidas", lng))
             .concatMap { Observable.fromIterable(_) } // Seq[Tweet] => Observable[Tweet]
             .filter { _.lang == Some(lng.toString()) }
-            .filter { t: Tweet => detectLang(langDetector, t.text) != lng.toString() }
+            .map { _.text }
+            .filter { detectLang(langDetector, _) != lng.toString() }
+            .filter { hasHashtagOrMention(_) }
             .take(33)
             // Consumer.complete
-            .consumeWith(Consumer.foreach { t: Tweet => log.info("lang: {}, text: {}", t.lang, t.text: Any) })
+            .consumeWith(Consumer.foreach { log.info("text: {}", _) })
             .runAsync
 
         Await.result(awaitable, Duration.Inf) // 0 nanos
