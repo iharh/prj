@@ -23,7 +23,7 @@ libraryDependencies ++= Seq(
 )
 
 val cfgtwitter = if (SystemUtils.IS_OS_LINUX)
-    "/data/wrk/notes/wrk/config" else
+    "/data/wrk/notes/wrk/clb/hosts/twitter" else
     "D:/dev/notes/wrk/clb/hosts/twitter"
 
 unmanagedClasspath in Test += file(cfgtwitter)
