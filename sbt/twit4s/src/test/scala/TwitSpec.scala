@@ -16,6 +16,8 @@ import monix.execution.Ack.Continue
 import monix.execution.Cancelable
 import monix.execution.Scheduler.Implicits.global
 
+//import scala.collection.JavaConverters._
+
 import scala.concurrent.Future
 import scala.concurrent.Await
 //import scala.concurrent.ExecutionContext.Implicits.global
@@ -30,6 +32,8 @@ import com.clarabridge.transformer.ld.compiler.Compiler
 import com.clarabridge.transformer.ld.utils.FileNamesCollector
 //import com.clarabridge.transformer.ld.exceptions.ModelCreatorException
 //import com.clarabridge.transformer.ld.exceptions.MathException
+
+import com.typesafe.config.ConfigFactory
 
 import java.util.regex.Matcher
 import java.util.regex.Pattern
@@ -117,7 +121,10 @@ class TwitSpec extends FlatSpec with Matchers {
 
         val client = TwitterRestClient()
 
-        val modelDirName = "d:/clb/inst/data/ld" // "/data/wrk/clb/ld"
+        val config = ConfigFactory.load()
+        //config.entrySet().asScala.foreach { log.info("e: {}", _) }
+        val modelDirName = config.getString("ld.model.dir.name")
+
         val langDetector: NormLangDetector = getLangDetector(modelDirName);
         val lng = Language.Spanish
 
