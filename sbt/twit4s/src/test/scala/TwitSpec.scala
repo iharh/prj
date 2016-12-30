@@ -52,11 +52,7 @@ class TwitSpec extends FlatSpec with Matchers {
                 // metadata.count sometimes more than result.statuses.size
 
                 val tweets = result.statuses
-                if (tweets.nonEmpty) {
-                    log.debug("found {} tweets", tweets.size)
-                } else {
-                    log.warn("empty tweets size")
-                }
+                //if (tweets.nonEmpty) { log.debug("found {} tweets", tweets.size) } else { log.warn("empty tweets size") }
 
                 val nextMaxId = extractNextMaxId(metadata.next_results)
                 Future { (tweets, TwitSearchState(s.client, s.query, s.lang, nextMaxId)) }
@@ -83,7 +79,7 @@ class TwitSpec extends FlatSpec with Matchers {
         new NormLangDetector(crossModel, DESIRED_CONFIDENCE_LEVEL);
     }
 
-    def detect(langDetector: NormLangDetector, text: String): String = { // throws IOException, ModelCreatorException, MathException
+    def detectLang(langDetector: NormLangDetector, text: String): String = { // throws IOException, ModelCreatorException, MathException
         val sourceIterator: StringSourceIterator = new StringSourceIterator(text, text.length());
         val res: Result = langDetector.analyse(sourceIterator); // throws ModelCreatorException, MathException
         if (res.getConfidenceLevel() > DESIRED_CONFIDENCE_LEVEL) res.getLangCode() else "un";
@@ -94,10 +90,15 @@ class TwitSpec extends FlatSpec with Matchers {
 
         val client = TwitterRestClient()
 
+        val modelDirName = "d:/clb/inst/data/ld" // "/data/wrk/clb/ld"
+        val langDetector: NormLangDetector = getLangDetector(modelDirName);
+        val lng = Language.Spanish
+
         val awaitable = Observable
-            .fromAsyncStateAction(searchTweets)(TwitSearchState(client, "addidas", Language.Spanish))
+            .fromAsyncStateAction(searchTweets)(TwitSearchState(client, "addidas", lng))
             .concatMap { Observable.fromIterable(_) } // Seq[Tweet] => Observable[Tweet]
-            .filter { _.lang == Some(Language.Spanish.toString()) }
+            .filter { _.lang == Some(lng.toString()) }
+            .filter { t: Tweet => detectLang(langDetector, t.text) != lng.toString() }
             .take(33)
             // Consumer.complete
             .consumeWith(Consumer.foreach { t: Tweet => log.info("lang: {}, text: {}", t.lang, t.text: Any) })
