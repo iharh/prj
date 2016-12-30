@@ -24,8 +24,8 @@ import scala.concurrent.duration._
 
 import com.clarabridge.transformer.ld.CrossModel
 import com.clarabridge.transformer.ld.NormLangDetector
-//import com.clarabridge.transformer.ld.StringSourceIterator
-//import com.clarabridge.transformer.ld.NormCrossModelScorer.Result
+import com.clarabridge.transformer.ld.StringSourceIterator
+import com.clarabridge.transformer.ld.NormCrossModelScorer.Result
 import com.clarabridge.transformer.ld.compiler.Compiler
 import com.clarabridge.transformer.ld.utils.FileNamesCollector
 //import com.clarabridge.transformer.ld.exceptions.ModelCreatorException
@@ -83,6 +83,11 @@ class TwitSpec extends FlatSpec with Matchers {
         new NormLangDetector(crossModel, DESIRED_CONFIDENCE_LEVEL);
     }
 
+    def detect(langDetector: NormLangDetector, text: String): String = { // throws IOException, ModelCreatorException, MathException
+        val sourceIterator: StringSourceIterator = new StringSourceIterator(text, text.length());
+        val res: Result = langDetector.analyse(sourceIterator); // throws ModelCreatorException, MathException
+        if (res.getConfidenceLevel() > DESIRED_CONFIDENCE_LEVEL) res.getLangCode() else "un";
+    }
         
     "twit" should "search" in {
         log.info("start")
