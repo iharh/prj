@@ -16,6 +16,9 @@ import monix.execution.Ack.Continue
 import monix.execution.Cancelable
 import monix.execution.Scheduler.Implicits.global
 
+import kantan.csv.CsvWriter
+import kantan.csv.ops._
+
 //import scala.collection.JavaConverters._
 
 import scala.concurrent.Future
@@ -53,7 +56,7 @@ class TwitSpec extends FlatSpec with Matchers {
             params.getOrElse("").split("&").find(_.contains("max_id")).map(_.split("=")(1).toLong)
         }
 
-        val resultFuture = s.client.searchTweet(s.query, count = 10, language = Some(s.lang), result_type = ResultType.Recent, max_id = s.maxId)
+        val resultFuture = s.client.searchTweet(s.query, count = 100, language = Some(s.lang), result_type = ResultType.Recent, max_id = s.maxId)
             .flatMap { result => // case class StatusSearch(statuses: List[Tweet], search_metadata: SearchMetadata)
                 val metadata = result.search_metadata
                 // metadata.count sometimes more than result.statuses.size
@@ -115,6 +118,11 @@ class TwitSpec extends FlatSpec with Matchers {
         val newMatcher: Matcher = newPat.matcher(filteredText)
         newMatcher.find()
     }
+
+    def writeTweetText(writer: CsvWriter[(String)], text: String): Unit = {
+        log.info("text: {}", text)
+        writer.write((text))
+    }
         
     "twit" should "search" in {
         log.info("start")
@@ -128,6 +136,9 @@ class TwitSpec extends FlatSpec with Matchers {
         val langDetector: NormLangDetector = getLangDetector(modelDirName);
         val lng = Language.Spanish
 
+        val out = new File(s"out/${lng.toString()}.csv")
+        val writer = out.asCsvWriter[(String)](',', "text") // List("text")
+
         val awaitable = Observable
             .fromAsyncStateAction(searchTweets)(TwitSearchState(client, "addidas", lng))
             .concatMap { Observable.fromIterable(_) } // Seq[Tweet] => Observable[Tweet]
@@ -137,10 +148,11 @@ class TwitSpec extends FlatSpec with Matchers {
             .filter { hasHashtagOrMention(_) }
             .take(33)
             // Consumer.complete
-            .consumeWith(Consumer.foreach { log.info("text: {}", _) })
+            .consumeWith(Consumer.foreach { writeTweetText(writer, _) })
             .runAsync
 
         Await.result(awaitable, Duration.Inf) // 0 nanos
+        writer.close()
 
         log.info("end")
     }
