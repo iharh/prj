@@ -12,7 +12,6 @@ import monix.reactive.Observable
 import monix.reactive.Observer
 import monix.reactive.Consumer
 
-import monix.execution.Ack
 import monix.execution.Ack.Continue
 import monix.execution.Cancelable
 import monix.execution.Scheduler.Implicits.global
@@ -22,7 +21,6 @@ import scala.concurrent.Await
 //import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
 
-import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 class TwitSpec extends FlatSpec with Matchers {
@@ -30,7 +28,7 @@ class TwitSpec extends FlatSpec with Matchers {
 
     val client = TwitterRestClient()
 
-    case class TwitSearchState(query: String, lang: Language.Value, max_id: Option[Long] = None)
+    case class TwitSearchState(query: String, lang: Language.Value, maxId: Option[Long] = None)
 
     def searchTweets(s: TwitSearchState) : Task[(Seq[Tweet], TwitSearchState)] = {
         def extractNextMaxId(params: Option[String]): Option[Long] = {
@@ -38,10 +36,9 @@ class TwitSpec extends FlatSpec with Matchers {
             params.getOrElse("").split("&").find(_.contains("max_id")).map(_.split("=")(1).toLong)
         }
 
-        val f1 = client.searchTweet(s.query, count = 10, language = Some(s.lang), result_type = ResultType.Recent, max_id = s.max_id)
+        val resultFuture = client.searchTweet(s.query, count = 10, language = Some(s.lang), result_type = ResultType.Recent, max_id = s.maxId)
             .flatMap { result => // case class StatusSearch(statuses: List[Tweet], search_metadata: SearchMetadata)
                 val metadata = result.search_metadata
-                val nextMaxId = extractNextMaxId(metadata.next_results)
                 // metadata.count sometimes more than result.statuses.size
 
                 val tweets = result.statuses
@@ -50,35 +47,23 @@ class TwitSpec extends FlatSpec with Matchers {
                 } else {
                     log.warn("empty tweets size")
                 }
+
+                val nextMaxId = extractNextMaxId(metadata.next_results)
                 Future { (tweets, TwitSearchState(s.query, s.lang, nextMaxId)) }
             //} recover {
             //    case _ => Seq.empty
             }
 
-        Task.fromFuture(f1)
+        Task.fromFuture(resultFuture)
     }
         
-    class TwitObserver(log: Logger) extends Observer.Sync[Seq[Tweet]] {
-        def onNext(elem: Seq[Tweet]): Ack = {
-            log.info("onNext: {}", elem)
-            Continue
-        }
-        def onError(ex: Throwable) = {
-            log.error("onError: {}", ex.toString) // : Any
-            global.reportFailure(ex)
-        }
-        def onComplete() = {
-            log.info("completed")
-        }
-    }
-
     "twit" should "search" in {
         log.info("start")
 
         val awaitable = Observable
-            .fromAsyncStateAction(searchTweets)(TwitSearchState("addidas", Language.Spanish, None))  // Spanish
+            .fromAsyncStateAction(searchTweets)(TwitSearchState("addidas", Language.Spanish))
             .concatMap { Observable.fromIterable(_) } // Seq[Tweet] => Observable[Tweet]
-            .filter { _.lang == Some(Language.Spanish.toString())}
+            .filter { _.lang == Some(Language.Spanish.toString()) }
             .take(33)
             // Consumer.complete
             .consumeWith(Consumer.foreach { t: Tweet => log.info("lang: {}, text: {}", t.lang, t.text: Any) })
