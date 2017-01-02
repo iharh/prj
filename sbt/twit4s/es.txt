@@ -749,3 +749,31 @@
 2017-01-02 19:53:53,237  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #honda sarasota fl intel core i7 hp
 2017-01-02 19:53:59,761  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #ark intel xeon corporate logo design services
 2017-01-02 19:54:06,883  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Intel D845EPI https://t.co/WHUePWtDlj #Intel
+2017-01-02 20:05:32,342  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @ProAndroid: Samsung Galaxy A3, A5 y A7 2017 ya son oficiales - https://t.co/9O9A4fCAEu ... https://t.co/kW4qByaKZF
+2017-01-02 20:05:32,349  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Boda en Tepoztlan Morelos. Mexico Camara Samsung Gear 360 grados https://t.co/GolKYbIlDj #LunesdeGanarSeguidores
+2017-01-02 20:05:33,758  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @PhoneAzteca: Confirmado, Samsung actualizará el Galaxy S7 y S7 edge a Nougat este mes https://t.co/MTAwcB9sAP https://t.co/Lm5lPwDXIq
+2017-01-02 20:05:33,761  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Presentan la nueva serie de smartphones Samsung Galaxy A (2017) #CES2017 https://t.co/W3aSOyJmDo
+2017-01-02 20:05:33,763  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @SDciencia: #DytectiveforSamsung #App gratis detección temprana niñ@s con #dislexia Desarrollo d @change_dyslexia @SamsungEspana https:/…
+2017-01-02 20:05:35,100  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @juancaroga: Samsung renueva su línea de smartphones Galaxy A en 2017 https://t.co/bCAFBiEeti https://t.co/xUegCXxUn4
+2017-01-02 20:05:35,101  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Disponible Cargador para #Samsung #S4 información &gt; Email: telealpha23@gmail.com Telf.: (0212)315.55.48 https://t.co/KvkBUZZXKE
+2017-01-02 20:05:35,107  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @htcmania: Samsung Galaxy A7 2017: la nueva phablet para los amantes del selfie https://t.co/oqKXFY9QMr https://t.co/2UN73aJgW6
+2017-01-02 20:05:35,109  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @juancaroga: Samsung renueva su línea de smartphones Galaxy A en 2017 https://t.co/bCAFBiEeti https://t.co/xUegCXxUn4
+2017-01-02 20:05:35,111  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Frios dias #2017 (@ Samsung Electronics Digital Appliances Mexico in Santa Rosa Jauregui, Qt) https://t.co/0wPCFuNg9Z
+2017-01-02 20:05:35,111  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: diariomallorca: #Tecnología Samsung renueva los modelos de gama media Galaxy A https://t.co/haYawkcOCb … https://t.co/D434EB3HNr
+2017-01-02 20:05:36,567  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @htcmania: Samsung Galaxy A7 2017: la nueva phablet para los amantes del selfie https://t.co/oqKXFY9QMr https://t.co/2UN73aJgW6
+2017-01-02 20:05:36,571  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Samsung renueva su línea de smartphones Galaxy A en 2017 https://t.co/Rp1IuKVn8D #ColmenaSM https://t.co/CCkKwRxLC3
+2017-01-02 20:05:36,571  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Samsung renueva su línea de smartphones Galaxy A en 2017 https://t.co/Oq5mfIR8tH #Tecno
+2017-01-02 20:05:36,572  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #Tecnologia Samsung renueva su línea de smartphones Galaxy A en 2017 https://t.co/mV1rvJbZvT #Geek https://t.co/lT79CnA6LW
+2017-01-02 20:05:36,577  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @vodafone_es: Nos avisan desde #ForoVodafone ya disponible la actualización para Samsung Galaxy S5: https://t.co/XgFmds2qLn
+2017-01-02 20:05:36,577  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: .  Parque America Polanco Ciudad de México Video Samsung gear 360 https://t.co/1zgvkQBy31  #FelizLunes
+2017-01-02 20:05:36,580  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @SamsungResponde Hola ¿El samsung galaxy s6 tiene 4g+ en España?
+2017-01-02 20:05:36,581  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Touch Bar, lo nuevo del iPhone 8 @mundodeportivo https://t.co/wq5bSz634s
+2017-01-02 20:05:37,856  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Rumor: Samsung anunciará el Galaxy A7 en el CES 2017 https://t.co/xO33HWOp5L via @Appy_Geek
+2017-01-02 20:05:37,865  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @andandodescalzo: Andando Descalzo en La Trastienda Samsung https://t.co/iurAC7o5Lw vía @latrastiendaBA
+2017-01-02 20:05:37,867  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Presentan la nueva serie de smartphones Samsung Galaxy A (2017) #CES2017 https://t.co/um5XcLHLqr
+2017-01-02 20:07:20,335  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @SDciencia: #DytectiveforSamsung #App gratis detección temprana niñ@s con #dislexia Desarrollo d @change_dyslexia @SamsungEspana https:/…
+2017-01-02 20:07:35,278  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @PhoneAzteca: Confirmado, Samsung actualizará el Galaxy S7 y S7 edge a Nougat este mes https://t.co/MTAwcB9sAP https://t.co/Lm5lPwDXIq
+2017-01-02 20:07:36,393  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @SDciencia: #DytectiveforSamsung #App gratis detección temprana niñ@s con #dislexia Desarrollo d @change_dyslexia @SamsungEspana https:/…
+2017-01-02 20:07:53,816  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @htcmania: Samsung Galaxy A7 2017: la nueva phablet para los amantes del selfie https://t.co/oqKXFY9QMr https://t.co/2UN73aJgW6
+2017-01-02 20:07:53,816  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @htcmania: Samsung Galaxy A7 2017: la nueva phablet para los amantes del selfie https://t.co/oqKXFY9QMr https://t.co/2UN73aJgW6
+2017-01-02 20:08:59,502  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @vodafone_es: Nos avisan desde #ForoVodafone ya disponible la actualización para Samsung Galaxy S5: https://t.co/XgFmds2qLn

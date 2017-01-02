@@ -141,7 +141,7 @@ class TwitSpec extends FlatSpec with Matchers {
 
         // addidas, lenovo, apple, intel, samsung
         val awaitable = Observable
-            .fromAsyncStateAction(searchTweets)(TwitSearchState(client, "samsung", lng))
+            .fromAsyncStateAction(searchTweets)(TwitSearchState(client, "android", lng))
             .concatMap { Observable.fromIterable(_) } // Seq[Tweet] => Observable[Tweet]
             .filter { _.lang == Some(lng.toString()) }
             .distinct
