@@ -1,0 +1,29 @@
+2017-01-02 21:09:01,909  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @linustech https://t.co/yIZ5DdbycX Intel CPU Innovation.. or Lack Thereof?
+2017-01-02 21:09:01,916  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Orbitalmx: EQUIPO GAMER CORE V1 https://t.co/1oCJkL5ynA PROCESADOR: INTEL CORE I5-6500 https://t.co/CH3qKkjoG9
+2017-01-02 21:09:01,918  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @tecnomag "Trump se reunió con Apple, Microsoft e Intel  https://t.co/oo6zVjaCyj" https://t.co/fZW9lMi7RC
+2017-01-02 21:09:01,920  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Mini PC TV Box 8.7" Pipo X8 - Intel Z3736F Quad Core, RAM 2Go...  69.99€ @ Amazon (vendeur tiers) https://t.co/CyMFn4a0UR #bonplan
+2017-01-02 21:09:01,922  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #florisy intel 4700eq
+2017-01-02 21:09:01,923  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #honda sarasota fl intel core i7 hp
+2017-01-02 21:09:01,923  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #used cadillac srx prices intel xeon processor cost
+2017-01-02 21:09:01,925  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #free customer database template intel gpu comparison
+2017-01-02 21:09:01,925  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #llc las vegas nevada intel core 2 dou
+2017-01-02 21:09:01,926  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Computadora All In One Acer A5600u-Mt308, Procesador Intel Core i5 3.1 GHz, Memoria 8GB, Disco  ···- https://t.co/7PuedPGYYg * #Venezuela
+2017-01-02 21:09:01,927  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Ahórrate 20,33€ en Asus H81M-E Placa base (Soc... de #asus comprándolo por 71,39€ #oferta https://t.co/yVAQg2MbnB https://t.co/YjErSPKMGJ
+2017-01-02 21:09:03,301  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #AliExpress US $24.42 Intel Xeon E5450 Processor(3.0GHz/12M/1333)close to LGA775 Core... https://t.co/AENxAeNEl5 https://t.co/eqFYueGiIv
+2017-01-02 21:09:03,302  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Intel D845EPI https://t.co/WHUePWtDlj #Intel
+2017-01-02 21:09:03,302  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @owoitswem intel inside Me
+2017-01-02 21:09:03,304  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #ark intel xeon corporate logo design services
+2017-01-02 21:09:03,306  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @Alphnix: #cybersecurity Vuln: Multiple Intel Products CVE-2016-8103 Local Privilege Escalation Vuln… https://t.co/J4f9AQzM6B) https://t…
+2017-01-02 21:09:03,306  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #used acura suv for sale intel core 2 duo processor list
+2017-01-02 21:09:03,307  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #cybersecurity Vuln: Multiple Intel Products CVE-2016-8103 Local Privilege Escalation Vuln… https://t.co/J4f9AQzM6B) https://t.co/JEtHfeIgoF
+2017-01-02 21:09:03,307  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: uber 9to5 @markgurman nvidia intel surface 🍆 🍆
+2017-01-02 21:09:03,307  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Intel E97375-001 https://t.co/MoMDGjomZY #Intel
+2017-01-02 21:09:03,308  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: A pronta entrega na @OKComputadores: Servidor Lenovo ThinkServer TS150 com Intel Xeon E3 v5 4C, 8GB, 1TB + Windows https://t.co/3gOhsGYAEr
+2017-01-02 21:09:03,310  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #amd vs intel processor comparison chart create contact lenses
+2017-01-02 21:09:03,310  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #ark intel xeon fiu college
+2017-01-02 21:09:03,311  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @hoymalaga: Ordenador hp compaq intel p4 3000 #malaga #tablondeanuncios https://t.co/CgxEY9MARe https://t.co/iDFiZAXkDe
+2017-01-02 21:09:03,311  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Ordenador hp compaq intel p4 3000 #malaga #tablondeanuncios https://t.co/CgxEY9MARe https://t.co/iDFiZAXkDe
+2017-01-02 21:09:03,312  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Me ha gustado un vídeo de @YouTube de @nikhilk269 (https://t.co/EEkk6DUGsX - What it feels like to have Intel HD graphics).
+2017-01-02 21:09:03,312  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Acer Predator GT-810 32GB Negro, Plata - Tablet (Intel® AtomT 374.26€ https://t.co/B9RJ8v1kON #ldo https://t.co/q6fTPn2Im5
+2017-01-02 21:09:03,313  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: QuantumBreak on intel hd 5000: https://t.co/pEVW9vrOAP via @YouTube
+2017-01-02 21:09:03,313  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: ASUS D540SA-XX620T - Ordenador portátil de 15.6" (Intel Celer 279.0€ -20% https://t.co/vjR1jHCBa2 #ldo https://t.co/HrG001TWg7
