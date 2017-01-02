@@ -1,0 +1,778 @@
+2017-01-02 19:07:27,891  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @krungy21 Addidas endorser!
+2017-01-02 19:07:27,893  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @AlbertMella: Regálenme unos addidas de reyes! 😬
+2017-01-02 19:07:27,897  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Acá enchongad@s #conlacami #addidas #loqueoasaeneltrabajo #porquesevinoigualitaami #lacami… https://t.co/Lzd9ILKj7z
+2017-01-02 19:07:27,897  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @natientuiter Addidas es igual? https://t.co/wE8ZXlBBlT
+2017-01-02 19:07:27,898  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Dear santa 😭😭😭💔
+#addidas #love https://t.co/f06pLLGRt3
+2017-01-02 19:07:27,899  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #eBaySNKRDeals Addidas Varitas Men  https://t.co/ZEYIrmC7SL
+2017-01-02 19:07:27,900  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @Jackie_CL21 yo delete addidas pics
+2017-01-02 19:07:27,902  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @deborapoza: Recorriendo un poco Brasil 🇧🇷 #morocha #addidas #look #loveyourself #pandeazucar #brasil #rio… https://t.co/RROJW14U9a
+2017-01-02 19:07:27,904  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @Nooooooooosaj class A na addidas ayos na 😂
+2017-01-02 19:07:27,905  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @_ZeroClark30 #aesthetic #sadboy #trash #FIJIWater #nike #addidas #depressed #vibes #darkness #fotography #rare #supreme #$uicide #killa
+2017-01-02 19:07:27,906  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @luistheknizzle: @JayyyRoduno Addidas fracas
+2017-01-02 19:07:27,906  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @JayyyRoduno Addidas fracas
+2017-01-02 19:07:27,910  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Deseo concedido!!!! #addidassuperstar #addidas #christmasgifts #regalitosmojados #tvpatasarribas https://t.co/tonDQFalQe
+2017-01-02 19:09:27,033  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @natientuiter Addidas es igual? https://t.co/wE8ZXlBBlT
+2017-01-02 19:24:58,582  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Am apreciat un videoclip pe @YouTube, https://t.co/4XIYqq6HlN Hard Reset Lenovo A1000
+2017-01-02 19:24:58,592  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #schoolsupplies LENOVO YOGA 2 (11 INCH) Convertible Laptop https://t.co/REbezqMH1X #onsale #greatdeals https://t.co/HQlKQtUkkj
+2017-01-02 19:24:58,593  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Vuelve! Lenovo ZUK Z2 64GB desde 159€ (PVP +175€) #Gearbest 🌍
+
+🌀 Código descuento color blanco: Z2BIT
+
+➡️ https://t.co/LaOVjR9nJU 159€
+2017-01-02 19:24:58,594  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo ThinkPad x270 oferece até 20 horas de autonomia https://t.co/DSrNLMyeys https://t.co/zgYygcOTJ6 #tecnologia
+2017-01-02 19:24:58,594  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo ThinkPad x270 oferece até 20 horas de autonomia https://t.co/eevEsye6pD https://t.co/jm2CAEmKh9 #tecnologia
+2017-01-02 19:24:58,595  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @LearnWus: Configurando las nuevas #tablet #learnwus #apple #lenovo https://t.co/Y5wlBY3p2G
+2017-01-02 19:24:58,597  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @xataka Lenovo 900s... Ademas convertible...
+2017-01-02 19:24:58,600  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #schoolsupplies LENOVO YOGA 2 (11 INCH) Convertible Laptop https://t.co/Q2KbitDVxf #onsale #greatdeals https://t.co/J8YqF1CApz
+2017-01-02 19:24:58,601  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @thavolleyball @AlyssaValdez2 lenovo has 2 imports😔
+2017-01-02 19:24:58,602  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #Bisagras Para #Laptop #Lenovo Modelos #G470 #G475 #Z475 - Bs. 26.000,00 https://t.co/xehSYHA2Fc https://t.co/50aHpqMJgA
+2017-01-02 19:24:58,602  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @addneywhite: WAOWW!! %32 SALE Lenovo  Tablet https://t.co/pJrWNesUsE
+2017-01-02 19:24:58,603  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Apple, lenovo, asus, sony #poisonedbermain https://t.co/RnjRorwVn3
+2017-01-02 19:24:58,603  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo Yoga Tab 3 Pro Specification #news #RecentHacks https://t.co/jwkejLi9Ka
+2017-01-02 19:24:58,604  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: A pronta entrega na @OKComputadores: Servidor Lenovo ThinkServer TS150 com Intel Xeon E3 v5 4C, 8GB, 1TB + Windows https://t.co/3gOhsGYAEr
+2017-01-02 19:24:58,607  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @addneywhite: WAOWW!! %32 SALE Lenovo  Tablet https://t.co/pJrWNesUsE
+2017-01-02 19:24:58,609  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo Yoga Book Review #gadget #lenovo #computer #reviews  https://t.co/OiYLaVj98U https://t.co/fp85WQYo3M
+2017-01-02 19:24:58,609  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @mpank22 Lenovo Yoga?
+2017-01-02 19:24:58,610  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @addneywhite: WAOWW!! %32 SALE Lenovo  Tablet https://t.co/pJrWNesUsE
+2017-01-02 19:24:58,610  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #flower delivery san luis obispo ca lenovo laptop manual
+2017-01-02 19:24:58,613  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #phone shack sarasota lenovo care premium
+2017-01-02 19:24:58,614  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo A916 4g Phablet #kopen #gearbest.com https://t.co/urcIJdTy2E
+2017-01-02 19:24:58,614  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo Yoga Book Review https://t.co/6T94ku7rel #yoga
+2017-01-02 19:24:58,615  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #manuscript editor lenovo laptops 2012
+2017-01-02 19:24:58,615  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo Yoga 500-14IBD - Portátil táctil de 14" HD (Intel Cor 513.14€ -14% https://t.co/E73AgczKiN #ldo https://t.co/YXLjlXD0fG
+2017-01-02 19:24:58,616  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #oferta Lenovo Yoga 500-14IBD - Portátil táctil de 14" HD (Intel Core 513.14€ -14% #descuento… https://t.co/LZYTWavdm7
+2017-01-02 19:24:59,588  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #wp_Laptops Lenovo Yoga Book Review https://t.co/sW9okWuzeL
+2017-01-02 19:24:59,589  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Lenovo Yoga Book Review https://t.co/lg6KUDhpdN #tablet
+2017-01-02 19:24:59,593  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Lenovo Yoga Book Review https://t.co/lUyEqppBen #LiveNews
+2017-01-02 19:24:59,595  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #ZonaTecno 19/05/2012: Google compra Motorola Mobility por 12,5 MMM USD. En 2014 lo venderá a Lenovo por 2,91 MMM … https://t.co/Z5e3gQCvXd
+2017-01-02 19:24:59,596  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @nirmaltv ok bro Finally Redmi Note 3 or Lenovo vibe k5 note or Lenovo K6 Note
+2017-01-02 19:24:59,597  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @nirmaltv  Y bro Lenovo Vibe K5 Note is not nice
+2017-01-02 19:24:59,598  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #lenovo x260 hrc medical center
+2017-01-02 19:24:59,599  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Servidores, Lenovo, HP, con multiples funcionalidades, RAM:4,8,16,32Gb ···&gt; https://t.co/fOCSSmStkW .. https://t.co/xPONHTAyaJ #Venezuela
+2017-01-02 19:24:59,601  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @YovaSystems uds pueden consegior refacciones de laptop lenovo? estoy buscando un reclado
+2017-01-02 19:24:59,602  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #15x8 tires for sale lenovo idepad
+2017-01-02 19:24:59,603  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Lenovo Yoga #Tablet 8 - 16gb - https://t.co/bmzLbsIk2J - #Android #Ipad #Samsung https://t.co/qCT6B4s1Ul
+2017-01-02 19:24:59,604  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #OFERTA #Moviles #1: Lenovo Moto G4 - Smartphone libre Android 6 (pantalla de 5.5'' Full HD, 4G, cámara de 13 M... https://t.co/uB5n8RnQj1
+2017-01-02 19:24:59,605  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #financial due diligence lenovo c30 manual
+2017-01-02 19:24:59,605  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #classroom real estate courses california lenovo 260
+2017-01-02 19:24:59,606  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/fZBnFjGsOa Como actualizar Lenovo vibe K5/K5 plus a android 7.1.1 Nougat Facilmente! 2017
+2017-01-02 19:24:59,607  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: LENOVO ESSENTIAL B50-80-80EW052JSP NEGRO https://t.co/ZdI6udWDlp #Tecnologia vía @ventafun
+2017-01-02 19:24:59,608  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #OFERTA #Moviles #2: Lenovo Moto G4 - Smartphone libre Android 6 (pantalla de 5.5'' Full HD, 4G, cámara de 13 M... https://t.co/oIfqqihaUI
+2017-01-02 19:25:00,512  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Buy (IMPORT)-Lenovo A850+ 4GB (Black) https://t.co/hup1KXfpuS #kedah #penang
+2017-01-02 19:25:00,513  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @SUGA_PH meron pong case for lenovo s90 ?? Juseyoo TT
+2017-01-02 19:25:00,514  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #OFERTA #Moviles #3: Lenovo Moto G4 - Smartphone libre Android 6 (pantalla de 5.5'' Full HD, 4G, cámara de 13 M... https://t.co/XOr2zPAaLe
+2017-01-02 19:25:00,514  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo Yoga #Tablet 2 8 - 59426328: Web Special - ... - https://t.co/lTsDrD8hHC - #Android #Ipad #Samsung https://t.co/d6AUs1Lyr1
+2017-01-02 19:25:00,518  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: &gt;&gt;&gt; https://t.co/Kzq59nAEQl &lt;&lt;&lt; #Waterloo #hookups panties #femdom ebony #mfcmodel lesbian #kikswap milf… https://t.co/d5BprOrrmA
+2017-01-02 19:25:00,518  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #good to go bellevue lenovo authorized service center
+2017-01-02 19:25:00,519  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Moto G4 Play Vs Lenovo Vibe P1m Comparison https://t.co/SLjTVxTkzi #mobile
+2017-01-02 19:25:00,519  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: &gt;&gt;&gt; https://t.co/6FkjMPIQLm &lt;&lt;&lt; #London #flirting nudity #pornstar interracial #chaturbate interracial #kikswap wif… https://t.co/kRAbeSo4OL
+2017-01-02 19:25:00,520  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @flyingscotsmanj https://t.co/g0rXLNBqWs Lenovo ThinkPad T430 Unboxing
+2017-01-02 19:25:00,521  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @mitchellvii Buy Dell or Lenovo or ASUS
+2017-01-02 19:25:00,521  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @RpwKyahke lenovo la baz
+2017-01-02 19:25:00,522  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #franchised auto dealer lenovo blogs
+2017-01-02 19:25:00,524  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #new medical devices 2014 lenovo c20 drivers
+2017-01-02 19:25:00,525  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #weight loss infomercials lenovo 260
+2017-01-02 19:25:00,526  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #dijual #jual #iklan #iklanbaris Lenovo a6000 segel mulus 4g https://t.co/6DU2R7Dims https://t.co/ObphWw0n86
+2017-01-02 19:25:00,526  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo 41Y2711 https://t.co/o0bHk0CRlr #Lenovo
+2017-01-02 19:25:01,564  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo Yoga 500-14IBD - Portátil táctil de 14" HD (Intel Cor 513.14€ -14% https://t.co/E73AgczKiN #ldo https://t.co/DyPl6wuj0u
+2017-01-02 19:25:01,564  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #oferta Lenovo Yoga 500-14IBD - Portátil táctil de 14" HD (Intel Core 513.14€ -14% #descuento… https://t.co/6tkZN9bZMx
+2017-01-02 19:25:01,565  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: --&gt; https://t.co/Ocn8nuOp5L &lt;-- #Vermont #sex interracial #boob tits #liveonstreamate pov #kik nipples #instaphoto… https://t.co/o1MkRhhaAo
+2017-01-02 19:25:01,566  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: &gt;&gt;&gt; https://t.co/6FkjMPIQLm &lt;&lt;&lt; #StDavids #adultwork boobs #gaping lesbian #chatroom lesbian #snapchatme panties… https://t.co/528tuA6QMl
+2017-01-02 19:25:01,566  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #taj hotel campton place lenovo p60
+2017-01-02 19:25:01,566  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @maneSC290  lol tienes  la lenovo yalgo xD yo igual :v
+2017-01-02 19:25:01,567  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #VeoyCompro Aprovecha Hoy 53% de Descuento en  Computador Portatil Lenovo ThinkPad T420 14" Laptop with 2.5GHz... https://t.co/KYLKgDjquT
+2017-01-02 19:25:01,568  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo yoga 300 #tablondeanuncios https://t.co/soPUGISkF3
+2017-01-02 19:25:01,568  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #Sale https://t.co/Qoh1BNFjpW #Lenovo #ideacentre Y710 #Cube #Desktop #PC (Intel #Core #i7 #6700 #Quad #Core  #16GB… https://t.co/XBEFDusK0k
+2017-01-02 19:25:01,575  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 40 % de dcto. en ref. seleccionadas de computadores @HP @Lenovo @Acer. ¡Aprovecha! *AR https://t.co/zlKhcOEZfc
+2017-01-02 19:25:02,817  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo Yoga Multimode 10-inch Tablet...$277.47 - #Tablet - https://t.co/E7JUMQ443U https://t.co/oNHM0pHCAI
+2017-01-02 19:25:02,818  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo Yoga Multimode 10-inch Tablet...$277.47 - #Tablet - https://t.co/E7JUMQ443U https://t.co/ImSAADGtoc
+2017-01-02 19:25:02,818  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo Yoga Multimode 10-inch Tablet...$277.47 - #Tablet - https://t.co/E7JUMQ443U https://t.co/O0x1xJIs2x
+2017-01-02 19:25:02,819  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: En @PanamericanaLib 20% de dcto en computador portátil Lenovo Idea de 13.3, adquiérelo en: https://t.co/UrkdPxY89a https://t.co/BOQxAHliIS
+2017-01-02 19:25:02,823  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: $200 off Lenovo Yoga 900 13 2 13.3" 2-in-1 Laptop https://t.co/9HbGs3b0gF #deals
+2017-01-02 19:25:02,823  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo Yoga Multimode 10-inch #Tablet...$277.47 - - https://t.co/E7JUMQ443U https://t.co/FTaD7KLfdt
+2017-01-02 19:25:02,824  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @TecnoLocura: Lenovo ZUK Edge, 6GB de RAM y 86% de pantalla https://t.co/bZRYjIoc3o
+2017-01-02 19:25:02,827  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Buy (IMPORT)-Lenovo A850+ 4GB (Black) https://t.co/hup1KXfpuS #kedah #penang
+2017-01-02 19:25:03,706  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #classifieds Lenovo yoga 900 https://t.co/EPVCehwSXT https://t.co/5ZBt3Tb6oM
+2017-01-02 19:25:04,743  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Moto G4 Play Vs Lenovo Vibe P1m Comparison.
+#Lenovo #Moto #motog4play https://t.co/eWVztnJJHK
+2017-01-02 19:25:04,744  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo Yoga Book review #TheVerge https://t.co/GvR2PiQrtx
+2017-01-02 19:25:04,745  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: --&gt; https://t.co/6FkjMPIQLm &lt;-- #Wakefield #sexdate upskirt #nude xxx #nudecam latex #kikswap interracial… https://t.co/YqZGveDRV5
+2017-01-02 19:25:04,745  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Moviles: Lenovo LEMON K3 5.0'' 4G SmartPhone Quad Core 16GB Android Móviles libres 2SIM https://t.co/2tQV51Avmy #dualsim #android
+2017-01-02 19:25:04,745  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Android Libre: Lenovo LEMON K3 5.0'' 4G SmartPhone Quad Core 16GB Android Móviles libres 2SIM https://t.co/KmrAVPKPnD #mejoresprecios
+2017-01-02 19:25:04,746  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #Superman #ClarkKent #BatmanvsSuperman
+ Superman Lenovo Case https://t.co/WwLuyrnYQA https://t.co/DTUSWI1dzR
+2017-01-02 19:25:05,901  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Servidores, Lenovo, HP, con multiples funcionalidades, RAM:4,8,16,32Gb,  ··-&gt; https://t.co/fOCSSmStkW . https://t.co/xPONHTAyaJ #Venezuela
+2017-01-02 19:25:05,903  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @plandecompra: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en: https://t.co/b…
+2017-01-02 19:25:05,904  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en:… https://t.co/iGSv3G4z9S
+2017-01-02 19:25:05,905  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @lenovo promo
+2017-01-02 19:25:05,906  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @clipset https://t.co/xin2RvcKNx Lenovo Moto Z (Play) + Mods Hasselblad, JBL, picoproyector review
+2017-01-02 19:25:06,993  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #HPStoreAlamedas - Montería | Tel: 785 1820 | Cel: 316 366 7945
+#HPStoreBarranquilla |Tel: 356 1883|Cel: 318 813 35… https://t.co/od5oIQDLhx
+2017-01-02 19:25:06,993  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 13.3" Lenovo Yoga Pad 2 Pro 2-in-1 20266 Ultrabook Convertible Laptop Tablet https://t.co/BWQeitBhgA #Laptop https://t.co/PAy4aEWSfC
+2017-01-02 19:25:06,994  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #Lenovo #Laptop  13.3" Lenovo Yoga Pad 2 Pro 2-in-1 20266 Ultrabook Convertible Laptop Tablet… https://t.co/ldo15XkIle
+2017-01-02 19:25:06,994  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #lenovo #yogabook vs #thinkpad Yoga 12 https://t.co/XiJC7ud57p
+2017-01-02 19:25:06,995  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: ¿Nos das un RT? #iphone #ipad #mac Lenovo desvela su smartphone flexible https://t.co/4ZE5vlRCaH
+2017-01-02 19:25:06,995  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo Yoga Tab 3 / 10.1″ Unbox en Español https://t.co/s5gDfJAJm4 #mobile
+2017-01-02 19:25:06,996  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #Win a @lenovo Yoga Book!
+ENTER: https://t.co/XI3LAGnbzR
+#giveaway #ces2017 #tech #technology #techswag #Techmas
+2017-01-02 19:25:06,997  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT gizlogic: #Oferta a la vista: portátil #Lenovo por menos de 300 euros https://t.co/hcKvySkyDU  #Amazon #Ofertas https://t.co/DceTLU4NRD
+2017-01-02 19:25:06,997  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #ThinkPad X1 Carbon https://t.co/173DHvfU4e
+2017-01-02 19:25:06,997  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @trkstr67: Lenovo Yoga Tablet 3 Review https://t.co/pfPH7JVV8q
+2017-01-02 19:25:06,998  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo Vibe K6 Plus — Aplicativos https://t.co/yn0i6XBkbc #mobile
+2017-01-02 19:25:06,999  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: x2 Lenovo Yoga 3 Pro 1370 2-in-1 Ultrabooks 13.3" Intel Core M 5Y70 PARTS/REPAIR https://t.co/vFso3SQEhE #Laptop https://t.co/w8UbMJIZAc
+2017-01-02 19:25:06,999  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #Lenovo #Laptop  x2 Lenovo Yoga 3 Pro 1370 2-in-1 Ultrabooks 13.3" Intel Core M 5Y70 PARTS/REPAIR… https://t.co/Es9lulg7lG
+2017-01-02 19:25:06,999  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @Hondo_L lenovo y700
+2017-01-02 19:25:07,000  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @leeminh87: #LeeMinHo #이민호 
+#lenovo_zuk  Edge L
+Cr.minoz_selene 💕 https://t.co/NWUCLaBKvV
+2017-01-02 19:25:07,001  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo IdeaPad110 15.6-Inch HD Laptop (Intel Celeron N3060 Dual-Core... - https://t.co/HzxmQlxwlX #Tech #Deals https://t.co/3k3WWftltY
+2017-01-02 19:25:08,256  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #LeeMinHo #이민호 
+#lenovo_zuk  Edge L
+Cr.minoz_selene 💕 https://t.co/NWUCLaBKvV
+2017-01-02 19:25:08,260  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Mira lo he encontrado. LENOVO A5600 MTK6735P Quad-core 5.5  HD Andriod 5.0 4G Móvil 8MP CAM 8GB ROM-NEW https://t.co/7XOuKUdwSn vía @eBayESP
+2017-01-02 19:25:08,261  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo Vibe K5 Note video https://t.co/k3fPh213q3 via @YouTube
+2017-01-02 19:25:08,262  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #Lenovo g565 bios dump https://t.co/phbxBVtRrs
+2017-01-02 19:25:08,262  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #win 3 Lenovo Yoga Books #giveaway https://t.co/pxPUnZ4dXl #contest #ContestAlert #Sweepstakes #SweepstakesEntry #sweeps #free
+2017-01-02 19:25:08,262  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #army asu builder lenovo pro laptop
+2017-01-02 19:25:08,262  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Android: 5.0" Lenovo 4G Smartphone Dual SIM Android 6.0.1 2GB+16GB WiFi GPS FM Teléfono https://t.co/VmjooswoOl #dualsim #android
+2017-01-02 19:25:08,263  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Dual Sim: 5.0" Lenovo 4G Smartphone Dual SIM Android 6.0.1 2GB+16GB WiFi GPS FM Teléfono https://t.co/pfBVH4tt34 #android #españa
+2017-01-02 19:25:08,263  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo 90Y8877 https://t.co/xlO8plmRbh #Lenovo
+2017-01-02 19:25:08,264  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @lenovo woww super 💛💛😍
+2017-01-02 19:25:08,264  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @Androidheadline Due to other chines company like Oppo, Vivo, Xiaomi, Lenovo etc.
+2017-01-02 19:25:08,265  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo Yoga Book - Complete Review - https://t.co/T6s9cpkPAg #GoogleAlerts
+2017-01-02 19:25:08,265  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: ¡Chollo! tablet Lenovo Tab3-850F 8'' WiFi 2GB Ram y 16Gb de almacenamiento 99€ #chollos #gangas #ofertas… https://t.co/bxp9xqrfbV
+2017-01-02 19:25:08,266  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: ¿Nos das un RT? #android Lenovo Vibe Z2: Análisis del phablet de Lenovo https://t.co/QaSJKfV6RU
+2017-01-02 19:25:08,266  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo's Yoga 910 convertible -- an impressive ultra-portable laptop https://t.co/IFqmXJyEow #yoga
+2017-01-02 19:25:08,267  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #deposition preparation video lenovo 20238
+2017-01-02 19:25:08,268  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Vuln: Lenovo Transition CVE-2016-8227 Local Privilege Escalation Vulnerability https://t.co/P6F9yONFpC #bugtraq
+2017-01-02 19:25:09,155  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #SecurityFocus Vuln: Lenovo Transition CVE-2016-8227 Local Privilege Escalation Vulnerability https://t.co/PIt0MJllGG
+2017-01-02 19:25:09,155  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Lenovo Inroduces Its New ThinkPad Yoga 370 https://t.co/h7qrTLjK4b Vía @itechPost https://t.co/xDMpAXw25A
+2017-01-02 19:25:09,156  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #vulnerability #security : Vuln: Lenovo Transition CVE-2016-8227 Local Privilege Escalation Vulnerability https://t.co/dbK7ukolbd
+2017-01-02 19:25:09,158  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: JaDines oh lenovo din to 👇🏼 #TIMYNewYear https://t.co/scqvFljnIf
+2017-01-02 19:25:09,158  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Lenovo Yoga Book – Complete Review https://t.co/xx96082qov #yoga
+2017-01-02 19:25:09,159  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @Fabled_Me Lenovo y700
+2017-01-02 19:25:09,159  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Lenovo Yoga Book - Complete Review
+#LenovoYogaBook #LenovoYogaBookReview #YogaBookReview
+https://t.co/Zf8KN6mDQB
+2017-01-02 19:25:09,159  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Lenovo Yoga Book - Complete Review
+#LenovoYogaBook #LenovoYogaBookReview #YogaBookReview
+https://t.co/OkKtB7yMan
+2017-01-02 19:25:09,160  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @cool_karz: Lenovo Yoga 910 Best Buy - Buy Lenovo Yoga 910 Convertible 2-in-1 Laptop: https://t.co/kA6kiiL5ax Len… https://t.co/NmybKudxQb
+2017-01-02 19:25:09,160  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Lenovo Ideapad G70-70 PC portable 17,3" Noir (Intel celeron, 4 Go de RAM, Dis https://t.co/wxMGGth9Uk #iphone, #ipad, #huawei, #smartphone
+2017-01-02 19:25:09,161  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Me ha gustado un vídeo de @YouTube de @historiasdemied (https://t.co/YCoaP9iyWO - UNBOXING Lenovo Tab 3 7 Essential).
+2017-01-02 19:25:09,162  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Buy (IMPORT)-Lenovo A850+ 4GB (Black) https://t.co/hup1KXfpuS #kedah #penang
+2017-01-02 19:25:09,163  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #computer tracks lenovo thinkpad quadro
+2017-01-02 19:25:09,164  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Geeklvl: Sorteamos un celular @lenovo Vibe K5! Participá en Facebook siguiendo este link https://t.co/ZmhxpP7Fin #Sorteo #Smartphone #L…
+2017-01-02 19:25:09,164  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @Allotta5 @MoonMeanderated Lenovo y-series
+2017-01-02 19:25:09,164  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @YosepAchmar: @IndosatCare bundle dengan Lenovo A6600 Plus https://t.co/LNnXuUz53j
+2017-01-02 19:25:09,165  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Geeklvl: Sorteamos un celular @lenovo Vibe K5! Participá en Facebook siguiendo este link https://t.co/ZmhxpP7Fin #Sorteo #Smartphone #L…
+2017-01-02 19:25:09,165  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Geeklvl: Sorteamos un celular @lenovo Vibe K5! Participá en Facebook siguiendo este link https://t.co/ZmhxpP7Fin #Sorteo #Smartphone #L…
+2017-01-02 19:25:09,165  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Geeklvl: Sorteamos un celular @lenovo Vibe K5! Participá en Facebook siguiendo este link https://t.co/ZmhxpP7Fin #Sorteo #Smartphone #L…
+2017-01-02 19:25:09,166  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Geeklvl: Sorteamos un celular @lenovo Vibe K5! Participá en Facebook siguiendo este link https://t.co/ZmhxpP7Fin #Sorteo #Smartphone #L…
+2017-01-02 19:25:09,166  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Geeklvl: Sorteamos un celular @lenovo Vibe K5! Participá en Facebook siguiendo este link https://t.co/ZmhxpP7Fin #Sorteo #Smartphone #L…
+2017-01-02 19:25:09,166  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Geeklvl: Sorteamos un celular @lenovo Vibe K5! Participá en Facebook siguiendo este link https://t.co/ZmhxpP7Fin #Sorteo #Smartphone #L…
+2017-01-02 19:25:09,166  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Geeklvl: Sorteamos un celular @lenovo Vibe K5! Participá en Facebook siguiendo este link https://t.co/ZmhxpP7Fin #Sorteo #Smartphone #L…
+2017-01-02 19:25:09,167  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @IndosatCare bundle dengan Lenovo A6600 Plus https://t.co/LNnXuUz53j
+2017-01-02 19:25:09,167  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Geeklvl: Sorteamos un celular @lenovo Vibe K5! Participá en Facebook siguiendo este link https://t.co/ZmhxpP7Fin #Sorteo #Smartphone #L…
+2017-01-02 19:25:10,155  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @Blogs_Android: Nueva Oferta Smartphone Lenovo ZUK Z2 https://t.co/RON3LdkKrY #apps4_droid
+2017-01-02 19:25:10,156  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @tecnobreakok: #TecnoBreak Lenovo Presenta Los Originales Moto Z y Moto Z Force https://t.co/rjD6IdByPj #motoz
+2017-01-02 19:25:10,158  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Nueva Oferta Smartphone Lenovo ZUK Z2 https://t.co/RON3LdkKrY #apps4_droid
+2017-01-02 19:25:10,159  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @apps4_droid: Nueva Oferta Smartphone Lenovo ZUK Z2 https://t.co/qXuULO4nyf https://t.co/8ostpJpJ4Z
+2017-01-02 19:25:10,160  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #free digital cable box lenovo a
+2017-01-02 19:25:11,084  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #manuscript editor lenovo laptops 2012
+2017-01-02 19:25:12,355  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #OFERTA #Moviles #1: Lenovo Moto G4 - Smartphone libre Android 6 (pantalla de 5.5'' Full HD, 4G, cámara de 13 M... https://t.co/uB5n8RnQj1
+2017-01-02 19:25:12,355  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #classroom real estate courses california lenovo 260
+2017-01-02 19:25:12,356  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #OFERTA #Moviles #2: Lenovo Moto G4 - Smartphone libre Android 6 (pantalla de 5.5'' Full HD, 4G, cámara de 13 M... https://t.co/oIfqqihaUI
+2017-01-02 19:25:13,417  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #OFERTA #Moviles #3: Lenovo Moto G4 - Smartphone libre Android 6 (pantalla de 5.5'' Full HD, 4G, cámara de 13 M... https://t.co/XOr2zPAaLe
+2017-01-02 19:25:13,417  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #good to go bellevue lenovo authorized service center
+2017-01-02 19:25:13,418  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #franchised auto dealer lenovo blogs
+2017-01-02 19:25:13,419  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #new medical devices 2014 lenovo c20 drivers
+2017-01-02 19:25:22,089  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #vulnerability #security : Vuln: Lenovo Transition CVE-2016-8227 Local Privilege Escalation Vulnerability https://t.co/dbK7ukolbd
+2017-01-02 19:25:23,716  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo Yoga Tab 3 Pro Specification #news #RecentHacks https://t.co/jwkejLi9Ka
+2017-01-02 19:25:23,717  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #flower delivery san luis obispo ca lenovo laptop manual
+2017-01-02 19:25:24,648  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #OFERTA #Moviles #1: Lenovo Moto G4 - Smartphone libre Android 6 (pantalla de 5.5'' Full HD, 4G, cámara de 13 M... https://t.co/uB5n8RnQj1
+2017-01-02 19:25:24,648  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #classroom real estate courses california lenovo 260
+2017-01-02 19:25:24,649  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #OFERTA #Moviles #2: Lenovo Moto G4 - Smartphone libre Android 6 (pantalla de 5.5'' Full HD, 4G, cámara de 13 M... https://t.co/oIfqqihaUI
+2017-01-02 19:25:25,593  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #OFERTA #Moviles #3: Lenovo Moto G4 - Smartphone libre Android 6 (pantalla de 5.5'' Full HD, 4G, cámara de 13 M... https://t.co/XOr2zPAaLe
+2017-01-02 19:25:25,594  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #good to go bellevue lenovo authorized service center
+2017-01-02 19:25:25,595  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #weight loss infomercials lenovo 260
+2017-01-02 19:25:30,457  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @plandecompra: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en: https://t.co/b…
+2017-01-02 19:25:30,457  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en:… https://t.co/iGSv3G4z9S
+2017-01-02 19:25:32,497  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #army asu builder lenovo pro laptop
+2017-01-02 19:25:35,274  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @addneywhite: WAOWW!! %32 SALE Lenovo  Tablet https://t.co/pJrWNesUsE
+2017-01-02 19:25:38,125  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: &gt;&gt;&gt; https://t.co/6FkjMPIQLm &lt;&lt;&lt; #StDavids #adultwork boobs #gaping lesbian #chatroom lesbian #snapchatme panties… https://t.co/528tuA6QMl
+2017-01-02 19:25:39,170  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: En @PanamericanaLib 20% de dcto en computador portátil Lenovo Idea de 13.3, adquiérelo en: https://t.co/UrkdPxY89a https://t.co/BOQxAHliIS
+2017-01-02 19:25:41,094  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: --&gt; https://t.co/6FkjMPIQLm &lt;-- #Wakefield #sexdate upskirt #nude xxx #nudecam latex #kikswap interracial… https://t.co/YqZGveDRV5
+2017-01-02 19:25:42,194  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @plandecompra: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en: https://t.co/b…
+2017-01-02 19:25:42,194  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en:… https://t.co/iGSv3G4z9S
+2017-01-02 19:25:47,169  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #manuscript editor lenovo laptops 2012
+2017-01-02 19:25:48,169  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #financial due diligence lenovo c30 manual
+2017-01-02 19:25:48,170  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #classroom real estate courses california lenovo 260
+2017-01-02 19:25:49,445  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #good to go bellevue lenovo authorized service center
+2017-01-02 19:25:49,445  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: &gt;&gt;&gt; https://t.co/6FkjMPIQLm &lt;&lt;&lt; #London #flirting nudity #pornstar interracial #chaturbate interracial #kikswap wif… https://t.co/kRAbeSo4OL
+2017-01-02 19:25:49,446  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #franchised auto dealer lenovo blogs
+2017-01-02 19:25:49,446  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #new medical devices 2014 lenovo c20 drivers
+2017-01-02 19:25:49,447  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #weight loss infomercials lenovo 260
+2017-01-02 19:25:51,478  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: En @PanamericanaLib 20% de dcto en computador portátil Lenovo Idea de 13.3, adquiérelo en: https://t.co/UrkdPxY89a https://t.co/BOQxAHliIS
+2017-01-02 19:25:54,815  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @plandecompra: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en: https://t.co/b…
+2017-01-02 19:25:54,816  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en:… https://t.co/iGSv3G4z9S
+2017-01-02 19:25:56,074  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo IdeaPad110 15.6-Inch HD Laptop (Intel Celeron N3060 Dual-Core... - https://t.co/HzxmQlxwlX #Tech #Deals https://t.co/3k3WWftltY
+2017-01-02 19:25:58,202  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo Yoga Book - Complete Review
+#LenovoYogaBook #LenovoYogaBookReview #YogaBookReview
+https://t.co/OkKtB7yMan
+2017-01-02 19:26:02,129  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #weight loss infomercials lenovo 260
+2017-01-02 19:26:04,374  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: En @PanamericanaLib 20% de dcto en computador portátil Lenovo Idea de 13.3, adquiérelo en: https://t.co/UrkdPxY89a https://t.co/BOQxAHliIS
+2017-01-02 19:26:06,334  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Lenovo Yoga Book review #TheVerge https://t.co/GvR2PiQrtx
+2017-01-02 19:26:07,633  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @plandecompra: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en: https://t.co/b…
+2017-01-02 19:26:07,633  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en:… https://t.co/iGSv3G4z9S
+2017-01-02 19:26:08,491  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo IdeaPad110 15.6-Inch HD Laptop (Intel Celeron N3060 Dual-Core... - https://t.co/HzxmQlxwlX #Tech #Deals https://t.co/3k3WWftltY
+2017-01-02 19:26:12,282  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #leia endor blaster buy lenovo ultrabook
+2017-01-02 19:26:12,283  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #flower delivery san luis obispo ca lenovo laptop manual
+2017-01-02 19:26:13,225  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #wp_Laptops Lenovo Yoga Book Review https://t.co/sW9okWuzeL
+2017-01-02 19:26:13,226  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #classroom real estate courses california lenovo 260
+2017-01-02 19:26:16,314  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: En @PanamericanaLib 20% de dcto en computador portátil Lenovo Idea de 13.3, adquiérelo en: https://t.co/UrkdPxY89a https://t.co/BOQxAHliIS
+2017-01-02 19:26:19,465  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @plandecompra: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en: https://t.co/b…
+2017-01-02 19:26:19,466  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en:… https://t.co/iGSv3G4z9S
+2017-01-02 19:26:24,126  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @addneywhite: WAOWW!! %32 SALE Lenovo  Tablet https://t.co/pJrWNesUsE
+2017-01-02 19:26:24,126  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #flower delivery san luis obispo ca lenovo laptop manual
+2017-01-02 19:26:24,127  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #manuscript editor lenovo laptops 2012
+2017-01-02 19:26:25,165  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #wp_Laptops Lenovo Yoga Book Review https://t.co/sW9okWuzeL
+2017-01-02 19:26:26,276  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #good to go bellevue lenovo authorized service center
+2017-01-02 19:26:26,277  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #franchised auto dealer lenovo blogs
+2017-01-02 19:26:26,277  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #new medical devices 2014 lenovo c20 drivers
+2017-01-02 19:26:26,278  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #weight loss infomercials lenovo 260
+2017-01-02 19:26:28,452  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: En @PanamericanaLib 20% de dcto en computador portátil Lenovo Idea de 13.3, adquiérelo en: https://t.co/UrkdPxY89a https://t.co/BOQxAHliIS
+2017-01-02 19:26:32,144  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @plandecompra: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en: https://t.co/b…
+2017-01-02 19:26:32,145  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en:… https://t.co/iGSv3G4z9S
+2017-01-02 19:26:34,436  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #army asu builder lenovo pro laptop
+2017-01-02 19:26:37,635  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @addneywhite: WAOWW!! %32 SALE Lenovo  Tablet https://t.co/pJrWNesUsE
+2017-01-02 19:26:37,635  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @addneywhite: WAOWW!! %32 SALE Lenovo  Tablet https://t.co/pJrWNesUsE
+2017-01-02 19:26:37,636  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo Yoga 500-14IBD - Portátil táctil de 14" HD (Intel Cor 513.14€ -14% https://t.co/E73AgczKiN #ldo https://t.co/YXLjlXD0fG
+2017-01-02 19:26:37,636  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #oferta Lenovo Yoga 500-14IBD - Portátil táctil de 14" HD (Intel Core 513.14€ -14% #descuento… https://t.co/LZYTWavdm7
+2017-01-02 19:26:38,691  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #financial due diligence lenovo c30 manual
+2017-01-02 19:26:38,692  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #classroom real estate courses california lenovo 260
+2017-01-02 19:26:39,780  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @RpwKyahke lenovo la baz
+2017-01-02 19:26:41,139  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Lenovo Yoga 500-14IBD - Portátil táctil de 14" HD (Intel Cor 513.14€ -14% https://t.co/E73AgczKiN #ldo https://t.co/DyPl6wuj0u
+2017-01-02 19:26:41,139  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #oferta Lenovo Yoga 500-14IBD - Portátil táctil de 14" HD (Intel Core 513.14€ -14% #descuento… https://t.co/6tkZN9bZMx
+2017-01-02 19:26:42,370  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: En @PanamericanaLib 20% de dcto en computador portátil Lenovo Idea de 13.3, adquiérelo en: https://t.co/UrkdPxY89a https://t.co/BOQxAHliIS
+2017-01-02 19:26:45,227  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @plandecompra: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en: https://t.co/b…
+2017-01-02 19:26:45,228  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en:… https://t.co/iGSv3G4z9S
+2017-01-02 19:26:48,788  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: JaDines oh lenovo din to 👇🏼 #TIMYNewYear https://t.co/scqvFljnIf
+2017-01-02 19:26:51,673  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #classroom real estate courses california lenovo 260
+2017-01-02 19:26:52,781  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #weight loss infomercials lenovo 260
+2017-01-02 19:26:54,659  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: En @PanamericanaLib 20% de dcto en computador portátil Lenovo Idea de 13.3, adquiérelo en: https://t.co/UrkdPxY89a https://t.co/BOQxAHliIS
+2017-01-02 19:26:56,658  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo Yoga Book review #TheVerge https://t.co/GvR2PiQrtx
+2017-01-02 19:26:57,775  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @plandecompra: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en: https://t.co/b…
+2017-01-02 19:26:57,776  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en:… https://t.co/iGSv3G4z9S
+2017-01-02 19:27:00,080  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @lenovo woww super 💛💛😍
+2017-01-02 19:27:03,089  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #manuscript editor lenovo laptops 2012
+2017-01-02 19:27:04,374  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #wp_Laptops Lenovo Yoga Book Review https://t.co/sW9okWuzeL
+2017-01-02 19:27:04,375  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #financial due diligence lenovo c30 manual
+2017-01-02 19:27:05,471  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #good to go bellevue lenovo authorized service center
+2017-01-02 19:27:05,472  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #franchised auto dealer lenovo blogs
+2017-01-02 19:27:05,472  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #new medical devices 2014 lenovo c20 drivers
+2017-01-02 19:27:09,900  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Moto G4 Play Vs Lenovo Vibe P1m Comparison.
+#Lenovo #Moto #motog4play https://t.co/eWVztnJJHK
+2017-01-02 19:27:13,043  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo 90Y8877 https://t.co/xlO8plmRbh #Lenovo
+2017-01-02 19:27:16,195  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #leia endor blaster buy lenovo ultrabook
+2017-01-02 19:27:16,196  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #flower delivery san luis obispo ca lenovo laptop manual
+2017-01-02 19:27:17,382  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #classroom real estate courses california lenovo 260
+2017-01-02 19:27:18,743  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #weight loss infomercials lenovo 260
+2017-01-02 19:27:28,684  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: JaDines oh lenovo din to 👇🏼 #TIMYNewYear https://t.co/scqvFljnIf
+2017-01-02 19:27:30,692  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #manuscript editor lenovo laptops 2012
+2017-01-02 19:27:31,958  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #wp_Laptops Lenovo Yoga Book Review https://t.co/sW9okWuzeL
+2017-01-02 19:27:32,937  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #good to go bellevue lenovo authorized service center
+2017-01-02 19:27:32,938  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @RpwKyahke lenovo la baz
+2017-01-02 19:27:32,938  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #franchised auto dealer lenovo blogs
+2017-01-02 19:27:32,939  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #new medical devices 2014 lenovo c20 drivers
+2017-01-02 19:27:32,939  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #weight loss infomercials lenovo 260
+2017-01-02 19:27:35,055  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @TecnoLocura: Lenovo ZUK Edge, 6GB de RAM y 86% de pantalla https://t.co/bZRYjIoc3o
+2017-01-02 19:27:40,013  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #army asu builder lenovo pro laptop
+2017-01-02 19:27:43,805  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #financial due diligence lenovo c30 manual
+2017-01-02 19:27:43,805  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #classroom real estate courses california lenovo 260
+2017-01-02 19:24:58,582  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Am apreciat un videoclip pe @YouTube, https://t.co/4XIYqq6HlN Hard Reset Lenovo A1000
+2017-01-02 19:24:58,592  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #schoolsupplies LENOVO YOGA 2 (11 INCH) Convertible Laptop https://t.co/REbezqMH1X #onsale #greatdeals https://t.co/HQlKQtUkkj
+2017-01-02 19:24:58,593  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Vuelve! Lenovo ZUK Z2 64GB desde 159€ (PVP +175€) #Gearbest 🌍
+
+🌀 Código descuento color blanco: Z2BIT
+
+➡️ https://t.co/LaOVjR9nJU 159€
+2017-01-02 19:24:58,594  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo ThinkPad x270 oferece até 20 horas de autonomia https://t.co/DSrNLMyeys https://t.co/zgYygcOTJ6 #tecnologia
+2017-01-02 19:24:58,594  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo ThinkPad x270 oferece até 20 horas de autonomia https://t.co/eevEsye6pD https://t.co/jm2CAEmKh9 #tecnologia
+2017-01-02 19:24:58,595  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @LearnWus: Configurando las nuevas #tablet #learnwus #apple #lenovo https://t.co/Y5wlBY3p2G
+2017-01-02 19:24:58,597  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @xataka Lenovo 900s... Ademas convertible...
+2017-01-02 19:24:58,600  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #schoolsupplies LENOVO YOGA 2 (11 INCH) Convertible Laptop https://t.co/Q2KbitDVxf #onsale #greatdeals https://t.co/J8YqF1CApz
+2017-01-02 19:24:58,601  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @thavolleyball @AlyssaValdez2 lenovo has 2 imports😔
+2017-01-02 19:24:58,602  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #Bisagras Para #Laptop #Lenovo Modelos #G470 #G475 #Z475 - Bs. 26.000,00 https://t.co/xehSYHA2Fc https://t.co/50aHpqMJgA
+2017-01-02 19:24:58,602  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @addneywhite: WAOWW!! %32 SALE Lenovo  Tablet https://t.co/pJrWNesUsE
+2017-01-02 19:24:58,603  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Apple, lenovo, asus, sony #poisonedbermain https://t.co/RnjRorwVn3
+2017-01-02 19:24:58,603  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo Yoga Tab 3 Pro Specification #news #RecentHacks https://t.co/jwkejLi9Ka
+2017-01-02 19:24:58,604  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: A pronta entrega na @OKComputadores: Servidor Lenovo ThinkServer TS150 com Intel Xeon E3 v5 4C, 8GB, 1TB + Windows https://t.co/3gOhsGYAEr
+2017-01-02 19:24:58,607  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @addneywhite: WAOWW!! %32 SALE Lenovo  Tablet https://t.co/pJrWNesUsE
+2017-01-02 19:24:58,609  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo Yoga Book Review #gadget #lenovo #computer #reviews  https://t.co/OiYLaVj98U https://t.co/fp85WQYo3M
+2017-01-02 19:24:58,609  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @mpank22 Lenovo Yoga?
+2017-01-02 19:24:58,610  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @addneywhite: WAOWW!! %32 SALE Lenovo  Tablet https://t.co/pJrWNesUsE
+2017-01-02 19:24:58,610  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #flower delivery san luis obispo ca lenovo laptop manual
+2017-01-02 19:24:58,613  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #phone shack sarasota lenovo care premium
+2017-01-02 19:24:58,614  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo A916 4g Phablet #kopen #gearbest.com https://t.co/urcIJdTy2E
+2017-01-02 19:24:58,614  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo Yoga Book Review https://t.co/6T94ku7rel #yoga
+2017-01-02 19:24:58,615  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #manuscript editor lenovo laptops 2012
+2017-01-02 19:24:58,615  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo Yoga 500-14IBD - Portátil táctil de 14" HD (Intel Cor 513.14€ -14% https://t.co/E73AgczKiN #ldo https://t.co/YXLjlXD0fG
+2017-01-02 19:24:58,616  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #oferta Lenovo Yoga 500-14IBD - Portátil táctil de 14" HD (Intel Core 513.14€ -14% #descuento… https://t.co/LZYTWavdm7
+2017-01-02 19:24:59,588  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #wp_Laptops Lenovo Yoga Book Review https://t.co/sW9okWuzeL
+2017-01-02 19:24:59,589  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Lenovo Yoga Book Review https://t.co/lg6KUDhpdN #tablet
+2017-01-02 19:24:59,593  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Lenovo Yoga Book Review https://t.co/lUyEqppBen #LiveNews
+2017-01-02 19:24:59,595  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #ZonaTecno 19/05/2012: Google compra Motorola Mobility por 12,5 MMM USD. En 2014 lo venderá a Lenovo por 2,91 MMM … https://t.co/Z5e3gQCvXd
+2017-01-02 19:24:59,596  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @nirmaltv ok bro Finally Redmi Note 3 or Lenovo vibe k5 note or Lenovo K6 Note
+2017-01-02 19:24:59,597  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @nirmaltv  Y bro Lenovo Vibe K5 Note is not nice
+2017-01-02 19:24:59,598  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #lenovo x260 hrc medical center
+2017-01-02 19:24:59,599  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Servidores, Lenovo, HP, con multiples funcionalidades, RAM:4,8,16,32Gb ···&gt; https://t.co/fOCSSmStkW .. https://t.co/xPONHTAyaJ #Venezuela
+2017-01-02 19:24:59,601  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @YovaSystems uds pueden consegior refacciones de laptop lenovo? estoy buscando un reclado
+2017-01-02 19:24:59,602  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #15x8 tires for sale lenovo idepad
+2017-01-02 19:24:59,603  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Lenovo Yoga #Tablet 8 - 16gb - https://t.co/bmzLbsIk2J - #Android #Ipad #Samsung https://t.co/qCT6B4s1Ul
+2017-01-02 19:24:59,604  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #OFERTA #Moviles #1: Lenovo Moto G4 - Smartphone libre Android 6 (pantalla de 5.5'' Full HD, 4G, cámara de 13 M... https://t.co/uB5n8RnQj1
+2017-01-02 19:24:59,605  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #financial due diligence lenovo c30 manual
+2017-01-02 19:24:59,605  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #classroom real estate courses california lenovo 260
+2017-01-02 19:24:59,606  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/fZBnFjGsOa Como actualizar Lenovo vibe K5/K5 plus a android 7.1.1 Nougat Facilmente! 2017
+2017-01-02 19:24:59,607  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: LENOVO ESSENTIAL B50-80-80EW052JSP NEGRO https://t.co/ZdI6udWDlp #Tecnologia vía @ventafun
+2017-01-02 19:24:59,608  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #OFERTA #Moviles #2: Lenovo Moto G4 - Smartphone libre Android 6 (pantalla de 5.5'' Full HD, 4G, cámara de 13 M... https://t.co/oIfqqihaUI
+2017-01-02 19:25:00,512  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Buy (IMPORT)-Lenovo A850+ 4GB (Black) https://t.co/hup1KXfpuS #kedah #penang
+2017-01-02 19:25:00,513  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @SUGA_PH meron pong case for lenovo s90 ?? Juseyoo TT
+2017-01-02 19:25:00,514  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #OFERTA #Moviles #3: Lenovo Moto G4 - Smartphone libre Android 6 (pantalla de 5.5'' Full HD, 4G, cámara de 13 M... https://t.co/XOr2zPAaLe
+2017-01-02 19:25:00,514  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo Yoga #Tablet 2 8 - 59426328: Web Special - ... - https://t.co/lTsDrD8hHC - #Android #Ipad #Samsung https://t.co/d6AUs1Lyr1
+2017-01-02 19:25:00,518  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: &gt;&gt;&gt; https://t.co/Kzq59nAEQl &lt;&lt;&lt; #Waterloo #hookups panties #femdom ebony #mfcmodel lesbian #kikswap milf… https://t.co/d5BprOrrmA
+2017-01-02 19:25:00,518  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #good to go bellevue lenovo authorized service center
+2017-01-02 19:25:00,519  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Moto G4 Play Vs Lenovo Vibe P1m Comparison https://t.co/SLjTVxTkzi #mobile
+2017-01-02 19:25:00,519  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: &gt;&gt;&gt; https://t.co/6FkjMPIQLm &lt;&lt;&lt; #London #flirting nudity #pornstar interracial #chaturbate interracial #kikswap wif… https://t.co/kRAbeSo4OL
+2017-01-02 19:25:00,520  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @flyingscotsmanj https://t.co/g0rXLNBqWs Lenovo ThinkPad T430 Unboxing
+2017-01-02 19:25:00,521  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @mitchellvii Buy Dell or Lenovo or ASUS
+2017-01-02 19:25:00,521  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @RpwKyahke lenovo la baz
+2017-01-02 19:25:00,522  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #franchised auto dealer lenovo blogs
+2017-01-02 19:25:00,524  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #new medical devices 2014 lenovo c20 drivers
+2017-01-02 19:25:00,525  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #weight loss infomercials lenovo 260
+2017-01-02 19:25:00,526  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #dijual #jual #iklan #iklanbaris Lenovo a6000 segel mulus 4g https://t.co/6DU2R7Dims https://t.co/ObphWw0n86
+2017-01-02 19:25:00,526  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo 41Y2711 https://t.co/o0bHk0CRlr #Lenovo
+2017-01-02 19:25:01,564  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo Yoga 500-14IBD - Portátil táctil de 14" HD (Intel Cor 513.14€ -14% https://t.co/E73AgczKiN #ldo https://t.co/DyPl6wuj0u
+2017-01-02 19:25:01,564  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #oferta Lenovo Yoga 500-14IBD - Portátil táctil de 14" HD (Intel Core 513.14€ -14% #descuento… https://t.co/6tkZN9bZMx
+2017-01-02 19:25:01,565  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: --&gt; https://t.co/Ocn8nuOp5L &lt;-- #Vermont #sex interracial #boob tits #liveonstreamate pov #kik nipples #instaphoto… https://t.co/o1MkRhhaAo
+2017-01-02 19:25:01,566  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: &gt;&gt;&gt; https://t.co/6FkjMPIQLm &lt;&lt;&lt; #StDavids #adultwork boobs #gaping lesbian #chatroom lesbian #snapchatme panties… https://t.co/528tuA6QMl
+2017-01-02 19:25:01,566  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #taj hotel campton place lenovo p60
+2017-01-02 19:25:01,566  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @maneSC290  lol tienes  la lenovo yalgo xD yo igual :v
+2017-01-02 19:25:01,567  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #VeoyCompro Aprovecha Hoy 53% de Descuento en  Computador Portatil Lenovo ThinkPad T420 14" Laptop with 2.5GHz... https://t.co/KYLKgDjquT
+2017-01-02 19:25:01,568  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo yoga 300 #tablondeanuncios https://t.co/soPUGISkF3
+2017-01-02 19:25:01,568  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #Sale https://t.co/Qoh1BNFjpW #Lenovo #ideacentre Y710 #Cube #Desktop #PC (Intel #Core #i7 #6700 #Quad #Core  #16GB… https://t.co/XBEFDusK0k
+2017-01-02 19:25:01,575  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 40 % de dcto. en ref. seleccionadas de computadores @HP @Lenovo @Acer. ¡Aprovecha! *AR https://t.co/zlKhcOEZfc
+2017-01-02 19:25:02,817  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo Yoga Multimode 10-inch Tablet...$277.47 - #Tablet - https://t.co/E7JUMQ443U https://t.co/oNHM0pHCAI
+2017-01-02 19:25:02,818  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo Yoga Multimode 10-inch Tablet...$277.47 - #Tablet - https://t.co/E7JUMQ443U https://t.co/ImSAADGtoc
+2017-01-02 19:25:02,818  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo Yoga Multimode 10-inch Tablet...$277.47 - #Tablet - https://t.co/E7JUMQ443U https://t.co/O0x1xJIs2x
+2017-01-02 19:25:02,819  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: En @PanamericanaLib 20% de dcto en computador portátil Lenovo Idea de 13.3, adquiérelo en: https://t.co/UrkdPxY89a https://t.co/BOQxAHliIS
+2017-01-02 19:25:02,823  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: $200 off Lenovo Yoga 900 13 2 13.3" 2-in-1 Laptop https://t.co/9HbGs3b0gF #deals
+2017-01-02 19:25:02,823  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo Yoga Multimode 10-inch #Tablet...$277.47 - - https://t.co/E7JUMQ443U https://t.co/FTaD7KLfdt
+2017-01-02 19:25:02,824  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @TecnoLocura: Lenovo ZUK Edge, 6GB de RAM y 86% de pantalla https://t.co/bZRYjIoc3o
+2017-01-02 19:25:02,827  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Buy (IMPORT)-Lenovo A850+ 4GB (Black) https://t.co/hup1KXfpuS #kedah #penang
+2017-01-02 19:25:03,706  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #classifieds Lenovo yoga 900 https://t.co/EPVCehwSXT https://t.co/5ZBt3Tb6oM
+2017-01-02 19:25:04,743  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Moto G4 Play Vs Lenovo Vibe P1m Comparison.
+#Lenovo #Moto #motog4play https://t.co/eWVztnJJHK
+2017-01-02 19:25:04,744  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo Yoga Book review #TheVerge https://t.co/GvR2PiQrtx
+2017-01-02 19:25:04,745  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: --&gt; https://t.co/6FkjMPIQLm &lt;-- #Wakefield #sexdate upskirt #nude xxx #nudecam latex #kikswap interracial… https://t.co/YqZGveDRV5
+2017-01-02 19:25:04,745  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Moviles: Lenovo LEMON K3 5.0'' 4G SmartPhone Quad Core 16GB Android Móviles libres 2SIM https://t.co/2tQV51Avmy #dualsim #android
+2017-01-02 19:25:04,745  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Android Libre: Lenovo LEMON K3 5.0'' 4G SmartPhone Quad Core 16GB Android Móviles libres 2SIM https://t.co/KmrAVPKPnD #mejoresprecios
+2017-01-02 19:25:04,746  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #Superman #ClarkKent #BatmanvsSuperman
+ Superman Lenovo Case https://t.co/WwLuyrnYQA https://t.co/DTUSWI1dzR
+2017-01-02 19:25:05,901  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Servidores, Lenovo, HP, con multiples funcionalidades, RAM:4,8,16,32Gb,  ··-&gt; https://t.co/fOCSSmStkW . https://t.co/xPONHTAyaJ #Venezuela
+2017-01-02 19:25:05,903  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @plandecompra: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en: https://t.co/b…
+2017-01-02 19:25:05,904  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en:… https://t.co/iGSv3G4z9S
+2017-01-02 19:25:05,905  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @lenovo promo
+2017-01-02 19:25:05,906  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @clipset https://t.co/xin2RvcKNx Lenovo Moto Z (Play) + Mods Hasselblad, JBL, picoproyector review
+2017-01-02 19:25:06,993  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #HPStoreAlamedas - Montería | Tel: 785 1820 | Cel: 316 366 7945
+#HPStoreBarranquilla |Tel: 356 1883|Cel: 318 813 35… https://t.co/od5oIQDLhx
+2017-01-02 19:25:06,993  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 13.3" Lenovo Yoga Pad 2 Pro 2-in-1 20266 Ultrabook Convertible Laptop Tablet https://t.co/BWQeitBhgA #Laptop https://t.co/PAy4aEWSfC
+2017-01-02 19:25:06,994  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #Lenovo #Laptop  13.3" Lenovo Yoga Pad 2 Pro 2-in-1 20266 Ultrabook Convertible Laptop Tablet… https://t.co/ldo15XkIle
+2017-01-02 19:25:06,994  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #lenovo #yogabook vs #thinkpad Yoga 12 https://t.co/XiJC7ud57p
+2017-01-02 19:25:06,995  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: ¿Nos das un RT? #iphone #ipad #mac Lenovo desvela su smartphone flexible https://t.co/4ZE5vlRCaH
+2017-01-02 19:25:06,995  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo Yoga Tab 3 / 10.1″ Unbox en Español https://t.co/s5gDfJAJm4 #mobile
+2017-01-02 19:25:06,996  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #Win a @lenovo Yoga Book!
+ENTER: https://t.co/XI3LAGnbzR
+#giveaway #ces2017 #tech #technology #techswag #Techmas
+2017-01-02 19:25:06,997  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT gizlogic: #Oferta a la vista: portátil #Lenovo por menos de 300 euros https://t.co/hcKvySkyDU  #Amazon #Ofertas https://t.co/DceTLU4NRD
+2017-01-02 19:25:06,997  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #ThinkPad X1 Carbon https://t.co/173DHvfU4e
+2017-01-02 19:25:06,997  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @trkstr67: Lenovo Yoga Tablet 3 Review https://t.co/pfPH7JVV8q
+2017-01-02 19:25:06,998  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo Vibe K6 Plus — Aplicativos https://t.co/yn0i6XBkbc #mobile
+2017-01-02 19:25:06,999  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: x2 Lenovo Yoga 3 Pro 1370 2-in-1 Ultrabooks 13.3" Intel Core M 5Y70 PARTS/REPAIR https://t.co/vFso3SQEhE #Laptop https://t.co/w8UbMJIZAc
+2017-01-02 19:25:06,999  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #Lenovo #Laptop  x2 Lenovo Yoga 3 Pro 1370 2-in-1 Ultrabooks 13.3" Intel Core M 5Y70 PARTS/REPAIR… https://t.co/Es9lulg7lG
+2017-01-02 19:25:06,999  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @Hondo_L lenovo y700
+2017-01-02 19:25:07,000  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @leeminh87: #LeeMinHo #이민호 
+#lenovo_zuk  Edge L
+Cr.minoz_selene 💕 https://t.co/NWUCLaBKvV
+2017-01-02 19:25:07,001  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo IdeaPad110 15.6-Inch HD Laptop (Intel Celeron N3060 Dual-Core... - https://t.co/HzxmQlxwlX #Tech #Deals https://t.co/3k3WWftltY
+2017-01-02 19:25:08,256  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #LeeMinHo #이민호 
+#lenovo_zuk  Edge L
+Cr.minoz_selene 💕 https://t.co/NWUCLaBKvV
+2017-01-02 19:25:08,260  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Mira lo he encontrado. LENOVO A5600 MTK6735P Quad-core 5.5  HD Andriod 5.0 4G Móvil 8MP CAM 8GB ROM-NEW https://t.co/7XOuKUdwSn vía @eBayESP
+2017-01-02 19:25:08,261  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo Vibe K5 Note video https://t.co/k3fPh213q3 via @YouTube
+2017-01-02 19:25:08,262  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #Lenovo g565 bios dump https://t.co/phbxBVtRrs
+2017-01-02 19:25:08,262  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #win 3 Lenovo Yoga Books #giveaway https://t.co/pxPUnZ4dXl #contest #ContestAlert #Sweepstakes #SweepstakesEntry #sweeps #free
+2017-01-02 19:25:08,262  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #army asu builder lenovo pro laptop
+2017-01-02 19:25:08,262  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Android: 5.0" Lenovo 4G Smartphone Dual SIM Android 6.0.1 2GB+16GB WiFi GPS FM Teléfono https://t.co/VmjooswoOl #dualsim #android
+2017-01-02 19:25:08,263  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Dual Sim: 5.0" Lenovo 4G Smartphone Dual SIM Android 6.0.1 2GB+16GB WiFi GPS FM Teléfono https://t.co/pfBVH4tt34 #android #españa
+2017-01-02 19:25:08,263  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo 90Y8877 https://t.co/xlO8plmRbh #Lenovo
+2017-01-02 19:25:08,264  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @lenovo woww super 💛💛😍
+2017-01-02 19:25:08,264  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @Androidheadline Due to other chines company like Oppo, Vivo, Xiaomi, Lenovo etc.
+2017-01-02 19:25:08,265  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo Yoga Book - Complete Review - https://t.co/T6s9cpkPAg #GoogleAlerts
+2017-01-02 19:25:08,265  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: ¡Chollo! tablet Lenovo Tab3-850F 8'' WiFi 2GB Ram y 16Gb de almacenamiento 99€ #chollos #gangas #ofertas… https://t.co/bxp9xqrfbV
+2017-01-02 19:25:08,266  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: ¿Nos das un RT? #android Lenovo Vibe Z2: Análisis del phablet de Lenovo https://t.co/QaSJKfV6RU
+2017-01-02 19:25:08,266  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo's Yoga 910 convertible -- an impressive ultra-portable laptop https://t.co/IFqmXJyEow #yoga
+2017-01-02 19:25:08,267  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #deposition preparation video lenovo 20238
+2017-01-02 19:25:08,268  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Vuln: Lenovo Transition CVE-2016-8227 Local Privilege Escalation Vulnerability https://t.co/P6F9yONFpC #bugtraq
+2017-01-02 19:25:09,155  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #SecurityFocus Vuln: Lenovo Transition CVE-2016-8227 Local Privilege Escalation Vulnerability https://t.co/PIt0MJllGG
+2017-01-02 19:25:09,155  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Lenovo Inroduces Its New ThinkPad Yoga 370 https://t.co/h7qrTLjK4b Vía @itechPost https://t.co/xDMpAXw25A
+2017-01-02 19:25:09,156  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #vulnerability #security : Vuln: Lenovo Transition CVE-2016-8227 Local Privilege Escalation Vulnerability https://t.co/dbK7ukolbd
+2017-01-02 19:25:09,158  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: JaDines oh lenovo din to 👇🏼 #TIMYNewYear https://t.co/scqvFljnIf
+2017-01-02 19:25:09,158  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Lenovo Yoga Book – Complete Review https://t.co/xx96082qov #yoga
+2017-01-02 19:25:09,159  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @Fabled_Me Lenovo y700
+2017-01-02 19:25:09,159  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Lenovo Yoga Book - Complete Review
+#LenovoYogaBook #LenovoYogaBookReview #YogaBookReview
+https://t.co/Zf8KN6mDQB
+2017-01-02 19:25:09,159  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Lenovo Yoga Book - Complete Review
+#LenovoYogaBook #LenovoYogaBookReview #YogaBookReview
+https://t.co/OkKtB7yMan
+2017-01-02 19:25:09,160  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @cool_karz: Lenovo Yoga 910 Best Buy - Buy Lenovo Yoga 910 Convertible 2-in-1 Laptop: https://t.co/kA6kiiL5ax Len… https://t.co/NmybKudxQb
+2017-01-02 19:25:09,160  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Lenovo Ideapad G70-70 PC portable 17,3" Noir (Intel celeron, 4 Go de RAM, Dis https://t.co/wxMGGth9Uk #iphone, #ipad, #huawei, #smartphone
+2017-01-02 19:25:09,161  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Me ha gustado un vídeo de @YouTube de @historiasdemied (https://t.co/YCoaP9iyWO - UNBOXING Lenovo Tab 3 7 Essential).
+2017-01-02 19:25:09,162  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Buy (IMPORT)-Lenovo A850+ 4GB (Black) https://t.co/hup1KXfpuS #kedah #penang
+2017-01-02 19:25:09,163  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #computer tracks lenovo thinkpad quadro
+2017-01-02 19:25:09,164  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Geeklvl: Sorteamos un celular @lenovo Vibe K5! Participá en Facebook siguiendo este link https://t.co/ZmhxpP7Fin #Sorteo #Smartphone #L…
+2017-01-02 19:25:09,164  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @Allotta5 @MoonMeanderated Lenovo y-series
+2017-01-02 19:25:09,164  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @YosepAchmar: @IndosatCare bundle dengan Lenovo A6600 Plus https://t.co/LNnXuUz53j
+2017-01-02 19:25:09,165  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Geeklvl: Sorteamos un celular @lenovo Vibe K5! Participá en Facebook siguiendo este link https://t.co/ZmhxpP7Fin #Sorteo #Smartphone #L…
+2017-01-02 19:25:09,165  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Geeklvl: Sorteamos un celular @lenovo Vibe K5! Participá en Facebook siguiendo este link https://t.co/ZmhxpP7Fin #Sorteo #Smartphone #L…
+2017-01-02 19:25:09,165  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Geeklvl: Sorteamos un celular @lenovo Vibe K5! Participá en Facebook siguiendo este link https://t.co/ZmhxpP7Fin #Sorteo #Smartphone #L…
+2017-01-02 19:25:09,166  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Geeklvl: Sorteamos un celular @lenovo Vibe K5! Participá en Facebook siguiendo este link https://t.co/ZmhxpP7Fin #Sorteo #Smartphone #L…
+2017-01-02 19:25:09,166  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Geeklvl: Sorteamos un celular @lenovo Vibe K5! Participá en Facebook siguiendo este link https://t.co/ZmhxpP7Fin #Sorteo #Smartphone #L…
+2017-01-02 19:25:09,166  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Geeklvl: Sorteamos un celular @lenovo Vibe K5! Participá en Facebook siguiendo este link https://t.co/ZmhxpP7Fin #Sorteo #Smartphone #L…
+2017-01-02 19:25:09,166  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Geeklvl: Sorteamos un celular @lenovo Vibe K5! Participá en Facebook siguiendo este link https://t.co/ZmhxpP7Fin #Sorteo #Smartphone #L…
+2017-01-02 19:25:09,167  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @IndosatCare bundle dengan Lenovo A6600 Plus https://t.co/LNnXuUz53j
+2017-01-02 19:25:09,167  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Geeklvl: Sorteamos un celular @lenovo Vibe K5! Participá en Facebook siguiendo este link https://t.co/ZmhxpP7Fin #Sorteo #Smartphone #L…
+2017-01-02 19:25:10,155  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @Blogs_Android: Nueva Oferta Smartphone Lenovo ZUK Z2 https://t.co/RON3LdkKrY #apps4_droid
+2017-01-02 19:25:10,156  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @tecnobreakok: #TecnoBreak Lenovo Presenta Los Originales Moto Z y Moto Z Force https://t.co/rjD6IdByPj #motoz
+2017-01-02 19:25:10,158  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Nueva Oferta Smartphone Lenovo ZUK Z2 https://t.co/RON3LdkKrY #apps4_droid
+2017-01-02 19:25:10,159  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @apps4_droid: Nueva Oferta Smartphone Lenovo ZUK Z2 https://t.co/qXuULO4nyf https://t.co/8ostpJpJ4Z
+2017-01-02 19:25:10,160  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #free digital cable box lenovo a
+2017-01-02 19:25:11,084  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #manuscript editor lenovo laptops 2012
+2017-01-02 19:25:12,355  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #OFERTA #Moviles #1: Lenovo Moto G4 - Smartphone libre Android 6 (pantalla de 5.5'' Full HD, 4G, cámara de 13 M... https://t.co/uB5n8RnQj1
+2017-01-02 19:25:12,355  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #classroom real estate courses california lenovo 260
+2017-01-02 19:25:12,356  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #OFERTA #Moviles #2: Lenovo Moto G4 - Smartphone libre Android 6 (pantalla de 5.5'' Full HD, 4G, cámara de 13 M... https://t.co/oIfqqihaUI
+2017-01-02 19:25:13,417  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #OFERTA #Moviles #3: Lenovo Moto G4 - Smartphone libre Android 6 (pantalla de 5.5'' Full HD, 4G, cámara de 13 M... https://t.co/XOr2zPAaLe
+2017-01-02 19:25:13,417  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #good to go bellevue lenovo authorized service center
+2017-01-02 19:25:13,418  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #franchised auto dealer lenovo blogs
+2017-01-02 19:25:13,419  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #new medical devices 2014 lenovo c20 drivers
+2017-01-02 19:25:22,089  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #vulnerability #security : Vuln: Lenovo Transition CVE-2016-8227 Local Privilege Escalation Vulnerability https://t.co/dbK7ukolbd
+2017-01-02 19:25:23,716  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo Yoga Tab 3 Pro Specification #news #RecentHacks https://t.co/jwkejLi9Ka
+2017-01-02 19:25:23,717  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #flower delivery san luis obispo ca lenovo laptop manual
+2017-01-02 19:25:24,648  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #OFERTA #Moviles #1: Lenovo Moto G4 - Smartphone libre Android 6 (pantalla de 5.5'' Full HD, 4G, cámara de 13 M... https://t.co/uB5n8RnQj1
+2017-01-02 19:25:24,648  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #classroom real estate courses california lenovo 260
+2017-01-02 19:25:24,649  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #OFERTA #Moviles #2: Lenovo Moto G4 - Smartphone libre Android 6 (pantalla de 5.5'' Full HD, 4G, cámara de 13 M... https://t.co/oIfqqihaUI
+2017-01-02 19:25:25,593  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #OFERTA #Moviles #3: Lenovo Moto G4 - Smartphone libre Android 6 (pantalla de 5.5'' Full HD, 4G, cámara de 13 M... https://t.co/XOr2zPAaLe
+2017-01-02 19:25:25,594  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #good to go bellevue lenovo authorized service center
+2017-01-02 19:25:25,595  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #weight loss infomercials lenovo 260
+2017-01-02 19:25:30,457  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @plandecompra: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en: https://t.co/b…
+2017-01-02 19:25:30,457  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en:… https://t.co/iGSv3G4z9S
+2017-01-02 19:25:32,497  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #army asu builder lenovo pro laptop
+2017-01-02 19:25:35,274  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @addneywhite: WAOWW!! %32 SALE Lenovo  Tablet https://t.co/pJrWNesUsE
+2017-01-02 19:25:38,125  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: &gt;&gt;&gt; https://t.co/6FkjMPIQLm &lt;&lt;&lt; #StDavids #adultwork boobs #gaping lesbian #chatroom lesbian #snapchatme panties… https://t.co/528tuA6QMl
+2017-01-02 19:25:39,170  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: En @PanamericanaLib 20% de dcto en computador portátil Lenovo Idea de 13.3, adquiérelo en: https://t.co/UrkdPxY89a https://t.co/BOQxAHliIS
+2017-01-02 19:25:41,094  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: --&gt; https://t.co/6FkjMPIQLm &lt;-- #Wakefield #sexdate upskirt #nude xxx #nudecam latex #kikswap interracial… https://t.co/YqZGveDRV5
+2017-01-02 19:25:42,194  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @plandecompra: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en: https://t.co/b…
+2017-01-02 19:25:42,194  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en:… https://t.co/iGSv3G4z9S
+2017-01-02 19:25:47,169  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #manuscript editor lenovo laptops 2012
+2017-01-02 19:25:48,169  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #financial due diligence lenovo c30 manual
+2017-01-02 19:25:48,170  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #classroom real estate courses california lenovo 260
+2017-01-02 19:25:49,445  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #good to go bellevue lenovo authorized service center
+2017-01-02 19:25:49,445  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: &gt;&gt;&gt; https://t.co/6FkjMPIQLm &lt;&lt;&lt; #London #flirting nudity #pornstar interracial #chaturbate interracial #kikswap wif… https://t.co/kRAbeSo4OL
+2017-01-02 19:25:49,446  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #franchised auto dealer lenovo blogs
+2017-01-02 19:25:49,446  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #new medical devices 2014 lenovo c20 drivers
+2017-01-02 19:25:49,447  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #weight loss infomercials lenovo 260
+2017-01-02 19:25:51,478  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: En @PanamericanaLib 20% de dcto en computador portátil Lenovo Idea de 13.3, adquiérelo en: https://t.co/UrkdPxY89a https://t.co/BOQxAHliIS
+2017-01-02 19:25:54,815  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @plandecompra: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en: https://t.co/b…
+2017-01-02 19:25:54,816  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en:… https://t.co/iGSv3G4z9S
+2017-01-02 19:25:56,074  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo IdeaPad110 15.6-Inch HD Laptop (Intel Celeron N3060 Dual-Core... - https://t.co/HzxmQlxwlX #Tech #Deals https://t.co/3k3WWftltY
+2017-01-02 19:25:58,202  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo Yoga Book - Complete Review
+#LenovoYogaBook #LenovoYogaBookReview #YogaBookReview
+https://t.co/OkKtB7yMan
+2017-01-02 19:26:02,129  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #weight loss infomercials lenovo 260
+2017-01-02 19:26:04,374  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: En @PanamericanaLib 20% de dcto en computador portátil Lenovo Idea de 13.3, adquiérelo en: https://t.co/UrkdPxY89a https://t.co/BOQxAHliIS
+2017-01-02 19:26:06,334  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Lenovo Yoga Book review #TheVerge https://t.co/GvR2PiQrtx
+2017-01-02 19:26:07,633  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @plandecompra: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en: https://t.co/b…
+2017-01-02 19:26:07,633  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en:… https://t.co/iGSv3G4z9S
+2017-01-02 19:26:08,491  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lenovo IdeaPad110 15.6-Inch HD Laptop (Intel Celeron N3060 Dual-Core... - https://t.co/HzxmQlxwlX #Tech #Deals https://t.co/3k3WWftltY
+2017-01-02 19:26:12,282  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #leia endor blaster buy lenovo ultrabook
+2017-01-02 19:26:12,283  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #flower delivery san luis obispo ca lenovo laptop manual
+2017-01-02 19:26:13,225  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #wp_Laptops Lenovo Yoga Book Review https://t.co/sW9okWuzeL
+2017-01-02 19:26:13,226  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #classroom real estate courses california lenovo 260
+2017-01-02 19:26:16,314  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: En @PanamericanaLib 20% de dcto en computador portátil Lenovo Idea de 13.3, adquiérelo en: https://t.co/UrkdPxY89a https://t.co/BOQxAHliIS
+2017-01-02 19:26:19,465  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @plandecompra: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en: https://t.co/b…
+2017-01-02 19:26:19,466  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en:… https://t.co/iGSv3G4z9S
+2017-01-02 19:26:24,126  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @addneywhite: WAOWW!! %32 SALE Lenovo  Tablet https://t.co/pJrWNesUsE
+2017-01-02 19:26:24,126  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #flower delivery san luis obispo ca lenovo laptop manual
+2017-01-02 19:26:24,127  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #manuscript editor lenovo laptops 2012
+2017-01-02 19:26:25,165  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #wp_Laptops Lenovo Yoga Book Review https://t.co/sW9okWuzeL
+2017-01-02 19:26:26,276  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #good to go bellevue lenovo authorized service center
+2017-01-02 19:26:26,277  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #franchised auto dealer lenovo blogs
+2017-01-02 19:26:26,277  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #new medical devices 2014 lenovo c20 drivers
+2017-01-02 19:26:26,278  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #weight loss infomercials lenovo 260
+2017-01-02 19:26:28,452  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: En @PanamericanaLib 20% de dcto en computador portátil Lenovo Idea de 13.3, adquiérelo en: https://t.co/UrkdPxY89a https://t.co/BOQxAHliIS
+2017-01-02 19:26:32,144  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @plandecompra: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en: https://t.co/b…
+2017-01-02 19:26:32,145  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en:… https://t.co/iGSv3G4z9S
+2017-01-02 19:26:34,436  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #army asu builder lenovo pro laptop
+2017-01-02 19:26:37,635  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @addneywhite: WAOWW!! %32 SALE Lenovo  Tablet https://t.co/pJrWNesUsE
+2017-01-02 19:26:37,635  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @addneywhite: WAOWW!! %32 SALE Lenovo  Tablet https://t.co/pJrWNesUsE
+2017-01-02 19:26:37,636  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo Yoga 500-14IBD - Portátil táctil de 14" HD (Intel Cor 513.14€ -14% https://t.co/E73AgczKiN #ldo https://t.co/YXLjlXD0fG
+2017-01-02 19:26:37,636  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #oferta Lenovo Yoga 500-14IBD - Portátil táctil de 14" HD (Intel Core 513.14€ -14% #descuento… https://t.co/LZYTWavdm7
+2017-01-02 19:26:38,691  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #financial due diligence lenovo c30 manual
+2017-01-02 19:26:38,692  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #classroom real estate courses california lenovo 260
+2017-01-02 19:26:39,780  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @RpwKyahke lenovo la baz
+2017-01-02 19:26:41,139  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Lenovo Yoga 500-14IBD - Portátil táctil de 14" HD (Intel Cor 513.14€ -14% https://t.co/E73AgczKiN #ldo https://t.co/DyPl6wuj0u
+2017-01-02 19:26:41,139  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #oferta Lenovo Yoga 500-14IBD - Portátil táctil de 14" HD (Intel Core 513.14€ -14% #descuento… https://t.co/6tkZN9bZMx
+2017-01-02 19:26:42,370  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: En @PanamericanaLib 20% de dcto en computador portátil Lenovo Idea de 13.3, adquiérelo en: https://t.co/UrkdPxY89a https://t.co/BOQxAHliIS
+2017-01-02 19:26:45,227  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @plandecompra: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en: https://t.co/b…
+2017-01-02 19:26:45,228  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en:… https://t.co/iGSv3G4z9S
+2017-01-02 19:26:48,788  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: JaDines oh lenovo din to 👇🏼 #TIMYNewYear https://t.co/scqvFljnIf
+2017-01-02 19:26:51,673  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #classroom real estate courses california lenovo 260
+2017-01-02 19:26:52,781  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #weight loss infomercials lenovo 260
+2017-01-02 19:26:54,659  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: En @PanamericanaLib 20% de dcto en computador portátil Lenovo Idea de 13.3, adquiérelo en: https://t.co/UrkdPxY89a https://t.co/BOQxAHliIS
+2017-01-02 19:26:56,658  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo Yoga Book review #TheVerge https://t.co/GvR2PiQrtx
+2017-01-02 19:26:57,775  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @plandecompra: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en: https://t.co/b…
+2017-01-02 19:26:57,776  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: En @PanamericanaLib computador portátil convertible de 10.1” Touch Lenovo, con 20% de dcto, adquiérelo en:… https://t.co/iGSv3G4z9S
+2017-01-02 19:27:00,080  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @lenovo woww super 💛💛😍
+2017-01-02 19:27:03,089  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #manuscript editor lenovo laptops 2012
+2017-01-02 19:27:04,374  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #wp_Laptops Lenovo Yoga Book Review https://t.co/sW9okWuzeL
+2017-01-02 19:27:04,375  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #financial due diligence lenovo c30 manual
+2017-01-02 19:27:05,471  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #good to go bellevue lenovo authorized service center
+2017-01-02 19:27:05,472  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #franchised auto dealer lenovo blogs
+2017-01-02 19:27:05,472  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #new medical devices 2014 lenovo c20 drivers
+2017-01-02 19:27:09,900  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Moto G4 Play Vs Lenovo Vibe P1m Comparison.
+#Lenovo #Moto #motog4play https://t.co/eWVztnJJHK
+2017-01-02 19:27:13,043  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Lenovo 90Y8877 https://t.co/xlO8plmRbh #Lenovo
+2017-01-02 19:27:16,195  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #leia endor blaster buy lenovo ultrabook
+2017-01-02 19:27:16,196  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #flower delivery san luis obispo ca lenovo laptop manual
+2017-01-02 19:27:17,382  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #classroom real estate courses california lenovo 260
+2017-01-02 19:27:18,743  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #weight loss infomercials lenovo 260
+2017-01-02 19:27:28,684  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: JaDines oh lenovo din to 👇🏼 #TIMYNewYear https://t.co/scqvFljnIf
+2017-01-02 19:27:30,692  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #manuscript editor lenovo laptops 2012
+2017-01-02 19:27:31,958  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #wp_Laptops Lenovo Yoga Book Review https://t.co/sW9okWuzeL
+2017-01-02 19:27:32,937  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #good to go bellevue lenovo authorized service center
+2017-01-02 19:27:32,938  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @RpwKyahke lenovo la baz
+2017-01-02 19:27:32,938  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #franchised auto dealer lenovo blogs
+2017-01-02 19:27:32,939  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #new medical devices 2014 lenovo c20 drivers
+2017-01-02 19:27:32,939  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #weight loss infomercials lenovo 260
+2017-01-02 19:27:35,055  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @TecnoLocura: Lenovo ZUK Edge, 6GB de RAM y 86% de pantalla https://t.co/bZRYjIoc3o
+2017-01-02 19:27:40,013  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #army asu builder lenovo pro laptop
+2017-01-02 19:27:43,805  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #financial due diligence lenovo c30 manual
+2017-01-02 19:27:43,805  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #classroom real estate courses california lenovo 260
+2017-01-02 19:27:47,047  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @TecnoLocura: Lenovo ZUK Edge, 6GB de RAM y 86% de pantalla https://t.co/bZRYjIoc3o
+2017-01-02 19:27:47,047  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @TecnoLocura: Lenovo ZUK Edge, 6GB de RAM y 86% de pantalla https://t.co/bZRYjIoc3o
+2017-01-02 19:34:21,105  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Nokia Hits Apple With Patent Suits | EE Times https://t.co/KxrJchiETr vía @eetimes
+2017-01-02 19:34:21,107  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #Sale https://t.co/2ROM2f39AD #Apple MacBook #Pro Late #2016 #Silver #mit #Touch #Bar 512 #GB https://t.co/XkaEP2o7rB
+2017-01-02 19:34:21,117  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Gostei de um vídeo @YouTube https://t.co/W1QXIOwvjY - PPAP (Pen Pineapple Apple Pen) (Long Version) [Official Video]
+2017-01-02 19:34:21,122  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #NP @djstaxx303 - 2HR CUMBIA MIX https://t.co/FC90xtT29V https://t.co/MpwriDV0n5
+2017-01-02 19:34:21,123  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @SoydeMac: Apple y sus equipos Mac en 2017 - https://t.co/LibOVRCtxu #Apple https://t.co/rCQX6wuQg0
+2017-01-02 19:34:21,123  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @applesencia: Apple reduce la producción del iPhone 7 https://t.co/BlxLBbPAXi
+2017-01-02 19:34:21,124  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @Apple_Head94 SaDIOS.
+2017-01-02 19:34:21,125  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Mi El deseado pez caminador:) 
+#abyssrium
+Download: https://t.co/5nvf01rL5l https://t.co/bHs1ReiJmU
+2017-01-02 19:34:21,127  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Video Curso Domina Tu Iphone Ipad Secretos De Ios6 Moviles Apple https://t.co/WIRUU5eg5l #CursosShavall https://t.co/Lq2jwXv84P
+2017-01-02 19:34:21,130  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: vamo votar no austin  https://t.co/GXtrFvhiig by Austin Mahone #Finally2A17MahomiesParty https://t.co/lkKCU5wD2V
+2017-01-02 19:34:21,131  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #Origami disponible en #ITunes https://t.co/thigqQdW4W
+2017-01-02 19:34:21,132  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Como traducir una web en Safari desde tu iPad o iPhone - https://t.co/qXAzh0wIDA #iPhone
+2017-01-02 19:34:21,132  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Apple reduce la producción del iPhone 7 - https://t.co/wCN0G3pLGX #iPhone
+2017-01-02 19:34:21,133  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Apple iPad 2 16GB, Wi-Fi, 9.7in - White (MC979C/A)  Compra y Envia con #ferisacorp https://t.co/8Wo1Q5wZMM https://t.co/MymFCIiHFe
+2017-01-02 19:34:21,134  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #SkinProtector #Skin #Smarthphone ,protección para #iPhone5s #iPhone #Apple #AppleFan #FibraDeCarbono wst:0986642306 https://t.co/xud9m6QouJ
+2017-01-02 19:34:21,139  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Spotify vs Apple Music https://t.co/oRGIafEX0u vía @MoodGeek
+2017-01-02 19:34:21,139  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Spotify vs Apple Music https://t.co/8fOYLSMeZr vía @MoodGeek
+2017-01-02 19:34:21,140  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Spotify vs Apple Music https://t.co/1rtq1jGsYO vía @MoodGeek
+2017-01-02 19:34:21,140  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Spotify vs Apple Music https://t.co/IRoTTdG8J3 vía @MoodGeek
+2017-01-02 19:34:22,316  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Spotify vs Apple Music https://t.co/K6U7rlbisi vía @MoodGeek
+2017-01-02 19:34:22,316  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Spotify vs Apple Music https://t.co/aD4ImEcrbM vía @MoodGeek
+2017-01-02 19:34:22,317  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Spotify vs Apple Music https://t.co/4WXC0EBkOo vía @MoodGeek
+2017-01-02 19:34:22,317  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Spotify vs Apple Music https://t.co/rwbytHFY08 vía @MoodGeek
+2017-01-02 19:34:22,321  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Mi El deseado pez caminador:) 
+#abyssrium
+Download: https://t.co/iJlxTR1wkn https://t.co/3GhZor864t
+2017-01-02 19:34:22,321  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Apple reduce la producción del iPhone 7 https://t.co/G9aDtWOghz #Apple
+2017-01-02 19:34:22,323  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Touch Bar, lo nuevo del iPhone 8 @mundodeportivo https://t.co/wq5bSz634s
+2017-01-02 19:34:22,324  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Novidade chegando: iOS 10.3 trará modo especial para uso de iPhones dentro dos cinemas https://t.co/n7gHlerfoc via @tudo_celular
+2017-01-02 19:34:22,327  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @_jcnieves: @_jcnieves 
+Disponible para iOS https://t.co/nZqykrnwAg
+
+Disponible para Android https://t.co/LYtMxaWt3H
+2017-01-02 19:34:22,328  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: ¡Qué lindo! #KleptoCats #Android https://t.co/XiFDzXudfX https://t.co/8O8zOnyW41
+2017-01-02 19:34:22,328  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @melanielynnmarx Prisma https://t.co/IiDolL9NKZ
+2017-01-02 19:34:22,329  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Mi Gobio de Bandas Naranjas:) 
+#abyssrium
+Download: https://t.co/Ngqk6vINWe https://t.co/tGNhCjrYI8
+2017-01-02 19:34:22,335  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: El “modo teatro” o “modo oscuro” llegará con iOS 10.3 https://t.co/uFSEznjXcQ #iPhone #Apple
+2017-01-02 19:34:22,336  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Apple iPhone 6s Plus 64GB 4... de #apple ha bajado 126,59€, ahora por 777,00€ #oferta https://t.co/dOygXjSVck https://t.co/vcd25b51QE
+2017-01-02 19:34:25,390  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Apple iPad 2 16GB, Wi-Fi, 9.7in - White (MC979C/A)  Compra y Envia con #ferisacorp https://t.co/8Wo1Q5wZMM https://t.co/MymFCIiHFe
+2017-01-02 19:34:38,471  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Disponible  #MeteySácala #Single de @EbonyVoice El Duque de la Salsa Ft @sitodiazdj  en @iTunes https://t.co/JEiUkxokCA #felizsemana
+2017-01-02 19:34:43,186  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: vamo votar no austin  https://t.co/GXtrFvhiig by Austin Mahone #Finally2A17MahomiesParty https://t.co/lkKCU5wD2V
+2017-01-02 19:34:49,898  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: vamo votar no austin  https://t.co/GXtrFvhiig by Austin Mahone #Finally2A17MahomiesParty https://t.co/lkKCU5wD2V
+2017-01-02 19:34:52,115  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @SoydeMac: Apple y sus equipos Mac en 2017 - https://t.co/LibOVRCtxu #Apple https://t.co/rCQX6wuQg0
+2017-01-02 19:34:52,115  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @Apple_Head94 SaDIOS.
+2017-01-02 19:34:54,434  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #Origami disponible en #ITunes https://t.co/thigqQdW4W
+2017-01-02 19:35:16,118  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: vamo votar no austin  https://t.co/GXtrFvhiig by Austin Mahone #Finally2A17MahomiesParty https://t.co/lkKCU5wD2V
+2017-01-02 19:35:18,226  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #Origami disponible en #ITunes https://t.co/thigqQdW4W
+2017-01-02 19:35:22,293  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: vamo votar no austin  https://t.co/GXtrFvhiig by Austin Mahone #Finally2A17MahomiesParty https://t.co/lkKCU5wD2V
+2017-01-02 19:35:24,275  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: vamo votar no austin  https://t.co/GXtrFvhiig by Austin Mahone #Finally2A17MahomiesParty https://t.co/lkKCU5wD2V
+2017-01-02 19:35:26,507  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: vamo votar no austin  https://t.co/GXtrFvhiig by Austin Mahone #Finally2A17MahomiesParty https://t.co/lkKCU5wD2V
+2017-01-02 19:35:33,080  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: vamo votar no austin  https://t.co/GXtrFvhiig by Austin Mahone #Finally2A17MahomiesParty https://t.co/lkKCU5wD2V
+2017-01-02 19:35:59,175  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: vamo votar no austin  https://t.co/GXtrFvhiig by Austin Mahone #Finally2A17MahomiesParty https://t.co/lkKCU5wD2V
+2017-01-02 19:36:02,905  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @rafahg Rafa&amp;Co
+#nowplaying 
+https://t.co/dghsyB6Dud https://t.co/dghsyB6Dud
+2017-01-02 19:36:02,905  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: https://t.co/dTyPQ5T4Lb @azukar04 @Only_Jessi @ColochaRuns @Fernanda0503  #FelizLunes #VintageGroup besos y abrazos https://t.co/dTyPQ5T4Lb
+2017-01-02 19:36:02,906  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @isa_marcial https://t.co/erIEhlsWg8 iPhone 7 vs Galaxy S7 ¿Samsung o Apple?
+2017-01-02 19:36:02,907  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @ulrikkefalch: @beautyyliars bonjour muchos gracias guacamole
+2017-01-02 19:36:02,908  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: (= (@ Hacienda Sotuta de Peon in Kanasín Municipality, Yucatan w/ @apple_limon) https://t.co/65UO3BmY5x
+2017-01-02 19:36:02,908  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @_jcnieves 
+Disponible para iOS https://t.co/nZqykrnwAg
+
+Disponible para Android https://t.co/LYtMxaWt3H
+2017-01-02 19:36:02,910  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #Track #TopMusicUK More Than Amigos - Jesse &amp; Joy: More Than Amigos Un Besito Más Jesse… https://t.co/i7Qqx5Zc1f #TopLatin #iTunes #Britain
+2017-01-02 19:36:02,910  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Apple bajara producción https://t.co/TIKEr2bM07 via @bandadegeek
+2017-01-02 19:36:02,911  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Mi Gobio Dardo de Fuego:) 
+#abyssrium
+Download: https://t.co/Cs9vRq95lb https://t.co/jCeopaGsNc
+2017-01-02 19:36:02,911  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Amor, Erotismo e Intimidad - Audiolibro #iTunes #CostaRica https://t.co/QVrA4tuwmk
+2017-01-02 19:36:04,568  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @sjfostersound: Favorite retro Macintosh game? #gamedev #retrogaming #mac #apple #gamer #computers #macintosh
+2017-01-02 19:36:04,569  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: https://t.co/d0WkX0FQLc Avete perso l’iPhone? Colpa del vostro subconscio #apple #appstore #iphone
+2017-01-02 19:36:04,569  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #nowplaying MAVADO - TRUE https://t.co/EkrKDLZ6jc #Reggae
+2017-01-02 19:36:04,569  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Historias que inspiran. #ebook #stevejobs #apple #pixar https://t.co/3pDN0UegVF
+2017-01-02 19:36:04,574  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Ayúdanos a crecer!!! #Retwitteando #Sticker para #Macbook #Apple #AppleFan wst: 0986642306 https://t.co/8xltx5O0dw
+2017-01-02 19:36:04,575  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @SomosApple: Qualcomm pudiera anunciar el procesador Snapdragon 835 en CES https://t.co/kk2G7vJupX #Apple
+2017-01-02 19:36:04,576  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Eric Chacón - Choroni - https://t.co/pwwCS52Kqo #iTunes @ericchaconflute
+2017-01-02 19:36:04,577  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #nowplaying So Many Details - Toro Y Moi in UBiO https://t.co/M69yIkFPns https://t.co/WbXLhmTfkS
+2017-01-02 19:36:04,580  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Las mejores Apps de Apple en 2016 #infografia #infographic  https://t.co/R44uMmnW57 …https://t.co/24YO2TN8L1 https://t.co/nSdUhpnmmV
+2017-01-02 19:36:06,236  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Apple bajara producción https://t.co/LTz0FOyqyR #tecnologia #Android #IOS bandageek
+2017-01-02 19:36:06,239  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: M'ha agradat un vídeo de @YouTube de @clipset https://t.co/VBTnJ1Psr9 Apple iPhone 6S unboxing en español
+2017-01-02 19:36:06,240  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Lee Espacio Informativo de Jorvani ▸ #apple #eldato https://t.co/uvpVrJDXJE
+2017-01-02 19:36:06,240  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @todo_iphone_: ¿Nos das un RT? #iphone #ipad #mac Apple empiza a aceptar móviles Android y Windows Phone en su... https://t.co/moi075454…
+2017-01-02 19:36:06,242  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #uxjobs Sr User Interface/Visual Designer - Apple - Santa Clara Valley, CA  https://t.co/twyGw82jv2  https://t.co/xktzylMSdu
+2017-01-02 19:36:06,242  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Pikotaro no ha pensando que pen-apple-pineapple-pen es un palíndromo? #pen #pineapple  #Apple #Pen PPAP
+2017-01-02 19:36:06,244  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Mi Pez Ángel Emperador:) 
+#abyssrium
+Download: https://t.co/tlYizpZmCi https://t.co/w6qFbpKGaM
+2017-01-02 19:36:06,245  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: [Wallmart] Cabo USB para iPhone ONN Cinza Espacial Licenciado Apple 90 cm (R$ 39,90) https://t.co/b7skO6rvLR #Walmart_BR #descontos
+2017-01-02 19:36:06,246  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: TAMBIÉN: ALSO, TOO #palabra #spanish #learning #word  https://t.co/NJoSGaaeLt https://t.co/lMOMxvgJKN
+2017-01-02 19:36:07,863  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @Libromovil: Audiocuentos Hindúes para Reflexionar #iTunes #Panama https://t.co/OOaXtO89iF
+2017-01-02 19:36:07,864  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @Fnac_ESP Apple iPad Mini 4 32GB WIFI plata en Fnac.es #queridofnac https://t.co/O91xuQj7pR
+2017-01-02 19:36:07,864  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Naciendo
+
+ #picoftheday #picofflower #flower #apple #pink #nature #tree #season #winter #moment… https://t.co/j7ywg3f0xU
+2017-01-02 19:36:07,868  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Mantenimiento preventivo y correctivo 💻
+
+#apple #mac #macbookpro #macbookair #retina #imac #osx #osxsierra... https://t.co/LvbN50EbmH
+2017-01-02 19:36:07,869  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Mantenimiento preventivo y correctivo 💻
+
+#apple #mac #macbookpro #macbookair #retina #imac #osx #osxsierra... https://t.co/9Jt3tWHTb4
+2017-01-02 19:36:07,869  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #uxjobs Sr User Interface/Visual Designer - Apple - Santa Clara Valley, CA https://t.co/wMgEMrJtpt
+2017-01-02 19:36:07,870  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: FlexiHub Gestiona Dispositivos USB de Forma Remota https://t.co/Jy3q8Oti51 …
+#FlexiHub #macos #macosx #gestionadispositivosUSB
+2017-01-02 19:36:09,381  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #ReporteTech | Apple recortará producción de iPhone en 2017. https://t.co/gXnAR7UkEq
+2017-01-02 19:36:09,382  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Te invitamos a q descargues #RocknRoll #EspacioyTiempo d @bandalos4ngeles en @iTunes @itunesfestival… https://t.co/ErU0MwaDIb
+2017-01-02 19:36:09,382  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Apple iPad 2 16gb #AlexJones https://t.co/jSO4Qj69Dg https://t.co/KlvgbTipRi
+2017-01-02 19:36:09,383  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #Escuchas a Rigo Tovar - Mi derrota en https://t.co/puTHPTiamL  iPhone/App https://t.co/uXt2ZieOnI  #Rancheras #VivaElMariachiRadio
+2017-01-02 19:36:09,384  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Check out ADAPTADOR CONVERTIDOR MICRO USB (H) A USB-C (M) PARA APPLE MACBOOK 12" - BLANCO  https://t.co/O3K7H1JAgl via @eBay
+2017-01-02 19:36:09,384  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: PPAP - Pen Pineapple Apple Pen (Trap Remix) https://t.co/feqtlcpEmw vía @YouTube
+2017-01-02 19:36:09,384  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Los Caballeros Templarios - AudioEbook #iTunes #CostaRica https://t.co/LnT40inN8B
+2017-01-02 19:36:09,385  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Cargador Para Apple Macbook Pro Magsafe 85w, Cargadores Apple Macbook Pro Magsafe 85w (Reempla -··▶ https://t.co/xGwWQJt0Ez - #Venezuela
+2017-01-02 19:36:09,385  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @iPh0neP0wer: "El iPhone heredaría la corona digital del Apple Watch" https://t.co/xMyCeNj6aK #Apple #iPhone
+2017-01-02 19:36:09,385  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #Escuchas a Trío Calaveras - Tu Enamorado en https://t.co/puTHPTiamL  iPhone/App https://t.co/uXt2ZieOnI  #Rancheras #VivaElMariachiRadio
+2017-01-02 19:36:09,386  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Cumbres Borrascosas. #Spain #AudioLibro #iTunes https://t.co/zygfu6gVDC
+2017-01-02 19:36:09,386  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @LearnWus: Configurando las nuevas #tablet #learnwus #apple #lenovo https://t.co/Y5wlBY3p2G
+2017-01-02 19:36:09,386  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @The_Malaika: #21stHapilos #NewMusic Maestro Don - Burial - Single - https://t.co/ymxVNdgmZN #iTunes @spitfiyahfilms @JWONDER21 @21sthap…
+2017-01-02 19:36:09,387  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @SoydeMac: Apple y sus equipos Mac en 2017 - https://t.co/LibOVRCtxu #Apple https://t.co/rCQX6wuQg0
+2017-01-02 19:36:09,388  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Apple recortará producción de Iphone &gt;&gt;&gt; https://t.co/NWKOJaIOsB #Tecnología
+2017-01-02 19:36:09,388  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Apple recortará producción de Iphone &gt;&gt;&gt; https://t.co/VYlTpKdR7H #Tecnología
+2017-01-02 19:36:09,388  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Apple recortará producción de Iphone &gt;&gt;&gt; https://t.co/fcsgzEYjEB #Tecnología
+2017-01-02 19:36:09,389  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @verano_guru: ¡Recibí el #AñoNuevo en la playa! @verano_guru te da las mejores opciones. 
+📲
+Android&gt;https://t.co/N7GdaRcIBm
+iOs&gt;https://…
+2017-01-02 19:36:09,390  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @verano_guru: ¡Recibí el #AñoNuevo en la playa! @verano_guru te da las mejores opciones. 
+📲
+Android&gt;https://t.co/N7GdaRcIBm
+iOs&gt;https://…
+2017-01-02 19:36:09,391  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @juanaballe: Alguien que use Mirror Link, Android Auto o Apple Car Play para pequeña investigación UX? Any help welcome :-)
+2017-01-02 19:36:10,925  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: IQ Test Pro Edition $2.99 &gt;&gt; Free https://t.co/1szQhXFDnV #mwokazje
+2017-01-02 19:36:10,928  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Apple cuts iPhone production by 10 percent this quarter #Apps #Appstore #Iphone https://t.co/H4OEZCoM39 Vía WallerIra
+2017-01-02 19:36:10,929  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #iphone #style #giftcard #newdeals #win #santa #christmas #blackfriday Universal 2 in 1… https://t.co/a68xSbi3Si https://t.co/j9QSvE0wOM
+2017-01-02 19:36:10,929  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #iphone #style #giftcard #newdeals #win #santa #christmas #blackfriday Universal 2 in 1… https://t.co/a68xSbi3Si https://t.co/j9QSvE0wOM
+2017-01-02 19:36:10,930  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #iphone #style #giftcard #newdeals #win #santa #christmas #blackfriday Universal 2 in 1… https://t.co/uGJF9OUfZM https://t.co/iEGL70QUml
+2017-01-02 19:36:10,930  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #iphone #style #giftcard #newdeals #win #santa #christmas #blackfriday Universal 2 in 1… https://t.co/ntrd8nZLGO https://t.co/qqv6BZ7Skb
+2017-01-02 19:36:10,931  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #iphone #style #giftcard #newdeals #win #santa #christmas #blackfriday Universal 2 in 1… https://t.co/g5Lc6DP5Ie https://t.co/4YxRHGJ90U
+2017-01-02 19:36:10,931  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #iphone #style #giftcard #newdeals #win #santa #christmas #blackfriday Universal 2 in 1… https://t.co/r1789uzEWU https://t.co/W2FDYZnjhh
+2017-01-02 19:36:10,931  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #iphone #style #giftcard #newdeals #win #santa #christmas #blackfriday Universal 2 in 1… https://t.co/QgZakZb0CT https://t.co/2pVHuswOlL
+2017-01-02 19:36:10,932  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #iphone #style #giftcard #newdeals #win #santa #christmas #blackfriday Universal 2 in 1… https://t.co/asTAXPs7ls https://t.co/Il6A5McelY
+2017-01-02 19:36:10,932  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #iphone #style #giftcard #newdeals #win #santa #christmas #blackfriday Universal 2 in 1… https://t.co/r8CbXk6TcB https://t.co/IPYr2doGjI
+2017-01-02 19:36:10,932  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #iphone #style #giftcard #newdeals #win #santa #christmas #blackfriday Universal 2 in 1… https://t.co/HCXHzR4cWN https://t.co/TZgTqMbp8o
+2017-01-02 19:36:10,932  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #iphone #style #giftcard #newdeals #win #santa #christmas #blackfriday Universal 2 in 1… https://t.co/fUHSCKQe8W https://t.co/eVvJnvHOkL
+2017-01-02 19:36:10,933  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #iphone #style #giftcard #newdeals #win #santa #christmas #blackfriday Universal 2 in 1… https://t.co/6XHvnt9UkP https://t.co/TFpcUB7Ohd
+2017-01-02 19:36:10,933  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #iphone #style #giftcard #newdeals #win #santa #christmas #blackfriday Universal 2 in 1… https://t.co/vmvLMQR7jf https://t.co/35RTKQ94uW
+2017-01-02 19:36:10,933  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #iphone #style #giftcard #newdeals #win #santa #christmas #blackfriday Universal 2 in 1… https://t.co/dU4UcDaqXT https://t.co/ggLQ9LJWOl
+2017-01-02 19:36:10,934  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #iphone #style #giftcard #newdeals #win #santa #christmas #blackfriday Universal 2 in 1… https://t.co/ULPjNpgJ6t https://t.co/uQXIxbgnw7
+2017-01-02 19:36:10,934  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #iphone #style #giftcard #newdeals #win #santa #christmas #blackfriday Universal 2 in 1… https://t.co/RmA8F2wZ1Y https://t.co/Fh4shL7sPi
+2017-01-02 19:36:12,473  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @SoydeMac: Apple y sus equipos Mac en 2017 - https://t.co/LibOVRCtxu #Apple https://t.co/rCQX6wuQg0
+2017-01-02 19:36:15,173  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #Track #TopMusicUK More Than Amigos - Jesse &amp; Joy: More Than Amigos Un Besito Más Jesse… https://t.co/i7Qqx5Zc1f #TopLatin #iTunes #Britain
+2017-01-02 19:36:15,173  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Amor, Erotismo e Intimidad - Audiolibro #iTunes #CostaRica https://t.co/QVrA4tuwmk
+2017-01-02 19:36:16,562  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Eric Chacón - Choroni - https://t.co/pwwCS52Kqo #iTunes @ericchaconflute
+2017-01-02 19:36:19,646  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @Libromovil: Audiocuentos Hindúes para Reflexionar #iTunes #Panama https://t.co/OOaXtO89iF
+2017-01-02 19:36:21,051  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Los Caballeros Templarios - AudioEbook #iTunes #CostaRica https://t.co/LnT40inN8B
+2017-01-02 19:36:21,052  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Cumbres Borrascosas. #Spain #AudioLibro #iTunes https://t.co/zygfu6gVDC
+2017-01-02 19:36:21,052  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @The_Malaika: #21stHapilos #NewMusic Maestro Don - Burial - Single - https://t.co/ymxVNdgmZN #iTunes @spitfiyahfilms @JWONDER21 @21sthap…
+2017-01-02 19:36:24,264  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: vamo votar no austin  https://t.co/GXtrFvhiig by Austin Mahone #Finally2A17MahomiesParty https://t.co/lkKCU5wD2V
+2017-01-02 19:36:24,265  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Apple iPad 2 16GB, Wi-Fi, 9.7in - White (MC979C/A)  Compra y Envia con #ferisacorp https://t.co/8Wo1Q5wZMM https://t.co/MymFCIiHFe
+2017-01-02 19:36:26,940  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @ulrikkefalch: @beautyyliars bonjour muchos gracias guacamole
+2017-01-02 19:36:26,942  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #Track #TopMusicUK More Than Amigos - Jesse &amp; Joy: More Than Amigos Un Besito Más Jesse… https://t.co/i7Qqx5Zc1f #TopLatin #iTunes #Britain
+2017-01-02 19:36:34,067  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: vamo votar no austin  https://t.co/GXtrFvhiig by Austin Mahone #Finally2A17MahomiesParty https://t.co/lkKCU5wD2V
+2017-01-02 19:36:36,441  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @ulrikkefalch: @beautyyliars bonjour muchos gracias guacamole
+2017-01-02 19:36:36,441  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #Track #TopMusicUK More Than Amigos - Jesse &amp; Joy: More Than Amigos Un Besito Más Jesse… https://t.co/i7Qqx5Zc1f #TopLatin #iTunes #Britain
+2017-01-02 19:36:39,934  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Libromovil: Audiocuentos Hindúes para Reflexionar #iTunes #Panama https://t.co/OOaXtO89iF
+2017-01-02 19:36:40,955  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Los Caballeros Templarios - AudioEbook #iTunes #CostaRica https://t.co/LnT40inN8B
+2017-01-02 19:36:40,955  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Cumbres Borrascosas. #Spain #AudioLibro #iTunes https://t.co/zygfu6gVDC
+2017-01-02 19:36:40,956  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @The_Malaika: #21stHapilos #NewMusic Maestro Don - Burial - Single - https://t.co/ymxVNdgmZN #iTunes @spitfiyahfilms @JWONDER21 @21sthap…
+2017-01-02 19:36:43,200  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: vamo votar no austin  https://t.co/GXtrFvhiig by Austin Mahone #Finally2A17MahomiesParty https://t.co/lkKCU5wD2V
+2017-01-02 19:36:45,210  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @ulrikkefalch: @beautyyliars bonjour muchos gracias guacamole
+2017-01-02 19:36:45,211  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Amor, Erotismo e Intimidad - Audiolibro #iTunes #CostaRica https://t.co/QVrA4tuwmk
+2017-01-02 19:36:50,432  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #iphone #style #giftcard #newdeals #win #santa #christmas #blackfriday Universal 2 in 1… https://t.co/r1789uzEWU https://t.co/W2FDYZnjhh
+2017-01-02 19:36:53,432  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @isa_marcial https://t.co/erIEhlsWg8 iPhone 7 vs Galaxy S7 ¿Samsung o Apple?
+2017-01-02 19:36:57,430  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: PPAP - Pen Pineapple Apple Pen (Trap Remix) https://t.co/feqtlcpEmw vía @YouTube
+2017-01-02 19:36:59,583  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @SoydeMac: Apple y sus equipos Mac en 2017 - https://t.co/LibOVRCtxu #Apple https://t.co/rCQX6wuQg0
+2017-01-02 19:37:01,560  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #Track #TopMusicUK More Than Amigos - Jesse &amp; Joy: More Than Amigos Un Besito Más Jesse… https://t.co/i7Qqx5Zc1f #TopLatin #iTunes #Britain
+2017-01-02 19:37:05,757  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @The_Malaika: #21stHapilos #NewMusic Maestro Don - Burial - Single - https://t.co/ymxVNdgmZN #iTunes @spitfiyahfilms @JWONDER21 @21sthap…
+2017-01-02 19:37:07,780  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @SoydeMac: Apple y sus equipos Mac en 2017 - https://t.co/LibOVRCtxu #Apple https://t.co/rCQX6wuQg0
+2017-01-02 19:37:14,920  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @SoydeMac: Apple y sus equipos Mac en 2017 - https://t.co/LibOVRCtxu #Apple https://t.co/rCQX6wuQg0
+2017-01-02 19:37:18,187  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Amor, Erotismo e Intimidad - Audiolibro #iTunes #CostaRica https://t.co/QVrA4tuwmk
+2017-01-02 19:37:18,189  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Eric Chacón - Choroni - https://t.co/pwwCS52Kqo #iTunes @ericchaconflute
+2017-01-02 19:37:20,224  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @Libromovil: Audiocuentos Hindúes para Reflexionar #iTunes #Panama https://t.co/OOaXtO89iF
+2017-01-02 19:37:21,391  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Los Caballeros Templarios - AudioEbook #iTunes #CostaRica https://t.co/LnT40inN8B
+2017-01-02 19:37:21,392  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Cumbres Borrascosas. #Spain #AudioLibro #iTunes https://t.co/zygfu6gVDC
+2017-01-02 19:37:21,392  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @The_Malaika: #21stHapilos #NewMusic Maestro Don - Burial - Single - https://t.co/ymxVNdgmZN #iTunes @spitfiyahfilms @JWONDER21 @21sthap…
+2017-01-02 19:37:23,706  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: vamo votar no austin  https://t.co/GXtrFvhiig by Austin Mahone #Finally2A17MahomiesParty https://t.co/lkKCU5wD2V
+2017-01-02 19:37:26,048  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @ulrikkefalch: @beautyyliars bonjour muchos gracias guacamole
+2017-01-02 19:37:31,270  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @The_Malaika: #21stHapilos #NewMusic Maestro Don - Burial - Single - https://t.co/ymxVNdgmZN #iTunes @spitfiyahfilms @JWONDER21 @21sthap…
+2017-01-02 19:37:34,160  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: vamo votar no austin  https://t.co/GXtrFvhiig by Austin Mahone #Finally2A17MahomiesParty https://t.co/lkKCU5wD2V
+2017-01-02 19:37:35,496  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @_jcnieves: @_jcnieves 
+Disponible para iOS https://t.co/nZqykrnwAg
+
+Disponible para Android https://t.co/LYtMxaWt3H
+2017-01-02 19:37:44,849  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Ya no seas Codependiente. Audiolibro de Autoayuda #iTunes #Argentina https://t.co/gQ3FbGeZ1n
+2017-01-02 19:37:44,851  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: vamo votar no austin  https://t.co/GXtrFvhiig by Austin Mahone #Finally2A17MahomiesParty https://t.co/lkKCU5wD2V
+2017-01-02 19:37:49,432  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Amor, Erotismo e Intimidad - Audiolibro #iTunes #CostaRica https://t.co/QVrA4tuwmk
+2017-01-02 19:37:49,432  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #nowplaying MAVADO - TRUE https://t.co/EkrKDLZ6jc #Reggae
+2017-01-02 19:37:52,506  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @Libromovil: Audiocuentos Hindúes para Reflexionar #iTunes #Panama https://t.co/OOaXtO89iF
+2017-01-02 19:37:53,888  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Los Caballeros Templarios - AudioEbook #iTunes #CostaRica https://t.co/LnT40inN8B
+2017-01-02 19:37:53,888  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Cumbres Borrascosas. #Spain #AudioLibro #iTunes https://t.co/zygfu6gVDC
+2017-01-02 19:37:53,889  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @The_Malaika: #21stHapilos #NewMusic Maestro Don - Burial - Single - https://t.co/ymxVNdgmZN #iTunes @spitfiyahfilms @JWONDER21 @21sthap…
