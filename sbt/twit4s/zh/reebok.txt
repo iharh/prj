@@ -1,0 +1,2 @@
+2017-01-03 19:14:40,047  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #小熱褲Lorry：超過台幣兩萬，你買單嗎？ #時尚潮流 #鞋頭 #Vetements #Reebok FB : https://t.co/Gq5cdCJE3U IG：https://t.co/lGnowkBhPP https://t.co/egPrhMt8mC
+2017-01-03 19:14:40,050  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 本週除了 KITH，還有這個大魔王。 #本週發售 #END #Reebok #InstapumpfuryOG #PinkSalmon https://t.co/YMliCvwmOi
