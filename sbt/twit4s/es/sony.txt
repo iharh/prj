@@ -1,0 +1,348 @@
+2017-01-03 10:07:54,101  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Freestyl3__: Gracias Sony por ser Argentino.  @gonzathunder https://t.co/p3DSwbYSD1
+2017-01-03 10:07:54,103  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Freestyl3__: No por nada se llama Sony Beatbox https://t.co/XAbMFu07Ce
+2017-01-03 10:07:54,106  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/U5poSk1dpi Noel Schajris - Medley Juan Fernando Velasco (Sony Sessions)
+2017-01-03 10:07:54,107  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @JuegAlex Sony Vegas pro 13
+2017-01-03 10:07:54,108  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @iaragiaimo1 buena escucho a Sony x2
+2017-01-03 10:07:54,112  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @jc_rosell: En español: AMÉRICA.  En inglés: ¿AMEIRCA? 🤔🤔🤔 📌@Canal_Sony https://t.co/66teioKeWu
+2017-01-03 10:07:54,115  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @ProAndroid: Un nuevo Sony Xperia X se filtra para 2017 - https://t.co/t1tpoL18VX ... https://t.co/GZfnNRE287
+2017-01-03 10:07:54,117  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Auto: Al-Attiyah premier leader https://t.co/yyc8z3hdWU #NewsSuite https://t.co/JMOo3RoY5w
+2017-01-03 10:07:54,118  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #Camcorders #DigitalSDHCSD #HardDiskDrive #HighDefinition Sony HXR-MC2500E ... - https://t.co/rL3NoFirCq https://t.co/8w6JhtPbfo
+2017-01-03 10:07:54,119  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Toy #Story 3 - Sony PSP  https://t.co/ULz52KzhLx
+2017-01-03 10:07:54,120  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Sony ILCE-5000L - Cámara EVIL de 20.1 Mp (pantalla articulada 379.0€ -34% https://t.co/lLzsrvfebv #ldo https://t.co/UpX1tkJVbT
+2017-01-03 10:07:54,121  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: https://t.co/j9s3yKmu7M $1.99 &gt; VMC-15MR2 A/V Audio Video RCA Multi Terminal Cable for #Sony #Handycam #Camcorde https://t.co/6hIVOzHHF2
+2017-01-03 10:07:54,124  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/jtxaKRifyN How To: Scribble Music Video Effect In Sony Vegas (Easy)
+2017-01-03 10:07:54,125  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @bigbaldharry sony vegas
+2017-01-03 10:07:54,125  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @RobDoesTweeting Sony vegas pro 14
+2017-01-03 10:07:55,417  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/1i5yQRyHz3 DTOKE &amp; TATA &amp; SONY VS DAM &amp; KATRA &amp; DANI ( CLUB DE LA PELEA )
+2017-01-03 10:07:55,418  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Milenio: Date #Las3DelDía | ▶️  Sony devela los juegos que llegarán a PS4 en 2017 https://t.co/jTSEiFpzKH https://t.co/56T3fX9UwA
+2017-01-03 10:07:55,419  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @SoyDPA: Dto vs Stigma Dto vs Sony Dto vs Shecka Dto vs Arkano Dto vs Aczino Dto vs Klan Digan lo que quieran pero cuando está Dtoke hay…
+2017-01-03 10:07:55,419  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Sony Rhodes - Please Love Me https://t.co/yf0XA9Ukpq vía @YouTube
+2017-01-03 10:07:55,420  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @DuendedelaLuna Jajajajajajaja estas bien kawai desu Mitsubishi Yamaha Sony  Naruto Pikachu 💕💕💕😍😘
+2017-01-03 10:07:55,421  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @EnciOfe: @EstiloDF @EdySmol @Canal_Sony @Club_OceanoMty gracias por invitar a @pruizoficial
+2017-01-03 10:07:55,422  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Arg_TeenWolf: Enseguida comienza el capitulo 5x09 'Lies of Omission' por @Canal_Sony #TeenWolfEnSony https://t.co/UIHEgNnbHW
+2017-01-03 10:07:55,424  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @EstiloDF @EdySmol @Canal_Sony @Club_OceanoMty apoyando el #cuidatedelacamara @pruizoficial
+2017-01-03 10:07:55,426  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @VirtuaIMaII: Venta De Celulares Sony Ericsson,blackberry,radios Nextel Y Cualqu https://t.co/XRzvynGpDU via @DISCOLETTE https://t.co/Mo…
+2017-01-03 10:07:55,427  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @girlsimaginaria siiiii sexo sexo sexo🤤😈👅
+2017-01-03 10:07:55,428  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @LevelUPcom: ¿No viste el #LevelUpShow? No te preocupes: https://t.co/OW0muv77Tr https://t.co/z03y1MWCCt
+2017-01-03 10:07:55,428  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Ahórrate 83,60€ en Sony Xperia X Compact - Sma... de #sony comprándolo por 371,00€ #oferta https://t.co/MjJsWXmwnB https://t.co/7vRs698HNg
+2017-01-03 10:07:56,238  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Date #Las3DelDía | ▶️  Sony devela los juegos que llegarán a PS4 en 2017 https://t.co/a3Y3NM7WoE https://t.co/YWgemqOnLD
+2017-01-03 10:07:56,238  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Date #Las3DelDía | ▶️  Sony devela los juegos que llegarán a PS4 en 2017 https://t.co/LQbL7pfShM https://t.co/Ysbt0TZIDG
+2017-01-03 10:07:56,239  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Date #Las3DelDía | ▶️  Sony devela los juegos que llegarán a PS4 en 2017 https://t.co/WHEO6aEbhU https://t.co/ufYKh3AlXb
+2017-01-03 10:07:56,239  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Date #Las3DelDía | ▶️  Sony devela los juegos que llegarán a PS4 en 2017 https://t.co/1VUp6uIw3Y https://t.co/2eUdbxGqrm
+2017-01-03 10:07:56,239  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Date #Las3DelDía | ▶️  Sony devela los juegos que llegarán a PS4 en 2017 https://t.co/LJv6GhsYtW https://t.co/RPwfvakwno
+2017-01-03 10:07:56,240  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Date #Las3DelDía | ▶️  Sony devela los juegos que llegarán a PS4 en 2017 https://t.co/NmWp6forhR https://t.co/n9LGs91CZw
+2017-01-03 10:07:56,240  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Date #Las3DelDía | ▶️  Sony devela los juegos que llegarán a PS4 en 2017 https://t.co/0AxgrGcIQ7 https://t.co/pSotEzjDVm
+2017-01-03 10:07:56,240  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Date #Las3DelDía | ▶️  Sony devela los juegos que llegarán a PS4 en 2017 https://t.co/jTSEiFpzKH https://t.co/56T3fX9UwA
+2017-01-03 10:07:56,241  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Sony Xperia X ya puede actualizarse a #Android 7.1.1 Nougat - Tecnología 21 https://t.co/NCmwF4xlUc
+2017-01-03 10:07:56,242  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @ZepTic_Vizal sony vegas
+2017-01-03 10:07:56,243  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @cynthia7520: @EstiloDF @pruizoficial @EdySmol @Canal_Sony yeeeaaaa padrisimo verlo!!! lo amamos fans Oceano Monterrey @Club_OceanoMty
+2017-01-03 10:07:56,245  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @PollyAmor3s: 🇲🇽También síguenos en PERISCOPE 💋 #periscope #PollyAmor3s #CuckQuean #swingersmexico #swingers #SwingersAlDesnudo #swinger…
+2017-01-03 10:07:56,245  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @RedBull_Gallos el 2do de papo vs sony
+2017-01-03 10:07:56,245  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #Tecnología: #Sony #XperiaX ya puede actualizarse a #Android 7.1.1 Nougat https://t.co/zBKxJMl4ax #tecnologia https://t.co/wBC7DylK6m by …
+2017-01-03 10:07:56,246  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #Sony #XperiaX ya puede actualizarse a #Android 7.1.1 Nougat https://t.co/ERgrl55Jhn #tecnologia https://t.co/V1ssApyWe3
+2017-01-03 10:07:56,247  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Ahórrate 72,05€ en Sony PlayStation VR (PS4) de #sony comprándolo por 397,94€ #oferta https://t.co/FbGzEd7JiI https://t.co/iTmDO7gtXS
+2017-01-03 10:07:57,402  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @karyme_ZD bloqueado por pendejo
+2017-01-03 10:07:57,403  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @EstiloDF @EdySmol @Canal_Sony Está Jolettita! 😁👏👌
+2017-01-03 10:07:57,404  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/brx4LT75Tp Noobs Tv: Marvel vs Capcom, Nintendo y Sony
+2017-01-03 10:07:57,404  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Profoto Air Remote TTL-S for Sony https://t.co/FddnsbjlNQ #sony #photography
+2017-01-03 10:07:57,406  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @jazminejaeZD hola nalgona😍❤️👋🏼
+2017-01-03 10:07:57,408  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @EstiloDF @pruizoficial @EdySmol @Canal_Sony si esbello sus videos
+2017-01-03 10:07:58,575  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #soporte tecnico de sony act scores login
+2017-01-03 10:07:58,576  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @Filha_Da_Megan @DudaMegan sony vegas
+2017-01-03 10:07:58,576  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @EstiloDF @pruizoficial @EdySmol @Canal_Sony yeeeaaaa padrisimo verlo!!! lo amamos fans Oceano Monterrey @Club_OceanoMty
+2017-01-03 10:07:58,576  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @wtfclarke a sony sempre caga os nomes kkkkjjn
+2017-01-03 10:07:58,577  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #emerging digital media trends sony sab tv
+2017-01-03 10:07:58,578  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: https://t.co/VxlpAsZwOf $1.99 &gt; VMC-15MR2 A/V Audio Video RCA Multi Terminal Cable for #Sony #Handycam #Camcorde https://t.co/YFkB2uHSoZ
+2017-01-03 10:07:58,578  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: (VNZ) Reinstalación del SO #Android para tlfs #Samsung, info https://t.co/cLTu03E9VX https://t.co/DsjPT26jsI
+2017-01-03 10:07:58,579  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @xatakandroid: Sony actualiza Xperia X a Android 7.1.1 Nougat con soporte para PS4 Remote Play https://t.co/tfCT88kt3e https://t.co/6SUv…
+2017-01-03 10:07:58,580  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @cosquinyaniroc1 @esteeselshowok @Canal_Sony entrá YA en el link de mi tuit
+2017-01-03 10:07:58,580  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @Goldenmax @esteeselshowok @Canal_Sony como?como?
+2017-01-03 10:07:59,607  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @doctorow: Universal v Sony https://t.co/cOexujdfhH https://t.co/LCHAJ1UVXV
+2017-01-03 10:07:59,609  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @jc_rosell ¡Gracias!
+2017-01-03 10:07:59,609  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @Canal_Sony Ojala regresara Cristina
+2017-01-03 10:07:59,609  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @FansEnrique_Arg @SonyMusicArg @Anahi nunca ha sido de Sony. 🙄
+2017-01-03 10:07:59,610  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Gracias! @mariannadivaga @QRPrecluta
+2017-01-03 10:07:59,610  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @CyanCreeperPlay Sony vegas pro 13
+2017-01-03 10:07:59,611  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #Game Portal 2 (Sony #Playstation3, 2011) PS3 https://t.co/LNjixV0y1p #VideoGames #PS3 https://t.co/rJ48SAG8Hj
+2017-01-03 10:08:00,685  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @Celinesth: #tech #pixelgame #art #indiedev #gamedev #gamemaker Un nuevo #Sony Xperia X se filtra para… https://t.co/I8ijfrL1QX https://…
+2017-01-03 10:08:00,686  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @FlacaPelotuda_ jajaja!
+2017-01-03 10:08:00,686  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @kulianafigari jajajajajaja!!!
+2017-01-03 10:08:00,686  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @Canal_Sony vieja metiche!!!😂😂😂😂
+2017-01-03 10:08:00,686  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @canal_sony vieja culiá intrusa
+2017-01-03 10:08:00,688  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @packcreenhs: ✨ DAVID LAMBERT ✨ -fav se gostou -rt se salvar -crédito se usar. /Kah "THE FOSTERS ON SONY" https://t.co/qZTZrN6fAJ
+2017-01-03 10:08:00,688  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @FlacaPelotuda_: Grey's Anatomy salva mis lunes de noche  del aburrimiento @Canal_Sony #GreysEnSony ❤❤
+2017-01-03 10:08:00,689  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @josbel_30: #tech #pixelgame #art #indiedev #gamedev #gamemaker Un nuevo #Sony Xperia X se filtra para… https://t.co/B59joeR1vI https://…
+2017-01-03 10:08:00,690  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/5Yap2pK0te ● Sony Vegas 13 | Coloring #11 | PinkLips
+2017-01-03 10:08:01,772  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @xatakandroid: Sony actualiza Xperia X a Android 7.1.1 Nougat con soporte para PS4 Remote Play https://t.co/tfCT88kt3e https://t.co/27AS…
+2017-01-03 10:08:01,772  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @melefezu: #tech #pixelgame #art #indiedev #gamedev #gamemaker Un nuevo #Sony Xperia X se filtra para… https://t.co/3sSjRkgE30 https://t…
+2017-01-03 10:08:01,773  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @gautranguillaum: #tech #pixelgame #art #indiedev #gamedev #gamemaker Un nuevo #Sony Xperia X se filtra para… https://t.co/jAAIZBHYa8 ht…
+2017-01-03 10:08:01,774  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/YekYqYbFKN Sony Vegas Tutorial | Coloring [Celldwhores 2.0 promo]
+2017-01-03 10:08:01,775  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Grey's Anatomy salva mis lunes de noche  del aburrimiento @Canal_Sony #GreysEnSony ❤❤
+2017-01-03 10:08:01,775  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @htcmania: El Sony Xperia X comienza a recibir la actualización a Android 7.1.1 Nougat https://t.co/DlbhGyol4S https://t.co/GIC4I22bK8
+2017-01-03 10:08:01,775  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 20 megapixel SONY RX10 digital camera, f/2.8, 24-200mm (Lincoln, NE) $380 https://t.co/lTe1351XFm #Canon
+2017-01-03 10:08:01,776  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #lorenson toyota sony media go
+2017-01-03 10:08:01,776  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @guglastican https://t.co/4z5ouy3w2I Sony Xperia z5 Hard Reset
+2017-01-03 10:08:01,776  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @LeeoSL vs el sony
+2017-01-03 10:08:01,777  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @jordiabell Vale no te indignes cunyii que para tu es millor sony jajajajajaj
+2017-01-03 10:08:01,777  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @kindon18 https://t.co/lJIWGjZ83o Coloring #55 [Bilberry] Sony Vegas║
+2017-01-03 10:08:01,779  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #EscuchaEsto: Mal Bicho (Remasterizado 2008) de Los Fabulosos Cadillacs #ahorasuena @napstereurope. https://t.co/tht5mBO08m para vos Fatiga
+2017-01-03 10:08:01,779  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: (VNZ) Reinstalación del SO #Android para tlfs #Samsung, info https://t.co/cLTu03myxn https://t.co/ONfNiLvzVW
+2017-01-03 10:08:01,779  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #oferta Sony MDR-ZX110 - Auriculares cerrados (98 dB/mW, 1,2 m, micrófo 9.74€ -51% #descuento… https://t.co/BUmBbmxxaS
+2017-01-03 10:08:01,780  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Sony MDR-ZX110 - Auriculares cerrados (98 dB/mW, 1,2 m, micróf 9.74€ -51% https://t.co/5iyPWoe79T #ldo https://t.co/HdnB9fHO6B
+2017-01-03 10:08:02,816  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @manilashaker https://t.co/jtDvQCKwso Sony Xperia M5 vs Xperia C5 Ultra Comparison - Camera,
+2017-01-03 10:08:02,816  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @PablitoAMiranda Sony, kodigo, y kaiser 😎😎
+2017-01-03 10:08:02,817  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me ha gustado un vídeo de @YouTube (https://t.co/OG6mUuJmFk - FREE MERVEL Intro Template #446 Sony Vegas Pro).
+2017-01-03 10:08:02,817  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Review Sony XD80 Nuevo modelo Television 4K UHD HDR Smart TV Android 2016 https://t.co/eboqXLdKkY vía @YouTube
+2017-01-03 10:08:02,817  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #Sony libera actualización de #Android 7.1.1 Nougat para el Xperia X: https://t.co/Qsd8z7J27o #tecnologia
+2017-01-03 10:08:02,817  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @isa_marcial Moto g4 play o Sony xperia e5 Podrías ayudarme
+2017-01-03 10:08:02,818  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @Celinesth: #tech #pixelgame #art #indiedev #gamedev #gamemaker El #Sony Xperia X comienza a recibir l… https://t.co/ieQQwUVp9x https://…
+2017-01-03 10:08:02,818  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @Celinesth: #tech #pixelgame #art #indiedev #gamedev #gamemaker El #Sony Xperia X (2017) se deja ver e… https://t.co/AFmniKuBl4 https://…
+2017-01-03 10:08:02,819  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: El Sony Xperia X empieza a recibir Android 7.1.1… https://t.co/bTlG3LSLA1 #Android #Extras #Sony #actualización… https://t.co/Xa8SPBy4Sf
+2017-01-03 10:08:02,821  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @josbel_30: #tech #pixelgame #art #indiedev #gamedev #gamemaker El #Sony Xperia X (2017) se deja ver e… https://t.co/R4Mdpg7FCA https://…
+2017-01-03 10:08:02,821  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @josbel_30: #tech #pixelgame #art #indiedev #gamedev #gamemaker El #Sony Xperia X comienza a recibir l… https://t.co/crcLARcK1a https://…
+2017-01-03 10:08:02,822  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Sony Vegas: Remover Barras Pretas de Celular https://t.co/v299VwaQBG #sonyvegas
+2017-01-03 10:08:03,707  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @SGHespanol: Jajaja JAJAJA LOL 😂 @Canal_Sony https://t.co/wfOoPcd9PY
+2017-01-03 10:08:03,708  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Inside Mercedes' Silicon Valley research center https://t.co/V13KvAOQB0 #NewsSuite https://t.co/bE9B1QXZk5
+2017-01-03 10:08:03,708  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Reinstalación del SO #Android para tlfs #SONY, info https://t.co/cLTu03E9VX https://t.co/4DR0EWpG5R
+2017-01-03 10:08:03,709  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @Alemihai_FF: @krawzu @barkingJade EL TIMO DE NATALIA - SASEL - DRAMA - TIMO - SNK - SONY
+2017-01-03 10:08:03,709  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @krawzu @barkingJade EL TIMO DE NATALIA - SASEL - DRAMA - TIMO - SNK - SONY
+2017-01-03 10:08:03,710  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Resumo de 2016:Sony VS Microsoft VS Nintendo: https://t.co/ofrNj14WN5 via @YouTube
+2017-01-03 10:08:03,710  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: ❤#Digital #Camera Sony Alpha a 5000 Mirrorless Digital Camera w/ 16-50mm Lens #Cameras https://t.co/BP60QAEPhZ https://t.co/1aUQifZJEz
+2017-01-03 10:08:03,711  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: https://t.co/tpAqEKw4gL $1.99 &gt; VMC-15MR2 A/V Audio Video RCA Multi Terminal Cable for #Sony #Handycam #Camcorde https://t.co/P6CIOcYzx1
+2017-01-03 10:08:03,711  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: VIDEOCONSOLA SONY PS4 500GB NEGRA https://t.co/XKWDxElA9S #Videojuegos vía @ventafun
+2017-01-03 10:08:03,713  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @mmdeportesmx @juventusfc Carlos Tévez
+2017-01-03 10:08:03,714  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: ❤❤#Digital #Cameras Sony Alpha a 5000 Mirrorless Digital Camera w/ 16-50mm Lens #Camera #Deals… https://t.co/9wdiJE1had
+2017-01-03 10:08:04,737  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @Maschock sony vegas
+2017-01-03 10:08:04,738  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Vidrio protector anti espia Sony Xperia C5 Ultra #sony # protector… https://t.co/LpskddWrkt
+2017-01-03 10:08:04,738  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @himoutohowell: @elmembrishode8 en sony vegas si ^^
+2017-01-03 10:08:04,739  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @sampleidiota Yo o sony
+2017-01-03 10:08:04,739  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Part #2 - Sony Camera! https://t.co/SvG3ZwsUXA
+2017-01-03 10:08:04,739  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Part #1 - Sony Camera! https://t.co/73Q8nXXJFh
+2017-01-03 10:08:04,739  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @NotDrixus_ yo o sony
+2017-01-03 10:08:04,741  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @oferton_: NUEVO Sony Alpha a7S II Mirrorless Digital Camera Body Only Mark II Mk2 con un 40% de descuento https://t.co/eLbBLoOMzu https…
+2017-01-03 10:08:04,741  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @matosberna @eusoueu12345678 @marco_faria13 colunas da sony na worten ;) em 50
+2017-01-03 10:08:04,742  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @sampleidiota: Sony mi novia
+2017-01-03 10:08:04,742  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @Sony SIETE DELLE MMMMERDEEEEEEEE
+2017-01-03 10:08:05,902  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #Digital #Camera Sony Alpha a 5000 Mirrorless Digital Camera w/ 16-50mm Lens https://t.co/lMnJvJ3v13 #Cameras
+2017-01-03 10:08:05,903  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: I added a video to a @YouTube playlist https://t.co/0QhUId9Cct Descargar Magix "Sony" Vegas Pro 14 | FULL en Español | - (Ultima
+2017-01-03 10:08:05,903  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: I liked a @YouTube video from @renerangelg https://t.co/0QhUId9Cct Descargar Magix "Sony" Vegas Pro 14 | FULL en Español | - (Ultima
+2017-01-03 10:08:05,903  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @fabi_sony ayyy por diosss😂😂😂 (sos un mil) 👏
+2017-01-03 10:08:05,904  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @radaelli98 jajajjajajajajajajajajajajajajajajajajajajajaja  (re ange)
+2017-01-03 10:08:05,904  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Top Ventas Videojuegos #1: The Last Guardian PS4 https://t.co/s7HzfSaXJc
+2017-01-03 10:08:05,905  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @faceless_roy: Llévele #SeVende #Buenobonitoybarato https://t.co/yrFvrJ0GOP
+2017-01-03 10:08:05,905  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @InfoNewsLatinos: RT si les gustaria un @laliespos ft @thalia ambas artistas de SONY MUSIC https://t.co/uGmUrdInCw
+2017-01-03 10:08:05,905  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #Dron Hexacóptero con cámara SONY RX100-M2 https://t.co/0YhEt55WAu #drones #segundamano #NOVEDADES
+2017-01-03 10:08:05,906  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: https://t.co/VxlpAsZwOf $1.99 &gt; VMC-15MR2 A/V Audio Video RCA Multi Terminal Cable for #Sony #Handycam #Camcorde https://t.co/90oCZTCb5U
+2017-01-03 10:08:05,907  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @BrandonJames_ Sony Vegas 14
+2017-01-03 10:08:05,908  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: ❤#Digital #Cameras Sony Alpha a 5000 Mirrorless Digital Camera w/ 16-50mm Lens #Camera #Deals… https://t.co/sVSmrJMs44
+2017-01-03 10:08:05,909  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Reinstalación del SO #Android para tlfs #Android #Motorola, info https://t.co/cLTu03E9VX https://t.co/YXTD0QJcrl
+2017-01-03 10:08:07,009  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @ontechies: Unboxing / Desempaquetado camara Sony A6000: https://t.co/fkCzcjjoBl via @YouTube
+2017-01-03 10:08:07,009  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Sony actualiza Xperia X a Android 7.1.1 Nougat con soporte para PS4 Remote Play https://t.co/HqCUwQjZO3 #android… https://t.co/A5ZYB8qLBZ
+2017-01-03 10:08:07,009  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @reirsalvavidas1 Sony Vegas
+2017-01-03 10:08:07,010  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Unboxing / Desempaquetado camara Sony A6000: https://t.co/fkCzcjjoBl via @YouTube
+2017-01-03 10:08:07,010  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @kate__meleshko Sony Vegas
+2017-01-03 10:08:07,010  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #Digital #Cameras Sony Alpha a 5000 Mirrorless Digital Camera w/ 16-50mm Lens https://t.co/8HNIVfEUBk #Camera #Deals
+2017-01-03 10:08:07,010  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @sabor809: #RETWEET #TFB #news Algunos Sony Xperia X ya están recibiendo Android 7.1.1 de forma oficial https://t.co/NovecvVBl8 https://…
+2017-01-03 10:08:07,011  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Sony libera actualización de Android 7.1.1 Nougat para el Xperia X https://t.co/rnGVt72vXn #Android #Móviles https://t.co/YZ6qycENVS
+2017-01-03 10:08:08,094  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @darkdevilangel_ {Sony Vegas}
+2017-01-03 10:08:08,097  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @MarcusPkZ buuuuuuuh como que sony vegas viva camtasia ostia
+2017-01-03 10:08:08,098  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @15a20 @PlaticaPolinesi  #polinesiosen15a20  a mi hija le fascinan!!!
+2017-01-03 10:08:08,098  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @PhiBitsuki Sony Vegas
+2017-01-03 10:08:08,099  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @melefezu: #tech #pixelgame #art #indiedev #gamedev #gamemaker El #Sony Xperia X comienza a recibir l… https://t.co/xDNpNKv94K https://t…
+2017-01-03 10:08:08,100  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @melefezu: #tech #pixelgame #art #indiedev #gamedev #gamemaker El #Sony Xperia X (2017) se deja ver e… https://t.co/HwLMZSf7Be https://t…
+2017-01-03 10:08:08,100  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @FinesseKIddLive sony vegas
+2017-01-03 10:08:09,226  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @darknessreview: #tech #pixelgame #art #indiedev #gamedev #gamemaker El #Sony Xperia X (2017) se deja ver e… https://t.co/kriip90rGw htt…
+2017-01-03 10:08:09,226  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @Gidoriasup @jovemnerdnews @jovemnerd sony sendo sony
+2017-01-03 10:08:09,227  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Cuántas de ellas tienes?  #videojuegos #gamer #gaming #consola #videoconsolas #nintendo #sony #microsoft #sega #xbox… https://t.co/J97dKOhCME
+2017-01-03 10:08:09,227  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @WickedD365 Sony Vegas!
+2017-01-03 10:08:09,228  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @15rabu sony vegas
+2017-01-03 10:08:09,229  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @dahstar: #tech #pixelgame #art #indiedev #gamedev #gamemaker El #Sony Xperia X (2017) se deja ver e… https://t.co/Kf6UbmgXUH https://t.…
+2017-01-03 10:08:09,229  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #tech #pixelgame #art #indiedev #gamedev #gamemaker El #Sony Xperia X (2017) se deja ver e… https://t.co/Kf6UbmgXUH… https://t.co/ntpdDoWGjP
+2017-01-03 10:08:09,229  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @CholloPortatil: #melopido #reyes2017 Esta mas barato que en Carrefour-PlayStation 4 Slim (PS4) - Consola de 500 GB de Sony https://t.co…
+2017-01-03 10:08:09,230  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #tech #pixelgame #art #indiedev #gamedev #gamemaker El #Sony Xperia X (2017) se deja ver e… https://t.co/R4Mdpg7FCA https://t.co/4y1AKK3pm7
+2017-01-03 10:08:09,230  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #tech #pixelgame #art #indiedev #gamedev #gamemaker El #Sony Xperia X (2017) se deja ver e… https://t.co/kriip90rGw https://t.co/B1Nu3i8Asm
+2017-01-03 10:08:09,230  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #tech #pixelgame #art #indiedev #gamedev #gamemaker El #Sony Xperia X (2017) se deja ver e… https://t.co/HwLMZSf7Be https://t.co/thNxjWorlm
+2017-01-03 10:08:09,230  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #tech #pixelgame #art #indiedev #gamedev #gamemaker El #Sony Xperia X (2017) se deja ver e… https://t.co/AFmniKuBl4 https://t.co/GBugwqmbSM
+2017-01-03 10:08:09,230  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @_melly_boo Adobe Premiere, Sony Vegas or Final Cut Pro
+2017-01-03 10:08:09,231  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: COMO EDITAR VIDEO NO SONY VEGAS PRO 11,12,13 01: https://t.co/EfqYwzEIDZ via @YouTube
+2017-01-03 10:08:10,301  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @mc_much sony vegas :'0
+2017-01-03 10:08:10,302  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @simply_sony jajaja exacto!!
+2017-01-03 10:08:10,302  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @Renatafuentes99 @Rubiu5 Sony Vegas pro 13
+2017-01-03 10:08:11,472  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Ciaraa_see: Hoy disponible en la tardesita 👯🌞
+2017-01-03 10:08:11,472  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Nina Agdal Sony Ericsson Open in Miami https://t.co/tduAl1Dwby #NinaAgdal
+2017-01-03 10:08:11,473  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: https://t.co/bY8TutDdVQ $1.99 &gt; VMC-15MR2 A/V Audio Video RCA Multi Terminal Cable for #Sony #Handycam #Camcorde https://t.co/Vc44nX9sdW
+2017-01-03 10:08:11,473  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @EarthBeauties: Aspen, Colorado https://t.co/S7PRsERXBJ
+2017-01-03 10:08:11,473  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @yoututosjeff https://t.co/DTU9priZ4S Intro Editable#14 con Sony Vegas PRO 13 FULL HD | Tutorial
+2017-01-03 10:08:11,473  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @gonalois n cnsg gstar, prefiro sony
+2017-01-03 10:08:11,474  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: ¿Nos das un RT? #android 10 trucos para el Sony Xperia Z1 https://t.co/ik2Cq7jfpw
+2017-01-03 10:08:11,474  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @NuncaMas70Euros: ¡Volará!  Pack de #PS4Slim + #CallOfDutyInfiniteWarfare = 289 💶 más envío ➡️ https://t.co/4VkpG0PNoa https://t.co/dRtE8…
+2017-01-03 10:08:11,474  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @Sony_Music_Fans @_jesus_OM @DanieloviedoM  EN GRAN CANARIAAAA😍😍😍😍😍😍😍😍😍😍😍😍
+2017-01-03 10:08:11,475  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/uJeGV80Ff0 sony vegas pro | coloring #5 [radioactive vibe]
+2017-01-03 10:08:11,475  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @yunaXsmith @sulivangwed sony vegas pro 13
+2017-01-03 10:08:11,476  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Ya tenia ganas de catarlo... #rode #videomicpro #sony @ Arrecife https://t.co/PVxYsywlE0
+2017-01-03 10:08:12,512  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #gmac auto loans pilas recargables sony
+2017-01-03 10:08:12,515  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: (VNZ) Reinstalación del SO #Android para tlfs #Samsung, info https://t.co/cLTu03E9VX https://t.co/4OsaTdmel8
+2017-01-03 10:08:12,516  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: (VNZ) Reinstalación del SO #Android para tlfs #Samsung, info https://t.co/cLTu03E9VX https://t.co/UW6jSk6MNB
+2017-01-03 10:08:12,517  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @tyful @DanComical @CrustBag @YouTube sony VegaS
+2017-01-03 10:08:13,546  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #Sony ES electronic stack by Master Control Media. https://t.co/uMw4eXwqL7
+2017-01-03 10:08:13,547  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @DazzlingSimmerx Filmora, Adobe Premier Pro or Sony Vegas!  #travel #wanderlust #newyorkcity #instagram #instagood #instacool #500px… https://t.co/Tc98QP1EFL 2017-01-03 10:08:13,548  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Camino... Subiendo santos domingo #meridapreciosa #xperiaz3 #sony… https://t.co/QYGDBV7gwc
+2017-01-03 10:08:13,549  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @CuckoldKoca3 edius sony vegas adobe premier
+2017-01-03 10:08:13,549  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: HUGE 500K GIVEAWAY ⭐ iPhone7, iPad &amp; Sony a5000 Camera! https://t.co/tYmrc9tvL4 vía @YouTube
+2017-01-03 10:08:13,550  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @android_esp: Sony actualiza Xperia X a Android 7.1.1 Nougat con soporte para PS4 Remote Play https://t.co/BvwXhbCnJJ vía #XatakaAndroid
+2017-01-03 10:08:13,551  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @le_eisele @xXPsYkO17Xx @SFR_Sport @EmilieBrouss Sony Vegas Pro
+2017-01-03 10:08:13,551  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Me ha gustado un vídeo de @YouTube de @alecmolon_yt (https://t.co/lergtOlqO6 - MLG SONY VEGAS VS AFTER EFFECTS).
+2017-01-03 10:08:13,551  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Arg_TeenWolf: Ahora sigue el capitulo 5x12 'Damnatio Memoriae' por @Canal_Sony #teenwolfensony https://t.co/KxYTIMtzwd
+2017-01-03 10:08:14,668  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #TeamPAPii - Sony actualiza Xperia X a Android 7.1.1 Nougat con soporte para PS4 Remote Play https://t.co/Y5JeQaHFpK (Unete → @TeamPAPii)
+2017-01-03 10:08:14,670  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/kn7JRoogDG sony vegas pro | coloring #14 [pixie manic]
+2017-01-03 10:08:14,671  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @HechosEnSp: Sony actualiza Xperia X a Android 7.1.1 Nougat con soporte para PS4 Remote Play https://t.co/w43tDosCBV https://t.co/ox6yNK…
+2017-01-03 10:08:14,671  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @La_NenaMars: Algunos Sony Xperia X ya están recibiendo Android 7.1.1 de forma oficial https://t.co/HyrN2vTNak #Android https://t.co/CuZ…
+2017-01-03 10:08:14,672  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/Ca6HGCLprT sony vegas pro | coloring #1 [skin deep]
+2017-01-03 10:08:14,672  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Sony actualiza Xperia X a Android 7.1.1 Nougat con soporte para PS4 Remote Play https://t.co/SEZdJ4myok #Android https://t.co/GHuheh3ti0
+2017-01-03 10:08:14,673  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Arroba Sony te amo, sabelo  #TeenWolfEnSony
+2017-01-03 10:08:15,680  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #promo rueducommerce un code-promo https://t.co/z9GIrJmZQp SONY - Pack Sony DSC WX350P + … https://t.co/UQfxMdGAlz https://t.co/MmNz32xkpe
+2017-01-03 10:08:15,680  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #Android Sony actualiza Xperia X a Android 7.1.1 Nougat con soporte para PS4 Remote Play https://t.co/VSbyS3v6r1 https://t.co/bn6yf70Zum
+2017-01-03 10:08:15,685  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Algunos Sony Xperia X ya están recibiendo Android 7.1.1 de forma oficial https://t.co/CxBdOyhVmn #Android #RT
+2017-01-03 10:08:15,686  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Arg_TeenWolf: Ya comienza el capitulo 5x02 'Parasomnia' por @Canal_Sony #TeenWolfEnSony https://t.co/2dLGziIy7O
+2017-01-03 10:08:15,686  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Las Vegas! 😂Sony poooo. HAHA #editing https://t.co/vGiWE7nfwS
+2017-01-03 10:08:15,686  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @Emanuelcousse y aca el sony
+2017-01-03 10:08:15,687  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @dyoternity Sony Vegas pro 13 😉😄
+2017-01-03 10:08:16,862  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @ElGangosillo @ArantxaTP76 aMOR fAMBOY SONY PARA TODOS
+2017-01-03 10:08:16,862  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @wolfinglouis ((en sony))
+2017-01-03 10:08:16,863  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: -FREE- Intro template - sony vegas!: https://t.co/vEXjmdnVzp via @YouTube
+2017-01-03 10:08:16,863  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/aCTcj9Lsh0 sony vegas pro | coloring #2 [downworlders]
+2017-01-03 10:08:16,864  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: https://t.co/VxlpAsZwOf $1.99 &gt; VMC-15MR2 A/V Audio Video RCA Multi Terminal Cable for #Sony #Handycam #Camcorde https://t.co/DVORNB3EyJ
+2017-01-03 10:08:16,864  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Camara de fotos sony @soynadieorg https://t.co/WoSndvTfVF https://t.co/UqaH8oOyCG
+2017-01-03 10:08:16,864  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/ct3XjBzi96 Instrumental 2 Red Bull Argentina - Sony Vs Dozer
+2017-01-03 10:08:16,864  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Camara de fotos sony @soynadieorg https://t.co/DnCqp8TxQR https://t.co/rBS76A9pPI
+2017-01-03 10:08:16,865  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @fpsbrian1 https://t.co/u7ylIiqvKa Instrumental Sony vs Papo - Lujo MC vs Shecka | Ezequiel Morrison
+2017-01-03 10:08:16,865  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #RT Algunos Sony Xperia X ya están recibiendo Android 7.1.1 de forma oficial https://t.co/ZEXA3pgFIP #Android https://t.co/P6lJPbMIXO
+2017-01-03 10:08:16,866  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Algunos Sony Xperia X ya están recibiendo Android 7.1.1 de forma oficial #Sony #Android_7_1_Nougat #Will_Cas https://t.co/RNPiuWXW7l
+2017-01-03 10:08:16,866  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/nDz6WOMJx0 Sony Vegas Coloring #2 | Autumn Time
+2017-01-03 10:08:16,866  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Algunos Sony Xperia X ya están recibiendo Android 7.1.1 de forma oficial https://t.co/M8ZgnRYaBE #Android #RT https://t.co/FNXWezDuaA
+2017-01-03 10:08:18,008  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @solonbn: Sony guapísimo
+2017-01-03 10:08:18,008  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: ¿Nos das un RT? #android Ronda de rumores y filtraciones - S5 Mini, Moto X+1 y ¿Sony Z2 Ultra&amp;quot; https://t.co/VCbfGkEsQ3
+2017-01-03 10:08:18,008  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @solonbn: Face reveal de Sony pasalo https://t.co/Xzd3HWywYY
+2017-01-03 10:08:18,009  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @sampleidiota: Sony volvamos
+2017-01-03 10:08:18,009  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/4XN89jzyXB Sony Vegas | Coloring #1 {Pacify Her}
+2017-01-03 10:08:18,010  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #Camera #Sonycamera Sony Alpha a 5000 Mirrorless Digital Camera w/ 16-50mm Lens https://t.co/FrUkHImvLR #Sony https://t.co/MCi5hXUzBE
+2017-01-03 10:08:18,011  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @Actmoviles: Algunos Sony Xperia X ya están recibiendo Android 7.1.1 de forma oficial https://t.co/4OUON1DIZJ
+2017-01-03 10:08:18,012  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @CaterinePe sony vegas
+2017-01-03 10:08:19,162  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @ItsHelixGamer: Yo confundo a Sony con mi tele
+2017-01-03 10:08:19,163  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @Gtacummingson1: Yo confundo a sony con mi tele
+2017-01-03 10:08:19,163  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @NotDrixus_: Yo confundo a sony con mi tele
+2017-01-03 10:08:19,164  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @NotDrixus_: Sony es mio hijos de puta
+2017-01-03 10:08:20,199  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @Garcia_DanyelKy: Me gustó un video de @YouTube de @ezzegfx https://t.co/F1UgqKzqCI ¡DIOSES DEL FLOW! (Dollar - Kodigo- Sony- Mordekai)…
+2017-01-03 10:08:20,199  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: En español: AMÉRICA.  En inglés: ¿AMEIRCA? 🤔🤔🤔 📌@Canal_Sony https://t.co/66teioKeWu
+2017-01-03 10:08:20,200  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Reinstalación del SO #Android para tlfs #SONY, info https://t.co/cLTu03E9VX https://t.co/qa5kLg37Lj
+2017-01-03 10:08:20,201  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @ItsBlacky99: 3k gem/sounds/jessi/sony/thecrack/mañu/joni/xeon/coty/zhenticomega/red/zabu/gonzo/guitarherohd/sab/andrea. Si sales es que…
+2017-01-03 10:08:20,201  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Vendo Camara Sony DCS - HX50 en #Wallapop https://t.co/cMFbX8RanA
+2017-01-03 10:08:20,202  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @TopesdGama  @csantaengracia @jaume_jlb auxilio!!! Necesito su consejo HTC 10, Sony Z5 o Alcatel 4S (busco un móvil para la música)
+2017-01-03 10:08:20,202  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Sony A7s II + $300 Amazon Gift Card $2998 https://t.co/gLt1Y7rik9 #Gadgets #deals Vía techiedealz
+2017-01-03 10:08:21,360  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: (VNZ) Reinstalación del SO #Android para tlfs #Samsung, info https://t.co/cLTu03E9VX https://t.co/K8rtZmVIVk
+2017-01-03 10:08:21,361  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @elcorteinglesac @Sony_Music_Fans Firma en Barcelona
+2017-01-03 10:08:21,361  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @ImDi__1: sony gilipollas
+2017-01-03 10:08:21,362  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Mi sobrino sancho.  .  .  .  .  #lightroom #sony #a6000 #puertorico #islandlife #vsco #vscocam… https://t.co/I6TwPYHBxo
+2017-01-03 10:08:21,363  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @Sony_Music_Fans @elcorteinglesac Firma en Barcelona
+2017-01-03 10:08:21,363  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Aurora Tropicalis .  .  .  .  .  .  .  .  #lightroom #sony #a6000 #puertorico #islandlife #vsco #vscocam… https://t.co/EDgYm5iuar
+2017-01-03 10:08:21,363  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Apple, lenovo, asus, sony #poisonedbermain https://t.co/RnjRorwVn3
+2017-01-03 10:08:21,363  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @P0lS0NEDY0UTH toshiba, acer, asus, sony #poisonedbermain
+2017-01-03 10:08:21,364  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: EQUIPO SONY PORTABLE ¡Impecable! - Audio vintage EQUIPO PORTABLE SONY#ImpecableJaponésAudio vin ..  https://t.co/NtTuSXSYcn
+2017-01-03 10:08:22,177  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Top ventas Videojuegos - #1: The Last Guardian PS4          https://t.co/s7HzfSaXJc https://t.co/CBM85tFrzb
+2017-01-03 10:08:22,178  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @chus_losada: Vendo Sony Xperia Z3 blanco  en #Wallapop https://t.co/GU77sdcfEa
+2017-01-03 10:08:22,179  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @LittleMiiu sony vegas 14?
+2017-01-03 10:08:22,180  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: ¿Una carcasa móvil personalizada? #melopido #Iphone #Ipad #Samsung #Huawei #HTC #Nokia #LG #Asus #Blackberry #Google #Honor #XiaoMi #Sony
+2017-01-03 10:08:22,180  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #soporte tecnico de sony subaru forester for sale in pa
+2017-01-03 10:08:22,181  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Reinstalación del SO #Android para tlfs #Android #Motorola, info https://t.co/cLTu03E9VX https://t.co/Cs5Gkly787
+2017-01-03 10:08:22,181  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Vendo Sony Xperia Z3 blanco  en #Wallapop https://t.co/GU77sdcfEa
+2017-01-03 10:08:22,181  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @jamesfer7 @wolfieraps Sony Vegas Pro eller Adobe premiere
+2017-01-03 10:08:22,183  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @Sonyuwu Sony rulate una foto de ojo porfa
+2017-01-03 10:08:23,164  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: https://t.co/jw5u49Nrcs $1.99 &gt; VMC-15MR2 A/V Audio Video RCA Multi Terminal Cable for #Sony #Handycam #Camcorde https://t.co/pjPdeYrdGY
+2017-01-03 10:08:23,166  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Top ventas Videojuegos - #1: The Last Guardian PS4          https://t.co/s7HzfSaXJc https://t.co/87quPeLvvt
+2017-01-03 10:08:23,166  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: No SóSeriadosdeTV: Grey’s Anatomy: Roar (13×06) https://t.co/d3qEo9aRDz #greysanatomy #review #sony #tv
+2017-01-03 10:08:23,167  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @Sony_Music_Fans @_jesus_OM Felicidedes
+2017-01-03 10:08:23,167  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Sony VGC1EM - Empuñadura pa... de #sony ahora cuesta 211,75€, ahórrate 88,49€ #oferta https://t.co/Jiny4xJsRW https://t.co/5VVjvazeJF
+2017-01-03 10:08:23,168  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Sony Alpha a6000 Mirrorless Digital Camera reviews 2017: https://t.co/NhAYHwTZ5h via @YouTube
+2017-01-03 10:08:23,168  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 10 sentadillas que te darán glúteos de acero https://t.co/eAET8acwvB #News Suite https://t.co/u3kBpKseXO
+2017-01-03 10:08:23,169  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @David7_AP Sony Vegas
+2017-01-03 10:08:23,169  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #5: Flexo LED - Lámpara para Amazon Kindle y Sony Nook Kobo (lectores para e-book) https://t.co/jRpPsIqhjJ https://t.co/RExCd0LUvG
+2017-01-03 10:08:23,169  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: ¡Volará!  Pack de #PS4Slim + #CallOfDutyInfiniteWarfare = 289 💶 más envío ➡️ https://t.co/4VkpG0PNoa https://t.co/dRtE8XzHTv
+2017-01-03 10:08:23,169  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @androidsis: Se filtra una imagen del Sony Xperia X (2017) - https://t.co/CeN5udob35 https://t.co/owsTaVXMeG
+2017-01-03 10:08:24,481  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @TVD_Channel: Me ha gustado un vídeo de @YouTube de @bs_tutorials (https://t.co/YKjcG22aWU - Sony Vegas I Coloring #31 - Tangerine (SV 1…
+2017-01-03 10:08:25,601  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Kingdom Hearts HD 1.5 + 2.5 Remix no tendrá cambios jugables https://t.co/Ibk2z7ym6o via @GamesTribune https://t.co/7DC4jrytqt
+2017-01-03 10:08:25,602  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: https://t.co/j9s3yKmu7M $1.99 &gt; VMC-15MR2 A/V Audio Video RCA Multi Terminal Cable for #Sony #Handycam #Camcorde https://t.co/rehPaZb4lJ
+2017-01-03 10:08:25,602  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @ankitmotani Sony espn
+2017-01-03 10:08:25,603  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Agregué un video a una lista de reproducción de @YouTube https://t.co/YYzaEOZpXU Como Renderizar ll 1080p X 60 Fps ll En Sony Vegas
+2017-01-03 10:08:25,603  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @julianfer_21 https://t.co/YYzaEOZpXU Como Renderizar ll 1080p X 60 Fps ll En Sony Vegas Pro 13 ll
+2017-01-03 10:08:25,603  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @InfoMalu: ¡Buenos días familia! #FelizLunes 😊💗 https://t.co/nxiTIDC1xr
+2017-01-03 10:08:25,604  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Sony Vegas: Intro TRON: O Legado https://t.co/Jka07uj3sM #sonyvegas
+2017-01-03 10:08:25,606  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Sony Mobile Xperia Z2 Smartphone - LAN inalámbrica - 3... #Tecnología https://t.co/lMI8u43CNZ #01ene https://t.co/Bz2t8VQ1PG
+2017-01-03 10:08:25,606  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Despidiendo el #2016 #timelapse #sunset #Mexico #patadeperro #alpha6000 #sony #Puebla #chietla https://t.co/pk36TUPMdR
+2017-01-03 10:08:25,606  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Sony Vegas Tutorial: https://t.co/JlI06Zk73R via @YouTube
+2017-01-03 10:08:25,607  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 1M #Sony #Micro USB #Data #Sync #Charger #Cable for #Sony #Samsung HTC Etc ... - https://t.co/cuRBiLIzCn - https://t.co/lGkFkyCmMX
+2017-01-03 10:08:26,445  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @csmcosmin17 https://t.co/MDpXcBkmmf Sony Vegas Pro 11/12 | 20 Overlays pack Download #9
+2017-01-03 10:08:26,446  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @Adri020304 era de Sony 😖
+2017-01-03 10:08:26,447  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #Sony Xperia E5 | review en español. Smartphone de gama media-baja con pantalla de 5" https://t.co/crN07bslb8 #tecnologia #android #XperiaE5
+2017-01-03 10:08:26,447  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #OFERTA #Auriculares #2: Sony MDR-ZX110 - Auriculares cerrados (98 dB/mW, 1,2 m, micrófono de condensador elect... https://t.co/HqA9RA97we
+2017-01-03 10:08:26,448  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @doblasdope: Sony cara de uke https://t.co/1mFVmUpIuj
+2017-01-03 10:08:26,448  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @Naachittoo: pocho contra tata y sony me estalla jajajajajjajajajajja
+2017-01-03 10:08:26,449  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #kiwi pesticides sony lamp xl 5100
+2017-01-03 10:08:27,326  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: https://t.co/tpAqEKw4gL $1.99 &gt; VMC-15MR2 A/V Audio Video RCA Multi Terminal Cable for #Sony #Handycam #Camcorde https://t.co/ifAhFtJRCA
+2017-01-03 10:08:27,326  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/HW8MO3JjjP A Puro Dolor at Sony Music Latin
+2017-01-03 10:08:27,327  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @REAL_DARGI: #CAA #UnitedTalentAgency #WME #AriEmanuel #BMG #Sony #UMG #WarnerBros #Etc NoMo #NDAs #Writing 4Other #Artists #MyMusic #It…
+2017-01-03 10:08:27,328  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Sony LCJ-HC https://t.co/rYT5N8l7Vm #Sony
+2017-01-03 10:08:27,329  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @ProAndroid Vote por Sony solo porque Motorola no estaba
+2017-01-03 10:08:27,330  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/2lSIqOuMOB Sony vs Kaiser - God Level Fest 2016 - Final
+2017-01-03 10:08:28,472  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @don_rapeador https://t.co/8ysU5HLpPR SONY vs AKAPELLAH: Semifinal - GOD LEVEL FEST 2016
+2017-01-03 10:08:28,474  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @lusymbelmine: #Venta auto Honda Civic 2003 LX 109kms AA TA esterero Sony $70mil 044 33 1456 6853 @CompraVendeGDL @TeloVendoGDL @_EnGdl…
+2017-01-03 10:08:28,474  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #Venta auto Honda Civic 2003 LX 109kms AA TA esterero Sony $70mil 044 33 1456 6853 @CompraVendeGDL @TeloVendoGDL… https://t.co/hSxe2rNeqp
+2017-01-03 10:08:28,474  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @don_rapeador https://t.co/F4f973ncqj STIGMA vs SONY: 4tos - GOD LEVEL FEST 2016
+2017-01-03 10:08:28,474  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #OFERTA #Auriculares #3: Sony MDR-ZX110 - Auriculares cerrados (98 dB/mW, 1,2 m, micrófono de condensador elect... https://t.co/i0qcJeFUB6
+2017-01-03 10:08:28,475  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @soyalonsovillal: Esperando ⏳ https://t.co/HAP4tqQ7eX
+2017-01-03 10:08:28,475  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/G7J0gpNRqx FREE MERVEL Intro Template #446 Sony Vegas Pro
+2017-01-03 10:08:28,475  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @fabi_sony llevaste el traje de barro?? Ajaja
+2017-01-03 10:08:28,476  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/1vMhR96GVH TOP 10 FREE 2D Intro Templates 2016 - Blender, Sony Vegas, Adobe After Effects
+2017-01-03 10:08:28,478  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #10: Sony - PSN Plus Tarjeta 90 Días - Reedición (PlayStation 4): Sony - PSN Plus Tarjeta 90 Días - Reedición… https://t.co/tkdBIkoVOX
+2017-01-03 10:08:29,680  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @Sony @PlayStation la ctm! God of War 4 y TLOU 2 saldrán el 2018!!
+2017-01-03 10:08:29,681  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @haroldazuara editan con Sony vegas? 😅
+2017-01-03 10:08:29,681  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @magiasamurai https://t.co/FHiLq4yr5h DTOKE, SONY &amp; TATA vs DAM, KATRA &amp; DANI | Club De La Pelea |
+2017-01-03 10:08:29,682  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: (VNZ) Reinstalación del SO #Android para tlfs #Samsung, info https://t.co/cLTu03E9VX https://t.co/YKENWe74Oq
+2017-01-03 10:08:29,682  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: xperia muere ahogado https://t.co/fbsiPLzw31 vía @YouTube @sony @sonyxperia #felizañonuevo
+2017-01-03 10:08:29,682  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #sony cineza lamp pos x
+2017-01-03 10:08:29,683  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @salazarstudioyt https://t.co/046K8s0DTh Deconstruction: Original Sony PlayStation
+2017-01-03 10:08:29,683  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: https://t.co/3W13M5wsra $1.99 &gt; VMC-15MR2 A/V Audio Video RCA Multi Terminal Cable for #Sony #Handycam #Camcorde https://t.co/UKwHvsAKzK
+2017-01-03 10:08:29,683  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #maxs service sony vegas editing tutorial
+2017-01-03 10:08:29,684  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Me ha gustado un vídeo de @YouTube (https://t.co/FzAYhsj77J - Huawei Mate 9 vs Sony Xperia XZ).
+2017-01-03 10:08:29,684  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Me ha gustado un vídeo de @YouTube de @deriam_studios (https://t.co/PG1QcAeOUj - Sony (Argentina) VS Iacho (Argentina) | Batalla De
+2017-01-03 10:08:29,684  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/p6iBrA66gL DTOKE &amp; TATA &amp; SONY VS DAM &amp; KATRA &amp; DANI ( CLUB DE LA PELEA )
+2017-01-03 10:08:29,685  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @NazyRomero jajaja lo se nazilady.  😎
+2017-01-03 10:08:29,685  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @agustin_cipo69: Sony vs opazo la pelea del año jajajajajajajajaja
+2017-01-03 10:08:29,685  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/kQlhfuRtOb SONY &amp; TATA &amp; DTOKE VS UNDERDANN &amp;TRUENO &amp; GENAS ( CLUB DE LA PELEA )
+2017-01-03 10:08:29,686  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @MoscaZombie_MC @CavalairPT @LuisSilvaIsVans @sony_jpn estas vivo ?
+2017-01-03 10:08:30,858  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @TereyAngelSW3 Que ricura de PANOCHA
+2017-01-03 10:08:30,859  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @tecnobreakok: #TecnoBreak Android 6.0 Marshmallow llega al Sony Xperia Z1 vía AOSP https://t.co/OaZ3r5B6pk
+2017-01-03 10:08:30,859  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #sony stocks cameras in casinos
+2017-01-03 10:08:30,859  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: CAMARA DIGITAL BRIDGE SONY HX300 1563226 @soynadieorg https://t.co/X4WxBrwbzD https://t.co/in7TgIamq7
+2017-01-03 10:08:30,859  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: CAMARA DIGITAL BRIDGE SONY HX300 1563226 @soynadieorg https://t.co/deFg8nNZNO https://t.co/mAvyhrQNrg
+2017-01-03 10:08:30,860  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @ElBigHater: Amigos, Spiderman 2 por Sony, porque nunca es suficiente
+2017-01-03 10:08:30,860  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @MiMovistarMX es sony experia e3
+2017-01-03 10:08:30,861  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #CursosGratis: Sony Vegas 11 #CursosOnLine https://t.co/EEoJSVm1LU https://t.co/Wg0Ws4bMsd
+2017-01-03 10:08:30,861  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @PerezEdgar14 @FabriQuiroz12 Jajajajaj con Sony beat sali
+2017-01-03 10:08:30,862  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #milano linate airport hotel sony alpha a7 mirrorless digital camera review
+2017-01-03 10:08:30,862  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #sony jumbotron biote hormones
+2017-01-03 10:08:30,863  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @Fototerco: "PERIODISMO OBJETIVO"@PALOMINOSCU @LaSinEstilo @aleltbd @sony_ca21 @gusgomez1701 @Vespertrino @ClaMoralesM @macdonal5 @renat…
+2017-01-03 10:08:30,863  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @wardito_eze Papo vs Sony Aczino vs Jota Klan vs MKS (Cualquiera xd)
+2017-01-03 10:08:30,863  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @Fototerco: "YOTE CONTRATO TUME PREMIAS"@PALOMINOSCU @aleltbd @LaSinEstilo @sony_ca21 @analitiko @Vespertrino @ElGuacarnako @luisfebarre…
+2017-01-03 10:08:30,863  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @Fototerco: "PAVO NAVIDEÑO" @PALOMINOSCU @LaSinEstilo @aleltbd @sony_ca21 @analitiko @luisfebarrera @ElGuacarnako @Vespertrino @cabetomw…
+2017-01-03 10:08:30,864  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: [INFO] 170101 - #LuHan irá comparecer: 1) Fan Meeting da YiLi WeiKeZi, 3 de Jan.  2) Concurso Musical Original da SONY x KFM91, 8 de Jan.
+2017-01-03 10:08:31,726  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: (VNZ) Reinstalación del SO #Android para tlfs #Samsung, info https://t.co/cLTu03E9VX https://t.co/7IapwEmdGE
+2017-01-03 10:08:31,726  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Agregué un video a una lista de reproducción de @YouTube https://t.co/HoXV4H2inU FREE MERVEL Intro Template #446 Sony Vegas Pro
+2017-01-03 10:08:31,727  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Feliz Año nanos!!  #2017#gta #feliznavidad #feliz2017 #gamer #psn #sony #ps4 #gamergirl #gtaonline #youtuber… https://t.co/HpJ1nRPFsO
+2017-01-03 10:08:31,727  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Ya valí verga #finalfantasy #ff #worldoffinalfantasy #ps4 #playstation #sony #venezuela… https://t.co/9Ea460s080
+2017-01-03 10:08:31,727  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Legooo #ps4 #sony #cod #infinitewarfare #modernwarfareremastered #ps4slim #gaming https://t.co/AkgfN09Q0f
+2017-01-03 10:08:31,729  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: https://t.co/j9s3yKmu7M $1.99 &gt; VMC-15MR2 A/V Audio Video RCA Multi Terminal Cable for #Sony #Handycam #Camcorde https://t.co/bzzWblaemA
+2017-01-03 10:08:31,729  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @smily_sony gracias primix 😘😘😘
+2017-01-03 10:08:31,730  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #TecnoBreak Android 6.0 Marshmallow llega al Sony Xperia Z1 vía AOSP https://t.co/OaZ3r5B6pk
+2017-01-03 10:08:31,731  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @elandroidelibre  ne mejor el Sony Xperia Z5 Premium o el Galaxy S8.
+2017-01-03 10:08:31,731  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Reinstalación del SO #Android para tlfs #SONY, info https://t.co/cLTu03E9VX https://t.co/H1cWhcxMlW
+2017-01-03 10:08:32,726  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #Best #DVD_VCR #Combos #6: Sony SLV-D350P DVD / VCR Combo          https://t.co/GW74ExjUm8 https://t.co/FxU80tGWch
+2017-01-03 10:08:32,730  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @tech_trinkets https://t.co/6ffz55H5HL Sony Xperia XZ Official Android 7.0 Nougat - Review
