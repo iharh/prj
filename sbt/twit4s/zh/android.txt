@@ -1,0 +1,105 @@
+2017-01-03 21:39:00,107  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @appinn: Island – 「绿色守护」作者新作，将不老实的应用 隔离 + 冻结 + 双开 [Android] https://t.co/j8L4hIkFal https://t.co/P97dZYmtP5
+2017-01-03 21:39:00,113  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @scavin: Island – 「绿色守护」作者新作，将不老实的应用 隔离 + 冻结 + 双开 [Android] https://t.co/y6RgQkkuyt https://t.co/uKdieYXLP2
+2017-01-03 21:39:00,113  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我已收获 1,607 食物！ 检查你的田地！https://t.co/2JwYvdgktC #android, #androidgames, #gameinsight
+2017-01-03 21:39:00,114  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我刚在 Tribez 中达到等级 19！ 来和我一起玩，看能不能超过我！ https://t.co/2JwYvdgktC #android, #androidgames, #gameinsight
+2017-01-03 21:39:00,114  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'勘察飞机坠毁现场。'。 https://t.co/2JwYvdgktC #androidgames, #gameinsight
+2017-01-03 21:39:00,115  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我已收集了 5,540 金币！ https://t.co/2JwYvdgktC #android, #androidgames, #gameinsight
+2017-01-03 21:39:00,115  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 墨迹天气 #android #apk #download https://t.co/rH4yHe4wv0
+2017-01-03 21:39:00,116  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @selena0416: 超療癒😭😭😭 #圖多#貓 原來妳都在❤️ - Dcard https://t.co/hckdfmq2Ym
+2017-01-03 21:39:00,118  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'轻微疲惫'。 https://t.co/2JwYvdgktC #androidgames, #gameinsight
+2017-01-03 21:39:00,118  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我已收获 20 食物！ 检查你的田地！https://t.co/2JwYvdgktC #android, #androidgames, #gameinsight
+2017-01-03 21:39:00,119  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'找到被损坏的分析仪。'。 https://t.co/2JwYvdgktC #androidgames, #gameinsight
+2017-01-03 21:39:00,119  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'建一所学校。'。 https://t.co/2JwYvdgktC #androidgames, #gameinsight
+2017-01-03 21:39:00,120  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'盖一间农舍。'。 https://t.co/2JwYvdgktC #androidgames, #gameinsight
+2017-01-03 21:39:00,120  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我已收集了 2,704 金币！ https://t.co/2JwYvdgktC #android, #androidgames, #gameinsight
+2017-01-03 21:39:00,120  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Law of Creation 造物法则 (CN) Android Gameplay: https://t.co/APpB2qNVgT via @YouTube
+2017-01-03 21:39:00,124  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @15928info: 承 擔 【絕無 後遺症 的行為】 Fully take in charge [ Action that leaves absolutely no consequential problems ] https://t.co/P0yR1thNDU…
+2017-01-03 21:39:00,126  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: New V2EX Q&amp;A: Android 应用的账号同步功能有没有相关组件？ by JohnChu - https://t.co/mpfAXvaNH2 #问大家 #v2ex
+2017-01-03 21:39:00,126  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'在护林人小屋签订4笔长期协议'。 https://t.co/2JwYvdgktC #androidgames, #gameinsight
+2017-01-03 21:39:01,428  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我已收集了 6,702 金币！ https://t.co/2JwYvdgktC #android, #androidgames, #gameinsight
+2017-01-03 21:39:01,429  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'从舒适的住宅和婚礼大厅收集5块牌匾。'。 https://t.co/2JwYvdgktC #androidgames, #gameinsight
+2017-01-03 21:39:01,429  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @1ErXTAFDBRsZcB: 多結局型免費養成遊戲 【召喚幸福的小貓】 #召喚幸福的小貓 【iOS】https://t.co/I1mc0u6mdt 【Android】https://t.co/q0IYaBgIZv https://t.co/WkOwcKulnh
+2017-01-03 21:39:01,430  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我已收获 1,511 食物！ 检查你的田地！https://t.co/2JwYvdgktC #android, #androidgames, #gameinsight
+2017-01-03 21:39:01,431  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'木头变成木材。'。 https://t.co/2JwYvdgktC #androidgames, #gameinsight
+2017-01-03 21:39:01,432  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'从舒适住宅收取收益5次。'。 https://t.co/2JwYvdgktC #androidgames, #gameinsight
+2017-01-03 21:39:01,432  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我已收集了 3,303 金币！ https://t.co/2JwYvdgktC #android, #androidgames, #gameinsight
+2017-01-03 21:39:01,432  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我已收获 785 食物！ 检查你的田地！https://t.co/2JwYvdgktC #android, #androidgames, #gameinsight
+2017-01-03 21:39:01,433  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @Poorzerg: 2016新增的常用软件里，不管Mac还是iPhone上，首推Surge。其次，Mac推「Bear」，一款漂亮的Markdown写作应用；iPhone推「即刻」，一款消息推送工具。Windows和Android的我不懂，总结不了🙄️
+2017-01-03 21:39:01,434  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @oasisfeng: @wangcheng678 @NovaDNG Google居然把一个beta阶段的Android版本作为Pixel手机的出厂系统。不愧是大G的风格……
+2017-01-03 21:39:01,435  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @Fatal1tyV 文件管理/Android/data/com.xiachufang/log  这里有log，方便看一下，如果有的话，请发送到 talk@xiachufang.com
+2017-01-03 21:39:01,438  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我喜歡一部 @kashifali6272 的 @YouTube 影片 https://t.co/l6foDBtVdo Install iOS 9 on Android 👈
+2017-01-03 21:39:02,842  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 開始用 #Runtastic 即時追蹤訓練活動。看看我的進度並為我加油打氣: https://t.co/iY1IZ84YHn #runtastic #Android
+2017-01-03 21:39:02,842  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'赶走7个摩罗人。'。 https://t.co/2JwYvdgktC #androidgames, #gameinsight
+2017-01-03 21:39:02,844  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 中医经络穴位流注 #android #apk #download https://t.co/H5JGQdnETf
+2017-01-03 21:39:02,845  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'依然年轻'。 https://t.co/2JwYvdgktC #androidgames, #gameinsight
+2017-01-03 21:39:02,845  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'在浴室实现5个愿望！'。 https://t.co/2JwYvdgktC #androidgames, #gameinsight
+2017-01-03 21:39:02,846  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我已收集了 10,475 金币！ https://t.co/2JwYvdgktC #android, #androidgames, #gameinsight
+2017-01-03 21:39:02,846  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @ziyue98 Android吗？
+2017-01-03 21:39:02,846  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'满足村民的愿望。'。 https://t.co/2JwYvdgktC #androidgames, #gameinsight
+2017-01-03 21:39:02,847  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @VinnyGemma 好久没用过android了，真的不知道。谢谢告知哈
+2017-01-03 21:39:02,847  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我已收获 1,327 食物！ 检查你的田地！https://t.co/2JwYvdgktC #android, #androidgames, #gameinsight
+2017-01-03 21:39:02,847  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @junyu 没有android版本！
+2017-01-03 21:39:02,848  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'舒适的房子。'。 https://t.co/2JwYvdgktC #androidgames, #gameinsight
+2017-01-03 21:39:02,848  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'滋补咖啡'。 https://t.co/2JwYvdgktC #androidgames, #gameinsight
+2017-01-03 21:39:02,848  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我已收集了 9,490 金币！ https://t.co/2JwYvdgktC #android, #androidgames, #gameinsight
+2017-01-03 21:39:02,848  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我已收获 764 食物！ 检查你的田地！https://t.co/2JwYvdgktC #android, #androidgames, #gameinsight
+2017-01-03 21:39:02,849  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Samsung 也要在自家手机上玩类似Continuum 的功能！ 也不晓得最终在S8 上会否用上呢？ https://t.co/u1oHIDklle #Samsung #DesktopExperience #Android #GalaxyS8
+2017-01-03 21:39:02,849  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @yegle @bfishadow Android 盒子为啥不用 bubbleupnp
+2017-01-03 21:39:04,567  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 嗯？乃还在用 Symbian 这么老旧的系统？赶紧换iOS、Android吧～ ##candybot
+2017-01-03 21:39:04,569  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: New V2EX Q&amp;A: [唱吧社招-北京太阳宫] Android 高级研发工程师/Android 架构师 by Mark7963 - https://t.co/v6aYk5jyxU #问大家 #v2ex
+2017-01-03 21:39:04,569  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'摧毁摩罗人的小屋。'。 https://t.co/2JwYvdgktC #androidgames, #gameinsight
+2017-01-03 21:39:04,570  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 中国建设银行 #android #apk #download https://t.co/x0vofiM1CS
+2017-01-03 21:39:04,570  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'从敌人处或宝箱中找到4把锯子。'。 https://t.co/2JwYvdgktC #androidgames, #gameinsight
+2017-01-03 21:39:04,570  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'专属的护林人小屋'。 https://t.co/2JwYvdgktC #androidgames, #gameinsight
+2017-01-03 21:39:04,571  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'一种独特的物质'。 https://t.co/2JwYvdgktC #androidgames, #gameinsight
+2017-01-03 21:39:04,571  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'审问三个敌人。'。 https://t.co/2JwYvdgktC #androidgames, #gameinsight
+2017-01-03 21:39:04,572  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'在山洞里发现3枚恐龙蛋。'。 https://t.co/2JwYvdgktC #androidgames, #gameinsight
+2017-01-03 21:39:04,572  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'宝石样本'。 https://t.co/2JwYvdgktC #androidgames, #gameinsight
+2017-01-03 21:39:04,572  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 我已收获 1,642 食物！ 检查你的田地！https://t.co/2JwYvdgktC #android, #androidgames, #gameinsight
+2017-01-03 21:39:04,573  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 我刚取得了一个成就: 节约的人 https://t.co/YWxj7LJ14c #Gameinsight #Android #Androidgames
+2017-01-03 21:39:04,573  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 天堂岛 - Android 上最棒的游戏!  好友代码: d8f484 #Gameinsight https://t.co/YWxj7LJ14c
+2017-01-03 21:39:04,573  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 在 Android 上玩天堂岛 https://t.co/3p8rPSDmXm #Android #Androidgames #Gameinsight https://t.co/1XIPFl1q2X
+2017-01-03 21:39:04,573  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'水疗服务'。 https://t.co/2JwYvdgktC #androidgames, #gameinsight
+2017-01-03 21:39:04,574  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 免费在 Android 上下载天堂岛! 快来参加吧我的朋友! https://t.co/YWxj7LJ14c #Gameinsight #Androidgames #Android
+2017-01-03 21:39:04,574  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'拯救邻居。'。 https://t.co/2JwYvdgktC #androidgames, #gameinsight
+2017-01-03 21:39:04,574  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 我已收集了 86,226 金币！ https://t.co/2JwYvdgktC #android, #androidgames, #gameinsight
+2017-01-03 21:39:04,574  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 我已收获 20,198 食物！ 检查你的田地！https://t.co/2JwYvdgktC #android, #androidgames, #gameinsight
+2017-01-03 21:39:04,575  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Tribez 是非常棒的游戏！ 尝试成为部落首领！ https://t.co/2JwYvdgktC #android, #androidgames, #gameinsight
+2017-01-03 21:39:04,575  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 免费下载 Android 版 Tribez 游戏。输入我的代码 - 435nwz1pS - 即可获得奖励！ https://t.co/2JwYvdgktC  #androidgames, #gameinsight
+2017-01-03 21:39:04,575  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 我已收获 2,000 食物！ 检查你的田地！https://t.co/wlMWg9W4pd #android, #androidgames, #gameinsight
+2017-01-03 21:39:04,576  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: New #android #app: 欢畅斗地主单机版 https://t.co/fwFl419msS
+2017-01-03 21:39:04,576  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 歡唱K歌王 - 練歌聽歌神器 #android #apk #download https://t.co/qSaDT3vYD1
+2017-01-03 21:39:04,576  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 【Android/安卓】Turbo league – 汽車足球遊戲 (附個人、線上對戰) https://t.co/IQW2mHpj4O #android #game #apps #turboleague
+2017-01-03 21:39:04,577  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 【Android/安卓】滾動球 – Rolling Ball (Candy Mobile 出品) https://t.co/JfuTluAJUq #android #rollingball #game #apps
+2017-01-03 21:39:04,577  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 孜孜不倦 zi1 zi1 bu4 juan4 https://t.co/vf3QMv0Tan #chengyu #learnchinese #hanping https://t.co/RdnX7vLDUm
+2017-01-03 21:39:06,757  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Engadget: Google 和 Fiat Chrysler 合作開發 Android 汽車系統 - https://t.co/LUbB1Cj0b7 #technews #news #engadget https://t.co/bwHEEHOEXr
+2017-01-03 21:39:06,757  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我们店可以购买 #sim卡 每个月1980日元 饱含2GB流量和一次10分钟每个月300次的免费通话  #internet!! #sim #tokyo #shibuya #android 请致电 03-3525-8646
+2017-01-03 21:39:06,758  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 全新Galaxy S8 概念图被外媒曝光了！大家对这样的设计觉得怎样呢？ https://t.co/dfpO2qMn0m #Samsung #GalaxyS8 #Android
+2017-01-03 21:39:06,759  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @nasamars Android上的一款双开软件。https://t.co/YkQ5w29Lp3
+2017-01-03 21:39:06,760  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #CSDN Android--listView长按修改ListView对象内容. Read Blog: https://t.co/2tSWUgZfh7
+2017-01-03 21:39:06,760  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #CSDN Android Studio精彩案例（六）《使用一个Demo涵盖补间动画所有知识》. Read Blog: https://t.co/yrPxTaYZx4
+2017-01-03 21:39:06,761  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #CSDN &lt;Android 基础（三十四）&gt; TabLayout 从头到脚. Read Blog: https://t.co/UwS63r2zFz
+2017-01-03 21:39:06,761  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #CSDN 【Android图像处理】图像处理之-色相、饱和度、亮度调节. Read Blog: https://t.co/mddykU0lI7
+2017-01-03 21:39:09,192  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/yVYefCQ42a Joying Audi A3 S3 RS3 2002-2008 Android 5.1 Ram 2GB Rom 32GB
+2017-01-03 21:39:09,193  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #CSDN Android简易实战教程--第五十话《动画扫描》. Read Blog: https://t.co/EP5eJ6IK9w
+2017-01-03 21:39:09,194  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #CSDN 【Android图像处理】图像处理之-油画效果. Read Blog: https://t.co/rhgOqQqHuo
+2017-01-03 21:39:09,194  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @ryokoni: ［緊急］開左間cafe，好多人坐幾粒鐘，就快執笠。 https://t.co/B1uZJry4aS LIHKG @ Android
+2017-01-03 21:39:09,194  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @appinn: Android tool for Mac – 在 macOS 中对 Android 设备截屏、录像、安装应用 https://t.co/ttl0JFbyDf https://t.co/gRKfqSuSQd
+2017-01-03 21:39:09,196  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我已收获 135 食物！ 检查你的田地！https://t.co/LGzjcZ6s9o #android, #androidgames, #gameinsight
+2017-01-03 21:39:09,196  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我已收集了 408 金币！ https://t.co/LGzjcZ6s9o #android, #androidgames, #gameinsight
+2017-01-03 21:39:09,197  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Tribez 是非常棒的游戏！ 尝试成为部落首领！ https://t.co/LGzjcZ6s9o #android, #androidgames, #gameinsight
+2017-01-03 21:39:09,197  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我刚在 Tribez 中达到等级 4！ 来和我一起玩，看能不能超过我！ https://t.co/LGzjcZ6s9o #android, #androidgames, #gameinsight
+2017-01-03 21:39:09,197  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我在 #Android 游戏 Tribez 中完成了任务'砍倒4棵树。'。 https://t.co/LGzjcZ6s9o #androidgames, #gameinsight
+2017-01-03 21:39:09,198  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我已收获 1,325 食物！ 检查你的田地！https://t.co/8apbo8HKqP #android, #androidgames, #gameinsight
+2017-01-03 21:39:09,198  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我已收集了 13,785 金币！ https://t.co/8apbo8HKqP #android, #androidgames, #gameinsight
+2017-01-03 21:39:09,199  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: remix OS (Android) 是不是已经歇菜了，一点新闻和动态都没有了 #remixos
+2017-01-03 21:39:09,199  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我已收获 1,150 食物！ 检查你的田地！https://t.co/8apbo8HKqP #android, #androidgames, #gameinsight
+2017-01-03 21:39:09,199  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我已收集了 29,120 金币！ https://t.co/8apbo8HKqP #android, #androidgames, #gameinsight
+2017-01-03 21:39:09,199  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我已收集了 10,750 金币！ https://t.co/8apbo8HKqP #android, #androidgames, #gameinsight
+2017-01-03 21:39:09,200  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我已收集了 122,360 金币！ https://t.co/8apbo8HKqP #android, #androidgames, #gameinsight
+2017-01-03 21:39:09,200  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我已收集了 380 金币！ https://t.co/8apbo8HKqP #android, #androidgames, #gameinsight
+2017-01-03 21:39:09,200  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我已收获 910 食物！ 检查你的田地！https://t.co/8apbo8HKqP #android, #androidgames, #gameinsight
+2017-01-03 21:39:12,238  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @glzjin: @jerry1026yang @breakwa11 如果你指的是 SSR Android，在这 https://t.co/MUxkRy6jXR
+2017-01-03 21:39:15,559  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 今天把Nexus 9 LTE升級到Android 7.1.1發現卡頓的情況還是依舊，唯一感受到欣慰的是flipboard可以登陸了 #ttoflink
+2017-01-03 21:39:15,561  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: 今年的 Android 旗舰标配处理器，骁龙 835 的细节曝光 https://t.co/UCtMEIkFv1今年的-android-旗舰标配处理器，骁龙-835-的细节曝光/ 通過 @easygroupasia… https://t.co/n8LeC3i069
+2017-01-03 21:39:15,562  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @osikubi 这是爱上 Android 了？
