@@ -134,7 +134,10 @@ class TwitSpec extends FlatSpec with Matchers {
         val modelDirName = config.getString("ld.model.dir.name")
 
         val langDetector: NormLangDetector = getLangDetector(modelDirName);
-        val lng = Language.Spanish
+
+        // Spanish ChineseSimplified
+        val lng = Language.ChineseSimplified
+        val lngStr = "zh" // lng.toString()
 
         val out = new File(s"out/${lng.toString()}.csv")
         val writer = out.asCsvWriter[(String)](',', "text") // List("text")
@@ -142,12 +145,12 @@ class TwitSpec extends FlatSpec with Matchers {
         // addidas, lenovo, apple, intel, android, samsung, google, microsoft
         // reebok, sony
         val awaitable = Observable
-            .fromAsyncStateAction(searchTweets)(TwitSearchState(client, "pixar", lng))
+            .fromAsyncStateAction(searchTweets)(TwitSearchState(client, "sony", lng))
             .concatMap { Observable.fromIterable(_) } // Seq[Tweet] => Observable[Tweet]
-            .filter { _.lang == Some(lng.toString()) }
+            .filter { _.lang == Some(lngStr) }
             .map { _.text }
             .distinct
-            .filter { detectLang(langDetector, _) != lng.toString() }
+            .filter { detectLang(langDetector, _) != lngStr }
             .filter { hasHashtagOrMention(_) }
             .take(1000)
             // Consumer.complete
