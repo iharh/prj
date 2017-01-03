@@ -1,0 +1,4 @@
+2017-01-03 09:09:35,787  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @S_J_NEWS: SUPER JUNIOR https://t.co/bEd5epdOXg https://t.co/dqoougM8hr
+2017-01-03 09:09:35,791  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @IniciativaxAst: Candidates a Meyor noticia pal asturianu del añu 2016 #meyor2016ast Protocolu Donostia Drechos Llingüísticos.Votái: htt…
+2017-01-03 09:09:48,904  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @SkamLatinoA: 🖤 Links para ver Skam con subs en español, rt please 🖤 s1: https://t.co/xmqWqbpO1D s2: https://t.co/eiQhuIZw0C s3: https…
+2017-01-03 09:11:04,657  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: QuitNow! Logro desbloqueado: Ahorrando dinero, Has ahorrado $ 50 via @QuitNowApp #QuitNowApp https://t.co/b4MHqq6qnu https://t.co/WMXN3CIUC4
