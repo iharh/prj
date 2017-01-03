@@ -1,0 +1,52 @@
+2017-01-03 20:08:50,167  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Windows 10 的Creators更新可能会推迟至 4 月上线 https://t.co/olsZocpsud by @LeeYichenlt
+2017-01-03 20:08:50,170  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 聚知堂 – BizSpark Plus Network Partner https://t.co/I1KzUzvVkH #microsoft
+2017-01-03 20:08:50,171  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 【一步進入工業 4.0】結合Beacon與影像，建騰創達靠「智慧管理」晉升工業4.0 領先者 https://t.co/Y80tPVkHcJ #virtualization #uncategorized
+2017-01-03 20:08:50,172  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 聚知堂 – BizSpark Plus Network Partner https://t.co/aOmxJeZ7hQ #TechPro #DevPro #bizsparknetworkpartner
+2017-01-03 20:08:50,172  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 聚知堂 – BizSpark Plus Network Partner https://t.co/Z87DRMIZ5Z #TechPro #DevPro #bizsparknetworkpartner
+2017-01-03 20:08:50,173  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 聚知堂 – BizSpark Plus Network Partner https://t.co/VJcjC6k0jf #bizsparknetworkpartner
+2017-01-03 20:08:50,173  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 聚知堂 – BizSpark Plus Network Partner https://t.co/Jgw1MBG0Vk #bizsparknetworkpartner
+2017-01-03 20:08:50,177  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Hololens的前景无量啊！#Microsoft #Hololens https://t.co/2KrEDnD2jB
+2017-01-03 20:08:50,179  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @BakaTakasugi 发现这张图被 Microsoft Pix 修复了，我就用 Instagram 调整了一下，这个是肉眼的实际效果： https://t.co/gup0j3eYzv
+2017-01-03 20:08:50,179  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @Will_Huang: Visual Studio 2017 偷偷地推出 RC2 囉！ ( Build 26014.00 ) 1. 下載安裝檔 https://t.co/HmNqwnXJ8y 2.... https://t.co/fFFZenxT4m
+2017-01-03 20:08:50,181  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Windows 10：我的头上怎么突然有绿光显现！？( ⊙ o ⊙ ) https://t.co/BIdnIFdF66 #Microsoft #Windows #Windows10 #死机
+2017-01-03 20:08:50,182  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Engadget: 鎖匙掉了？微軟的 AR 技術或許能幫你一把 - https://t.co/AgPQYnYeQL #technews #news #engadget https://t.co/Rz5LpDARHh
+2017-01-03 20:08:50,184  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 新一代二合一平板标杆又要来啦 https://t.co/7pIIJyVIxX #Microsoft #Surface #SurfacePro #SurfacePro5
+2017-01-03 20:08:50,185  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @BenDeveloper 據我所知，Lumia上面既Word Flow keyboard 係Microsoft 開發的, Google亦有Swiftkey keyboard, 但兩者都是外掛的
+2017-01-03 20:08:50,186  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: I added a video to a @YouTube playlist https://t.co/rALsxhAlHT 探索新版的 Microsoft Translator
+2017-01-03 20:08:50,187  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: New V2EX Q&amp;A: Microsoft Office 2007 语法检查 by lanmeiyu123 - https://t.co/v9oKIng5Oc #问大家 #v2ex
+2017-01-03 20:08:50,189  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/7xkJUj9laV [線上讀書會] 默司 主講 microsoft visual studio code
+2017-01-03 20:08:50,191  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: .NET Framework 4.6.2 发布公告 https://t.co/WHIdKVchGa #TechPro #DevPro #uncategorized
+2017-01-03 20:08:50,191  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: .NET Framework 4.6.2 发布公告 https://t.co/oBRUNR4AJa #microsoft
+2017-01-03 20:08:50,191  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: .NET Framework 4.6.2 发布公告 https://t.co/buBlibsPaa #uncategorized
+2017-01-03 20:08:51,954  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/c8EpQHbIFW Funny! Orchestra plays Microsoft Windows™ - the waltz
+2017-01-03 20:08:51,954  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @ADieDog: 之前说到Microsoft在Twitter上有个日语人工智能bot 谁知道账号多少？
+2017-01-03 20:08:51,955  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @Microsoft_godie 微软今天药丸了吗 https://t.co/OFwpK7MGtS
+2017-01-03 20:08:51,956  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 来微软游客中心的感觉不知怎的就像麦当劳广告语：更多欢笑就在麦当劳 (at @Microsoft Visitor Center in Redmond, WA) https://t.co/9ueMUlMZAo
+2017-01-03 20:08:51,956  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Windows 10 Mobile 2016 一問一答 https://t.co/4uQzIKj14m via @instapaper
+2017-01-03 20:08:51,957  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 【#Azure】開發和使用 AzureML 模型 https://t.co/SQa5Jo4gZf #TechPro #DevPro #azuremachinelearning #mspnews
+2017-01-03 20:08:51,958  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 【#Azure】開發和使用 AzureML 模型 https://t.co/RLYQYS3f9Q #azuremachinelearning #mspnews
+2017-01-03 20:08:51,958  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 【Azure】在 AML 上執行自定的 Scripts https://t.co/xyyOqZRGon #microsoft
+2017-01-03 20:08:51,958  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 【Azure】開發和使用 AzureML 模型 https://t.co/Gz4fLpDqMa #microsoft
+2017-01-03 20:08:51,959  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Visual Studio Code C/C++ 扩展12月份的更新 https://t.co/34zgEY8UPr #TechPro #DevPro #uncategorized
+2017-01-03 20:08:51,959  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Visual Studio Code C/C++ 扩展12月份的更新 https://t.co/fMgA5lkYSx #uncategorized
+2017-01-03 20:08:51,959  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Visual Studio Code C/C++ 扩展12月份的更新 https://t.co/xv16nnkex2 #microsoft
+2017-01-03 20:08:51,959  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #Visio 將連結網頁及 IOS 系統 https://t.co/7LxaIAtpG9 #virtualization #uncategorized #commercial #consumer #office365
+2017-01-03 20:08:51,960  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: I liked a @YouTube video from @silencepink https://t.co/wN556QNGHL [開箱]清新優質小粉紅 Microsoft XBOX 360 遊戲手把(USB)
+2017-01-03 20:08:51,961  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #Microsoft #Office 隨便一個近幾年的新版本，其 Source code... - Ant Yi-Feng Tzeng - Facebook  https://t.co/mWw2Q0hVDt memo. 所以現在 Office 才取作365 lolol
+2017-01-03 20:08:51,961  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Microsoft Comic Chat 推廣委員會，請大家告訴大家。 #microsoftcomichcat https://t.co/08SPQ2eZ49
+2017-01-03 20:08:51,962  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @googollee 你买的是这个么？ Microsoft Surface Pro 4 - 128GB / Intel Core i5 还是 i7 的？
+2017-01-03 20:08:51,962  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: SQL LocalDB 注意事項 https://t.co/Ly0tNvM0ez #uncategorized #visualstudio2013 #visualstudio2015
+2017-01-03 20:08:51,962  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: SQL LocalDB 注意事項 https://t.co/qsoqHnk0u7 #TechPro #DevPro #uncategorized #visualstudio2013 #visualstudio2015
+2017-01-03 20:08:51,962  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: SQL LocalDB 注意事項 https://t.co/WrYlivlFfS #microsoft
+2017-01-03 20:08:51,963  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: CMake在Visual Studio 2017 中被支持了–在RC.2版本中又有哪些更新 https://t.co/XNI23vNVba #TechPro #DevPro #uncategorized
+2017-01-03 20:08:51,963  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: CMake在Visual Studio 2017 中被支持了–在RC.2版本中又有哪些更新 https://t.co/4wwwrYPFzV #uncategorized
+2017-01-03 20:08:51,963  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/HclG5pgaLV [ ktest ]Microsoft MCSA資格
+2017-01-03 20:08:51,963  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: CMake在Visual Studio 2017 中被支持了–在RC.2版本中又有哪些更新 https://t.co/xmICj3c2OH #microsoft
+2017-01-03 20:08:51,964  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @insideCyberbuzz: 微軟行銷長 Chris Capossela 上週接受 Podcast 節目「Windows Weekly」的採訪。在談論微軟 Windows 10 升級的推廣時，坦承曾經太過火。 https://t.co/qPgSmM3i14
+2017-01-03 20:08:51,965  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 用Azure物联网网关SDK连接设备 https://t.co/zlL5l02yUL #microsoft
+2017-01-03 20:08:51,966  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 用Azure物联网网关SDK连接设备 https://t.co/h1aZlRDYnu #TechPro #DevPro #uncategorized #物联网
+2017-01-03 20:08:51,966  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: 用Azure物联网网关SDK连接设备 https://t.co/GMlZMfUpld #uncategorized #物联网
+2017-01-03 20:08:51,967  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Windows 10 Mobile 2016 一問一答 https://t.co/EOzgOpzbHq #えば日記 #developerevangelism #insiderpreview #microsofttechnology
+2017-01-03 20:08:51,967  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Windows 10 Mobile 2016 一問一答 https://t.co/UiQm0wNS4d #TechPro #DevPro #えば日記 #developerevangelism #insiderpreview
+2017-01-03 20:08:51,968  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Windows 10 Mobile 2016 一問一答 https://t.co/uIjJyGRmUV #microsoft
+2017-01-03 20:08:51,968  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @lyricwai 前段时间 Microsoft 美帝官网打折，49USD，我买了一个，帮 @Hs_Yeah 也买了一个。
