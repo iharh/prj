@@ -1,0 +1,27 @@
+2017-01-02 21:24:58,097  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: FelizAno📱 SIGUENOS👌📲 #cellphone #technology #telephone #connection #repair #damages #innovation #ipad #tablets #apple #apps #iphone #samsung
+2017-01-02 21:24:58,100  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #farejaDesconto #walmart - Cabo USB para iPhone Por R$39.90 - https://t.co/SP7TQP9OSf https://t.co/sh5QSWnpb2
+2017-01-02 21:24:58,101  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @LaTochaBahnhof: Escúchate #Touché al completo en #itunes https://t.co/VAFwALcPsu con @DualTODkllsklls @_dalacara_ @LC2L_ @_AENEASx @mus…
+2017-01-02 21:24:58,102  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @ViejoGabicho: Apple reduce la producción del #iPhone7 https://t.co/yFZUFd997w #WTF
+2017-01-02 21:24:58,103  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Apple reduce la producción del #iPhone7 https://t.co/yFZUFd997w #WTF
+2017-01-02 21:24:58,104  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #Electronic #nowplaying Robert Miles - Children https://t.co/Ns7cVhNomI
+2017-01-02 21:24:58,106  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @melefezu: #app #android #apple #ios #Amazongo abrirá un supermercado físico que no tendrá línea de c… https://t.co/DQ4FuqMS4X https://t…
+2017-01-02 21:24:58,107  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: WhatsApp deja de funcionar en iPhone 3GS y en iOS 6 - https://t.co/DnSKmuL4XE #iPhone
+2017-01-02 21:24:58,109  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Mi Gobio Dardo de Fuego:) #abyssrium Download: https://t.co/DfxUkEuech https://t.co/dJlLqO6mgt
+2017-01-02 21:24:58,110  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Vilimadas: Para no perderos ni un #podcast de #ZafarranchoVilima os podéis suscribir.  IVOOX: https://t.co/s0Upo4OkkE iTunes: https://…
+2017-01-02 21:24:58,112  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @RafaAndCo: 4. Al final Tú @rafahg  &amp; @egarciapuche #CasoCerrado #RafaAndCoFANS https://t.co/FgLYgJuj21
+2017-01-02 21:24:58,113  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @RafaAndCo: 5. ¿Quién?  @rafahg  &amp; @egarciapuche #CasoCerrado #RafaAndCoFANS https://t.co/mc360HHRYZ
+2017-01-02 21:24:58,113  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @iphonedigital: Apple duplica a Samsung en número de dispositivos activados https://t.co/0SnGJXxUam #iphone … https://t.co/AdQUuiQgd3
+2017-01-02 21:24:58,114  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @Amaurisoler @williamwalter3 deje esa Apple Logic líder
+2017-01-02 21:24:58,114  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Cargador Para Apple Macbook Pro Magsafe 85w, Cargadores Apple Macbook Pro Magsafe 85w (Reempla ··-▶ https://t.co/xGwWQJt0Ez _ #Venezuela
+2017-01-02 21:24:58,116  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #Escuchas a Manolo Muñoz - Cuatro Caminos en https://t.co/puTHPTiamL  iPhone/App https://t.co/uXt2ZieOnI  #Rancheras #VivaElMariachiRadio
+2017-01-02 21:24:58,116  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @TLVRP_SVNO: #Stockholm #Goteborg #Malmo Tiendas Agatha - Perfumería y Estética - Grupo Abal https://t.co/jPCSERQBNW
+2017-01-02 21:24:58,118  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Mi Gobio de Bandas Naranjas:) #abyssrium Download: https://t.co/DfxUkEuech https://t.co/80l6loX42y
+2017-01-02 21:24:59,547  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Dica @apple
+2017-01-02 21:24:59,548  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @lilidjvidal: DJ Asi Vidal - ASI VIDAL ELECTRO CLUB 171 - https://t.co/y8VAojRk5L #iTunes #electroclub #asividal #bestofedm @asividal @a…
+2017-01-02 21:24:59,550  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @EdmResistance: DJ Asi Vidal - ASI VIDAL ELECTRO CLUB 173 - https://t.co/5zwi3NKVn9 #iTunes #electroclub #bestofedm #myfavdj #myfavpodca…
+2017-01-02 21:24:59,551  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @jgreerthaatruth: Mucho Flame Emoji 🔥🔥🔥🔥 https://t.co/BQtDAAVrmP https://t.co/BQtDAAVrmP
+2017-01-02 21:24:59,552  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: El iPhone heredaría la corona digital del Apple Watch https://t.co/iOTYSmUaEf #iPhone #iphone #patente #AppleWatch
+2017-01-02 21:24:59,554  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/Q9KsA9SkUR PPAP Pen Pineapple Apple Pen
+2017-01-02 21:24:59,555  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @_Apple_Hacker_ me mi meee
+2017-01-02 21:25:55,632  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Mi El deseado pez caminador:) #abyssrium Download: https://t.co/DfxUkEuech https://t.co/LCMVZhmX78
+2017-01-02 21:26:09,939  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #iOS 9 Todo lo que necesitas saber (Preview) https://t.co/KySvwOl9po #apple #ios9 | #FelizLunes #RT

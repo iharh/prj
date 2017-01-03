@@ -1,0 +1,22 @@
+2017-01-03 08:04:50,889  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Lenovo presenta un prototipo de su HMD con Windows Holográfico https://t.co/QhTlEqEj9G #Lumia #MicrosoftLumia
+2017-01-03 08:04:50,902  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @nirmaltv Lenovo Vibe K5 Note Vs Redmi NOTE 3 or Lenovo K6 Note which I buy bro
+2017-01-03 08:04:50,905  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @mtorchiari le traje a mi vieja una Lenovo, i7, 16gb, 1tb, 10k arg, acá vi la misma pero de 8gb 28k.
+2017-01-03 08:04:50,906  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Lenovo Yoga #Tab 3 Pro Specification https://t.co/2d4uh2J4XR #andriod #lenovoyogatab3pro #RecentHacks
+2017-01-03 08:04:50,909  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #voip free lenovo a1070
+2017-01-03 08:04:50,909  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #CES2017 mañana! @lenovo @lenovoMX
+2017-01-03 08:04:50,910  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: (Lenovo Yoga, MacBook Pro, HP) Wearable Technology, &amp; more https://t.co/TgVAmFwgE8 #iot
+2017-01-03 08:04:51,794  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Ahórrate 39,67€ en Lenovo Vibe K5 - Smartphone... de #lenovo comprándolo por 139,00€ #oferta https://t.co/fCnBszFvlV https://t.co/4SYNH6DANm
+2017-01-03 08:04:51,796  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Vendo tablet lenovo 3 en #Wallapop https://t.co/1CPdkk8PnZ
+2017-01-03 08:04:51,798  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Me ha gustado un vídeo de @YouTube de @cosmoandroid (https://t.co/7PxVxWHTmw - REVIEW LENOVO A2010 | Cosmo Android).
+2017-01-03 08:04:51,799  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Bienvenido, Lenovo Yoga Book. Ahora a sacarte chispas.  #lenovo… https://t.co/JRL5aoTxf3
+2017-01-03 08:04:51,800  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @3beiz Lenovo Yoga...
+2017-01-03 08:04:51,802  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @GabrielSaenz_ Lenovo Yoga 510.
+2017-01-03 08:04:51,802  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @Pobelter Lenovo Yoga https://t.co/8n9eQpBkeK
+2017-01-03 08:04:51,803  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #leia endor blaster buy lenovo ultrabook
+2017-01-03 08:04:51,804  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Am apreciat un videoclip pe @YouTube, https://t.co/4XIYqq6HlN Hard Reset Lenovo A1000
+2017-01-03 08:04:51,806  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #schoolsupplies LENOVO YOGA 2 (11 INCH) Convertible Laptop https://t.co/REbezqMH1X #onsale #greatdeals https://t.co/HQlKQtUkkj
+2017-01-03 08:04:51,806  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Vuelve! Lenovo ZUK Z2 64GB desde 159€ (PVP +175€) #Gearbest 🌍 🌀 Código descuento color blanco: Z2BIT ➡️ https://t.co/LaOVjR9nJU 159€
+2017-01-03 08:04:51,806  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Lenovo ThinkPad x270 oferece até 20 horas de autonomia https://t.co/DSrNLMyeys https://t.co/zgYygcOTJ6 #tecnologia
+2017-01-03 08:04:51,807  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Lenovo ThinkPad x270 oferece até 20 horas de autonomia https://t.co/eevEsye6pD https://t.co/jm2CAEmKh9 #tecnologia
+2017-01-03 08:04:51,807  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @LearnWus: Configurando las nuevas #tablet #learnwus #apple #lenovo https://t.co/Y5wlBY3p2G
+2017-01-03 08:04:51,807  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @xataka Lenovo 900s... Ademas convertible...

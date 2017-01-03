@@ -1,0 +1,13 @@
+2017-01-03 08:23:40,584  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @krungy21 Addidas endorser!
+2017-01-03 08:23:40,586  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @AlbertMella: Regálenme unos addidas de reyes! 😬
+2017-01-03 08:23:40,588  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Acá enchongad@s #conlacami #addidas #loqueoasaeneltrabajo #porquesevinoigualitaami #lacami… https://t.co/Lzd9ILKj7z
+2017-01-03 08:23:40,589  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @natientuiter Addidas es igual? https://t.co/wE8ZXlBBlT
+2017-01-03 08:23:40,589  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Dear santa 😭😭😭💔 #addidas #love https://t.co/f06pLLGRt3
+2017-01-03 08:23:40,590  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #eBaySNKRDeals Addidas Varitas Men  https://t.co/ZEYIrmC7SL
+2017-01-03 08:23:40,591  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @Jackie_CL21 yo delete addidas pics
+2017-01-03 08:23:40,592  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @deborapoza: Recorriendo un poco Brasil 🇧🇷 #morocha #addidas #look #loveyourself #pandeazucar #brasil #rio… https://t.co/RROJW14U9a
+2017-01-03 08:23:40,593  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @Nooooooooosaj class A na addidas ayos na 😂
+2017-01-03 08:23:40,594  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @_ZeroClark30 #aesthetic #sadboy #trash #FIJIWater #nike #addidas #depressed #vibes #darkness #fotography #rare #supreme #$uicide #killa
+2017-01-03 08:23:40,595  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @luistheknizzle: @JayyyRoduno Addidas fracas
+2017-01-03 08:23:40,595  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @JayyyRoduno Addidas fracas
+2017-01-03 08:23:40,598  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Deseo concedido!!!! #addidassuperstar #addidas #christmasgifts #regalitosmojados #tvpatasarribas https://t.co/tonDQFalQe
