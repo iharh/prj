@@ -1,0 +1,16 @@
+2017-01-03 09:32:01,590  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Aguante Xbox puto #Microsoft https://t.co/yQosHRrNJy
+2017-01-03 09:32:01,596  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #microsoft technology center chicago eyesite optometry cerritos ca
+2017-01-03 09:32:01,598  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #programas de microsoft office verrazano movers
+2017-01-03 09:32:01,603  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Ahórrate 89,61€ comprando Microsoft Lumia 950 XL - Sm... de #microsoft por 290,00€ #oferta https://t.co/3smURFiuKV https://t.co/RzBhBI2lZx
+2017-01-03 09:32:01,607  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #10: Microsoft Publisher 2013, x32/64, PKL, 1u, 1pc, ESD, ENG - Autoedición... #software https://t.co/j2ZAE9s0Iq https://t.co/0PGKrzv42P
+2017-01-03 09:32:01,612  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Microsoft Surface Pro 4 (128 GB, 4 GB RAM, Intel Core M) Microsoft https://t.co/T7HRbdLyYy vía @amazon
+2017-01-03 09:32:01,614  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #microsoft virus detector prevasid
+2017-01-03 09:32:02,526  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @waltermmv: "YoPuedoProgramar" https://t.co/vJ6pcpBMh1 vía @Microsoft_EDU
+2017-01-03 09:32:02,526  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @waltermmv: "YoPuedoProgramar" https://t.co/1yBB6HI178
+2017-01-03 09:32:02,527  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: "YoPuedoProgramar" https://t.co/vJ6pcpBMh1 vía @Microsoft_EDU
+2017-01-03 09:32:02,531  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: La paqueteria de #Office #microsoft viene mas completa que la de #Mac #Keynote #Pages #Numbers ? #Apple
+2017-01-03 09:32:02,532  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #oferta EasySMX 2,4 GHz Auricular Inalámbrico Gaming para XBOX 360 / X 57.99€ -71% #descuento… https://t.co/MxgXbJPPOj
+2017-01-03 09:32:02,533  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: EasySMX 2,4 GHz Auricular Inalámbrico Gaming para XBOX 360 /  57.99€ -71% https://t.co/HW8BKWWezq #ldo https://t.co/dmG6Uf5odq
+2017-01-03 09:32:03,679  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Curiosidades Coca Cola #Microsoft https://t.co/7dy9qzM24B https://t.co/rBSTUvNKfS
+2017-01-03 09:32:03,683  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Microsoft Surface RT 10.6" HD Tablet 32GB Wi-Fi  Compra y Envia con #ferisacorp https://t.co/tag8fBZtro https://t.co/IGSFBTAZkE
+2017-01-03 09:32:03,685  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Es hermosísima #xbox #xboxone #xboxones #microsoft #inlove https://t.co/wfp97u6CDX

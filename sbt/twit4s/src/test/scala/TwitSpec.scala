@@ -140,8 +140,9 @@ class TwitSpec extends FlatSpec with Matchers {
         val writer = out.asCsvWriter[(String)](',', "text") // List("text")
 
         // addidas, lenovo, apple, intel, android, samsung, google, microsoft
+        // reebok
         val awaitable = Observable
-            .fromAsyncStateAction(searchTweets)(TwitSearchState(client, "microsoft", lng))
+            .fromAsyncStateAction(searchTweets)(TwitSearchState(client, "reebok", lng))
             .concatMap { Observable.fromIterable(_) } // Seq[Tweet] => Observable[Tweet]
             .filter { _.lang == Some(lng.toString()) }
             .map { _.text }
