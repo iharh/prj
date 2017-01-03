@@ -1,0 +1,142 @@
+2017-01-03 09:49:24,001  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Adrian Peterson Minnesota #Vikings #Reebok #NFL Youth Large #Jersey https://t.co/hZdyUw8TCm #Sports #Buzz https://t.co/ssjVzhcC9b
+2017-01-03 09:49:24,004  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Desempacados: Reebok en la música: https://t.co/MKOrBcF7Zn via @YouTube
+2017-01-03 09:49:24,014  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Practicando #clasificAtorio #uniongames #crossfit #clean #powerclean #barbell #reebok… https://t.co/okewcN0y3v
+2017-01-03 09:49:24,018  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/Z20Huweysp
+2017-01-03 09:49:24,019  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/ccvAdRSNBs
+2017-01-03 09:49:24,020  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/KOhQvbwZ2j
+2017-01-03 09:49:24,020  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/KbIU9zKpAV
+2017-01-03 09:49:24,021  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/gNNDlkQpoU
+2017-01-03 09:49:24,023  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: SHAWNE MERRIMAN SAN DIEGO #Chargers #NFL #Reebok PREMIER #Jersey XL BLUE X-LARGE https://t.co/6KTWgC30cj #Football… https://t.co/NXoraCUbAN
+2017-01-03 09:49:24,024  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: SHAWNE MERRIMAN SAN DIEGO #Chargers #NFL #Reebok PREMIER #Jersey XL BLUE X-LARGE https://t.co/e2yhaGmY0L #Football https://t.co/NtRL4jTD0j
+2017-01-03 09:49:24,024  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @ShiWantsTheC: Ésas son Reebok o son Nike https://t.co/Pq8QkQx5ol
+2017-01-03 09:49:24,025  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Minnesota #Vikings Adrian Peterson #Football #Jersey by #Reebok https://t.co/h778RS6mCb #Sports #Buzz https://t.co/T0bkWz11jR
+2017-01-03 09:49:24,026  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @Reebok Congrats to Amanda Nunez!
+2017-01-03 09:49:24,027  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @kenyalandia: Reebok - Escape The Sofa - TV commercial https://t.co/hkFYABtJ15 vía @YouTube
+2017-01-03 09:49:24,028  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Reebok - Escape The Sofa - TV commercial https://t.co/hkFYABtJ15 vía @YouTube
+2017-01-03 09:49:24,973  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Authentic San Diego #Chargers #Reebok El Salvador #NFL #Jersey 52 https://t.co/tf6KAULyNP #Football https://t.co/cwThG1x9N3
+2017-01-03 09:49:24,974  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Authentic Indianapolis #Colts Manning #Reebok El Salvador #NFL #Jersey 52 https://t.co/w4KYQGmE4o #Buzz #Onsale https://t.co/zvgqHKykAQ
+2017-01-03 09:49:24,974  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Authentic Indianapolis #Colts Manning #Reebok El Salvador #NFL #Jersey 52 https://t.co/k328FFNNbD #Fan #Apparel https://t.co/leiotx6e5I
+2017-01-03 09:49:24,975  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Authentic San Diego #Chargers #Reebok El Salvador #NFL #Jersey 52 https://t.co/J9pRUNlCVi #Football #Fans https://t.co/ZwSCiNkdte
+2017-01-03 09:49:24,975  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Authentic San Diego #Chargers #Reebok El Salvador NFL #Jersey 52 https://t.co/QOMf3yy134 #NFL #Apparels https://t.co/IKHKktXQ9m
+2017-01-03 09:49:24,975  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Authentic San Diego #Chargers #Reebok El Salvador NFL #Jersey 52 https://t.co/FS13yEEPHV #NFL https://t.co/b3baPihLt2
+2017-01-03 09:49:24,976  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #NFL #FootBall Authentic Chicago #Bears Urlacher Reebok El Salvador NFL Jersey 52 https://t.co/OFCXNogFLw #Bargains #Deals
+2017-01-03 09:49:24,976  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/YKTXSMZt6s
+2017-01-03 09:49:24,977  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/58ATBZmPzx
+2017-01-03 09:49:24,978  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/OdWu0ng3np
+2017-01-03 09:49:24,979  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/vQRXt5nXxU
+2017-01-03 09:49:24,980  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/JM8xQqgDWh
+2017-01-03 09:49:24,981  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/p6iPJ2AKL8
+2017-01-03 09:49:24,981  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/7AiY7ZiQ8Q
+2017-01-03 09:49:24,981  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/kK3Z5SrwHx
+2017-01-03 09:49:24,982  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/yNFIqV9njc
+2017-01-03 09:49:24,982  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Último Snatch del año💪💪💨 #powersnatch #reebok #maniak #Nocardio😂😂 @… https://t.co/It6jwfjfIh
+2017-01-03 09:49:24,983  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @Reebok @RondaRousey er... delete tweet social media chick.... #fail #ufc207
+2017-01-03 09:49:24,984  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @Reebok #RondaRousey Viva Brazil!!!
+2017-01-03 09:49:24,985  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @Reebok Ronda #UFC207 https://t.co/TqwAJVSkM5
+2017-01-03 09:49:24,985  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Y@Reebok Ronda has my vote! #UFC207 https://t.co/rRgJJpHTED
+2017-01-03 09:49:24,985  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @Reebok Nuñez!
+2017-01-03 09:49:24,986  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @Reebok Ronda has my vote! #UFC207 https://t.co/RVpP54S1vI Letsgooooo
+2017-01-03 09:49:24,986  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @Reebok Ronda has my vote! #UFC207Go Ronda https://t.co/w9drQ4Bwd0
+2017-01-03 09:49:24,986  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Go Ronda @Reebok Ronda has my vote! #UFC207 https://t.co/uPkBzY9BrL
+2017-01-03 09:49:24,987  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @ufc @Amanda_Leoa @RondaRousey @Reebok vamos!!!! Gatitaaaaa!!!
+2017-01-03 09:49:24,987  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @Reebok Ronda has my vote! #UFC207 lets gooooo Ronda!!!!! #TeamRousey #RowdyRonda https://t.co/6D8Qwp96K6
+2017-01-03 09:49:24,987  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @Reebok Ronda has my vote! #UFC207Go Ronda https://t.co/7X4xF92CII
+2017-01-03 09:49:24,988  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @EcuadorClothing: Camiseta #Reebok Hombre Ecuador Clothing #Feliz2017 #Ecuador @Mercadolibre_ec @EcuProm https://t.co/GqkmsXT70L
+2017-01-03 09:49:24,988  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @EcuProm: Camiseta #Reebok Hombre Ecuador Clothing #Feliz2017 #Ecuador Mercadolibre_ec EcuProm https://t.co/7sfoohoDC3 https://t.co…
+2017-01-03 09:49:26,454  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Camiseta #Reebok Hombre Ecuador Clothing #Feliz2017 #Ecuador Mercadolibre_ec EcuProm https://t.co/7sfoohoDC3 https://t.co/Ero3BIhOCs
+2017-01-03 09:49:26,454  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Camiseta #Reebok Hombre Ecuador Clothing #Feliz2017 #Ecuador @Mercadolibre_ec @EcuProm https://t.co/GqkmsXT70L
+2017-01-03 09:49:26,454  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/pObkI8flFZ
+2017-01-03 09:49:26,455  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Aaaaayyyyyeeeee🍌🍌🍌🍌🍌@Reebok Ronda has my vote! #UFC207 https://t.co/gCZVI9HawC
+2017-01-03 09:49:26,455  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @Reebok Ronda has my vote! #UFC207Go Ronda https://t.co/zY3YxmRUf7
+2017-01-03 09:49:26,456  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @Reebok Ronda has my vote! #UFC207 https://t.co/PJ3NRYRnxs tío
+2017-01-03 09:49:26,456  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @goncalosoares00: reebok compensa
+2017-01-03 09:49:26,456  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @Reebok Ronda has my vote! #UFC207Lets go Ronda https://t.co/HnzYChho0R
+2017-01-03 09:49:26,457  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #bemorehuman #reebok #bebrave #stretching #staywiththefight @ Mexico City, Mexico https://t.co/fO8w5Wwy71
+2017-01-03 09:49:26,458  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/gUuIbcyboO
+2017-01-03 09:49:26,458  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/qfQ9nqCFuY
+2017-01-03 09:49:26,459  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @Reebok Nunes. #UFC207
+2017-01-03 09:49:26,459  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @Reebok @RondaRousey Viva Brazil!!!! #teamnunes
+2017-01-03 09:49:26,459  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @GeorgeAtkins20: @Reebok Ronda has my vote! #UFC207lets go Ronda..  https://t.co/OUHCK2Vcnw
+2017-01-03 09:49:26,459  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @Reebok Ronda has my vote! #UFC207lets go Ronda..  https://t.co/OUHCK2Vcnw
+2017-01-03 09:49:26,460  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @Reebok Ronda has my vote! #UFC207 https://t.co/uPqeBjjG6G ultimate fun center.
+2017-01-03 09:49:27,704  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @ufc @DominickCruz @Cody_Nolove @Reebok Cruz!!!
+2017-01-03 09:49:27,704  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @Reebok Ronda https://t.co/b3jfSRvipS
+2017-01-03 09:49:27,705  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @Reebok  #UFC207 Amanda Nunes!🔥🔥🔥💪💪🔥🔥🔥 https://t.co/v3tWXOwftM
+2017-01-03 09:49:27,705  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @Reebok ronda
+2017-01-03 09:49:27,707  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/i7ByLvIXIk
+2017-01-03 09:49:27,707  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/vpgUtOKp4l
+2017-01-03 09:49:27,708  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/isyDfdRpSt
+2017-01-03 09:49:27,708  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/AVtHJFePCb
+2017-01-03 09:49:27,708  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/mcAMjyjEYx
+2017-01-03 09:49:27,709  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: ➡SUJETADOR DEPORTIVO REEBOK HERO POWER BRA 2.0 #Rosso #Deportes https://t.co/sA5s42jywa
+2017-01-03 09:49:27,710  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #reebok rel8 elliptical cp2101
+2017-01-03 09:49:27,710  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @Reebok Ronda
+2017-01-03 09:49:27,710  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Esos son Reebok o son Nike jajajaj Rhythm Of The Night https://t.co/ILRTo7fx8x vía @YouTube
+2017-01-03 09:49:27,711  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @ufc @Amanda_Leoa @RondaRousey @Reebok Go Ronda!
+2017-01-03 09:49:27,711  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @ashhley42 @ufc @Amanda_Leoa @RondaRousey @Reebok ronda
+2017-01-03 09:49:27,711  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @ufc @Amanda_Leoa @RondaRousey @Reebok Ay yai yai! Hijo de la chingada wey! This is gonna be 🗣AWESOME!
+2017-01-03 09:49:27,712  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @ufc @Amanda_Leoa @RondaRousey @Reebok RooonDaaaaaa!!!!!!!!!
+2017-01-03 09:49:27,712  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @ufc @DominickCruz @Cody_Nolove @Reebok YESSSSSSS!!! LesGOOOOOOOOOOO
+2017-01-03 09:49:27,713  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @Reebok Let's go, Amanda Nunes 🦁💯
+2017-01-03 09:49:27,713  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/dkVz80fOW8
+2017-01-03 09:49:27,714  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @edgar13sanz: Último entrenamiento 2016 #FuncionalTraining #Crosstraining #spartanrace #spartanracemx #NeverStopTrainingHard #reebok htt…
+2017-01-03 09:49:27,714  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Último entrenamiento 2016 #FuncionalTraining #Crosstraining #spartanrace #spartanracemx #NeverStopTrainingHard… https://t.co/vLYTnbKNW7
+2017-01-03 09:49:27,715  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @Reebok Ronda has my vote! #UFC207 https://t.co/GbXLM8h30G LETS GO RONDA 2017-01-03 09:49:27,715  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Young Offenders x Reebok x Girl Ultra 🌹 📷: Guillermo Legorreta Maquillaje: @isaatm 💖 https://t.co/cyL6UUAJVN
+2017-01-03 09:49:27,715  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Mi bby @Reebok Ronda has my vote! #UFC207 https://t.co/Z2eu2YF4WE
+2017-01-03 09:49:27,716  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @ufc @Amanda_Leoa @RondaRousey @Reebok Ronda*
+2017-01-03 09:49:27,716  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @ufc @Amanda_Leoa @RondaRousey @Reebok jajajajaaja https://t.co/5e2rBYobVf
+2017-01-03 09:49:27,716  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @GabiLeszczuk cambiala. Ahora robamos reebok
+2017-01-03 09:49:27,717  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @ufc @DominickCruz @Cody_Nolove @Reebok Tongo.
+2017-01-03 09:49:27,717  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @ufc @DominickCruz @Cody_Nolove @Reebok Cruz
+2017-01-03 09:49:27,718  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Tarde deli en DF.  • • Enamorada de mis @reebokmx #garbstore #reebok #reebokclassic @ Antara… https://t.co/T3HHhCwpFB
+2017-01-03 09:49:28,805  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Volviendo a la calma #crossfit #gym #reebok #crossfitgames #legs #leg #legsday #fit #fitness… https://t.co/HsQ15SCjC2
+2017-01-03 09:49:28,806  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @OlsonNative: @Reebok Ronda has my vote! #UFC207going for ronda https://t.co/y1B9JhGrSy
+2017-01-03 09:49:28,806  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @Reebok Ronda has my vote! #UFC207going for ronda https://t.co/y1B9JhGrSy
+2017-01-03 09:49:28,806  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Go Ronda @Reebok Ronda has my vote! #UFC207 https://t.co/WASYdYKJWZ
+2017-01-03 09:49:28,807  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @Reebok Ronda has my vote! #UFC207 GO RONDA! @RondaRousey https://t.co/fOqcSvedpl
+2017-01-03 09:49:28,809  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @KicksLinks: RESTOCK!  Reebok Question x Bape x Mita "Camo" --&gt; https://t.co/bAuphBrUmH https://t.co/qZQPHTiCuJ
+2017-01-03 09:49:28,810  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #Auction #Reebok Los Angeles #Kings #TShirt - #NHL https://t.co/QSfrZzkplq https://t.co/ngOMqaoEXI
+2017-01-03 09:49:28,811  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #Reebok Los Angeles #Kings #TShirt - #NHL https://t.co/vCwPHTvqGi #eBay https://t.co/MRPu6ViuiK
+2017-01-03 09:49:28,811  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #Reebok Los Angeles #Kings #TShirt - #NHL https://t.co/66Nbrn0C3R #Mall https://t.co/QpfZW6rKg0
+2017-01-03 09:49:28,811  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Rise and grind! (@ Reebok @CrossFitLoreto in Alvaro Obregón, Ciudad de México) https://t.co/9NFlHLVqgk
+2017-01-03 09:49:28,812  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @ma_monita: DESAFÍO CUMPLIDO; 22 días haciendo 22 pushups 😜#22pushupchallenge @reebokes @reebok @reebokwomen #BeMoreHuman #GymIsEverywhe…
+2017-01-03 09:49:28,813  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/KDcB1OyDKx
+2017-01-03 09:49:28,813  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @SGTOanfetamina: Manitos, ¿esos son Reebok o son Nike? https://t.co/DsvkzroGP9
+2017-01-03 09:49:28,814  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @NMSneakerFam: carlos_molina3 rocks his #Reebok #questionmid! #newmexicosneakerfam #kickstagram #sneakerhead https://t.co/Na0AJYzpJQ
+2017-01-03 09:49:28,815  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: carlos_molina3 rocks his #Reebok #questionmid! #newmexicosneakerfam #kickstagram #sneakerhead https://t.co/Na0AJYzpJQ
+2017-01-03 09:49:29,762  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #NHL #Hockey Military CAMO Carolina #Hurricanes Reebok Premier #Jersey XL https://t.co/Czuif7N3Ur #Goods https://t.co/5ZlLjcyGvj
+2017-01-03 09:49:29,762  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @putomars15: Quero bue uns reebok todos brancos
+2017-01-03 09:49:29,764  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Mirror. #reebok #reebokclassic #reebokventilator @ Col. Napoles, México, DF https://t.co/d3llwUvLfO
+2017-01-03 09:49:29,764  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Oficialmente soy @Reebok Lover 💓
+2017-01-03 09:49:29,765  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @jmanuelsabater: @ma_monita @ReebokES @Reebok @ReebokWomen 👏👏👏que grande!!!💪💪💪
+2017-01-03 09:49:29,765  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: SAN DIEGO #Chargers, SIDELINE #Shirt, L, #Reebok, #NFL https://t.co/JZuUxkRzhv #Football https://t.co/ofqXfitz9a
+2017-01-03 09:49:29,765  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: SAN DIEGO #Chargers, SIDELINE #Shirt, L, #Reebok, #NFL https://t.co/7CgFxcShwW #Football #Fans https://t.co/dxlbbsL9hd
+2017-01-03 09:49:29,766  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @ma_monita @ReebokES @Reebok @ReebokWomen 👏👏👏que grande!!!💪💪💪
+2017-01-03 09:49:29,767  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @andreaenlinea: Deja que tus  #sneakers le den un toque súper chic a tu Street style.  Colección #Reebok ➜ https://t.co/Xhq3TXMKfm htt…
+2017-01-03 09:49:29,767  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Búscanos en #Instagram cómo #Gym_nyfsf Gracias #instagood #facebook #protein #nike #reebok #adidas #latino #puebla… https://t.co/dX7sjVzcZw
+2017-01-03 09:49:29,769  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #Minnesota Nino Niederreiter Minnesota #Wild Hockey Red Green Reebok Premier #Jersey https://t.co/Wp0F2Pp3tI #NHL… https://t.co/Yw1Y8DgGGr
+2017-01-03 09:49:29,769  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Hoje vi as reebok que queres na energy do palácio @AndreiaLemos3
+2017-01-03 09:49:29,769  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @jordi_jordiet @ReebokES @Reebok @ReebokWomen GRACIAS 😊
+2017-01-03 09:49:29,770  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @mlopezarce: #PostalesDelOtroPartido. Tienda #multimarca: #adidas., #Nike, #Reebok, #PUMA, #LeCoqSportif, #Topper, #Umbro, #Fila. #Marke…
+2017-01-03 09:49:29,770  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @mlopezarce: #PostalesDelOtroPartido. Tienda #multimarca; #adidas, #Nike, #Reebok, #PUMA, #LeCoqSportif, #Topper, #Umbro, #Fila, etc. #M…
+2017-01-03 09:49:29,771  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #PostalesDelOtroPartido. Tienda #multimarca: #adidas., #Nike, #Reebok, #PUMA, #LeCoqSportif, #Topper, #Umbro, #Fila… https://t.co/xluSEVGIQs
+2017-01-03 09:49:31,189  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #PostalesDelOtroPartido. Tienda #multimarca; #adidas, #Nike, #Reebok, #PUMA, #LeCoqSportif, #Topper, #Umbro, #Fila,… https://t.co/2NGxeYIJrm
+2017-01-03 09:49:31,191  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: I'm at Reebok @CrossFitLoreto in Alvaro Obregón, Ciudad de México https://t.co/awX8tKf9Y0
+2017-01-03 09:49:31,196  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: DESAFÍO CUMPLIDO; 22 días haciendo 22 pushups 😜#22pushupchallenge @reebokes @reebok @reebokwomen #BeMoreHuman… https://t.co/1ceKfrsYd3
+2017-01-03 09:49:31,196  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Deja que tus  #sneakers le den un toque súper chic a tu Street style.  Colección #Reebok ➜ https://t.co/Xhq3TXMKfm https://t.co/Am03VXPzFy
+2017-01-03 09:49:32,346  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #cu 1uigin Abraaaaaaaan ! (@ Reebok CrossFitLoreto in Alvaro Obregón, Ciudad de México) https://t.co/9qJjA3GUod https://t.co/xHy0faE0mr
+2017-01-03 09:49:32,346  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Abraaaaaaaan ! (@ Reebok @CrossFitLoreto in Alvaro Obregón, Ciudad de México) https://t.co/LIJjGvG0qM
+2017-01-03 09:49:32,350  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #reebok treadmill repair service cheap dentist in tijuana mexico https://t.co/uXpxoWuIcm
+2017-01-03 09:49:32,351  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #ReebokWatches • #Impact #Cronografo Precio y descuento aquí→ https://t.co/R39Dl3wRbS • 44.5 mm de diámetro •... https://t.co/mhaiAdip7L
+2017-01-03 09:49:32,352  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Exprésate con estilo y confort !! #reebok #intersportpiñeiro #ideasregaloreyes #reebokclassics… https://t.co/sFTxSrEexc
+2017-01-03 09:49:32,353  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: SHAWNE MERRIMAN SAN DIEGO #Chargers #NFL #Reebok PREMIER #Jersey XL BLUE X-LARGE https://t.co/l2rx3fjbX8 #Football https://t.co/7MJEImxMSD
+2017-01-03 09:49:32,354  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Los Angeles #Kings #Reebok #NHL Primary Logo Men #TShirt Black https://t.co/mN992fJbIX #Mall https://t.co/3UD6lcW8Fl
+2017-01-03 09:49:32,354  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @ma_monita Merry Christmas, María! 💪🎅
+2017-01-03 09:49:32,354  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #Auction Los Angeles #Kings #Reebok #NHL Primary Logo Men #TShirt Black https://t.co/za061kbF3D https://t.co/m042VgHbYi
+2017-01-03 09:49:32,354  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Los Angeles #Kings #Reebok #NHL Primary Logo Men #TShirt Black https://t.co/sjIFEm8rCg #eBay https://t.co/Uwv93ws0pm
+2017-01-03 09:49:32,354  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @L0lA93 y, + de 80 na reebok só instapump acho
+2017-01-03 09:49:33,418  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #NHL Military CAMO Columbus #BlueJackets Reebok Premier #Jersey Large https://t.co/SBNVMtfYVU #Hockey https://t.co/cssNbnQCnc
+2017-01-03 09:49:33,418  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @amarquesa12 @fodam_se_todos no site da reebok mm
+2017-01-03 09:49:33,419  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @diegomdx: @ma_monita @LesMillsTribe @Reebok @ReebokWomen @CrossFit =mente!!!!
+2017-01-03 09:49:33,419  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @ma_monita @LesMillsTribe @Reebok @ReebokWomen @CrossFit =mente!!!!
+2017-01-03 09:49:33,419  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @vikikacosta: Únete al movimiento #perfectnever conmigo y @ReebokES https://t.co/knRJdYzQPU https://t.co/mBEVZD82PC
