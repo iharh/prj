@@ -1,0 +1,189 @@
+2017-01-03 08:47:24,613  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #Tecno #Samsung lanza nuevos smartphones https://t.co/m4NW61H94j https://t.co/rXxNI2uhBu
+2017-01-03 08:47:24,617  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Vendo Samsung Galaxy S6 Edge Plus Liberados 1 Año De Garantia, CARAC ···▶ https://t.co/9srNF9mlPg &gt; https://t.co/AGPK1P1As4 #Celulares
+2017-01-03 08:47:24,619  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @mrknsionero https://t.co/Vz71LK7rMw Tutorial | Ver Canales PREMIUM IPTV en Smart TV LG/SAMSUNG |
+2017-01-03 08:47:24,620  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @AndroPasion: Andropasion te regala un Samsung Galaxy S7 edge Injustice Edition de forma muy sencilla. Participa!! Es GRATISSSS!!!!
+2017-01-03 08:47:24,623  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Samsung Electronics Galaxy Tab S2 9,7 Cubierta Del Teclado (ej-ft810uw de #oferta 2 304,77 MXN AHORRA 54,85 % 👉… https://t.co/J0L7mYQ7px
+2017-01-03 08:47:24,624  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @MatiKono7 a un gama media/alta yo eligiera un A3/5/7 de Samsung
+2017-01-03 08:47:24,625  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Celinesth: #tech #pixelgame #art #indiedev #gamedev #gamemaker El #Samsung Galaxy S8 podría tener una… https://t.co/lyVw0nohEy https://…
+2017-01-03 08:47:24,632  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: REVIEW SAMSUNG GALAXY S5: https://t.co/YsWMlKUux6 vía @YouTube
+2017-01-03 08:47:24,633  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Sales Senior #manager, DA: #Samsung, Chile. https://t.co/AcHN9VTnC9 #MBA #jobs #latinamerica
+2017-01-03 08:47:24,633  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @isa_marcial: Samsung Galaxy A3, A5 y A7 2017 | Características https://t.co/MkXk4afZKS
+2017-01-03 08:47:24,635  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @NEO360L: Samsung construirá las pantallas del iPhone 8 https://t.co/oZhh6iWK2j
+2017-01-03 08:47:24,637  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #SAMSUNG RENUEVA SU LÍNEA DE #SMARTPHONES #GALAXYA EN #2017 https://t.co/Bp83zisLfF
+2017-01-03 08:47:24,638  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Disponible Batería para #Samsung #S3 #Mini información &gt; Email: telealpha23@gmail.com Telf.: (0412)284.36.33 https://t.co/sWZVNStT6L
+2017-01-03 08:47:24,638  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Recepción de boda. Video Samsung Gear 360 https://t.co/lRcXxZ3hry #LunesdeGanarSeguidores
+2017-01-03 08:47:24,639  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Samsung incluiría una función para convertir el Galaxy S8 en un PC: El… https://t.co/STTGRb0PpW #android #iphone
+2017-01-03 08:47:24,640  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #lunch catering boston descargar juegos para samsung galaxy
+2017-01-03 08:47:25,675  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Samsung incluiría una función para convertir el Galaxy S8 en un PC: El… https://t.co/6bozFedOtj #Android #iPhone
+2017-01-03 08:47:25,676  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @phonehouse_es https://t.co/Zyp5GYG5hb Review Samsung Galaxy S7 Edge en español
+2017-01-03 08:47:25,678  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Me ha gustado un vídeo de @YouTube de @top_pulso (https://t.co/R3uCzeRWv5 - Samsung J7 Prime VS Moto G4 Plus | Enfrentamiento |
+2017-01-03 08:47:25,681  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @parentesis https://t.co/asK1ErCAMO Enfrentamos Moto 360 2015 vs. Apple Watch vs. Samsung Gear S2
+2017-01-03 08:47:25,681  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Recepción de boda Video Samsung Gear 360 https://t.co/WU7GBPFi5t #LunesdeGanarSeguidores
+2017-01-03 08:47:25,682  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Samsung MAX-ZS530: https://t.co/RVGFnmTt0O a través de @YouTube
+2017-01-03 08:47:25,683  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @EGInformatico: Samsung Galaxy S8 haría de PC al conectarse a un monitor, con teclado y ratón https://t.co/6xfaALhopX
+2017-01-03 08:47:25,684  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: air Jordan Logo Case #jordan #airjordan #nike #supreme #iphone case https://t.co/ndzEklZtDv
+2017-01-03 08:47:25,685  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Samsung construirá las pantallas del iPhone 8 https://t.co/jEJaWZd6gz via @Appy_Geek
+2017-01-03 08:47:25,685  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Recepción de boda. Video Samsung Gear 360 https://t.co/lRcXxZ3hry #FelizLunes
+2017-01-03 08:47:26,649  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #oferta Samsung Galaxy S6 - Smartphone libre Android (pantalla 5.1", cámara 16 Mp, 32  425.0€… https://t.co/SnlEhBSY3b
+2017-01-03 08:47:26,651  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @sonrioxrcande: Samsung S7 26 AÑOS LLENOS DE SONRISAS CM https://t.co/mam1RhKuJN
+2017-01-03 08:47:26,651  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Me ha gustado un vídeo de @YouTube (https://t.co/bXBUTSbL30 - EXPERIMENT Glowing 1000 degree KNIFE VS Samsung Galaxy S6 edge).
+2017-01-03 08:47:26,652  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: ¿Nos das un RT? #android Samsung Galaxy S6 y S6 Edge - Ya conocemos los accesorios oficiales https://t.co/PE0KAQIk4v
+2017-01-03 08:47:26,653  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Recepción de boda Video Samsung Gear 360 https://t.co/WU7GBPFi5t #FelizLunes
+2017-01-03 08:47:26,654  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #ZacaTech Samsung presenta teléfonos tras el malogrado Galaxy Note 7 - Expansión MX https://t.co/wcjZmYwPUg
+2017-01-03 08:47:26,656  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Festejos en boda Merida Yucatan Video Samsung Gear 360 https://t.co/QHCIArqgYE #LunesdeGanarSeguidores
+2017-01-03 08:47:26,657  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Samsung lanzará dos tablets Windows 10 en CES 2017 #QueNoSeTePase https://t.co/kugAKZueu9
+2017-01-03 08:47:27,660  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: HARD RESET SAMSUNG GALAXY GRAND PRIME (QUITAR PATRON, CONTRASEÑA, PIN) SOLUCIÓN 2017: https://t.co/vKAImPOcMR vía @YouTube
+2017-01-03 08:47:27,660  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @anasberna te quejabas de mi samsung...
+2017-01-03 08:47:27,664  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @veraztloh Confío en Samsung... 😂
+2017-01-03 08:47:28,853  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Festejos en boda Merida Yucatan Video Samsung Gear 360 https://t.co/QHCIArqgYE #FelizLunes
+2017-01-03 08:47:28,853  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: https://t.co/f5W2Y5WwJq Split Panasonic, Samsung y LG en PROMO , preguntar por Ma Paula (whatsapp #0967597562) CRÉ… https://t.co/nWMlVKIWZh 2017-01-03 08:47:28,854  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: https://t.co/f5W2Y5WwJq Split Panasonic, Samsung y LG en PROMO , preguntar por Ma Paula (whatsapp #0967597562) CRÉ… https://t.co/cE0OFqyaFc
+2017-01-03 08:47:28,854  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: @donfelixSPM Samsung o Ipbone lo más seguro ja, ja, ja
+2017-01-03 08:47:28,854  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: Trabajando en un nuevo vídeo  #samsung #galaxys7edge #android #canon #macbook #apple https://t.co/pV4IqxCiYS
+2017-01-03 08:47:28,856  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: RT @RadioOne1037: #TrendingTech El #GalaxyS8 de @samsung traería audífonos inalámbricos 👂https://t.co/efH60iU00n https://t.co/55MT3IoxDi
+2017-01-03 08:47:28,858  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:123) - text: #TrendingTech El #GalaxyS8 de @samsung traería audífonos inalámbricos 👂https://t.co/efH60iU00n https://t.co/55MT3IoxDi
+2017-01-03 08:47:29,727  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Tren en Hacienda Peon de Sotuta MErida Yucatan Enequen Samsung Gear 360 https://t.co/kHYl9l9z3h #LunesdeGanarSeguidores
+2017-01-03 08:47:29,728  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: (VNZ) Reinstalación del SO #Android para tlfs #Samsung, info https://t.co/cLTu03E9VX https://t.co/DsjPT26jsI
+2017-01-03 08:47:29,729  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me ha gustado un vídeo de @YouTube (https://t.co/RzgQfvvPNf - OMFG – Hello (Samsung Cover)).
+2017-01-03 08:47:29,730  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me ha gustado un vídeo de @YouTube (https://t.co/hLoUyq0ISj - EXPERIMENT Glowing 1000 degree KNIFE VS Samsung Galaxy S6 edge).
+2017-01-03 08:47:29,730  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #ZacaTech Samsung presenta teléfonos tras el malogrado Galaxy Note 7 - Expansión MX https://t.co/m2W77rRHIi
+2017-01-03 08:47:29,731  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Samsung construirá las pantallas del iPhone 8 https://t.co/y2HGOZqiKe #Ambato
+2017-01-03 08:47:29,733  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Tren en Hacienda Peon de Sotuta MErida Yucatan Enequen Samsung Gear 360 https://t.co/kHYl9l9z3h #FelizLunes
+2017-01-03 08:47:29,733  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @LVanegas7 el Samsung A5 pochito
+2017-01-03 08:47:30,613  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @TecnoActualidad: #Samsung lanza dos nuevos smartphones :...https://t.co/Du6t47CBgE
+2017-01-03 08:47:30,614  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Hacienda Peon de Sotuta Merida Yucatan Enequen Samsung Gear 360 https://t.co/7z4bxobx0f #LunesdeGanarSeguidores
+2017-01-03 08:47:30,615  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @SocialGeek_Co: Samsung presentó oficialmente su nueva familia Galaxy A 2017 https://t.co/rf9IqjAxp1
+2017-01-03 08:47:30,618  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Solicita INE iPhone 7 plus -Y si mejor @samsung les manda el Galaxy Note 7 !!!  #Tecnología #RedesSociales
+2017-01-03 08:47:30,619  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Samsung construirá las pantallas del iPhone 8 https://t.co/vN6GWHEYMA via @Appy_GeekMEX
+2017-01-03 08:47:31,875  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Hacienda Peon de Sotuta Merida Yucatan Enequen Samsung Gear 360 https://t.co/7z4bxobx0f #FelizLunes
+2017-01-03 08:47:31,875  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @josbel_30: #tech #pixelgame #art #indiedev #gamedev #gamemaker El #Samsung Galaxy S8 podría tener una… https://t.co/Z6zOhTq9nj https://…
+2017-01-03 08:47:31,876  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @franbestene: @beluve6 te vieron cara de samsung seguro
+2017-01-03 08:47:31,876  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @melefezu: #tech #pixelgame #art #indiedev #gamedev #gamemaker El #Samsung Galaxy S8 podría tener una… https://t.co/lkKO7nCMyn https://t…
+2017-01-03 08:47:31,877  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #samanata #samanata_id RT: elmundomovil :Samsung renueva su serie Galaxy A con tres smartphones resistentes al agu… https://t.co/dMF3Rkjjz
+2017-01-03 08:47:31,878  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Hacienda del enequen Merida Yucatan Video Samsung Gear 360 https://t.co/3sknOChcIm  #LunesdeGanarSeguidores
+2017-01-03 08:47:31,878  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @beluve6 te vieron cara de samsung seguro
+2017-01-03 08:47:31,878  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Nuestra #Música es 100% COMPATIBLE con Android (Samsung, etc.), iMach, iCloud, iOS (iPod, iPad, iPhone), Pc, Mac, Nokia, etc. con TODOS!!!
+2017-01-03 08:47:31,879  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @GooodzYT ahorra mejor para un samsung s5 o s6
+2017-01-03 08:48:35,100  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @hugotomato25: Me gustó un video de @YouTube de @howard_gonzalez https://t.co/Jac8KLuFOe Samsung Galaxy A3 2017: Primeras Impresiones, T…
+2017-01-03 08:48:35,100  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Celinesth: #tech #pixelgame #art #indiedev #gamedev #gamemaker #Samsung presentará tres nuevos smartp… https://t.co/OJ5TkWQz5N https://…
+2017-01-03 08:48:35,101  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Vendo Samsung Galaxy S6 Edge Plus Liberados 1 Año De Garantia, CARACTERÍSTICAS Fusión de téc ··=&gt; https://t.co/9srNF9mlPg * #Celulares
+2017-01-03 08:48:35,102  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Hacienda del enequen Merida Yucatan Video Samsung Gear 360 https://t.co/3sknOChcIm  #FelizLunes
+2017-01-03 08:48:35,102  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @darknessreview: #tech #pixelgame #art #indiedev #gamedev #gamemaker #Samsung presentará tres nuevos smartp… https://t.co/fMEhsCXe9f htt…
+2017-01-03 08:48:35,103  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @josbel_30: #tech #pixelgame #art #indiedev #gamedev #gamemaker #Samsung presentará tres nuevos smartp… https://t.co/o3DcnQt0MQ https://…
+2017-01-03 08:48:35,105  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @apermutar: Ideal para tus vacaciones!!!  Subwoofer 3600 Whatt PMPO XION Acepta ofertas de iPhone y Samsung...  https://t.co/uAmcSyG8SN #M…
+2017-01-03 08:48:35,106  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Rca 11 Maven Pro 32gb 4 Core 11.6'' Hdmi Bluetooth ... - https://t.co/2uQ1WqAlNZ - #Ipad #Samsung #Tablet https://t.co/Vkss9iRGMx
+2017-01-03 08:48:35,965  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #ZacaTech Samsung presenta teléfonos tras el malogrado Galaxy Note 7 - Expansión MX https://t.co/rYTIFoKgAA
+2017-01-03 08:48:35,966  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: COBERTURA EN VIVO Ver video en vivo de Samsung Galaxy N.. #Tecnología https://t.co/Q8itmFEdt8 #02ene https://t.co/o5cA5Z3ixO
+2017-01-03 08:48:35,967  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @melefezu: #tech #pixelgame #art #indiedev #gamedev #gamemaker #Samsung presentará tres nuevos smartp… https://t.co/Su7l8MSz9r https://t…
+2017-01-03 08:48:35,967  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #tech #pixelgame #art #indiedev #gamedev #gamemaker #Samsung presentará tres nuevos smartp… https://t.co/o3DcnQt0MQ https://t.co/qZTuEK75wY
+2017-01-03 08:48:35,967  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #tech #pixelgame #art #indiedev #gamedev #gamemaker #Samsung presentará tres nuevos smartp… https://t.co/OJ5TkWQz5N https://t.co/0JuV17xzvz
+2017-01-03 08:48:35,968  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #tech #pixelgame #art #indiedev #gamedev #gamemaker #Samsung presentará tres nuevos smartp… https://t.co/Su7l8MSz9r https://t.co/3YS3UxqJkO
+2017-01-03 08:48:35,968  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #tech #pixelgame #art #indiedev #gamedev #gamemaker #Samsung presentará tres nuevos smartp… https://t.co/fMEhsCXe9f https://t.co/vyTH7XBZeh
+2017-01-03 08:48:35,969  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: ¿Nos das un RT? #android Cómo instalar Android 4.4 KitKat en el Samsung Galaxy S3 https://t.co/FpYUt4Fqmn
+2017-01-03 08:48:35,969  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: , Parque America Polanco Ciudad de México Video Samsung gear 360 https://t.co/1zgvkQBy31  #FelizLunes
+2017-01-03 08:48:35,969  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @xatakamovil: Samsung Galaxy A7 2017: la nueva phablet para los amantes del selfie https://t.co/6M17Ljza7l https://t.co/B91wqD04cW
+2017-01-03 08:48:35,970  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @tonisoler_ https://t.co/kz1B3w8Q7y UNBOXING Samsung Galaxy J7 2016 || ESPAÑOL
+2017-01-03 08:48:35,971  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Me ha gustado un vídeo de @YouTube de @androidborja81 (https://t.co/QElOqr07m1 - Android Nougat 7.1 para Samsung Galaxy S3 GT-I9300
+2017-01-03 08:48:35,972  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: EXPERIMENT Glowing 1000 degree KNIFE VS Samsung Galaxy S6 edge https://t.co/dL5O9Y62vD vía @YouTube DIOS, QUE GUAPO TÍO
+2017-01-03 08:48:37,156  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: , Empleados viajando en autobus Samsung Gear 360 https://t.co/bPJUocDAgM  #LunesdeGanarSeguidores
+2017-01-03 08:48:37,157  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Samsung construirá las pantallas del iPhone 8 - https://t.co/oAdkZWt6ea #iPhone
+2017-01-03 08:48:37,158  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: , Empleados viajando en autobus Samsung Gear 360 https://t.co/bPJUocDAgM  #FelizLunes
+2017-01-03 08:48:37,949  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Samsung construirá las pantallas del iPhone 8 https://t.co/5aRCdjuGcp @unocero @japonton @samsungmobilemx @applesfera @JesusMartinMx
+2017-01-03 08:48:37,950  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: (VNZ) Reinstalación del SO #Android para tlfs #Samsung, info https://t.co/cLTu03myxn https://t.co/ONfNiLvzVW
+2017-01-03 08:48:37,950  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #SeVende Estuche protector para #celulares #samsung https://t.co/WwjRSYJeBb #Venezuela #Mérida #ipiezas
+2017-01-03 08:48:37,951  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Samsung podría suministrar a Apple los paneles OLED para el iPhone de 5,8″ https://t.co/zwBmkfbI2U #iPhone #Apple #OLED
+2017-01-03 08:48:37,951  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @gertu25 jajjajaaja tutorial de como rootear el Samsung galaxy mini
+2017-01-03 08:48:37,952  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @EdoTech: #iOS Samsung construirá las pantallas del iPhone 8 https://t.co/NAvIn3a1nS
+2017-01-03 08:48:37,952  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: MEMTEQ® Funda + Teclado Bluetooth Inalámbrico Soporta Android, 8.99€ -77% https://t.co/3qJFtyNv4t #ldo https://t.co/3UN9SWANQa
+2017-01-03 08:48:37,953  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #oferta MEMTEQ® Funda + Teclado Bluetooth Inalámbrico Soporta Android,  8.99€ -77% #descuento… https://t.co/cKe1R3geAX
+2017-01-03 08:48:38,604  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #7: Duractron Protector de Pantalla para Samsung Galaxy S7 Edge, Vidrio Templado, transparente https://t.co/BImnYypxL6
+2017-01-03 08:48:38,605  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #iOS Samsung construirá las pantallas del iPhone 8 https://t.co/mT45Dan2vg
+2017-01-03 08:48:38,606  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @IngMorrison mejor teléfono Samsung s 7 o iPhone 7?
+2017-01-03 08:48:38,607  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: ¡Así será el nuevo Samsung S8! 😱😱😱😱😱 ¿Lo comprarías?  G Movil Center #LideresEnServicioTecnico #Smartphone... https://t.co/9rwwfctAs8
+2017-01-03 08:48:38,607  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Dejen de hueviar a Sharp. Hueven a JVC, Samsung o RCA mejor. #Valparaiso ?
+2017-01-03 08:48:38,608  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @Celinesth: #tech #pixelgame #art #indiedev #gamedev #gamemaker El #Samsung Galaxy S8 podría hacer fun… https://t.co/Pw1vXNBc7O https://…
+2017-01-03 08:48:38,608  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @nicoledalaco16  que porqueria Samsung, no??? Jaaaaaajajajjaja
+2017-01-03 08:48:39,933  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #TopNoticiasDLP El Samsung Galaxy Note 7 fue una noticia explosiva https://t.co/Uprb7MaNaW
+2017-01-03 08:48:39,935  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @josbel_30: #tech #pixelgame #art #indiedev #gamedev #gamemaker El #Samsung Galaxy S8 podría hacer fun… https://t.co/qEqyNDKTIX https://…
+2017-01-03 08:48:39,935  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @sive100YT Si es Samsung desbrickearlo es shupao
+2017-01-03 08:48:39,935  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Samsung Galaxy S7 y Galaxy S7 reciben una actualización.. #Tecnología https://t.co/7CR9NOx7yn #02ene https://t.co/eN8xREn24y
+2017-01-03 08:48:41,088  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Samsung presenta oficialmente el Galaxy Note 5 y Galaxy.. #Tecnología https://t.co/WZhnHEdMwn… https://t.co/MrnbgGQaLk
+2017-01-03 08:48:41,089  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Samsung trabaja en algo parecido a Continuum para su Galaxy S8 @CNNEE @CNN @cnnbrk @cnni @cnnphilippines @CNNMex https://t.co/5mra5LIfCa
+2017-01-03 08:48:41,089  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Samsung trabaja en algo parecido a Continuum para su Galaxy S8 @bbcmundo @BBCNews @BBCNewsUS @BBCNewsAsia @BBCWorld https://t.co/rmSttK4vA9
+2017-01-03 08:48:41,090  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Samsung trabaja en algo parecido a Continuum para su Galaxy S8@LuciaPinedaU @NoticiasCaracol @CANAL15NIC @A3Noticias https://t.co/EhTvT3WwnD
+2017-01-03 08:48:42,066  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @NoticiasVenezue: Samsung da a conocer sus nuevos teléfonos Galaxy https://t.co/9Dj4yDZwtL https://t.co/IUBVksTaFh
+2017-01-03 08:48:42,067  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Reinstalación del SO #Android para tlfs #SONY, info https://t.co/cLTu03E9VX https://t.co/4DR0EWpG5R
+2017-01-03 08:48:42,067  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Samsung trabaja en algo parecido a Continuum para su Galaxy S8 @CBSNews @CBSTweet @CBSLA @CBSNewYork @cbschicago https://t.co/EUN2GTFJ8r
+2017-01-03 08:48:42,067  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Samsung trabaja en algo parecido a Continuum para su Galaxy S8 @euronewsfr @euronewsit @euronewsinsidrs @euronewsde https://t.co/tu6Wz8MyHU
+2017-01-03 08:48:42,067  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Samsung trabaja en algo parecido a Continuum para su Galaxy S8 @aragontv @ASTV @ATV @atv_noticias @africanewsfr.  https://t.co/5bkf19G77Z
+2017-01-03 08:48:42,068  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @androidauth https://t.co/t4vNaak3wp Exclusive: Samsung Galaxy A5 2017 render video
+2017-01-03 08:48:42,068  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Samsung trabaja en algo parecido a Continuum para su Galaxy S8 @DailyMailUK @dailynation @DailyPostNGR @NewDay https://t.co/JyGMgVe7Lm
+2017-01-03 08:48:42,068  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: M'ha agradat un vídeo de @YouTube https://t.co/da3RypGITI iPhone 6S VS Samsung Galaxy S6 Edge Full Comparison!
+2017-01-03 08:48:42,069  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Samsung H7 es el nuevo altavoz in https://t.co/6PCD8bnO4a #altavozinalambrico #audiouhq32bit #ces2017lasvegas #ces2017 #gadgets #samsungh7
+2017-01-03 08:48:42,069  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Samsung trabaja en algo parecido a Continuum para su Galaxy S8 @teleSURtv @CaracolTV @TvEspanaLive @BFMTV https://t.co/AXYnwIDG5U
+2017-01-03 08:48:42,998  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Samsung trabaja algo parecido a Continuum en el Galaxy S8 @radio2rosario @FMvidaRosario @Frecuenciaplus @Rosariotres https://t.co/TJacGJIbi3
+2017-01-03 08:48:42,999  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Vendo Samsung Marco de fotos electrónico 8'' 1GB en #Wallapop https://t.co/6lobpL4DdL
+2017-01-03 08:48:43,000  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @ProAndroid: Samsung Galaxy A3, A5 y A7 2017 ya son oficiales - https://t.co/9O9A4fCAEu ... https://t.co/kW4qByaKZF
+2017-01-03 08:48:43,002  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Presentan la nueva serie de smartphones Samsung Galaxy A (2017) #CES2017 https://t.co/RQpmBl0tud vía @geeksroom
+2017-01-03 08:48:43,003  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: SAMSUNG Galaxy S6 Edge Plus - negro https://t.co/f5JI2fD0vq #Tecnologia vía @ventafun
+2017-01-03 08:48:44,102  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #oferta Samsung Galaxy S6 - Smartphone libre Android (pantalla 5.1", cámara 16 Mp, 32  415.0€… https://t.co/s1F1zAnVDa
+2017-01-03 08:48:44,103  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #samsung notes 4 pete's auto
+2017-01-03 08:48:44,104  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @ScriptersES: Samsung Galaxy A5 y A3 2017 presentados oficialmente https://t.co/mKlYc8Lk56 https://t.co/mMemJAsBQ1
+2017-01-03 08:48:44,104  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #TecnoBreak Samsung Galaxy S6 y S6 Edge: 5 nuevas características https://t.co/xviRYfSp43
+2017-01-03 08:48:44,105  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: SAMSUNG Galaxy A500 - blanco - 4G - 16 GB https://t.co/NKGj74OSnb #Tecnologia vía @ventafun
+2017-01-03 08:48:44,106  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @TicoGavilan: Señores de @samsungCO y @alkomprar para cuando el caso de @WeimarArdila ? @SamsungLatin @SamsungResponde @samsung https://…
+2017-01-03 08:48:45,136  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @TxemaMarin @samsung @Apple @iPadizate lo sabrán los 👑?
+2017-01-03 08:48:45,137  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Una vaca me graba haciendo el Unboxing del Samsung Gear S3 #InsidersGearS3 https://t.co/u8WIGst4pZ
+2017-01-03 08:48:45,137  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @pechugaslocas @DiegoOtroCampo contestando desde mi Samsung
+2017-01-03 08:48:45,138  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @AntonellaShows "Enviado desde mi smartphone Samsung Galaxy. Re piola" AME JAJAJAJAJAJAJ CHAU
+2017-01-03 08:48:46,126  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/n6udR9yi34 Samsung Galaxy A3 (2017), A5 (2017) and A7 (2017) Specification and Features
+2017-01-03 08:48:46,126  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #Smartphones resistentes al agua de #Samsung https://t.co/JgfdzP7I6x https://t.co/IKcrYZhxxJ
+2017-01-03 08:48:46,127  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/46sDdTCdgN Samsung Galaxy A9 [Análisis]
+2017-01-03 08:48:46,128  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube de @xeetechcare https://t.co/DSneCLIuLt Samsung Galaxy A5 (2017) - BEAUTIFUL &amp; WATER RESISTANT!!!!
+2017-01-03 08:48:46,128  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @vacadescarriada @Samsung_Peru se prendió el note 7
+2017-01-03 08:48:46,129  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Samsung presentó su nueva línea de smartphones Galaxy A (2017) https://t.co/UMQsysstoV vía @RPPNoticias
+2017-01-03 08:48:47,207  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Me gustó un video de @YouTube https://t.co/6xJLZbaoGX Samsung Galaxy S7 Edge, review tras un mes de uso
+2017-01-03 08:48:47,207  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @degcorp @beto_zapata @TapiaFernanda @Mx_Diputados @senadomexicano @SCJN @PresidenciaMX Pues quedaron muchos Samsung Galaxy Note 7, alcanzan
+2017-01-03 08:48:47,209  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Samsung renueva su línea de smartphones Galaxy A en 2017 https://t.co/raKebTd5Eu #MamutNews https://t.co/1BGc0Sflt0
+2017-01-03 08:48:47,209  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #MeLoPido el nuevo samsung galaxy S8
+2017-01-03 08:48:47,211  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @cuerdodeatar: El iPhone 8 tendrá de Apple pantalla de 5,8” fabricada por Samsung https://t.co/d8KgIl9TBM
+2017-01-03 08:48:48,381  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @longliveourvzla: Celulares en 2017: así serán los teléfonos de Samsung, LG, Google y Apple https://t.co/bArlKOzdmV #RT #Android https:/…
+2017-01-03 08:48:48,383  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #samsung 3175 printer aesthetica medspa austin
+2017-01-03 08:48:48,383  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Samsung PG920 Cargador Inal... de #samsung ahora cuesta 24,77€, ahórrate 22,14€ #oferta https://t.co/CV5xvZluUz https://t.co/viss38hLaw
+2017-01-03 08:48:48,384  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Reinstalación del SO #Android para tlfs #Android #Motorola, info https://t.co/cLTu03E9VX https://t.co/YXTD0QJcrl
+2017-01-03 08:48:48,385  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Disponible Batería para #Samsung #Young información &gt; Email: telealpha23@gmail.com Telf.: (0412)284.36.33 https://t.co/Pm4RJWabkZ
+2017-01-03 08:48:48,386  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @autosld: #SAMSUNG SM3 1.6 ENTRY AUTOMÃTICO Año 2011 Click » https://t.co/UgclxUVQX3 105.000 kms $ 4.870.000 https://t.co/GC7H8GPBD3 2017-01-03 08:48:48,386  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #SAMSUNG SM3 1.6 ENTRY AUTOMÃTICO Año 2011 Click » https://t.co/UgclxUVQX3 105.000 kms $ 4.870.000 https://t.co/GC7H8GPBD3
+2017-01-03 08:48:49,389  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: .. a  Parque America Polanco Ciudad de México Video Samsung gear 360 https://t.co/1zgvkQBy31  #FelizLunes
+2017-01-03 08:48:50,547  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @Orbitalmx: MONITOR CURVO SAMSUNG LED 32" https://t.co/jzzuq99bBc RESOLUCIÓN 1920 x 1080 https://t.co/twyH2Ptjnn
+2017-01-03 08:48:50,549  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Noche Mexicana Camino Real Sumiya Cuernavaca Samsung Gear 360 Grados https://t.co/QzVvgdnhiu #FelizLunes
+2017-01-03 08:48:51,798  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: ¡Me gusta! "Televisión Samsung LCD 46 pulgadas" en #wallapop https://t.co/96ucB26gkW https://t.co/o0PENUVzpn
+2017-01-03 08:48:53,019  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: ¿Nos das un RT? #android Galaxy Tab S - Una línea de tablets Samsung con lector de huellas https://t.co/mn6RIsvhbR
+2017-01-03 08:48:53,021  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: abc.es https://t.co/ho4ToifN2V @CSIFnacional @agorarsc @TFeminista @JosMMoreno1 @FranciscoIgDa @MiguelBorra @CsifTRAGSA  @begomonterote
+2017-01-03 08:48:53,022  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @Fr4n_8: Me ha gustado un vídeo de @YouTube de @andropasion (https://t.co/qNO68PKkwg - Sorteo Internacional de Samsung Galaxy S7 edge
+2017-01-03 08:48:53,919  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Noche Mexicana Camino Real Sumiya Cuernavaca Samsung Gear 360 Grados https://t.co/QzVvgdnhiu #LunesdeGanarSeguidores
+2017-01-03 08:48:53,920  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @andres110688: Me gustó un video de @YouTube de @andropasion https://t.co/rfUrHdxYMh Sorteo Internacional de Samsung Galaxy S7 edge Inju…
+2017-01-03 08:48:53,921  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: Smartphones Samsung Galaxy A (2017), especificaciones y detalles completos https://t.co/ZwPNLk6qfu #eandroid2011
+2017-01-03 08:48:53,921  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @iBelen_: Samsung Galaxy A5 y A3 2017 presentados oficialmente https://t.co/7WsGjgHD9v https://t.co/erBFW1kB0B
+2017-01-03 08:48:55,040  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Me ha gustado un vídeo de @YouTube (https://t.co/t1jvjjuWYu - Samsung Galaxy S7- 10 tips and tricks).
+2017-01-03 08:48:55,041  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @melefezu: #tech #pixelgame #art #indiedev #gamedev #gamemaker El #Samsung Galaxy S8 podría hacer fun… https://t.co/YVFwWSNl4K https://t…
+2017-01-03 08:48:55,042  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #Android Samsung quiere convertir el Galaxy S8 en un PC completo https://t.co/E7uVMU2Yyz
+2017-01-03 08:48:55,042  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @darknessreview: #tech #pixelgame #art #indiedev #gamedev #gamemaker El #Samsung Galaxy S8 podría hacer fun… https://t.co/M7OJ2dSrwd htt…
+2017-01-03 08:48:55,042  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @EGInformatico: Samsung Galaxy S8 haría de PC al conectarse a un monitor, con teclado y ratón https://t.co/6xfaALhopX https://t.co/mKZxV…
+2017-01-03 08:48:55,852  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Me ha gustado un vídeo de @YouTube de @sakitechonline (https://t.co/4l6IsT5kX8 - 10 Advanced Tips and Tricks for Samsung Galaxy S7).
+2017-01-03 08:48:55,854  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Filtraciones Samsung Galaxy S8: https://t.co/ECsGUfFQhN vía @YouTube
+2017-01-03 08:48:56,960  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Samsung introducirá en el Galaxy S8 tecnología similar al 3D Touch de Apple https://t.co/slEGuUb0a4 vía @LaGacetaSA
+2017-01-03 08:48:56,961  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Samsung lanza dos nuevos smartphones#galaxyA3 #galaxyA5 #new https://t.co/C2o36g903D
+2017-01-03 08:48:56,962  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #tech #pixelgame #art #indiedev #gamedev #gamemaker El #Samsung Galaxy S8 podría hacer fun… https://t.co/YVFwWSNl4K https://t.co/odF3hcSgGl
+2017-01-03 08:48:56,962  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #tech #pixelgame #art #indiedev #gamedev #gamemaker El #Samsung Galaxy S8 podría hacer fun… https://t.co/M7OJ2dSrwd https://t.co/QbXgKSE3d0
+2017-01-03 08:48:56,963  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #tech #pixelgame #art #indiedev #gamedev #gamemaker El #Samsung Galaxy S8 podría hacer fun… https://t.co/Pw1vXNBc7O https://t.co/yS46USQPWx
+2017-01-03 08:48:56,963  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #tech #pixelgame #art #indiedev #gamedev #gamemaker El #Samsung Galaxy S8 podría hacer fun… https://t.co/qEqyNDKTIX https://t.co/U4UJZJIFKy
+2017-01-03 08:48:56,963  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: El Samsung Galaxy S8 se podrá usar como un ordenador https://t.co/LlaI4BctMS #Will_Cas #Android https://t.co/7HLwzCnXEc
+2017-01-03 08:48:56,964  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Vendo Samsung Galaxy S6 Edge Plus Liberados 1 Año De Garantia, CARACTERÍSTICAS Fusión de téc ··=&gt; https://t.co/9srNF9mlPg . #Venezuela
+2017-01-03 08:48:58,025  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Samsung presentó su nueva línea de smartphones Galaxy A 2017 https://t.co/aYcOpUR8l9 #PerúNoticias https://t.co/QgrNqvg2Lx
+2017-01-03 08:48:58,026  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #samsung S8 de lujo.  https://t.co/iZBAL7ra24
+2017-01-03 08:48:58,027  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @SofiaKajiga: Samsung lanza dos nuevos smartphones https://t.co/Z3GehrgTRy https://t.co/6tJafQGM3I
+2017-01-03 08:48:58,028  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @mrgameboxtecyt: SORTEO INTERNACIONAL - SAMSUNG GALAXY S7 EDGE ( EN VIVO POR KITTY LIVE): https://t.co/teSljkcQ5y a través de @YouTube
+2017-01-03 08:48:58,028  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Disponible Batería para #Samsung #S6 #Edge información &gt; Email: telealpha23@gmail.com Telf.: (0212)315.55.48 https://t.co/0HMttcanbI
+2017-01-03 08:48:59,223  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @lanuevaespana: Samsung renueva los modelos de gama media Galaxy A https://t.co/Pw8K6HebmT
+2017-01-03 08:49:00,173  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: @andro4all podrían decirme si los Samsung galaxy C5 recibirán Android 7.1.1 ??
+2017-01-03 08:49:00,174  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: RT @elsitiomobilee: FelizAno📱 SIGUENOS👌📲 #cellphone #technology #telephone #connection #repair #damages #innovation #ipad #tablets #apple #…
+2017-01-03 08:49:00,175  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:123) - text: #TecnoBreak #Samsung Galaxy S7: Diseño, Características y Especificaciones https://t.co/ZWe9MgX5i4
