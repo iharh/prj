@@ -1,0 +1,5 @@
+2017-01-04 10:35:27,704  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 住了一路airbnb，终于。。 (@ Hilton Helsinki Airport Hotel - @hiltonhotels in Vantaa) https://t.co/O5sIaZ3DjT
+2017-01-04 10:35:27,709  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 是奇迹吗？🤔😱😏 #miracle @ Hilton Kuala Lumpur https://t.co/zHKJ07AfOJ
+2017-01-04 10:35:27,711  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 大家的聖誕節過得如何啊？超值玩童及導遊Lili在日本小田原Hilton歡度聖誕節！聖誕老人發禮物囉！#Merry_Christmas #聖誕節 #日本旅遊 #japan_travel #Signet_Tours
+2017-01-04 10:35:27,712  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Back at the Hilton! (@ 北京希尔顿酒店 Hilton Beijing - @hiltonhotels in Beijing) https://t.co/YMjdH2ehr4 https://t.co/bPCp5ypVqQ
+2017-01-04 10:35:27,712  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我喜歡一部 @YouTube 影片 https://t.co/qRgXgO9AZT Nora Hilton - Freaky Boyz (Radio Edit)
