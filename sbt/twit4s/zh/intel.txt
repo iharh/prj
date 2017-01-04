@@ -1,0 +1,37 @@
+2017-01-04 08:39:59,149  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: PChome Online 商店街 - 祺荃企業有限公司 - #Intel #Parallel #Studio XE 2017 #Cluster Edition #集群版 #PSXE #HP https://t.co/A5dnF2aOCZ
+2017-01-04 08:39:59,153  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @geoWatsons @ForsakenRei 新的i3双核4线程据说有超频版本 intel已经开始花式玩了
+2017-01-04 08:39:59,153  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @charliechou kabylake基本没提升，intel辣鸡了
+2017-01-04 08:39:59,154  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Engadget: Intel 也投資 Here 地圖了 - https://t.co/M0UnLmq37v #technews #news #engadget https://t.co/FcHt4LQZHq
+2017-01-04 08:39:59,155  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @charliechou: 7系又挤牙膏了 哪天Intel在显卡上吊打AMD就有意思了
+2017-01-04 08:39:59,157  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我顶了一个来自 @jayztwocents 的 @YouTube 视频 https://t.co/sUeEqlzkf8 First build of 2017 featuring Intel's new 7700K
+2017-01-04 08:39:59,158  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Engadget: Intel 桌機與高階筆電用第七代 Core i 處理器登場 - https://t.co/QZxv5anWhr #technews #news #engadget https://t.co/ejfCOVjBiy
+2017-01-04 08:39:59,160  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: PChome Online 商店街 - 祺荃企業有限公司 - #Intel® #Media #Server #Studio 2017 #開發 #企業級 #媒體解決方案，提供 #高效 https://t.co/o8puAdK3rQ
+2017-01-04 08:39:59,161  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @lichray @upsuper @ayanamist @__broken_mike @timshen_ example: https://t.co/kPkDdSNHhM 性能提升其实也有限。不论是语义上还是性能上都不是革命性的东西，没必要单独来谈，对于程序员来说还是锁模型。
+2017-01-04 08:39:59,162  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @zkd8907 @1ittlecup 其实是intel挤牙膏，一直不支持LPDDR4，苹果没得选 https://t.co/e90rby8e1s
+2017-01-04 08:39:59,162  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @upsuper @lichray @ayanamist @__broken_mike @timshen_ Intel这套TSX看上去很美，然而正如Xidorn说的，Has/Broadwell上的实现都出现了严重的bug，以至于不得不通过microcode禁用掉。
+2017-01-04 08:39:59,162  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Intel Parallel Studio XE 2017- 在相容英特爾® 架構的處理器上事半功倍地提高應用程式的性能!!! (現已上市,歡迎詢價) 借助英特爾® Intel #Parallel #Studio XE 2017，從…https://t.co/CkTyGfZaPy
+2017-01-04 08:39:59,163  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Intel Parallel Studio XE 2017- 在相容英特爾® 架構的處理器上事半功倍地提高應用程式的性能!!! (現已上市,歡迎詢價) 借助英特爾® Intel #Parallel #Studio XE... https://t.co/ny08y9eUHG
+2017-01-04 08:39:59,164  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @cb0day: 戴尔全新XPS 13发布：2合1变形设计 内部配置方面，XPS 13 2in1采用了Intel CabyLake处理器，有i7-7Y75和i5-7Y54两款型号可选，集成Intel HD Graphics 615图形核心，内存有4 https://t.c…
+2017-01-04 08:39:59,165  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我顶了一个 @YouTube 视频 https://t.co/6q6ieSi1D8 Joying JY-UL135N2 (DAB+, 2GB Ram, Intel SoFIA 3GR, NFC, Bluetooth 4.0, Android
+2017-01-04 08:39:59,169  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @shuanglin @virushuo @henryzhouhao @cuicat 我的新13寸本垃圾显卡Intel Iris Graphics 550显存只有1536M。LG5K下，8K的demo视频不卡，工作上网等等更没问题… https://t.co/HnmfteeA6q
+2017-01-04 08:39:59,171  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/K5tO8jPj1N All intel Animations 1985~2015
+2017-01-04 08:39:59,172  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: PChome Online 商店街 - 祺荃企業有限公司 - #Intel® #Media #Server #Studio 2017 #開發 #企業級 #媒體解決方案，提供 #高效 https://t.co/se78redkWm
+2017-01-04 08:39:59,899  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: PChome Online 商店街 - 祺荃企業有限公司 - #Intel® #Media #Server #Studio 2017 #開發 #企業級 #媒體解決方案，提供 #高效 https://t.co/43w0WNiijW
+2017-01-04 08:39:59,900  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @chengr28: PPT 秒杀 Intel 怎么就是不懂…… https://t.co/3AjavYqrdf
+2017-01-04 08:39:59,901  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我顶了一个 @YouTube 视频 https://t.co/VecQchqFk0 How to Optimize Your Intel HD Graphics (Works for Nvidia/AMD cards also)
+2017-01-04 08:39:59,901  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我顶了一个来自 @ruizyamilcar 的 @YouTube 视频 https://t.co/p2o6YaA7if Rendimiento de 18 juegos modernos en una Intel HD
+2017-01-04 08:39:59,902  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我顶了一个来自 @4alsee 的 @YouTube 视频 https://t.co/8wpGtviY6m God Eater Resurrection | Low End PC Test | Intel HD 4000 |
+2017-01-04 08:39:59,902  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @rbttt Intel NUC，随便一个i5的就好
+2017-01-04 08:39:59,902  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/VKzqVXyDj5 "Intel QSV" Vs "Nvidia NVENC" with 2000Kbps, using OBS.
+2017-01-04 08:39:59,903  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/56i0jELR0F How To Use OBS Capturing With Intel Quick Sync or Nvidia
+2017-01-04 08:39:59,903  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/sjDVDchDeS 60FPS Livestream Encoding in OBS: x264 vs Intel QuickSync vs
+2017-01-04 08:39:59,903  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/XTc2p1WSGx Intel Quick Sync Video Demo - Intel Sandy Bridge = Fastest
+2017-01-04 08:39:59,904  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @n300trg: My old "buddies" in #china MSS headed for split, counterintel and national intel? #中国 国安部或将拆分 各设反间谍和情报单位 https://t.co/GJkQb2A1…
+2017-01-04 08:39:59,905  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Intel Parallel Studio XE 2017- 在相容英特爾® 架構的處理器上事半功倍地提高應用程式的性能!!! (現已上市,歡迎詢價) 借助英特爾® Intel #Parallel #Studio XE... https://t.co/BgN0Pq6p7W
+2017-01-04 08:39:59,905  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Intel Parallel Studio XE 2017- 在相容英特爾® 架構的處理器上事半功倍地提高應用程式的性能!!! (現已上市,歡迎詢價) 借助英特爾® Intel #Parallel #Studio XE 2017，從…https://t.co/hwHS8h5C4f
+2017-01-04 08:39:59,905  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/HcoKRf7mMV Vectorization (SIMD) and Scaling | James Reinders, Intel
+2017-01-04 08:39:59,906  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @googollee 你买的是这个么？ Microsoft Surface Pro 4 - 128GB / Intel Core i5 还是 i7 的？
+2017-01-04 08:39:59,907  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: My old "buddies" in #china MSS headed for split, counterintel and national intel? #中国 国安部或将拆分 各设反间谍和情报单位 https://t.co/GJkQb2A1ZW
+2017-01-04 08:39:59,907  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/1xM69j65Qp TheWave | Intel Core i7-6950X set | FINALLY！！！
+2017-01-04 08:39:59,907  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Intel Parallel Studio XE 2017- 在相容英特爾® 架構的處理器上事半功倍地提高應用程式的性能!!! (現已上市,歡迎詢價) 借助英特爾® Intel #Parallel #Studio XE 2017，從…https://t.co/xYsUBhVJOG
+2017-01-04 08:39:59,908  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Intel Parallel Studio XE 2017- 在相容英特爾® 架構的處理器上事半功倍地提高應用程式的性能!!! (現已上市,歡迎詢價) 借助英特爾® Intel #Parallel #Studio XE... https://t.co/CjxgfnOJeH
