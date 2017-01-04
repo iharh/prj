@@ -1,0 +1,22 @@
+2017-01-04 21:06:40,729  INFO [pool-4-thread-4-ScalaTest-running-TwitSpec] (TwitSpec.scala:140) - start
+2017-01-04 21:06:45,048  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:77) - portion prev_max_id: None next_max_id: Some(816172200407375871), next_since_id: None, next_results: None
+2017-01-04 21:06:46,573  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:77) - portion prev_max_id: Some(816172200407375871) next_max_id: Some(815563137042694144), next_since_id: None, next_results: None
+2017-01-04 21:06:47,803  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:77) - portion prev_max_id: Some(815563137042694144) next_max_id: Some(814806373674401792), next_since_id: None, next_results: None
+2017-01-04 21:06:48,949  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:77) - portion prev_max_id: Some(814806373674401792) next_max_id: Some(814261831179051007), next_since_id: None, next_results: None
+2017-01-04 21:06:49,976  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:77) - portion prev_max_id: Some(814261831179051007) next_max_id: Some(813735640500080641), next_since_id: None, next_results: None
+2017-01-04 21:06:51,156  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:77) - portion prev_max_id: Some(813735640500080641) next_max_id: None, next_since_id: None, next_results: None
+2017-01-04 21:06:52,517  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:77) - portion prev_max_id: None next_max_id: Some(816172200407375871), next_since_id: None, next_results: None
+2017-01-04 21:06:54,039  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:77) - portion prev_max_id: Some(816172200407375871) next_max_id: Some(815563137042694144), next_since_id: None, next_results: None
+2017-01-04 21:06:55,433  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:77) - portion prev_max_id: Some(815563137042694144) next_max_id: Some(814806373674401792), next_since_id: None, next_results: None
+2017-01-04 21:06:56,986  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:77) - portion prev_max_id: Some(814806373674401792) next_max_id: Some(814261831179051007), next_since_id: None, next_results: None
+2017-01-04 21:06:58,516  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:77) - portion prev_max_id: Some(814261831179051007) next_max_id: Some(813735640500080641), next_since_id: None, next_results: None
+2017-01-04 21:06:59,689  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:77) - portion prev_max_id: Some(813735640500080641) next_max_id: None, next_since_id: None, next_results: None
+2017-01-04 21:07:01,365  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:77) - portion prev_max_id: None next_max_id: Some(816172200407375871), next_since_id: None, next_results: None
+2017-01-04 21:07:03,015  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:77) - portion prev_max_id: Some(816172200407375871) next_max_id: Some(815563137042694144), next_since_id: None, next_results: None
+2017-01-04 21:07:04,390  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:77) - portion prev_max_id: Some(815563137042694144) next_max_id: Some(814806373674401792), next_since_id: None, next_results: None
+2017-01-04 21:07:05,893  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:77) - portion prev_max_id: Some(814806373674401792) next_max_id: Some(814261831179051007), next_since_id: None, next_results: None
+2017-01-04 21:07:07,336  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:77) - portion prev_max_id: Some(814261831179051007) next_max_id: Some(813735640500080641), next_since_id: None, next_results: None
+2017-01-04 21:07:08,225  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:77) - portion prev_max_id: Some(813735640500080641) next_max_id: None, next_since_id: None, next_results: None
+2017-01-04 21:07:09,874  INFO [ForkJoinPool-2-worker-5] (TwitSpec.scala:77) - portion prev_max_id: None next_max_id: Some(816172200407375871), next_since_id: None, next_results: None
+2017-01-04 21:07:11,288  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:77) - portion prev_max_id: Some(816172200407375871) next_max_id: Some(815563137042694144), next_since_id: None, next_results: None
+2017-01-04 21:07:12,753  INFO [ForkJoinPool-2-worker-3] (TwitSpec.scala:77) - portion prev_max_id: Some(815563137042694144) next_max_id: Some(814806373674401792), next_since_id: None, next_results: None

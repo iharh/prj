@@ -55,6 +55,12 @@ class TwitSpec extends FlatSpec with Matchers {
             //example: "?max_id=658200158442790911&q=%23scala&include_entities=1&result_type=mixed"
             params.getOrElse("").split("&").find(_.contains("max_id")).map(_.split("=")(1).toLong)
         }
+        def extractNextSinceId(params: Option[String]): Option[Long] = {
+            params.getOrElse("").split("&").find(_.contains("since_id")).map(_.split("=")(1).toLong)
+        }
+        def extractNextResults(params: Option[String]): Option[Boolean] = {
+            params.getOrElse("").split("&").find(_.contains("next_results")).map(_.split("=")(1).toBoolean)
+        }
 
         val resultFuture = s.client.searchTweet(s.query, count = 100, language = Some(s.lang), result_type = ResultType.Recent, max_id = s.maxId)
             .flatMap { result => // case class StatusSearch(statuses: List[Tweet], search_metadata: SearchMetadata)
@@ -65,6 +71,12 @@ class TwitSpec extends FlatSpec with Matchers {
                 //if (tweets.nonEmpty) { log.debug("found {} tweets", tweets.size) } else { log.warn("empty tweets size") }
 
                 val nextMaxId = extractNextMaxId(metadata.next_results)
+                val nextSinceId = extractNextSinceId(metadata.next_results)
+                val nextResults = extractNextResults(metadata.next_results)
+
+                log.info("portion prev_max_id: {} next_max_id: {}, next_since_id: {}, next_results: {}",
+                    s.maxId.toString, nextMaxId.toString, nextSinceId.toString, nextResults.toString)
+
                 Future { (tweets, TwitSearchState(s.client, s.query, s.lang, nextMaxId)) }
             //} recover {
             //    case _ => Seq.empty
@@ -137,7 +149,7 @@ class TwitSpec extends FlatSpec with Matchers {
 
         // Spanish ChineseSimplified
         val lng = Language.ChineseSimplified
-        val lngStr = "zh" // lng.toString()
+        val lngStr = "fr" // lng.toString()
 
         val out = new File(s"out/${lng.toString()}.csv")
         val writer = out.asCsvWriter[(String)](',', "text") // List("text")
@@ -151,7 +163,7 @@ class TwitSpec extends FlatSpec with Matchers {
         // lego
         // java
         val awaitable = Observable
-            .fromAsyncStateAction(searchTweets)(TwitSearchState(client, "java", lng))
+            .fromAsyncStateAction(searchTweets)(TwitSearchState(client, "lego", lng))
             .concatMap { Observable.fromIterable(_) } // Seq[Tweet] => Observable[Tweet]
             .filter { _.lang == Some(lngStr) }
             .map { _.text }

@@ -70,15 +70,16 @@ class TwitSpec extends FlatSpec with Matchers {
 
         val res = tweets.asScala
 
-        val lowestId: Long = if (res.isEmpty) 0 else res.minBy(_.getId).getId // tweets.get(0).getId
-        log.info("portion maxId: {}, lowestId: {}, hasNext: {}", qr.getMaxId().toString, lowestId.toString, qr.hasNext().toString)
+        //val lowestId: Long = if (res.isEmpty) 0 else res.minBy(_.getId).getId // tweets.get(0).getId
+        log.info("portion maxId: {}, hasNext: {}", qr.getMaxId().toString, qr.hasNext().toString: Any)
 
-        val q = if (qr.hasNext) qr.nextQuery else {
-            val q = new Query(s.query.getQuery)
-            q.setLang(s.query.getLang)
-            q.setMaxId(lowestId - 1)
-            q
-        }
+        //val q = if (qr.hasNext) qr.nextQuery else {
+        //    val q = new Query(s.query.getQuery)
+        //    q.setLang(s.query.getLang)
+        //    q.setMaxId(lowestId - 1)
+            //q
+        //}
+        val q = qr.nextQuery // TODO: check hasNext
 
         (res, TwitSearchState(s.twitter, q))
     }
@@ -130,10 +131,10 @@ class TwitSpec extends FlatSpec with Matchers {
     }
 
     def writeTweetText(text: String): Unit = {
-        log.info("text: {}", text)
+        //log.info("text: {}", text)
     }
     def writeTweet(t: Status): Unit = {
-        log.info("text: {}, maxId: {}", t.getText(), t.getId(): Any)
+        //log.info("text: {}, maxId: {}", t.getText(), t.getId(): Any)
     }
 
     "twit" should "search" in {
@@ -164,7 +165,7 @@ class TwitSpec extends FlatSpec with Matchers {
 
         val langCode = "es"
 
-        var q = new Query("addidas")
+        var q = new Query("sony")
         q.setLang(langCode)
         q.setCount(100)
 
