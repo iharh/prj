@@ -1,0 +1,2 @@
+2017-01-04 15:41:53,768  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: Engadget: 羅技發表 G533 無線遊戲耳機 - https://t.co/jDiFooDIWi #technews #news #engadget https://t.co/yka9Pr5ZWJ
+2017-01-04 15:41:53,773  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @shirofat 还有入门wiki https://t.co/f8I7xz9Afx 量产型键盘不要买corsair，razer，logitech，filco

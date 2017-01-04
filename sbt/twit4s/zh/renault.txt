@@ -1,0 +1,2 @@
+2017-01-04 12:34:12,266  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/z8MY7dp8tr Renault's New Electric Car Advertising Campaign
+2017-01-04 12:34:12,268  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/Vl9BRLB7pK How to install Renault COM Bluetooth version software--UOBD2

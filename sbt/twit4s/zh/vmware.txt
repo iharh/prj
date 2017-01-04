@@ -1,0 +1,12 @@
+2017-01-04 14:55:12,250  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #InsightaaS 与 #VMware 加拿大的 Peter Near 谈论合作伙伴，定位和CDN 客户云之旅。 https://t.co/cwfxI6DCFV https://t.co/7c1h9ZQ3qv
+2017-01-04 14:55:12,251  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #InsightaaS 与 #VMware 加拿大的 Peter Near 谈论合作伙伴，定位和CDN 客户云之旅。 https://t.co/AdVFQk91V4 https://t.co/2DayKRhvSY
+2017-01-04 14:55:12,253  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #VMware #vRealize Suite 概觀 #台灣 🇹🇼 https://t.co/zjdA7RrDF2
+2017-01-04 14:55:12,254  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: RT @ithomeonline: MIS們，2017上工的第一天，別忘了檢查一下，自家的VMware ESXi有沒有更新這個漏洞，挺有必要Der https://t.co/W0Hu77xqO4
+2017-01-04 14:55:12,256  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/qG6uwqEUiW Tuning JVM for a VM - Lessons Learned, Directly from VMware
+2017-01-04 14:55:12,257  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #InsightaaS 与 #VMware 加拿大的 Peter Near 谈论合作伙伴，定位和CDN 客户云之旅。 https://t.co/cwfxI6DCFV https://t.co/QE25FlLeYv
+2017-01-04 14:55:12,257  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #InsightaaS 与 #VMware 加拿大的 Peter Near 谈论合作伙伴，定位和CDN 客户云之旅。 https://t.co/AdVFQk91V4 https://t.co/crsGyCRhMz
+2017-01-04 14:55:12,258  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: VMware vSphere 「中文版」我現在才發現原來 #VMware #台灣 也有分公司！ https://t.co/WRNiSBMxLb
+2017-01-04 14:55:12,261  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @luzhaohui 我现在用VMware Fusion
+2017-01-04 14:55:12,262  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #InsightaaS 与 #VMware 加拿大的 Peter Near 谈论合作伙伴，定位和CDN 客户云之旅。 https://t.co/AdVFQk91V4 https://t.co/VXU54vHTQJ
+2017-01-04 14:55:12,262  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #InsightaaS 与 #VMware 加拿大的 Peter Near 谈论合作伙伴，定位和CDN 客户云之旅。 https://t.co/cwfxI6DCFV https://t.co/o1jZmO8V1l
+2017-01-04 14:55:12,263  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 实习生薪水榜单：VMWare，Facebook 和微软位列三甲 (@cnBeta) https://t.co/UV5Cxcyp5f //  恭喜Linkedin进入前三甲… = =

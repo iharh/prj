@@ -21,8 +21,8 @@ libraryDependencies ++= Seq(
     "org.apache.commons"        % "commons-csv"    % "1.4",
 
     "com.typesafe"              % "config"         % "1.3.1",
+    "org.twitter4j"             % "twitter4j-core" % "4.0.4",
 
-    "com.danielasfregola"      %% "twitter4s"      % "3.0",
     "com.nrinaudo"             %% "kantan.csv"     % "0.1.16",
     // TODO: try only monix-reactive
     "io.monix"                 %% "monix"          % "2.1.2",

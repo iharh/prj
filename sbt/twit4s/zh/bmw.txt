@@ -1,0 +1,51 @@
+2017-01-04 11:40:59,198  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #Simpack 用於BMW 進氣系統的運算 #多體動力學 #multibody #Dynamics #FEA https://t.co/BXutFnVLr2
+2017-01-04 11:40:59,199  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 掲載情報 BMW M4 [F82] 2014y / 3DDesign [SHOP DEMO-CAR] https://t.co/ArUKMfUOCX #ADVAN_MG
+2017-01-04 11:40:59,200  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @alexhvcdrtyujn @bratscher 我只知道路上跑的賓士已經遠遠超過BMW...
+2017-01-04 11:40:59,200  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我喜歡一部 @bbb_pasaba 的 @YouTube 影片 https://t.co/7MMxzYB88s BMW
+2017-01-04 11:40:59,201  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 有如饕餮般的 BMW M2：https://t.co/FFIXjcfj7a (來自 @YouTube)
+2017-01-04 11:40:59,202  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #bmw #münchen #gstrophy 这个活动好帅啊！我也想玩了。 https://t.co/QaVZg9ML22 https://t.co/GmDZWm9rru
+2017-01-04 11:40:59,202  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #bmw #münchen #gstrophy 这个活动好帅啊！我也想玩了。 https://t.co/zA2TKgWKBD
+2017-01-04 11:40:59,204  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我喜歡一部 @shawnfzr 的 @YouTube 影片 https://t.co/hVcmp7NOgn K1600GT BMW Test Ride!! - 6 Cylinder Go-Fast Beast! | TestRides
+2017-01-04 11:40:59,209  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/EDfyK3Ox3n New 2017 BMW M4 Coupe with #BMW M Performance Parts
+2017-01-04 11:40:59,211  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: New video: 收假前國道火燒車 BMW行駛中自燃│中視新聞20170102 - https://t.co/cQ9FxXYlb7 #XaniaTube
+2017-01-04 11:40:59,213  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/dILohJDgKi Unboxing 2017 BMW M3 - Still The Best Performance Sedan
+2017-01-04 11:40:59,213  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/SU68M0pZ6V Assetto Corsa Baron's Drift School #1 BMW M3 E30 Drift
+2017-01-04 11:40:59,215  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @Geekliang BMW 啊
+2017-01-04 11:40:59,243  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: RT @SugarWithMark: Happy New Year🎉🎉 2017，Still with Mark❤️❤️ 2017년도 함께 가자!  新年快乐💕💕 #Mark #GOT7 #마크 #갓세븐 https://t.co/b19bfWJ8g6
+2017-01-04 11:40:59,244  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: RT @China_BamBamBar: #BamBam #뱀뱀 @BamBam1A Happy New Year💚💚💚 新年快乐💚💚💚 身体健康 开开心心😚😚😚 https://t.co/kaZ7Fk8bpk
+2017-01-04 11:40:59,245  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我喜歡一部 @autozonetw 的 @YouTube 影片 https://t.co/jIagIHYQNW 【回覆】同引擎馬力差60匹的原因：BMW N20
+2017-01-04 11:40:59,246  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 掲載情報 BMW M4 [F82] 2014y / VARIS [DEMO-CAR] https://t.co/V0PmSVxdwh #ADVAN_MG
+2017-01-04 11:40:59,246  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/H5fKSRkE7w BMW Motorrad Roadtrip L.A. mit Ola Stenegard 'Inspiration
+2017-01-04 11:40:59,247  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 用這正點的聲浪來渡過這最後一天 iPE 鈦合金 黃金版👍🏻 ipe_exhaust_official ipe_mi #ipeexhaust #ipe #ipe_titanium #bmw… https://t.co/oF1qhJub8q
+2017-01-04 11:40:59,247  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我喜歡一部 @YouTube 影片 https://t.co/RVumDqrUkC BMW M6 Competition Package: Perfect M Car? - Carfection
+2017-01-04 11:40:59,247  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我喜歡一部 @YouTube 影片 https://t.co/fkb2NLujo0 Alpina B6 vs. BMW M6 - Which Is the Better Gran Coupe? - Head 2 Head Ep. 83
+2017-01-04 11:40:59,248  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我對一部 @YouTube 影片表示喜歡 https://t.co/ju6VCrw1x8 CUSTOM BMW R100 cafe racer
+2017-01-04 11:40:59,249  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 德裔豪華中堅份子 A與B的邂逅 Audi A4 30 TFSI V.S BMW 318i https://t.co/kbYahkZkuY via @YouTube
+2017-01-04 11:40:59,249  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: - 我這輩子買這台就心滿意足了！ #ShihKai #BMW740 #世界新車大展 #BMW #BMW7 @ Kaohsiung… https://t.co/L9iS6K2SRd
+2017-01-04 11:40:59,249  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我顶了一个来自 @bypusho 的 @YouTube 视频 https://t.co/PrKwc0dLGp BMW G12 7 Series Selfparking
+2017-01-04 11:40:59,249  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/ILUiR3t89x 5 REASONS I LOVE THE 2017 BMW M4 F82
+2017-01-04 11:40:59,250  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/fZXjGNMGr8 BMW M3/M4 Carbon Fiber Intakes - RK Autowerks
+2017-01-04 11:40:59,250  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/x3d18bdMmJ 2015 BMW M4 Coupe (431hp) - DRIVE &amp; SOUND (1080p)
+2017-01-04 11:40:59,251  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/YiRfz3a7nG 2015 BMW M4 Coupe (431hp) - pure SOUND (1080p)
+2017-01-04 11:40:59,251  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/llye3xPboE BMW E46 3 Series aftermarket Autoradio Android 5.1Ram 2GB
+2017-01-04 11:40:59,252  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: New video: BMW對撞!酒駕男疑闖燈 路口暴衝│中視新聞 20161229 - https://t.co/up5adK0BAi #XaniaTube
+2017-01-04 11:40:59,252  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/IqoCsz4vNo THE NEW 2017 BMW M4 REVIEW | COMPETITION PACK F82
+2017-01-04 11:40:59,253  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/w2WW84bWFn 2017 BMW 5 Series Vs 2017 Mercedes E-Class
+2017-01-04 11:40:59,253  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/Qkc6M5Ryqi [4K] 2017 BMW G30 5 Series 海外試駕 - TCAR
+2017-01-04 11:40:59,253  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/Y4kG0ydwE3 五力全開 科技大耀進 BMW 540i M-Sport sDrive |
+2017-01-04 11:40:59,253  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/wEPlFWWIY1 BMW M4 (F82) Competition 600HP 690Nm powered by PROFITUNING
+2017-01-04 11:40:59,254  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 三辆名车排排站 #bmw #mercedes #audi @ Vista Point https://t.co/RHnmjQL9hp
+2017-01-04 11:41:00,010  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 掲載情報 BMW M2 [F87] 2016y / Studie NAGOYA BAY [SHOP DEMO-CAR] https://t.co/UgFRjVvRQG #ADVAN_MG
+2017-01-04 11:41:00,011  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 【中文試車】寶馬(BMW)M760Li xDrive 53: https://t.co/BJTQVsrXN0 via @YouTube
+2017-01-04 11:41:00,011  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 通勤 https://t.co/jPlOzB5bV9 #熊本#車載#BMW#jzx100#mark2
+2017-01-04 11:41:00,011  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: All Show Girls 美眉共和國 21 Audi 連潔 BMW(4K 2160p)@2016世界新車大展
+2017-01-04 11:41:00,012  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/HZTJPU3suH All Show Girls 美眉共和國 21 Audi 連潔 BMW(4K
+2017-01-04 11:41:00,012  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 【寶馬崛起！】 寶馬幾時開始揚名天下？等英國TG同事話俾大家聽。詳細中文文章亦見於今期《TopGear極速誌》。 #TestDrive #TopGear https://t.co/5CpjYC5shW
+2017-01-04 11:41:00,013  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 德裔豪華中堅份子 A與B的邂逅 Audi A4 30 TFSI V.S BMW 318i：https://t.co/rMTYIYbvyN (來自 @YouTube)
+2017-01-04 11:41:00,013  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @lbt05 @Hanliinter 在说买个BMW M不错，买个Porsche更好
+2017-01-04 11:41:00,014  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/t3k8S5RhU4 After 2 Years CARLIKE Carbon Fiber Vinyl Remove From BMW
+2017-01-04 11:41:00,014  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/AymmPC1sa4 After 2 Years CARLIKE Carbon Fiber Vinyl Removable From BMW
+2017-01-04 11:41:00,014  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/i0F7IR20xh CARLIKE 3D Carbon Fiber Vinyl Install On BMW Hood
+2017-01-04 11:41:00,015  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: New video: 才剛募款葬兒子 老夫妻遭BMW撞死│中視新聞 20161226 - https://t.co/C3lUfpzTve #XaniaTube
+2017-01-04 11:41:00,016  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我喜歡一部 @YouTube 影片 https://t.co/HCvw6PaKbA BMW F800 GS Review &amp; Testride!
+2017-01-04 11:41:00,017  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/2sR92O8aLq BMW 730 740 750 760 X1 X3 X5 X6 CAR DOOR LOCK MOTOR Steering

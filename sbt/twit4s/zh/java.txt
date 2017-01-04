@@ -1,0 +1,95 @@
+2017-01-04 17:02:21,157  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #CSDN Java利用 DES / 3DES / AES 这三种算法分别实现 对称加密. Read Blog: https://t.co/CNQbAtahFq
+2017-01-04 17:02:21,160  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: limedroid / XDroid: 轻量级Android快速开发框架 ★607 https://t.co/HcP1yHcnX9 #Java
+2017-01-04 17:02:21,161  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: Zweihui / RxFingerPrinter: 用rxjava简单封装了指纹识别，顺便撸了一个指纹控件 ★167 https://t.co/yG3x8qjAFb #Java
+2017-01-04 17:02:21,167  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @cola_net2000 还好主题制作器是java写的
+2017-01-04 17:02:21,171  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @MarcusBiel Java和php哪个更加主流
+2017-01-04 17:02:21,172  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @iAJChang 不是，現在主力應該移到 China 了吧…Notes 現在主要是 C 跟 Java（我想）。至於我工作上的產品是 DataPower, API Management, MicroGateway…等等。
+2017-01-04 17:02:21,179  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @__broken_mike @timshen_ @lichray Java数组是对象所以数组变量应该也是引用……我想了一下或许说的是类似 a[0] = xx 或者 a.b = xx 这样的？
+2017-01-04 17:02:21,180  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @upsuper 大部分硬件保证，但编译器可以不保证，这就是为什么要给语言定义 memory model. C++11 的 memory model 不保证哪怕是 int, long 的原子性，你得用 atomic.  就是 Java 的引用，不也得用 volatile 吗？
+2017-01-04 17:02:21,182  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: Java MyBatis 插入数据库返回主键 – 星云博客园 https://t.co/TNqKnxwxlb插入数据库返回主键-星云博客园/ 通過 @easygroupasia @Easy_Branches https://t.co/zj2QsuiCKL
+2017-01-04 17:02:21,182  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @fly_mop QAQ 我觉得我的 Java 学起来好无力啊
+2017-01-04 17:02:21,183  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 什么情况？//@YichenTANG_不会Java:嗯 除了倒数第二点需要额外注意～～//@Ryan_XxOo: [偷笑] (via Weibo https://t.co/mxoJiOpNlK) https://t.co/bQi4YLlzxp
+2017-01-04 17:02:21,183  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: RT @linuxeden_com: Apache PDFBox 2.0.4，Java 的 PDF 处理类库 --Apache PDFBox 2.0.3 发布了。Apache PDFBox库是一个开源的Java工具用于… https://t.co/fjnRrXq0XZ http…
+2017-01-04 17:02:21,183  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: RT @TrendingGithub: 0Linchen / CTFCrackTools: &lt;一款旨在帮助CTFer在CTF中发挥作用的一个框架&gt; ★37 https://t.co/2OGRqUCy7a #Java
+2017-01-04 17:02:21,184  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 0Linchen / CTFCrackTools: &lt;一款旨在帮助CTFer在CTF中发挥作用的一个框架&gt; ★37 https://t.co/2OGRqUCy7a #Java
+2017-01-04 17:02:21,185  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #CSDN 区块链的java实现. Read Blog: https://t.co/uHMKNoc3B0
+2017-01-04 17:02:21,186  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #CSDN Java基础学习总结（90）--Java单元测试技巧. Read Blog: https://t.co/kys46qLzJQ
+2017-01-04 17:02:21,186  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @java_shlt 時期的問題？（
+2017-01-04 17:02:21,187  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: RT @xinoassassin: 自学Java for Android 来 fork 个 Twidere for Weibo(
+2017-01-04 17:02:21,187  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/XaONSF7Nxt 使用IntelliJ實作Java swing GUI程式
+2017-01-04 17:02:21,188  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @__broken_mike @upsuper @yegle Java并没有内置slice吧？我说的两个条件中Java破坏了第二个，但是这纯粹是个选择问题。
+2017-01-04 17:02:22,143  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/owD08O89uU IntelliJ的調整編輯Java版面字型使用Surround
+2017-01-04 17:02:22,144  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/nsBqa1sXfp 下載安裝Java的IDE intelliJ IDEA
+2017-01-04 17:02:22,144  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #CSDN Java内存结构和数据类型. Read Blog: https://t.co/qOSpSrtQgU
+2017-01-04 17:02:22,144  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/nNHW710Ms1 Intertech - Complete Java Performance Tuning Training - Part
+2017-01-04 17:02:22,145  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/VD2vEuPJ4W Java Tutorial - JVM verbose GC analysis
+2017-01-04 17:02:22,145  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/I7tQanaT3j Getting up to Speed on Oracle Java SE Embedded Performance:
+2017-01-04 17:02:22,145  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/Ag4Bxc1KF8 Performance Tuning Where Java Meets the Hardware
+2017-01-04 17:02:22,145  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/S0Q4uM8kDk Take Performance Tuning of Your Enterprise Java Applications
+2017-01-04 17:02:22,146  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/rGjJsvKBuQ Thread dump analysis - HotSpot JVM - Java heap depletion
+2017-01-04 17:02:22,146  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/2slZ6zA8WG Java Performance - Myths, Mysteries, and Paradoxes
+2017-01-04 17:02:22,146  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/n5vI6yGmic Stress-Testing Java EE 6 Applications Without Stress
+2017-01-04 17:02:22,146  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/eFYv8rVocO Intertech - Complete Java Performance Tuning Training - Part
+2017-01-04 17:02:22,147  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/ycOmjlfbi6 Intertech - Complete Java Performance Tuning Training - Part
+2017-01-04 17:02:22,147  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/joFcJJqeYT Building and Tuning High Performance Java Platforms
+2017-01-04 17:02:22,147  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/ROMjUfQjym From Java Code to Java Heap: Understanding the Memory Usage
+2017-01-04 17:02:22,148  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/ENWRdqlMG8 How to Write Memory-Efficient Java Code
+2017-01-04 17:02:22,148  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/PdiIYQ2Ppg Java Performance: Hardware, Structures, and Algorithms
+2017-01-04 17:02:22,148  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/X4kLe0PJcq Understanding Java GC and What You Can Do About It
+2017-01-04 17:02:22,149  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/xaYKbTHDIp Take Performance Tuning of Your Enterprise Java Applications
+2017-01-04 17:02:22,149  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/GD8zmXXwOH Troubleshooting Live Java Web Applications
+2017-01-04 17:02:22,149  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/zqiO61ZoD7 Tuning Large Scale Java Platforms
+2017-01-04 17:02:22,150  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/y2Is1O7FDO Java Memory Leak Detection with JProfiler
+2017-01-04 17:02:22,150  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/2nG3nP8gah Java Memory Hogs
+2017-01-04 17:02:22,150  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/6eacwdG1Sy Virtualizing and Tuning Large Scale Java Platforms
+2017-01-04 17:02:22,150  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/hxEiwHcvKq Intertech - Complete Java Performance Tuning Training - Part
+2017-01-04 17:02:22,151  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/VUoVodWrnB Intertech - Complete Java Performance Tuning Training - Part
+2017-01-04 17:02:22,151  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/pfLtgAGaYC JProfiler with Google App Engine for Java (Method Execution
+2017-01-04 17:02:22,151  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/YWPQvHwyB7 One line java program that throw
+2017-01-04 17:02:22,151  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/EojIYtXTGO Understanding Java Garbage Collection and what you can do
+2017-01-04 17:02:22,151  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/SDCaIBkUHw Memory Leaks in Java
+2017-01-04 17:02:22,152  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/34kcM9pPKw Intertech - Complete Java Performance Tuning Training - Part
+2017-01-04 17:02:22,152  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/Fyt26xDfSU A Deep Dive into Java Performance Analysis with Advanced
+2017-01-04 17:02:22,152  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/QtrIk3qO2i A New Approach to Production Java Application Diagnostics
+2017-01-04 17:02:22,152  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/WylEW4ZHoS Java, JVM, Garbage Collection Tutorial, Heap Analysis,
+2017-01-04 17:02:22,153  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/75gH5ZWCiQ Advanced Topics in Programming Languages: The Java Memory
+2017-01-04 17:02:22,153  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/IS61lqiwH8 The JVM and Java Garbage Collection - OLL Live (Recorded
+2017-01-04 17:02:22,153  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/oMTlW1i8Xd Simplest and most effective ways to tune a java_j2ee
+2017-01-04 17:02:22,154  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/8kuhr2ssX8 Intertech - Complete Java Performance Tuning Training - Part
+2017-01-04 17:02:22,154  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/gckciOJxCu Garbage collection in Java, with Animation and discussion of
+2017-01-04 17:02:22,154  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/d7HheFeRIY Intertech - Complete Java Performance Tuning Training - Part
+2017-01-04 17:02:22,155  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/6msYog2TRQ Introduction to Java VisualVM
+2017-01-04 17:02:22,155  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/CNzRMSY56J Intertech - Complete Java Performance Tuning Training - Part
+2017-01-04 17:02:22,155  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/MRSLdjfVxT Profiling Java Code with Jprofile
+2017-01-04 17:02:22,156  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/el9TP0Taor IIT TechTalks : Java code Debugging &amp; Profilers
+2017-01-04 17:02:22,156  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/oxbKhCL2wa JProfiler with Google App Engine for Java
+2017-01-04 17:02:22,156  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我保存了 @YouTube 上的播放列表“Java
+2017-01-04 17:02:22,156  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: IntelliJ的調整編輯Java版面字型使用Surround with產生for-loop：https://t.co/owD08O89uU (來自 @YouTube)
+2017-01-04 17:02:22,157  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/nXvbEY3Y5O 使用intellliJ 撰寫簡易Java hello程式
+2017-01-04 17:02:22,157  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #CSDN java数据类型的规则. Read Blog: https://t.co/MklIIZJhbM
+2017-01-04 17:02:22,157  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: RT @walkingice: chmod +r https://t.co/EvkN4X4tLW  // 增加程式碼可讀性 https://t.co/0WC5uWxwDI
+2017-01-04 17:02:22,158  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @uomety Java我找不到应用场景啊。
+2017-01-04 17:02:22,158  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/URQpyeBTYN Classe "Enviando E-mail" JAVA
+2017-01-04 17:02:22,158  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/uBTYf2h1gG Java Mail Server
+2017-01-04 17:02:22,159  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/w6mVBULmcd Java Web Programming with Eclipse: Database Connection
+2017-01-04 17:02:22,159  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/dOGYFzrwJG Jarnal - Java Mail Demo
+2017-01-04 17:02:22,159  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/GcIFgDcmfr Java Swing send email
+2017-01-04 17:02:22,159  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/6Wfm9JRX4V Java Email Using Gmail
+2017-01-04 17:02:22,159  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我保存了 @YouTube 上的播放列表“java mail
+2017-01-04 17:02:22,160  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @NalaGinrut 两败俱伤啊 比如java
+2017-01-04 17:02:22,162  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: limedroid / XDroidMvp: 轻量级的Android MVP快速开发框架 ★146 https://t.co/iGw0zBkkSy #Java
+2017-01-04 17:02:22,163  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #CSDN Java基础学习总结（90）--Java单元测试技巧. Read Blog: https://t.co/8oCkaHlPMM
+2017-01-04 17:02:22,163  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #CSDN 区块链的java实现. Read Blog: https://t.co/kIvETcb5Gr
+2017-01-04 17:02:23,339  INFO [ForkJoinPool-2-worker-15] (TwitSpec.scala:123) - text: RT @tsung: Oracle 取締未經適當授權的 Java 用戶 https://t.co/xOFdKQBZ4t
+2017-01-04 17:02:23,341  INFO [ForkJoinPool-2-worker-15] (TwitSpec.scala:123) - text: suzeyu1992 / repo: 📒 记录一个自己的知识库 ★411 https://t.co/SR40Z5OnHV #Java
+2017-01-04 17:02:23,342  INFO [ForkJoinPool-2-worker-15] (TwitSpec.scala:123) - text: @chinashiyu 成了Java课堂了
+2017-01-04 17:02:23,343  INFO [ForkJoinPool-2-worker-15] (TwitSpec.scala:123) - text: #CSDN Java内存结构和数据类型. Read Blog: https://t.co/N6IKmYy6yb
+2017-01-04 17:02:23,343  INFO [ForkJoinPool-2-worker-15] (TwitSpec.scala:123) - text: @chinashiyu /usr/bin/java 这只是链接路径吧，里面什么都没有
+2017-01-04 17:02:23,344  INFO [ForkJoinPool-2-worker-15] (TwitSpec.scala:123) - text: @hieiking 难道不是从此自学成才java script么
+2017-01-04 17:02:23,345  INFO [ForkJoinPool-2-worker-15] (TwitSpec.scala:123) - text: Perl不及待 //@Mogician_Reion:Java下去//@某wwyqianqian: js将疑//@justjavac:无可phone告//@灵感之源:大是Delphi//@据悉社:Erlang传说 //@疤面煞星:J… https://t.co/WbHP9E0CsN
+2017-01-04 17:02:23,345  INFO [ForkJoinPool-2-worker-15] (TwitSpec.scala:123) - text: @ahxxm 哈哈，oracle 已经要java收费了， 药丸了。
+2017-01-04 17:02:23,347  INFO [ForkJoinPool-2-worker-15] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/gKDzHIZBam 說明quick sort運作的java程式
+2017-01-04 17:02:23,347  INFO [ForkJoinPool-2-worker-15] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/yaDrvi5XVv Java Peanuts Sorting-Angelon Color Sorter for Peanuts
+2017-01-04 17:02:23,348  INFO [ForkJoinPool-2-worker-15] (TwitSpec.scala:123) - text: New V2EX Q&amp;A: 2016 年末想学服务端编程，选择 java 还是 go？ by WorthyZhang - https://t.co/2CJ6vwiQOe #问大家 #v2ex
+2017-01-04 17:02:23,349  INFO [ForkJoinPool-2-worker-15] (TwitSpec.scala:123) - text: @Mxss28 @wolf0403 Java 程序员天天过节，每天既是 Boxing Day 又是 Unboxing Day
+2017-01-04 17:02:23,349  INFO [ForkJoinPool-2-worker-15] (TwitSpec.scala:123) - text: gongwen / MarqueeViewLibrary: 一个帮您快速实现跑马灯效果的library ★352 https://t.co/nRUkjDfHXG #Java

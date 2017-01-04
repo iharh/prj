@@ -1,31 +1,32 @@
 import org.scalatest._
 
-import com.danielasfregola.twitter4s.TwitterRestClient
-import com.danielasfregola.twitter4s.entities.Tweet
+import twitter4j.Twitter
+import twitter4j.TwitterFactory
+import twitter4j.conf.ConfigurationBuilder
+import twitter4j.Query
+import twitter4j.QueryResult
+import twitter4j.Status
+import twitter4j.TwitterResponse
+import twitter4j.HttpResponseCode
+import twitter4j.auth.AccessToken
+import twitter4j.TwitterException
 
-import com.danielasfregola.twitter4s.entities.enums.ResultType
-import com.danielasfregola.twitter4s.entities.enums.Language
-
-import monix.eval.Task
+//import monix.eval.Task
 
 import monix.reactive.Observable
 import monix.reactive.Observer
 import monix.reactive.Consumer
 
+//import monix.execution.Ack
 import monix.execution.Ack.Continue
 import monix.execution.Cancelable
 import monix.execution.Scheduler.Implicits.global
 
-import kantan.csv.CsvWriter
-import kantan.csv.ops._
+import scala.collection.JavaConverters._
 
-//import scala.collection.JavaConverters._
-
-import scala.concurrent.Future
 import scala.concurrent.Await
 //import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
-
 
 import com.clarabridge.transformer.ld.CrossModel
 import com.clarabridge.transformer.ld.NormLangDetector
@@ -45,32 +46,37 @@ import java.io.File
 
 import org.slf4j.LoggerFactory
 
+
+
 class TwitSpec extends FlatSpec with Matchers {
     private val log = LoggerFactory.getLogger(getClass)
 
-    case class TwitSearchState(client: TwitterRestClient, query: String, lang: Language.Value, maxId: Option[Long] = None)
+    case class TwitSearchState(twitter: Twitter, query: String, langCode: String, maxId: Long = -1l)
 
-    def searchTweets(s: TwitSearchState) : Task[(Seq[Tweet], TwitSearchState)] = {
-        def extractNextMaxId(params: Option[String]): Option[Long] = {
-            //example: "?max_id=658200158442790911&q=%23scala&include_entities=1&result_type=mixed"
-            params.getOrElse("").split("&").find(_.contains("max_id")).map(_.split("=")(1).toLong)
+    def checkTwitterResult(resp: TwitterResponse) {
+        val rls = resp.getRateLimitStatus
+        if (rls != null && rls.getRemaining == 0) {
+            val waitSec = rls.getSecondsUntilReset + 15
+            log.info("Waiting {} seconds", waitSec)
+            // TODO: try Scala Await
+            Thread.sleep(waitSec * 1000)
         }
+    }
 
-        val resultFuture = s.client.searchTweet(s.query, count = 100, language = Some(s.lang), result_type = ResultType.Recent, max_id = s.maxId)
-            .flatMap { result => // case class StatusSearch(statuses: List[Tweet], search_metadata: SearchMetadata)
-                val metadata = result.search_metadata
-                // metadata.count sometimes more than result.statuses.size
+    def searchTweets(s: TwitSearchState) : (Seq[Status], TwitSearchState) = {
+        var q = new Query(s.query)
+        q.setLang(s.langCode)
+        q.setMaxId(s.maxId)
+        q.setCount(100)
 
-                val tweets = result.statuses
-                //if (tweets.nonEmpty) { log.debug("found {} tweets", tweets.size) } else { log.warn("empty tweets size") }
+        val qr: QueryResult = s.twitter.search(q)
+        checkTwitterResult(qr)
+        val tweets = qr.getTweets() // List[Status]
 
-                val nextMaxId = extractNextMaxId(metadata.next_results)
-                Future { (tweets, TwitSearchState(s.client, s.query, s.lang, nextMaxId)) }
-            //} recover {
-            //    case _ => Seq.empty
-            }
+        val newMaxId = tweets.get(0).getId() // qr.getMaxId()
+        log.info("portion oldMaxId: {}, newMaxId: {}, hasNext: {}", s.maxId.toString, newMaxId.toString, qr.hasNext().toString)
 
-        Task.fromFuture(resultFuture)
+        (tweets.asScala, TwitSearchState(s.twitter, s.query, s.langCode, newMaxId))
     }
 
     // private static final
@@ -119,52 +125,54 @@ class TwitSpec extends FlatSpec with Matchers {
         newMatcher.find()
     }
 
-    def writeTweetText(writer: CsvWriter[(String)], text: String): Unit = {
+    def writeTweetText(text: String): Unit = {
         log.info("text: {}", text)
-        writer.write((text))
     }
-        
+
     "twit" should "search" in {
         log.info("start")
 
-        val client = TwitterRestClient()
-
         val config = ConfigFactory.load()
         //config.entrySet().asScala.foreach { log.info("e: {}", _) }
-        val modelDirName = config.getString("ld.model.dir.name")
 
-        val langDetector: NormLangDetector = getLangDetector(modelDirName);
+	val cb = new ConfigurationBuilder()
+	val twitter: Twitter = new TwitterFactory(cb.build()).getInstance()
 
-        // Spanish ChineseSimplified
-        val lng = Language.ChineseSimplified
-        val lngStr = "zh" // lng.toString()
+        val consumerKey = config.getString("twitter.consumer.key")
+        val consumerSecret = config.getString("twitter.consumer.secret")
+        val accessKey = config.getString("twitter.access.key")
+        val accessSecret = config.getString("twitter.access.secret")
 
-        val out = new File(s"out/${lng.toString()}.csv")
-        val writer = out.asCsvWriter[(String)](',', "text") // List("text")
+	twitter.setOAuthConsumer(consumerKey, consumerSecret)
+	val accessToken = new AccessToken(accessKey, accessSecret)
+	twitter.setOAuthAccessToken(accessToken)
 
-        // addidas, lenovo, apple, android, samsung, google, microsoft
-        // intell, dell, logitech
-        // sony, panasonic
-        // reebok, columbia, audi, hilton, mozilla, BMW
-        // taiwan, renault, opel
-        // docker, vmware
-        // lego
-        // java
+        //val modelDirName = config.getString("ld.model.dir.name")
+
+        //val langDetector: NormLangDetector = getLangDetector(modelDirName);
+
+        // addidas, lenovo, apple, intel, android, samsung, google, microsoft
+        // reebok, sony, columbia, audi, hilton, mozilla, BMW
+        // taiwan, renault
+
+        val lngCode = "es"
+
         val awaitable = Observable
-            .fromAsyncStateAction(searchTweets)(TwitSearchState(client, "java", lng))
-            .concatMap { Observable.fromIterable(_) } // Seq[Tweet] => Observable[Tweet]
-            .filter { _.lang == Some(lngStr) }
-            .map { _.text }
+            .fromStateAction(searchTweets)(TwitSearchState(twitter, "sony", lngCode))
+            .concatMap { Observable.fromIterable(_) } // Seq[Status] => Observable[Status]
+            //.filter { _.lang == Some(lngStr) }
+            .map { _.getText() }
             .distinct
-            .filter { detectLang(langDetector, _) != lngStr }
-            .filter { hasHashtagOrMention(_) }
+            //.filter { detectLang(langDetector, _) != lngStr }
+            //.filter { hasHashtagOrMention(_) }
             .take(1000)
             // Consumer.complete
-            .consumeWith(Consumer.foreach { writeTweetText(writer, _) })
+            .consumeWith(Consumer.foreach { writeTweetText(_) })
             .runAsync
 
         Await.result(awaitable, Duration.Inf) // 0 nanos
-        writer.close()
+
+        assert(true == true)
 
         log.info("end")
     }

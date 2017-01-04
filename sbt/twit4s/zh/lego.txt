@@ -1,0 +1,52 @@
+2017-01-04 16:10:24,538  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我喜歡一部 @YouTube 影片 https://t.co/7GJ6nGobtK 【女皇玩 LEGO Harry Potter Year 1 - 4】#12 用魔法打嘅雪戰
+2017-01-04 16:10:24,543  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: Engadget: Lego Boost 是給小小朋友的 Mindstorm - https://t.co/J8cbLYjx04 #technews #news #engadget https://t.co/8sjto65wsQ
+2017-01-04 16:10:24,545  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我對一部 @YouTube 影片表示喜歡 https://t.co/aZnRTiY4uO 【女皇玩 LEGO Harry Potter Year 1 - 4】#4 神秘的魔法石
+2017-01-04 16:10:24,546  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @FBI_LEGO HPE・PDK・URE３国同盟！
+2017-01-04 16:10:24,547  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我喜歡一部 @YouTube 影片 https://t.co/5kZA0jNmNr 【女皇玩 LEGO Harry Potter Year 1 - 4】#11 新學年開始
+2017-01-04 16:10:24,548  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我喜歡一部 @YouTube 影片 https://t.co/2PMnhI2nlE 【女皇玩 LEGO Harry Potter Year 1 - 4】#11 新學年開始
+2017-01-04 16:10:24,552  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: RT @y_m_sunadokei: 第二形態 第三形態 第四形態 https://t.co/rjXYU2wNII
+2017-01-04 16:10:24,553  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我顶了一个来自 @cooperace101 的 @YouTube 视频 https://t.co/7V5uyYqtjz LEGO STAR WARS ROGUE ONE - MINI SERIES - PART 1 - 12
+2017-01-04 16:10:24,554  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我喜歡一部 @YouTube 影片 https://t.co/GbU67elyC7 【女皇玩 LEGO Harry Potter Year 1 - 4】#10 佛地魔的寵物
+2017-01-04 16:10:24,555  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我顶了一个 @YouTube 视频 https://t.co/b5kUUCPliz WeDo Rudolph : LEGO WeDo
+2017-01-04 16:10:24,556  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 【女皇玩 LEGO Harry Potter Year 1 - 4】#10 佛地魔的寵物 #Instagram... https://t.co/IGCDEWIcyA https://t.co/IhAVsQ7GZO
+2017-01-04 16:10:24,557  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我喜歡一部 @YouTube 影片 https://t.co/hW684tefMx 【女皇玩 LEGO Harry Potter Year 1 - 4】#10 佛地魔的寵物
+2017-01-04 16:10:24,559  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: RT @andmorefine: 一富士二鷹三茄子四扇五煙草六座頭 #illustration #drawing #cartoon #sketch #funny #art #イラスト #気持ち悪い #初夢 #願望 #ペン画を流してペン画民を増やそう https://t.co/0…
+2017-01-04 16:10:24,559  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: RT @chingyuen_: 原來拆 Lego 和 sorting Lego 其實不算是一種 de-stressing 活動 ....
+2017-01-04 16:10:24,560  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/VejjmNlJJa How to build a house by interlocking brick lego bricks
+2017-01-04 16:10:24,561  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我顶了一个来自 @deathmule 的 @YouTube 视频 https://t.co/pHpWHivVpG LEGO Star Wars The Force Awakens Prologue Ending
+2017-01-04 16:10:24,562  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我顶了一个 @YouTube 视频 https://t.co/OqHQjWL80J LEGO Mindstorms Bridge Layer
+2017-01-04 16:10:24,563  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: RT @karaage9332: 第零世代、第一世代、第二世代、第三世代 #LEGO #Mixels #ZOIDS https://t.co/oinh4b1eeg
+2017-01-04 16:10:24,564  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: RT @_named18: @Calcifer_Yeol 桌曆整個超級無敵可愛的❤️超級喜歡特典的樂高積木鑰匙圈👍新的一年看美美的桌曆～開心💕👏🏻 Calendar is SO CUTE!and special gift-the lego's key ring is so s…
+2017-01-04 16:10:24,564  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我喜歡一部 @YouTube 影片 https://t.co/JcMnETMYNL 【女皇玩 LEGO Harry Potter Year 1 - 4】#9 大戰食人巨蛛
+2017-01-04 16:10:24,565  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我喜歡一部 @YouTube 影片 https://t.co/jz3tBtjBWC 【女皇玩 LEGO Harry Potter Year 1 - 4】#9 大戰食人巨蛛
+2017-01-04 16:10:24,565  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我顶了一个来自 @titanpictures 的 @YouTube 视频 https://t.co/ViO35Jg6UI Lego Minecraft Movie 3
+2017-01-04 16:10:24,566  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @Calcifer_Yeol 桌曆整個超級無敵可愛的❤️超級喜歡特典的樂高積木鑰匙圈👍新的一年看美美的桌曆～開心💕👏🏻 Calendar is SO CUTE!and special gift-the lego's key ri… https://t.co/olUCGZOWo1
+2017-01-04 16:10:24,566  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我喜歡一部 @YouTube 影片 https://t.co/CbZHgyvjGR Little Talks Guitar Cover by Lego Mindstorms EV3
+2017-01-04 16:10:24,567  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我喜歡一部 @YouTube 影片 https://t.co/ZfatmCVzYk 【女皇玩 LEGO Harry Potter Year 1 - 4】#8 密室的線索
+2017-01-04 16:10:24,567  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我喜歡一部 @YouTube 影片 https://t.co/L24dAGEjto 【女皇玩 LEGO Harry Potter Year 1 - 4】#8 密室的線索
+2017-01-04 16:10:24,567  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/YSshJ9J68H Lego City - The Big Chase
+2017-01-04 16:10:24,567  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我喜歡一部 @YouTube 影片 https://t.co/YSshJ9J68H Lego City - The Big Chase
+2017-01-04 16:10:24,568  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我喜歡一部 @YouTube 影片 https://t.co/sbldypLbGQ LEGO City Undercover Walkthrough Part 3 - Chapter 3 Part 1
+2017-01-04 16:10:24,568  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #LaCantine 容器美就先加分 有機會來抹個三明治 #白兵 #白兵的日常 #白兵写真 #stormtrooper #starwars #スターウォーズ #lego #recolte https://t.co/2U7kMWAKzO
+2017-01-04 16:10:24,569  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @hansomelbye @LEGO_Group cool!土豪！
+2017-01-04 16:10:24,569  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: RT @chingyuen_: 這樣真的很美，我常常想如何可以將 Lego display 得有格調多點 Decorate Your Home With Ikea and LEGO Architecture Skylines https://t.co/Tp82AXc2Fv ht…
+2017-01-04 16:10:24,570  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我對一部 @YouTube 影片表示喜歡 https://t.co/0UwkfF032T Suicide Squad IN LEGO!
+2017-01-04 16:10:24,570  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: RT @lrab3p: 凤凰古城 https://t.co/xJVAqOkgWo
+2017-01-04 16:10:24,571  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: LEGO SERIOUS PLAY 如何用於業務培訓 #LEGOSeriousPlay #SENSETrainingHouse #CorporateTraining #TeamBuilding https://t.co/ahiJ8yAKvp
+2017-01-04 16:10:25,311  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #CyberMonday #NintendoDS #VideoGames LEGO Marvel Super Heroes (DS) (輸入版) https://t.co/p1bif1esVs https://t.co/cNDtMPlMk9
+2017-01-04 16:10:25,312  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我對一部 @YouTube 影片表示喜歡 https://t.co/7TgAjYiQUL The Ultimate LEGO Machine Returns!
+2017-01-04 16:10:25,312  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/FjDpVXqipP Lego Frozen: Northern Lights
+2017-01-04 16:10:25,313  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我對一部 @cgoplay 的 @YouTube 影片表示喜歡 https://t.co/1LNbQsP59F ♥ LEGO Disney Frozen Elsa CHRISTMAS SURPRISE by Santa
+2017-01-04 16:10:25,313  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我喜歡一部 @YouTube 影片 https://t.co/zp8dW1imQe 【女皇玩 LEGO Harry Potter Year 1 - 4】#7 巫師決鬥
+2017-01-04 16:10:25,314  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 又有新玩具！#lego #avengers #assembled #thanos 比比係大佬！ https://t.co/qkRgRJHA8l
+2017-01-04 16:10:25,314  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我喜歡一部 @YouTube 影片 https://t.co/J5uBLhKEYM 【女皇玩 LEGO Harry Potter Year 1 - 4】#7 巫師決鬥
+2017-01-04 16:10:25,314  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 快來看我在PlayStation 4的播送！#PS4live (LEGO® STAR WARS™：原力覺醒)  live at https://t.co/zsbpXj8Jxt
+2017-01-04 16:10:25,315  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 快來看我在PlayStation 4的播送！#PS4live (LEGO® STAR WARS™：原力覺醒)  live at https://t.co/WSiWN6MKL1
+2017-01-04 16:10:25,315  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 快來看我在PlayStation 4的播送！#PS4live (LEGO® STAR WARS™：原力覺醒)  live at https://t.co/vkw1MQWT6Q
+2017-01-04 16:10:25,315  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我喜歡一部 @YouTube 影片 https://t.co/ctdHqLhV6Q Stargate Lego
+2017-01-04 16:10:25,316  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #lego #minecraft 末地传送门 https://t.co/LP3HetKbzp https://t.co/4hmOTF2ixZ
+2017-01-04 16:10:25,316  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @adam_0311 放在lego的人那邊
+2017-01-04 16:10:25,317  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 快來看我在PlayStation 4的播送！#PS4live (LEGO® STAR WARS™：原力覺醒)  live at https://t.co/aDgvlF6ZTU
+2017-01-04 16:10:25,317  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 快來看我在PlayStation 4的播送！#PS4live (LEGO® STAR WARS™：原力覺醒)  live at https://t.co/Q6FWzWPdGl
+2017-01-04 16:10:25,317  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 快來看我在PlayStation 4的播送！#PS4live (LEGO® STAR WARS™：原力覺醒)  live at https://t.co/RWxxZaKfki
+2017-01-04 16:10:25,317  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我顶了一个 @YouTube 视频 https://t.co/3IsEd7BZuG LEGO Worlds | Announce Trailer | PS4

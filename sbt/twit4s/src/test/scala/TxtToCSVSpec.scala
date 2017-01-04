@@ -35,7 +35,7 @@ class TxtToCSVSpec extends FlatSpec with Matchers {
         //val modelDirName = config.getString("ld.model.dir.name")
 
         //val lng = Language.Spanish
-        val lngCode = "es" // lng.toString()
+        val lngCode = "zh" // lng.toString()
 
         val out = new File(s"out/${lngCode}.csv")
         val writer = out.asCsvWriter[(String)](',', "text") // List("text")
@@ -43,7 +43,7 @@ class TxtToCSVSpec extends FlatSpec with Matchers {
         // addidas, lenovo, apple, intel, android, samsung, google, microsoft
         // reebok, sony
         val awaitable = Observable
-            .fromLinesReader(new BufferedReader(new FileReader("d:\\dev\\prj\\sbt\\twit4s\\es\\es1.txt")))
+            .fromLinesReader(new BufferedReader(new FileReader(s"d:\\dev\\prj\\sbt\\twit4s\\${lngCode}\\${lngCode}.txt")))
             // Consumer.complete
             .consumeWith(Consumer.foreach { writeRecord(writer, _) })
             .runAsync

@@ -1,0 +1,29 @@
+2017-01-04 15:25:17,641  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @lymikko @YigeQueen 就不能有女程序员喜欢Dell外星人吗😂😂😂
+2017-01-04 15:25:17,643  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @elaveleven @YigeQueen 买macbook的可能会有gay，买dell的绝对直男。
+2017-01-04 15:25:17,646  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: Engadget: Dell 為 Inspiron 7000 和 Alienware 帶來 CPU 例行升級 - https://t.co/mhCEbmADbe #technews #news #engadget https://t.co/MmstRZOKVK
+2017-01-04 15:25:17,647  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: RT @EttoreSequi: 意大利安东尼亚诺合唱团新年音乐会 Il Piccolo Coro dell'Antoniano a Pechino @ItalyinChina @ItalyMFA @zecchinodoro  https://t.co/c0W15ZqrVB
+2017-01-04 15:25:17,648  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #Dell 推出 #XPS13 系列首款折疊式超級筆電 XPS 13 2-in-1 #科技 #新聞 #數碼 #創意 #設計 #創新 #產品 #techshare #technews Simon Tech News… https://t.co/AAqmZRBEE0
+2017-01-04 15:25:17,649  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 意大利安东尼亚诺合唱团新年音乐会 Il Piccolo Coro dell'Antoniano a Pechino @ItalyinChina @ItalyMFA @zecchinodoro  https://t.co/c0W15ZqrVB
+2017-01-04 15:25:17,650  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: RT @xyh67: 上海现在还那么热么… RT @OnlyLonely1984: IT终于给我换电脑了 然而是台dell… https://t.co/OmKgHJ5aeR
+2017-01-04 15:25:17,650  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @laincatx dell不考虑啦，xps键盘手感太一般
+2017-01-04 15:25:17,651  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @takeda_iori HP 的笔记本不知道有什么坑没。但是 dell 的 bios 是个坑。
+2017-01-04 15:25:17,652  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 扩散 RT @OnlyLonely1984: IT终于给我换电脑了 然而是台dell… https://t.co/wORwnf6dLj
+2017-01-04 15:25:17,653  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: RT @OnlyLonely1984: IT终于给我换电脑了 然而是台dell… https://t.co/Fqg0FyECuS
+2017-01-04 15:25:17,654  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我喜歡一部 @YouTube 影片 https://t.co/bd5S1IBKXf Dell's Infinity display comes to an XPS 13 hybrid
+2017-01-04 15:25:17,654  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: Engadget: Dell 可變形 XPS 13 筆電正式登場，要價 1,000 美元起 - https://t.co/w9DyrVqAfj #technews #news #engadget https://t.co/WKCIB15H1v
+2017-01-04 15:25:17,655  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @investorseurope 戴尔推出一如其名的 27 Ultrathin 显示器 - 戴尔在今年的 CES 担当先锋的，是一款 27 吋 QHD（2,560 x 1,440）的超窄边框显示器 27 Ultrathin... https://t.co/bquGBK5SPd
+2017-01-04 15:25:17,655  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: Engadget: Dell XPS 13 機型也迎來變型功能 - https://t.co/ktdMsQSIxE #technews #news #engadget https://t.co/Ctc8GjB5nZ
+2017-01-04 15:25:17,657  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我顶了一个 @YouTube 视频 https://t.co/AzTGQBgE8h Un Passaggio Selezionato da Il Gemito dell’Onnipotente
+2017-01-04 15:25:17,658  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我顶了一个 @YouTube 视频 https://t.co/zErmCUikaR Un Passaggio Selezionato da Il Gemito dell’Onnipotente
+2017-01-04 15:25:17,658  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @XPolot 痴女教師
+2017-01-04 15:25:17,659  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: Can you recommend anyone for this #job? Intern Undergrad Associate-2017年市场部暑期实习生 - https://t.co/VASE24yd9n #DellJobs #internship #Xiamen
+2017-01-04 15:25:17,659  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @delphij 后来你买啥笔记本了？我觉得dell xps develop edition 不错。
+2017-01-04 15:25:17,659  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 5K IPS Display - Dell UP2715K https://t.co/PkSqU2JMnQ 来自 @YouTube
+2017-01-04 15:25:17,660  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: New V2EX Q&amp;A: 有没有人实测 dell r710 服务器，每天用电量是多少的？ by woshilala1988 - https://t.co/ZtRMhWf38v #问大家 #v2ex
+2017-01-04 15:25:17,661  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @Fatal1tyV 有钱还是推荐买Dell那个...
+2017-01-04 15:25:17,661  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: New V2EX Q&amp;A: 要为 RMBP 配个外接显示器， DELL U2717D 没毛病吧？ by nikoo - https://t.co/QcnkbtaPwv #问大家 #v2ex
+2017-01-04 15:25:17,663  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #TeamEXO  #SOOMPIAWARDS kill呢额Dell了家里会哈按摩机老K了额
+2017-01-04 15:25:17,663  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 苹果杀手？Dell XPS 15 开箱！: https://t.co/oXyvCQcGhZ via @YouTube
+2017-01-04 15:25:17,664  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: I added a video to a @YouTube playlist https://t.co/oXyvCQcGhZ 苹果杀手？Dell XPS 15 开箱！
+2017-01-04 15:25:17,664  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #InsightaaS 文化，客户和戴尔 EMC 合并中的竞争。 https://t.co/hwJiET1JVs https://t.co/gJskohxIe9
+2017-01-04 15:25:17,665  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #InsightaaS 文化，客户和戴尔 EMC 合并中的竞争。 https://t.co/9CMDBNxso0 https://t.co/Uwbo7AjgX5

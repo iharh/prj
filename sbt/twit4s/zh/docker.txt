@@ -1,0 +1,17 @@
+2017-01-04 14:35:19,543  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @MeganeMaid 选择 Docker 的话就没人关心语言了 因为 release 的是 docker image
+2017-01-04 14:35:19,545  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: RT @oiax: 免费 Docker 之 Arukas，搭建 Shadowsocks 翻墙 https://t.co/LN0bEnU0KJ // Arukas 已于 11 月 30 日恢复新用户注册 https://t.co/jdI5R3ihj0
+2017-01-04 14:35:19,548  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: Docker-- Container And Container Cloud - Docker--容器与容器云 here  https://t.co/g58LUZAlnE #docker #container @Devopsbot_
+2017-01-04 14:35:19,549  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: New V2EX Q&amp;A: docker 构建开发环境 by EthanLiao - https://t.co/J7bfHvvNPW #问大家 #v2ex
+2017-01-04 14:35:19,556  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @breakwa11 这朋友我在docker 见过 二锅头
+2017-01-04 14:35:19,557  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 好冷…看有没有人懂… 9. 想看鲸鱼 RT @idealite: @hahaa1926 9、听说叫「Docker」
+2017-01-04 14:35:19,558  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @hahaa1926 9、听说叫「Docker」
+2017-01-04 14:35:19,562  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: docker 不行，vagrant 也不行，錯誤都跟 network namespace 有關…Orz #fb
+2017-01-04 14:35:19,564  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @Androidcn Docker 上跑 Aria2 還是蠻爽的，趕緊換😄
+2017-01-04 14:35:19,565  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: @luzhaohui 我的DS214 不支持Docker …我也有理由换
+2017-01-04 14:35:19,565  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/zqrRP6qkOc [線上讀書會] willy 主講 docker network篇
+2017-01-04 14:35:19,566  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: RT @zmx: 你們體會一下，OpenCORD 快速入門：Ubuntu host 用 vagrant 跑 qemu-kvm VM，VM 裡用 Docker 跑 XOS，XOS 用 LXD 跑 OpenStack，OpenStack 跑 ONOS VM ，XOS 再管理 ONOS
+2017-01-04 14:35:19,566  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: RT @chusiang_lai: Day28 release! 當步驟一多 Dockerfile 將難以維護，這時交給 Ansible 就對了！ &gt; 28. 怎麼混用 Ansible 建置 Docker image？ | #AutomateWithAnsible - http…
+2017-01-04 14:35:19,567  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: Day28 release! 當步驟一多 Dockerfile 將難以維護，這時交給 Ansible 就對了！ &gt; 28. 怎麼混用 Ansible 建置 Docker image？ | #AutomateWithAnsible - https://t.co/H7dhBooRSi
+2017-01-04 14:35:19,568  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: New V2EX Q&amp;A: 用 docker 当虚拟机的 V 友们你们都是怎么用的？ by clavichord93 - https://t.co/QmH1FnSxNl #问大家 #v2ex
+2017-01-04 14:35:19,570  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: #Synology #NAS 的 #docker 好好用。有點想汰換掉家裡那台 213j 了，因為不支援 Docker DSM⋯ #fb
+2017-01-04 14:35:19,570  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: New V2EX Q&amp;A: 如何在 docker 中调试测试用例？ by ufo22940268 - https://t.co/UVnxhEPFmE #问大家 #v2ex

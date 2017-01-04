@@ -1,0 +1,1 @@
+2017-01-04 12:53:25,675  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我向 @YouTube 播放列表添加了一个视频 https://t.co/CMPvknszj7 Vauxhall / Opel 7" 2din Android 5.1 Ram 2GB Rom 32GB Car GPS

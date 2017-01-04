@@ -1,0 +1,8 @@
+2017-01-04 13:12:57,991  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/qIU2urofCM 2017 Panasonic最新4K手持攝影機AG-UX180 / AG-UX90
+2017-01-04 13:12:57,991  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我喜歡一部 @YouTube 影片 https://t.co/yi12Y1jV1R 2016 中華民國小姐泳裝展示 (Miss R.O.C.) 比基尼秀 avchd PANASONIC
+2017-01-04 13:12:57,991  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 2017 Panasonic最新4K手持攝影機AG-UX180 / AG-UX90 先睹為快新機展示：https://t.co/qIU2urofCM (來自 @YouTube)
+2017-01-04 13:12:57,996  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/8nAekiwGbr Panasonic GH4 Video Review and test footage from Hawaii |
+2017-01-04 13:12:57,996  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: Jay Chou Panasonic GD50 advertisement 周杰倫手機廣告 https://t.co/UOTvCjB50I 來自 @YouTube
+2017-01-04 13:12:57,996  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: I liked a @YouTube video https://t.co/dCd2niN5zj 2763 國際牌 Panasonic GD55 魔術篇
+2017-01-04 13:12:58,006  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: RT @insideCyberbuzz: CEO Elon Musk 認為甚至這會讓 Tesla 有機會成為全球第一家市值過一兆的公司。 https://t.co/uvnHDxbL7o
+2017-01-04 13:12:58,011  INFO [ForkJoinPool-2-worker-13] (TwitSpec.scala:123) - text: 我對一部 @YouTube 影片表示喜歡 https://t.co/sgpn2ibXiz Panasonic Assist Robot
