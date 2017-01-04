@@ -1,0 +1,5 @@
+2017-01-04 10:48:18,260  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我今天为 @mozilla 捐款了，我 #lovetheweb。与我一起帮助建设和守护 Web 吧 https://t.co/zcWC7qFey5
+2017-01-04 10:48:18,262  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我今天捐款給 @mozthunderbird 以保護收件匣。請與我一起聲援秘密通訊的自由。 #freetheinbox https://t.co/cJUwaJDfEq
+2017-01-04 10:48:18,263  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @gzlxd: 火狐上的自动代理 RT: @gybg1989: AutoProxy-ng :: 评论 :: Firefox 附加组件 https://t.co/i271dmyIu1
+2017-01-04 10:48:18,264  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @gybg1989: AutoProxy-ng :: 评论 :: Firefox 附加组件 https://t.co/bUbOC5tMIk
+2017-01-04 10:48:18,264  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 火狐上的自动代理 RT: @gybg1989: AutoProxy-ng :: 评论 :: Firefox 附加组件 https://t.co/i271dmyIu1
