@@ -1,0 +1,5 @@
+2017-01-04 09:44:14,887  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 我將一部影片加到了 @YouTube 播放清單 https://t.co/nmuNggNcnw Columbia Gem of the Ocean
+2017-01-04 09:44:14,891  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Rescuers 'very hopeful' they've made voice contact with missing B.C. hikers https://t.co/62GZRy4ZtP #cbc  兩登山者失蹤，搜索行動繼續
+2017-01-04 09:44:14,892  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 好大的大学… (@ University of British Columbia (UBC) - @ubcnews in Vancouver, BC w/ @uucky_lee) https://t.co/rGbIAMjccW
+2017-01-04 09:44:14,892  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @mywayvl Columbia便宜且环保的选择
+2017-01-04 09:44:14,894  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 居然要买S号了，但是号基本没有。。。 #令人愉悦的忧伤 (@ Columbia Sportswear - @columbia1938 in Livermore, CA) https://t.co/qaYb4rkMkz

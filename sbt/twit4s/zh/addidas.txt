@@ -1,0 +1,1 @@
+2017-01-04 09:19:06,518  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 一到越南，既然买了一双鞋👟#addidas #2016 #random #tags4follow #tagsforlikes #instagram #instalife #instalike… https://t.co/df74Y58cDU
