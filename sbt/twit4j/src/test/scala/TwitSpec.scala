@@ -51,7 +51,7 @@ import org.slf4j.LoggerFactory
 class TwitSpec extends FlatSpec with Matchers {
     private val log = LoggerFactory.getLogger(getClass)
 
-    case class TwitSearchState(twitter: Twitter, query: String, langCode: String, maxId: Long = -1l)
+    case class TwitSearchState(twitter: Twitter, query: Query)
 
     def checkTwitterResult(resp: TwitterResponse) {
         val rls = resp.getRateLimitStatus
@@ -64,19 +64,23 @@ class TwitSpec extends FlatSpec with Matchers {
     }
 
     def searchTweets(s: TwitSearchState) : (Seq[Status], TwitSearchState) = {
-        var q = new Query(s.query)
-        q.setLang(s.langCode)
-        q.setMaxId(s.maxId)
-        q.setCount(100)
-
-        val qr: QueryResult = s.twitter.search(q)
+        val qr: QueryResult = s.twitter.search(s.query)
         checkTwitterResult(qr)
-        val tweets = qr.getTweets() // List[Status]
+        val tweets = qr.getTweets // List[Status]
 
-        val newMaxId = tweets.get(0).getId() // qr.getMaxId()
-        log.info("portion oldMaxId: {}, newMaxId: {}, hasNext: {}", s.maxId.toString, newMaxId.toString, qr.hasNext().toString)
+        val res = tweets.asScala
 
-        (tweets.asScala, TwitSearchState(s.twitter, s.query, s.langCode, newMaxId))
+        val lowestId: Long = if (res.isEmpty) 0 else res.minBy(_.getId).getId // tweets.get(0).getId
+        log.info("portion maxId: {}, lowestId: {}, hasNext: {}", qr.getMaxId().toString, lowestId.toString, qr.hasNext().toString)
+
+        val q = if (qr.hasNext) qr.nextQuery else {
+            val q = new Query(s.query.getQuery)
+            q.setLang(s.query.getLang)
+            q.setMaxId(lowestId - 1)
+            q
+        }
+
+        (res, TwitSearchState(s.twitter, q))
     }
 
     // private static final
@@ -128,6 +132,9 @@ class TwitSpec extends FlatSpec with Matchers {
     def writeTweetText(text: String): Unit = {
         log.info("text: {}", text)
     }
+    def writeTweet(t: Status): Unit = {
+        log.info("text: {}, maxId: {}", t.getText(), t.getId(): Any)
+    }
 
     "twit" should "search" in {
         log.info("start")
@@ -155,19 +162,23 @@ class TwitSpec extends FlatSpec with Matchers {
         // reebok, sony, columbia, audi, hilton, mozilla, BMW
         // taiwan, renault
 
-        val lngCode = "es"
+        val langCode = "es"
+
+        var q = new Query("addidas")
+        q.setLang(langCode)
+        q.setCount(100)
 
         val awaitable = Observable
-            .fromStateAction(searchTweets)(TwitSearchState(twitter, "sony", lngCode))
+            .fromStateAction(searchTweets)(TwitSearchState(twitter, q))
             .concatMap { Observable.fromIterable(_) } // Seq[Status] => Observable[Status]
             //.filter { _.lang == Some(lngStr) }
-            .map { _.getText() }
-            .distinct
+            //.map { _.getText() }
+            //.distinct
             //.filter { detectLang(langDetector, _) != lngStr }
             //.filter { hasHashtagOrMention(_) }
-            .take(1000)
+            //.take(1000)
             // Consumer.complete
-            .consumeWith(Consumer.foreach { writeTweetText(_) })
+            .consumeWith(Consumer.foreach { writeTweet(_) })
             .runAsync
 
         Await.result(awaitable, Duration.Inf) // 0 nanos
