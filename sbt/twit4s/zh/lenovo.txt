@@ -1,0 +1,22 @@
+2017-01-04 09:08:26,064  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #InsightaaS 阅读关于#Lenovo 瑜伽书的所有内容：Lynn Greiner 的评论。 https://t.co/iwUdTr654j https://t.co/dsGcIrELEP
+2017-01-04 09:08:26,068  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #InsightaaS 阅读关于#Lenovo 瑜伽书的所有内容：Lynn Greiner 的评论。 https://t.co/T2Rb3A3Fj7 https://t.co/262cw4cQZm
+2017-01-04 09:08:26,070  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 【CES 2017】lenovo發佈全新Gaming Notebook：Legion Y520 &amp; Y720 在定價方面，Y520定價為899美元起，大概HK$6,XXXX....  #PC3... https://t.co/3EiG4HNA9o
+2017-01-04 09:08:26,079  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 联想也加入 VR 战局，推支持 Windows Holographic 的头戴设备 https://t.co/fRJBrcVyqN #it.新闻 #feedly
+2017-01-04 09:08:26,082  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Engadget: Lenovo 的 VR 之路從這款 Legion 筆電開始 - https://t.co/fOM68nycVC #technews #news #engadget https://t.co/Jxpv54OqMd
+2017-01-04 09:08:26,087  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Engadget: Lenovo 也做了款「Amazon Echo」 - https://t.co/tj1WKhLW0v #technews #news #engadget https://t.co/WIkovY2RcH
+2017-01-04 09:08:26,090  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Engadget: 聯想也加入 VR 戰局，推支援 Windows Holographic 的頭戴裝置 - https://t.co/FzJryq35L4 #technews #news #engadget https://t.co/1tAcUFYIDo
+2017-01-04 09:08:26,092  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @ZingGadget: Lenovo 也忍不住要推出自家的VR 头盔了！不知会给大家带来些怎么样的惊喜呢~！ https://t.co/PtaAqIftjS #Lenovo #VR #Windows
+2017-01-04 09:08:26,092  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 联想的Windows Holographic VR头盔抢先看 https://t.co/V41r71DpKf by @LeeYichenlt
+2017-01-04 09:08:26,094  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: @dacota_liang: 可惡~ 有中! Lenovo Yoga Book On-Demand Halo Keyboard 像是Macbook Pro 那條Bar一樣 可是Yoga Book... https://t.co/QfcfVhNbKK @uprightstand…
+2017-01-04 09:08:26,094  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: 2016年最後一晚，Lenovo 送個電子版煙花比大家，真嘅留返陣間睇！ Here’s to a brighter and less... https://t.co/xAkbGn21qy #iamlenovo https://t.co/QCKjAroCAT
+2017-01-04 09:08:26,095  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #InsightaaS 阅读关于#Lenovo 瑜伽书的所有内容：Lynn Greiner 的评论。 https://t.co/iwUdTr654j https://t.co/5h0LsDRmjZ
+2017-01-04 09:08:26,095  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #InsightaaS 阅读关于#Lenovo 瑜伽书的所有内容：Lynn Greiner 的评论。 https://t.co/T2Rb3A3Fj7 https://t.co/Yo783RyVjj
+2017-01-04 09:08:26,098  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #InsightaaS 阅读关于#Lenovo 瑜伽书的所有内容：Lynn Greiner 的评论。 https://t.co/T2Rb3A3Fj7 https://t.co/4cxcTIpgOI
+2017-01-04 09:08:26,099  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #InsightaaS 阅读关于#Lenovo 瑜伽书的所有内容：Lynn Greiner 的评论。 https://t.co/iwUdTr654j https://t.co/uaMu0rEkdA
+2017-01-04 09:08:26,101  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: Engadget: 聯想的新 ThinkPad 系列將以「沒有搭載附加軟體」為賣點 - https://t.co/KXsPddBNxm #technews #news #engadget https://t.co/5MBllnO0mh
+2017-01-04 09:08:26,103  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @joylmh: #Auction Day3 : Closed [心动礼盒 3] #Charity #Donation @Lenovo #Lenovo #LenovoZukEdgeL #LenovoSmartphone @ActorLeeMinHo #ActorLeeMi…
+2017-01-04 09:08:26,104  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @wenroad: 20161221 #LeeMinHo (#이민호 #イ·ミンホ #李敏鎬) for Lenovo ZUK Edge L — “不管前方的路有多苦，只要走的方向正确，不管多么崎岖不平，都比站在原地更接近幸福。” 李敏镐帅，ZUK Edge L美。-- C…
+2017-01-04 09:08:26,104  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: RT @wenroad: 20161223 #LeeMinHo (#이민호 #イ·ミンホ #李敏鎬) Lenovo ZUK Edge L “幸福不是拥有一切，而是放手那些你不需要的东西。” 李敏镐帅，ZUK Edge L美。-- Cr:常程weibo https://t.co/…
+2017-01-04 09:08:26,105  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #Auction Day3 : Closed [心动礼盒 3] #Charity #Donation @Lenovo #Lenovo #LenovoZukEdgeL #LenovoSmartphone @ActorLeeMinHo… https://t.co/sLKYQ5FWu8
+2017-01-04 09:08:26,106  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #InsightaaS 阅读关于#Lenovo 瑜伽书的所有内容：Lynn Greiner 的评论。 https://t.co/iwUdTr654j
+2017-01-04 09:08:26,106  INFO [ForkJoinPool-2-worker-7] (TwitSpec.scala:123) - text: #InsightaaS 阅读关于#Lenovo 瑜伽书的所有内容：Lynn Greiner 的评论。 https://t.co/T2Rb3A3Fj7
