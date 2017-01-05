@@ -64,24 +64,23 @@ class TwitSpec extends FlatSpec with Matchers {
     }
 
     def searchTweets(s: TwitSearchState) : (Seq[Status], TwitSearchState) = {
-        val qr: QueryResult = s.twitter.search(s.query)
-        checkTwitterResult(qr)
-        val tweets = qr.getTweets // List[Status]
+        val query = s.query
+        val twitter = s.twitter
+        if (query == null) {
+            (Seq.empty[Status], TwitSearchState(twitter, query))
+        } else {
+            val qr: QueryResult = twitter.search(query)
+            checkTwitterResult(qr)
+            val tweets = qr.getTweets // List[Status]
 
-        val res = tweets.asScala
+            val res = tweets.asScala
+            //val lowestId: Long = if (res.isEmpty) 0 else res.minBy(_.getId).getId // tweets.get(0).getId
+            log.info("portion maxId: {}, hasNext: {}", qr.getMaxId().toString, qr.hasNext().toString: Any)
 
-        //val lowestId: Long = if (res.isEmpty) 0 else res.minBy(_.getId).getId // tweets.get(0).getId
-        log.info("portion maxId: {}, hasNext: {}", qr.getMaxId().toString, qr.hasNext().toString: Any)
+            val nextQ = qr.nextQuery
 
-        //val q = if (qr.hasNext) qr.nextQuery else {
-        //    val q = new Query(s.query.getQuery)
-        //    q.setLang(s.query.getLang)
-        //    q.setMaxId(lowestId - 1)
-            //q
-        //}
-        val q = qr.nextQuery // TODO: check hasNext
-
-        (res, TwitSearchState(s.twitter, q))
+            (res, TwitSearchState(s.twitter, nextQ))
+        }
     }
 
     // private static final
@@ -131,10 +130,17 @@ class TwitSpec extends FlatSpec with Matchers {
     }
 
     def writeTweetText(text: String): Unit = {
-        //log.info("text: {}", text)
+        log.info("text: {}", text)
     }
     def writeTweet(t: Status): Unit = {
-        //log.info("text: {}, maxId: {}", t.getText(), t.getId(): Any)
+        log.info("text: {}, maxId: {}", t.getText(), t.getId(): Any)
+    }
+
+    def observableForQuery(twitter: Twitter, langCode: String, query: String): Observable[Seq[Status]] = {
+        var q = new Query(query)
+        q.setLang(langCode)
+        q.setCount(100)
+        Observable.fromStateAction(searchTweets)(TwitSearchState(twitter, q)).takeWhile { !_.isEmpty }
     }
 
     "twit" should "search" in {
@@ -155,31 +161,27 @@ class TwitSpec extends FlatSpec with Matchers {
 	val accessToken = new AccessToken(accessKey, accessSecret)
 	twitter.setOAuthAccessToken(accessToken)
 
-        //val modelDirName = config.getString("ld.model.dir.name")
+        val modelDirName = config.getString("ld.model.dir.name")
 
-        //val langDetector: NormLangDetector = getLangDetector(modelDirName);
+        val langDetector: NormLangDetector = getLangDetector(modelDirName);
 
-        // addidas, lenovo, apple, intel, android, samsung, google, microsoft
-        // reebok, sony, columbia, audi, hilton, mozilla, BMW
-        // taiwan, renault
+        val langCode = "de"
 
-        val langCode = "es"
+        val queries = Seq("addidas", "lenovo", "apple", "intel", "android", "samsung", "google", "microsoft",
+            "reebok", "sony", "columbia", "audi", "hilton", "mozilla", "BMW",
+            "taiwan", "renault")
 
-        var q = new Query("sony")
-        q.setLang(langCode)
-        q.setCount(100)
-
-        val awaitable = Observable
-            .fromStateAction(searchTweets)(TwitSearchState(twitter, q))
+        val awaitable = Observable.fromIterable(queries)
+            .concatMap { observableForQuery(twitter, langCode, _) }
             .concatMap { Observable.fromIterable(_) } // Seq[Status] => Observable[Status]
-            //.filter { _.lang == Some(lngStr) }
-            //.map { _.getText() }
-            //.distinct
-            //.filter { detectLang(langDetector, _) != lngStr }
-            //.filter { hasHashtagOrMention(_) }
-            //.take(1000)
+            .filter { _.getLang() == langCode }
+            .filter { t: Status => detectLang(langDetector, t.getText()) != langCode }
+            .filter { t: Status => hasHashtagOrMention(t.getText()) }
+            .map { _.getText() }
+            .distinct
+            .take(1000)
             // Consumer.complete
-            .consumeWith(Consumer.foreach { writeTweet(_) })
+            .consumeWith(Consumer.foreach { writeTweetText(_) })
             .runAsync
 
         Await.result(awaitable, Duration.Inf) // 0 nanos
