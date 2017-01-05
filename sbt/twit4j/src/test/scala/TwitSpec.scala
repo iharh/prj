@@ -159,7 +159,7 @@ class TwitSpec extends FlatSpec with Matchers {
 
         val langDetector: NormLangDetector = getLangDetector(modelDirName);
 
-        val langCode = "fr"
+        val langCode = "ro"
 
         val out = new File(s"out/${langCode.toString()}.csv")
         val writer = out.asCsvWriter[(String)](',', "text") // List("text")
