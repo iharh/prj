@@ -11,6 +11,9 @@ import twitter4j.HttpResponseCode
 import twitter4j.auth.AccessToken
 import twitter4j.TwitterException
 
+import kantan.csv.CsvWriter
+import kantan.csv.ops._
+
 //import monix.eval.Task
 
 import monix.reactive.Observable
@@ -47,7 +50,6 @@ import java.io.File
 import org.slf4j.LoggerFactory
 
 
-
 class TwitSpec extends FlatSpec with Matchers {
     private val log = LoggerFactory.getLogger(getClass)
 
@@ -72,14 +74,8 @@ class TwitSpec extends FlatSpec with Matchers {
             val qr: QueryResult = twitter.search(query)
             checkTwitterResult(qr)
             val tweets = qr.getTweets // List[Status]
-
-            val res = tweets.asScala
-            //val lowestId: Long = if (res.isEmpty) 0 else res.minBy(_.getId).getId // tweets.get(0).getId
-            log.info("portion maxId: {}, hasNext: {}", qr.getMaxId().toString, qr.hasNext().toString: Any)
-
-            val nextQ = qr.nextQuery
-
-            (res, TwitSearchState(s.twitter, nextQ))
+            //log.info("portion maxId: {}, hasNext: {}", qr.getMaxId().toString, qr.hasNext().toString: Any)
+            (tweets.asScala, TwitSearchState(s.twitter, qr.nextQuery))
         }
     }
 
@@ -129,11 +125,9 @@ class TwitSpec extends FlatSpec with Matchers {
         newMatcher.find()
     }
 
-    def writeTweetText(text: String): Unit = {
+    def writeTweetText(writer: CsvWriter[(String)], text: String): Unit = {
         log.info("text: {}", text)
-    }
-    def writeTweet(t: Status): Unit = {
-        log.info("text: {}, maxId: {}", t.getText(), t.getId(): Any)
+        writer.write((text))
     }
 
     def observableForQuery(twitter: Twitter, langCode: String, query: String): Observable[Seq[Status]] = {
@@ -167,9 +161,16 @@ class TwitSpec extends FlatSpec with Matchers {
 
         val langCode = "de"
 
-        val queries = Seq("addidas", "lenovo", "apple", "intel", "android", "samsung", "google", "microsoft",
-            "reebok", "sony", "columbia", "audi", "hilton", "mozilla", "BMW",
-            "taiwan", "renault")
+        val out = new File(s"out/${langCode.toString()}.csv")
+        val writer = out.asCsvWriter[(String)](',', "text") // List("text")
+
+        val queries = Seq(
+            "addidas", "lenovo", "apple", "intel", "android", "samsung", "google", "microsoft",
+            "reebok", "sony", "columbia", "audi", "hilton", "mozilla", "BMW", "renault", "taiwan",
+            "pilsner", "carlsberg", "bavaria", "shalke", "real madrid",
+            "volkswagen", "mercedes", "shalke 04",
+            "milan", "juventus"
+        )
 
         val awaitable = Observable.fromIterable(queries)
             .concatMap { observableForQuery(twitter, langCode, _) }
@@ -179,15 +180,14 @@ class TwitSpec extends FlatSpec with Matchers {
             .filter { t: Status => hasHashtagOrMention(t.getText()) }
             .map { _.getText() }
             .distinct
-            .take(1000)
+            //.take(1000)
             // Consumer.complete
-            .consumeWith(Consumer.foreach { writeTweetText(_) })
+            .consumeWith(Consumer.foreach { writeTweetText(writer, _) })
             .runAsync
 
         Await.result(awaitable, Duration.Inf) // 0 nanos
+        writer.close()
 
         assert(true == true)
-
-        log.info("end")
     }
 }
