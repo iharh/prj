@@ -1,6 +1,6 @@
 import org.apache.commons.lang3.SystemUtils
 
-scalaVersion := "2.11.8"
+scalaVersion := "2.12.1"
 
 crossPaths := false
 
@@ -11,26 +11,24 @@ javacOptions  ++= Seq("-encoding", "UTF-8", "-Xlint:deprecation", "-Xlint:unchec
 testOptions += Tests.Argument(TestFrameworks.ScalaTest, "-oDF")
 
 libraryDependencies ++= Seq(
-    "org.slf4j"                 % "slf4j-api"       % "1.7.21",
+    "org.slf4j"                 % "slf4j-api"       % "1.7.22",
     //"org.slf4j"                 % "slf4j-log4j12"   % "1.7.21",
     //"log4j"                     % "log4j"           % "1.2.17",
-    //"ch.qos.logback"            % "logback-core"      % "1.1.7",
-    "ch.qos.logback"            % "logback-classic"   % "1.1.7",
-    "ch.qos.logback"            % "logback-core"   % "1.1.7",
+    "ch.qos.logback"            % "logback-classic"   % "1.1.8",
+    "ch.qos.logback"            % "logback-core"   % "1.1.8",
     "org.codehaus.groovy"       % "groovy"         % "2.4.7",
 
-    "org.apache.commons"        % "commons-lang3"   % "3.4",
+    "org.apache.commons"        % "commons-lang3"   % "3.5",
 
     // TODO: try only monix-reactive
-    "io.monix"                  %% "monix"          % "2.0.0",
-
-    "org.scalatest"             %% "scalatest"      % "3.0.0"   % "test"
+    "io.monix"                  %% "monix"          % "2.1.2",
+    "org.scalatest"             %% "scalatest"      % "3.0.1"   % "test"
 )
 
-val libcb = if (SystemUtils.IS_OS_LINUX)
-    "/data/wrk/clb/lib.cb" else
-    "D:/clb/inst/server/lib.cb"
+val libfx = if (SystemUtils.IS_OS_LINUX)
+    "/data/wrk/clb/lib.fx" else
+    "D:/clb/inst/server/lib.fx"
 
 unmanagedJars in Compile ++= {
-    (file(libcb) ** "org.snu.ids.ha-patch1.jar").classpath
+    (file(libfx) ** "org.snu.ids.ha-patch1.jar").classpath
 }

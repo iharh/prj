@@ -53,125 +53,122 @@ public class Tokenizer {
             new TokenPattern("m[(]_ _[)]m", CharSetType.EMOTICON)};
 
 
-    public static List<Token> tokenize(String var0) {
-        if(!Util.valid(var0)) {
+    public static List<Token> tokenize(String text) {
+        if (!Util.valid(text)) {
             return null;
-        } else {
-            ArrayList var1 = new ArrayList();
-            StringBuffer var2 = new StringBuffer(var0);
-            int var3 = 0;
+        }
+        ArrayList<Token> result = new ArrayList<Token>();
+        StringBuffer sb = new StringBuffer(text);
 
-            for(int var4 = PREDEFINED_TOKEN_PATTERN.length; var3 < var4; ++var3) {
-                TokenPattern var5 = PREDEFINED_TOKEN_PATTERN[var3];
-                List var6 = find(var2, var5);
-                var1.addAll(var6);
-            }
+        int idx = 0;
+        for(int num_patterns = PREDEFINED_TOKEN_PATTERN.length; idx < num_patterns; ++idx) {
+            TokenPattern pat = PREDEFINED_TOKEN_PATTERN[idx];
+            // get pattern matches (returned as a List of tokens) and erase them from the string-buffer
+            List<Token> found = find(sb, pat);
+            result.addAll(found);
+        }
 
-            var3 = var0.length();
-            boolean[] var13 = checkFound(var3, var1);
-            char var15 = 0;
-            String var7 = "";
-            CharSetType var8 = CharSetType.ETC;
-            CharSetType var9 = CharSetType.ETC;
-            int var10 = 0;
+        int textLen = text.length();
+        boolean[] var13 = checkFound(textLen, result);
+        char var15 = 0;
+        String var7 = "";
+        CharSetType var8 = CharSetType.ETC;
+        CharSetType var9 = CharSetType.ETC;
+        int var10 = 0;
 
-            for(int var11 = 0; var11 < var3; ++var11) {
-                char var14 = var2.charAt(var11);
-                var9 = var8;
-                UnicodeBlock var12 = UnicodeBlock.of(var14);
-                if(var13[var11]) {
-                    var8 = CharSetType.EMOTICON;
-                } else if(var12 != UnicodeBlock.HANGUL_SYLLABLES && var12 != UnicodeBlock.HANGUL_COMPATIBILITY_JAMO) {
-                    if(var12 != UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS && var12 != UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS) {
-                        if((var14 < 65 || var14 > 90) && (var14 < 97 || var14 > 122)) {
-                            if(var14 >= 48 && var14 <= 57) {
-                                var8 = CharSetType.NUMBER;
-                            } else if(var14 != 32 && var14 != 9 && var14 != 13 && var14 != 10) {
-                                if(var12 != UnicodeBlock.LETTERLIKE_SYMBOLS && var12 != UnicodeBlock.CJK_COMPATIBILITY && var12 != UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION && var12 != UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS && var12 != UnicodeBlock.BASIC_LATIN) {
-                                    var8 = CharSetType.ETC;
-                                } else {
-                                    var8 = CharSetType.SYMBOL;
-                                }
+        for(int var11 = 0; var11 < textLen; ++var11) {
+            char var14 = sb.charAt(var11);
+            var9 = var8;
+            UnicodeBlock var12 = UnicodeBlock.of(var14);
+            if(var13[var11]) {
+                var8 = CharSetType.EMOTICON;
+            } else if(var12 != UnicodeBlock.HANGUL_SYLLABLES && var12 != UnicodeBlock.HANGUL_COMPATIBILITY_JAMO) {
+                if(var12 != UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS && var12 != UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS) {
+                    if((var14 < 65 || var14 > 90) && (var14 < 97 || var14 > 122)) {
+                        if(var14 >= 48 && var14 <= 57) {
+                            var8 = CharSetType.NUMBER;
+                        } else if(var14 != 32 && var14 != 9 && var14 != 13 && var14 != 10) {
+                            if(var12 != UnicodeBlock.LETTERLIKE_SYMBOLS && var12 != UnicodeBlock.CJK_COMPATIBILITY && var12 != UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION && var12 != UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS && var12 != UnicodeBlock.BASIC_LATIN) {
+                                var8 = CharSetType.ETC;
                             } else {
-                                var8 = CharSetType.SPACE;
+                                var8 = CharSetType.SYMBOL;
                             }
                         } else {
-                            var8 = CharSetType.ENGLISH;
+                            var8 = CharSetType.SPACE;
                         }
                     } else {
-                        var8 = CharSetType.HANMUN;
+                        var8 = CharSetType.ENGLISH;
                     }
                 } else {
-                    var8 = CharSetType.HANGUL;
+                    var8 = CharSetType.HANMUN;
+                }
+            } else {
+                var8 = CharSetType.HANGUL;
+            }
+
+            if (var11 != 0 && (var9 != var8 || var8 == CharSetType.ETC && (var7.length() <= 0 || var7.charAt(var7.length() - 1) != var14) || var8 == CharSetType.SYMBOL && var15 != var14)) {
+                if (var9 != CharSetType.EMOTICON) {
+                    result.add(new Token(var7, var9, var10));
                 }
 
-                if(var11 != 0 && (var9 != var8 || var8 == CharSetType.ETC && (var7.length() <= 0 || var7.charAt(var7.length() - 1) != var14) || var8 == CharSetType.SYMBOL && var15 != var14)) {
-                    if(var9 != CharSetType.EMOTICON) {
-                        var1.add(new Token(var7, var9, var10));
-                    }
+                var10 = var11;
+                var7 = "";
+            }
 
-                    var10 = var11;
-                    var7 = "";
-                }
-
+            var7 = var7 + var14;
+            var15 = var14;
+            if (var12 == UnicodeBlock.HIGH_SURROGATES) {
+                ++var11;
+                var14 = sb.charAt(var11);
                 var7 = var7 + var14;
                 var15 = var14;
-                if(var12 == UnicodeBlock.HIGH_SURROGATES) {
-                    ++var11;
-                    var14 = var2.charAt(var11);
-                    var7 = var7 + var14;
-                    var15 = var14;
-                }
             }
-
-            if(Util.valid(var7)) {
-                var1.add(new Token(var7, var8, var10));
-            }
-
-            Collections.sort(var1);
-            return var1;
         }
+
+        if (Util.valid(var7)) {
+            result.add(new Token(var7, var8, var10));
+        }
+
+        Collections.sort(result);
+        return result;
     }
 
-    private static List<Token> find(StringBuffer var0, TokenPattern var1) {
-        if(var1 == null) {
+    // get pattern matches (returned as a List of tokens) and erase them from the string-buffer
+    private static List<Token> find(StringBuffer sb, TokenPattern tokenPat) {
+        if (tokenPat == null) {
             return null;
-        } else {
-            ArrayList var2 = new ArrayList();
-            Matcher var3 = var1.pattern.matcher(var0);
-
-            while(var3.find()) {
-                var2.add(new Token(var0.substring(var3.start(), var3.end()), var1.charSetType, var3.start()));
-
-                for(int var4 = var3.start(); var4 < var3.end(); ++var4) {
-                    var0.setCharAt(var4, ' ');
-                }
-            }
-
-            return var2;
         }
+        ArrayList<Token> result = new ArrayList<Token>();
+        Matcher m = tokenPat.pattern.matcher(sb);
+
+        while (m.find()) {
+            result.add(new Token(sb.substring(m.start(), m.end()), tokenPat.charSetType, m.start()));
+
+            for (int idx = m.start(); idx < m.end(); ++idx) {
+                sb.setCharAt(idx, ' ');
+            }
+        }
+        return result;
     }
 
-    private static boolean[] checkFound(int var0, List<Token> var1) {
-        boolean[] var2 = new boolean[var0];
+    private static boolean[] checkFound(int textLen, List<Token> tokens) {
+        boolean [] result = new boolean[textLen];
 
-        int var3;
-        for(var3 = 0; var3 < var0; ++var3) {
-            var2[var3] = false;
+        for (int idx = 0; idx < textLen; ++idx) {
+            result[idx] = false;
         }
 
-        var3 = 0;
+        int tokensSize = (tokens == null ? 0 : tokens.size());
+        for (int tokenIdx = 0; tokenIdx < tokensSize; ++tokenIdx) {
+            Token tok = tokens.get(tokenIdx);
 
-        for(int var4 = var1 == null?0:var1.size(); var3 < var4; ++var3) {
-            Token var5 = (Token)var1.get(var3);
-            int var6 = 0;
-
-            for(int var7 = var5.string.length(); var6 < var7; ++var6) {
-                var2[var5.index + var6] = true;
+            int tokenStringLen = tok.string.length();
+            for (int idx = 0; idx < tokenStringLen; ++idx) {
+                result[tok.index + idx] = true;
             }
         }
 
-        return var2;
+        return result;
     }
 }
 
