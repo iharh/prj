@@ -19,8 +19,7 @@ import org.slf4j.LoggerFactory
 
 class KKMASpec extends FlatSpec {
     private val log = LoggerFactory.getLogger(getClass)
-    private val fileName = "lines" // "238"
-    //private val TEXTS = List("나라마다", "abc");
+    private val fileName = "970" // lines 238 970
 
     "KKMA" should "do some dumb assert" in {
         log.info("start")
