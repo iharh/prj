@@ -12,9 +12,11 @@ import java.util.regex.Pattern;
 import org.snu.ids.ha.util.Util;
 
 public class Tokenizer {
+    private static final int MAX_DUP_CHAR_CNT = 7;
+
     public static final TokenPattern[] PREDEFINED_TOKEN_PATTERN = new TokenPattern[]{
             new TokenPattern("[a-zA-Z0-9]+[-][a-zA-Z0-9]+", CharSetType.COMBINED),
-            new TokenPattern("(ㄱ|ㄴ|ㄷ|ㄹ|ㅁ|ㅂ|ㅅ|ㅇ|ㅈ|ㅊ|ㅋ|ㅌ|ㅍ|ㅎ){10,}", CharSetType.COMBINED), // added for LANG-238
+            //new TokenPattern("(ㄱ|ㄴ|ㄷ|ㄹ|ㅁ|ㅂ|ㅅ|ㅇ|ㅈ|ㅊ|ㅋ|ㅌ|ㅍ|ㅎ){10,}", CharSetType.COMBINED), // added for LANG-238
             new TokenPattern("(ㅋ|ㅠ|ㅜ|ㅎ){2,}", CharSetType.EMOTICON),
             new TokenPattern("(\\^){3,}", CharSetType.EMOTICON),
             new TokenPattern("[-]?[0-9]+([,][0-9]{3})*([.][0-9]+)?", CharSetType.NUMBER),
@@ -52,6 +54,10 @@ public class Tokenizer {
             new TokenPattern("[o][_.][O]", CharSetType.EMOTICON),
             new TokenPattern("m[(]_ _[)]m", CharSetType.EMOTICON)};
 
+    // Token
+    //   protected String string;
+    //   protected CharSetType charSet;
+    //   protected int index;  // ? start pos in src text
 
     public static List<Token> tokenize(String text) {
         if (!Util.valid(text)) {
@@ -60,8 +66,8 @@ public class Tokenizer {
         ArrayList<Token> result = new ArrayList<Token>();
         StringBuffer sb = new StringBuffer(text);
 
-        int idx = 0;
-        for(int num_patterns = PREDEFINED_TOKEN_PATTERN.length; idx < num_patterns; ++idx) {
+        int num_patterns = PREDEFINED_TOKEN_PATTERN.length;
+        for(int idx = 0; idx < num_patterns; ++idx) {
             TokenPattern pat = PREDEFINED_TOKEN_PATTERN[idx];
             // get pattern matches (returned as a List of tokens) and erase them from the string-buffer
             List<Token> found = find(sb, pat);
@@ -69,68 +75,96 @@ public class Tokenizer {
         }
 
         int textLen = text.length();
-        boolean[] var13 = checkFound(textLen, result);
-        char var15 = 0;
-        String var7 = "";
-        CharSetType var8 = CharSetType.ETC;
-        CharSetType var9 = CharSetType.ETC;
-        int var10 = 0;
+        boolean [] coveredByFoundTokenPattern = checkFound(textLen, result);
+        char prevChar = 0;
+        StringBuffer curToken = new StringBuffer("");
+        CharSetType curCST = CharSetType.ETC;
+        CharSetType prevCST = CharSetType.ETC;
+        int curTokenIdx = 0;
 
-        for(int var11 = 0; var11 < textLen; ++var11) {
-            char var14 = sb.charAt(var11);
-            var9 = var8;
-            UnicodeBlock var12 = UnicodeBlock.of(var14);
-            if(var13[var11]) {
-                var8 = CharSetType.EMOTICON;
-            } else if(var12 != UnicodeBlock.HANGUL_SYLLABLES && var12 != UnicodeBlock.HANGUL_COMPATIBILITY_JAMO) {
-                if(var12 != UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS && var12 != UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS) {
-                    if((var14 < 65 || var14 > 90) && (var14 < 97 || var14 > 122)) {
-                        if(var14 >= 48 && var14 <= 57) {
-                            var8 = CharSetType.NUMBER;
-                        } else if(var14 != 32 && var14 != 9 && var14 != 13 && var14 != 10) {
-                            if(var12 != UnicodeBlock.LETTERLIKE_SYMBOLS && var12 != UnicodeBlock.CJK_COMPATIBILITY && var12 != UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION && var12 != UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS && var12 != UnicodeBlock.BASIC_LATIN) {
-                                var8 = CharSetType.ETC;
+        for (int idx = 0; idx < textLen; ++idx) {
+            char curChar = sb.charAt(idx);
+            prevCST = curCST;
+            UnicodeBlock uBlock = UnicodeBlock.of(curChar);
+            if (coveredByFoundTokenPattern[idx]) {
+                curCST = CharSetType.EMOTICON;
+            } else if (uBlock != UnicodeBlock.HANGUL_SYLLABLES && uBlock != UnicodeBlock.HANGUL_COMPATIBILITY_JAMO) {
+                if (uBlock != UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS && uBlock != UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS) {
+                    if ((curChar < 65 || curChar > 90) && (curChar < 97 || curChar > 122)) {
+                        if (curChar >= 48 && curChar <= 57) {
+                            curCST = CharSetType.NUMBER;
+                        } else if (curChar != 32 && curChar != 9 && curChar != 13 && curChar != 10) {
+                            if (uBlock != UnicodeBlock.LETTERLIKE_SYMBOLS
+                                && uBlock != UnicodeBlock.CJK_COMPATIBILITY
+                                && uBlock != UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION
+                                && uBlock != UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS
+                                && uBlock != UnicodeBlock.BASIC_LATIN) {
+                                curCST = CharSetType.ETC;
                             } else {
-                                var8 = CharSetType.SYMBOL;
+                                curCST = CharSetType.SYMBOL;
                             }
                         } else {
-                            var8 = CharSetType.SPACE;
+                            curCST = CharSetType.SPACE;
                         }
                     } else {
-                        var8 = CharSetType.ENGLISH;
+                        curCST = CharSetType.ENGLISH;
                     }
                 } else {
-                    var8 = CharSetType.HANMUN;
+                    curCST = CharSetType.HANMUN;
                 }
             } else {
-                var8 = CharSetType.HANGUL;
+                curCST = CharSetType.HANGUL;
             }
 
-            if (var11 != 0 && (var9 != var8 || var8 == CharSetType.ETC && (var7.length() <= 0 || var7.charAt(var7.length() - 1) != var14) || var8 == CharSetType.SYMBOL && var15 != var14)) {
-                if (var9 != CharSetType.EMOTICON) {
-                    result.add(new Token(var7, var9, var10));
+            if (idx != 0 &&
+                (prevCST != curCST
+                 || curCST == CharSetType.ETC    && (curToken.length() <= 0 || curToken.charAt(curToken.length() - 1) != curChar)
+                 || curCST == CharSetType.SYMBOL && prevChar != curChar)) {
+                if (prevCST != CharSetType.EMOTICON) {
+                    result.add(createTok(curToken, prevCST, curTokenIdx));
                 }
 
-                var10 = var11;
-                var7 = "";
+                curTokenIdx = idx;
+                curToken = new StringBuffer("");
             }
 
-            var7 = var7 + var14;
-            var15 = var14;
-            if (var12 == UnicodeBlock.HIGH_SURROGATES) {
-                ++var11;
-                var14 = sb.charAt(var11);
-                var7 = var7 + var14;
-                var15 = var14;
+            curToken.append(curChar);
+            prevChar = curChar;
+            if (uBlock == UnicodeBlock.HIGH_SURROGATES) {
+                ++idx;
+                curChar = sb.charAt(idx);
+                curToken.append(curChar);
+                prevChar = curChar;
             }
         }
 
-        if (Util.valid(var7)) {
-            result.add(new Token(var7, var8, var10));
+        if (Util.valid(curToken.toString())) {
+            result.add(createTok(curToken, curCST, curTokenIdx));
         }
 
         Collections.sort(result);
         return result;
+    }
+
+    private static Token createTok(StringBuffer sb, CharSetType charSet, int index) {
+        if (charSet != CharSetType.EMOTICON && charSet != CharSetType.COMBINED) {
+            char prevC = 0;
+            int dupCnt = 0;
+            for (int idx = 0; idx < sb.length(); ++idx) {
+                char curC = sb.charAt(idx);
+                if (curC == prevC) {
+                    ++dupCnt;
+                } else {
+                    dupCnt = 0;
+                    prevC = curC;
+                }
+                if (dupCnt >= MAX_DUP_CHAR_CNT) {
+                    charSet = CharSetType.COMBINED;
+                    break;
+                }
+            }
+        }
+        return new Token(sb.toString(), charSet, index);
     }
 
     // get pattern matches (returned as a List of tokens) and erase them from the string-buffer
@@ -151,6 +185,7 @@ public class Tokenizer {
         return result;
     }
 
+    // each char in text is marked wheter it has been found
     private static boolean[] checkFound(int textLen, List<Token> tokens) {
         boolean [] result = new boolean[textLen];
 
