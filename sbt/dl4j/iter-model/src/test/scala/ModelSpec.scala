@@ -84,7 +84,7 @@ object ModelUtils {
                 for (j <- 1 to size) {
                     vector(j-1) = readFloat(dis)
                 }
-                syn0.putRow(i, Transforms.unitVec(Nd4j.create(vector)))
+                syn0.putRow(i-1, Transforms.unitVec(Nd4j.create(vector)))
 
                 cache.addWordToIndex(cache.numWords(), word)
                 cache.addToken(new VocabWord(1, word))
