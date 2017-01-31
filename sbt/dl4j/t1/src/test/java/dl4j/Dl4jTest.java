@@ -68,6 +68,7 @@ public class Dl4jTest {
         log.info("start loading model");
 
         String modelFileName = "D:/clb/src/spikes/cb-cps/templates/word2vecModels_bck/GoogleNews";
+        // "/data/wrk/cb-cps/word2vecModels/GoogleNews/GoogleNews";
 
         Word2Vec w2v = readBinaryModel(new File(modelFileName));
         assertNotNull(w2v);
@@ -184,4 +185,3 @@ public class Dl4jTest {
         return Float.intBitsToFloat(accum);
     }
 }
-
