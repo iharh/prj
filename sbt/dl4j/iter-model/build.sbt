@@ -15,6 +15,18 @@ libraryDependencies ++= Seq(
     "org.slf4j"                 % "slf4j-api"      % "1.7.22",
     "org.slf4j"                 % "slf4j-log4j12"  % "1.7.22",
     "log4j"                     % "log4j"          % "1.2.17",
+
+    "org.deeplearning4j"        % "deeplearning4j-nlp" % "0.7.2" excludeAll(
+        ExclusionRule(organization = "io.dropwizard"),
+        ExclusionRule(organization = "ch.qos.logback"),
+        ExclusionRule(organization = "com.typesafe.akka")
+    ),
     //
     "org.scalatest"            %% "scalatest"      % "3.0.1"   % "test"
 )
+
+//libraryDependencies += "org.deeplearning4j" % "deeplearning4j-nlp" % "0.4-rc1.2" excludeAll(
+//        ExclusionRule(organization = "io.dropwizard"),
+//        ExclusionRule(organization = "ch.qos.logback"),
+//        ExclusionRule(organization = "com.typesafe.akka")
+//)
