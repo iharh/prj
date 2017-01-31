@@ -9,6 +9,7 @@ import org.deeplearning4j.models.word2vec.VocabWord
 import org.deeplearning4j.models.embeddings.inmemory.InMemoryLookupTable
 import org.deeplearning4j.models.word2vec.wordstore.VocabCache
 import org.deeplearning4j.models.word2vec.wordstore.inmemory.InMemoryLookupCache
+//import org.deeplearning4j.models.word2vec.wordstore.inmemory.AbstractCache
 
 import org.nd4j.linalg.factory.Nd4j
 import org.nd4j.linalg.api.ndarray.INDArray
@@ -33,6 +34,12 @@ class ModelSpec extends FlatSpec with Matchers {
     "model" should "be-fine" in {
         log.info("start")
 
+        val modelFileName = "/data/wrk/cb-cps/word2vecModels/GoogleNews/GoogleNews"
+        // "D:/clb/src/spikes/cb-cps/templates/word2vecModels_bck/GoogleNews"
+
+        val w2v: Word2Vec = ModelUtils.readBinaryModel(new File(modelFileName))
+        w2v should not be (null)
+
         log.info("end")
     }
 }
@@ -54,38 +61,41 @@ object ModelUtils {
             bis <- managed(getBis(modelFile))
             dis <- managed(new DataInputStream(bis))
         } {
-            val words:Int = Integer.parseInt(readString(dis))
+            val words: Int = Integer.parseInt(readString(dis))
             val size: Int = Integer.parseInt(readString(dis))
             var syn0: INDArray = Nd4j.create(words, size)
+
             var cache: VocabCache[VocabWord] = new InMemoryLookupCache(false)
-            /*var lookupTable: InMemoryLookupTable[VocabWord] = new InMemoryLookupTable[VocabWord].Builder()
+            //var cache: AbstractCache[VocabWord] = new AbstractCache.Builder[VocabWord]()
+            //    .hugeModelExpected(true)
+            //    .build()
+
+            var lookupTable: InMemoryLookupTable[VocabWord] = new InMemoryLookupTable.Builder[VocabWord]()
                 .cache(cache)
                 .vectorLength(size)
-                .build();
+                .build()
 
-            float [] vector = new float[size];
-            String word;
-
-            for (int i = 0; i < words; ++i) {
-                word = readString(dis);
+            var vector: Array[Float] = new Array[Float](size)
+            for (i <- 1 to words) {
+                val word = readString(dis)
                 if (cache.wordFrequency(word) > 0) {
-                    throw new IllegalArgumentException("Duplicate word has been found, word: " + word + ", lineNumber: " + i);
+                    throw new IllegalArgumentException("Duplicate word has been found, word: " + word + ", lineNumber: " + i)
                 }
-
-                for (int j = 0; j < size; ++j) {
-                    vector[j] = readFloat(dis);
+                for (j <- 1 to size) {
+                    vector(j-1) = readFloat(dis)
                 }
+                syn0.putRow(i, Transforms.unitVec(Nd4j.create(vector)))
 
-                syn0.putRow(i, Transforms.unitVec(Nd4j.create(vector)));
-
-                cache.addWordToIndex(cache.numWords(), word);
-                cache.addToken(new VocabWord(1, word));
-                cache.putVocabWord(word);
+                cache.addWordToIndex(cache.numWords(), word)
+                cache.addToken(new VocabWord(1, word))
+                cache.putVocabWord(word)
+                //if (!word.equals("STOP") && !word.equals("UNK")) {
+                //    VocabWord token = cache.tokenFor(word);
+                //}
             }
             lookupTable.setSyn0(syn0)
             ret.setVocab(cache)
             ret.setLookupTable(lookupTable)
-            */
         }
         ret
     }
