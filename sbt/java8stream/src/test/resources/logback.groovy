@@ -15,7 +15,7 @@ appender('CONSOLE', ConsoleAppender) {
 
 //def LOG_FILE = "${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}/}app.log}"
 def LOG_FILE = 'app.log'
-def LOG_PATTERN = '%d %5p [%.16t] \\(%logger{32}\\) - %m%n'
+def LOG_PATTERN = '%d %5p [%.32t] \\(%logger{32}\\) - %m%n'
 // https://logback.qos.ch/manual/layouts.html#Parentheses
 // %F:%L are incorrect because of the grizzled-slf4j macro expansion stuff
 
