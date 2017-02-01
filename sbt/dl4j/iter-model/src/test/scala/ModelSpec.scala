@@ -26,6 +26,7 @@ import java.io.BufferedInputStream
 
 import java.util.zip.GZIPInputStream;
 
+import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 class ModelSpec extends FlatSpec with Matchers {
@@ -37,7 +38,7 @@ class ModelSpec extends FlatSpec with Matchers {
         val modelFileName = "/data/wrk/cb-cps/word2vecModels/GoogleNews/GoogleNews"
         // "D:/clb/src/spikes/cb-cps/templates/word2vecModels_bck/GoogleNews"
 
-        val w2v: Word2Vec = ModelUtils.readBinaryModel(new File(modelFileName))
+        val w2v: Word2Vec = ModelUtils.readBinaryModel(new File(modelFileName), log)
         w2v should not be (null)
 
         log.info("end")
@@ -54,7 +55,7 @@ object ModelUtils {
             new FileInputStream(modelFile)
         });
 
-    def readBinaryModel(modelFile: File): Word2Vec = { // throws NumberFormatException, IOException
+    def readBinaryModel(modelFile: File, log: Logger): Word2Vec = { // throws NumberFormatException, IOException
         var ret: Word2Vec = new Word2Vec() // new CustomWord2Vec();
 
         for {
@@ -76,15 +77,22 @@ object ModelUtils {
                 .build()
 
             var vector: Array[Float] = new Array[Float](size)
-            for (i <- 1 to words) {
+            for (i <- 0 to words-1) {
                 val word = readString(dis)
                 if (cache.wordFrequency(word) > 0) {
-                    throw new IllegalArgumentException("Duplicate word has been found, word: " + word + ", lineNumber: " + i)
+                    throw new IllegalArgumentException("Duplicate word has been found, word: " + word + ", lineNumber: " + (i+1))
                 }
-                for (j <- 1 to size) {
-                    vector(j-1) = readFloat(dis)
+                for (j <- 0 to size-1) {
+                    val f  = readFloat(dis)
+                    if (f == 0.0) {
+                        log.error(
+                            "Zero coord found, word: {}, line num: {}, idx: {}, val: {}",
+                            word, (i+1).toString(), j.toString(), f.toString()
+                        )
+                    }
+                    vector(j) = f
                 }
-                syn0.putRow(i-1, Transforms.unitVec(Nd4j.create(vector)))
+                syn0.putRow(i, Transforms.unitVec(Nd4j.create(vector)))
 
                 cache.addWordToIndex(cache.numWords(), word)
                 cache.addToken(new VocabWord(1, word))
