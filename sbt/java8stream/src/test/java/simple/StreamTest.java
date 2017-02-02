@@ -7,9 +7,13 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 
 import java.util.List;
+import java.util.Arrays;
 import java.util.ArrayList;
 
+import java.util.stream.IntStream;
 import java.util.stream.Collectors;
+
+import javafx.util.Pair;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,42 +21,56 @@ import org.slf4j.LoggerFactory;
 public class StreamTest {
     private static final Logger log = LoggerFactory.getLogger(StreamTest.class);
 
-    static class WordAndVector {
-        private String word;
-        private int id;
-
-        public WordAndVector(String word, int id) {
-            this.word = word;
-            this.id = id;
+    static public class WordAndVector extends Pair<String, double[]> {
+        public WordAndVector(String key, double[] value) {
+            super(key, value);
         }
         public String getWord() {
-            return word;
+            return getKey();
         }
-        public int getId() {
-            return id;
+        public double[] getVector() {
+            return getValue();
+        }
+        @Override
+        public String toString() {
+            return String.format("{ word: %s }", getWord());
         }
     }
 
-    private static List<WordAndVector> sampleList() {
-        WordAndVector t1 = new WordAndVector("tok1", 1);
-        WordAndVector t2 = new WordAndVector("tok2", 2);
+    private static List<WordAndVector> sampleList(int numTokens) {
+        return IntStream.rangeClosed(1, numTokens)
+            .mapToObj(i -> {
+                return new WordAndVector("tok" + i, null);
+            })
+            .collect(Collectors.toList());
+    }
 
-        List<WordAndVector> result = new ArrayList<WordAndVector>();
-        result.add(t1);
-        result.add(t2);
-
-        return result;
+    private List<List<WordAndVector>> toCommunitiesList(List<WordAndVector> tokens) {
+        return tokens.stream()
+            .map(token -> {
+                return Arrays.asList(new WordAndVector(token.getWord(), token.getVector()));
+            })
+            .collect(Collectors.toList());
     }
 
     @Test
     public void testSimple() throws Exception {
         log.info("simple");
 
-        List<WordAndVector> tokens = sampleList();
+        int numTokens = 3;
+        List<WordAndVector> tokens = sampleList(numTokens);
 
         String tokenNames = tokens.stream().map(WordAndVector::getWord).collect(Collectors.joining(","));
-        assertEquals("tok1,tok2", tokenNames);
+        assertEquals("tok1,tok2,tok3", tokenNames);
 
-        assertTrue(true);
+        List<List<WordAndVector>> commmunities = toCommunitiesList(tokens);
+        assertEquals(numTokens, commmunities.size());
+
+        IntStream.rangeClosed(1, numTokens)
+            .forEach(i -> {
+                List<WordAndVector> comm1 = commmunities.get(i-1);
+                assertEquals(1, comm1.size());
+                assertEquals("tok" + i, comm1.get(0).getWord());
+            });
     }
 }
