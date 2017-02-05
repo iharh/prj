@@ -1,0 +1,6 @@
+[package]
+name = "s2"
+version = "0.1.0"
+authors = ["Ihar Hancharenka <iigoncharenko@gmail.com>"]
+
+[dependencies]
