@@ -5,7 +5,7 @@ import com.typesafe.config.Config;
 
 import com.github.davidmoten.rx.jdbc.Database;
 
-import org.apache.commons.lang3.SystemUtils
+import org.apache.commons.lang3.SystemUtils;
 
 import java.io.File;
 
@@ -15,10 +15,10 @@ import org.slf4j.LoggerFactory;
 public class DBUtils {
     private static final Logger log = LoggerFactory.getLogger(DBUtils.class);
 
-    private static final String DB_CFG_ROOT = if (SystemUtils.IS_OS_LINUX)
-        "/data/wrk/clb/hosts/db/" else
-        "D:\\dev\\notes\\wrk\\clb\\hosts\\db\\"
-    private static final String DB_CFG_SUFFIX = ".database.system.properties"
+    private static final String DB_CFG_ROOT = SystemUtils.IS_OS_LINUX ?
+        "/data/wrk/clb/hosts/db/" :
+        "D:\\dev\\notes\\wrk\\clb\\hosts\\db\\";
+    private static final String DB_CFG_SUFFIX = ".database.system.properties";
 
 
     private static String getDbProp(final Config conf, String propName) {
