@@ -5,6 +5,8 @@ import com.typesafe.config.Config;
 
 import com.github.davidmoten.rx.jdbc.Database;
 
+import org.apache.commons.lang3.SystemUtils
+
 import java.io.File;
 
 import org.slf4j.Logger;
@@ -13,8 +15,11 @@ import org.slf4j.LoggerFactory;
 public class DBUtils {
     private static final Logger log = LoggerFactory.getLogger(DBUtils.class);
 
-    private static final String DB_CFG_ROOT = "D:\\dev\\notes\\wrk\\clb\\hosts\\db\\"; 
-    private static final String DB_CFG_NAME = ".database.system.properties";
+    private static final String DB_CFG_ROOT = if (SystemUtils.IS_OS_LINUX)
+        "/data/wrk/clb/hosts/db/" else
+        "D:\\dev\\notes\\wrk\\clb\\hosts\\db\\"
+    private static final String DB_CFG_SUFFIX = ".database.system.properties"
+
 
     private static String getDbProp(final Config conf, String propName) {
         final String result = conf.getString("cmpDS." + propName);
@@ -23,7 +28,7 @@ public class DBUtils {
     }
 
     public static Database getConfDB(String hostId) throws ClassNotFoundException {
-        final File cfgFile = new File(DB_CFG_ROOT + hostId + DB_CFG_NAME);
+        final File cfgFile = new File(DB_CFG_ROOT + hostId + DB_CFG_SUFFIX);
         final Config conf = ConfigFactory.parseFile(cfgFile);
 
         final String driverName = getDbProp(conf, "driver");
@@ -37,7 +42,7 @@ public class DBUtils {
     }
 
     public static Database getDb() throws ClassNotFoundException {
-        final String dbcfg = System.getProperty("dbcfg", "pg/epbygomw0024");
+        final String dbcfg = System.getProperty("dbcfg", "pg/stophe");
         log.info("dbcfg: {}", dbcfg);
         return getConfDB(dbcfg);
     }
