@@ -23,8 +23,8 @@ public class MappingTest {
 
     private void dumpContent(Database db, String lang, String name) {
         db
-            .select("select content from cb_file_repository where language_id=? and name=?")
-            .parameters(lang, name)
+            .select("select content from cb_file_repository where language_id=? and name=? and version_id=(select id from cb_file_version where language_id=? and applied=1)")
+            .parameters(lang, name, lang)
             //.getAs(InputStream.class)
             .getAs(byte[].class)
             .subscribe(
