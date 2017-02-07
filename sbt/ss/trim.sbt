@@ -3,7 +3,7 @@ lazy val trimall = taskKey[Unit]("Trim archives at all the backup places")
 // TODO: move to commong .scala file
 val archSrcDir = file("D:\\dev\\backup")
 val archDstDir1 = file("D:\\pvt\\backup\\backup")
-val archDstDir2 = file("\\\\epam.com\\Personal\\Gomel") / System.getenv("USERNAME") / "-"
+val archDstDir2 = file("\\\\epam.com\\Personal\\Global") / System.getenv("USERNAME") / "-"
 val archMask = "*.7z";
 val dstSize = 10;
 
