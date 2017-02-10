@@ -1,0 +1,9 @@
+[package]
+name = "serde-demo"
+version = "0.1.0"
+authors = ["Ihar Hancharenka <iigoncharenko@gmail.com>"]
+
+[dependencies]
+serde = "0.9"
+serde_derive = "0.9"
+serde_json = "0.9"
