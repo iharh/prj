@@ -9,6 +9,8 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 
 import java.util.stream.IntStream;
 import java.util.stream.Collectors;
@@ -72,5 +74,21 @@ public class StreamTest {
                 assertEquals(1, comm1.size());
                 assertEquals("tok" + i, comm1.get(0).getWord());
             });
+
+        Map<String, String> installedLPs = new HashMap<String, String>();
+        installedLPs.put("av", "Avaric");
+        installedLPs.put("en", "English");
+        installedLPs.put("de", "German");
+        installedLPs.put("@u", "Other");
+/*
+        String [] extraLangs = new String [] { "av", "@u" };
+        Map<String, String> newLangs = Arrays.stream(extraLangs)
+            .filter(lang -> { return installedLPs.containsKey(lang); })
+            .map(lang -> { return new Map<String, String>.Entry
+            .collect(Collectors.toMap(lang -> { return lang; }, lang -> { installedLPs.get(lang); }));
+
+        assertTrue(newLangs.containsKey("av"));
+        assertTrue(newLangs.containsKey("@u"));
+*/
     }
 }
