@@ -92,7 +92,7 @@ public class RecentSentimentExportsDialog extends BaseDialogBox implements Proje
     }
 
     @Override
-	public long getProjectId() {
+    public long getProjectId() {
         return projectId;
     }
     
