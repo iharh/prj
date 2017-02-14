@@ -6,6 +6,20 @@
     <inherits name="com.google.gwt.http.HTTP"/>
     <inherits name="com.google.gwt.logging.Logging"/>
 
+    <set-configuration-property name="CssResource.allowedFunctions" value="" />
+
+    <!-- gwtp -->
+    <inherits name='com.arcbees.chosen.Chosen'/>
+
+    <!--extend-configuration-property name="CssResource.allowedFunctions" value="" / -->
+<!--
+    <inherits name="com.gwtplatform.mvp.MvpWithEntryPoint"/>
+    <inherits name="com.google.gwt.query.Query"/>
+    <inherits name="com.gwtplatform.dispatch.rest.DispatchRest"/>
+
+    <extend-configuration-property name="gin.ginjector.modules" value="mygwt.web.client.gin.ClientModule"/>
+-->
+
     <source path="common/client/context"/>
     <source path="common/client/url"/>
     <source path="common/security/model"/>
@@ -31,6 +45,7 @@
     <set-property name="gwt.logging.logLevel" value="SEVERE"/>
     <set-property name="gwt.logging.enabled" value="TRUE"/>
     <set-property name="gwt.logging.consoleHandler" value="ENABLED" />
+    <!-- TODO: can't work with gwtp for some reason -->
     <set-property name="gwt.logging.popupHandler" value="DISABLED" />
 
     <entry-point class="mygwt.web.client.MyEntryPoint"/>

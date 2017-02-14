@@ -24,6 +24,9 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
+import com.arcbees.chosen.client.gwt.ChosenListBox;
+
+
 public class SampleDialog extends BaseDialogBox implements ProjectIdAware {
     private static final int borderW     = 0; // 1 for borders vis-n
     private static final int allW        = 640;
@@ -78,6 +81,13 @@ public class SampleDialog extends BaseDialogBox implements ProjectIdAware {
 	listBox.insertItem("grp2", "attr23", "disp23");
 
         infoPanel.add(listBox);
+
+        ChosenListBox chzn = new ChosenListBox(true);
+        chzn.addItem("United States");
+        chzn.addItem("United Kingdom");
+        chzn.setMaxSelectedOptions(5);
+        chzn.setPlaceholderText("Choose your country...");
+        infoPanel.add(chzn);
 
         return infoPanel;
     }
