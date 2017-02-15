@@ -1,4 +1,4 @@
-package mygwt.client.sentiments;
+package mygwt.web.client.sentiments;
 
 import mygwt.common.client.context.ApplicationContext;
 
