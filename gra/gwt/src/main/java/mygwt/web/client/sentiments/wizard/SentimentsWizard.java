@@ -141,6 +141,8 @@ public class SentimentsWizard extends BaseDialogBox implements WizardActionHandl
         //steps.add(step6);  // index 5
         steps.add(step7);  // index 6
         steps.add(step8);  // index 7
+        // steps.remove(int idx)
+        // !!! we can add steps in any order and just need to calculate prev/next indices in appropriate way
         
         currentPage = step1;
         //steps.showWidget(currentStep);
@@ -172,7 +174,7 @@ public class SentimentsWizard extends BaseDialogBox implements WizardActionHandl
         currentPage = (WizardPage) steps.getWidget(currentStep);
         steps.showWidget(currentStep);
 
-        buttonsPanel.onPageChanged(currentPage, currentStep == 0, false);		
+        buttonsPanel.onPageChanged(currentPage, currentStep == 0, false); // , isFirst, isLast
         currentPage.onEnter();
     }
 
