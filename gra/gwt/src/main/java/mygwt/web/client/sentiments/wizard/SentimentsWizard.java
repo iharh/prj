@@ -26,6 +26,7 @@ import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.user.client.ui.Panel;
+// http://www.gwtproject.org/javadoc/latest/com/google/gwt/user/client/ui/DeckPanel.html
 import com.google.gwt.user.client.ui.DeckPanel;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -129,7 +130,7 @@ public class SentimentsWizard extends BaseDialogBox implements WizardActionHandl
     }
 
     private void configureWizard() {
-        //dialogVPanel.clear();
+        dialogVPanel.clear();
         /*
         steps.add(step1);  // index 0
         steps.add(step2);  // index 1
@@ -141,11 +142,11 @@ public class SentimentsWizard extends BaseDialogBox implements WizardActionHandl
         steps.add(step7);  // index 6
         steps.add(step8);  // index 7
         
-        currentPage = step1;*/
-        
+        currentPage = step1;
         //steps.showWidget(currentStep);
+        */
         
-        //dialogVPanel.add(steps);
+        dialogVPanel.add(steps);
 
         buttonsPanel.disableBack();
         buttonsPanel.enableNext();
