@@ -7,6 +7,13 @@ gradle
     war
     jettyRunWar
 
+warns:
+INFO  No Spring WebApplicationInitializer types detected on classpath
+http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/WebApplicationInitializer.html
+http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/SpringServletContainerInitializer.html
+https://dzone.com/articles/spring-1
+http://www.codejava.net/frameworks/spring/bootstrapping-a-spring-web-mvc-application-programmatically
+
 curl http://localhost:8080/gwt/exporting/export/sampleExp
 curl http://localhost:8080/gwt/recent_sentiment_exports_service
 
