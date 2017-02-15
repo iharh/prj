@@ -1,0 +1,16 @@
+<!DOCTYPE module PUBLIC "//gwt-module/" "http://google-web-toolkit.googlecode.com/svn/tags/1.6.2/distro-source/core/src/gwt-module.dtd">
+<!-- -->
+<module rename-to="gwtchosen.sandbox">
+    <!-- Dependencies -->
+    <inherits name='com.google.gwt.user.User' />
+  
+    <inherits name='com.google.gwt.junit.JUnit' />
+      
+    <inherits name="com.arcbees.chosen.Chosen"/>
+
+    <!-- Themes -->
+    <inherits name='com.google.gwt.user.theme.standard.Standard' />
+
+    <!-- Entry point -->
+    <entry-point class='com.ericbouchut.gwtchosen.sandbox.gwt.client.Application' />
+</module>

@@ -1,0 +1,9 @@
+/gwt-unitCache/
+
+/target/
+
+/war/
+!/war/index.html
+!/war/WEB-INF/lib/gwt-servlet.jar
+!/war/WEB-INF/web.xml
+
