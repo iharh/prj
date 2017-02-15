@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- parent -->
+    <groupId>com.arcbees</groupId>
+    <artifactId>chosen-sample</artifactId>
+    <version>3.1-SNAPSHOT</version>
+
+    <packaging>war</packaging>
+
+    <properties>
+        <gsss.version>1.1</gsss.version>
+        <gwtp.version>1.4</gwtp.version>
+        <guice.version>3.0</guice.version>
+        <gin.version>2.1.2</gin.version>
+        <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+    </properties>
+
+    <build>
+        <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
+
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <configuration>
+                    <mode>htmlunit</mode>
+                    <strict>true</strict>
+                    <!-- -XX:MaxPermSize=456m -->
+                    <extraJvmArgs>-Xss1024k -Xmx1024m -Duser.country="US" -Duser.language="en"</extraJvmArgs>
+                    <logLevel>${gwt.loglevel}</logLevel>
+                    <style>${gwt.outputstyle}</style>
+
+                    <copyWebapp>true</copyWebapp>
+                    <hostedWebapp>${webappDirectory}</hostedWebapp>
+
+                    <runTarget>ChosenSample.html</runTarget>
+                    <modules>
+                        <module>com.arcbees.chosen.sample.ChosenSample</module>
+                    </modules>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test</goal>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>gwtchosen</artifactId>
+            <version>3.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.gwtquery</groupId>
+            <artifactId>gwtquery</artifactId>
+            <version>1.4.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.arcbees.gss</groupId>
+            <artifactId>gsss</artifactId>
+            <version>${gsss.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- GWT-Platform dependencies -->
+        <dependency>
+            <groupId>com.gwtplatform</groupId>
+            <artifactId>gwtp-mvp-client</artifactId>
+            <version>${gwtp.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.gwtplatform</groupId>
+            <artifactId>gwtp-dispatch-rest</artifactId>
+            <version>${gwtp.version}</version>
+        </dependency>
+
+        <!-- DI dependencies -->
+        <dependency>
+            <groupId>com.google.gwt.inject</groupId>
+            <artifactId>gin</artifactId>
+            <version>${gin.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>${guice.version}</version>
+        </dependency>
+    </dependencies>
+</project>
