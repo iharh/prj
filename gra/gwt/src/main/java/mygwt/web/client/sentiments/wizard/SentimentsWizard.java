@@ -10,6 +10,7 @@ import mygwt.foundation.client.widget.button.OkButton;
 import mygwt.foundation.client.widget.list.GroupedListBox;
 
 import mygwt.web.adhoc.client.wizard.WizardPage;
+import mygwt.web.adhoc.client.wizard.WizardActionHandler;
 
 import mygwt.web.client.sentiments.resources.SentimentsMessages;
 
@@ -20,13 +21,17 @@ import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 
+import com.google.gwt.user.client.Event;
+
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.user.client.ui.Panel;
+import com.google.gwt.user.client.ui.DeckPanel;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
+
 
 public class SentimentsWizard extends BaseDialogBox implements WizardActionHandler, ProjectIdAware {
     private static final int STEPS_USUAL_HEIGHT = 250;
@@ -34,6 +39,11 @@ public class SentimentsWizard extends BaseDialogBox implements WizardActionHandl
     private static final int STEPS_AVAILABLE_HEIGHT = INFO_USUAL_HEIGHT + STEPS_USUAL_HEIGHT;
 
     private final long projectId;
+
+    private int currentStep = 0;
+    private WizardPage currentPage;
+
+    private VerticalPanel dialogVPanel;
 
     private DeckPanel steps;
 
@@ -66,10 +76,11 @@ public class SentimentsWizard extends BaseDialogBox implements WizardActionHandl
     }
 
     public SentimentsWizard(long projectId) {
-        super(SentimentsMessages.INSTANCE.rceTitle(), allW, allH); // change title !!!
+        super("my title", allW, allH); // SentimentsMessages.INSTANCE.rceTitle() change title !!!
         this.projectId = projectId;
 
         msgs = SentimentsMessages.INSTANCE;
+
         //hack for IE6/7(CMP-15701)
         //DeckPanel hackPanel = new DeckPanel();
         //hackPanel.setHeight("450px");
@@ -81,7 +92,7 @@ public class SentimentsWizard extends BaseDialogBox implements WizardActionHandl
         //hide();
     }
 
-    private Widget createDialogContents(boolean visible) {
+    private Widget createDialogContents() {
         /*
         DockLayoutPanel panel = new DockLayoutPanel(Unit.PX);
 
@@ -118,7 +129,8 @@ public class SentimentsWizard extends BaseDialogBox implements WizardActionHandl
     }
 
     private void configureWizard() {
-        dialogVPanel.clear();
+        //dialogVPanel.clear();
+        /*
         steps.add(step1);  // index 0
         steps.add(step2);  // index 1
         steps.add(step3);  // index 2
@@ -129,11 +141,11 @@ public class SentimentsWizard extends BaseDialogBox implements WizardActionHandl
         steps.add(step7);  // index 6
         steps.add(step8);  // index 7
         
-        currentPage = step1;
+        currentPage = step1;*/
         
-        steps.showWidget(currentStep);
+        //steps.showWidget(currentStep);
         
-        dialogVPanel.add(steps);
+        //dialogVPanel.add(steps);
 
         buttonsPanel.disableBack();
         buttonsPanel.enableNext();
@@ -143,12 +155,59 @@ public class SentimentsWizard extends BaseDialogBox implements WizardActionHandl
         // ??? dialogVPanel.add(placeHolder);
     }
 
+
     @Override
     protected void onOpen() {
         super.onOpen();
         if (currentPage != null) {
             currentPage.onEnter();
         }	
+    }
+
+    @Override
+    public void onBack() {
+        currentPage.onLeave();
+        --currentStep;
+        currentPage = (WizardPage) steps.getWidget(currentStep);
+        steps.showWidget(currentStep);
+
+        buttonsPanel.onPageChanged(currentPage, currentStep == 0, false);		
+        currentPage.onEnter();
+    }
+
+    @Override
+    public void onCancel() {		
+        this.hide();
+    }
+
+    @Override
+    public void onFinish() {
+        currentPage.onFinish();		
+    }
+
+    @Override
+    public void onNext() {
+        currentPage.onLeave();
+        ++currentStep;
+        currentPage = (WizardPage) steps.getWidget(currentStep);
+        steps.showWidget(currentStep);
+
+        buttonsPanel.onPageChanged(currentPage, false, currentStep == 7); // TODO: fix number
+        currentPage.onEnter();
+    }
+    
+    @Override
+    protected void onClose() {	
+        super.onClose();
+    }
+
+    @Override
+    public WizardPage getCurrentPage() {
+        return currentPage;
+    }
+
+    public void onBrowserEvent(Event event) {
+        super.onBrowserEvent(event);
     }
 
     // my stuff ...

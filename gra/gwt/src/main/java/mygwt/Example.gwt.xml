@@ -36,6 +36,7 @@
     <source path="foundation/client/widget/list"/>
     <source path="foundation/shared/model"/>
     <source path="portal/dto/sentiments/rse"/>
+    <source path="web/adhoc/client/wizard"/>
     <source path="web/client"/>
     <source path="web/client/utils"/>
     <source path="web/client/report"/>

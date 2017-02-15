@@ -1,4 +1,4 @@
-package mygwt.web.adhoc.client.sentiments.wizard.panels;
+package mygwt.web.client.sentiments.wizard.panels;
 
 import mygwt.web.adhoc.client.wizard.WizardActionHandler;
 import mygwt.web.adhoc.client.wizard.WizardPage;
@@ -27,7 +27,7 @@ public class ButtonsPanel extends HorizontalPanel { // DockLayoutPanel
     //private HTML videoTutorialLink;
     //private Image waitImage;
 
-    public ButtonsPanel(WizardActionHandler handler, String finishButtonCaption) {
+    public ButtonsPanel(WizardActionHandler handler) {
         super();
         this.handler = handler;
 
