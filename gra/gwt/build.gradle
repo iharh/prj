@@ -53,7 +53,7 @@ libraries += [
     gin:                "com.google.gwt.inject:gin:${versions.gin}",
     guice:              "com.google.inject:guice:${versions.guice}",
 
-    //gsss:                "com.arcbees.gss:gsss:${versions.gsss}",
+    gsss:                "com.arcbees.gss:gsss:${versions.gsss}",
     gwtp_mvp_client:    "com.gwtplatform:gwtp-mvp-client:${versions.gwtp}",
     gwtp_dispatch_rest: "com.gwtplatform:gwtp-dispatch-rest:${versions.gwtp}",
 ]
@@ -87,9 +87,9 @@ dependencies {
     // gwtp, gin, ...
     providedCompile libraries.gwtchosen
     providedCompile libraries.gwtquery
+    providedCompile libraries.gsss
 /*
     providedCompile libraries.gwtp_mvp_client
-    providedCompile libraries.gsss
     providedCompile libraries.gin
     providedCompile libraries.gwtp_dispatch_rest
 */
