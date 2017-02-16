@@ -41,7 +41,7 @@ public class StepNavigator implements WizardActionHandler {
     public void doneAdding() {
         currentPage = deque.getFirst();
         currentStep = 0;
-        stepProvider.showStep(currentStep, true, false); // TODO: use other way to check this
+        stepProvider.showStep(currentStep, true, false, "doneAdding"); // TODO: use other way to check this
     }
 
     @Override
@@ -52,7 +52,8 @@ public class StepNavigator implements WizardActionHandler {
 
         currentPage = (WizardPage) steps.getWidget(currentStep);
 
-        stepProvider.showStep(currentStep, false, currentStep == stepsSize); // TODO: use other way to check this
+        stepProvider.showStep(currentStep, false, currentStep == stepsSize, // TODO: use other way to check this
+            "onNext: " + currentStep + "deque size: " + deque.size());
         currentPage.onEnter();
     }
 
@@ -64,7 +65,8 @@ public class StepNavigator implements WizardActionHandler {
 
         currentStep = stepIndices.get(currentPage);
 
-        stepProvider.showStep(currentStep, stepIndices.isEmpty(), false); // , isFirst, isLast
+        stepProvider.showStep(currentStep, stepIndices.isEmpty(), false, // , isFirst, isLast
+            "onBack: " + currentStep + "deque size: " + deque.size());
         currentPage.onEnter();
     }
 
