@@ -41,13 +41,17 @@ public class StepNavigator implements WizardActionHandler {
     public void doneAdding() {
         currentPage = deque.getFirst();
         currentStep = 0;
+        stepProvider.showStep(currentStep, true, false); // TODO: use other way to check this
     }
 
     @Override
     public void onNext() {
         currentPage.onLeave();
+        deque.add(currentPage);
         ++currentStep;
+
         currentPage = (WizardPage) steps.getWidget(currentStep);
+
         stepProvider.showStep(currentStep, false, currentStep == stepsSize); // TODO: use other way to check this
         currentPage.onEnter();
     }
@@ -59,6 +63,7 @@ public class StepNavigator implements WizardActionHandler {
         deque.removeLast();
 
         currentStep = stepIndices.get(currentPage);
+
         stepProvider.showStep(currentStep, stepIndices.isEmpty(), false); // , isFirst, isLast
         currentPage.onEnter();
     }
