@@ -12,7 +12,6 @@ import mygwt.foundation.client.widget.button.OkButton;
 import mygwt.foundation.client.widget.list.GroupedListBox;
 
 import mygwt.web.adhoc.client.wizard.WizardPage;
-import mygwt.web.adhoc.client.wizard.WizardActionHandler;
 
 import mygwt.web.client.sentiments.resources.SentimentsMessages;
 
@@ -28,15 +27,13 @@ import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.user.client.ui.Panel;
-// http://www.gwtproject.org/javadoc/latest/com/google/gwt/user/client/ui/DeckPanel.html
 import com.google.gwt.user.client.ui.DeckPanel;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-
-public class SentimentsWizard extends BaseDialogBox implements WizardActionHandler, ProjectIdAware {
+public class SentimentsWizard extends BaseDialogBox implements StepProvider, ProjectIdAware {
     //private static final int borderW                = 0; // 1 for borders vis-n
     private static final int spacing                = 12; // 10
 
@@ -55,13 +52,13 @@ public class SentimentsWizard extends BaseDialogBox implements WizardActionHandl
 
     private DeckPanel steps;
 
+    private StepNavigator stepNavigator;
     private OperationSelectionPanel step1;
     private TempPanel step2;
     private TempPanel step3;
     private TempPanel step4;
     private ButtonsPanel buttonsPanel;
 
-    private WizardPage currentPage;
     private int currentStep = 0;
 
     public SentimentsWizard(long projectId) {
@@ -96,7 +93,8 @@ public class SentimentsWizard extends BaseDialogBox implements WizardActionHandl
         step4 = new TempPanel("here will be export previous");
         // ...(this);
 
-        buttonsPanel = new ButtonsPanel(this);
+        stepNavigator = new StepNavigator(this, steps);
+        buttonsPanel = new ButtonsPanel(stepNavigator);
 
         configureWizard();
 
@@ -106,16 +104,14 @@ public class SentimentsWizard extends BaseDialogBox implements WizardActionHandl
     private void configureWizard() {
         dialogVPanel.clear();
 
-        // index 0, 1, ...
-        steps.add(step1);  
-        steps.add(step2);  
-        steps.add(step3);  
-        steps.add(step4);  
+        steps.add(stepNavigator.add(step1));  
+        steps.add(stepNavigator.add(step2));  
+        steps.add(stepNavigator.add(step3));  
+        steps.add(stepNavigator.add(step4));  
         // steps.remove(int idx)
         // !!! we can add steps in any order and just need to calculate prev/next indices in appropriate way
         
-        currentPage = step1;
-        steps.showWidget(currentStep);
+        stepNavigator.doneAdding();
         
         dialogVPanel.add(steps);
 
@@ -130,51 +126,15 @@ public class SentimentsWizard extends BaseDialogBox implements WizardActionHandl
     @Override
     protected void onOpen() {
         super.onOpen();
+        WizardPage currentPage = stepNavigator.getCurrentPage();
         if (currentPage != null) {
             currentPage.onEnter();
         }	
     }
 
     @Override
-    public void onNext() {
-        currentPage.onLeave();
-        ++currentStep;
-        currentPage = (WizardPage) steps.getWidget(currentStep);
-        steps.showWidget(currentStep);
-
-        buttonsPanel.onPageChanged(currentPage, false, currentStep == 4); // TODO: fix number
-        currentPage.onEnter();
-    }
-
-    @Override
-    public void onBack() {
-        currentPage.onLeave();
-        --currentStep;
-        currentPage = (WizardPage) steps.getWidget(currentStep);
-        steps.showWidget(currentStep);
-
-        buttonsPanel.onPageChanged(currentPage, currentStep == 0, false); // , isFirst, isLast
-        currentPage.onEnter();
-    }
-
-    @Override
-    public void onCancel() {		
-        this.hide();
-    }
-
-    @Override
-    public void onFinish() {
-        currentPage.onFinish();		
-    }
-
-    @Override
     protected void onClose() {	
         super.onClose();
-    }
-
-    @Override
-    public WizardPage getCurrentPage() {
-        return currentPage;
     }
 
     public void onBrowserEvent(Event event) {
@@ -184,5 +144,12 @@ public class SentimentsWizard extends BaseDialogBox implements WizardActionHandl
     @Override
     public long getProjectId() {
         return projectId;
+    }
+
+    @Override
+    public void showStep(int stepIdx, boolean isFirst, boolean isLast) {
+        steps.showWidget(stepIdx);
+        WizardPage currentPage = stepNavigator.getCurrentPage();
+        buttonsPanel.onPageChanged(currentPage, isFirst, isLast);
     }
 }

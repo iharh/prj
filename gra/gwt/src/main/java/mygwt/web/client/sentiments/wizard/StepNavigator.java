@@ -3,10 +3,6 @@ package mygwt.web.client.sentiments.wizard;
 import mygwt.web.adhoc.client.wizard.WizardPage;
 import mygwt.web.adhoc.client.wizard.WizardActionHandler;
 
-import mygwt.foundation.client.widget.dialog.BaseDialogBox;
-
-import mygwt.web.client.sentiments.wizard.panels.ButtonsPanel;
-
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.DeckPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -16,8 +12,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class StepNavigator implements WizardActionHandler {
-    BaseDialogBox parent;
-    ButtonsPanel buttonsPanel;
+    StepProvider stepProvider;
 
     private DeckPanel steps;
     private int stepsSize;
@@ -28,9 +23,8 @@ public class StepNavigator implements WizardActionHandler {
 
     private LinkedList<WizardPage> deque;
 
-    public StepNavigator(BaseDialogBox parent, ButtonsPanel buttonsPanel, DeckPanel steps) {
-        this.parent = parent;
-        this.buttonsPanel = buttonsPanel;
+    public StepNavigator(StepProvider stepProvider, DeckPanel steps) {
+        this.stepProvider = stepProvider;
         this.steps = steps;
 
         deque = new LinkedList<WizardPage>();
@@ -38,20 +32,15 @@ public class StepNavigator implements WizardActionHandler {
     }
 
     public<T extends WizardPage> T add(T panel) {
-        // steps.add(panel);
         deque.add(panel);
         stepIndices.put(panel, stepsSize);
         ++stepsSize;
         return panel;
     }
 
-    public void m1() {
-        currentPage = deque.peekFirst();
+    public void doneAdding() {
+        currentPage = deque.getFirst();
         currentStep = 0;
-    }
-
-    private void showStep(int idx) {
-        steps.showWidget(currentStep);
     }
 
     @Override
@@ -59,27 +48,24 @@ public class StepNavigator implements WizardActionHandler {
         currentPage.onLeave();
         ++currentStep;
         currentPage = (WizardPage) steps.getWidget(currentStep);
-        showStep(currentStep);
-
-        buttonsPanel.onPageChanged(currentPage, false, currentStep == stepsSize); // TODO: use other way to check this
+        stepProvider.showStep(currentStep, false, currentStep == stepsSize); // TODO: use other way to check this
         currentPage.onEnter();
     }
 
     @Override
     public void onBack() {
         currentPage.onLeave();
-        currentPage = deque.pop();
+        currentPage = deque.getLast();
+        deque.removeLast();
 
         currentStep = stepIndices.get(currentPage);
-        showStep(currentStep);
-
-        buttonsPanel.onPageChanged(currentPage, stepIndices.isEmpty(), false); // , isFirst, isLast
+        stepProvider.showStep(currentStep, stepIndices.isEmpty(), false); // , isFirst, isLast
         currentPage.onEnter();
     }
 
     @Override
     public void onCancel() {		
-        parent.hide();
+        // TODO: parent.hide(); probably move to the StepProvider i-face
     }
 
     @Override
@@ -91,13 +77,4 @@ public class StepNavigator implements WizardActionHandler {
     public WizardPage getCurrentPage() {
         return currentPage;
     }
-
-    /*@Override
-    protected void onOpen() {
-        parent.onOpen();
-        WizardPage currentPage = ...getCurrentPage();
-        if (currentPage != null) {
-            currentPage.onEnter();
-        }	
-    }*/
 }
