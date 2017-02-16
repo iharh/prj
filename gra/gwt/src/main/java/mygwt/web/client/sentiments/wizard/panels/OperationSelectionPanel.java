@@ -1,8 +1,6 @@
 package mygwt.web.client.sentiments.wizard.panels;
 
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.RadioButton;
 
 public class OperationSelectionPanel extends BasePanel {
@@ -13,7 +11,7 @@ public class OperationSelectionPanel extends BasePanel {
     private RadioButton btnExportPrev;
 
     public OperationSelectionPanel() {
-        super(); // ??? title
+        super();
 
         Label lab = new Label("Please choose an option for managing your sentiment tunings.");        
 
