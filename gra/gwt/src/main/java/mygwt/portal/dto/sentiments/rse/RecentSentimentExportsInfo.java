@@ -3,37 +3,37 @@ package mygwt.portal.dto.sentiments.rse;
 import java.io.Serializable;
 
 public class RecentSentimentExportsInfo implements Serializable {
-    private String id;
-    private String description;
-    private String timestamp;
-    private String parameters;
     private String fileName;
+    private String name;
+    private String timestamp;
+    private boolean words;
+    private boolean rules;
 
     // need for Serializable
     public RecentSentimentExportsInfo() {
     }
 
-    public RecentSentimentExportsInfo(String id, String description, String timestamp, String parameters, String fileName) {
-        this.id = id;
-        this.description = description;
-        this.timestamp = timestamp;
-        this.parameters = parameters;
+    public RecentSentimentExportsInfo(String fileName, String name, String timestamp, boolean words, boolean rules) {
         this.fileName = fileName;
+        this.name = name;
+        this.timestamp = timestamp;
+        this.words = words;
+        this.rules = rules;
     }
 
-    public String getId() {
-        return id;
+    public String getFileName() {
+        return fileName;
     }
-    public String getDescription() {
-        return description;
+    public String getName() {
+        return name;
     }
     public String getTimestamp() {
         return timestamp;
     }
-    public String getParameters() {
-        return parameters;
+    public boolean isWords() {
+        return words;
     }
-    public String getFileName() {
-        return fileName;
+    public boolean isRules() {
+        return rules;
     }
 }

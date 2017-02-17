@@ -45,7 +45,7 @@ public class SampleDialog extends BaseDialogBox implements ProjectIdAware {
     }
 
     public SampleDialog() {
-        super(SentimentsMessages.INSTANCE.rceTitle(), allW, allH);
+        super(SentimentsMessages.INSTANCE.rseTitle(), allW, allH);
         msgs = SentimentsMessages.INSTANCE;
         setWidget(createDialogContents());
         hide();
