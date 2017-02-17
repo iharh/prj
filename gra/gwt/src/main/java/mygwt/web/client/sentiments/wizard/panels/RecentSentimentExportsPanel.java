@@ -4,6 +4,8 @@ import mygwt.web.client.sentiments.resources.SentimentsMessages;
 
 import mygwt.web.client.sentiments.rse.RecentSentimentExportsServiceAsync;
 
+import mygwt.web.client.utils.LogUtils;
+
 import mygwt.portal.dto.sentiments.rse.RecentSentimentExportsInfo;
 
 import mygwt.foundation.client.rpc.AbstractAsyncCallback;
@@ -21,6 +23,7 @@ import com.google.gwt.view.client.ProvidesKey;
 import com.google.gwt.view.client.SingleSelectionModel;
 
 import java.util.List;
+import java.util.LinkedList;
 
 public class RecentSentimentExportsPanel extends BasePanel {
     private static final int borderW     = 0; // 1 for borders vis-n
@@ -55,7 +58,6 @@ public class RecentSentimentExportsPanel extends BasePanel {
         };
 
         final DataGrid<RecentSentimentExportsInfo> dataGrid = new DataGrid<RecentSentimentExportsInfo>(5, keyProvider);
-        //dataGrid.setPageSize(5);
 	dataGrid.setSize("100%", "400px");
 
 	dataGrid.setEmptyTableWidget(new HTML(msgs.rseNoExportsDefined()));
@@ -87,19 +89,31 @@ public class RecentSentimentExportsPanel extends BasePanel {
 
         dataGrid.setSelectionModel(selectionModel);
         //dataGrid.setAlwaysShowScrollBars(true);
+        //dataGrid.setPageSize(5);
         //http://samples.gwtproject.org/samples/Showcase/Showcase.html#!CwDataGrid
 
         final ListDataProvider<RecentSentimentExportsInfo> dataProvider = new ListDataProvider<RecentSentimentExportsInfo>();
+/*
         svcAsync.getExports(projectId, new AbstractAsyncCallback<List<RecentSentimentExportsInfo>>() {
             @Override
             public void onSuccess(List<RecentSentimentExportsInfo> rowData) {
                 // dataGrid.setRowData(rowData); // does not preserve page size
                 dataProvider.getList().addAll(rowData);
                 dataProvider.addDataDisplay(dataGrid);
+                LogUtils.log("onSuccess size: " + rowData.size());
             }
         });
+*/
 
+        List<RecentSentimentExportsInfo> rowData = new LinkedList<RecentSentimentExportsInfo>();
+        RecentSentimentExportsInfo i1 = new RecentSentimentExportsInfo("f1", "n1", "ts1", true, false);
+        rowData.add(i1);
+        dataProvider.getList().addAll(rowData);
+        dataProvider.addDataDisplay(dataGrid);
+
+        LogUtils.log("1");
         verticalPanel.add(dataGrid);
+        LogUtils.log("2");
     }
 
     private String getParams(boolean words, boolean rules) {

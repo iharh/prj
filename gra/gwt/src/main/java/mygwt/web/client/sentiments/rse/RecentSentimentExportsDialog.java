@@ -114,7 +114,7 @@ public class RecentSentimentExportsDialog extends BaseDialogBox implements Proje
 
     private Panel createExportInfoPanel() {
         VerticalPanel infoPanel = new VerticalPanel();
-/*
+
         infoPanel.setBorderWidth(borderW);
         //infoPanel.setBorderWidth(borderW);
 	infoPanel.setSpacing(spacing); // too rough
@@ -124,7 +124,7 @@ public class RecentSentimentExportsDialog extends BaseDialogBox implements Proje
         ProvidesKey<RecentSentimentExportsInfo> keyProvider = new ProvidesKey<RecentSentimentExportsInfo>() {
             public Object getKey(RecentSentimentExportsInfo i) {
                 // Always do a null check.
-                return (i == null) ? null : i.getId();
+                return (i == null) ? null : i.getFileName();
             }
         };
 
@@ -134,28 +134,28 @@ public class RecentSentimentExportsDialog extends BaseDialogBox implements Proje
 
 	dataGrid.setEmptyTableWidget(new HTML(msgs.rseNoExportsDefined()));
 
-        TextColumn<RecentSentimentExportsInfo> colId = new TextColumn<RecentSentimentExportsInfo>() {
-            @Override public String getValue(RecentSentimentExportsInfo i) { return i.getId(); }
+        TextColumn<RecentSentimentExportsInfo> colName = new TextColumn<RecentSentimentExportsInfo>() {
+            @Override public String getValue(RecentSentimentExportsInfo i) { return i.getName(); }
         };
         TextColumn<RecentSentimentExportsInfo> colTimestamp = new TextColumn<RecentSentimentExportsInfo>() {
             @Override public String getValue(RecentSentimentExportsInfo i) { return i.getTimestamp(); }
         };
         TextColumn<RecentSentimentExportsInfo> colParameters = new TextColumn<RecentSentimentExportsInfo>() {
-            @Override public String getValue(RecentSentimentExportsInfo i) { return i.getParameters(); }
+            @Override public String getValue(RecentSentimentExportsInfo i) { return getParams(i.isWords(), i.isRules()); }
         };
         TextColumn<RecentSentimentExportsInfo> colFileName = new TextColumn<RecentSentimentExportsInfo>() {
             @Override public String getValue(RecentSentimentExportsInfo i) { return i.getFileName(); }
         };
 
         Unit u = Unit.PCT;
-        dataGrid.addColumn(colId, msgs.rseColumnName());
-	dataGrid.setColumnWidth(colId, 15, u);
+        dataGrid.addColumn(colName, msgs.rseColumnName());
+	dataGrid.setColumnWidth(colName, 25, u);
         dataGrid.addColumn(colTimestamp, msgs.rseColumnTimestamp());
-	dataGrid.setColumnWidth(colTimestamp, 25, u);
+	dataGrid.setColumnWidth(colTimestamp, 30, u);
         dataGrid.addColumn(colParameters, msgs.rseColumnParameters());
 	dataGrid.setColumnWidth(colParameters, 20, u);
         dataGrid.addColumn(colFileName, msgs.rseColumnFile());
-	dataGrid.setColumnWidth(colFileName, 20, u);
+	dataGrid.setColumnWidth(colFileName, 25, u);
 
         SingleSelectionModel<RecentSentimentExportsInfo> selectionModel = new SingleSelectionModel<RecentSentimentExportsInfo>(keyProvider);
 
@@ -175,8 +175,20 @@ public class RecentSentimentExportsDialog extends BaseDialogBox implements Proje
         });
 
         infoPanel.add(dataGrid);
-*/
         return infoPanel;
+    }
+
+    private String getParams(boolean words, boolean rules) {
+        StringBuilder result = new StringBuilder();
+        if (words) {
+            result.append(",");
+            result.append(msgs.rseWords());
+        }
+        if (rules) {
+            result.append(",");
+            result.append(msgs.rseRules());
+        }
+        return result.length() > 0 ? result.substring(1) : result.toString();
     }
 
     private RecentSentimentExportsServiceAsync svcAsync;
