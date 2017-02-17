@@ -2,9 +2,17 @@ package mygwt.web.client.sentiments.wizard;
 
 import mygwt.foundation.client.csrf.ProjectIdAware;
 
+import mygwt.web.client.sentiments.resources.SentimentsMessages;
+
+import mygwt.web.client.sentiments.wizard.steps.StepProvider;
+import mygwt.web.client.sentiments.wizard.steps.StepNavigator;
+import mygwt.web.client.sentiments.wizard.steps.NextPageDetector;
+
 import mygwt.web.client.sentiments.wizard.panels.OperationSelectionPanel;
 import mygwt.web.client.sentiments.wizard.panels.TempPanel;
 import mygwt.web.client.sentiments.wizard.panels.ButtonsPanel;
+
+import mygwt.web.client.utils.LogUtils;
 
 import mygwt.foundation.client.widget.dialog.BaseDialogBox;
 import mygwt.foundation.client.widget.button.CancelButton;
@@ -12,8 +20,6 @@ import mygwt.foundation.client.widget.button.OkButton;
 import mygwt.foundation.client.widget.list.GroupedListBox;
 
 import mygwt.web.adhoc.client.wizard.WizardPage;
-
-import mygwt.web.client.sentiments.resources.SentimentsMessages;
 
 import com.google.gwt.core.client.GWT;
 
@@ -93,7 +99,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
         step4 = new TempPanel("here will be export previous");
         // ...(this);
 
-        stepNavigator = new StepNavigator(this, steps);
+        stepNavigator = new StepNavigator(this);
         buttonsPanel = new ButtonsPanel(stepNavigator);
 
         configureWizard();
@@ -104,14 +110,16 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
     private void configureWizard() {
         dialogVPanel.clear();
 
-        steps.add(stepNavigator.add(step1));  
-        steps.add(stepNavigator.add(step2));  
-        steps.add(stepNavigator.add(step3));  
-        steps.add(stepNavigator.add(step4));  
-        // steps.remove(int idx)
-        // !!! we can add steps in any order and just need to calculate prev/next indices in appropriate way
+        steps.add(stepNavigator.addPage(step1));  
+        steps.add(stepNavigator.addPage(step2));  
+        steps.add(stepNavigator.addPage(step3));  
+        steps.add(stepNavigator.addPage(step4));  
         
-        stepNavigator.doneAdding();
+        stepNavigator.addNextPageDetector(step1, new NextPageDetector() { @Override public WizardPage next() { return step2; } });
+        stepNavigator.addNextPageDetector(step2, new NextPageDetector() { @Override public WizardPage next() { return step3; } });
+        stepNavigator.addNextPageDetector(step3, new NextPageDetector() { @Override public WizardPage next() { return step4; } });
+
+        stepNavigator.clear(step1);
         
         dialogVPanel.add(steps);
 
@@ -151,5 +159,6 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
         steps.showWidget(stepIdx);
         WizardPage currentPage = stepNavigator.getCurrentPage();
         buttonsPanel.onPageChanged(currentPage, isFirst, isLast);
+        //LogUtils.log(traceMsg);
     }
 }

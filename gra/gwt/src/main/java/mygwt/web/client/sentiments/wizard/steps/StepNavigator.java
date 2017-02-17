@@ -1,59 +1,74 @@
-package mygwt.web.client.sentiments.wizard;
+package mygwt.web.client.sentiments.wizard.steps;
 
 import mygwt.web.adhoc.client.wizard.WizardPage;
 import mygwt.web.adhoc.client.wizard.WizardActionHandler;
 
 import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.DeckPanel;
 import com.google.gwt.user.client.ui.Widget;
 
+import java.util.List;
 import java.util.LinkedList;
+import java.util.Set;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.HashMap;
 
 public class StepNavigator implements WizardActionHandler {
     StepProvider stepProvider;
 
-    private DeckPanel steps;
     private int stepsSize;
+    private Set<WizardPage> pages;
     private Map<WizardPage, Integer> stepIndices;
+    private Map<WizardPage, NextPageDetector> nextPageDetectors;
 
     private WizardPage currentPage;
     private int currentStep;
 
     private LinkedList<WizardPage> deque;
 
-    public StepNavigator(StepProvider stepProvider, DeckPanel steps) {
+    public StepNavigator(StepProvider stepProvider) {
         this.stepProvider = stepProvider;
-        this.steps = steps;
 
+        pages = new HashSet<WizardPage>();
         deque = new LinkedList<WizardPage>();
         stepIndices = new HashMap<WizardPage, Integer>();
+        nextPageDetectors = new HashMap<WizardPage, NextPageDetector>();
     }
 
-    public<T extends WizardPage> T add(T panel) {
-        deque.add(panel);
+    public<T extends WizardPage> T addPage(T panel) {
+        pages.add(panel);
         stepIndices.put(panel, stepsSize);
         ++stepsSize;
         return panel;
     }
 
-    public void doneAdding() {
-        currentPage = deque.getFirst();
-        currentStep = 0;
-        stepProvider.showStep(currentStep, true, false, "doneAdding"); // TODO: use other way to check this
+    public void addNextPageDetector(WizardPage page, NextPageDetector detector) {
+        nextPageDetectors.put(page, detector);
+    }
+
+    public void clear(WizardPage page) {
+        currentPage = page;
+        currentStep = stepIndices.get(currentPage);
+        deque.clear();
+
+        showStep("clear");
+    }
+
+    private void showStep(String name) {
+        stepProvider.showStep(currentStep, deque.isEmpty(), !nextPageDetectors.containsKey(currentPage),
+            name + ": " + currentStep + " deque size: " + deque.size());
     }
 
     @Override
     public void onNext() {
         currentPage.onLeave();
         deque.add(currentPage);
-        ++currentStep;
 
-        currentPage = (WizardPage) steps.getWidget(currentStep);
+        NextPageDetector nextPageDetector = nextPageDetectors.get(currentPage);
+        currentPage = nextPageDetector.next();
+        currentStep = stepIndices.get(currentPage);
 
-        stepProvider.showStep(currentStep, false, currentStep == stepsSize, // TODO: use other way to check this
-            "onNext: " + currentStep + "deque size: " + deque.size());
+        showStep("onNext");
         currentPage.onEnter();
     }
 
@@ -65,8 +80,7 @@ public class StepNavigator implements WizardActionHandler {
 
         currentStep = stepIndices.get(currentPage);
 
-        stepProvider.showStep(currentStep, stepIndices.isEmpty(), false, // , isFirst, isLast
-            "onBack: " + currentStep + "deque size: " + deque.size());
+        showStep("onBack");
         currentPage.onEnter();
     }
 
