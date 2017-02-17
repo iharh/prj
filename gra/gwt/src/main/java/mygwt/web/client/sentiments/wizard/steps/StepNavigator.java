@@ -1,7 +1,7 @@
 package mygwt.web.client.sentiments.wizard.steps;
 
-import mygwt.web.adhoc.client.wizard.WizardPage;
-import mygwt.web.adhoc.client.wizard.WizardActionHandler;
+import mygwt.web.client.sentiments.wizard.WizardPage;
+import mygwt.web.client.sentiments.wizard.WizardActionHandler;
 
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
@@ -82,11 +82,6 @@ public class StepNavigator implements WizardActionHandler {
 
         showStep("onBack");
         currentPage.onEnter();
-    }
-
-    @Override
-    public void onCancel() {		
-        // TODO: parent.hide(); probably move to the StepProvider i-face
     }
 
     @Override

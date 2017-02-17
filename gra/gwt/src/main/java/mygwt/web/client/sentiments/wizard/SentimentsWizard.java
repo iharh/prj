@@ -19,8 +19,6 @@ import mygwt.foundation.client.widget.button.CancelButton;
 import mygwt.foundation.client.widget.button.OkButton;
 import mygwt.foundation.client.widget.list.GroupedListBox;
 
-import mygwt.web.adhoc.client.wizard.WizardPage;
-
 import com.google.gwt.core.client.GWT;
 
 import com.google.gwt.dom.client.Style.Unit;
@@ -115,9 +113,21 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
         steps.add(stepNavigator.addPage(step3));  
         steps.add(stepNavigator.addPage(step4));  
         
-        stepNavigator.addNextPageDetector(step1, new NextPageDetector() { @Override public WizardPage next() { return step2; } });
-        stepNavigator.addNextPageDetector(step2, new NextPageDetector() { @Override public WizardPage next() { return step3; } });
-        stepNavigator.addNextPageDetector(step3, new NextPageDetector() { @Override public WizardPage next() { return step4; } });
+        stepNavigator.addNextPageDetector(step1,
+            new NextPageDetector() {
+                @Override
+                public WizardPage next() {
+                    if (step1.isImportSelected()) {
+                        return step2;
+                    } else if (step1.isExportCurSelected()) {
+                        return step3;
+                    } else if (step1.isExportPrevSelected()) {
+                        return step4;
+                    }
+                    return null; // impossible
+                }
+            }
+        );
 
         stepNavigator.clear(step1);
         

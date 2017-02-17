@@ -1,6 +1,6 @@
 package mygwt.web.client.sentiments.wizard.panels;
 
-import mygwt.web.adhoc.client.wizard.WizardPage;
+import mygwt.web.client.sentiments.wizard.WizardPage;
 
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.Label;
@@ -34,16 +34,4 @@ public class BasePanel extends DockPanel implements WizardPage {
     public void onLeave() { }
     @Override
     public void onFinish() { }
-    @Override
-    public String getErrorMessage() {
-        return ""; 
-    }
-    @Override
-    public boolean saveDataToModel() {
-        return true;
-    }
-    @Override
-    public String getOnlineVideoURL() {
-        return ""; // HelpMessages.ADHOC_UPLOAD_FILE; 	 		
-    }
 }

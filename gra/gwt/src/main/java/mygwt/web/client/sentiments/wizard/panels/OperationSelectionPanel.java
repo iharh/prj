@@ -27,4 +27,14 @@ public class OperationSelectionPanel extends BasePanel {
         verticalPanel.add(btnExportCur);
         verticalPanel.add(btnExportPrev);
     }
+
+    public boolean isImportSelected() {
+        return btnImport.getValue();
+    }
+    public boolean isExportCurSelected() {
+        return btnExportCur.getValue();
+    }
+    public boolean isExportPrevSelected() {
+        return btnExportPrev.getValue();
+    }
 }

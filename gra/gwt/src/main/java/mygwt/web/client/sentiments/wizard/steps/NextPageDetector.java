@@ -1,6 +1,6 @@
 package mygwt.web.client.sentiments.wizard.steps;
 
-import mygwt.web.adhoc.client.wizard.WizardPage;
+import mygwt.web.client.sentiments.wizard.WizardPage;
 
 public interface NextPageDetector {
     public WizardPage next();
