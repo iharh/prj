@@ -25,11 +25,17 @@ import com.google.gwt.view.client.SingleSelectionModel;
 import java.util.List;
 import java.util.LinkedList;
 
+import com.google.gwt.user.client.ui.DockLayoutPanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
+
 public class RecentSentimentExportsPanel extends BasePanel {
     private static final int borderW     = 0; // 1 for borders vis-n
     private static final int spacing     = 12;
     //private static final String textBoxW = "470px"; // 450px
     //private static final int labelW      = 150;
+
+    private static final int allW                   = 670;
+    private static final int allH                   = 525;
 
     private SentimentsMessages msgs;
 
@@ -45,10 +51,12 @@ public class RecentSentimentExportsPanel extends BasePanel {
 
         msgs = SentimentsMessages.INSTANCE;
 
-        verticalPanel.setBorderWidth(borderW);
-	verticalPanel.setSpacing(spacing); // too rough
+        DockLayoutPanel panel = new DockLayoutPanel(Unit.PX);
 
-        verticalPanel.add(new InlineLabel(msgs.rseText()));
+        //verticalPanel.setBorderWidth(borderW);
+	//verticalPanel.setSpacing(spacing); // too rough
+
+        //verticalPanel.add(new InlineLabel(msgs.rseText()));
 
         ProvidesKey<RecentSentimentExportsInfo> keyProvider = new ProvidesKey<RecentSentimentExportsInfo>() {
             public Object getKey(RecentSentimentExportsInfo i) {
@@ -58,9 +66,10 @@ public class RecentSentimentExportsPanel extends BasePanel {
         };
 
         final DataGrid<RecentSentimentExportsInfo> dataGrid = new DataGrid<RecentSentimentExportsInfo>(5, keyProvider);
+	//dataGrid.setSize("100%", "100%");
 	dataGrid.setSize("100%", "400px");
 
-	dataGrid.setEmptyTableWidget(new HTML(msgs.rseNoExportsDefined()));
+	//dataGrid.setEmptyTableWidget(new HTML(msgs.rseNoExportsDefined()));
 
         TextColumn<RecentSentimentExportsInfo> colName = new TextColumn<RecentSentimentExportsInfo>() {
             @Override public String getValue(RecentSentimentExportsInfo i) { return i.getName(); }
@@ -92,8 +101,9 @@ public class RecentSentimentExportsPanel extends BasePanel {
         //dataGrid.setPageSize(5);
         //http://samples.gwtproject.org/samples/Showcase/Showcase.html#!CwDataGrid
 
-        final ListDataProvider<RecentSentimentExportsInfo> dataProvider = new ListDataProvider<RecentSentimentExportsInfo>();
 /*
+        final ListDataProvider<RecentSentimentExportsInfo> dataProvider = new ListDataProvider<RecentSentimentExportsInfo>();
+
         svcAsync.getExports(projectId, new AbstractAsyncCallback<List<RecentSentimentExportsInfo>>() {
             @Override
             public void onSuccess(List<RecentSentimentExportsInfo> rowData) {
@@ -108,12 +118,22 @@ public class RecentSentimentExportsPanel extends BasePanel {
         List<RecentSentimentExportsInfo> rowData = new LinkedList<RecentSentimentExportsInfo>();
         RecentSentimentExportsInfo i1 = new RecentSentimentExportsInfo("f1", "n1", "ts1", true, false);
         rowData.add(i1);
-        dataProvider.getList().addAll(rowData);
-        dataProvider.addDataDisplay(dataGrid);
+        dataGrid.setRowData(rowData);
 
-        LogUtils.log("1");
-        verticalPanel.add(dataGrid);
-        LogUtils.log("2");
+        VerticalPanel infoPanel = new VerticalPanel();
+
+        infoPanel.setBorderWidth(borderW);
+        //infoPanel.setBorderWidth(borderW);
+	infoPanel.setSpacing(spacing); // too rough
+        infoPanel.add(dataGrid);
+
+        DockLayoutPanel dlPanel = new DockLayoutPanel(Unit.PX);
+
+        dlPanel.setWidth(allW + "px");
+        dlPanel.setHeight(allH + "px");
+
+        panel.addNorth(infoPanel, 250);
+        verticalPanel.add(dlPanel);
     }
 
     private String getParams(boolean words, boolean rules) {
