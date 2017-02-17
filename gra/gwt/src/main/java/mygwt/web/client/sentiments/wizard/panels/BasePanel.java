@@ -23,6 +23,7 @@ public class BasePanel extends DockPanel implements WizardPage {
 
         verticalPanel = new VerticalPanel();
         verticalPanel.setWidth("100%");
+        verticalPanel.setHeight("100%");
         verticalPanel.setSpacing(spacing);
 
 	this.add(verticalPanel, DockPanel.NORTH);
