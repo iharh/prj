@@ -49,15 +49,10 @@ import com.google.gwt.user.client.rpc.ServiceDefTarget;
 
 
 public class SentimentsWizard extends BaseDialogBox implements StepProvider, ProjectIdAware {
-    //private static final int borderW                = 0; // 1 for borders vis-n
-    private static final int spacing                = 12; // 10
-
-    private static final int allW                   = 670;
-    private static final int allH                   = 525;
-
-    private static final int STEPS_USUAL_HEIGHT     = 250;
-    private static final int INFO_USUAL_HEIGHT      = 200;	
-    private static final int STEPS_AVAILABLE_HEIGHT = INFO_USUAL_HEIGHT + STEPS_USUAL_HEIGHT;
+    private static final int STEPS_AVAILABLE_HEIGHT   = 450;
+    private static final int BUTTONS_AVAILABLE_HEIGHT = 75;
+    private static final int allH                     = STEPS_AVAILABLE_HEIGHT + BUTTONS_AVAILABLE_HEIGHT;
+    private static final int allW                     = 670;
 
     private SentimentsMessages msgs;
 
@@ -85,25 +80,22 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
 
         //hack for IE6/7(CMP-15701)
         //DeckPanel hackPanel = new DeckPanel();
-        //hackPanel.setHeight("450px");
+        //hackPanel.setHeight(STEPS_AVAILABLE_HEIGHT + "px");
         //setWidget(hackPanel);
 
         setWidget(createDialogContents());
 
 	setAutoHideEnabled(false);
-        //hide();
     }
 
     private Widget createDialogContents() {
         dialogPanel = new DockLayoutPanel(Unit.PX);
-        dialogPanel.setWidth(allW + "px");
-        dialogPanel.setHeight(allH + "px");
-        //dialogPanel.setStyleName("AdHocWizardMainPanel");
-        //dialogPanel.setSpacing(spacing);
         //dialogPanel.setSize("100%", allH + "px");
+        dialogPanel.setSize(allW + "px", allH + "px");
+        dialogPanel.setStyleName("AdHocWizardMainPanel");
 
         steps = new DeckPanel();
-	steps.setHeight(Integer.toString(STEPS_AVAILABLE_HEIGHT) + "px");
+	//steps.setHeight(Integer.toString(STEPS_AVAILABLE_HEIGHT) + "px");
 
         stepOperationSelection = new OperationSelectionPanel();
         step2 = new TempPanel("here will be import");
@@ -113,7 +105,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
 
         stepNavigator = new StepNavigator(this);
         buttonsPanel = new ButtonsPanel(stepNavigator);
-        buttonsPanel.setHeight((allH - STEPS_AVAILABLE_HEIGHT) + "px");
+        buttonsPanel.setHeight(BUTTONS_AVAILABLE_HEIGHT + "px");
 
         configureWizard();
 
@@ -123,12 +115,12 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
     private void configureWizard() {
         dialogPanel.clear();
 
-        //steps.add(stepNavigator.addPage(stepOperationSelection));  
-        //steps.add(stepNavigator.addPage(step2));  
-        //steps.add(stepNavigator.addPage(step3));  
+        steps.add(stepNavigator.addPage(stepOperationSelection));  
+        steps.add(stepNavigator.addPage(step2));  
+        steps.add(stepNavigator.addPage(step3));  
         steps.add(stepNavigator.addPage(stepResentSentimentExports));  
         
-        /*stepNavigator.addNextPageDetector(stepOperationSelection,
+        stepNavigator.addNextPageDetector(stepOperationSelection,
             new NextPageDetector() {
                 @Override
                 public WizardPage next() {
@@ -142,21 +134,19 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
                     return null; // impossible
                 }
             }
-        );*/
-
-        // start with stepOperationSelection
-        stepNavigator.start(stepResentSentimentExports);
+        );
         
-        //dialogPanel.add(steps);
-        dialogPanel.addNorth(steps, 450);
+        dialogPanel.addNorth(steps, STEPS_AVAILABLE_HEIGHT);
 
         buttonsPanel.disableBack();
         buttonsPanel.enableNext();
         buttonsPanel.disableFinish();
 
-        //dialogPanel.add(buttonsPanel);
         // ??? dialogPanel.add(placeHolder);
-        dialogPanel.addSouth(buttonsPanel, 75);
+        dialogPanel.addSouth(buttonsPanel, BUTTONS_AVAILABLE_HEIGHT);
+
+        // stepOperationSelection
+        stepNavigator.start(stepResentSentimentExports);
     }
 
     @Override

@@ -2,32 +2,21 @@ package mygwt.web.client.sentiments.wizard.panels;
 
 import mygwt.web.client.sentiments.wizard.WizardPage;
 
-import com.google.gwt.user.client.ui.DockPanel;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.google.gwt.user.client.ui.HasVerticalAlignment;
 
-public class BasePanel extends VerticalPanel implements WizardPage { // DockPanel
+public class BasePanel extends VerticalPanel implements WizardPage {
     private static final int borderW = 0;
     private static final int spacing = 10; // 12
 
-    //protected VerticalPanel verticalPanel; // = new VerticalPanel();
-
     public BasePanel() {
         super();
-
-        this.setWidth("100%");
-        this.setHeight("450px");
-        this.setSpacing(spacing);
-        this.setBorderWidth(borderW);
-        //this.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
-
-        //verticalPanel = new VerticalPanel();
-        //verticalPanel.setWidth("100%");
-        //verticalPanel.setHeight("450px");
-
-	//this.add(verticalPanel, DockPanel.NORTH);
-        //verticalPanel = this;
+        setSize("100%", "450px");
+        setSpacing(spacing);
+        setBorderWidth(borderW);
+        setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
+        setVerticalAlignment(HasVerticalAlignment.ALIGN_TOP);
     }
 
     @Override

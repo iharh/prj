@@ -26,7 +26,6 @@ import java.util.List;
 import java.util.LinkedList;
 
 import com.google.gwt.user.client.ui.DockLayoutPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class RecentSentimentExportsPanel extends BasePanel {
     //private static final int spacing     = 12;
@@ -45,10 +44,7 @@ public class RecentSentimentExportsPanel extends BasePanel {
 
         msgs = SentimentsMessages.INSTANCE;
 
-        //verticalPanel.setBorderWidth(borderW);
-	//verticalPanel.setSpacing(spacing); // too rough
-
-        //super.add(new InlineLabel(msgs.rseText()));
+        super.add(new InlineLabel(msgs.rseText()));
 
         ProvidesKey<RecentSentimentExportsInfo> keyProvider = new ProvidesKey<RecentSentimentExportsInfo>() {
             public Object getKey(RecentSentimentExportsInfo i) {
@@ -59,9 +55,9 @@ public class RecentSentimentExportsPanel extends BasePanel {
 
         final DataGrid<RecentSentimentExportsInfo> dataGrid = new DataGrid<RecentSentimentExportsInfo>(5, keyProvider);
 	//dataGrid.setSize("100%", "100%");
-	dataGrid.setSize("100%", "400px");
+	dataGrid.setSize("100%", "75px"); // 400
 
-	//dataGrid.setEmptyTableWidget(new HTML(msgs.rseNoExportsDefined()));
+	dataGrid.setEmptyTableWidget(new HTML(msgs.rseNoExportsDefined()));
 
         TextColumn<RecentSentimentExportsInfo> colName = new TextColumn<RecentSentimentExportsInfo>() {
             @Override public String getValue(RecentSentimentExportsInfo i) { return i.getName(); }
@@ -92,7 +88,7 @@ public class RecentSentimentExportsPanel extends BasePanel {
         //dataGrid.setAlwaysShowScrollBars(true);
         //dataGrid.setPageSize(5);
         //http://samples.gwtproject.org/samples/Showcase/Showcase.html#!CwDataGrid
-/*
+
         final ListDataProvider<RecentSentimentExportsInfo> dataProvider = new ListDataProvider<RecentSentimentExportsInfo>();
 
         svcAsync.getExports(projectId, new AbstractAsyncCallback<List<RecentSentimentExportsInfo>>() {
@@ -101,15 +97,14 @@ public class RecentSentimentExportsPanel extends BasePanel {
                 // dataGrid.setRowData(rowData); // does not preserve page size
                 dataProvider.getList().addAll(rowData);
                 dataProvider.addDataDisplay(dataGrid);
-                LogUtils.log("onSuccess size: " + rowData.size());
             }
         });
-*/
+/*
         List<RecentSentimentExportsInfo> rowData = new LinkedList<RecentSentimentExportsInfo>();
         RecentSentimentExportsInfo i1 = new RecentSentimentExportsInfo("f1", "n1", "ts1", true, false);
         rowData.add(i1);
         dataGrid.setRowData(rowData);
-
+*/
         super.add(dataGrid);
     }
 
