@@ -7,8 +7,8 @@ import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 
 public class BasePanel extends VerticalPanel implements WizardPage {
-    private static final int borderW = 0;
-    private static final int spacing = 10; // 12
+    protected static final int borderW = 0;
+    protected static final int spacing = 10; // 12
 
     public BasePanel() {
         super();

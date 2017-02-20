@@ -15,6 +15,7 @@ import mygwt.web.client.sentiments.wizard.steps.StepNavigator;
 import mygwt.web.client.sentiments.wizard.steps.NextPageDetector;
 
 import mygwt.web.client.sentiments.wizard.panels.OperationSelectionPanel;
+import mygwt.web.client.sentiments.wizard.panels.SentimentExportPanel;
 import mygwt.web.client.sentiments.wizard.panels.RecentSentimentExportsPanel;
 import mygwt.web.client.sentiments.wizard.panels.TempPanel;
 import mygwt.web.client.sentiments.wizard.panels.ButtonsPanel;
@@ -64,10 +65,9 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
 
     private StepNavigator stepNavigator;
     private OperationSelectionPanel stepOperationSelection;
+    private SentimentExportPanel stepSentimentExport;
     private RecentSentimentExportsPanel stepResentSentimentExports;
     private TempPanel step2;
-    private TempPanel step3;
-    private TempPanel step4;
     private ButtonsPanel buttonsPanel;
 
     private int currentStep = 0;
@@ -99,7 +99,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
 
         stepOperationSelection = new OperationSelectionPanel();
         step2 = new TempPanel("here will be import");
-        step3 = new TempPanel("here will be export current");
+        stepSentimentExport = new SentimentExportPanel();
         stepResentSentimentExports = new RecentSentimentExportsPanel(projectId, getSvcAsync());
         // ...(this);
 
@@ -117,7 +117,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
 
         steps.add(stepNavigator.addPage(stepOperationSelection));  
         steps.add(stepNavigator.addPage(step2));  
-        steps.add(stepNavigator.addPage(step3));  
+        steps.add(stepNavigator.addPage(stepSentimentExport));  
         steps.add(stepNavigator.addPage(stepResentSentimentExports));  
         
         stepNavigator.addNextPageDetector(stepOperationSelection,
@@ -127,7 +127,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
                     if (stepOperationSelection.isImportSelected()) {
                         return step2;
                     } else if (stepOperationSelection.isExportCurSelected()) {
-                        return step3;
+                        return stepSentimentExport;
                     } else if (stepOperationSelection.isExportPrevSelected()) {
                         return stepResentSentimentExports;
                     }

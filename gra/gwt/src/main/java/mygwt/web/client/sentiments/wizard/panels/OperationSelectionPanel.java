@@ -1,6 +1,6 @@
 package mygwt.web.client.sentiments.wizard.panels;
 
-import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.user.client.ui.RadioButton;
 
 public class OperationSelectionPanel extends BasePanel {
@@ -15,7 +15,7 @@ public class OperationSelectionPanel extends BasePanel {
         //addStyleName("myOperationSelectionPanel");
         setSize("100%", "auto");
 
-        Label lab = new Label("Please choose an option for managing your sentiment tunings.");        
+        add(new InlineLabel("Please choose an option for managing your sentiment tunings."));
 
         btnImport = new RadioButton(BUTTON_GROUP, "Import sentiment from a Microsoft Excel file on your computer");
         btnExportCur = new RadioButton(BUTTON_GROUP, "Export current sentiment to your computer");
@@ -24,7 +24,6 @@ public class OperationSelectionPanel extends BasePanel {
         // Check 'First' by default.
         btnImport.setValue(true);
 
-        add(lab);
         add(btnImport);
         add(btnExportCur);
         add(btnExportPrev);
