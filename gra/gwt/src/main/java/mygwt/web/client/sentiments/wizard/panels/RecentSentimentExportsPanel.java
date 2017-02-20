@@ -29,13 +29,7 @@ import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class RecentSentimentExportsPanel extends BasePanel {
-    private static final int borderW     = 0; // 1 for borders vis-n
-    private static final int spacing     = 12;
-    //private static final String textBoxW = "470px"; // 450px
-    //private static final int labelW      = 150;
-
-    private static final int allW                   = 670;
-    private static final int allH                   = 525;
+    //private static final int spacing     = 12;
 
     private SentimentsMessages msgs;
 
@@ -51,12 +45,10 @@ public class RecentSentimentExportsPanel extends BasePanel {
 
         msgs = SentimentsMessages.INSTANCE;
 
-        DockLayoutPanel panel = new DockLayoutPanel(Unit.PX);
-
         //verticalPanel.setBorderWidth(borderW);
 	//verticalPanel.setSpacing(spacing); // too rough
 
-        //verticalPanel.add(new InlineLabel(msgs.rseText()));
+        //super.add(new InlineLabel(msgs.rseText()));
 
         ProvidesKey<RecentSentimentExportsInfo> keyProvider = new ProvidesKey<RecentSentimentExportsInfo>() {
             public Object getKey(RecentSentimentExportsInfo i) {
@@ -100,7 +92,6 @@ public class RecentSentimentExportsPanel extends BasePanel {
         //dataGrid.setAlwaysShowScrollBars(true);
         //dataGrid.setPageSize(5);
         //http://samples.gwtproject.org/samples/Showcase/Showcase.html#!CwDataGrid
-
 /*
         final ListDataProvider<RecentSentimentExportsInfo> dataProvider = new ListDataProvider<RecentSentimentExportsInfo>();
 
@@ -114,26 +105,12 @@ public class RecentSentimentExportsPanel extends BasePanel {
             }
         });
 */
-
         List<RecentSentimentExportsInfo> rowData = new LinkedList<RecentSentimentExportsInfo>();
         RecentSentimentExportsInfo i1 = new RecentSentimentExportsInfo("f1", "n1", "ts1", true, false);
         rowData.add(i1);
         dataGrid.setRowData(rowData);
 
-        VerticalPanel infoPanel = new VerticalPanel();
-
-        infoPanel.setBorderWidth(borderW);
-        //infoPanel.setBorderWidth(borderW);
-	infoPanel.setSpacing(spacing); // too rough
-        infoPanel.add(dataGrid);
-
-        DockLayoutPanel dlPanel = new DockLayoutPanel(Unit.PX);
-
-        dlPanel.setWidth(allW + "px");
-        dlPanel.setHeight(allH + "px");
-
-        panel.addNorth(infoPanel, 250);
-        verticalPanel.add(dlPanel);
+        super.add(dataGrid);
     }
 
     private String getParams(boolean words, boolean rules) {

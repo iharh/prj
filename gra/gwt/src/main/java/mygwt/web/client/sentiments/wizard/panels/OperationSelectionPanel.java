@@ -22,10 +22,10 @@ public class OperationSelectionPanel extends BasePanel {
         // Check 'First' by default.
         btnImport.setValue(true);
 
-        verticalPanel.add(lab);
-        verticalPanel.add(btnImport);
-        verticalPanel.add(btnExportCur);
-        verticalPanel.add(btnExportPrev);
+        super.add(lab);
+        super.add(btnImport);
+        super.add(btnExportCur);
+        super.add(btnExportPrev);
     }
 
     public boolean isImportSelected() {

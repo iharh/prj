@@ -28,6 +28,7 @@ import mygwt.foundation.client.widget.list.GroupedListBox;
 
 import com.google.gwt.core.client.GWT;
 
+import com.google.gwt.dom.client.Style;
 import com.google.gwt.dom.client.Style.Unit;
 
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -62,7 +63,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
 
     private final long projectId;
 
-    private VerticalPanel dialogVPanel;
+    private DockLayoutPanel dialogPanel;
 
     private DeckPanel steps;
 
@@ -94,10 +95,12 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
     }
 
     private Widget createDialogContents() {
-        dialogVPanel = new VerticalPanel();
-        dialogVPanel.setStyleName("AdHocWizardMainPanel");
-        dialogVPanel.setSpacing(spacing);
-        dialogVPanel.setSize("100%", "100%");
+        dialogPanel = new DockLayoutPanel(Unit.PX);
+        dialogPanel.setWidth(allW + "px");
+        dialogPanel.setHeight(allH + "px");
+        //dialogPanel.setStyleName("AdHocWizardMainPanel");
+        //dialogPanel.setSpacing(spacing);
+        //dialogPanel.setSize("100%", allH + "px");
 
         steps = new DeckPanel();
 	steps.setHeight(Integer.toString(STEPS_AVAILABLE_HEIGHT) + "px");
@@ -110,21 +113,22 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
 
         stepNavigator = new StepNavigator(this);
         buttonsPanel = new ButtonsPanel(stepNavigator);
+        buttonsPanel.setHeight((allH - STEPS_AVAILABLE_HEIGHT) + "px");
 
         configureWizard();
 
-        return dialogVPanel;
+        return dialogPanel;
     }
 
     private void configureWizard() {
-        dialogVPanel.clear();
+        dialogPanel.clear();
 
-        steps.add(stepNavigator.addPage(stepOperationSelection));  
-        steps.add(stepNavigator.addPage(step2));  
-        steps.add(stepNavigator.addPage(step3));  
+        //steps.add(stepNavigator.addPage(stepOperationSelection));  
+        //steps.add(stepNavigator.addPage(step2));  
+        //steps.add(stepNavigator.addPage(step3));  
         steps.add(stepNavigator.addPage(stepResentSentimentExports));  
         
-        stepNavigator.addNextPageDetector(stepOperationSelection,
+        /*stepNavigator.addNextPageDetector(stepOperationSelection,
             new NextPageDetector() {
                 @Override
                 public WizardPage next() {
@@ -138,19 +142,21 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
                     return null; // impossible
                 }
             }
-        );
+        );*/
 
         // start with stepOperationSelection
-        stepNavigator.start(stepOperationSelection);
+        stepNavigator.start(stepResentSentimentExports);
         
-        dialogVPanel.add(steps);
+        //dialogPanel.add(steps);
+        dialogPanel.addNorth(steps, 450);
 
         buttonsPanel.disableBack();
         buttonsPanel.enableNext();
         buttonsPanel.disableFinish();
 
-        dialogVPanel.add(buttonsPanel);
-        // ??? dialogVPanel.add(placeHolder);
+        //dialogPanel.add(buttonsPanel);
+        // ??? dialogPanel.add(placeHolder);
+        dialogPanel.addSouth(buttonsPanel, 75);
     }
 
     @Override

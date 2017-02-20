@@ -5,6 +5,6 @@ import com.google.gwt.user.client.ui.Label;
 public class TempPanel extends BasePanel {
     public TempPanel(String name) {
         super();
-        verticalPanel.add(new Label(name));
+        super.add(new Label(name));
     }
 }
