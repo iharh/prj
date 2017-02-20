@@ -28,8 +28,6 @@ import java.util.LinkedList;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 
 public class RecentSentimentExportsPanel extends BasePanel {
-    //private static final int spacing     = 12;
-
     private SentimentsMessages msgs;
 
     private DataGrid<RecentSentimentExportsInfo> dataGrid;
@@ -45,10 +43,10 @@ public class RecentSentimentExportsPanel extends BasePanel {
 
         msgs = SentimentsMessages.INSTANCE;
 
-        initMe();
+        createMainContent();
     }
 
-    private void initMe() {
+    private void createMainContent() {
         super.add(new InlineLabel(msgs.rseText()));
 
         ProvidesKey<RecentSentimentExportsInfo> keyProvider = new ProvidesKey<RecentSentimentExportsInfo>() {
@@ -60,7 +58,7 @@ public class RecentSentimentExportsPanel extends BasePanel {
 
         dataGrid = new DataGrid<RecentSentimentExportsInfo>(5, keyProvider);
 	//dataGrid.setSize("100%", "100%");
-	dataGrid.setSize("100%", "75px"); // 400
+	dataGrid.setSize("100%", "100%"); // 400
 
 	dataGrid.setEmptyTableWidget(new HTML(msgs.rseNoExportsDefined()));
 
@@ -91,7 +89,6 @@ public class RecentSentimentExportsPanel extends BasePanel {
 
         dataGrid.setSelectionModel(selectionModel);
         //dataGrid.setAlwaysShowScrollBars(true);
-        //dataGrid.setPageSize(5);
         //http://samples.gwtproject.org/samples/Showcase/Showcase.html#!CwDataGrid
 
         final ListDataProvider<RecentSentimentExportsInfo> dataProvider = new ListDataProvider<RecentSentimentExportsInfo>();
@@ -129,10 +126,6 @@ public class RecentSentimentExportsPanel extends BasePanel {
     @Override
     public void onEnter() {
         clear();
-        initMe();
-        LogUtils.log("onEnter");
+        createMainContent();
     }
-
-    @Override
-    public void onLeave() { }
 }
