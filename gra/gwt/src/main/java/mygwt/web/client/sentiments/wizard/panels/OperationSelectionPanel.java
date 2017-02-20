@@ -12,6 +12,8 @@ public class OperationSelectionPanel extends BasePanel {
 
     public OperationSelectionPanel() {
         super();
+        //addStyleName("myOperationSelectionPanel");
+        setSize("100%", "auto");
 
         Label lab = new Label("Please choose an option for managing your sentiment tunings.");        
 
@@ -22,10 +24,10 @@ public class OperationSelectionPanel extends BasePanel {
         // Check 'First' by default.
         btnImport.setValue(true);
 
-        super.add(lab);
-        super.add(btnImport);
-        super.add(btnExportCur);
-        super.add(btnExportPrev);
+        add(lab);
+        add(btnImport);
+        add(btnExportCur);
+        add(btnExportPrev);
     }
 
     public boolean isImportSelected() {

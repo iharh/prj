@@ -12,11 +12,9 @@ public class BasePanel extends VerticalPanel implements WizardPage {
 
     public BasePanel() {
         super();
-        setSize("100%", "450px");
+        setSize("100%", "auto"); // % or absolute value lead to controls streach
         setSpacing(spacing);
         setBorderWidth(borderW);
-        setHorizontalAlignment(HasHorizontalAlignment.ALIGN_LEFT);
-        setVerticalAlignment(HasVerticalAlignment.ALIGN_TOP);
     }
 
     @Override

@@ -90,12 +90,11 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
 
     private Widget createDialogContents() {
         dialogPanel = new DockLayoutPanel(Unit.PX);
-        //dialogPanel.setSize("100%", allH + "px");
         dialogPanel.setSize(allW + "px", allH + "px");
-        dialogPanel.setStyleName("AdHocWizardMainPanel");
+        //dialogPanel.setStyleName("AdHocWizardMainPanel"); // TODO: put back
 
         steps = new DeckPanel();
-	//steps.setHeight(Integer.toString(STEPS_AVAILABLE_HEIGHT) + "px");
+	steps.setSize(allW + "px", STEPS_AVAILABLE_HEIGHT + "px");
 
         stepOperationSelection = new OperationSelectionPanel();
         step2 = new TempPanel("here will be import");
@@ -105,7 +104,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
 
         stepNavigator = new StepNavigator(this);
         buttonsPanel = new ButtonsPanel(stepNavigator);
-        buttonsPanel.setHeight(BUTTONS_AVAILABLE_HEIGHT + "px");
+        buttonsPanel.setSize(allW + "px", BUTTONS_AVAILABLE_HEIGHT + "px");
 
         configureWizard();
 

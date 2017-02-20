@@ -25,13 +25,13 @@ import com.google.gwt.view.client.SingleSelectionModel;
 import java.util.List;
 import java.util.LinkedList;
 
-import com.google.gwt.user.client.ui.DockLayoutPanel;
-
 public class RecentSentimentExportsPanel extends BasePanel {
     private SentimentsMessages msgs;
 
     private DataGrid<RecentSentimentExportsInfo> dataGrid;
     private SingleSelectionModel<RecentSentimentExportsInfo> selectionModel;
+
+    private ListDataProvider<RecentSentimentExportsInfo> dataProvider;
 
     long projectId;
     private RecentSentimentExportsServiceAsync svcAsync;
@@ -47,7 +47,9 @@ public class RecentSentimentExportsPanel extends BasePanel {
     }
 
     private void createMainContent() {
-        super.add(new InlineLabel(msgs.rseText()));
+        setSize("100%", "400px");
+        //addStyleName("myRecentSentimentExportsPanel");
+        add(new InlineLabel(msgs.rseText()));
 
         ProvidesKey<RecentSentimentExportsInfo> keyProvider = new ProvidesKey<RecentSentimentExportsInfo>() {
             public Object getKey(RecentSentimentExportsInfo i) {
@@ -57,8 +59,7 @@ public class RecentSentimentExportsPanel extends BasePanel {
         };
 
         dataGrid = new DataGrid<RecentSentimentExportsInfo>(5, keyProvider);
-	//dataGrid.setSize("100%", "100%");
-	dataGrid.setSize("100%", "100%"); // 400
+	dataGrid.setSize("100%", "400px"); // 100%
 
 	dataGrid.setEmptyTableWidget(new HTML(msgs.rseNoExportsDefined()));
 
@@ -90,24 +91,11 @@ public class RecentSentimentExportsPanel extends BasePanel {
         dataGrid.setSelectionModel(selectionModel);
         //dataGrid.setAlwaysShowScrollBars(true);
         //http://samples.gwtproject.org/samples/Showcase/Showcase.html#!CwDataGrid
+        dataProvider = new ListDataProvider<RecentSentimentExportsInfo>();
+        dataProvider.setList(new LinkedList<RecentSentimentExportsInfo>());
+        dataProvider.addDataDisplay(dataGrid);
 
-        final ListDataProvider<RecentSentimentExportsInfo> dataProvider = new ListDataProvider<RecentSentimentExportsInfo>();
-
-        svcAsync.getExports(projectId, new AbstractAsyncCallback<List<RecentSentimentExportsInfo>>() {
-            @Override
-            public void onSuccess(List<RecentSentimentExportsInfo> rowData) {
-                // dataGrid.setRowData(rowData); // does not preserve page size
-                dataProvider.getList().addAll(rowData);
-                dataProvider.addDataDisplay(dataGrid);
-            }
-        });
-/*
-        List<RecentSentimentExportsInfo> rowData = new LinkedList<RecentSentimentExportsInfo>();
-        RecentSentimentExportsInfo i1 = new RecentSentimentExportsInfo("f1", "n1", "ts1", true, false);
-        rowData.add(i1);
-        dataGrid.setRowData(rowData);
-*/
-        super.add(dataGrid);
+        add(dataGrid);
     }
 
     private String getParams(boolean words, boolean rules) {
@@ -125,7 +113,15 @@ public class RecentSentimentExportsPanel extends BasePanel {
 
     @Override
     public void onEnter() {
-        clear();
-        createMainContent();
+        svcAsync.getExports(projectId, new AbstractAsyncCallback<List<RecentSentimentExportsInfo>>() {
+            @Override
+            public void onSuccess(List<RecentSentimentExportsInfo> rowData) {
+                dataProvider.getList().clear();
+                dataProvider.getList().addAll(rowData);
+                dataProvider.refresh();
+                // dataGrid.setRowData(rowData); // does not preserve page size
+                //dataGrid.redraw();
+            }
+        });
     }
 }
