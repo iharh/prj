@@ -32,6 +32,7 @@ public class RecentSentimentExportsPanel extends BasePanel {
 
     private SentimentsMessages msgs;
 
+    private DataGrid<RecentSentimentExportsInfo> dataGrid;
     private SingleSelectionModel<RecentSentimentExportsInfo> selectionModel;
 
     long projectId;
@@ -44,6 +45,10 @@ public class RecentSentimentExportsPanel extends BasePanel {
 
         msgs = SentimentsMessages.INSTANCE;
 
+        initMe();
+    }
+
+    private void initMe() {
         super.add(new InlineLabel(msgs.rseText()));
 
         ProvidesKey<RecentSentimentExportsInfo> keyProvider = new ProvidesKey<RecentSentimentExportsInfo>() {
@@ -53,7 +58,7 @@ public class RecentSentimentExportsPanel extends BasePanel {
             }
         };
 
-        final DataGrid<RecentSentimentExportsInfo> dataGrid = new DataGrid<RecentSentimentExportsInfo>(5, keyProvider);
+        dataGrid = new DataGrid<RecentSentimentExportsInfo>(5, keyProvider);
 	//dataGrid.setSize("100%", "100%");
 	dataGrid.setSize("100%", "75px"); // 400
 
@@ -120,4 +125,14 @@ public class RecentSentimentExportsPanel extends BasePanel {
         }
         return result.length() > 0 ? result.substring(1) : result.toString();
     }
+
+    @Override
+    public void onEnter() {
+        clear();
+        initMe();
+        LogUtils.log("onEnter");
+    }
+
+    @Override
+    public void onLeave() { }
 }
