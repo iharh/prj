@@ -145,8 +145,8 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
         // ??? dialogPanel.add(placeHolder);
         dialogPanel.addSouth(buttonsPanel, BUTTONS_AVAILABLE_HEIGHT);
 
-        // stepOperationSelection
-        stepNavigator.start(stepResentSentimentExports);
+        stepNavigator.start(stepOperationSelection);
+        //stepNavigator.start(stepResentSentimentExports);
     }
 
     @Override
