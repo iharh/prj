@@ -95,6 +95,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
 
         steps = new DeckPanel();
 	steps.setSize(allW + "px", STEPS_AVAILABLE_HEIGHT + "px");
+        //steps.addStyleName("myDeckPanel");
 
         stepOperationSelection = new OperationSelectionPanel();
         step2 = new TempPanel("here will be import");
