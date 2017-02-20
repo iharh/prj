@@ -47,7 +47,7 @@ public class RecentSentimentExportsPanel extends BasePanel {
     }
 
     private void createMainContent() {
-        setSize("100%", "400px");
+        setSize("100%", "auto"); // 450px
         //addStyleName("myRecentSentimentExportsPanel");
         add(new InlineLabel(msgs.rseText()));
 
@@ -58,8 +58,8 @@ public class RecentSentimentExportsPanel extends BasePanel {
             }
         };
 
-        dataGrid = new DataGrid<RecentSentimentExportsInfo>(5, keyProvider);
-	dataGrid.setSize("100%", "400px"); // 100%
+        dataGrid = new DataGrid<RecentSentimentExportsInfo>(keyProvider); // default page size is 50
+	dataGrid.setSize("100%", "300px"); // 100% 350px
 
 	dataGrid.setEmptyTableWidget(new HTML(msgs.rseNoExportsDefined()));
 
