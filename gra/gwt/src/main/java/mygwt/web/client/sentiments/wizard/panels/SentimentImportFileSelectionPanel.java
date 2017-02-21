@@ -1,5 +1,7 @@
 package mygwt.web.client.sentiments.wizard.panels;
 
+import mygwt.web.client.sentiments.wizard.SentimentsWizard;
+
 import mygwt.web.client.sentiments.wizard.panels.ButtonsPanel;
 
 import mygwt.web.client.sentiments.upload.SentimentUploadException;
@@ -47,6 +49,7 @@ public class SentimentImportFileSelectionPanel extends BasePanel {
 
     private SentimentUploadMessages msgs;
 
+    private SentimentsWizard sentimentsWizard;
     private ButtonsPanel buttonsPanel;
     private SentimentUploadServiceAsync sentimentService;
 
@@ -59,8 +62,9 @@ public class SentimentImportFileSelectionPanel extends BasePanel {
     private String sentFileName;
     private boolean waitingFileUploadValidationResults;
 
-    public SentimentImportFileSelectionPanel(ButtonsPanel buttonsPanel, SentimentUploadServiceAsync sentimentService) {
+    public SentimentImportFileSelectionPanel(SentimentsWizard sentimentsWizard, ButtonsPanel buttonsPanel, SentimentUploadServiceAsync sentimentService) {
         super();
+        this.sentimentsWizard = sentimentsWizard;
         this.buttonsPanel = buttonsPanel;
         this.sentimentService = sentimentService;
 
@@ -192,7 +196,6 @@ public class SentimentImportFileSelectionPanel extends BasePanel {
         }
     }
 
-
     private void getPreliminaryUploadResults() {
         try {
             sentimentService.getPreliminaryUploadResults(
@@ -214,42 +217,32 @@ public class SentimentImportFileSelectionPanel extends BasePanel {
 
                     @Override
                     public void onSuccess(SentimentUploadValidationResult result) {
-                        // getWizard().getModel().setSentimentUploadValidationResult(result); // TODO: TBD
-                        if (result.isNegatorTuned()){
+                        sentimentsWizard.getImportModel().setSentimentUploadValidationResult(result);
+                        if (result.isNegatorTuned()) {
                             YesNoDialog dialog = new YesNoDialog(msgs.warning(), msgs.fileUploadNegatorTuned(),
                                 new ClickHandler() {
                                     @Override
                                     public void onClick(ClickEvent event) {
                                         statusLabel.setHTML(msgs.statusSuccess());
-                                        // getWizard().showUploadResults(); // TODO: TBD
+                                        sentimentsWizard.showUploadResults();
                                     }
                                 }, new ClickHandler() {
                                     @Override
                                     public void onClick(ClickEvent event) {
                                         MessageDialog.showMessage(msgs.fileUploadNegatorTunedCancel());
-                                        // getWizard().onCancel(); // TODO: TBD
+                                        sentimentsWizard.onCancel();
                                     }
                             });
                             dialog.show();
                         } else {
                             statusLabel.setHTML(msgs.statusSuccess());
-                            // getWizard().showUploadResults(); // TODO: TBD
+                            sentimentsWizard.showUploadResults();
                         }
                     }
             });
         } catch (ServiceException e) {
             statusLabel.setHTML(msgs.statusFail() + e.getLocalizedMessage());
         }
-    }
-
-    // was at base class
-
-    private static String handleException(SentimentUploadException caught) {
-        String result = "<br/>";
-        SentimentUploadException e = (SentimentUploadException) caught;
-        String mess = SentimentUploadMessagesHelper.getMessage(e);
-        result += (mess != null && !mess.isEmpty()) ? mess : e.getLocalizedMessage();
-        return result;
     }
 
     private void clearStatusLabel(String text) {
@@ -262,5 +255,15 @@ public class SentimentImportFileSelectionPanel extends BasePanel {
         super.onEnter();
         clearStatusLabel(msgs.selectFileMess());
         buttonsPanel.disableNext();
+    }
+
+    // was at base class
+
+    private static String handleException(SentimentUploadException caught) {
+        String result = "<br/>";
+        SentimentUploadException e = (SentimentUploadException) caught;
+        String mess = SentimentUploadMessagesHelper.getMessage(e);
+        result += (mess != null && !mess.isEmpty()) ? mess : e.getLocalizedMessage();
+        return result;
     }
 }

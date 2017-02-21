@@ -18,7 +18,7 @@ public class MyEntryPoint implements EntryPoint {
         //return new SampleDialog();
         //return new ExportSentimentsDialog();
         //return new RecentSentimentExportsDialog();
-        return new SentimentsWizard(0);
+        return new SentimentsWizard();
     }
 
     @Override

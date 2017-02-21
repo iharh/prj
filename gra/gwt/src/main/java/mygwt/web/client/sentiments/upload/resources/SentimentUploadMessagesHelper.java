@@ -1,5 +1,7 @@
 package mygwt.web.client.sentiments.upload.resources;
 
+import mygwt.web.client.sentiments.upload.SentimentUploadException;
+
 import mygwt.portal.dto.SentimentUploadConstants;
 
 import java.util.HashMap;

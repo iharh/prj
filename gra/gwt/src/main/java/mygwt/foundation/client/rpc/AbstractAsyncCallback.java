@@ -36,13 +36,13 @@ import java.util.logging.LogRecord;
 public abstract class AbstractAsyncCallback<T> implements AsyncCallback<T> {
     private static final String LOGIN_PAGE_PART = "<script ";
 
-    /*public static final AbstractAsyncCallback<Void> VOID_CALLBACK = new AbstractAsyncCallback<Void>() {
+    public static final AbstractAsyncCallback<Void> VOID_CALLBACK = new AbstractAsyncCallback<Void>() {
         @Override
         public void onSuccess(Void arg0) {
         }
     };
     
-    public static interface LockStateListener {
+    /*public static interface LockStateListener {
         void onLockStateChanged(long nodeId, int statte, long lockUserId);
         void lockCurrentItem(long nodeId, int statte, long lockUserId);
     }
