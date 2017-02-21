@@ -13,8 +13,6 @@ public class OperationSelectionPanel extends BasePanel {
     public OperationSelectionPanel() {
         super();
         //addStyleName("myOperationSelectionPanel");
-        setSize("100%", "auto");
-
         add(new InlineLabel("Please choose an option for managing your sentiment tunings."));
 
         btnImport = new RadioButton(BUTTON_GROUP, "Import sentiment from a Microsoft Excel file on your computer");

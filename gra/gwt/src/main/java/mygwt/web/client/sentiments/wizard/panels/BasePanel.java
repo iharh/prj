@@ -12,7 +12,7 @@ public class BasePanel extends VerticalPanel implements WizardPage {
 
     public BasePanel() {
         super();
-        setSize("100%", "auto"); // % or absolute value lead to controls streach
+        setSize("100%", "auto");
         setSpacing(spacing);
         setBorderWidth(borderW);
     }

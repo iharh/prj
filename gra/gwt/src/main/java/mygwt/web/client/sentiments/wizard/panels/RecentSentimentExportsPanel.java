@@ -47,7 +47,6 @@ public class RecentSentimentExportsPanel extends BasePanel {
     }
 
     private void createMainContent() {
-        setSize("100%", "auto"); // 450px
         //addStyleName("myRecentSentimentExportsPanel");
         add(new InlineLabel(msgs.rseText()));
 
@@ -113,6 +112,7 @@ public class RecentSentimentExportsPanel extends BasePanel {
 
     @Override
     public void onEnter() {
+        super.onEnter();
         svcAsync.getExports(projectId, new AbstractAsyncCallback<List<RecentSentimentExportsInfo>>() {
             @Override
             public void onSuccess(List<RecentSentimentExportsInfo> rowData) {
