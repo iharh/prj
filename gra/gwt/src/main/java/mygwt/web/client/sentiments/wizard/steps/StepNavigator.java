@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class StepNavigator implements WizardActionHandler {
-    StepProvider stepProvider;
+    private StepProvider stepProvider;
 
     private int stepsSize;
     private Set<WizardPage> pages;

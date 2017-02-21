@@ -33,12 +33,10 @@ public class RecentSentimentExportsPanel extends BasePanel {
 
     private ListDataProvider<RecentSentimentExportsInfo> dataProvider;
 
-    long projectId;
     private RecentSentimentExportsServiceAsync svcAsync;
 
-    public RecentSentimentExportsPanel(long projectId, RecentSentimentExportsServiceAsync svcAsync) {
+    public RecentSentimentExportsPanel(RecentSentimentExportsServiceAsync svcAsync) {
         super();
-        this.projectId = projectId;
         this.svcAsync = svcAsync;
 
         msgs = SentimentsMessages.INSTANCE;
@@ -113,7 +111,7 @@ public class RecentSentimentExportsPanel extends BasePanel {
     @Override
     public void onEnter() {
         super.onEnter();
-        svcAsync.getExports(projectId, new AbstractAsyncCallback<List<RecentSentimentExportsInfo>>() {
+        svcAsync.getExports(getProjectId(), new AbstractAsyncCallback<List<RecentSentimentExportsInfo>>() {
             @Override
             public void onSuccess(List<RecentSentimentExportsInfo> rowData) {
                 dataProvider.getList().clear();

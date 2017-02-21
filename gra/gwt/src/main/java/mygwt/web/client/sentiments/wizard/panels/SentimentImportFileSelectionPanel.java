@@ -1,6 +1,11 @@
 package mygwt.web.client.sentiments.wizard.panels;
 
+import mygwt.web.client.sentiments.wizard.panels.ButtonsPanel;
+
 import mygwt.web.client.sentiments.upload.SentimentUploadException;
+import mygwt.web.client.sentiments.upload.resources.SentimentUploadMessagesHelper;
+
+import mygwt.foundation.client.exception.ServiceException;
 
 import mygwt.common.client.service.SentimentUploadServiceAsync;
 import mygwt.common.client.widget.dialog.MessageDialog;
@@ -9,14 +14,13 @@ import mygwt.web.client.sentiments.upload.resources.SentimentUploadMessages;
 import mygwt.web.client.utils.LogUtils;
 
 import mygwt.portal.dto.SentimentUploadValidationResult;
+import mygwt.portal.dto.SentimentUploadConstants;
 
 import mygwt.foundation.client.csrf.CsrfFormPanel;
 import mygwt.foundation.client.rpc.AbstractAsyncCallback;
 import mygwt.foundation.client.widget.AjaxLoaderImage;
 import mygwt.foundation.client.widget.dialog.SessionExpiredDialog;
 import mygwt.foundation.client.widget.dialog.YesNoDialog;
-
-import mygwt.foundation.client.exception.ServiceException;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
@@ -38,15 +42,12 @@ import com.google.gwt.user.client.ui.FormPanel;
 import com.google.gwt.user.client.ui.FormPanel.SubmitCompleteEvent;
 import com.google.gwt.user.client.ui.FormPanel.SubmitEvent;
 
-import java.util.Map;
-import java.util.HashMap;
-
 public class SentimentImportFileSelectionPanel extends BasePanel {
     private static final String ERROR_MESSAGE_STYLE = "errorMessage";
 
     private SentimentUploadMessages msgs;
 
-    private long projectId;
+    private ButtonsPanel buttonsPanel;
     private SentimentUploadServiceAsync sentimentService;
 
     private Image wheel;
@@ -58,9 +59,9 @@ public class SentimentImportFileSelectionPanel extends BasePanel {
     private String sentFileName;
     private boolean waitingFileUploadValidationResults;
 
-    public SentimentImportFileSelectionPanel(long projectId, SentimentUploadServiceAsync sentimentService) {
+    public SentimentImportFileSelectionPanel(ButtonsPanel buttonsPanel, SentimentUploadServiceAsync sentimentService) {
         super();
-        this.projectId = projectId;
+        this.buttonsPanel = buttonsPanel;
         this.sentimentService = sentimentService;
 
         msgs = SentimentUploadMessages.INSTANCE;
@@ -73,7 +74,7 @@ public class SentimentImportFileSelectionPanel extends BasePanel {
 
         sentFileName = "";
 	form = new CsrfFormPanel();
-        form.setAction(GWT.getHostPageBaseURL() + "sentiment_upload.action"); //$NON-NLS-1$
+        form.setAction(GWT.getHostPageBaseURL() + "sentiment_upload.action");
         // Because we're going to add a FileUpload widget, we'll need to set the
         // form to use the POST method, and multipart MIME encoding.
         form.setEncoding(FormPanel.ENCODING_MULTIPART);
@@ -114,7 +115,7 @@ public class SentimentImportFileSelectionPanel extends BasePanel {
             public void onChange(ChangeEvent event) {
                 statusLabel.removeStyleName(ERROR_MESSAGE_STYLE);
                 statusLabel.setText("");
-                // getWizard().getButtonsPanel().enableNext(); // TODO: TBD
+                buttonsPanel.enableNext();
                 sentFileName = "";
             }
         });
@@ -142,12 +143,12 @@ public class SentimentImportFileSelectionPanel extends BasePanel {
     private final class SubmitHandler implements FormPanel.SubmitHandler {
         @Override
         public void onSubmit(SubmitEvent event) {
-            projIdHidden.setValue(String.valueOf(projectId)); // TODO: FileSelectionPanel.this.getWizard().getProjectId())
+            projIdHidden.setValue(String.valueOf(getProjectId()));
             sentFileName = upload.getFilename();
             statusLabel.removeStyleName(ERROR_MESSAGE_STYLE);
             if (validateForm()) {
                 statusLabel.setText(msgs.fileUploadingMess());
-                //getWizard().getButtonsPanel().disableNext(); // TODO: TBD
+                buttonsPanel.disableNext();
                 wheel.setVisible(true);
                 waitingFileUploadValidationResults = true;
             } else {
@@ -179,24 +180,18 @@ public class SentimentImportFileSelectionPanel extends BasePanel {
         String error = event.getResults();
 
         if (error == null || error.isEmpty()) {
-            //TODO set appropriate message.
             String statusLab = msgs.fetchingSampleDataMess();
             clearStatusLabel(statusLab);
             getPreliminaryUploadResults();
-        } else if (error.contains("j_spring_security_check")) { //$NON-NLS-1$
+        } else if (error.contains("j_spring_security_check")) {
             SessionExpiredDialog.showDialog();
         } else {
             statusLabel.addStyleName(ERROR_MESSAGE_STYLE);
             statusLabel.setText(error);
-            sentFileName = ""; //$NON-NLS-1$
+            sentFileName = "";
         }
     }
 
-
-    private void clearStatusLabel(String text) {
-        statusLabel.removeStyleName(ERROR_MESSAGE_STYLE);
-        statusLabel.setHTML(text);
-    }
 
     private void getPreliminaryUploadResults() {
         try {
@@ -206,7 +201,7 @@ public class SentimentImportFileSelectionPanel extends BasePanel {
                     public void onFailure(Throwable caught) {
                         String errorMessage = msgs.fetchSampleDataErrorMess();
                         wheel.setVisible(false);
-                        // getWizard().enableNext(); // TODO: TBD
+                        buttonsPanel.enableNext();
                         if (caught instanceof SentimentUploadException) {
                             errorMessage += handleException((SentimentUploadException) caught);
                         } else {
@@ -247,12 +242,6 @@ public class SentimentImportFileSelectionPanel extends BasePanel {
         }
     }
 
-    @Override
-    public void onEnter() {
-        super.onEnter();
-        clearStatusLabel(msgs.selectFileMess());
-    }
-
     // was at base class
 
     private static String handleException(SentimentUploadException caught) {
@@ -263,39 +252,15 @@ public class SentimentImportFileSelectionPanel extends BasePanel {
         return result;
     }
 
-    // TODO: don't port
-
-    private static final class SentimentUploadMessagesHelper {
-	private static final Map<String, String> MAP = new HashMap<String, String>();
-	
-	static {
-            MAP.put(SentimentUploadConstants.UPLOAD_ERROR_CANTSAVE, SentimentUploadMessages.INSTANCE.fileUploadErrorCantSave());
-        }
-        
-        private SentimentUploadMessagesHelper() {
-        }
-
-	public static String getMessage(SentimentUploadException e) {
-            StringBuilder result = new StringBuilder();
-            String key = e.getErrorKey();
-
-            result.append(getMessage(key));
-            return result.toString();
-	}
-
-	public static String getMessage(String key) {
-            String result = null;
-            if (key != null) {
-                result = MAP.get(key.toLowerCase());
-            }
-            return (result == null) ? "" : result;
-	}
+    private void clearStatusLabel(String text) {
+        statusLabel.removeStyleName(ERROR_MESSAGE_STYLE);
+        statusLabel.setHTML(text);
     }
 
-    private static final class SentimentUploadConstants {
-	public static final String UPLOAD_ERROR_CANTSAVE = "sentiment.upload.upload.error.cantsave";
-
-	private SentimentUploadConstants() {
-        }
+    @Override
+    public void onEnter() {
+        super.onEnter();
+        clearStatusLabel(msgs.selectFileMess());
+        buttonsPanel.disableNext();
     }
 }

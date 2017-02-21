@@ -24,17 +24,22 @@
 -->
 
     <source path="common/client/context"/>
+    <source path="common/client/service"/>
     <source path="common/client/url"/>
+    <source path="common/client/widget/dialog"/>
+    <source path="common/client/widget/resources"/>
     <source path="common/security/model"/>
     <source path="foundation/client/csrf"/>
     <source path="foundation/client/exception"/>
     <source path="foundation/client/resources"/>
     <source path="foundation/client/rpc"/>
     <source path="foundation/client/util"/>
+    <source path="foundation/client/widget"/>
     <source path="foundation/client/widget/button"/>
     <source path="foundation/client/widget/dialog"/>
     <source path="foundation/client/widget/list"/>
     <source path="foundation/shared/model"/>
+    <source path="portal/dto"/>
     <source path="portal/dto/sentiments/rse"/>
     <source path="web/adhoc/client/wizard"/>
     <source path="web/client"/>

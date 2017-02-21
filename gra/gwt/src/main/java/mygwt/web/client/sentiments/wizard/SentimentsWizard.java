@@ -15,9 +15,9 @@ import mygwt.web.client.sentiments.wizard.steps.StepNavigator;
 import mygwt.web.client.sentiments.wizard.steps.NextPageDetector;
 
 import mygwt.web.client.sentiments.wizard.panels.OperationSelectionPanel;
+import mygwt.web.client.sentiments.wizard.panels.SentimentImportFileSelectionPanel;
 import mygwt.web.client.sentiments.wizard.panels.SentimentExportPanel;
 import mygwt.web.client.sentiments.wizard.panels.RecentSentimentExportsPanel;
-import mygwt.web.client.sentiments.wizard.panels.TempPanel;
 import mygwt.web.client.sentiments.wizard.panels.ButtonsPanel;
 
 import mygwt.web.client.utils.LogUtils;
@@ -67,14 +67,13 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
     private OperationSelectionPanel stepOperationSelection;
     private SentimentExportPanel stepSentimentExport;
     private RecentSentimentExportsPanel stepResentSentimentExports;
-    private TempPanel step2;
+    private SentimentImportFileSelectionPanel stepSentimentImportFileSelection;
     private ButtonsPanel buttonsPanel;
 
     private int currentStep = 0;
 
-    public SentimentsWizard(long projectId) {
+    public SentimentsWizard() {
         super("Sentiment Management", allW, allH); // SentimentsMessages.INSTANCE.rseTitle() change title !!!
-        this.projectId = projectId;
 
         msgs = SentimentsMessages.INSTANCE;
 
@@ -89,23 +88,22 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
     }
 
     private Widget createDialogContents() {
+        stepNavigator = new StepNavigator(this);
+        buttonsPanel = new ButtonsPanel(stepNavigator);
+
         dialogPanel = new DockLayoutPanel(Unit.PX);
         dialogPanel.setSize(allW + "px", allH + "px");
-        //dialogPanel.setStyleName("AdHocWizardMainPanel"); // TODO: put back
+        dialogPanel.setStyleName("AdHocWizardMainPanel");
 
         steps = new DeckPanel();
 	steps.setSize(allW + "px", STEPS_AVAILABLE_HEIGHT + "px");
         //steps.addStyleName("myDeckPanel");
 
         stepOperationSelection = new OperationSelectionPanel();
-        step2 = new TempPanel("here will be import");
+        stepSentimentImportFileSelection = new SentimentImportFileSelectionPanel(buttonsPanel, null);
         stepSentimentExport = new SentimentExportPanel();
-        stepResentSentimentExports = new RecentSentimentExportsPanel(projectId, getSvcAsync());
+        stepResentSentimentExports = new RecentSentimentExportsPanel(getSvcAsync());
         // ...(this);
-
-        stepNavigator = new StepNavigator(this);
-        buttonsPanel = new ButtonsPanel(stepNavigator);
-        buttonsPanel.setSize(allW + "px", BUTTONS_AVAILABLE_HEIGHT + "px");
 
         configureWizard();
 
@@ -116,7 +114,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
         dialogPanel.clear();
 
         steps.add(stepNavigator.addPage(stepOperationSelection));  
-        steps.add(stepNavigator.addPage(step2));  
+        steps.add(stepNavigator.addPage(stepSentimentImportFileSelection));  
         steps.add(stepNavigator.addPage(stepSentimentExport));  
         steps.add(stepNavigator.addPage(stepResentSentimentExports));  
         
@@ -125,7 +123,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
                 @Override
                 public WizardPage next() {
                     if (stepOperationSelection.isImportSelected()) {
-                        return step2;
+                        return stepSentimentImportFileSelection;
                     } else if (stepOperationSelection.isExportCurSelected()) {
                         return stepSentimentExport;
                     } else if (stepOperationSelection.isExportPrevSelected()) {
@@ -137,6 +135,8 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
         );
         
         dialogPanel.addNorth(steps, STEPS_AVAILABLE_HEIGHT);
+
+        buttonsPanel.setSize(allW + "px", BUTTONS_AVAILABLE_HEIGHT + "px");
 
         buttonsPanel.disableBack();
         buttonsPanel.enableNext();
@@ -165,6 +165,12 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
 
     public void onBrowserEvent(Event event) {
         super.onBrowserEvent(event);
+    }
+
+    // ApplicationContext.get().getProjectId();
+
+    public void setProjectId(long projectId) {
+        this.projectId = projectId;
     }
 
     @Override
