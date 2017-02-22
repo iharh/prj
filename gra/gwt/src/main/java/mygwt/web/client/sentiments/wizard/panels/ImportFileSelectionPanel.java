@@ -1,28 +1,26 @@
 package mygwt.web.client.sentiments.wizard.panels;
 
-import mygwt.web.client.sentiments.wizard.ImportModel;
-
-import mygwt.web.client.sentiments.wizard.panels.ButtonsPanel;
-
 import mygwt.web.client.sentiments.upload.SentimentUploadException;
+import mygwt.web.client.sentiments.upload.resources.SentimentUploadMessages;
 import mygwt.web.client.sentiments.upload.resources.SentimentUploadMessagesHelper;
-
-import mygwt.foundation.client.exception.ServiceException;
+import mygwt.web.client.sentiments.wizard.ImportModel;
+import mygwt.web.client.sentiments.wizard.steps.StepNavigator;
+import mygwt.web.client.sentiments.wizard.panels.ButtonsPanel;
 
 import mygwt.common.client.service.SentimentUploadServiceAsync;
 import mygwt.common.client.widget.dialog.MessageDialog;
-
-import mygwt.web.client.sentiments.upload.resources.SentimentUploadMessages;
-import mygwt.web.client.utils.LogUtils;
 
 import mygwt.portal.dto.SentimentUploadValidationResult;
 import mygwt.portal.dto.SentimentUploadConstants;
 
 import mygwt.foundation.client.csrf.CsrfFormPanel;
 import mygwt.foundation.client.rpc.AbstractAsyncCallback;
+import mygwt.foundation.client.exception.ServiceException;
 import mygwt.foundation.client.widget.AjaxLoaderImage;
 import mygwt.foundation.client.widget.dialog.SessionExpiredDialog;
 import mygwt.foundation.client.widget.dialog.YesNoDialog;
+
+import mygwt.web.client.utils.LogUtils;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
@@ -67,7 +65,7 @@ public class ImportFileSelectionPanel extends BasePanel {
         super();
         this.importModel = importModel;
         this.buttonsPanel = buttonsPanel;
-        this.StepNavigator = stepNavigator;
+        this.stepNavigator = stepNavigator;
         this.sentimentService = sentimentService;
 
         msgs = SentimentUploadMessages.INSTANCE;
@@ -249,12 +247,6 @@ public class ImportFileSelectionPanel extends BasePanel {
         }
     }
 
-    private void showUploadResults() {
-        if (importModel.saveDataToModel()) {
-            stepNavigator.onNext();
-        }
-    }
-
     private void clearStatusLabel(String text) {
         statusLabel.removeStyleName(ERROR_MESSAGE_STYLE);
         statusLabel.setHTML(text);
@@ -271,6 +263,12 @@ public class ImportFileSelectionPanel extends BasePanel {
             return false;
         }
         return importModel.getSentimentUploadValidationResult() != null;
+    }
+
+    private void showUploadResults() {
+        if (saveDataToModel()) {
+            stepNavigator.onNext();
+        }
     }
 
     @Override
