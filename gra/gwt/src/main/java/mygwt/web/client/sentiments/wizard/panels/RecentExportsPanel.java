@@ -57,7 +57,7 @@ public class RecentExportsPanel extends BasePanel {
         };
 
         dataGrid = new DataGrid<RecentSentimentExportsInfo>(keyProvider); // default page size is 50
-	dataGrid.setSize("100%", "300px"); // 100% 350px
+	dataGrid.setSize("100%", "150px"); // 100% 350px
 
 	dataGrid.setEmptyTableWidget(new HTML(msgs.rseNoExportsDefined()));
 
