@@ -7,7 +7,6 @@ import mygwt.common.client.service.SentimentUploadService;
 
 import mygwt.foundation.client.rpc.AbstractAsyncCallback;
 
-import mygwt.foundation.client.csrf.ProjectIdAware;
 import mygwt.foundation.client.csrf.CsrfRpcRequestBuilder;
 
 import mygwt.web.client.sentiments.rse.RecentSentimentExportsService;
@@ -22,6 +21,7 @@ import mygwt.web.client.sentiments.wizard.steps.NextPageDetector;
 import mygwt.web.client.sentiments.wizard.panels.OperationSelectionPanel;
 import mygwt.web.client.sentiments.wizard.panels.OperationSelectionPanel;
 import mygwt.web.client.sentiments.wizard.panels.ImportFileSelectionPanel;
+import mygwt.web.client.sentiments.wizard.panels.ImportFinishPanel;
 import mygwt.web.client.sentiments.wizard.panels.ExportPanel;
 import mygwt.web.client.sentiments.wizard.panels.RecentExportsPanel;
 import mygwt.web.client.sentiments.wizard.panels.ButtonsPanel;
@@ -55,7 +55,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 
 
-public class SentimentsWizard extends BaseDialogBox implements StepProvider, ProjectIdAware {
+public class SentimentsWizard extends BaseDialogBox implements StepProvider {
     private static final int STEPS_AVAILABLE_HEIGHT   = 450;
     private static final int BUTTONS_AVAILABLE_HEIGHT = 75;
     private static final int allH                     = STEPS_AVAILABLE_HEIGHT + BUTTONS_AVAILABLE_HEIGHT;
@@ -65,7 +65,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
 
     private ImportModel importModel;
 
-    private long projectId;
+    private ProjectIdAwareImpl projectIdAwareImpl;
 
     private DockLayoutPanel dialogPanel;
 
@@ -76,12 +76,13 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
     private ExportPanel stepExport;
     private RecentExportsPanel stepRecentExports;
     private ImportFileSelectionPanel stepImportFileSelection;
+    private ImportFinishPanel stepImportFinish;
     private ButtonsPanel buttonsPanel;
 
     private int currentStep = 0;
 
     public SentimentsWizard() {
-        super("Sentiment Management", allW, allH); // SentimentsMessages.INSTANCE.rseTitle() change title !!!
+        super("Sentiment Management", allW, allH);
 
         msgs = SentimentsMessages.INSTANCE;
 
@@ -93,6 +94,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
     }
 
     private Widget createDialogContents() {
+        projectIdAwareImpl = new ProjectIdAwareImpl();
         stepNavigator = new StepNavigator(this);
         buttonsPanel = new ButtonsPanel(stepNavigator);
 
@@ -102,13 +104,12 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
 
         stepsPanel = new DeckPanel();
 	stepsPanel.setSize(allW + "px", STEPS_AVAILABLE_HEIGHT + "px");
-        //stepsPanel.addStyleName("myDeckPanel");
 
         stepOperationSelection = new OperationSelectionPanel();
-        stepImportFileSelection = new ImportFileSelectionPanel(importModel, buttonsPanel, stepNavigator, getSentimentUploadSvcAsync());
-        stepExport = new ExportPanel();
-        stepRecentExports = new RecentExportsPanel(getRecentSentimentExportsSvcAsync());
-        // ...(this);
+        stepImportFileSelection = new ImportFileSelectionPanel(projectIdAwareImpl, importModel, buttonsPanel, stepNavigator, getSentimentUploadSvcAsync());
+        stepImportFinish = new ImportFinishPanel(projectIdAwareImpl, importModel, buttonsPanel, stepNavigator, getSentimentUploadSvcAsync());
+        stepExport = new ExportPanel(projectIdAwareImpl);
+        stepRecentExports = new RecentExportsPanel(projectIdAwareImpl, getRecentSentimentExportsSvcAsync());
 
         configureWizard();
 
@@ -120,6 +121,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
 
         stepsPanel.add(stepNavigator.addPage(stepOperationSelection));  
         stepsPanel.add(stepNavigator.addPage(stepImportFileSelection));  
+        stepsPanel.add(stepNavigator.addPage(stepImportFinish));  
         stepsPanel.add(stepNavigator.addPage(stepExport));  
         stepsPanel.add(stepNavigator.addPage(stepRecentExports));  
         
@@ -138,6 +140,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
                 }
             }
         );
+        stepNavigator.addNextPageTo(stepImportFileSelection, stepImportFinish);
         
         dialogPanel.addNorth(stepsPanel, STEPS_AVAILABLE_HEIGHT);
 
@@ -147,11 +150,21 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
         buttonsPanel.enableNext();
         buttonsPanel.disableFinish();
 
-        // ??? dialogPanel.add(placeHolder);
         dialogPanel.addSouth(buttonsPanel, BUTTONS_AVAILABLE_HEIGHT);
 
-        stepNavigator.start(stepOperationSelection);
-        //stepNavigator.start(stepRecentExports);
+        stepNavigator.start(stepOperationSelection); // stepRecentExports
+    }
+
+    public void onBrowserEvent(Event event) {
+        super.onBrowserEvent(event);
+    }
+
+    public ImportModel getImportModel() {
+        return importModel;
+    }
+
+    public long getProjectId() {
+        return projectIdAwareImpl.getProjectId();
     }
 
     @Override
@@ -166,25 +179,6 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
     @Override
     protected void onClose() {	
         super.onClose();
-    }
-
-    public void onBrowserEvent(Event event) {
-        super.onBrowserEvent(event);
-    }
-
-    public ImportModel getImportModel() {
-        return importModel;
-    }
-
-    // ApplicationContext.get().getProjectId();
-
-    public void setProjectId(long projectId) {
-        this.projectId = projectId;
-    }
-
-    @Override
-    public long getProjectId() {
-        return projectId;
     }
 
     @Override

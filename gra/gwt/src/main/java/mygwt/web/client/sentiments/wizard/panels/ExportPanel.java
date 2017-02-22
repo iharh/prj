@@ -4,6 +4,8 @@ import mygwt.web.client.sentiments.resources.SentimentsMessages;
 
 import mygwt.web.client.utils.StyleUtils;
 
+import mygwt.foundation.client.csrf.ProjectIdAware;
+
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.dom.client.Style.Unit;
 
@@ -28,8 +30,8 @@ public class ExportPanel extends BasePanel {
     private TextBox exportName;
     private TextArea exportDescription;
 
-    public ExportPanel() {
-        super(); // addStyleName("myExportPanel");
+    public ExportPanel(ProjectIdAware projectIdAware) {
+        super(projectIdAware); // addStyleName("myExportPanel");
 
         msgs = SentimentsMessages.INSTANCE;
 

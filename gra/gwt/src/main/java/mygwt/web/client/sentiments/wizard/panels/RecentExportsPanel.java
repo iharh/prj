@@ -9,6 +9,7 @@ import mygwt.web.client.utils.LogUtils;
 import mygwt.portal.dto.sentiments.rse.RecentSentimentExportsInfo;
 
 import mygwt.foundation.client.rpc.AbstractAsyncCallback;
+import mygwt.foundation.client.csrf.ProjectIdAware;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
@@ -35,8 +36,8 @@ public class RecentExportsPanel extends BasePanel {
 
     private RecentSentimentExportsServiceAsync svcAsync;
 
-    public RecentExportsPanel(RecentSentimentExportsServiceAsync svcAsync) {
-        super();
+    public RecentExportsPanel(ProjectIdAware projectIdAware, RecentSentimentExportsServiceAsync svcAsync) {
+        super(projectIdAware);
         this.svcAsync = svcAsync;
 
         msgs = SentimentsMessages.INSTANCE;

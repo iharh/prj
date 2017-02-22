@@ -46,6 +46,10 @@ public class StepNavigator implements WizardActionHandler {
         nextPageDetectors.put(page, detector);
     }
 
+    public void addNextPageTo(WizardPage page, WizardPage nextPage) {
+        nextPageDetectors.put(page, new NextPageDetector() { @Override public WizardPage next() { return nextPage; } });
+    }
+
     public void start(WizardPage page) {
         currentPage = page;
         currentStep = stepIndices.get(currentPage);

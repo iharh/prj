@@ -14,6 +14,7 @@ import mygwt.portal.dto.SentimentUploadValidationResult;
 import mygwt.portal.dto.SentimentUploadConstants;
 
 import mygwt.foundation.client.csrf.CsrfFormPanel;
+import mygwt.foundation.client.csrf.ProjectIdAware;
 import mygwt.foundation.client.rpc.AbstractAsyncCallback;
 import mygwt.foundation.client.exception.ServiceException;
 import mygwt.foundation.client.widget.AjaxLoaderImage;
@@ -61,8 +62,8 @@ public class ImportFileSelectionPanel extends BasePanel {
     private String sentFileName;
     private boolean waitingFileUploadValidationResults;
 
-    public ImportFileSelectionPanel(ImportModel importModel, ButtonsPanel buttonsPanel, StepNavigator stepNavigator, SentimentUploadServiceAsync sentimentService) {
-        super();
+    public ImportFileSelectionPanel(ProjectIdAware projectIdAware, ImportModel importModel, ButtonsPanel buttonsPanel, StepNavigator stepNavigator, SentimentUploadServiceAsync sentimentService) {
+        super(projectIdAware);
         this.importModel = importModel;
         this.buttonsPanel = buttonsPanel;
         this.stepNavigator = stepNavigator;
