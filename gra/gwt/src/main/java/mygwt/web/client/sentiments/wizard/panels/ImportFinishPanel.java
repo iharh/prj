@@ -17,7 +17,9 @@ import mygwt.foundation.client.csrf.CsrfFormPanel;
 import mygwt.foundation.client.csrf.ProjectIdAware;
 import mygwt.foundation.client.rpc.AbstractAsyncCallback;
 import mygwt.foundation.client.exception.ServiceException;
+import mygwt.foundation.client.resources.CommonConstants;
 import mygwt.foundation.client.widget.AjaxLoaderImage;
+import mygwt.foundation.client.widget.dialog.BaseDialogBox;
 import mygwt.foundation.client.widget.dialog.SessionExpiredDialog;
 import mygwt.foundation.client.widget.dialog.YesNoDialog;
 
@@ -32,6 +34,8 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.cellview.client.TextColumn;
+import com.google.gwt.user.client.ui.Anchor;
+import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.user.client.ui.Hidden;
@@ -42,9 +46,11 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.FormPanel;
 import com.google.gwt.user.client.ui.FormPanel.SubmitCompleteEvent;
 import com.google.gwt.user.client.ui.FormPanel.SubmitEvent;
+import com.google.gwt.user.client.ui.Widget;
 
 public class ImportFinishPanel extends BasePanel {
     private static final String ERROR_MESSAGE_STYLE = "errorMessage";
+    private static final String EMPTY_ANCHOR = "javascript:;";
 
     private SentimentUploadMessages msgs;
 
@@ -52,16 +58,17 @@ public class ImportFinishPanel extends BasePanel {
     private ButtonsPanel buttonsPanel;
     private StepNavigator stepNavigator;
     private SentimentUploadServiceAsync sentimentService;
-/*
-    private Image wheel;
-    private HTML statusLabel;
-    private FormPanel form;
-    private Hidden projIdHidden;
-    private FileUpload upload;
 
-    private String sentFileName;
-    private boolean waitingFileUploadValidationResults;
-*/
+    private Anchor showSkippedWordsBtn;
+    private Anchor showSkippedRulesBtn;
+
+    // final
+    private HTML statusLabel; // final
+    private HTML wordsLabel;
+    private HTML rulesLabel;
+
+    private CheckBox launchSentenceExceptionsUpdate;
+
     public ImportFinishPanel(ProjectIdAware projectIdAware, ImportModel importModel, ButtonsPanel buttonsPanel, StepNavigator stepNavigator, SentimentUploadServiceAsync sentimentService) {
 	super(projectIdAware); // SentimentUploadMessages.INSTANCE.step2of2()
 
@@ -82,5 +89,145 @@ public class ImportFinishPanel extends BasePanel {
         add(please);
         setCellHeight(please, "7%");
 
+	showSkippedWordsBtn = new Anchor(CommonConstants.EMPTY_STRING, EMPTY_ANCHOR);
+	showSkippedWordsBtn.addClickHandler(new ShowSkippedWordsListener());
+        showSkippedWordsBtn.setVisible(false);
+
+	showSkippedRulesBtn = new Anchor(CommonConstants.EMPTY_STRING, EMPTY_ANCHOR);
+	showSkippedRulesBtn.addClickHandler(new ShowSkippedRulesListener());
+        showSkippedRulesBtn.setVisible(false);
+
+        //stgLoadImage.setVisible(false);
+        statusLabel = new HTML();
+        statusLabel.setVisible(false);
+
+        VerticalPanel infoPanel = new VerticalPanel();
+        infoPanel.setWidth("100%");
+
+        VerticalPanel stgLoadResultPanel = new VerticalPanel();
+        stgLoadResultPanel.setSpacing(2);
+        stgLoadResultPanel.add(statusLabel);
+
+        HorizontalPanel wordsPanel = new HorizontalPanel();
+        wordsPanel.setSpacing(5);
+
+        wordsLabel = new HTML();
+        wordsPanel.add(wordsLabel);
+        wordsPanel.add(showSkippedWordsBtn);
+        stgLoadResultPanel.add(wordsPanel);
+
+        HorizontalPanel rulesPanel = new HorizontalPanel();
+        rulesPanel.setSpacing(5);
+
+        rulesLabel = new HTML();
+        rulesPanel.add(rulesLabel);
+        rulesPanel.add(showSkippedRulesBtn);
+        stgLoadResultPanel.add(rulesPanel);
+
+        infoPanel.add(stgLoadResultPanel);
+
+	VerticalPanel launchModelSelectionPanel = new VerticalPanel();
+        launchModelSelectionPanel.setSpacing(10);
+
+        launchSentenceExceptionsUpdate = new CheckBox(SentimentUploadMessages.INSTANCE.updateSentiments());
+        launchSentenceExceptionsUpdate.setChecked(true);
+        launchModelSelectionPanel.add(launchSentenceExceptionsUpdate);		
+        infoPanel.insert(launchModelSelectionPanel, 0);
+
+        add(infoPanel);
+    }
+
+    private void clearStatusLabel() {
+        clearStatusLabel(CommonConstants.EMPTY_STRING);
+    }
+
+    private void clearStatusLabel(String text) {
+        statusLabel.removeStyleName(ERROR_MESSAGE_STYLE);
+        statusLabel.setHTML(text);
+    }
+
+    @Override
+    public void onEnter() {
+        super.onEnter();
+        clearStatusLabel();
+        showSkippedWordsBtn.setVisible(false);
+        showSkippedRulesBtn.setVisible(false);
+        wordsLabel.setHTML(CommonConstants.EMPTY_STRING);
+        rulesLabel.setHTML(CommonConstants.EMPTY_STRING);
+
+        SentimentUploadValidationResult result = importModel.getSentimentUploadValidationResult();
+        if (result == null) {
+            statusLabel.setVisible(true);
+            statusLabel.addStyleName(ERROR_MESSAGE_STYLE);
+            statusLabel.setText(msgs.noDataInFile());
+        } else {
+            wordsLabel.setText(msgs.importedWords(result.getWordsImported()));
+            int skippedWords = result.getSkippedWordRows().size();
+            if (skippedWords > 0) {
+                showSkippedWordsBtn.setText(skippedWords == 1 ? msgs.skippedWord() : msgs.skippedWords(skippedWords));
+                showSkippedWordsBtn.setVisible(true);
+            }
+            rulesLabel.setText(msgs.importedRules(result.getRulesImported()));
+            int skippedRules = result.getSkippedRulesRows().size();
+            if (skippedRules > 0) {
+                showSkippedRulesBtn.setText(skippedRules == 1 ? msgs.skippedRule() : msgs.skippedRules(skippedRules));
+                showSkippedRulesBtn.setVisible(true);
+            }
+        }
+    }
+
+    private class ShowSkippedWordsListener implements ClickHandler {
+        @Override
+        public void onClick(ClickEvent event) {
+            //stgLoadImage.setVisible(true);
+            BaseDialogBox skippedBox = new BaseDialogBox(msgs.skippedWordsRows(), 410, 150) {
+                {
+                    setWidget(createDialogContents());
+                }
+                protected Widget createDialogContents() {
+                    VerticalPanel outerPanel = new VerticalPanel();
+                    outerPanel.setSize("400px", "150px");
+                    outerPanel.setSpacing(4);
+                    VerticalPanel content = new VerticalPanel();
+                    content.setSize("400px", "150px");
+                    SkippedRowPanel skippedRowPanel = new SkippedRowPanel(msgs.wordTitle());
+                    skippedRowPanel.fillData(importModel.getSentimentUploadValidationResult().getSkippedWordRows());
+                    skippedRowPanel.setVisible(true);
+                    content.add(skippedRowPanel);
+                    outerPanel.add(content);
+                    return outerPanel;
+                }
+            };
+            skippedBox.setModal(true);
+            skippedBox.show();
+        }
+    }
+
+    private class ShowSkippedRulesListener implements ClickHandler {
+        @Override
+        public void onClick(ClickEvent event) {
+            //stgLoadImage.setVisible(true);
+            BaseDialogBox skippedBox = new BaseDialogBox(msgs.skippedRulesRows(), 400, 150) {
+                {
+                    setWidget(createDialogContents());
+                }
+                protected Widget createDialogContents() {
+                    VerticalPanel outerPanel = new VerticalPanel();
+                    outerPanel.setSize("400px", "150px");
+                    outerPanel.setSpacing(4);
+                    VerticalPanel content = new VerticalPanel();
+                    content.setSize("400px", "150px");
+                    SkippedRowPanel skippedRowPanel = new SkippedRowPanel(msgs.ruleTitle());
+                    skippedRowPanel.fillData(importModel.getSentimentUploadValidationResult().getSkippedRulesRows());
+                    skippedRowPanel.setVisible(true);
+                    content.add(skippedRowPanel);
+                    outerPanel.add(content);
+                    return outerPanel;
+                }
+            };
+            //stgLoadImage.setVisible(false);
+            skippedBox.setModal(true);
+            skippedBox.show();
+        }
     }
 }

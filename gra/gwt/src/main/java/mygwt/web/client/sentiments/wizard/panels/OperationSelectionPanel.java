@@ -11,7 +11,7 @@ public class OperationSelectionPanel extends BasePanel {
     private RadioButton btnExportPrev;
 
     public OperationSelectionPanel() {
-        super();
+        super(null);
         //addStyleName("myOperationSelectionPanel");
         add(new InlineLabel("Please choose an option for managing your sentiment tunings."));
 

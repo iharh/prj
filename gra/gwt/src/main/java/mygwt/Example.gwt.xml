@@ -10,6 +10,8 @@
     <inherits name="com.google.gwt.http.HTTP"/>
     <inherits name="com.google.gwt.logging.Logging"/>
 
+    <inherits name="com.google.gwt.gen2.table.Table" />
+
     <!-- define-configuration-property name="CssResource.allowedFunctions" is-multi-valued="true" / -->
     <!-- set-configuration-property name="CssResource.enableGss" value="true"/ -->
 

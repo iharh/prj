@@ -16,6 +16,7 @@ ext {
 versions.spring = '4.3.3.RELEASE'
 versions.springSecurity = '4.1.3.RELEASE'
 
+versions.gwt = '2.5.1' // '2.7.0'
 versions.gwtp = '1.4' // 1.4 -> 1.6 is available
 versions.gin = '2.1.2' // 2.1.2 -> ???
 versions.guice = '3.0' // we also use the same ver
@@ -46,6 +47,19 @@ libraries += [
     spring_security_cas:  "org.springframework.security:spring-security-cas:${versions.springSecurity}",
     spring_security_ldap: "org.springframework.security:spring-security-ldap:${versions.springSecurity}",
     
+    // gwt extra stuff
+    //gwt_advanced_components:    'gwt-advanced-components:advanced-components:2.0.7',
+    gwt_dev:                    "com.google.gwt:gwt-dev:${versions.gwt}",
+    //gwt_dispatch:               'net.customware.gwt.dispatch:gwt-dispatch:1.1.0',
+    //gwt_drugdrop:               'gwt-dragdrop:gwt-dragdrop:3.1.2',
+    //gwt_inject:                 'com.google.gwt.inject:gin:2.1.1',
+    //gwt_gadgets:                'Google:gwt-gadgets:1.2.1',
+    gwt_incubator:              'com.google.gwt:gwt-incubator:2.0.1',
+    //gwt_presenter:              'Google:gwt-presenter:1.1.1',
+    //gwt_servlet:                "com.google.gwt:gwt-servlet:${versions.gwt}",
+    //gwt_user:                   "com.google.gwt:gwt-user:${versions.gwt}",
+    //gwt_visualization:          'Google:gwt-visualization:1.1.0',
+
     // gwt-choosen
     gwtchosen:          'com.arcbees:gwtchosen:3.0.1',
     gwtquery:           'com.googlecode.gwtquery:gwtquery:1.4.0', // 1.4.3 1.5-beta1
@@ -85,6 +99,18 @@ dependencies {
     compile libraries.spring_web
     compile libraries.spring_webmvc
 
+    // gwt extra stuff
+    //compile libraries.gwt_advanced_components
+    compile libraries.gwt_dev
+    //compile libraries.gwt_drugdrop
+    //compile libraries.gwt_gadgets
+    compile libraries.gwt_incubator
+    //compile libraries.gwt_inject
+    //compile libraries.gwt_presenter
+    //compile libraries.gwt_servlet
+    //compile libraries.gwt_user
+    //compile libraries.gwt_visualization
+
     // gwtp, gin, ...
     providedCompile libraries.gwtchosen
     providedCompile libraries.gwtquery
@@ -94,14 +120,13 @@ dependencies {
     providedCompile libraries.gin
     providedCompile libraries.gwtp_dispatch_rest
 */
-    //compile group: 'com.google.gwt', name: 'gwt-incubator', version: '2.0.1'
 }
 
 //sourceCompatibility = 1.7
 //targetCompatibility = 1.7
 
 gwt {
-    gwtVersion = '2.5.1' // '2.7.0'
+    gwtVersion = "${versions.gwt}"
     //logLevel = 'INFO'
 
     modules 'mygwt.Example'

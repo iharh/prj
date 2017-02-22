@@ -203,7 +203,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider {
         final String absUrl = service.getAbsoluteUrl();
         // we typically use this instead of the @com.google.gwt.user.client.rpc.RemoteServiceRelativePath
         target.setServiceEntryPoint(absUrl); 
-        target.setRpcRequestBuilder(CsrfRpcRequestBuilder.getInstance(this));
+        target.setRpcRequestBuilder(CsrfRpcRequestBuilder.getInstance(projectIdAwareImpl));
     }
 
     private SentimentUploadServiceAsync svcSentimentUploadServiceAsync;
