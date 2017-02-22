@@ -69,6 +69,8 @@ public class ImportFinishPanel extends BasePanel {
 
     private CheckBox launchSentenceExceptionsUpdate;
 
+    private boolean isProcessStarted;
+
     public ImportFinishPanel(ProjectIdAware projectIdAware, ImportModel importModel, ButtonsPanel buttonsPanel, StepNavigator stepNavigator, SentimentUploadServiceAsync sentimentService) {
 	super(projectIdAware); // SentimentUploadMessages.INSTANCE.step2of2()
 
@@ -129,7 +131,7 @@ public class ImportFinishPanel extends BasePanel {
 	VerticalPanel launchModelSelectionPanel = new VerticalPanel();
         launchModelSelectionPanel.setSpacing(10);
 
-        launchSentenceExceptionsUpdate = new CheckBox(SentimentUploadMessages.INSTANCE.updateSentiments());
+        launchSentenceExceptionsUpdate = new CheckBox(msgs.updateSentiments());
         launchSentenceExceptionsUpdate.setChecked(true);
         launchModelSelectionPanel.add(launchSentenceExceptionsUpdate);		
         infoPanel.insert(launchModelSelectionPanel, 0);
@@ -144,36 +146,6 @@ public class ImportFinishPanel extends BasePanel {
     private void clearStatusLabel(String text) {
         statusLabel.removeStyleName(ERROR_MESSAGE_STYLE);
         statusLabel.setHTML(text);
-    }
-
-    @Override
-    public void onEnter() {
-        super.onEnter();
-        clearStatusLabel();
-        showSkippedWordsBtn.setVisible(false);
-        showSkippedRulesBtn.setVisible(false);
-        wordsLabel.setHTML(CommonConstants.EMPTY_STRING);
-        rulesLabel.setHTML(CommonConstants.EMPTY_STRING);
-
-        SentimentUploadValidationResult result = importModel.getSentimentUploadValidationResult();
-        if (result == null) {
-            statusLabel.setVisible(true);
-            statusLabel.addStyleName(ERROR_MESSAGE_STYLE);
-            statusLabel.setText(msgs.noDataInFile());
-        } else {
-            wordsLabel.setText(msgs.importedWords(result.getWordsImported()));
-            int skippedWords = result.getSkippedWordRows().size();
-            if (skippedWords > 0) {
-                showSkippedWordsBtn.setText(skippedWords == 1 ? msgs.skippedWord() : msgs.skippedWords(skippedWords));
-                showSkippedWordsBtn.setVisible(true);
-            }
-            rulesLabel.setText(msgs.importedRules(result.getRulesImported()));
-            int skippedRules = result.getSkippedRulesRows().size();
-            if (skippedRules > 0) {
-                showSkippedRulesBtn.setText(skippedRules == 1 ? msgs.skippedRule() : msgs.skippedRules(skippedRules));
-                showSkippedRulesBtn.setVisible(true);
-            }
-        }
     }
 
     private class ShowSkippedWordsListener implements ClickHandler {
@@ -228,6 +200,84 @@ public class ImportFinishPanel extends BasePanel {
             //stgLoadImage.setVisible(false);
             skippedBox.setModal(true);
             skippedBox.show();
+        }
+    }
+
+    @Override
+    public void onEnter() {
+        super.onEnter();
+        clearStatusLabel();
+        showSkippedWordsBtn.setVisible(false);
+        showSkippedRulesBtn.setVisible(false);
+        wordsLabel.setHTML(CommonConstants.EMPTY_STRING);
+        rulesLabel.setHTML(CommonConstants.EMPTY_STRING);
+
+        SentimentUploadValidationResult result = importModel.getSentimentUploadValidationResult();
+        if (result == null) {
+            statusLabel.setVisible(true);
+            statusLabel.addStyleName(ERROR_MESSAGE_STYLE);
+            statusLabel.setText(msgs.noDataInFile());
+        } else {
+            wordsLabel.setText(msgs.importedWords(result.getWordsImported()));
+            int skippedWords = result.getSkippedWordRows().size();
+            if (skippedWords > 0) {
+                showSkippedWordsBtn.setText(skippedWords == 1 ? msgs.skippedWord() : msgs.skippedWords(skippedWords));
+                showSkippedWordsBtn.setVisible(true);
+            }
+            rulesLabel.setText(msgs.importedRules(result.getRulesImported()));
+            int skippedRules = result.getSkippedRulesRows().size();
+            if (skippedRules > 0) {
+                showSkippedRulesBtn.setText(skippedRules == 1 ? msgs.skippedRule() : msgs.skippedRules(skippedRules));
+                showSkippedRulesBtn.setVisible(true);
+            }
+        }
+    }
+
+    @Override
+    public void onFinish() {
+        if (!isProcessStarted) {
+            statusLabel.addStyleName(ERROR_MESSAGE_STYLE);
+            statusLabel.setVisible(false);
+            statusLabel.setVisible(true);
+            statusLabel.removeStyleName(ERROR_MESSAGE_STYLE);
+        } else {
+            isProcessStarted = true;
+            buttonsPanel.disableFinish();
+            clearStatusLabel(msgs.processingData());
+            try {
+                sentimentService.updateSentimentsWithUploadedData(getProjectId(),
+                    new AbstractAsyncCallback<Void>() {
+                        @Override
+                        public void onFailure(Throwable caught) {
+                            String errorMessage = msgs.errorOnDBSynchronizing();
+                            // stgLoadImage.setVisible(false);
+                            /* TODO: uncomment if (caught instanceof SentimentUploadException) {
+                                errorMessage += handleException((SentimentUploadException) caught);
+                            } else {
+                                super.onFailure(caught);
+                            }*/
+                            statusLabel.setVisible(true);
+                            statusLabel.addStyleName(ERROR_MESSAGE_STYLE);
+                            statusLabel.setHTML(errorMessage);
+                            isProcessStarted = false;
+                            buttonsPanel.enableFinish();
+
+                            GWT.log("Failed to synchronize database with the uploaded file", caught); //$NON-NLS-1$
+                        }
+                        @Override
+                        public void onSuccess(Void result) {
+                            clearStatusLabel(msgs.done());
+                            isProcessStarted = false;
+                            buttonsPanel.enableFinish();
+                            Boolean updateSentences = launchSentenceExceptionsUpdate.getValue();
+                            // getWizard().finishComplete(updateSentences); // TODO: TBD
+                        }
+                    }
+                );
+            } catch (ServiceException e) {
+                statusLabel.addStyleName(ERROR_MESSAGE_STYLE);
+                statusLabel.setHTML(e.getLocalizedMessage());
+            }
         }
     }
 }
