@@ -16,8 +16,8 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.HTML;
 
-public class SentimentExportPanel extends BasePanel {
-    private static final String textBoxW = "470px"; // 450px
+public class ExportPanel extends BasePanel {
+    private static final String textBoxW = "470px";
     private static final int labelW      = 150;
     private static final int spacing     = 12;
 
@@ -28,10 +28,8 @@ public class SentimentExportPanel extends BasePanel {
     private TextBox exportName;
     private TextArea exportDescription;
 
-    public SentimentExportPanel() {
-        super();
-        addStyleName("mySentimentExportPanel");
-        setSize("100%", "auto");
+    public ExportPanel() {
+        super(); // addStyleName("myExportPanel");
 
         msgs = SentimentsMessages.INSTANCE;
 

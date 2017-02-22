@@ -25,7 +25,7 @@ import com.google.gwt.view.client.SingleSelectionModel;
 import java.util.List;
 import java.util.LinkedList;
 
-public class RecentSentimentExportsPanel extends BasePanel {
+public class RecentExportsPanel extends BasePanel {
     private SentimentsMessages msgs;
 
     private DataGrid<RecentSentimentExportsInfo> dataGrid;
@@ -35,7 +35,7 @@ public class RecentSentimentExportsPanel extends BasePanel {
 
     private RecentSentimentExportsServiceAsync svcAsync;
 
-    public RecentSentimentExportsPanel(RecentSentimentExportsServiceAsync svcAsync) {
+    public RecentExportsPanel(RecentSentimentExportsServiceAsync svcAsync) {
         super();
         this.svcAsync = svcAsync;
 

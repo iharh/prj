@@ -1,6 +1,6 @@
 package mygwt.web.client.sentiments.wizard.panels;
 
-import mygwt.web.client.sentiments.wizard.SentimentsWizard;
+import mygwt.web.client.sentiments.wizard.ImportModel;
 
 import mygwt.web.client.sentiments.wizard.panels.ButtonsPanel;
 
@@ -44,13 +44,14 @@ import com.google.gwt.user.client.ui.FormPanel;
 import com.google.gwt.user.client.ui.FormPanel.SubmitCompleteEvent;
 import com.google.gwt.user.client.ui.FormPanel.SubmitEvent;
 
-public class SentimentImportFileSelectionPanel extends BasePanel {
+public class ImportFileSelectionPanel extends BasePanel {
     private static final String ERROR_MESSAGE_STYLE = "errorMessage";
 
     private SentimentUploadMessages msgs;
 
-    private SentimentsWizard sentimentsWizard;
+    private ImportModel importModel;
     private ButtonsPanel buttonsPanel;
+    private StepNavigator stepNavigator;
     private SentimentUploadServiceAsync sentimentService;
 
     private Image wheel;
@@ -62,10 +63,11 @@ public class SentimentImportFileSelectionPanel extends BasePanel {
     private String sentFileName;
     private boolean waitingFileUploadValidationResults;
 
-    public SentimentImportFileSelectionPanel(SentimentsWizard sentimentsWizard, ButtonsPanel buttonsPanel, SentimentUploadServiceAsync sentimentService) {
+    public ImportFileSelectionPanel(ImportModel importModel, ButtonsPanel buttonsPanel, StepNavigator stepNavigator, SentimentUploadServiceAsync sentimentService) {
         super();
-        this.sentimentsWizard = sentimentsWizard;
+        this.importModel = importModel;
         this.buttonsPanel = buttonsPanel;
+        this.StepNavigator = stepNavigator;
         this.sentimentService = sentimentService;
 
         msgs = SentimentUploadMessages.INSTANCE;
@@ -217,26 +219,28 @@ public class SentimentImportFileSelectionPanel extends BasePanel {
 
                     @Override
                     public void onSuccess(SentimentUploadValidationResult result) {
-                        sentimentsWizard.getImportModel().setSentimentUploadValidationResult(result);
+                        importModel.setSentimentUploadValidationResult(result);
                         if (result.isNegatorTuned()) {
                             YesNoDialog dialog = new YesNoDialog(msgs.warning(), msgs.fileUploadNegatorTuned(),
                                 new ClickHandler() {
                                     @Override
                                     public void onClick(ClickEvent event) {
                                         statusLabel.setHTML(msgs.statusSuccess());
-                                        sentimentsWizard.showUploadResults();
+                                        showUploadResults();
                                     }
                                 }, new ClickHandler() {
                                     @Override
                                     public void onClick(ClickEvent event) {
                                         MessageDialog.showMessage(msgs.fileUploadNegatorTunedCancel());
-                                        sentimentsWizard.onCancel();
+                                        // wizard.onCancel();
+                                        clearSession();
+                                        stepNavigator.onBack();
                                     }
                             });
                             dialog.show();
                         } else {
                             statusLabel.setHTML(msgs.statusSuccess());
-                            sentimentsWizard.showUploadResults();
+                            showUploadResults();
                         }
                     }
             });
@@ -245,19 +249,42 @@ public class SentimentImportFileSelectionPanel extends BasePanel {
         }
     }
 
+    private void showUploadResults() {
+        if (importModel.saveDataToModel()) {
+            stepNavigator.onNext();
+        }
+    }
+
     private void clearStatusLabel(String text) {
         statusLabel.removeStyleName(ERROR_MESSAGE_STYLE);
         statusLabel.setHTML(text);
+    }
+
+    private boolean needToSend() {
+        return !waitingFileUploadValidationResults && !upload.getFilename().equals(sentFileName);
+    }
+
+    private boolean saveDataToModel() {
+        if (needToSend()) {
+            importModel.setSentimentUploadValidationResult(null);
+            form.submit();
+            return false;
+        }
+        return importModel.getSentimentUploadValidationResult() != null;
     }
 
     @Override
     public void onEnter() {
         super.onEnter();
         clearStatusLabel(msgs.selectFileMess());
-        buttonsPanel.disableNext();
+        // buttonsPanel.disableNext(); // TODO: uncomment after implementing all the upload panels
     }
 
-    // was at base class
+    // probably need to share this stuff
+
+    private void clearSession() {
+        sentimentService.cleanupSentimentsWithUploadedData(getProjectId(), AbstractAsyncCallback.VOID_CALLBACK);
+    }
 
     private static String handleException(SentimentUploadException caught) {
         String result = "<br/>";

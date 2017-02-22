@@ -5,8 +5,6 @@ import mygwt.common.client.url.Service;
 import mygwt.common.client.service.SentimentUploadServiceAsync;
 import mygwt.common.client.service.SentimentUploadService;
 
-import mygwt.portal.dto.SentimentUploadValidationResult;
-
 import mygwt.foundation.client.rpc.AbstractAsyncCallback;
 
 import mygwt.foundation.client.csrf.ProjectIdAware;
@@ -23,9 +21,9 @@ import mygwt.web.client.sentiments.wizard.steps.NextPageDetector;
 
 import mygwt.web.client.sentiments.wizard.panels.OperationSelectionPanel;
 import mygwt.web.client.sentiments.wizard.panels.OperationSelectionPanel;
-import mygwt.web.client.sentiments.wizard.panels.SentimentImportFileSelectionPanel;
-import mygwt.web.client.sentiments.wizard.panels.SentimentExportPanel;
-import mygwt.web.client.sentiments.wizard.panels.RecentSentimentExportsPanel;
+import mygwt.web.client.sentiments.wizard.panels.ImportFileSelectionPanel;
+import mygwt.web.client.sentiments.wizard.panels.ExportPanel;
+import mygwt.web.client.sentiments.wizard.panels.RecentExportsPanel;
 import mygwt.web.client.sentiments.wizard.panels.ButtonsPanel;
 
 import mygwt.web.client.utils.LogUtils;
@@ -63,18 +61,6 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
     private static final int allH                     = STEPS_AVAILABLE_HEIGHT + BUTTONS_AVAILABLE_HEIGHT;
     private static final int allW                     = 670;
 
-    public static class ImportModel {
-        private SentimentUploadValidationResult sentimentUploadValidationResult;
-
-        public SentimentUploadValidationResult getSentimentUploadValidationResult() {
-            return sentimentUploadValidationResult;
-        }
-
-        public void setSentimentUploadValidationResult(SentimentUploadValidationResult sentimentUploadValidationResult) {
-            this.sentimentUploadValidationResult = sentimentUploadValidationResult;
-        } 
-    }
-
     private SentimentsMessages msgs;
 
     private ImportModel importModel;
@@ -87,9 +73,9 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
 
     private StepNavigator stepNavigator;
     private OperationSelectionPanel stepOperationSelection;
-    private SentimentExportPanel stepSentimentExport;
-    private RecentSentimentExportsPanel stepResentSentimentExports;
-    private SentimentImportFileSelectionPanel stepSentimentImportFileSelection;
+    private ExportPanel stepExport;
+    private RecentExportsPanel stepRecentExports;
+    private ImportFileSelectionPanel stepImportFileSelection;
     private ButtonsPanel buttonsPanel;
 
     private int currentStep = 0;
@@ -100,11 +86,6 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
         msgs = SentimentsMessages.INSTANCE;
 
         importModel = new ImportModel();
-
-        //hack for IE6/7(CMP-15701)
-        //DeckPanel hackPanel = new DeckPanel();
-        //hackPanel.setHeight(STEPS_AVAILABLE_HEIGHT + "px");
-        //setWidget(hackPanel);
 
         setWidget(createDialogContents());
 
@@ -124,9 +105,9 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
         //stepsPanel.addStyleName("myDeckPanel");
 
         stepOperationSelection = new OperationSelectionPanel();
-        stepSentimentImportFileSelection = new SentimentImportFileSelectionPanel(this, buttonsPanel, getSentimentUploadSvcAsync());
-        stepSentimentExport = new SentimentExportPanel();
-        stepResentSentimentExports = new RecentSentimentExportsPanel(getRecentSentimentExportsSvcAsync());
+        stepImportFileSelection = new ImportFileSelectionPanel(importModel, buttonsPanel, stepNavigator, getSentimentUploadSvcAsync());
+        stepExport = new ExportPanel();
+        stepRecentExports = new RecentExportsPanel(getRecentSentimentExportsSvcAsync());
         // ...(this);
 
         configureWizard();
@@ -138,20 +119,20 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
         dialogPanel.clear();
 
         stepsPanel.add(stepNavigator.addPage(stepOperationSelection));  
-        stepsPanel.add(stepNavigator.addPage(stepSentimentImportFileSelection));  
-        stepsPanel.add(stepNavigator.addPage(stepSentimentExport));  
-        stepsPanel.add(stepNavigator.addPage(stepResentSentimentExports));  
+        stepsPanel.add(stepNavigator.addPage(stepImportFileSelection));  
+        stepsPanel.add(stepNavigator.addPage(stepExport));  
+        stepsPanel.add(stepNavigator.addPage(stepRecentExports));  
         
         stepNavigator.addNextPageDetector(stepOperationSelection,
             new NextPageDetector() {
                 @Override
                 public WizardPage next() {
                     if (stepOperationSelection.isImportSelected()) {
-                        return stepSentimentImportFileSelection;
+                        return stepImportFileSelection;
                     } else if (stepOperationSelection.isExportCurSelected()) {
-                        return stepSentimentExport;
+                        return stepExport;
                     } else if (stepOperationSelection.isExportPrevSelected()) {
-                        return stepResentSentimentExports;
+                        return stepRecentExports;
                     }
                     return null; // impossible
                 }
@@ -170,7 +151,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
         dialogPanel.addSouth(buttonsPanel, BUTTONS_AVAILABLE_HEIGHT);
 
         stepNavigator.start(stepOperationSelection);
-        //stepNavigator.start(stepResentSentimentExports);
+        //stepNavigator.start(stepRecentExports);
     }
 
     @Override
@@ -187,25 +168,12 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider, Pro
         super.onClose();
     }
 
-    //@Override
-    public void onCancel() {
-        clearSession();
-        this.hide();
-    }
-
-    public void showUploadResults() {
-        WizardPage currentPage = stepNavigator.getCurrentPage();
-        if (currentPage == stepSentimentImportFileSelection) {
-            stepNavigator.onNext();
-        }
-    }
-
     public void onBrowserEvent(Event event) {
         super.onBrowserEvent(event);
     }
 
     public ImportModel getImportModel() {
-            return importModel;
+        return importModel;
     }
 
     // ApplicationContext.get().getProjectId();
