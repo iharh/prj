@@ -1,3 +1,7 @@
+.web.server.SentimentImportServiceImpl
+.common.client.service.SentimentUploadService
+    need to rename to SentimentImportService/SentimentImportServiceAsync
+
 .web.server.SentimentImportServiceAction
 
 portal/web
