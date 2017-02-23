@@ -13,7 +13,7 @@ public interface SentimentUploadService extends RemoteService {
     SentimentUploadValidationResult getPreliminaryUploadResults() throws ServiceException;
 
     @SecureParameter(permission = PermissionName.WRITE, strategyName = "PROJECT")
-    void updateSentimentsWithUploadedData(long projectId) throws ServiceException ;
+    void updateSentimentsWithUploadedData(long projectId) throws ServiceException;
 
     @SecureParameter(permission = PermissionName.WRITE, strategyName = "PROJECT")
     void cleanupSentimentsWithUploadedData(long projectId);

@@ -79,7 +79,7 @@ public class ImportFileSelectionPanel extends BasePanel {
 
         sentFileName = "";
 	form = new CsrfFormPanel();
-        form.setAction(GWT.getHostPageBaseURL() + "sentiment_upload.action");
+        form.setAction(GWT.getHostPageBaseURL() + "sentiment_upload.action"); // sentiment_upload.action
         // Because we're going to add a FileUpload widget, we'll need to set the
         // form to use the POST method, and multipart MIME encoding.
         form.setEncoding(FormPanel.ENCODING_MULTIPART);
