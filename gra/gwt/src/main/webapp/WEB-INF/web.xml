@@ -37,7 +37,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	<servlet-name>RecentSentimentExportsServlet</servlet-name>
 	<url-pattern>/recent_sentiment_exports_service</url-pattern>
     </servlet-mapping>
-
+    <!--
     <servlet>
 	<servlet-name>SentimentImportServlet</servlet-name>
 	<servlet-class>mygwt.web.server.SentimentImportServiceImpl</servlet-class>
@@ -46,7 +46,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	<servlet-name>RecentSentimentExportsServlet</servlet-name>
 	<url-pattern>/sentiment_import_service</url-pattern>
     </servlet-mapping>
-
+    -->
     <!-- welcome-file-list>
 	<welcome-file>index.html</welcome-file>
     </welcome-file-list -->

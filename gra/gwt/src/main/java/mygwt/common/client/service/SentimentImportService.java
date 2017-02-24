@@ -6,7 +6,7 @@ import mygwt.portal.dto.SentimentUploadValidationResult;
 import mygwt.foundation.client.exception.ServiceException;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
+//import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.google.gwt.user.client.rpc.RemoteService;
