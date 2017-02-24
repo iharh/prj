@@ -43,6 +43,7 @@
     <source path="foundation/shared/model"/>
     <source path="portal/dto"/>
     <source path="portal/dto/sentiments/rse"/>
+    <source path="web/adhoc/client/resources"/>
     <source path="web/adhoc/client/wizard"/>
     <source path="web/client"/>
     <source path="web/client/utils"/>
@@ -51,7 +52,6 @@
     <source path="web/client/sentiments/rse"/>
     <source path="web/client/sentiments/rse/server"/>
     <source path="web/client/sentiments/resources"/>
-
 
     <set-property name="gwt.logging.simpleRemoteHandler" value="ENABLED" />
     <set-property name="gwt.logging.logLevel" value="SEVERE"/>

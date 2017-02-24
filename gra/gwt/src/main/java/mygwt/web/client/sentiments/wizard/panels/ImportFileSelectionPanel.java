@@ -1,14 +1,16 @@
 package mygwt.web.client.sentiments.wizard.panels;
 
+import mygwt.common.adhoc.AdHocConstants;
+import mygwt.common.client.widget.dialog.MessageDialog;
+import mygwt.common.client.service.SentimentImportServiceAsync;
+
+import mygwt.web.adhoc.client.resources.AdHocMessagesHelper;
 import mygwt.web.client.sentiments.upload.SentimentUploadException;
 import mygwt.web.client.sentiments.upload.resources.SentimentUploadMessages;
 import mygwt.web.client.sentiments.upload.resources.SentimentUploadMessagesHelper;
 import mygwt.web.client.sentiments.wizard.ImportModel;
 import mygwt.web.client.sentiments.wizard.steps.StepNavigator;
 import mygwt.web.client.sentiments.wizard.panels.ButtonsPanel;
-
-import mygwt.common.client.service.SentimentImportServiceAsync;
-import mygwt.common.client.widget.dialog.MessageDialog;
 
 import mygwt.portal.dto.SentimentUploadValidationResult;
 import mygwt.portal.dto.SentimentUploadConstants;
@@ -184,13 +186,17 @@ public class ImportFileSelectionPanel extends BasePanel {
         waitingFileUploadValidationResults = false;
 
         String error = event.getResults();
-
-        if (error == null || error.isEmpty()) {
-            String statusLab = msgs.fetchingSampleDataMess();
-            clearStatusLabel(statusLab);
-            getPreliminaryUploadResults();
-        } else if (error.contains("j_spring_security_check")) {
+        
+        if (error != null && error.contains("j_spring_security_check")) {
             SessionExpiredDialog.showDialog();
+            return;
+        }
+		
+        error = AdHocMessagesHelper.extractFileUploadError(error);
+		
+        if (AdHocConstants.UPLOAD_OK.endsWith(error)) {
+            clearStatusLabel(msgs.fetchingSampleDataMess());
+            getPreliminaryUploadResults();
         } else {
             statusLabel.addStyleName(ERROR_MESSAGE_STYLE);
             statusLabel.setText(error);
@@ -204,6 +210,7 @@ public class ImportFileSelectionPanel extends BasePanel {
                 new AbstractAsyncCallback<SentimentUploadValidationResult>() {
                     @Override
                     public void onFailure(Throwable caught) {
+                        LogUtils.log("prelim complete err");
                         String errorMessage = msgs.fetchSampleDataErrorMess();
                         wheel.setVisible(false);
                         buttonsPanel.enableNext();
@@ -219,6 +226,7 @@ public class ImportFileSelectionPanel extends BasePanel {
 
                     @Override
                     public void onSuccess(SentimentUploadValidationResult result) {
+                        LogUtils.log("prelim complete no err");
                         importModel.setSentimentUploadValidationResult(result);
                         if (result.isNegatorTuned()) {
                             YesNoDialog dialog = new YesNoDialog(msgs.warning(), msgs.fileUploadNegatorTuned(),

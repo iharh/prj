@@ -1,12 +1,15 @@
 package mygwt.web.server;
 
+import mygwt.common.adhoc.AdHocConstants;
 import mygwt.common.client.service.SentimentImportService;
 import mygwt.portal.dto.SentimentUploadValidationResult;
 import mygwt.foundation.client.exception.ServiceException;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.http.MediaType;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,12 +35,28 @@ public class SentimentImportServiceImpl extends AutoinjectingRemoteServiceServle
 
     @PostMapping("uploadfile")
     ResponseEntity<String> uploadFile(@RequestParam("upload") MultipartFile requestFile,
-           @RequestParam("projectId") Long projectId
-           //HttpSession session
+           //@RequestParam("projectId") Long projectId,
+           HttpSession session
         ) {
-        log.info("uploadFile called");
-        //log.info("uploading file: {}", requestFile.getOriginalFilename());
-        return new ResponseEntity<String>("u", HttpStatus.OK);
+        String responseMsg = AdHocConstants.UPLOAD_OK;
+        try {
+            log.info("uploading file: {}", requestFile.getOriginalFilename());
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            responseMsg = e.getMessage();
+        }
+        return createResponse(responseMsg);
+    }
+
+    private ResponseEntity<String> createResponse(final String message) {
+        final StringBuffer buf = new StringBuffer();
+        buf.append(AdHocConstants.UPLOAD_RESULT_S);
+        buf.append(message);
+        buf.append(AdHocConstants.UPLOAD_RESULT_E);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.TEXT_PLAIN);
+        return new ResponseEntity<String>(buf.toString(), headers, HttpStatus.OK);
     }
 
     @Override
