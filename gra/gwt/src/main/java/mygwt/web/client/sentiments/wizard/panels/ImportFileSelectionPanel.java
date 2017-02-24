@@ -7,7 +7,7 @@ import mygwt.web.client.sentiments.wizard.ImportModel;
 import mygwt.web.client.sentiments.wizard.steps.StepNavigator;
 import mygwt.web.client.sentiments.wizard.panels.ButtonsPanel;
 
-import mygwt.common.client.service.SentimentUploadServiceAsync;
+import mygwt.common.client.service.SentimentImportServiceAsync;
 import mygwt.common.client.widget.dialog.MessageDialog;
 
 import mygwt.portal.dto.SentimentUploadValidationResult;
@@ -51,7 +51,7 @@ public class ImportFileSelectionPanel extends BasePanel {
     private ImportModel importModel;
     private ButtonsPanel buttonsPanel;
     private StepNavigator stepNavigator;
-    private SentimentUploadServiceAsync sentimentService;
+    private SentimentImportServiceAsync sentimentService;
 
     private Image wheel;
     private HTML statusLabel;
@@ -62,7 +62,7 @@ public class ImportFileSelectionPanel extends BasePanel {
     private String sentFileName;
     private boolean waitingFileUploadValidationResults;
 
-    public ImportFileSelectionPanel(ProjectIdAware projectIdAware, ImportModel importModel, ButtonsPanel buttonsPanel, StepNavigator stepNavigator, SentimentUploadServiceAsync sentimentService) {
+    public ImportFileSelectionPanel(ProjectIdAware projectIdAware, ImportModel importModel, ButtonsPanel buttonsPanel, StepNavigator stepNavigator, SentimentImportServiceAsync sentimentService) {
         super(projectIdAware);
         this.importModel = importModel;
         this.buttonsPanel = buttonsPanel;

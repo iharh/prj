@@ -7,7 +7,7 @@ import mygwt.web.client.sentiments.wizard.ImportModel;
 import mygwt.web.client.sentiments.wizard.steps.StepNavigator;
 import mygwt.web.client.sentiments.wizard.panels.ButtonsPanel;
 
-import mygwt.common.client.service.SentimentUploadServiceAsync;
+import mygwt.common.client.service.SentimentImportServiceAsync;
 import mygwt.common.client.widget.dialog.MessageDialog;
 
 import mygwt.portal.dto.SentimentUploadValidationResult;
@@ -57,7 +57,7 @@ public class ImportFinishPanel extends BasePanel {
     private ImportModel importModel;
     private ButtonsPanel buttonsPanel;
     private StepNavigator stepNavigator;
-    private SentimentUploadServiceAsync sentimentService;
+    private SentimentImportServiceAsync sentimentService;
 
     private Anchor showSkippedWordsBtn;
     private Anchor showSkippedRulesBtn;
@@ -71,7 +71,7 @@ public class ImportFinishPanel extends BasePanel {
 
     private boolean isProcessStarted;
 
-    public ImportFinishPanel(ProjectIdAware projectIdAware, ImportModel importModel, ButtonsPanel buttonsPanel, StepNavigator stepNavigator, SentimentUploadServiceAsync sentimentService) {
+    public ImportFinishPanel(ProjectIdAware projectIdAware, ImportModel importModel, ButtonsPanel buttonsPanel, StepNavigator stepNavigator, SentimentImportServiceAsync sentimentService) {
 	super(projectIdAware); // SentimentUploadMessages.INSTANCE.step2of2()
 
         this.importModel = importModel;

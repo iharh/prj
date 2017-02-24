@@ -52,6 +52,7 @@
     <source path="web/client/sentiments/rse/server"/>
     <source path="web/client/sentiments/resources"/>
 
+
     <set-property name="gwt.logging.simpleRemoteHandler" value="ENABLED" />
     <set-property name="gwt.logging.logLevel" value="SEVERE"/>
     <set-property name="gwt.logging.enabled" value="TRUE"/>

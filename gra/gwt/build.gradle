@@ -85,13 +85,13 @@ dependencies {
     compile libraries.log4j
     compile libraries.commons_io
     compile libraries.commons_lang3
-/*
-    compile libraries.commons_logging
+
+    //compile libraries.commons_logging
     compile libraries.slf4j_api
     compile libraries.slf4j_log4j12
     compile libraries.log4j
     compile libraries.log4j_extras
-*/
+
     compile libraries.spring_aop
     compile libraries.spring_beans
     compile libraries.spring_core

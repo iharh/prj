@@ -2,8 +2,8 @@ package mygwt.web.client.sentiments.wizard;
 
 import mygwt.common.client.url.Service;
 
-import mygwt.common.client.service.SentimentUploadServiceAsync;
-import mygwt.common.client.service.SentimentUploadService;
+import mygwt.common.client.service.SentimentImportServiceAsync;
+import mygwt.common.client.service.SentimentImportService;
 
 import mygwt.foundation.client.rpc.AbstractAsyncCallback;
 
@@ -106,8 +106,8 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider {
 	stepsPanel.setSize(allW + "px", STEPS_AVAILABLE_HEIGHT + "px");
 
         stepOperationSelection = new OperationSelectionPanel();
-        stepImportFileSelection = new ImportFileSelectionPanel(projectIdAwareImpl, importModel, buttonsPanel, stepNavigator, getSentimentUploadSvcAsync());
-        stepImportFinish = new ImportFinishPanel(projectIdAwareImpl, importModel, buttonsPanel, stepNavigator, getSentimentUploadSvcAsync());
+        stepImportFileSelection = new ImportFileSelectionPanel(projectIdAwareImpl, importModel, buttonsPanel, stepNavigator, getSentimentImportSvcAsync());
+        stepImportFinish = new ImportFinishPanel(projectIdAwareImpl, importModel, buttonsPanel, stepNavigator, getSentimentImportSvcAsync());
         stepExport = new ExportPanel(projectIdAwareImpl);
         stepRecentExports = new RecentExportsPanel(projectIdAwareImpl, getRecentSentimentExportsSvcAsync());
 
@@ -206,17 +206,17 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider {
         target.setRpcRequestBuilder(CsrfRpcRequestBuilder.getInstance(projectIdAwareImpl));
     }
 
-    private SentimentUploadServiceAsync svcSentimentUploadServiceAsync;
+    private SentimentImportServiceAsync svcSentimentImportServiceAsync;
     
-    public SentimentUploadServiceAsync getSentimentUploadSvcAsync() {
-        if (svcSentimentUploadServiceAsync == null) {
-            svcSentimentUploadServiceAsync = (SentimentUploadServiceAsync) GWT.create(SentimentUploadService.class);
-            injectRpcBuilder(((ServiceDefTarget) svcSentimentUploadServiceAsync), Service.SENTIMENT_UPLOAD_SERVICE);
+    public SentimentImportServiceAsync getSentimentImportSvcAsync() {
+        if (svcSentimentImportServiceAsync == null) {
+            svcSentimentImportServiceAsync = (SentimentImportServiceAsync) GWT.create(SentimentImportService.class);
+            injectRpcBuilder(((ServiceDefTarget) svcSentimentImportServiceAsync), Service.SENTIMENT_IMPORT_SERVICE);
         }
-        return svcSentimentUploadServiceAsync;
+        return svcSentimentImportServiceAsync;
     }
 
     private void clearSession() {
-        getSentimentUploadSvcAsync().cleanupSentimentsWithUploadedData(getProjectId(), AbstractAsyncCallback.VOID_CALLBACK);
+        getSentimentImportSvcAsync().cleanupSentimentsWithUploadedData(getProjectId(), AbstractAsyncCallback.VOID_CALLBACK);
     }
 }
