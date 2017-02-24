@@ -293,8 +293,7 @@ public class ImportFileSelectionPanel extends BasePanel {
         return super.onLeave();
     }
 
-    // TODO: probably need to share this stuff
-
+    // TODO: !!! need to share this stuff and call this on dialog finish/close in some way as well as on initial screen enter !!!
     private void clearSession() {
         sentimentService.cleanupSentimentsWithUploadedData(getProjectId(), AbstractAsyncCallback.VOID_CALLBACK);
     }

@@ -260,8 +260,7 @@ public class ImportFinishPanel extends BasePanel {
                             if (caught instanceof SentimentUploadException) {
                                 errorMessage += handleException((SentimentUploadException) caught);
                             } else {
-                                LogUtils.log("other ex: " + errorMessage);
-                                //super.onFailure(caught);
+                                super.onFailure(caught);
                             }
                             statusLabel.setVisible(true);
                             statusLabel.addStyleName(ERROR_MESSAGE_STYLE);
@@ -269,7 +268,7 @@ public class ImportFinishPanel extends BasePanel {
                             isProcessStarted = false;
                             buttonsPanel.enableFinish();
 
-                            GWT.log("Failed to synchronize database with the uploaded file", caught); //$NON-NLS-1$
+                            GWT.log("Failed to synchronize database with the uploaded file", caught);
                         }
                         @Override
                         public void onSuccess(Void result) {
