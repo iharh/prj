@@ -79,7 +79,8 @@ public class ImportFileSelectionPanel extends BasePanel {
 
         sentFileName = "";
 	form = new CsrfFormPanel();
-        form.setAction(GWT.getHostPageBaseURL() + "sentiment_upload.action"); // sentiment_upload.action
+        // sentiment_upload.action
+        form.setAction(GWT.getHostPageBaseURL() + "sentiment_import/sentiment_import_service/uploadfile"); 
         // Because we're going to add a FileUpload widget, we'll need to set the
         // form to use the POST method, and multipart MIME encoding.
         form.setEncoding(FormPanel.ENCODING_MULTIPART);
@@ -276,7 +277,15 @@ public class ImportFileSelectionPanel extends BasePanel {
     public void onEnter() {
         super.onEnter();
         clearStatusLabel(msgs.selectFileMess());
-        // buttonsPanel.disableNext(); // TODO: uncomment after implementing all the upload panels
+        buttonsPanel.disableNext();
+    }
+
+    @Override
+    public boolean onLeave() {
+        if (!saveDataToModel()) {
+            return false;
+        }
+        return super.onLeave();
     }
 
     // probably need to share this stuff

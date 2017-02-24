@@ -65,7 +65,9 @@ public class StepNavigator implements WizardActionHandler {
 
     @Override
     public void onNext() {
-        currentPage.onLeave();
+        if (!currentPage.onLeave()) {
+            return;
+        }
         deque.add(currentPage);
 
         NextPageDetector nextPageDetector = nextPageDetectors.get(currentPage);

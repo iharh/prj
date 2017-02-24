@@ -18,8 +18,10 @@ public class SentimentImportServiceImpl extends AutoinjectingRemoteServiceServle
     private static final Logger log = LoggerFactory.getLogger(SentimentImportServiceImpl.class);
 
     @PostMapping("uploadfile")
-    void uploadFile(@RequestParam("upload") MultipartFile requestFile, HttpSession session) {
-        log.info("uploading file: {}", requestFile.getOriginalFilename());
+    void uploadFile(/*@RequestParam("upload") MultipartFile requestFile*/
+           @RequestParam("projectId") Long projectId, HttpSession session) {
+        log.info("projectId: {}", projectId);
+        //log.info("uploading file: {}", requestFile.getOriginalFilename());
     }
 
     @Override
