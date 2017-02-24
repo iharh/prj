@@ -1,6 +1,8 @@
 package mygwt.web.client.sentiments.wizard.panels;
 
 import mygwt.web.client.sentiments.wizard.WizardPage;
+import mygwt.web.client.sentiments.upload.SentimentUploadException;
+import mygwt.web.client.sentiments.upload.resources.SentimentUploadMessagesHelper;
 
 import mygwt.foundation.client.csrf.ProjectIdAware;
 
@@ -25,6 +27,14 @@ public class BasePanel extends VerticalPanel implements WizardPage {
 
     public long getProjectId() {
         return projectIdAware.getProjectId();
+    }
+
+    protected static String handleException(SentimentUploadException caught) {
+        String result = "<br/>";
+        SentimentUploadException e = (SentimentUploadException) caught;
+        String mess = SentimentUploadMessagesHelper.getMessage(e);
+        result += (mess != null && !mess.isEmpty()) ? mess : e.getLocalizedMessage();
+        return result;
     }
 
     @Override

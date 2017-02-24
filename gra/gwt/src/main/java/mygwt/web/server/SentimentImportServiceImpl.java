@@ -62,7 +62,9 @@ public class SentimentImportServiceImpl extends AutoinjectingRemoteServiceServle
     @Override
     public SentimentUploadValidationResult getPreliminaryUploadResults() throws ServiceException {
         SentimentUploadValidationResult result = new SentimentUploadValidationResult();
-        result.setNegatorTuned(true);
+        result.addSkippedWord(null);
+        result.addSkippedRule(null);
+        //result.setNegatorTuned(true);
         log.info("get preliminary results}");
         return result;
     }

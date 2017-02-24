@@ -18,7 +18,7 @@ import mygwt.foundation.client.csrf.ProjectIdAware;
 import mygwt.foundation.client.rpc.AbstractAsyncCallback;
 import mygwt.foundation.client.exception.ServiceException;
 import mygwt.foundation.client.resources.CommonConstants;
-import mygwt.foundation.client.widget.AjaxLoaderImage;
+//import mygwt.foundation.client.widget.AjaxLoaderImage;
 import mygwt.foundation.client.widget.dialog.BaseDialogBox;
 import mygwt.foundation.client.widget.dialog.SessionExpiredDialog;
 import mygwt.foundation.client.widget.dialog.YesNoDialog;
@@ -39,7 +39,7 @@ import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.user.client.ui.Hidden;
-import com.google.gwt.user.client.ui.Image;
+//import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.FileUpload;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -63,6 +63,7 @@ public class ImportFinishPanel extends BasePanel {
     private Anchor showSkippedRulesBtn;
 
     // final
+    //private Image stgLoadImage;
     private HTML statusLabel; // final
     private HTML wordsLabel;
     private HTML rulesLabel;
@@ -99,7 +100,9 @@ public class ImportFinishPanel extends BasePanel {
 	showSkippedRulesBtn.addClickHandler(new ShowSkippedRulesListener());
         showSkippedRulesBtn.setVisible(false);
 
+	//stgLoadImage = new AjaxLoaderImage();
         //stgLoadImage.setVisible(false);
+
         statusLabel = new HTML();
         statusLabel.setVisible(false);
 
@@ -151,6 +154,7 @@ public class ImportFinishPanel extends BasePanel {
     private class ShowSkippedWordsListener implements ClickHandler {
         @Override
         public void onClick(ClickEvent event) {
+            LogUtils.log("onClick ShowSkippedWordsListener");
             //stgLoadImage.setVisible(true);
             BaseDialogBox skippedBox = new BaseDialogBox(msgs.skippedWordsRows(), 410, 150) {
                 {
@@ -178,6 +182,7 @@ public class ImportFinishPanel extends BasePanel {
     private class ShowSkippedRulesListener implements ClickHandler {
         @Override
         public void onClick(ClickEvent event) {
+            LogUtils.log("onClick ShowSkippedRulesListener");
             //stgLoadImage.setVisible(true);
             BaseDialogBox skippedBox = new BaseDialogBox(msgs.skippedRulesRows(), 400, 150) {
                 {
@@ -235,7 +240,7 @@ public class ImportFinishPanel extends BasePanel {
 
     @Override
     public void onFinish() {
-        if (!isProcessStarted) {
+        if (isProcessStarted) {
             statusLabel.addStyleName(ERROR_MESSAGE_STYLE);
             statusLabel.setVisible(false);
             statusLabel.setVisible(true);
@@ -249,13 +254,15 @@ public class ImportFinishPanel extends BasePanel {
                     new AbstractAsyncCallback<Void>() {
                         @Override
                         public void onFailure(Throwable caught) {
+                            LogUtils.log("onF");
                             String errorMessage = msgs.errorOnDBSynchronizing();
                             // stgLoadImage.setVisible(false);
-                            /* TODO: uncomment if (caught instanceof SentimentUploadException) {
+                            if (caught instanceof SentimentUploadException) {
                                 errorMessage += handleException((SentimentUploadException) caught);
                             } else {
-                                super.onFailure(caught);
-                            }*/
+                                LogUtils.log("other ex: " + errorMessage);
+                                //super.onFailure(caught);
+                            }
                             statusLabel.setVisible(true);
                             statusLabel.addStyleName(ERROR_MESSAGE_STYLE);
                             statusLabel.setHTML(errorMessage);
@@ -266,6 +273,7 @@ public class ImportFinishPanel extends BasePanel {
                         }
                         @Override
                         public void onSuccess(Void result) {
+                            LogUtils.log("onS");
                             clearStatusLabel(msgs.done());
                             isProcessStarted = false;
                             buttonsPanel.enableFinish();
@@ -275,6 +283,7 @@ public class ImportFinishPanel extends BasePanel {
                     }
                 );
             } catch (ServiceException e) {
+                LogUtils.log("3");
                 statusLabel.addStyleName(ERROR_MESSAGE_STYLE);
                 statusLabel.setHTML(e.getLocalizedMessage());
             }

@@ -7,7 +7,6 @@ import mygwt.common.client.service.SentimentImportServiceAsync;
 import mygwt.web.adhoc.client.resources.AdHocMessagesHelper;
 import mygwt.web.client.sentiments.upload.SentimentUploadException;
 import mygwt.web.client.sentiments.upload.resources.SentimentUploadMessages;
-import mygwt.web.client.sentiments.upload.resources.SentimentUploadMessagesHelper;
 import mygwt.web.client.sentiments.wizard.ImportModel;
 import mygwt.web.client.sentiments.wizard.steps.StepNavigator;
 import mygwt.web.client.sentiments.wizard.panels.ButtonsPanel;
@@ -210,7 +209,6 @@ public class ImportFileSelectionPanel extends BasePanel {
                 new AbstractAsyncCallback<SentimentUploadValidationResult>() {
                     @Override
                     public void onFailure(Throwable caught) {
-                        LogUtils.log("prelim complete err");
                         String errorMessage = msgs.fetchSampleDataErrorMess();
                         wheel.setVisible(false);
                         buttonsPanel.enableNext();
@@ -226,7 +224,6 @@ public class ImportFileSelectionPanel extends BasePanel {
 
                     @Override
                     public void onSuccess(SentimentUploadValidationResult result) {
-                        LogUtils.log("prelim complete no err");
                         importModel.setSentimentUploadValidationResult(result);
                         if (result.isNegatorTuned()) {
                             YesNoDialog dialog = new YesNoDialog(msgs.warning(), msgs.fileUploadNegatorTuned(),
@@ -296,17 +293,9 @@ public class ImportFileSelectionPanel extends BasePanel {
         return super.onLeave();
     }
 
-    // probably need to share this stuff
+    // TODO: probably need to share this stuff
 
     private void clearSession() {
         sentimentService.cleanupSentimentsWithUploadedData(getProjectId(), AbstractAsyncCallback.VOID_CALLBACK);
-    }
-
-    private static String handleException(SentimentUploadException caught) {
-        String result = "<br/>";
-        SentimentUploadException e = (SentimentUploadException) caught;
-        String mess = SentimentUploadMessagesHelper.getMessage(e);
-        result += (mess != null && !mess.isEmpty()) ? mess : e.getLocalizedMessage();
-        return result;
     }
 }
