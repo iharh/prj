@@ -96,16 +96,6 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider {
 	setAutoHideEnabled(false);
     }
 
-    /*public void onImport(boolean updateSentences) {
-        sentimentTab.refreshSentimentTable(false);
-        sentimentTab.refreshExceptionRulesList();
-        if (updateSentences) {
-            sentimentTab.recalculateSentiments();
-        } else {
-            sentimentTab.setRecalculateVisible(true);
-        }
-    }*/
-
     private Widget createDialogContents() {
         projectIdAwareImpl = new ProjectIdAwareImpl();
         stepNavigator = new StepNavigator(this);
@@ -122,7 +112,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider {
         stepImportFileSelection = new ImportFileSelectionPanel(projectIdAwareImpl, importModel, buttonsPanel, stepNavigator, getSentimentImportSvcAsync());
         stepImportFinish = new ImportFinishPanel(projectIdAwareImpl, finishHandler, importModel, buttonsPanel, stepNavigator, getSentimentImportSvcAsync());
         stepExport = new ExportPanel(projectIdAwareImpl);
-        stepRecentExports = new RecentExportsPanel(projectIdAwareImpl, getRecentSentimentExportsSvcAsync());
+        stepRecentExports = new RecentExportsPanel(projectIdAwareImpl, finishHandler, getRecentSentimentExportsSvcAsync());
 
         configureWizard();
 
@@ -165,7 +155,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider {
 
         dialogPanel.addSouth(buttonsPanel, BUTTONS_AVAILABLE_HEIGHT);
 
-        stepNavigator.start(stepOperationSelection); // stepRecentExports
+        stepNavigator.start(stepOperationSelection);
     }
 
     public void onBrowserEvent(Event event) {
@@ -199,7 +189,6 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider {
         stepsPanel.showWidget(stepIdx);
         WizardPage currentPage = stepNavigator.getCurrentPage();
         buttonsPanel.onPageChanged(currentPage, isFirst, isLast);
-        //LogUtils.log(traceMsg);
     }
 
     private RecentSentimentExportsServiceAsync svcRecentSentimentExportsAsync;

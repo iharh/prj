@@ -35,6 +35,20 @@ public class MyEntryPoint implements EntryPoint, FinishHandler {
     @Override
     public void onImport(boolean updateSentences) {
         LogUtils.log("onImport updateSentences: " + updateSentences);
+/*
+        sentimentTab.refreshSentimentTable(false);
+        sentimentTab.refreshExceptionRulesList();
+        if (updateSentences) {
+            sentimentTab.recalculateSentiments();
+        } else {
+            sentimentTab.setRecalculateVisible(true);
+        }
+*/
+        popup.hide();
+    }
+
+    public void onRecentSentimentsExport() {
+        LogUtils.log("onRecentSentimentsExport");
         popup.hide();
     }
 }

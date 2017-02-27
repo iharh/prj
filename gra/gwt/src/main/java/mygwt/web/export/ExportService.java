@@ -1,35 +1,22 @@
 package mygwt.web.export;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletResponse;
+import mygwt.common.security.annotation.SecureParameter;
+import mygwt.common.security.model.ClassName;
+import mygwt.common.security.model.PermissionName;
 
-import org.springframework.stereotype.Controller;
+//import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletResponse;
 
 //import org.springframework.web.bind.WebDataBinder;
 //import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RequestMethod;
-//import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
-@Controller
-@RequestMapping("/export/*")
+import org.springframework.http.ResponseEntity;
+
 public interface ExportService {
-    //@RequestMapping(value = "exp", method = RequestMethod.GET)
-    //@GetMapping("sampleExp")
+    @SecureParameter(permission = PermissionName.READ, strategyClass = ClassName.SENTIMENTS)
+    ResponseEntity<String> downloadLatestSentimentExport(long projectId, String exportId, HttpServletResponse response);
 
-    @PostMapping("exp2")
-    void sampleExp(HttpServletResponse response);
-/*
-    //@RequestMapping(value = "custom_export", method = RequestMethod.POST)
-    @PostMapping("custom_export")
-    void downloadCustomExport(@RequestParam("projectId") long projectId, @RequestParam("sessionId") long sessionId, HttpServletResponse response);
-
-    //@RequestMapping(value = "sharedlexicon", method = RequestMethod.POST)
-    @PostMapping("sharedlexicon")
-    void exportSharedLexicon(ExportSharedLexiconProperties properties, HttpServletResponse response);
-*/
     //@InitBinder
     //void initBinder(WebDataBinder binder);
 }

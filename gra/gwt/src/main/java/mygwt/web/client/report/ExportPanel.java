@@ -27,6 +27,8 @@ public class ExportPanel extends CsrfFormPanel {
     // --------------- REPORT EXPORT CONSTANTS --------------------------------- //
     public static final String REPORTEXPORT_PROJECTID = "projectId";
 
+    //-------- Recent Sentiment Expors --------
+    public static final String EXPORT_ID = "exportId";
 
     private final VerticalPanel fieldsPanel = new VerticalPanel();
     private final Map<String, Hidden> fields = new HashMap<String, Hidden>(); 

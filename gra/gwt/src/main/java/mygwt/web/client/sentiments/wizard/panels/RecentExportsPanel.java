@@ -1,8 +1,12 @@
 package mygwt.web.client.sentiments.wizard.panels;
 
+import mygwt.web.client.sentiments.wizard.FinishHandler;
+
 import mygwt.web.client.sentiments.resources.SentimentsMessages;
 
 import mygwt.web.client.sentiments.rse.RecentSentimentExportsServiceAsync;
+
+import mygwt.web.client.report.ExportPanel;
 
 import mygwt.web.client.utils.LogUtils;
 
@@ -27,6 +31,8 @@ import java.util.List;
 import java.util.LinkedList;
 
 public class RecentExportsPanel extends BasePanel {
+    private FinishHandler finishHandler;
+
     private SentimentsMessages msgs;
 
     private DataGrid<RecentSentimentExportsInfo> dataGrid;
@@ -36,8 +42,9 @@ public class RecentExportsPanel extends BasePanel {
 
     private RecentSentimentExportsServiceAsync svcAsync;
 
-    public RecentExportsPanel(ProjectIdAware projectIdAware, RecentSentimentExportsServiceAsync svcAsync) {
+    public RecentExportsPanel(ProjectIdAware projectIdAware, FinishHandler finishHandler, RecentSentimentExportsServiceAsync svcAsync) {
         super(projectIdAware);
+        this.finishHandler = finishHandler;
         this.svcAsync = svcAsync;
 
         msgs = SentimentsMessages.INSTANCE;
@@ -122,5 +129,31 @@ public class RecentExportsPanel extends BasePanel {
                 //dataGrid.redraw();
             }
         });
+    }
+
+    private ExportPanel hiddenPanel;
+
+    private void buildExportPanel() {
+        if (null != hiddenPanel)
+            hiddenPanel.removeFromParent();
+        hiddenPanel = new ExportPanel("exporting/export/latest_sentiment_exports");
+
+        hiddenPanel.setField(ExportPanel.SENT_EXPORT_PROJECTID, getProjectId());
+
+        RecentSentimentExportsInfo info = selectionModel.getSelectedObject();
+        hiddenPanel.setField(ExportPanel.EXPORT_ID, info.getFileName());
+        
+        add(hiddenPanel);
+    }
+
+    @Override
+    public void onFinish() {
+        buildExportPanel();
+        hiddenPanel.submit();
+
+        if (finishHandler != null) {
+            finishHandler.onRecentSentimentsExport();
+        }
+        super.onFinish();
     }
 }
