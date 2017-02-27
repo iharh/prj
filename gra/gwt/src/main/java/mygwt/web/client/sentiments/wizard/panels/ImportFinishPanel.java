@@ -4,8 +4,8 @@ import mygwt.web.client.sentiments.upload.SentimentUploadException;
 import mygwt.web.client.sentiments.upload.resources.SentimentUploadMessages;
 import mygwt.web.client.sentiments.upload.resources.SentimentUploadMessagesHelper;
 import mygwt.web.client.sentiments.wizard.ImportModel;
+import mygwt.web.client.sentiments.wizard.FinishHandler;
 import mygwt.web.client.sentiments.wizard.steps.StepNavigator;
-import mygwt.web.client.sentiments.wizard.panels.ButtonsPanel;
 
 import mygwt.common.client.service.SentimentImportServiceAsync;
 import mygwt.common.client.widget.dialog.MessageDialog;
@@ -54,6 +54,7 @@ public class ImportFinishPanel extends BasePanel {
 
     private SentimentUploadMessages msgs;
 
+    private FinishHandler finishHandler;
     private ImportModel importModel;
     private ButtonsPanel buttonsPanel;
     private StepNavigator stepNavigator;
@@ -72,9 +73,11 @@ public class ImportFinishPanel extends BasePanel {
 
     private boolean isProcessStarted;
 
-    public ImportFinishPanel(ProjectIdAware projectIdAware, ImportModel importModel, ButtonsPanel buttonsPanel, StepNavigator stepNavigator, SentimentImportServiceAsync sentimentService) {
+    public ImportFinishPanel(ProjectIdAware projectIdAware, FinishHandler finishHandler, ImportModel importModel,
+            ButtonsPanel buttonsPanel, StepNavigator stepNavigator, SentimentImportServiceAsync sentimentService) {
 	super(projectIdAware); // SentimentUploadMessages.INSTANCE.step2of2()
 
+        this.finishHandler = finishHandler;
         this.importModel = importModel;
         this.buttonsPanel = buttonsPanel;
         this.stepNavigator = stepNavigator;
@@ -254,7 +257,6 @@ public class ImportFinishPanel extends BasePanel {
                     new AbstractAsyncCallback<Void>() {
                         @Override
                         public void onFailure(Throwable caught) {
-                            LogUtils.log("onF");
                             String errorMessage = msgs.errorOnDBSynchronizing();
                             // stgLoadImage.setVisible(false);
                             if (caught instanceof SentimentUploadException) {
@@ -272,20 +274,25 @@ public class ImportFinishPanel extends BasePanel {
                         }
                         @Override
                         public void onSuccess(Void result) {
-                            LogUtils.log("onS");
                             clearStatusLabel(msgs.done());
                             isProcessStarted = false;
                             buttonsPanel.enableFinish();
-                            Boolean updateSentences = launchSentenceExceptionsUpdate.getValue();
-                            // getWizard().finishComplete(updateSentences); // TODO: TBD
+                            if (finishHandler != null) {
+                                Boolean updateSentences = launchSentenceExceptionsUpdate.getValue();
+                                finishHandler.onImport(updateSentences);
+                            }
+                            callSuperOnFinish(); 
                         }
                     }
                 );
             } catch (ServiceException e) {
-                LogUtils.log("3");
                 statusLabel.addStyleName(ERROR_MESSAGE_STYLE);
                 statusLabel.setHTML(e.getLocalizedMessage());
             }
         }
+    }
+
+    public void callSuperOnFinish() {
+        super.onFinish();
     }
 }

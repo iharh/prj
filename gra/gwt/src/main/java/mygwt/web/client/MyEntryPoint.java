@@ -11,20 +11,30 @@ import mygwt.foundation.client.widget.dialog.BaseDialogBox;
 //import mygwt.web.client.sentiments.ExportSentimentsDialog;
 //import mygwt.web.client.sentiments.rse.RecentSentimentExportsDialog;
 import mygwt.web.client.sentiments.wizard.SentimentsWizard;
+import mygwt.web.client.sentiments.wizard.FinishHandler;
 
-public class MyEntryPoint implements EntryPoint {
+import mygwt.web.client.utils.LogUtils;
+
+public class MyEntryPoint implements EntryPoint, FinishHandler {
+    private BaseDialogBox popup;
 
     private BaseDialogBox getDialogBox() {
         //return new SampleDialog();
         //return new ExportSentimentsDialog();
         //return new RecentSentimentExportsDialog();
-        return new SentimentsWizard();
+        return new SentimentsWizard(this);
     }
 
     @Override
     public void onModuleLoad() {
 	RootPanel.get().add(new Label("Hello: " + PermissionName.NONE.name()));
-        final BaseDialogBox popup = getDialogBox();
+        popup = getDialogBox();
         popup.show();
+    }
+
+    @Override
+    public void onImport(boolean updateSentences) {
+        LogUtils.log("onImport updateSentences: " + updateSentences);
+        popup.hide();
     }
 }

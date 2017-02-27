@@ -61,6 +61,8 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider {
     private static final int allH                     = STEPS_AVAILABLE_HEIGHT + BUTTONS_AVAILABLE_HEIGHT;
     private static final int allW                     = 670;
 
+    private FinishHandler finishHandler;
+
     private SentimentsMessages msgs;
 
     private ImportModel importModel;
@@ -81,8 +83,9 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider {
 
     private int currentStep = 0;
 
-    public SentimentsWizard() {
+    public SentimentsWizard(FinishHandler finishHandler) {
         super("Sentiment Management", allW, allH);
+        this.finishHandler = finishHandler;
 
         msgs = SentimentsMessages.INSTANCE;
 
@@ -92,6 +95,16 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider {
 
 	setAutoHideEnabled(false);
     }
+
+    /*public void onImport(boolean updateSentences) {
+        sentimentTab.refreshSentimentTable(false);
+        sentimentTab.refreshExceptionRulesList();
+        if (updateSentences) {
+            sentimentTab.recalculateSentiments();
+        } else {
+            sentimentTab.setRecalculateVisible(true);
+        }
+    }*/
 
     private Widget createDialogContents() {
         projectIdAwareImpl = new ProjectIdAwareImpl();
@@ -107,7 +120,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider {
 
         stepOperationSelection = new OperationSelectionPanel();
         stepImportFileSelection = new ImportFileSelectionPanel(projectIdAwareImpl, importModel, buttonsPanel, stepNavigator, getSentimentImportSvcAsync());
-        stepImportFinish = new ImportFinishPanel(projectIdAwareImpl, importModel, buttonsPanel, stepNavigator, getSentimentImportSvcAsync());
+        stepImportFinish = new ImportFinishPanel(projectIdAwareImpl, finishHandler, importModel, buttonsPanel, stepNavigator, getSentimentImportSvcAsync());
         stepExport = new ExportPanel(projectIdAwareImpl);
         stepRecentExports = new RecentExportsPanel(projectIdAwareImpl, getRecentSentimentExportsSvcAsync());
 
