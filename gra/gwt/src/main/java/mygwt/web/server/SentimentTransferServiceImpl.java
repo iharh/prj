@@ -125,11 +125,8 @@ public class SentimentTransferServiceImpl extends AutoinjectingRemoteServiceServ
         return result;
     }
 
-    // ExportService
-
-    //@PostMapping("latest_sentiment_exports")
     @RequestMapping(value = "recent_sentiment_exports", method = RequestMethod.POST)
-    public void /*ResponseEntity<String>*/ downloadRecentSentimentExport(@RequestParam("projectId") long projectId, @RequestParam("exportId") String exportId, HttpServletResponse response) {
+    public void downloadRecentSentimentExport(@RequestParam("projectId") long projectId, @RequestParam("exportId") String exportId, HttpServletResponse response) {
         log.info("downloadRecentSentimentExport started");
         InputStream input = null;
         String responseMsg = AdHocConstants.UPLOAD_OK;
@@ -143,9 +140,35 @@ public class SentimentTransferServiceImpl extends AutoinjectingRemoteServiceServ
             responseMsg = e.getMessage();
             IOUtils.closeQuietly(input);
             log.error(e.getMessage(), e);
-            // throw new CMPException(e.getMessage());
         }
         log.info("downloadRecentSentimentExport finished");
-        // return createResponse(responseMsg);
+    }
+
+    // ExportService
+
+    @RequestMapping(value = "sentiment_export", method = RequestMethod.POST)
+    public void downloadCurrentSentimentExport(@RequestParam("projectId") long projectId
+        , @RequestParam("exportId") String exportId
+        , @RequestParam("exportRules") boolean exportRules
+        , @RequestParam("exportWords") boolean exportWords
+        , @RequestParam("exportName") String exportName
+        , @RequestParam("exportDescription") String exportDescription
+        , HttpServletResponse response) {
+
+        log.info("downloadCurrentSentimentExport started");
+        InputStream input = null;
+        String responseMsg = AdHocConstants.UPLOAD_OK;
+        try {
+            input = new FileInputStream(new File(TEST_FILE_NAME));
+            response.setContentType("application/octet-stream; charset=utf-8");
+            response.setHeader("Content-Disposition", "attachment; filename=\"file.dct\"");
+            IOUtils.copy(input, response.getOutputStream());
+            input.close();
+        } catch (IOException e) {
+            responseMsg = e.getMessage();
+            IOUtils.closeQuietly(input);
+            log.error(e.getMessage(), e);
+        }
+        log.info("downloadCurrentSentimentExport finished");
     }
 }

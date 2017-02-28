@@ -109,7 +109,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider {
         stepOperationSelection = new OperationSelectionPanel();
         stepImportFileSelection = new ImportFileSelectionPanel(projectIdAwareImpl, importModel, buttonsPanel, stepNavigator, getSentimentImportSvcAsync());
         stepImportFinish = new ImportFinishPanel(projectIdAwareImpl, finishHandler, importModel, buttonsPanel, stepNavigator, getSentimentImportSvcAsync());
-        stepCurrentExport = new CurrentExportPanel(projectIdAwareImpl);
+        stepCurrentExport = new CurrentExportPanel(projectIdAwareImpl, finishHandler);
         stepRecentExports = new RecentExportsPanel(projectIdAwareImpl, finishHandler, getRecentSentimentExportsSvcAsync());
 
         configureWizard();

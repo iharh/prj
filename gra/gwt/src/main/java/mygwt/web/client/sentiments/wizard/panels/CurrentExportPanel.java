@@ -1,5 +1,6 @@
 package mygwt.web.client.sentiments.wizard.panels;
 
+import mygwt.web.client.sentiments.wizard.FinishHandler;
 import mygwt.web.client.sentiments.resources.SentimentsMessages;
 import mygwt.web.client.report.ExportPanel;
 import mygwt.web.client.utils.StyleUtils;
@@ -22,6 +23,8 @@ public class CurrentExportPanel extends BasePanel {
     private static final int labelW      = 150;
     private static final int spacing     = 12;
 
+    private FinishHandler finishHandler;
+
     private SentimentsMessages msgs;
 
     private CheckBox exportWords;
@@ -29,8 +32,9 @@ public class CurrentExportPanel extends BasePanel {
     private TextBox exportName;
     private TextArea exportDescription;
 
-    public CurrentExportPanel(ProjectIdAware projectIdAware) {
+    public CurrentExportPanel(ProjectIdAware projectIdAware, FinishHandler finishHandler) {
         super(projectIdAware); // addStyleName("myExportPanel");
+        this.finishHandler = finishHandler;
 
         msgs = SentimentsMessages.INSTANCE;
 
@@ -122,10 +126,11 @@ public class CurrentExportPanel extends BasePanel {
         hiddenPanel = new ExportPanel("sentiment_transfer/sentiment_transfer_service/sentiment_export");
 
         hiddenPanel.setField(ExportPanel.SENT_EXPORT_PROJECTID, getProjectId());
+        hiddenPanel.setField(ExportPanel.SENT_EXPORT_RULES, exportRules.getValue());
+        hiddenPanel.setField(ExportPanel.SENT_EXPORT_WORDS, exportWords.getValue());
+        hiddenPanel.setField(ExportPanel.SENT_EXPORT_NAME, exportName.getValue());
+        hiddenPanel.setField(ExportPanel.SENT_EXPORT_DESCR, exportDescription.getValue());
 
-        RecentSentimentExportsInfo info = selectionModel.getSelectedObject();
-        hiddenPanel.setField(ExportPanel.EXPORT_ID, info.getFileName());
-        
         add(hiddenPanel);
     }
 
