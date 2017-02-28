@@ -148,7 +148,6 @@ public class SentimentTransferServiceImpl extends AutoinjectingRemoteServiceServ
 
     @RequestMapping(value = "sentiment_export", method = RequestMethod.POST)
     public void downloadCurrentSentimentExport(@RequestParam("projectId") long projectId
-        , @RequestParam("exportId") String exportId
         , @RequestParam("exportRules") boolean exportRules
         , @RequestParam("exportWords") boolean exportWords
         , @RequestParam("exportName") String exportName
