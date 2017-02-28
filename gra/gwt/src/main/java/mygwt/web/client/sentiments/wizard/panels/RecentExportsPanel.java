@@ -97,7 +97,6 @@ public class RecentExportsPanel extends BasePanel {
         dataProvider.addDataDisplay(dataGrid);
 
         add(dataGrid);
-        LogUtils.log("done adding");
     }
 
     private String getParams(boolean words, boolean rules) {
@@ -131,7 +130,7 @@ public class RecentExportsPanel extends BasePanel {
     private void buildExportPanel() {
         if (null != hiddenPanel)
             hiddenPanel.removeFromParent();
-        hiddenPanel = new ExportPanel("sentiment_transfer/sentiment_transfer_service/latest_sentiment_exports");
+        hiddenPanel = new ExportPanel("sentiment_transfer/sentiment_transfer_service/recent_sentiment_exports");
 
         hiddenPanel.setField(ExportPanel.SENT_EXPORT_PROJECTID, getProjectId());
 
@@ -145,13 +144,9 @@ public class RecentExportsPanel extends BasePanel {
     public void onFinish() {
         buildExportPanel();
         hiddenPanel.submit();
-
-        LogUtils.log("1");
         if (finishHandler != null) {
             finishHandler.onRecentSentimentsExport();
-            LogUtils.log("2");
         }
-        LogUtils.log("3");
         super.onFinish();
     }
 }
