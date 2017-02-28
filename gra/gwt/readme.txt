@@ -1,28 +1,8 @@
-.web.server.SentimentImportServiceImpl
-.common.client.service.SentimentUploadService
-    need to rename to SentimentImportService/SentimentImportServiceAsync
-
-.web.server.SentimentImportServiceAction
-
-portal/web
-.projectlist.web.client.
-
-public final class ProjectApplicationContext extends ApplicationContext {
-    ...
-    public SentimentUploadServiceAsync getSentimentUploadService() {
-        if (sentimentUploadService == null) {
-        	sentimentUploadService = (SentimentUploadServiceAsync) GWT.create(SentimentUploadService.class);
-            ((ServiceDefTarget) sentimentUploadService).setServiceEntryPoint(
-            	Service.SENTIMENT_UPLOAD_SERVICE.getAbsoluteUrl() + ".action");
-            ((ServiceDefTarget) sentimentUploadService).setRpcRequestBuilder(CsrfRpcRequestBuilder.getInstance(this));
-        }
-        return sentimentUploadService;
-    }
-    ...
-}
-
-gradle --stop
-    rm -rf .gradle/
+.web.export.ExportService
+TODO: remove
+    @SecureParameter(permission = PermissionName.READ, strategyClass = ClassName.SENTIMENTS)
+    @RequestMapping(value = "latest_sentiment_exports", method = RequestMethod.POST)
+    void downloadLatestSentimentExport(@RequestParam("projectId") long projectId, @RequestParam("exportId") String exportId, HttpServletResponse response);
 
 gradle
     clean

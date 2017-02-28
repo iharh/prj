@@ -4,7 +4,7 @@ import mygwt.web.client.sentiments.wizard.FinishHandler;
 
 import mygwt.web.client.sentiments.resources.SentimentsMessages;
 
-import mygwt.web.client.sentiments.rse.RecentSentimentExportsServiceAsync;
+import mygwt.common.client.service.RecentSentimentExportsServiceAsync;
 
 import mygwt.web.client.report.ExportPanel;
 
@@ -53,18 +53,16 @@ public class RecentExportsPanel extends BasePanel {
     }
 
     private void createMainContent() {
-        //addStyleName("myRecentSentimentExportsPanel");
-        add(new InlineLabel(msgs.rseText()));
+        add(new InlineLabel(msgs.rseText())); //addStyleName("myRecentSentimentExportsPanel");
 
         ProvidesKey<RecentSentimentExportsInfo> keyProvider = new ProvidesKey<RecentSentimentExportsInfo>() {
             public Object getKey(RecentSentimentExportsInfo i) {
-                // Always do a null check.
-                return (i == null) ? null : i.getFileName();
+                return (i == null) ? null : i.getFileName(); // Always do a null check.
             }
         };
 
         dataGrid = new DataGrid<RecentSentimentExportsInfo>(keyProvider); // default page size is 50
-	dataGrid.setSize("100%", "150px"); // 100% 350px
+	dataGrid.setSize("100%", "250px"); // 100% 350px
 
 	dataGrid.setEmptyTableWidget(new HTML(msgs.rseNoExportsDefined()));
 
@@ -94,13 +92,12 @@ public class RecentExportsPanel extends BasePanel {
         selectionModel = new SingleSelectionModel<RecentSentimentExportsInfo>(keyProvider);
 
         dataGrid.setSelectionModel(selectionModel);
-        //dataGrid.setAlwaysShowScrollBars(true);
-        //http://samples.gwtproject.org/samples/Showcase/Showcase.html#!CwDataGrid
         dataProvider = new ListDataProvider<RecentSentimentExportsInfo>();
         dataProvider.setList(new LinkedList<RecentSentimentExportsInfo>());
         dataProvider.addDataDisplay(dataGrid);
 
         add(dataGrid);
+        LogUtils.log("done adding");
     }
 
     private String getParams(boolean words, boolean rules) {
@@ -125,8 +122,6 @@ public class RecentExportsPanel extends BasePanel {
                 dataProvider.getList().clear();
                 dataProvider.getList().addAll(rowData);
                 dataProvider.refresh();
-                // dataGrid.setRowData(rowData); // does not preserve page size
-                //dataGrid.redraw();
             }
         });
     }
@@ -136,7 +131,7 @@ public class RecentExportsPanel extends BasePanel {
     private void buildExportPanel() {
         if (null != hiddenPanel)
             hiddenPanel.removeFromParent();
-        hiddenPanel = new ExportPanel("exporting/export/latest_sentiment_exports");
+        hiddenPanel = new ExportPanel("sentiment_transfer/sentiment_transfer_service/latest_sentiment_exports");
 
         hiddenPanel.setField(ExportPanel.SENT_EXPORT_PROJECTID, getProjectId());
 
@@ -151,9 +146,12 @@ public class RecentExportsPanel extends BasePanel {
         buildExportPanel();
         hiddenPanel.submit();
 
+        LogUtils.log("1");
         if (finishHandler != null) {
             finishHandler.onRecentSentimentsExport();
+            LogUtils.log("2");
         }
+        LogUtils.log("3");
         super.onFinish();
     }
 }

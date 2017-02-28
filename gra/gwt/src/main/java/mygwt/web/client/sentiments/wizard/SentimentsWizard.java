@@ -2,15 +2,13 @@ package mygwt.web.client.sentiments.wizard;
 
 import mygwt.common.client.url.Service;
 
-import mygwt.common.client.service.SentimentImportServiceAsync;
 import mygwt.common.client.service.SentimentImportService;
+import mygwt.common.client.service.SentimentImportServiceAsync;
+import mygwt.common.client.service.RecentSentimentExportsService;
+import mygwt.common.client.service.RecentSentimentExportsServiceAsync;
 
 import mygwt.foundation.client.rpc.AbstractAsyncCallback;
-
 import mygwt.foundation.client.csrf.CsrfRpcRequestBuilder;
-
-import mygwt.web.client.sentiments.rse.RecentSentimentExportsService;
-import mygwt.web.client.sentiments.rse.RecentSentimentExportsServiceAsync;
 
 import mygwt.web.client.sentiments.resources.SentimentsMessages;
 
@@ -196,7 +194,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider {
     public RecentSentimentExportsServiceAsync getRecentSentimentExportsSvcAsync() {
         if (svcRecentSentimentExportsAsync == null) {
             svcRecentSentimentExportsAsync = (RecentSentimentExportsServiceAsync) GWT.create(RecentSentimentExportsService.class);
-            injectRpcBuilder(((ServiceDefTarget) svcRecentSentimentExportsAsync), Service.RECENT_SENTIMENT_EXPORTS_SERVICE);
+            injectRpcBuilder(((ServiceDefTarget) svcRecentSentimentExportsAsync), Service.SENTIMENT_TRANSFER_SERVICE);
         }
         return svcRecentSentimentExportsAsync;
     }
@@ -213,7 +211,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider {
     public SentimentImportServiceAsync getSentimentImportSvcAsync() {
         if (svcSentimentImportServiceAsync == null) {
             svcSentimentImportServiceAsync = (SentimentImportServiceAsync) GWT.create(SentimentImportService.class);
-            injectRpcBuilder(((ServiceDefTarget) svcSentimentImportServiceAsync), Service.SENTIMENT_IMPORT_SERVICE);
+            injectRpcBuilder(((ServiceDefTarget) svcSentimentImportServiceAsync), Service.SENTIMENT_TRANSFER_SERVICE);
         }
         return svcSentimentImportServiceAsync;
     }

@@ -10,19 +10,20 @@
 
     <!-- mvc:default-servlet-handler /-->
 
-    <!-- context:component-scan base-package="mygwt.web.export"/ -->
+    <!-- context:component-scan base-package="mygwt.web.server"/ -->
 
-    <!-- component-scan does not work because ExportController is annotated via the ExportService interface -->
-    <bean id="exportController" class="mygwt.web.export.ExportController" autowire="byName" />
+    <!-- component-scan does not work because SentimentTransferServiceImpl is annotated via the interfaces -->
+    <bean id="sentimentTransferController" class="mygwt.web.server.SentimentTransferServiceImpl" autowire="byName" />
+    <!-- must have this for the correct multipart work -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
-    <!-- bean id='exportSecurityInterceptor' class="com.clarabridge.web.export.security.ExportSecurityInterceptor">
+    <!-- bean id='sentimentTransferSecurityInterceptor' class="com.clarabridge.web...security.SentimentTransferSecurityInterceptor">
         <property name="securityService" ref="securityService" />
-        <property name="dataflowService" ref="dataflowService" />
     </bean>
 
     <aop:config>
-        <aop:advisor pointcut="execution(* com.clarabridge.web.export.ExportController.*(..))"
-            advice-ref="exportSecurityInterceptor" />
+        <aop:advisor pointcut="execution(* com.clarabridge.web.server.SentimentTransferServiceImpl.*(..))"
+            advice-ref="sentimentTransferSecurityInterceptor" />
     </aop:config-->
 </beans>
 
