@@ -144,9 +144,14 @@ public class RecentExportsPanel extends BasePanel {
     public void onFinish() {
         buildExportPanel();
         hiddenPanel.submit();
+        super.onFinish();
+    }
+
+    @Override
+    public void onClose() {
         if (finishHandler != null) {
             finishHandler.onRecentSentimentsExport();
         }
-        super.onFinish();
+        super.onClose();
     }
 }

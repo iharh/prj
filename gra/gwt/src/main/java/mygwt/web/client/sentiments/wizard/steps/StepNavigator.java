@@ -96,6 +96,11 @@ public class StepNavigator implements WizardActionHandler {
     }
 
     @Override
+    public void onClose() {
+        currentPage.onClose();		
+    }
+
+    @Override
     public WizardPage getCurrentPage() {
         return currentPage;
     }

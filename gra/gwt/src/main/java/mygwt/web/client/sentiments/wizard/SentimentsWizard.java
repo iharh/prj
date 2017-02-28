@@ -20,7 +20,7 @@ import mygwt.web.client.sentiments.wizard.panels.OperationSelectionPanel;
 import mygwt.web.client.sentiments.wizard.panels.OperationSelectionPanel;
 import mygwt.web.client.sentiments.wizard.panels.ImportFileSelectionPanel;
 import mygwt.web.client.sentiments.wizard.panels.ImportFinishPanel;
-import mygwt.web.client.sentiments.wizard.panels.ExportPanel;
+import mygwt.web.client.sentiments.wizard.panels.CurrentExportPanel;
 import mygwt.web.client.sentiments.wizard.panels.RecentExportsPanel;
 import mygwt.web.client.sentiments.wizard.panels.ButtonsPanel;
 
@@ -73,7 +73,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider {
 
     private StepNavigator stepNavigator;
     private OperationSelectionPanel stepOperationSelection;
-    private ExportPanel stepExport;
+    private CurrentExportPanel stepCurrentExport;
     private RecentExportsPanel stepRecentExports;
     private ImportFileSelectionPanel stepImportFileSelection;
     private ImportFinishPanel stepImportFinish;
@@ -109,7 +109,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider {
         stepOperationSelection = new OperationSelectionPanel();
         stepImportFileSelection = new ImportFileSelectionPanel(projectIdAwareImpl, importModel, buttonsPanel, stepNavigator, getSentimentImportSvcAsync());
         stepImportFinish = new ImportFinishPanel(projectIdAwareImpl, finishHandler, importModel, buttonsPanel, stepNavigator, getSentimentImportSvcAsync());
-        stepExport = new ExportPanel(projectIdAwareImpl);
+        stepCurrentExport = new CurrentExportPanel(projectIdAwareImpl);
         stepRecentExports = new RecentExportsPanel(projectIdAwareImpl, finishHandler, getRecentSentimentExportsSvcAsync());
 
         configureWizard();
@@ -123,7 +123,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider {
         stepsPanel.add(stepNavigator.addPage(stepOperationSelection));  
         stepsPanel.add(stepNavigator.addPage(stepImportFileSelection));  
         stepsPanel.add(stepNavigator.addPage(stepImportFinish));  
-        stepsPanel.add(stepNavigator.addPage(stepExport));  
+        stepsPanel.add(stepNavigator.addPage(stepCurrentExport));  
         stepsPanel.add(stepNavigator.addPage(stepRecentExports));  
         
         stepNavigator.addNextPageDetector(stepOperationSelection,
@@ -133,7 +133,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider {
                     if (stepOperationSelection.isImportSelected()) {
                         return stepImportFileSelection;
                     } else if (stepOperationSelection.isExportCurSelected()) {
-                        return stepExport;
+                        return stepCurrentExport;
                     } else if (stepOperationSelection.isExportPrevSelected()) {
                         return stepRecentExports;
                     }

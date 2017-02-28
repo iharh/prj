@@ -47,8 +47,15 @@ public class MyEntryPoint implements EntryPoint, FinishHandler {
         popup.hide();
     }
 
+    @Override
     public void onRecentSentimentsExport() {
         LogUtils.log("onRecentSentimentsExport");
-        popup.hide();
+        //popup.hide(); // prevents from downloading
+    }
+
+    @Override
+    public void onCurrentExport() {
+        LogUtils.log("onCurrentExport");
+        //popup.hide(); // prevents from downloading
     }
 }

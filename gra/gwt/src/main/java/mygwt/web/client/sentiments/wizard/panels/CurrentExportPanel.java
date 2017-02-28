@@ -1,9 +1,8 @@
 package mygwt.web.client.sentiments.wizard.panels;
 
 import mygwt.web.client.sentiments.resources.SentimentsMessages;
-
+import mygwt.web.client.report.ExportPanel;
 import mygwt.web.client.utils.StyleUtils;
-
 import mygwt.foundation.client.csrf.ProjectIdAware;
 
 import com.google.gwt.dom.client.Style;
@@ -18,7 +17,7 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.HTML;
 
-public class ExportPanel extends BasePanel {
+public class CurrentExportPanel extends BasePanel {
     private static final String textBoxW = "470px";
     private static final int labelW      = 150;
     private static final int spacing     = 12;
@@ -30,7 +29,7 @@ public class ExportPanel extends BasePanel {
     private TextBox exportName;
     private TextArea exportDescription;
 
-    public ExportPanel(ProjectIdAware projectIdAware) {
+    public CurrentExportPanel(ProjectIdAware projectIdAware) {
         super(projectIdAware); // addStyleName("myExportPanel");
 
         msgs = SentimentsMessages.INSTANCE;
@@ -113,5 +112,35 @@ public class ExportPanel extends BasePanel {
                 style.setWidth(w, Style.Unit.PX);
             }
         });
+    }
+
+    private ExportPanel hiddenPanel;
+
+    private void buildExportPanel() {
+        if (null != hiddenPanel)
+            hiddenPanel.removeFromParent();
+        hiddenPanel = new ExportPanel("sentiment_transfer/sentiment_transfer_service/sentiment_export");
+
+        hiddenPanel.setField(ExportPanel.SENT_EXPORT_PROJECTID, getProjectId());
+
+        RecentSentimentExportsInfo info = selectionModel.getSelectedObject();
+        hiddenPanel.setField(ExportPanel.EXPORT_ID, info.getFileName());
+        
+        add(hiddenPanel);
+    }
+
+    @Override
+    public void onFinish() {
+        buildExportPanel();
+        hiddenPanel.submit();
+        super.onFinish();
+    }
+
+    @Override
+    public void onClose() {
+        if (finishHandler != null) {
+            finishHandler.onRecentSentimentsExport();
+        }
+        super.onClose();
     }
 }

@@ -65,6 +65,8 @@ public class ButtonsPanel extends HorizontalPanel {
         
         FinishHandler fHandler = new FinishHandler();
         finishButton.addClickHandler(fHandler);
+        CloseHandler cHandler = new CloseHandler();
+        finishButton.addClickHandler(cHandler);
     }
 
     public void clickNext() {
@@ -109,9 +111,15 @@ public class ButtonsPanel extends HorizontalPanel {
         }
     }
     class FinishHandler implements ClickHandler {
-        // Fired when the user clicks on the Next Button.
+        // Fired 1-time when the user clicks on the Next Button.
         public void onClick(ClickEvent event) {
             handler.onFinish();
+        }
+    }
+    class CloseHandler implements ClickHandler {
+        // Fired 2-time when the user clicks on the Next Button.
+        public void onClick(ClickEvent event) {
+            handler.onClose();
         }
     }
 }

@@ -47,4 +47,7 @@ public class BasePanel extends VerticalPanel implements WizardPage {
     @Override
     public void onFinish() {
     }
+    @Override
+    public void onClose() {
+    }
 }

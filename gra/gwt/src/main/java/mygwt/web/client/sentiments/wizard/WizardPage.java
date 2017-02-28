@@ -4,4 +4,5 @@ public interface WizardPage {
     void onEnter();
     boolean onLeave();
     void onFinish();	
+    void onClose();	
 }
