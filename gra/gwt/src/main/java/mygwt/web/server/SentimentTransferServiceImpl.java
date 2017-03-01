@@ -43,13 +43,13 @@ public class SentimentTransferServiceImpl extends AutoinjectingRemoteServiceServ
 
     private static final String TEST_FILE_NAME = "readme.txt";
 
-    // SentimentImportService
-
-    @GetMapping("test")
+    @RequestMapping(value = "test", method = RequestMethod.GET)
     public ResponseEntity<String> test() {
         log.info("test called");
         return new ResponseEntity<String>("test called", HttpStatus.OK);
     }
+
+    // SentimentImportService
 
     //@PostMapping(value = "uploadfile")
     @RequestMapping(value = "uploadfile", method = RequestMethod.POST)
