@@ -293,8 +293,8 @@ public class ImportFileSelectionPanel extends BasePanel {
         super.onEnter();
         clearStatusLabel(msgs.selectFileMess());
         buttonsPanel.disableNext();
-        //buildFileUpload();
-        //clearSession();
+        buildFileUpload();
+        clearSession();
     }
 
     @Override
