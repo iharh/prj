@@ -11,6 +11,7 @@ import com.google.gwt.dom.client.Style.Unit;
 
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.user.client.ui.TextArea;
@@ -131,7 +132,7 @@ public class CurrentExportPanel extends BasePanel {
         hiddenPanel.setField(ExportPanel.SENT_EXPORT_NAME, exportName.getValue());
         hiddenPanel.setField(ExportPanel.SENT_EXPORT_DESCR, exportDescription.getValue());
 
-        add(hiddenPanel);
+        RootPanel.get().add(hiddenPanel); // super-important to use a RootPanel here instead of this dialog
     }
 
     @Override

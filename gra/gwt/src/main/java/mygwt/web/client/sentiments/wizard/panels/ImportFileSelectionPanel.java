@@ -58,7 +58,8 @@ public class ImportFileSelectionPanel extends BasePanel {
     private HTML statusLabel;
     private FormPanel form;
     private Hidden projIdHidden;
-    private FileUpload upload;
+
+    private VerticalPanel selectionPanel;
 
     private String sentFileName;
     private boolean waitingFileUploadValidationResults;
@@ -106,27 +107,14 @@ public class ImportFileSelectionPanel extends BasePanel {
 
         northPanel.add(namePanel);
 
-        VerticalPanel selectionPanel = new VerticalPanel();
+        selectionPanel = new VerticalPanel();
         selectionPanel.setWidth("100%");
         HTML please = new HTML(msgs.pleaseHtml());
         selectionPanel.add(please);
         projIdHidden = new Hidden("projectId");
         selectionPanel.add(projIdHidden);
 
-        upload = new FileUpload();
-        upload.setWidth("100%");
-        upload.setName("upload");
-        upload.setStyleName("uploadBox");
-        upload.addChangeHandler(new ChangeHandler() {
-            @Override
-            public void onChange(ChangeEvent event) {
-                statusLabel.removeStyleName(ERROR_MESSAGE_STYLE);
-                statusLabel.setText("");
-                buttonsPanel.enableNext();
-                sentFileName = "";
-            }
-        });
-        selectionPanel.add(upload);
+        buildFileUpload();
 
         HorizontalPanel statusPanel = new HorizontalPanel();
         wheel.setVisible(false);
@@ -254,6 +242,28 @@ public class ImportFileSelectionPanel extends BasePanel {
         }
     }
 
+    private FileUpload upload;
+
+    private void buildFileUpload() {
+        if (null != upload) {
+            upload.removeFromParent();
+        }
+        upload = new FileUpload();
+        upload.setWidth("100%");
+        upload.setName("upload");
+        upload.setStyleName("uploadBox");
+        upload.addChangeHandler(new ChangeHandler() {
+            @Override
+            public void onChange(ChangeEvent event) {
+                statusLabel.removeStyleName(ERROR_MESSAGE_STYLE);
+                statusLabel.setText("");
+                buttonsPanel.enableNext();
+                sentFileName = "";
+            }
+        });
+        selectionPanel.add(upload);
+    }
+
     private void clearStatusLabel(String text) {
         statusLabel.removeStyleName(ERROR_MESSAGE_STYLE);
         statusLabel.setHTML(text);
@@ -266,7 +276,7 @@ public class ImportFileSelectionPanel extends BasePanel {
     private boolean saveDataToModel() {
         if (needToSend()) {
             importModel.setSentimentUploadValidationResult(null);
-            form.submit();
+            form.submit(); // TODO: not always need this
             return false;
         }
         return importModel.getSentimentUploadValidationResult() != null;
@@ -283,17 +293,18 @@ public class ImportFileSelectionPanel extends BasePanel {
         super.onEnter();
         clearStatusLabel(msgs.selectFileMess());
         buttonsPanel.disableNext();
+        //buildFileUpload();
+        //clearSession();
     }
 
     @Override
-    public boolean onLeave() {
-        if (!saveDataToModel()) {
+    public boolean onLeave(boolean isNext) {
+        if (isNext && !saveDataToModel()) {
             return false;
         }
-        return super.onLeave();
+        return super.onLeave(isNext);
     }
 
-    // TODO: !!! need to share this stuff and call this on dialog finish/close in some way as well as on initial screen enter !!!
     private void clearSession() {
         sentimentService.cleanupSentimentsWithUploadedData(getProjectId(), AbstractAsyncCallback.VOID_CALLBACK);
     }

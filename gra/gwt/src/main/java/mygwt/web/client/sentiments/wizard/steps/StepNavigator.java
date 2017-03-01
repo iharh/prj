@@ -3,6 +3,8 @@ package mygwt.web.client.sentiments.wizard.steps;
 import mygwt.web.client.sentiments.wizard.WizardPage;
 import mygwt.web.client.sentiments.wizard.WizardActionHandler;
 
+import mygwt.web.client.utils.LogUtils;
+
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -65,10 +67,11 @@ public class StepNavigator implements WizardActionHandler {
 
     @Override
     public void onNext() {
-        if (!currentPage.onLeave()) {
+        if (!currentPage.onLeave(true)) {
             return;
         }
         deque.add(currentPage);
+        //LogUtils.log("added to deque. size: " + deque.size());
 
         NextPageDetector nextPageDetector = nextPageDetectors.get(currentPage);
         currentPage = nextPageDetector.next();
@@ -80,9 +83,10 @@ public class StepNavigator implements WizardActionHandler {
 
     @Override
     public void onBack() {
-        currentPage.onLeave();
+        currentPage.onLeave(false);
         currentPage = deque.getLast();
         deque.removeLast();
+        //LogUtils.log("removed from deque. size: " + deque.size());
 
         currentStep = stepIndices.get(currentPage);
 

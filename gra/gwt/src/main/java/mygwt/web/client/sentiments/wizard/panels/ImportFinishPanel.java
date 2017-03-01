@@ -277,6 +277,7 @@ public class ImportFinishPanel extends BasePanel {
                             clearStatusLabel(msgs.done());
                             isProcessStarted = false;
                             buttonsPanel.enableFinish();
+                            clearSession();
                             if (finishHandler != null) {
                                 Boolean updateSentences = launchSentenceExceptionsUpdate.getValue();
                                 finishHandler.onImport(updateSentences);
@@ -294,5 +295,9 @@ public class ImportFinishPanel extends BasePanel {
 
     public void callSuperOnFinish() {
         super.onFinish();
+    }
+
+    private void clearSession() {
+        sentimentService.cleanupSentimentsWithUploadedData(getProjectId(), AbstractAsyncCallback.VOID_CALLBACK);
     }
 }

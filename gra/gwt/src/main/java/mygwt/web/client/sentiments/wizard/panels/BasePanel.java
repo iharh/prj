@@ -41,7 +41,7 @@ public class BasePanel extends VerticalPanel implements WizardPage {
     public void onEnter() {
     }
     @Override
-    public boolean onLeave() {
+    public boolean onLeave(boolean isNext) {
         return true;
     }
     @Override

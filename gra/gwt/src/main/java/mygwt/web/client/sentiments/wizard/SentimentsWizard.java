@@ -184,6 +184,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider {
 
     @Override
     public void showStep(int stepIdx, boolean isFirst, boolean isLast, String traceMsg) {
+        //LogUtils.log("showStep idx: " + stepIdx);
         stepsPanel.showWidget(stepIdx);
         WizardPage currentPage = stepNavigator.getCurrentPage();
         buttonsPanel.onPageChanged(currentPage, isFirst, isLast);

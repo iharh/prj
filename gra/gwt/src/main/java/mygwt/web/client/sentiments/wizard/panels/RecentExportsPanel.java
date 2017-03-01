@@ -22,7 +22,7 @@ import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.InlineLabel;
-
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.view.client.ListDataProvider;
 import com.google.gwt.view.client.ProvidesKey;
 import com.google.gwt.view.client.SingleSelectionModel;
@@ -137,7 +137,7 @@ public class RecentExportsPanel extends BasePanel {
         RecentSentimentExportsInfo info = selectionModel.getSelectedObject();
         hiddenPanel.setField(ExportPanel.EXPORT_ID, info.getFileName());
         
-        add(hiddenPanel);
+        RootPanel.get().add(hiddenPanel); // super-important to use a RootPanel here instead of this dialog
     }
 
     @Override
