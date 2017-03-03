@@ -153,6 +153,10 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider {
 
         dialogPanel.addSouth(buttonsPanel, BUTTONS_AVAILABLE_HEIGHT);
 
+        startFromFirstStep();
+    }
+
+    public void startFromFirstStep() {
         stepNavigator.start(stepOperationSelection);
     }
 
