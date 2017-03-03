@@ -3,6 +3,7 @@ package mygwt.web.server;
 import mygwt.common.adhoc.AdHocConstants;
 import mygwt.common.client.service.RecentSentimentExportsService;
 import mygwt.common.client.service.SentimentImportService;
+import mygwt.portal.dto.SentimentUploadConstants;
 import mygwt.portal.dto.SentimentUploadValidationResult;
 import mygwt.portal.dto.sentiments.rse.RecentSentimentExportsInfo;
 import mygwt.foundation.client.exception.ServiceException;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.web.multipart.MultipartFile;
 
 import org.apache.commons.io.IOUtils;
@@ -30,6 +33,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -41,6 +45,8 @@ import org.slf4j.LoggerFactory;
 public class SentimentTransferServiceImpl extends AutoinjectingRemoteServiceServlet implements SentimentImportService, RecentSentimentExportsService {
     private static final Logger log = LoggerFactory.getLogger(SentimentTransferServiceImpl.class);
 
+    private static final String SENTIMENT_UPLOAD_RESULT_IS_NOT_FOUND_IN_THE_SESSION_DATA = "Sentiment upload result is not found in the session data.";
+
     private static final String TEST_FILE_NAME = "readme.txt";
 
     @RequestMapping(value = "test", method = RequestMethod.GET)
@@ -51,15 +57,20 @@ public class SentimentTransferServiceImpl extends AutoinjectingRemoteServiceServ
 
     // SentimentImportService
 
-    //@PostMapping(value = "uploadfile")
     @RequestMapping(value = "uploadfile", method = RequestMethod.POST)
-    public ResponseEntity<String> uploadFile(@RequestParam("upload") MultipartFile requestFile,
-           //@RequestParam("projectId") Long projectId,
-           HttpSession session
+    public ResponseEntity<String> uploadFile(@RequestParam("upload") MultipartFile requestFile
+           , @RequestParam("projectId") long projectId
+           , HttpSession httpSession
         ) {
         String responseMsg = AdHocConstants.UPLOAD_OK;
         try {
-            log.info("uploading file: {}", requestFile.getOriginalFilename());
+	    String sessionId = httpSession.getId();
+            log.info("uploading file: {} sessionId: {} started", requestFile.getOriginalFilename(), sessionId);
+
+            SentimentUploadValidationResult result = makeSentimentUploadValidationResult(projectId, sessionId, requestFile);
+            httpSession.setAttribute(SentimentUploadConstants.SENTIMENT_UPLOAD_RESULT_KEY, result);
+
+            log.info("uploading file: {} finished", requestFile.getOriginalFilename());
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             responseMsg = e.getMessage();
@@ -78,24 +89,73 @@ public class SentimentTransferServiceImpl extends AutoinjectingRemoteServiceServ
         return new ResponseEntity<String>(buf.toString(), headers, HttpStatus.OK);
     }
 
-    @Override
-    public SentimentUploadValidationResult getPreliminaryUploadResults() throws ServiceException {
-        SentimentUploadValidationResult result = new SentimentUploadValidationResult();
+    private SentimentUploadValidationResult makeSentimentUploadValidationResult(long projectId, String sessionId, MultipartFile requestFile) {
+    	//SentimentUploadValidationResult result = cmpService.uploadSentimentFile(projectId, sessionId, file);
+
+        SentimentUploadValidationResult result = new SentimentUploadValidationResult(projectId, sessionId);
         result.addSkippedWord(null);
         result.addSkippedRule(null);
+        //result.setSessionId("session1");
         //result.setNegatorTuned(true);
-        log.info("get preliminary results}");
+
+        return result;
+    }
+
+    @Override
+    public SentimentUploadValidationResult getPreliminaryUploadResults() throws ServiceException {
+        SentimentUploadValidationResult result = null;
+        log.info("get preliminary results started");
+
+        HttpServletRequest req = getThreadLocalRequest();
+        HttpSession httpSession = req.getSession();
+
+        Object objResult = httpSession.getAttribute(SentimentUploadConstants.SENTIMENT_UPLOAD_RESULT_KEY);
+        if (objResult != null) {
+            result = (SentimentUploadValidationResult) objResult;
+        }
+        String sessionId = httpSession.getId();
+        log.info("get preliminary results sessionId: {} result: {} finished", sessionId, (result == null ? "<null>" : "<non-null>"));
         return result;
     }
 
     @Override
     public void updateSentimentsWithUploadedData(long projectId) throws ServiceException {
-        log.info("update sentiments for projectId: {}", projectId);
+        log.info("update sentiments for projectId: {} started", projectId);
+
+        HttpServletRequest req = getThreadLocalRequest();
+        HttpSession httpSession = req.getSession();
+        Object objResult = httpSession.getAttribute(SentimentUploadConstants.SENTIMENT_UPLOAD_RESULT_KEY);
+
+        if (objResult != null) {
+            String sessionId = httpSession.getId();
+            //cmpService.updateSentimentsWithUploadedData(projectId, sessionId);
+            log.info("update sentiments for projectId: {} sessionId: {} finished", projectId, sessionId);
+        } else {
+            log.error(SENTIMENT_UPLOAD_RESULT_IS_NOT_FOUND_IN_THE_SESSION_DATA);
+            throw new ServiceException(SENTIMENT_UPLOAD_RESULT_IS_NOT_FOUND_IN_THE_SESSION_DATA);
+        }
     }
 
     @Override
     public void cleanupSentimentsWithUploadedData(long projectId) {
-        log.info("clean up sentiments for projectId: {}", projectId);
+        log.info("clean up sentiments for projectId: {} started", projectId);
+
+        HttpServletRequest req = getThreadLocalRequest();
+        HttpSession httpSession = req.getSession();
+	String sessionId;
+
+        Object objResult = httpSession.getAttribute(SentimentUploadConstants.SENTIMENT_UPLOAD_RESULT_KEY);
+
+        if (objResult != null) {
+            SentimentUploadValidationResult result = (SentimentUploadValidationResult) objResult;
+            sessionId = result.getSessionId();
+	    // cmpService.cleanupSentimentsWithUploadedData(projectId, sessionId);
+            httpSession.removeAttribute(SentimentUploadConstants.SENTIMENT_UPLOAD_RESULT_KEY);
+        } else {
+	    sessionId = httpSession.getId();
+        }
+
+        log.info("clean up sentiments for projectId: {} sessionId: {} finished", projectId, sessionId);
     }
 
     // RecentSentimentExportsService

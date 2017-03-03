@@ -31,4 +31,8 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
     <!-- welcome-file-list>
 	<welcome-file>index.html</welcome-file>
     </welcome-file-list -->
+
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
 </web-app>

@@ -11,9 +11,16 @@
     <!-- mvc:default-servlet-handler /-->
 
     <!-- context:component-scan base-package="mygwt.web.server"/ -->
+    <!-- mvc:annotation-driven/ -->
+    <!-- context:annotation-config/ -->
 
     <!-- component-scan does not work because SentimentTransferServiceImpl is annotated via the interfaces -->
-    <bean id="sentimentTransferController" class="mygwt.web.server.SentimentTransferServiceImpl" autowire="byName" />
+    <!-- bean id="sentimentTransferCart" class="mygwt.web.server.SentimentTransferCart" scope="session">
+        <aop:scoped-proxy/>
+    </bean -->
+
+    <bean id="sentimentTransferController" class="mygwt.web.server.SentimentTransferServiceImpl" autowire="byName"/>
+
     <!-- must have this for the correct multipart work -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
@@ -26,4 +33,3 @@
             advice-ref="sentimentTransferSecurityInterceptor" />
     </aop:config-->
 </beans>
-
