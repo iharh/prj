@@ -24,12 +24,10 @@
     <!-- must have this for the correct multipart work -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
-    <!-- bean id='sentimentTransferSecurityInterceptor' class="com.clarabridge.web...security.SentimentTransferSecurityInterceptor">
-        <property name="securityService" ref="securityService" />
-    </bean>
+    <bean id='sentimentTransferSecurityInterceptor' class="mygwt.web.server.security.SentimentTransferSecurityInterceptor"/>
 
     <aop:config>
-        <aop:advisor pointcut="execution(* com.clarabridge.web.server.SentimentTransferServiceImpl.*(..))"
-            advice-ref="sentimentTransferSecurityInterceptor" />
-    </aop:config-->
+        <aop:advisor pointcut="execution(* mygwt.web.server.SentimentTransferServiceImpl.*(..))"
+            advice-ref="sentimentTransferSecurityInterceptor"/>
+    </aop:config>
 </beans>

@@ -34,14 +34,16 @@ libraries += [
     log4j:              'log4j:log4j:1.2.17',
     log4j_extras:       'log4j:apache-log4j-extras:1.2.17',
 
+    aspectj:            'aspectj:aspectj:1.8.5',
+
     // spring
+    spring_aspects: "org.springframework:spring-aspects:${versions.spring}",
     spring_aop:     "org.springframework:spring-aop:${versions.spring}",
     spring_beans:   "org.springframework:spring-beans:${versions.spring}",
     spring_core:    "org.springframework:spring-core:${versions.spring}",
     spring_context: "org.springframework:spring-context:${versions.spring}",
     spring_web:     "org.springframework:spring-web:${versions.spring}",
     spring_webmvc:  "org.springframework:spring-webmvc:${versions.spring}",
-
 
     // security
     spring_security_core: "org.springframework.security:spring-security-core:${versions.springSecurity}",
@@ -97,7 +99,10 @@ dependencies {
     // a must for multipart work
     compile libraries.commons_fileupload
 
+    //compile libraries.aspectj
+
     compile libraries.spring_aop
+    compile libraries.spring_aspects
     compile libraries.spring_beans
     compile libraries.spring_core
     compile libraries.spring_context
