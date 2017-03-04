@@ -3,6 +3,7 @@ package mygwt.web.server;
 import mygwt.common.adhoc.AdHocConstants;
 import mygwt.common.client.service.RecentSentimentExportsService;
 import mygwt.common.client.service.SentimentImportService;
+import mygwt.common.client.service.TestService;
 import mygwt.portal.dto.SentimentUploadConstants;
 import mygwt.portal.dto.SentimentUploadValidationResult;
 import mygwt.portal.dto.sentiments.rse.RecentSentimentExportsInfo;
@@ -40,21 +41,22 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 // CmpRemoteServletSupport is quite big, so let's just extends AutoinjectingRemoteServiceServlet
-@Controller
-@RequestMapping("/sentiment_transfer_service/*")
-public class SentimentTransferServiceImpl extends AutoinjectingRemoteServiceServlet implements SentimentImportService, RecentSentimentExportsService {
+//@Controller
+//@RequestMapping("/sentiment_transfer_service/*")
+public class SentimentTransferServiceImpl extends AutoinjectingRemoteServiceServlet implements TestService { //SentimentImportService, RecentSentimentExportsService {
     private static final Logger log = LoggerFactory.getLogger(SentimentTransferServiceImpl.class);
 
     private static final String SENTIMENT_UPLOAD_RESULT_IS_NOT_FOUND_IN_THE_SESSION_DATA = "Sentiment upload result is not found in the session data.";
 
     private static final String TEST_FILE_NAME = "readme.txt";
 
-    @RequestMapping(value = "test", method = RequestMethod.GET)
+    //@RequestMapping(value = "test", method = RequestMethod.GET)
+    @Override
     public ResponseEntity<String> test() {
         log.info("test called");
         return new ResponseEntity<String>("test called", HttpStatus.OK);
     }
-
+/*
     // SentimentImportService
 
     @RequestMapping(value = "uploadfile", method = RequestMethod.POST)
@@ -161,7 +163,7 @@ public class SentimentTransferServiceImpl extends AutoinjectingRemoteServiceServ
     // RecentSentimentExportsService
 
     @Override
-    public List<RecentSentimentExportsInfo> getExports(long projectId) /*throws ServiceException*/ {
+    public List<RecentSentimentExportsInfo> getExports(long projectId) // throws ServiceException {
         log.info("getExports called");
         List<RecentSentimentExportsInfo> result = null;
         //try {
@@ -230,4 +232,5 @@ public class SentimentTransferServiceImpl extends AutoinjectingRemoteServiceServ
         }
         log.info("downloadCurrentSentimentExport finished");
     }
+*/
 }

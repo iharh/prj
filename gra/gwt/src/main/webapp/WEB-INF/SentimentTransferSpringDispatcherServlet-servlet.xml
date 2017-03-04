@@ -27,7 +27,12 @@
     <bean id='sentimentTransferSecurityInterceptor' class="mygwt.web.server.security.SentimentTransferSecurityInterceptor"/>
 
     <aop:config>
-        <aop:advisor pointcut="execution(* mygwt.web.server.SentimentTransferServiceImpl.*(..))"
+        <aop:advisor
+            pointcut="execution(* mygwt.web.server.SentimentTransferServiceImpl.test(..))"
             advice-ref="sentimentTransferSecurityInterceptor"/>
     </aop:config>
+<!--
+            pointcut="execution(* mygwt.web.server.SentimentTransferServiceImpl.test(..))"
+            pointcut="execution(* mygwt.web.server.SentimentTransferServiceImpl.*(..))"
+-->
 </beans>

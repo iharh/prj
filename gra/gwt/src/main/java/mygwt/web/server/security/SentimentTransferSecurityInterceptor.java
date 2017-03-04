@@ -30,15 +30,15 @@ import javax.servlet.ServletOutputStream;
 
 import java.io.PrintWriter;
 import java.io.OutputStreamWriter;
-
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
+*/
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 //import static java.nio.charset.StandardCharsets.*;
-*/
+
 public class SentimentTransferSecurityInterceptor implements MethodInterceptor {
-/*
     private static final Logger log = LoggerFactory.getLogger(SentimentTransferSecurityInterceptor.class);
+/*
 
     private SecurityService securityService;
     private DataflowService dataflowService;
@@ -52,7 +52,7 @@ public class SentimentTransferSecurityInterceptor implements MethodInterceptor {
 */
     @Override
     public Object invoke(MethodInvocation methodInvocation) throws Throwable {
-        //log.info("Intercept method [{}]", methodInvocation.getMethod());
+        log.info("intercept method [{}]", methodInvocation.getMethod());
         //try {
             //check(methodInvocation);
             return methodInvocation.proceed();
