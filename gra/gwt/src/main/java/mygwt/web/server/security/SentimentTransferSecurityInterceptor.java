@@ -37,8 +37,9 @@ import java.io.OutputStreamWriter;
 //import static java.nio.charset.StandardCharsets.*;
 */
 public class SentimentTransferSecurityInterceptor implements MethodInterceptor {
-    private static final Logger log = LoggerFactory.getLogger(SentimentTransferSecurityInterceptor.class);
 /*
+    private static final Logger log = LoggerFactory.getLogger(SentimentTransferSecurityInterceptor.class);
+
     private SecurityService securityService;
     private DataflowService dataflowService;
 
