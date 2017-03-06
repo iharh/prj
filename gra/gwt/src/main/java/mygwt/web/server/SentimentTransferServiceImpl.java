@@ -1,9 +1,8 @@
 package mygwt.web.server;
 
 import mygwt.common.adhoc.AdHocConstants;
-import mygwt.common.client.service.RecentSentimentExportsService;
-import mygwt.common.client.service.SentimentImportService;
-import mygwt.common.client.service.TestService;
+import mygwt.common.client.service.SentimentTransferService;
+import mygwt.common.client.service.SentimentTransferRestService;
 import mygwt.portal.dto.SentimentUploadConstants;
 import mygwt.portal.dto.SentimentUploadValidationResult;
 import mygwt.portal.dto.sentiments.rse.RecentSentimentExportsInfo;
@@ -14,8 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,25 +38,21 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 // CmpRemoteServletSupport is quite big, so let's just extends AutoinjectingRemoteServiceServlet
-//@Controller
-//@RequestMapping("/sentiment_transfer_service/*")
-public class SentimentTransferServiceImpl extends AutoinjectingRemoteServiceServlet implements TestService { //SentimentImportService, RecentSentimentExportsService {
+public class SentimentTransferServiceImpl extends AutoinjectingRemoteServiceServlet implements SentimentTransferService, SentimentTransferRestService {
     private static final Logger log = LoggerFactory.getLogger(SentimentTransferServiceImpl.class);
 
     private static final String SENTIMENT_UPLOAD_RESULT_IS_NOT_FOUND_IN_THE_SESSION_DATA = "Sentiment upload result is not found in the session data.";
 
     private static final String TEST_FILE_NAME = "readme.txt";
 
-    //@RequestMapping(value = "test", method = RequestMethod.GET)
     @Override
     public ResponseEntity<String> test() {
         log.info("test called");
         return new ResponseEntity<String>("test called", HttpStatus.OK);
     }
-/*
-    // SentimentImportService
+    // sentiment import
 
-    @RequestMapping(value = "uploadfile", method = RequestMethod.POST)
+    @Override
     public ResponseEntity<String> uploadFile(@RequestParam("upload") MultipartFile requestFile
            , @RequestParam("projectId") long projectId
            , HttpSession httpSession
@@ -160,10 +153,10 @@ public class SentimentTransferServiceImpl extends AutoinjectingRemoteServiceServ
         log.info("clean up sentiments for projectId: {} sessionId: {} finished", projectId, sessionId);
     }
 
-    // RecentSentimentExportsService
+    // recent sentiment exports
 
     @Override
-    public List<RecentSentimentExportsInfo> getExports(long projectId) // throws ServiceException {
+    public List<RecentSentimentExportsInfo> getExports(long projectId) { // throws ServiceException
         log.info("getExports called");
         List<RecentSentimentExportsInfo> result = null;
         //try {
@@ -187,8 +180,10 @@ public class SentimentTransferServiceImpl extends AutoinjectingRemoteServiceServ
         return result;
     }
 
-    @RequestMapping(value = "recent_sentiment_exports", method = RequestMethod.POST)
-    public void downloadRecentSentimentExport(@RequestParam("projectId") long projectId, @RequestParam("exportId") String exportId, HttpServletResponse response) {
+    @Override
+    public void downloadRecentSentimentExport(@RequestParam("projectId") long projectId
+        , @RequestParam("exportId") String exportId
+        , HttpServletResponse response) {
         log.info("downloadRecentSentimentExport started");
         InputStream input = null;
         String responseMsg = AdHocConstants.UPLOAD_OK;
@@ -208,7 +203,7 @@ public class SentimentTransferServiceImpl extends AutoinjectingRemoteServiceServ
 
     // ExportService
 
-    @RequestMapping(value = "sentiment_export", method = RequestMethod.POST)
+    @Override
     public void downloadCurrentSentimentExport(@RequestParam("projectId") long projectId
         , @RequestParam("exportRules") boolean exportRules
         , @RequestParam("exportWords") boolean exportWords
@@ -232,5 +227,4 @@ public class SentimentTransferServiceImpl extends AutoinjectingRemoteServiceServ
         }
         log.info("downloadCurrentSentimentExport finished");
     }
-*/
 }

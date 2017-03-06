@@ -2,7 +2,8 @@ package mygwt.web.client.sentiments.wizard.panels;
 
 import mygwt.common.adhoc.AdHocConstants;
 import mygwt.common.client.widget.dialog.MessageDialog;
-import mygwt.common.client.service.SentimentImportServiceAsync;
+
+import mygwt.common.client.service.SentimentTransferServiceAsync;
 
 import mygwt.web.adhoc.client.resources.AdHocMessagesHelper;
 import mygwt.web.client.sentiments.upload.SentimentUploadException;
@@ -52,7 +53,8 @@ public class ImportFileSelectionPanel extends BasePanel {
     private ImportModel importModel;
     private ButtonsPanel buttonsPanel;
     private StepNavigator stepNavigator;
-    private SentimentImportServiceAsync sentimentService;
+
+    private SentimentTransferServiceAsync svcAsync;
 
     private Image wheel;
     private HTML statusLabel;
@@ -64,12 +66,12 @@ public class ImportFileSelectionPanel extends BasePanel {
     private String sentFileName;
     private boolean waitingFileUploadValidationResults;
 
-    public ImportFileSelectionPanel(ProjectIdAware projectIdAware, ImportModel importModel, ButtonsPanel buttonsPanel, StepNavigator stepNavigator, SentimentImportServiceAsync sentimentService) {
+    public ImportFileSelectionPanel(ProjectIdAware projectIdAware, ImportModel importModel, ButtonsPanel buttonsPanel, StepNavigator stepNavigator, SentimentTransferServiceAsync svcAsync) {
         super(projectIdAware);
         this.importModel = importModel;
         this.buttonsPanel = buttonsPanel;
         this.stepNavigator = stepNavigator;
-        this.sentimentService = sentimentService;
+        this.svcAsync = svcAsync;
 
         msgs = SentimentUploadMessages.INSTANCE;
 
@@ -193,7 +195,7 @@ public class ImportFileSelectionPanel extends BasePanel {
 
     private void getPreliminaryUploadResults() {
         try {
-            sentimentService.getPreliminaryUploadResults(
+            svcAsync.getPreliminaryUploadResults(
                 new AbstractAsyncCallback<SentimentUploadValidationResult>() {
                     @Override
                     public void onFailure(Throwable caught) {
@@ -306,6 +308,6 @@ public class ImportFileSelectionPanel extends BasePanel {
     }
 
     private void clearSession() {
-        sentimentService.cleanupSentimentsWithUploadedData(getProjectId(), AbstractAsyncCallback.VOID_CALLBACK);
+        svcAsync.cleanupSentimentsWithUploadedData(getProjectId(), AbstractAsyncCallback.VOID_CALLBACK);
     }
 }

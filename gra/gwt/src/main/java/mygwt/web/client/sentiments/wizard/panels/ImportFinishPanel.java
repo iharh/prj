@@ -7,7 +7,8 @@ import mygwt.web.client.sentiments.wizard.ImportModel;
 import mygwt.web.client.sentiments.wizard.FinishHandler;
 import mygwt.web.client.sentiments.wizard.steps.StepNavigator;
 
-import mygwt.common.client.service.SentimentImportServiceAsync;
+import mygwt.common.client.service.SentimentTransferServiceAsync;
+
 import mygwt.common.client.widget.dialog.MessageDialog;
 
 import mygwt.portal.dto.SentimentUploadValidationResult;
@@ -58,7 +59,8 @@ public class ImportFinishPanel extends BasePanel {
     private ImportModel importModel;
     private ButtonsPanel buttonsPanel;
     private StepNavigator stepNavigator;
-    private SentimentImportServiceAsync sentimentService;
+
+    private SentimentTransferServiceAsync svcAsync;
 
     private Anchor showSkippedWordsBtn;
     private Anchor showSkippedRulesBtn;
@@ -74,14 +76,14 @@ public class ImportFinishPanel extends BasePanel {
     private boolean isProcessStarted;
 
     public ImportFinishPanel(ProjectIdAware projectIdAware, FinishHandler finishHandler, ImportModel importModel,
-            ButtonsPanel buttonsPanel, StepNavigator stepNavigator, SentimentImportServiceAsync sentimentService) {
+            ButtonsPanel buttonsPanel, StepNavigator stepNavigator, SentimentTransferServiceAsync svcAsync) {
 	super(projectIdAware); // SentimentUploadMessages.INSTANCE.step2of2()
 
         this.finishHandler = finishHandler;
         this.importModel = importModel;
         this.buttonsPanel = buttonsPanel;
         this.stepNavigator = stepNavigator;
-        this.sentimentService = sentimentService;
+        this.svcAsync = svcAsync;
 
         msgs = SentimentUploadMessages.INSTANCE;
 
@@ -253,7 +255,7 @@ public class ImportFinishPanel extends BasePanel {
             buttonsPanel.disableFinish();
             clearStatusLabel(msgs.processingData());
             try {
-                sentimentService.updateSentimentsWithUploadedData(getProjectId(),
+                svcAsync.updateSentimentsWithUploadedData(getProjectId(),
                     new AbstractAsyncCallback<Void>() {
                         @Override
                         public void onFailure(Throwable caught) {
@@ -298,6 +300,6 @@ public class ImportFinishPanel extends BasePanel {
     }
 
     private void clearSession() {
-        sentimentService.cleanupSentimentsWithUploadedData(getProjectId(), AbstractAsyncCallback.VOID_CALLBACK);
+        svcAsync.cleanupSentimentsWithUploadedData(getProjectId(), AbstractAsyncCallback.VOID_CALLBACK);
     }
 }

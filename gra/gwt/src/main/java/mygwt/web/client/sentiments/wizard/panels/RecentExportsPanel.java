@@ -4,7 +4,7 @@ import mygwt.web.client.sentiments.wizard.FinishHandler;
 
 import mygwt.web.client.sentiments.resources.SentimentsMessages;
 
-import mygwt.common.client.service.RecentSentimentExportsServiceAsync;
+import mygwt.common.client.service.SentimentTransferServiceAsync;
 
 import mygwt.web.client.report.ExportPanel;
 
@@ -40,9 +40,9 @@ public class RecentExportsPanel extends BasePanel {
 
     private ListDataProvider<RecentSentimentExportsInfo> dataProvider;
 
-    private RecentSentimentExportsServiceAsync svcAsync;
+    private SentimentTransferServiceAsync svcAsync;
 
-    public RecentExportsPanel(ProjectIdAware projectIdAware, FinishHandler finishHandler, RecentSentimentExportsServiceAsync svcAsync) {
+    public RecentExportsPanel(ProjectIdAware projectIdAware, FinishHandler finishHandler, SentimentTransferServiceAsync svcAsync) {
         super(projectIdAware);
         this.finishHandler = finishHandler;
         this.svcAsync = svcAsync;

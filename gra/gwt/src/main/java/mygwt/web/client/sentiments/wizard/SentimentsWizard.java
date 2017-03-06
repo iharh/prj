@@ -2,10 +2,8 @@ package mygwt.web.client.sentiments.wizard;
 
 import mygwt.common.client.url.Service;
 
-import mygwt.common.client.service.SentimentImportService;
-import mygwt.common.client.service.SentimentImportServiceAsync;
-import mygwt.common.client.service.RecentSentimentExportsService;
-import mygwt.common.client.service.RecentSentimentExportsServiceAsync;
+import mygwt.common.client.service.SentimentTransferService;
+import mygwt.common.client.service.SentimentTransferServiceAsync;
 
 import mygwt.foundation.client.rpc.AbstractAsyncCallback;
 import mygwt.foundation.client.csrf.CsrfRpcRequestBuilder;
@@ -107,10 +105,10 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider {
 	stepsPanel.setSize(allW + "px", STEPS_AVAILABLE_HEIGHT + "px");
 
         stepOperationSelection = new OperationSelectionPanel();
-        stepImportFileSelection = new ImportFileSelectionPanel(projectIdAwareImpl, importModel, buttonsPanel, stepNavigator, getSentimentImportSvcAsync());
-        stepImportFinish = new ImportFinishPanel(projectIdAwareImpl, finishHandler, importModel, buttonsPanel, stepNavigator, getSentimentImportSvcAsync());
+        stepImportFileSelection = new ImportFileSelectionPanel(projectIdAwareImpl, importModel, buttonsPanel, stepNavigator, getSentimentTransferSvcAsync());
+        stepImportFinish = new ImportFinishPanel(projectIdAwareImpl, finishHandler, importModel, buttonsPanel, stepNavigator, getSentimentTransferSvcAsync());
         stepCurrentExport = new CurrentExportPanel(projectIdAwareImpl, finishHandler);
-        stepRecentExports = new RecentExportsPanel(projectIdAwareImpl, finishHandler, getRecentSentimentExportsSvcAsync());
+        stepRecentExports = new RecentExportsPanel(projectIdAwareImpl, finishHandler, getSentimentTransferSvcAsync());
 
         configureWizard();
 
@@ -194,14 +192,14 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider {
         buttonsPanel.onPageChanged(currentPage, isFirst, isLast);
     }
 
-    private RecentSentimentExportsServiceAsync svcRecentSentimentExportsAsync;
+    private SentimentTransferServiceAsync svcSentimentTransferAsync;
 
-    public RecentSentimentExportsServiceAsync getRecentSentimentExportsSvcAsync() {
-        if (svcRecentSentimentExportsAsync == null) {
-            svcRecentSentimentExportsAsync = (RecentSentimentExportsServiceAsync) GWT.create(RecentSentimentExportsService.class);
-            injectRpcBuilder(((ServiceDefTarget) svcRecentSentimentExportsAsync), Service.SENTIMENT_TRANSFER_SERVICE);
+    public SentimentTransferServiceAsync getSentimentTransferSvcAsync() {
+        if (svcSentimentTransferAsync == null) {
+            svcSentimentTransferAsync = (SentimentTransferServiceAsync) GWT.create(SentimentTransferService.class);
+            injectRpcBuilder(((ServiceDefTarget) svcSentimentTransferAsync), Service.SENTIMENT_TRANSFER_SERVICE);
         }
-        return svcRecentSentimentExportsAsync;
+        return svcSentimentTransferAsync;
     }
 
     private void injectRpcBuilder(final ServiceDefTarget target, final Service service) {
@@ -211,17 +209,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider {
         target.setRpcRequestBuilder(CsrfRpcRequestBuilder.getInstance(projectIdAwareImpl));
     }
 
-    private SentimentImportServiceAsync svcSentimentImportServiceAsync;
-    
-    public SentimentImportServiceAsync getSentimentImportSvcAsync() {
-        if (svcSentimentImportServiceAsync == null) {
-            svcSentimentImportServiceAsync = (SentimentImportServiceAsync) GWT.create(SentimentImportService.class);
-            injectRpcBuilder(((ServiceDefTarget) svcSentimentImportServiceAsync), Service.SENTIMENT_TRANSFER_SERVICE);
-        }
-        return svcSentimentImportServiceAsync;
-    }
-
     private void clearSession() {
-        getSentimentImportSvcAsync().cleanupSentimentsWithUploadedData(getProjectId(), AbstractAsyncCallback.VOID_CALLBACK);
+        getSentimentTransferSvcAsync().cleanupSentimentsWithUploadedData(getProjectId(), AbstractAsyncCallback.VOID_CALLBACK);
     }
 }

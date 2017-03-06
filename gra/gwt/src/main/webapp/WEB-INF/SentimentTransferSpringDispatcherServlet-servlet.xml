@@ -28,7 +28,7 @@
 
     <aop:config>
         <aop:advisor
-            pointcut="execution(* mygwt.web.server.SentimentTransferServiceImpl.test(..))"
+            pointcut="execution(* mygwt.web.server.SentimentTransferServiceImpl.*(..))"
             advice-ref="sentimentTransferSecurityInterceptor"/>
     </aop:config>
 <!--
