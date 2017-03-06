@@ -7,6 +7,8 @@ import mygwt.foundation.client.widget.button.BackButton;
 import mygwt.foundation.client.widget.button.NextButton;
 import mygwt.foundation.client.widget.button.OkButton;
 
+import mygwt.web.client.sentiments.resources.SentimentsMessages;
+
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyCodes;
@@ -22,6 +24,8 @@ public class ButtonsPanel extends HorizontalPanel {
     private BackButton backButton;
     private OkButton finishButton;
 
+    private SentimentsMessages msgs;
+
     public ButtonsPanel(WizardActionHandler handler) {
         super();
         this.handler = handler;
@@ -30,13 +34,15 @@ public class ButtonsPanel extends HorizontalPanel {
         this.setBorderWidth(0);  //remove ???
         this.setHorizontalAlignment(HorizontalPanel.ALIGN_RIGHT);
         
-        nextButton = new NextButton("Next"); // TODO: i18n 
+        msgs = SentimentsMessages.INSTANCE;
+
+        nextButton = new NextButton(msgs.btnNext());
         nextButton.getElement().setId("nextButton");
         
-        backButton = new BackButton("Back"); // TODO: i18n
+        backButton = new BackButton(msgs.btnBack());
         backButton.getElement().setId("backButton");
         
-        finishButton = new OkButton("Finish"); // TODO: i18n
+        finishButton = new OkButton(msgs.btnFinish());
         finishButton.getElement().setId("finishButton");
         
         disableFinish();

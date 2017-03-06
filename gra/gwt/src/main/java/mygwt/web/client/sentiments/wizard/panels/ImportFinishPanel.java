@@ -159,7 +159,7 @@ public class ImportFinishPanel extends BasePanel {
     private class ShowSkippedWordsListener implements ClickHandler {
         @Override
         public void onClick(ClickEvent event) {
-            LogUtils.log("onClick ShowSkippedWordsListener");
+            // LogUtils.log("onClick ShowSkippedWordsListener");
             //stgLoadImage.setVisible(true);
             BaseDialogBox skippedBox = new BaseDialogBox(msgs.skippedWordsRows(), 410, 150) {
                 {
@@ -187,7 +187,7 @@ public class ImportFinishPanel extends BasePanel {
     private class ShowSkippedRulesListener implements ClickHandler {
         @Override
         public void onClick(ClickEvent event) {
-            LogUtils.log("onClick ShowSkippedRulesListener");
+            // LogUtils.log("onClick ShowSkippedRulesListener");
             //stgLoadImage.setVisible(true);
             BaseDialogBox skippedBox = new BaseDialogBox(msgs.skippedRulesRows(), 400, 150) {
                 {

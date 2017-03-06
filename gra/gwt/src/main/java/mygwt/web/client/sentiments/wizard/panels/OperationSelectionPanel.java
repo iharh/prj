@@ -1,10 +1,14 @@
 package mygwt.web.client.sentiments.wizard.panels;
 
+import mygwt.web.client.sentiments.resources.SentimentsMessages;
+
 import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.user.client.ui.RadioButton;
 
 public class OperationSelectionPanel extends BasePanel {
     private static String BUTTON_GROUP = "OPERATION_SELECTION_GROUP";
+
+    private SentimentsMessages msgs;
 
     private RadioButton btnImport;
     private RadioButton btnExportCur;
@@ -12,12 +16,15 @@ public class OperationSelectionPanel extends BasePanel {
 
     public OperationSelectionPanel() {
         super(null);
-        //addStyleName("myOperationSelectionPanel");
-        add(new InlineLabel("Please choose an option for managing your sentiment tunings."));
 
-        btnImport = new RadioButton(BUTTON_GROUP, "Import sentiment from a Microsoft Excel file on your computer");
-        btnExportCur = new RadioButton(BUTTON_GROUP, "Export current sentiment to your computer");
-        btnExportPrev = new RadioButton(BUTTON_GROUP, "Download previous sentiment export to your computer");
+        msgs = SentimentsMessages.INSTANCE;
+
+        //addStyleName("myOperationSelectionPanel");
+        add(new InlineLabel(msgs.operationSelectionLabel()));
+
+        btnImport = new RadioButton(BUTTON_GROUP, msgs.choiceImport());
+        btnExportCur = new RadioButton(BUTTON_GROUP, msgs.choiceExportCurrent());
+        btnExportPrev = new RadioButton(BUTTON_GROUP, msgs.choiceExportRecent());
 
         // Check 'First' by default.
         btnImport.setValue(true);

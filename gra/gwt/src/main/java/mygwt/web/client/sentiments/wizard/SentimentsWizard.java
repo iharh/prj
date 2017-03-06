@@ -80,7 +80,7 @@ public class SentimentsWizard extends BaseDialogBox implements StepProvider {
     private int currentStep = 0;
 
     public SentimentsWizard(FinishHandler finishHandler) {
-        super("Sentiment Management", allW, allH);
+        super(SentimentsMessages.INSTANCE.sentimentManagement(), allW, allH);
         this.finishHandler = finishHandler;
 
         msgs = SentimentsMessages.INSTANCE;
