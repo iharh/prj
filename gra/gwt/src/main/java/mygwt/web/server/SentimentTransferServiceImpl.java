@@ -53,9 +53,9 @@ public class SentimentTransferServiceImpl extends AutoinjectingRemoteServiceServ
     // sentiment import
 
     @Override
-    public ResponseEntity<String> uploadFile(@RequestParam("upload") MultipartFile requestFile
-           , @RequestParam("projectId") long projectId
-           , HttpSession httpSession
+    public ResponseEntity<String> uploadFile(HttpSession httpSession
+        , @RequestParam("upload") MultipartFile requestFile
+        , @RequestParam("projectId") long projectId
         ) {
         String responseMsg = AdHocConstants.UPLOAD_OK;
         try {
@@ -181,9 +181,10 @@ public class SentimentTransferServiceImpl extends AutoinjectingRemoteServiceServ
     }
 
     @Override
-    public void downloadRecentSentimentExport(@RequestParam("projectId") long projectId
+    public void downloadRecentSentimentExport(HttpServletResponse response
+        , @RequestParam("projectId") long projectId
         , @RequestParam("exportId") String exportId
-        , HttpServletResponse response) {
+        ) {
         log.info("downloadRecentSentimentExport started");
         InputStream input = null;
         String responseMsg = AdHocConstants.UPLOAD_OK;
@@ -204,12 +205,13 @@ public class SentimentTransferServiceImpl extends AutoinjectingRemoteServiceServ
     // ExportService
 
     @Override
-    public void downloadCurrentSentimentExport(@RequestParam("projectId") long projectId
+    public void downloadCurrentSentimentExport(HttpServletResponse response
+        , @RequestParam("projectId") long projectId
         , @RequestParam("exportRules") boolean exportRules
         , @RequestParam("exportWords") boolean exportWords
         , @RequestParam("exportName") String exportName
         , @RequestParam("exportDescription") String exportDescription
-        , HttpServletResponse response) {
+        ) {
 
         log.info("downloadCurrentSentimentExport started");
         InputStream input = null;
