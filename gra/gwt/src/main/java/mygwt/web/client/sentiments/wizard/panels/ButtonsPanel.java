@@ -20,11 +20,11 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 public class ButtonsPanel extends HorizontalPanel {
     private WizardActionHandler handler;
 
+    private SentimentsMessages msgs;
+
     private NextButton nextButton;
     private BackButton backButton;
     private OkButton finishButton;
-
-    private SentimentsMessages msgs;
 
     public ButtonsPanel(WizardActionHandler handler) {
         super();

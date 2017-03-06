@@ -16,7 +16,6 @@ public class OperationSelectionPanel extends BasePanel {
 
     public OperationSelectionPanel() {
         super(null);
-
         msgs = SentimentsMessages.INSTANCE;
 
         //addStyleName("myOperationSelectionPanel");
