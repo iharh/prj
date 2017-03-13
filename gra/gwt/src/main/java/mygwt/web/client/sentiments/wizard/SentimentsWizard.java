@@ -27,7 +27,6 @@ import mygwt.web.client.utils.LogUtils;
 import mygwt.foundation.client.widget.dialog.BaseDialogBox;
 import mygwt.foundation.client.widget.button.CancelButton;
 import mygwt.foundation.client.widget.button.OkButton;
-import mygwt.foundation.client.widget.list.GroupedListBox;
 
 import com.google.gwt.core.client.GWT;
 
