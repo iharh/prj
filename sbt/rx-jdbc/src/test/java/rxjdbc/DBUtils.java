@@ -17,7 +17,7 @@ public class DBUtils {
 
     private static final String DB_CFG_ROOT = SystemUtils.IS_OS_LINUX ?
         "/data/wrk/clb/hosts/db/" :
-        "D:\\dev\\notes\\wrk\\clb\\hosts\\db\\";
+        "D:\\dev\\wnotes\\clb\\hosts\\db\\";
     private static final String DB_CFG_SUFFIX = ".database.system.properties";
 
 
