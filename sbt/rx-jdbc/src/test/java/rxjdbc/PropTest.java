@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.Ignore;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 
@@ -18,14 +19,14 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
-public class ProjTest {
+public class PropTest {
     private static final Logger log = LoggerFactory.getLogger(ProjTest.class);
 
     @Test
     public void testProj() throws Exception {
         Database db = DBUtils.getDb();
 
-        // 1 == db.update("insert into person(name,score) values(?,?)").execute()
+        //assertEquals(1, db.update("insert into person(name,score) values(?,?)").execute());
         //https://github.com/davidmoten/rxjava-jdbc/blob/master/src/main/java/com/github/davidmoten/rx/jdbc/QueryUpdate.java
 
         List<Tuple2<Integer, String>> projects = db
