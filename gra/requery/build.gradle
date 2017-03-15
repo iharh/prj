@@ -12,15 +12,21 @@ buildscript {
     }
 }
 
-//plugins {
+//plugins { // !!! stdlib 1.1.1 is not available yet
 //    id 'org.jetbrains.kotlin.jvm' version '1.1.1'
 //    id "org.jetbrains.kotlin.kapt" version '1.1.1'
 //}
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
-//apply plugin: 'kotlin-kapt'
-//apply plugin: 'idea'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'idea'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    jcenter()
+}
 
 ext {
     versions = [:]
@@ -39,9 +45,10 @@ libraries += [
     requery_kotlin:     "io.requery:requery-kotlin:${versions.requery}",
     requery_processor:  "io.requery:requery-processor:${versions.requery}",
 
-    rxjava2: "io.reactivex.rxjava2:rxjava:${versions.rxjava2}"
+    rxjava2: "io.reactivex.rxjava2:rxjava:${versions.rxjava2}",
+    
+    junit:  'junit:junit:4.12'
 ]
-
 
 sourceSets {
     generated {
@@ -55,20 +62,17 @@ dependencies {
     compile libraries.requery
     compile libraries.requery_kotlin
 
-    //kapt libraries.requery_processor
+    kapt libraries.requery_processor
 
-    compile libraries.rxjava2
+    compile libraries.rxjava2 // testCompile
 
-    testCompile 'junit:junit:4.12' // compile
-
-    //testCompile 'com.h2database:h2:1.4.191'
-    //testCompile "io.reactivex.rxjava2:rxjava:${versions.rxjava2}"
+    testCompile libraries.junit // compile
 }
 
-//kapt {
-//    generateStubs = true
-//}
-/*
+kapt {
+    generateStubs = true
+}
+
 idea {
     module {
         // https://youtrack.jetbrains.com/issue/IDEA-117540
@@ -84,4 +88,4 @@ idea {
         sourceDirs += file("${buildDir}/generated/source/kapt/main/")
         generatedSourceDirs += "${buildDir}/generated/source/kapt/main/"
     }
-}*/
+}
