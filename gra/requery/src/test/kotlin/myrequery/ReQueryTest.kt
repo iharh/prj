@@ -5,7 +5,6 @@ import io.kotlintest.specs.FunSpec
 import org.postgresql.ds.PGSimpleDataSource
 
 //import io.requery.Persistable
-
 import io.requery.query.Result
 
 import io.requery.sql.Platform
@@ -51,12 +50,18 @@ interface WhereAndOr<E> : AndOr<WhereAndOr<E>>, SetGroupByOrderByLimit<E>
 */
 
 class ReQueryTest : FunSpec() {
+    companion object {
+	const val PROP_EXPORT_TARGET_DIR = "SENT.EXPORT.TARGET_DIR"
+	const val PROP_EXPORT_TARGET_DIR_VAL = "\\\\freenas\\test1\\cmp-share1\\sent-exp"
+    }
+
     init {
         test("String.length") {
             val platform: Platform = PostgresSQL()
             val dataSource = PGSimpleDataSource() // dataSourceClass.newInstance()
-            dataSource.setUser("postgres")
-            dataSource.setDatabaseName("diesel_demo")
+            dataSource.setDatabaseName("postgres") // diesel_demo
+            dataSource.setUser("win_ss") // postgres
+            dataSource.setPassword("clb")
 
             val model: EntityModel = Models.DEFAULT
 
@@ -71,25 +76,20 @@ class ReQueryTest : FunSpec() {
             val data: KotlinEntityDataStore<Any> = KotlinEntityDataStore<Any>(configuration)
 
             data.invoke {
-                //val vvv: Long = 1
-                //val r1:Selection<out Result<Post>> = select(Post::class)
-                val result = select(Post::class) where(Post::id eq 2L) // limit 1
+/*
+                val p_new = PropEntity()
+		p_new.projectId = 2L
+		p_new.name = PROP_EXPORT_TARGET_DIR
+		p_new.value = PROP_EXPORT_TARGET_DIR_VAL
+		insert(p_new) // insert
+*/
+                val result = select(Prop::class) where((Prop::projectId eq 2L) and (Prop::name eq PROP_EXPORT_TARGET_DIR)) limit 1
+                val p1: Prop = result.get().first()
 
-                val p1: Post = result.get().first()
-                2L shouldBe p1.id
-                "abc" shouldBe p1.title
-                "abc def ggg" shouldBe p1.body
-
-                val p2 = PostEntity()
-                p2.id = 3
-                p2.title = "t3"
-                p2.body = "b3"
-
-                insert(p2)
-
-                //val 
+                2L shouldBe p1.projectId
+                PROP_EXPORT_TARGET_DIR shouldBe p1.name
+                PROP_EXPORT_TARGET_DIR_VAL shouldBe p1.value
             }
-            //"".length shouldBe 0
         }
     }
 }
