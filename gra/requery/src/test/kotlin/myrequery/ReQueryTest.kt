@@ -5,20 +5,50 @@ import io.kotlintest.specs.FunSpec
 import org.postgresql.ds.PGSimpleDataSource
 
 //import io.requery.Persistable
-//import io.requery.query.Result
+
+import io.requery.query.Result
 
 import io.requery.sql.Platform
-import io.requery.sql.platform.PostgresSQL
 import io.requery.sql.Configuration
 import io.requery.sql.ConfigurationBuilder
 import io.requery.sql.KotlinEntityDataStore
+import io.requery.sql.platform.PostgresSQL
+
 import io.requery.reactivex.KotlinReactiveEntityStore
 
 import io.requery.meta.EntityModel
 
+import io.requery.kotlin.* // ?? something that brings up eq into scope
+
+//import io.requery.kotlin.Selection
+//import io.requery.kotlin.WhereAndOr
+//import io.requery.kotlin.Conditional
+
 import javax.sql.CommonDataSource
 
 import java.util.concurrent.Executors
+/*
+https://github.com/requery/requery/blob/master/requery-kotlin/src/main/kotlin/io/requery/sql/KotlinEntityDataStore.kt
+override infix fun <E : T> select(type: KClass<E>): Selection<Result<E>> {
+
+https://github.com/requery/requery/blob/master/requery-kotlin/src/main/kotlin/io/requery/kotlin/Query.kt
+interface Selection<E> : Distinct<DistinctSelection<E>>,
+        From<E>,
+        Join<E>,
+        Where<E>,
+        SetOperation<Selectable<E>>,
+        GroupBy<SetHavingOrderByLimit<E>>,
+        OrderBy<Limit<E>>,
+Return<E>
+
+interface Where<E> : SetGroupByOrderByLimit<E>, Return<E> {
+    fun where(): Exists<SetGroupByOrderByLimit<E>>
+    // !!!
+    infix fun <V> where(condition: Condition<V, *>): WhereAndOr<E>
+}
+
+interface WhereAndOr<E> : AndOr<WhereAndOr<E>>, SetGroupByOrderByLimit<E>
+*/
 
 class ReQueryTest : FunSpec() {
     init {
@@ -37,18 +67,20 @@ class ReQueryTest : FunSpec() {
                 .setWriteExecutor(Executors.newSingleThreadExecutor())
                 .build()
 
-            // data
-            //val eds: KotlinReactiveEntityStore<Persistable> = KotlinReactiveEntityStore<Persistable>(KotlinEntityDataStore(configuration))
-            val eds: KotlinEntityDataStore<Any> = KotlinEntityDataStore<Any>(configuration)
+            //val data: KotlinReactiveEntityStore<Persistable> = KotlinReactiveEntityStore<Persistable>(KotlinEntityDataStore(configuration))
+            val data: KotlinEntityDataStore<Any> = KotlinEntityDataStore<Any>(configuration)
 
-            eds.invoke {
-                //val result = select(Post::id, Post::title) limit 1
-                //val result = select(PostEntity::ID, PostEntity::TITLE) limit 1
-                val result = select(Post::class) limit 2
-                val first: Post = result.get().first()
-                2 shouldBe first.id
-                "abc" shouldBe first.title
-                "abc def ggg" shouldBe first.body
+            data.invoke {
+                //val vvv: Long = 1
+                //val r1:Selection<out Result<Post>> = select(Post::class)
+                val result = select(Post::class) where(Post::id eq 2L) // limit 1
+
+                val p1: Post = result.get().first()
+                2L shouldBe p1.id
+                "abc" shouldBe p1.title
+                "abc def ggg" shouldBe p1.body
+
+                //val 
             }
             //"".length shouldBe 0
         }

@@ -7,7 +7,7 @@ import io.requery.*
 interface Post { // : Persistable
     @get:Key
     //@get:Generated
-    var id: Int
+    var id: Long
 
     @get:Column // (length = 10)
     var title: String
