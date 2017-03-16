@@ -23,9 +23,9 @@ class ReQueryTest : FunSpec() {
     init {
         test("String.length") {
             val platform: Platform = PostgresSQL()
-            //val dataSource: CommonDataSource = DatabaseType.getDataSource(platform)
-            //val dataSourceClass = PGSimpleDataSource::class // .class
-            val dataSource: CommonDataSource = PGSimpleDataSource() // dataSourceClass.newInstance()
+            val dataSource = PGSimpleDataSource() // dataSourceClass.newInstance()
+            dataSource.setUser("postgres")
+            dataSource.setDatabaseName("diesel_demo")
 
             val model: EntityModel = Models.DEFAULT
 
