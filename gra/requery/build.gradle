@@ -64,7 +64,9 @@ dependencies {
 
     compile libraries.rxjava2 // testCompile
 
-    compile 'org.postgresql:postgresql:9.4.1212'
+    //compile 'org.postgresql:postgresql:9.4.1212'
+    compile files('d:\\clb\\inst\\server\\lib.3rd\\postgresql-9.1-902.jdbc4.jar')
+    compile files('d:\\clb\\inst\\server\\lib.3rd\\ojdbc7-12.1.0.2_patched.jar')
 
     //testCompile libraries.junit // compile
     testCompile libraries.kotlintest
@@ -77,7 +79,7 @@ kapt {
 idea {
     module {
         // https://youtrack.jetbrains.com/issue/IDEA-117540
-        excludeDirs -= file("$buildDir")
+        excludeDirs += file("$buildDir")
         excludeDirs += file("$buildDir/dependency-cache")
         excludeDirs += file("$buildDir/libs")
         excludeDirs += file("$buildDir/tmp")
@@ -87,6 +89,6 @@ idea {
         excludeDirs += file("$buildDir/libs")
         excludeDirs += file("$buildDir/test-results")
         sourceDirs += file("${buildDir}/generated/source/kapt/main/")
-        generatedSourceDirs += "${buildDir}/generated/source/kapt/main/"
+        generatedSourceDirs += file("${buildDir}/generated/source/kapt/main/")
     }
 }
