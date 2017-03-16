@@ -17,11 +17,12 @@ import io.requery.reactivex.KotlinReactiveEntityStore
 
 import io.requery.meta.EntityModel
 
-import io.requery.kotlin.* // ?? something that brings up eq into scope
-
-//import io.requery.kotlin.Selection
-//import io.requery.kotlin.WhereAndOr
-//import io.requery.kotlin.Conditional
+// ?? something that brings up PropertyExtensions into scope
+//import io.requery.kotlin.* 
+import io.requery.kotlin.Selection
+import io.requery.kotlin.WhereAndOr
+import io.requery.kotlin.Conditional
+import io.requery.kotlin.eq
 
 import javax.sql.CommonDataSource
 
@@ -58,15 +59,15 @@ class ReQueryTest : FunSpec() {
 
     init {
         test("String.length") {
-            //val dataSource = PGSimpleDataSource() // dataSourceClass.newInstance()
-            //dataSource.setDatabaseName("postgres") // diesel_demo
-            //dataSource.setUser("win_ss") // postgres
-            //dataSource.setPassword("")
-
-            val dataSource = OracleDataSource() // dataSourceClass.newInstance()
-	    dataSource.setURL("")
-            dataSource.setUser("")
+            val dataSource = PGSimpleDataSource() // dataSourceClass.newInstance()
+            dataSource.setDatabaseName("postgres") // diesel_demo
+            dataSource.setUser("win_ss") // postgres
             dataSource.setPassword("")
+
+            //val dataSource = OracleDataSource() // dataSourceClass.newInstance()
+	    //dataSource.setURL("")
+            //dataSource.setUser("")
+            //dataSource.setPassword("")
 
             val model: EntityModel = Models.DEFAULT
 
