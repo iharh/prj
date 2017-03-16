@@ -5,6 +5,7 @@ import io.kotlintest.specs.FunSpec
 import org.postgresql.ds.PGSimpleDataSource
 
 //import io.requery.Persistable
+//import io.requery.query.Result
 
 import io.requery.sql.Platform
 import io.requery.sql.platform.PostgresSQL
@@ -37,20 +38,19 @@ class ReQueryTest : FunSpec() {
                 .build()
 
             // data
-            val eds: KotlinEntityDataStore<Any> = KotlinEntityDataStore<Any>(configuration)
             //val eds: KotlinReactiveEntityStore<Persistable> = KotlinReactiveEntityStore<Persistable>(KotlinEntityDataStore(configuration))
+            val eds: KotlinEntityDataStore<Any> = KotlinEntityDataStore<Any>(configuration)
 
             eds.invoke {
                 //val result = select(Post::id, Post::title) limit 1
                 //val result = select(PostEntity::ID, PostEntity::TITLE) limit 1
-                val result = select(Post::class) limit 1
-                //val first = result().first()
-                val first = result.get()
-                //first shouldBe notNull()
+                val result = select(Post::class) limit 2
+                val first: Post = result.get().first()
+                2 shouldBe first.id
+                "abc" shouldBe first.title
+                "abc def ggg" shouldBe first.body
             }
-
-	    "sammy".length shouldBe 5
-            "".length shouldBe 0
+            //"".length shouldBe 0
         }
     }
 }

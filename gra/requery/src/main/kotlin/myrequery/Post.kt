@@ -12,7 +12,8 @@ interface Post { // : Persistable
     @get:Column // (length = 10)
     var title: String
 
-    //var text: String
+    @get:Column // (length = 10)
+    var body: String
 
     @get:Column
     var published: Boolean
