@@ -22,6 +22,12 @@ apply plugin: 'kotlin'
 //apply plugin: 'kotlin-kapt'
 apply plugin: 'idea'
 
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
 repositories {
     mavenLocal()
     jcenter()
