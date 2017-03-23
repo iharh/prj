@@ -52,6 +52,7 @@ public interface SentimentsMessages extends com.google.gwt.i18n.client.Messages 
     String rseRules();
 
     String rseNoExportsDefined();
+    String rseDownload();
 
     String sentimentManagement();
 
