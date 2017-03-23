@@ -18,8 +18,13 @@ import mygwt.foundation.client.csrf.ProjectIdAware;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.cell.client.FieldUpdater;
+import com.google.gwt.safehtml.shared.SafeHtml;
+import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
+import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.cellview.client.TextColumn;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -75,9 +80,23 @@ public class RecentExportsPanel extends BasePanel {
         TextColumn<RecentSentimentExportsInfo> colParameters = new TextColumn<RecentSentimentExportsInfo>() {
             @Override public String getValue(RecentSentimentExportsInfo i) { return getParams(i.isWords(), i.isRules()); }
         };
-        TextColumn<RecentSentimentExportsInfo> colFileName = new TextColumn<RecentSentimentExportsInfo>() {
-            @Override public String getValue(RecentSentimentExportsInfo i) { return i.getFileName(); }
+        Column<RecentSentimentExportsInfo, SafeHtml> colFileName = new Column<RecentSentimentExportsInfo, SafeHtml>(new ClickableSafeHtmlCell()) {
+            @Override
+            public SafeHtml getValue(RecentSentimentExportsInfo object) {
+                SafeHtmlBuilder sb = new SafeHtmlBuilder();
+                sb.appendHtmlConstant("<a href='javascript:;'>");
+                sb.appendEscaped("Download");
+                sb.appendHtmlConstant("</a>");
+                return sb.toSafeHtml();
+            }
         };
+
+        colFileName.setFieldUpdater(new FieldUpdater<RecentSentimentExportsInfo, SafeHtml>() {
+            @Override
+            public void update(int index, RecentSentimentExportsInfo object, SafeHtml value) {
+                 Window.alert("You have clicked: " + object.getName());
+            }
+        });
 
         Unit u = Unit.PCT;
         dataGrid.addColumn(colName, msgs.rseColumnName());
