@@ -39,6 +39,7 @@ public class CurrentExportPanel extends BasePanel {
 
         msgs = SentimentsMessages.INSTANCE;
 
+        add(new InlineLabel(msgs.exportLabelTop()));
         add(createNamePanel());
         add(createDescriptionPanel());
         add(createContentPanel());

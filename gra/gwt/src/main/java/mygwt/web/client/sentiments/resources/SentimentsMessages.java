@@ -35,6 +35,7 @@ public interface SentimentsMessages extends com.google.gwt.i18n.client.Messages 
     @Key("includeExceptionRules")
     String includeExceptionRules();
 
+    String exportLabelTop();
     String exportName();
     String exportDescription();
     String exportContent();

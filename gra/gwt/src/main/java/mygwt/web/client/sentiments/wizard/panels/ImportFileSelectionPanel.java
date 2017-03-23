@@ -268,7 +268,7 @@ public class ImportFileSelectionPanel extends BasePanel {
 
     private void clearStatusLabel(String text) {
         statusLabel.removeStyleName(ERROR_MESSAGE_STYLE);
-        statusLabel.setHTML(text);
+        statusLabel.setHTML("<br/>" + text);
     }
 
     private boolean needToSend() {
