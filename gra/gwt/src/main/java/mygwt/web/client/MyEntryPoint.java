@@ -11,11 +11,12 @@ import mygwt.foundation.client.widget.button.OkButton;
 import mygwt.web.client.utils.LogUtils;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.PushButton;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-
 
 public class MyEntryPoint implements EntryPoint, FinishHandler {
     private SentimentsWizard popup; // BaseDialogBox
@@ -30,7 +31,16 @@ public class MyEntryPoint implements EntryPoint, FinishHandler {
     public void onModuleLoad() {
         popup = new SentimentsWizard(this);
 
-        OkButton btnDo = new OkButton("Do"); // TODO: i18n
+        Image img = new Image("images/action_transfer.png"); // SentimentsImages.INSTANCE.action_transfer()
+
+	RootPanel.get().add(new OkButton("Do"));
+
+        PushButton btnDo = new PushButton();
+
+        btnDo.getUpFace().setImage(img);
+        btnDo.getDownFace().setImage(img);
+        btnDo.setSize(String.valueOf(img.getWidth()), String.valueOf(img.getHeight()));
+
         btnDo.getElement().setId("btnDo");
         btnDo.addClickHandler(new ClickHandler() {
             @Override
