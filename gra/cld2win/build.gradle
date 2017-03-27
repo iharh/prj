@@ -5,6 +5,12 @@ model {
         release
     }
 
+    toolChains {
+        visualCpp(VisualCpp) {
+            installDir 'D:/Program Files (x86)/Microsoft Visual Studio 10.0'
+        }
+    }
+
     binaries {
         all {
             cppCompiler.define "NDEBUG"
@@ -16,7 +22,9 @@ model {
     }
 
     components {
- 	cld2(NativeLibrarySpec) {
+ 	cld2(NativeLibrarySpec) { // NativeLibrarySpec SharedLibraryBinarySpec
+            //targetPlatform "x64"
+            //api = "shared"
             sources {
                 cpp {
                     source {
@@ -66,6 +74,11 @@ model {
                         srcDirs 'src/cld2/public', 'src/cld2/internal'
                     }
                 }
+            }
+        }
+        all {
+            binaries.withType(StaticLibraryBinarySpec) {
+                buildable = false
             }
         }
     }
