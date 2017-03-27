@@ -28,8 +28,7 @@ model {
             sources {
                 cpp {
                     source {
-                        // 'home/cld/...'
-                        srcDirs 'src/cld2/internal'
+                        srcDirs 'src/main/cpp/cld2/internal'
 
                         //include "**/*.cpp"
                         include 'debug.cc'
@@ -71,7 +70,7 @@ model {
                     }
                     exportedHeaders {
                         // 'home/cld/...'
-                        srcDirs 'src/cld2/public', 'src/cld2/internal'
+                        srcDirs 'src/main/cpp/cld2/public', 'src/main/cpp/cld2/internal'
                     }
                 }
             }
