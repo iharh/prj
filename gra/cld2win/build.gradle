@@ -11,6 +11,12 @@ model {
         }
     }
 
+    platforms {
+        x64 {
+            architecture "x86_64"
+        }
+    }
+
     binaries {
         all {
             cppCompiler.define "NDEBUG"
@@ -23,6 +29,7 @@ model {
 
     components {
  	cld2(NativeLibrarySpec) { // SharedLibraryBinarySpec
+            targetPlatform 'x64'
             sources {
                 cpp {
                     source {
@@ -77,6 +84,10 @@ model {
             binaries.withType(StaticLibraryBinarySpec) {
                 buildable = false
             }
+            binaries.withType(SharedLibraryBinarySpec) {
+                println it.component.baseName + " -> " + it.sharedLibraryFile
+                // println it.properties it.tasks
+            }
         }
     }
 }
@@ -93,6 +104,7 @@ model {
 // 2 cld2_generated_quad0122.cc cld2_generated_deltaocta0122.cc \
 // 2 cld2_generated_distinctocta0122.cc  cld_generated_score_quad_octa_0122.cc
 // 24
+
 
 task inst {
 }
