@@ -7,7 +7,7 @@ model {
 
     toolChains {
         visualCpp(VisualCpp) {
-            installDir "${project.'vs2010.installDir'}"
+            installDir "${project.'vs.base'}"
         }
     }
 
