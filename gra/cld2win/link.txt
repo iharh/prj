@@ -1,0 +1,82 @@
+:compileCld2SharedLibraryCld2Cpp UP-TO-DATE
+:linkCld2SharedLibrary UP-TO-DATE
+:cld2SharedLibrary UP-TO-DATE
+:myTask
+
+[
+toolChain:Tool chain 'visualCpp' (Visual Studio),
+taskActions:[
+    org.gradle.api.internal.AbstractTask$TaskActionWrapper@3e8166ad,
+    org.gradle.api.internal.AbstractTask$TaskActionWrapper@629b9cea,
+    org.gradle.api.internal.AbstractTask$TaskActionWrapper@544d2a2a,
+    org.gradle.api.internal.AbstractTask$TaskActionWrapper@5bdcea63
+],
+convention:org.gradle.api.internal.plugins.DefaultConvention@6edd5bbb,
+conventionMapping:org.gradle.api.internal.ConventionAwareHelper@509ff646,
+
+inputs:org.gradle.api.internal.tasks.DefaultTaskInputs@6d3e8a05,
+
+extensions:org.gradle.api.internal.plugins.DefaultConvention@6edd5bbb,
+
+libs:file collection,
+
+temporaryDirFactory:org.gradle.api.internal.AbstractTask$17@510dfa33,
+outputs:org.gradle.api.internal.tasks.DefaultTaskOutputs@5509632a,
+
+targetPlatform:platform 'windows_x86',
+path::linkCld2SharedLibrary,
+linkerArgs:[],
+logging:org.gradle.internal.logging.compatbridge.LoggingManagerInternalCompatibilityBridge@7a0b920b,
+
+installName:cld2.dll,
+group:null,
+
+shouldRunAfter:org.gradle.api.internal.tasks.DefaultTaskDependency@7c80877a,
+destinationDir:D:\dev\prj\gra\cld2win\build\libs\cld2\shared,
+
+class:class org.gradle.nativeplatform.tasks.LinkSharedLibrary_Decorated,
+
+actions:[
+    org.gradle.api.internal.AbstractTask$TaskActionWrapper@3e8166ad,
+    org.gradle.api.internal.AbstractTask$TaskActionWrapper@629b9cea,
+    org.gradle.api.internal.AbstractTask$TaskActionWrapper@544d2a2a,
+    org.gradle.api.internal.AbstractTask$TaskActionWrapper@5bdcea63
+],
+
+outputFile:D:\dev\prj\gra\cld2win\build\libs\cld2\shared\cld2.dll,
+
+asDynamicObject:DynamicObject for task ':linkCld2SharedLibrary',
+temporaryDir:D:\dev\prj\gra\cld2win\build\tmp\linkCld2SharedLibrary,
+identityPath::linkCld2SharedLibrary,
+executer:org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter@63fc41ed,
+validators:[org.gradle.api.internal.project.taskfactory.TaskClassValidator@544d2a2a],
+onlyIf:org.gradle.api.specs.AndSpec@8f58ab2e,
+ant:org.gradle.api.internal.project.DefaultAntBuilder@4310cb69,
+state:org.gradle.api.internal.tasks.TaskStateInternal@652d92ca,
+source:file collection,
+finalizedBy:org.gradle.api.internal.tasks.DefaultTaskDependency@30c567e3,
+didWork:false,
+standardOutputCapture:org.gradle.internal.logging.compatbridge.LoggingManagerInternalCompatibilityBridge@7a0b920b,
+actionClassLoaders:[org.gradle.internal.classloader.VisitableURLClassLoader@1b2c6ec2,
+org.gradle.initialization.MixInLegacyTypesClassLoader@4c15e7fd],
+
+name:linkCld2SharedLibrary,
+
+taskDependencies:org.gradle.api.internal.tasks.DefaultTaskDependency@1d425719,
+
+dependsOn:[task 'linkCld2SharedLibrary' input files],
+
+impliesSubProjects:false,
+hasCustomActions:false,
+enabled:true,
+description:Links shared library 'cld2:sharedLibrary',
+project:root project 'cld2win',
+mustRunAfter:org.gradle.api.internal.tasks.DefaultTaskDependency@6cdd6b9d,
+logger:org.gradle.internal.logging.slf4j.OutputEventListenerBackedLogger@754c2bc2,
+operationLoggerFactory:org.gradle.internal.operations.logging.DefaultBuildOperationLoggerFactory@645f54ab,
+services:ProjectScopeServices
+]
+
+BUILD SUCCESSFUL
+
+Total time: 0.731 secs

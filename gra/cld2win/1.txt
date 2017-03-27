@@ -1,0 +1,25 @@
+:compileCld2SharedLibraryCld2Cpp UP-TO-DATE
+:linkCld2SharedLibrary UP-TO-DATE
+:cld2SharedLibrary UP-TO-DATE
+:myTask
+[taskActions:[],
+convention:org.gradle.api.internal.plugins.DefaultConvention@1cec8f03,
+inputs:org.gradle.api.internal.tasks.DefaultTaskInputs@5ebab207,
+didWork:false,
+extensions:org.gradle.api.internal.plugins.DefaultConvention@1cec8f03,
+temporaryDirFactory:org.gradle.api.internal.AbstractTask$17@2b018284,
+standardOutputCapture:org.gradle.internal.logging.compatbridge.LoggingManagerInternalCompatibilityBridge@181d3887,
+outputs:org.gradle.api.internal.tasks.DefaultTaskOutputs@60713810,
+actionClassLoaders:[],
+path::cld2SharedLibrary,
+logging:org.gradle.internal.logging.compatbridge.LoggingManagerInternalCompatibilityBridge@181d3887,
+name:cld2SharedLibrary,
+taskDependencies:org.gradle.api.internal.tasks.DefaultTaskDependency@3912ac42,
+group:build,
+shouldRunAfter:org.gradle.api.internal.tasks.DefaultTaskDependency@18e67f4d,
+class:class org.gradle.api.DefaultTask_Decorated,
+actions:[], dependsOn:[task 'cld2SharedLibrary' input files, org.gradle.api.internal.tasks.DefaultTaskDependency@3751c8cc], impliesSubProjects:false, asDynamicObject:DynamicObject for task ':cld2SharedLibrary', temporaryDir:D:\dev\prj\gra\cld2win\build\tmp\cld2SharedLibrary, hasCustomActions:false, identityPath::cld2SharedLibrary, executer:org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter@6bd08493, validators:[], onlyIf:org.gradle.api.specs.AndSpec@16afb882, enabled:true, ant:org.gradle.api.internal.project.DefaultAntBuilder@3d4afec4, description:Assembles shared library 'cld2:sharedLibrary'., project:root project 'cld2win', mustRunAfter:org.gradle.api.internal.tasks.DefaultTaskDependency@1bee52c5, state:org.gradle.api.internal.tasks.TaskStateInternal@5492f0c5, logger:org.gradle.internal.logging.slf4j.OutputEventListenerBackedLogger@754c2bc2, finalizedBy:org.gradle.api.internal.tasks.DefaultTaskDependency@513eb50b, services:ProjectScopeServices]
+
+BUILD SUCCESSFUL
+
+Total time: 0.781 secs

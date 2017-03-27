@@ -22,9 +22,7 @@ model {
     }
 
     components {
- 	cld2(NativeLibrarySpec) { // NativeLibrarySpec SharedLibraryBinarySpec
-            //targetPlatform "x64"
-            //api = "shared"
+ 	cld2(NativeLibrarySpec) { // SharedLibraryBinarySpec
             sources {
                 cpp {
                     source {
@@ -102,3 +100,13 @@ task inst {
 inst.dependsOn {
     tasks.findAll { task -> task.name.startsWith('install') }
 }
+
+task myTask {
+    dependsOn 'cld2SharedLibrary'
+    doLast {
+        println linkCld2SharedLibrary.outputFile
+        //properties
+        //sharedLibraryFile
+    }
+}
+
