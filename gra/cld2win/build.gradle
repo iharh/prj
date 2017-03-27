@@ -7,7 +7,7 @@ model {
 
     toolChains {
         visualCpp(VisualCpp) {
-            installDir 'D:/Program Files (x86)/Microsoft Visual Studio 10.0'
+            installDir "${project.'vs2010.installDir'}"
         }
     }
 
