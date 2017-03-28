@@ -1,4 +1,12 @@
+apply plugin: "base"
 apply plugin: "cpp"
+
+repositories {
+    flatDir {
+        name "cld2shared"
+        dirs "build/libs/cld2/shared"
+    }
+}
 
 model {
     buildTypes {
@@ -113,4 +121,17 @@ task inst {
 
 inst.dependsOn {
     tasks.findAll { task -> task.name.startsWith('install') }
+}
+
+uploadArchives {
+    repositories {
+        add project.repositories.cld2shared
+        ivy {
+            credentials {
+                username "username"
+                password "pw"
+            }
+            url "http://repo.mycompany.com"
+        }
+    }
 }
