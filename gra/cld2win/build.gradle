@@ -1,6 +1,8 @@
-apply plugin: "base"
-apply plugin: "cpp"
-apply plugin: 'maven-publish'
+plugins {
+    id 'base'
+    id 'cpp'
+    id 'maven-publish'
+}
 
 import org.gradle.internal.os.OperatingSystem
 

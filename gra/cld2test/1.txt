@@ -1,0 +1,922 @@
+17:27:34.632 [INFO] [org.gradle.internal.nativeintegration.services.NativeServices] Initialized native services in: D:\dev\pl\groovy\tools\.gradle\native
+17:27:34.662 [DEBUG] [org.gradle.internal.nativeintegration.services.NativeServices] Native-platform posix files integration is not available. Continuing with fallback.
+17:27:34.962 [DEBUG] [org.gradle.launcher.daemon.client.DaemonClient] Executing build 525938a7-7666-4bc5-a683-985c41f162e1.1 in daemon client {pid=40000}
+17:27:34.982 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Software Loopback Interface 1
+17:27:34.982 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? true
+17:27:34.987 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:34.987 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback address /127.0.0.1
+17:27:34.987 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback address /0:0:0:0:0:0:0:1
+17:27:34.987 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback multicast interface Software Loopback Interface 1
+17:27:34.987 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Microsoft Kernel Debug Network Adapter
+17:27:34.987 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:34.987 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:34.987 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback multicast interface Microsoft Kernel Debug Network Adapter
+17:27:34.987 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Intel(R) Ethernet Connection I217-LM
+17:27:34.987 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:34.992 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:34.992 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote address /10.9.213.119
+17:27:34.992 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote multicast interface Intel(R) Ethernet Connection I217-LM
+17:27:34.992 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Microsoft ISATAP Adapter
+17:27:34.992 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:34.992 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:34.992 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback multicast interface Microsoft ISATAP Adapter
+17:27:34.992 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface TAP Adapter OAS NDIS 6.0
+17:27:34.992 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:34.997 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:34.997 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback multicast interface TAP Adapter OAS NDIS 6.0
+17:27:34.997 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Microsoft ISATAP Adapter #11
+17:27:34.997 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:34.997 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? false
+17:27:34.997 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote address /fe80:0:0:0:0:5efe:a09:d577%net1
+17:27:34.997 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface VirtualBox Host-Only Ethernet Adapter
+17:27:34.997 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:35.002 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:35.002 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote address /192.168.235.1
+17:27:35.002 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote multicast interface VirtualBox Host-Only Ethernet Adapter
+17:27:35.002 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Microsoft Teredo Tunneling Adapter
+17:27:35.002 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:35.002 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:35.002 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback multicast interface Microsoft Teredo Tunneling Adapter
+17:27:35.002 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Microsoft ISATAP Adapter #3
+17:27:35.002 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:35.002 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? false
+17:27:35.002 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote address /fe80:0:0:0:0:5efe:c0a8:eb01%net3
+17:27:35.002 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Microsoft ISATAP Adapter #2
+17:27:35.007 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:35.007 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:35.007 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback multicast interface Microsoft ISATAP Adapter #2
+17:27:35.007 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface VirtualBox Host-Only Ethernet Adapter-WFP Native MAC Layer LightWeight Filter-0000
+17:27:35.007 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:35.007 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:35.007 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback multicast interface VirtualBox Host-Only Ethernet Adapter-WFP Native MAC Layer LightWeight Filter-0000
+17:27:35.007 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface VirtualBox Host-Only Ethernet Adapter-VirtualBox NDIS Light-Weight Filter-0000
+17:27:35.012 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:35.012 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:35.012 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback multicast interface VirtualBox Host-Only Ethernet Adapter-VirtualBox NDIS Light-Weight Filter-0000
+17:27:35.012 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface VirtualBox Host-Only Ethernet Adapter-QoS Packet Scheduler-0000
+17:27:35.012 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:35.012 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:35.012 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback multicast interface VirtualBox Host-Only Ethernet Adapter-QoS Packet Scheduler-0000
+17:27:35.012 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface TAP Adapter OAS NDIS 6.0-WFP Native MAC Layer LightWeight Filter-0000
+17:27:35.017 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:35.017 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:35.017 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback multicast interface TAP Adapter OAS NDIS 6.0-WFP Native MAC Layer LightWeight Filter-0000
+17:27:35.017 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface TAP Adapter OAS NDIS 6.0-VirtualBox NDIS Light-Weight Filter-0000
+17:27:35.017 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:35.017 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:35.017 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback multicast interface TAP Adapter OAS NDIS 6.0-VirtualBox NDIS Light-Weight Filter-0000
+17:27:35.017 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface TAP Adapter OAS NDIS 6.0-QoS Packet Scheduler-0000
+17:27:35.017 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:35.022 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:35.022 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback multicast interface TAP Adapter OAS NDIS 6.0-QoS Packet Scheduler-0000
+17:27:35.022 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface VirtualBox Host-Only Ethernet Adapter-WFP 802.3 MAC Layer LightWeight Filter-0000
+17:27:35.022 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:35.022 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:35.022 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback multicast interface VirtualBox Host-Only Ethernet Adapter-WFP 802.3 MAC Layer LightWeight Filter-0000
+17:27:35.022 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface TAP Adapter OAS NDIS 6.0-WFP 802.3 MAC Layer LightWeight Filter-0000
+17:27:35.022 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:35.022 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:35.022 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback multicast interface TAP Adapter OAS NDIS 6.0-WFP 802.3 MAC Layer LightWeight Filter-0000
+17:27:35.022 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface TAP Adapter OAS NDIS 6.0-Symantec Endpoint Protection Firewall-0000
+17:27:35.027 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:35.027 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:35.027 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback multicast interface TAP Adapter OAS NDIS 6.0-Symantec Endpoint Protection Firewall-0000
+17:27:35.027 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface VirtualBox Host-Only Ethernet Adapter-Symantec Endpoint Protection Firewall-0000
+17:27:35.027 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:35.027 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:35.027 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback multicast interface VirtualBox Host-Only Ethernet Adapter-Symantec Endpoint Protection Firewall-0000
+17:27:35.027 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Intel(R) Ethernet Connection I217-LM-WFP Native MAC Layer LightWeight Filter-0000
+17:27:35.027 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:35.032 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:35.032 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback multicast interface Intel(R) Ethernet Connection I217-LM-WFP Native MAC Layer LightWeight Filter-0000
+17:27:35.032 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Intel(R) Ethernet Connection I217-LM-VirtualBox NDIS Light-Weight Filter-0000
+17:27:35.032 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:35.032 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:35.032 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback multicast interface Intel(R) Ethernet Connection I217-LM-VirtualBox NDIS Light-Weight Filter-0000
+17:27:35.032 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Intel(R) Ethernet Connection I217-LM-QoS Packet Scheduler-0000
+17:27:35.032 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:35.032 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:35.032 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback multicast interface Intel(R) Ethernet Connection I217-LM-QoS Packet Scheduler-0000
+17:27:35.032 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Intel(R) Ethernet Connection I217-LM-WFP 802.3 MAC Layer LightWeight Filter-0000
+17:27:35.037 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:35.037 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:35.037 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback multicast interface Intel(R) Ethernet Connection I217-LM-WFP 802.3 MAC Layer LightWeight Filter-0000
+17:27:35.037 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Intel(R) Ethernet Connection I217-LM-Symantec Endpoint Protection Firewall-0000
+17:27:35.037 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:35.037 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:35.037 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback multicast interface Intel(R) Ethernet Connection I217-LM-Symantec Endpoint Protection Firewall-0000
+17:27:35.037 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Microsoft ISATAP Adapter #3-Symantec Endpoint Protection Firewall-0000
+17:27:35.037 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:35.042 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:35.042 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback multicast interface Microsoft ISATAP Adapter #3-Symantec Endpoint Protection Firewall-0000
+17:27:35.042 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Microsoft ISATAP Adapter #11-Symantec Endpoint Protection Firewall-0000
+17:27:35.042 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+17:27:35.042 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a multicast interface? true
+17:27:35.042 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback multicast interface Microsoft ISATAP Adapter #11-Symantec Endpoint Protection Firewall-0000
+17:27:35.047 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire shared lock on daemon addresses registry.
+17:27:35.047 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on daemon addresses registry.
+17:27:35.087 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.
+17:27:35.087 [DEBUG] [org.gradle.internal.remote.internal.inet.TcpOutgoingConnector] Attempting to connect to [9b21d52c-8958-4d76-959c-e8116729f114 port:54012, addresses:[/127.0.0.1, /0:0:0:0:0:0:0:1]].
+17:27:35.087 [DEBUG] [org.gradle.internal.remote.internal.inet.TcpOutgoingConnector] Trying to connect to address /127.0.0.1.
+17:27:35.092 [DEBUG] [org.gradle.internal.remote.internal.inet.TcpOutgoingConnector] Connected to address /127.0.0.1:54012.
+17:27:35.112 [INFO] [org.gradle.launcher.daemon.client.DaemonClient] Connected to daemon DaemonInfo{pid=39856, address=[9b21d52c-8958-4d76-959c-e8116729f114 port:54012, addresses:[/127.0.0.1, /0:0:0:0:0:0:0:1]], state=Idle, lastBusy=1490711022764, context=DefaultDaemonContext[uid=8a0b224c-dd45-4029-b804-e3926aade581,javaHome=D:\dev\pl\java\jdk64\jdk1.8.0_112,daemonRegistryDir=D:\dev\pl\groovy\tools\.gradle\daemon,pid=39856,idleTimeout=10800000,daemonOpts=-XX:MaxPermSize=256m,-XX:+HeapDumpOnOutOfMemoryError,-Xmx1024m,-Dfile.encoding=windows-1252,-Duser.country=US,-Duser.language=en,-Duser.variant]}. Dispatching request Build{id=525938a7-7666-4bc5-a683-985c41f162e1.1, currentDir=d:\dev\prj\gra\cld2test}.
+17:27:35.112 [DEBUG] [org.gradle.launcher.daemon.client.DaemonClientConnection] thread 1: dispatching class org.gradle.launcher.daemon.protocol.Build
+17:27:35.132 [INFO] [org.gradle.launcher.daemon.client.DaemonClient] Received result org.gradle.launcher.daemon.protocol.BuildStarted@44d52de2 from daemon DaemonInfo{pid=39856, address=[9b21d52c-8958-4d76-959c-e8116729f114 port:54012, addresses:[/127.0.0.1, /0:0:0:0:0:0:0:1]], state=Idle, lastBusy=1490711022764, context=DefaultDaemonContext[uid=8a0b224c-dd45-4029-b804-e3926aade581,javaHome=D:\dev\pl\java\jdk64\jdk1.8.0_112,daemonRegistryDir=D:\dev\pl\groovy\tools\.gradle\daemon,pid=39856,idleTimeout=10800000,daemonOpts=-XX:MaxPermSize=256m,-XX:+HeapDumpOnOutOfMemoryError,-Xmx1024m,-Dfile.encoding=windows-1252,-Duser.country=US,-Duser.language=en,-Duser.variant]} (build should be starting).
+17:27:35.132 [INFO] [org.gradle.launcher.daemon.server.exec.LogToClient] The client will now receive all logging from the daemon (pid: 39856). The daemon log file: D:\dev\pl\groovy\tools\.gradle\daemon\3.4.1\daemon-39856.out.log
+17:27:35.132 [INFO] [org.gradle.launcher.daemon.server.exec.LogAndCheckHealth] Starting 11th build in daemon [uptime: 18 mins 11.068 secs, performance: 100%, no major garbage collections]
+17:27:35.132 [DEBUG] [org.gradle.launcher.daemon.server.exec.ExecuteBuild] The daemon has started executing the build.
+17:27:35.132 [INFO] [org.gradle.launcher.daemon.server.exec.ExecuteBuild] Executing build with daemon context: DefaultDaemonContext[uid=8a0b224c-dd45-4029-b804-e3926aade581,javaHome=D:\dev\pl\java\jdk64\jdk1.8.0_112,daemonRegistryDir=D:\dev\pl\groovy\tools\.gradle\daemon,pid=39856,idleTimeout=10800000,daemonOpts=-XX:MaxPermSize=256m,-XX:+HeapDumpOnOutOfMemoryError,-Xmx1024m,-Dfile.encoding=windows-1252,-Duser.country=US,-Duser.language=en,-Duser.variant]
+17:27:35.132 [INFO] [org.gradle.cache.internal.DefaultCacheAccess] Creating new cache for plugin-use-metadata, path D:\dev\pl\groovy\tools\.gradle\caches\3.4.1\plugin-resolution\plugin-use-metadata.bin, access org.gradle.cache.internal.DefaultCacheAccess@361350b1
+17:27:35.132 [INFO] [org.gradle.cache.internal.DefaultCacheAccess] Creating new cache for client-status, path D:\dev\pl\groovy\tools\.gradle\caches\3.4.1\plugin-resolution\client-status.bin, access org.gradle.cache.internal.DefaultCacheAccess@361350b1
+17:27:35.132 [INFO] [org.gradle.internal.buildevents.BuildLogger] Starting Build
+17:27:35.132 [DEBUG] [org.gradle.internal.buildevents.BuildLogger] Gradle user home: D:\dev\pl\groovy\tools\.gradle
+17:27:35.132 [DEBUG] [org.gradle.internal.buildevents.BuildLogger] Current dir: D:\dev\prj\gra\cld2test
+17:27:35.132 [DEBUG] [org.gradle.internal.buildevents.BuildLogger] Settings file: null
+17:27:35.132 [DEBUG] [org.gradle.internal.buildevents.BuildLogger] Build file: null
+17:27:35.137 [DEBUG] [org.gradle.initialization.buildsrc.BuildSourceBuilder] Starting to build the build sources.
+17:27:35.137 [DEBUG] [org.gradle.initialization.buildsrc.BuildSourceBuilder] Gradle source dir does not exist. We leave.
+17:27:35.137 [DEBUG] [org.gradle.initialization.DefaultGradlePropertiesLoader] Found env project properties: []
+17:27:35.137 [DEBUG] [org.gradle.initialization.DefaultGradlePropertiesLoader] Found system project properties: []
+17:27:35.137 [DEBUG] [org.gradle.initialization.ScriptEvaluatingSettingsProcessor] Timing: Processing settings took: 0.0 secs
+17:27:35.137 [INFO] [org.gradle.internal.buildevents.BuildLogger] Settings evaluated using settings file 'D:\master\settings.gradle'.
+17:27:35.137 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element '<root>' from state Registered to Created
+17:27:35.137 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element '<root>' to state Discovered.
+17:27:35.137 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element '<root>' to state Created.
+17:27:35.137 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks' (hidden = false)
+17:27:35.137 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks' from state Registered to Created
+17:27:35.137 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks' rule action Project.<init>.tasks()
+17:27:35.137 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks using Project.<init>.tasks()
+17:27:35.137 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks' to state Discovered.
+17:27:35.137 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks' rule action Project.<init>.tasks()
+17:27:35.137 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks using Project.<init>.tasks()
+17:27:35.137 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks' to state Created.
+17:27:35.137 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'serviceRegistry' (hidden = true)
+17:27:35.137 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'buildDir' (hidden = true)
+17:27:35.137 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'projectIdentifier' (hidden = true)
+17:27:35.137 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'extensionContainer' (hidden = true)
+17:27:35.137 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'fileOperations' (hidden = true)
+17:27:35.137 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'sourceDirectorySetFactory' (hidden = true)
+17:27:35.137 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'taskFactory' (hidden = true)
+17:27:35.142 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'instantiator' (hidden = true)
+17:27:35.142 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'typeConverter' (hidden = true)
+17:27:35.142 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'nodeInitializerRegistry' (hidden = true)
+17:27:35.142 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'structBindingsStore' (hidden = true)
+17:27:35.142 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'proxyFactory' (hidden = true)
+17:27:35.142 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'schemaStore' (hidden = true)
+17:27:35.142 [DEBUG] [org.gradle.initialization.ProjectPropertySettingBuildLoader] Looking for project properties from: D:\dev\prj\gra\cld2test\gradle.properties
+17:27:35.142 [DEBUG] [org.gradle.initialization.ProjectPropertySettingBuildLoader] project property file does not exists. We continue!
+17:27:35.142 [INFO] [org.gradle.internal.buildevents.BuildLogger] Projects loaded. Root project using build file 'D:\dev\prj\gra\cld2test\build.gradle'.
+17:27:35.142 [INFO] [org.gradle.internal.buildevents.BuildLogger] Included projects: [root project 'cld2test']
+17:27:35.142 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.init' (hidden = false)
+17:27:35.142 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.wrapper' (hidden = false)
+17:27:35.142 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.help' (hidden = false)
+17:27:35.142 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.projects' (hidden = false)
+17:27:35.142 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.tasks' (hidden = false)
+17:27:35.142 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.properties' (hidden = false)
+17:27:35.142 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.dependencyInsight' (hidden = false)
+17:27:35.142 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.dependencies' (hidden = false)
+17:27:35.142 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.buildEnvironment' (hidden = false)
+17:27:35.142 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.components' (hidden = false)
+17:27:35.142 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.model' (hidden = false)
+17:27:35.142 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.dependentComponents' (hidden = false)
+17:27:35.142 [INFO] [org.gradle.configuration.project.BuildScriptProcessor] Evaluating root project 'cld2test' using build file 'D:\dev\prj\gra\cld2test\build.gradle'.
+17:27:35.147 [DEBUG] [org.gradle.api.internal.artifacts.mvnsettings.DefaultLocalMavenRepositoryLocator] No local repository in Settings file defined. Using default path: C:\Users\Ihar_Hancharenka\.m2\repository
+17:27:35.147 [INFO] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Using 8 worker leases.
+17:27:35.147 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.clean' (hidden = false)
+17:27:35.147 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.assemble' (hidden = false)
+17:27:35.147 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.check' (hidden = false)
+17:27:35.147 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.build' (hidden = false)
+17:27:35.147 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.assemble' from state Registered to Initialized
+17:27:35.147 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.assemble' rule action tasks.addPlaceholderAction(assemble)
+17:27:35.147 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.assemble using tasks.addPlaceholderAction(assemble)
+17:27:35.147 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.assemble' to state Discovered.
+17:27:35.147 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.assemble' rule action tasks.addPlaceholderAction(assemble)
+17:27:35.147 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.assemble using tasks.addPlaceholderAction(assemble)
+17:27:35.147 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.assemble' to state Created.
+17:27:35.147 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.assemble' to state DefaultsApplied.
+17:27:35.147 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.assemble' rule action copyToTaskContainer
+17:27:35.147 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.assemble using copyToTaskContainer
+17:27:35.147 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.assemble' to state Initialized.
+17:27:35.147 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'componentSpecFactory' (hidden = true)
+17:27:35.147 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'components' (hidden = false)
+17:27:35.147 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'sources' (hidden = false)
+17:27:35.147 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'binaries' (hidden = false)
+17:27:35.152 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'bridgedBinaries' (hidden = true)
+17:27:35.152 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.buildNeeded' (hidden = false)
+17:27:35.152 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.buildDependents' (hidden = false)
+17:27:35.152 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.processResources' (hidden = false)
+17:27:35.152 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.compileJava' (hidden = false)
+17:27:35.152 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.classes' (hidden = false)
+17:27:35.152 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.processTestResources' (hidden = false)
+17:27:35.152 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.compileTestJava' (hidden = false)
+17:27:35.152 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.testClasses' (hidden = false)
+17:27:35.152 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.javadoc' (hidden = false)
+17:27:35.157 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.test' (hidden = false)
+17:27:35.157 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.check' from state Registered to Initialized
+17:27:35.157 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.check' rule action tasks.addPlaceholderAction(check)
+17:27:35.157 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.check using tasks.addPlaceholderAction(check)
+17:27:35.157 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.check' to state Discovered.
+17:27:35.157 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.check' rule action tasks.addPlaceholderAction(check)
+17:27:35.157 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.check using tasks.addPlaceholderAction(check)
+17:27:35.157 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.check' to state Created.
+17:27:35.157 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.check' to state DefaultsApplied.
+17:27:35.157 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.check' rule action copyToTaskContainer
+17:27:35.157 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.check using copyToTaskContainer
+17:27:35.157 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.check' to state Initialized.
+17:27:35.157 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'tasks.jar' (hidden = false)
+17:27:35.157 [DEBUG] [org.gradle.configuration.project.BuildScriptProcessor] Timing: Running the build script took 0.015 secs
+17:27:35.157 [INFO] [org.gradle.internal.buildevents.BuildLogger] All projects evaluated.
+17:27:35.157 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Acquiring file lock for Build Output Cleanup Cache (D:\dev\prj\gra\cld2test\.gradle\buildOutputCleanup)
+17:27:35.157 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on Build Output Cleanup Cache (D:\dev\prj\gra\cld2test\.gradle\buildOutputCleanup).
+17:27:35.157 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on Build Output Cleanup Cache (D:\dev\prj\gra\cld2test\.gradle\buildOutputCleanup).
+17:27:35.162 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Releasing file lock for Build Output Cleanup Cache (D:\dev\prj\gra\cld2test\.gradle\buildOutputCleanup)
+17:27:35.162 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on Build Output Cleanup Cache (D:\dev\prj\gra\cld2test\.gradle\buildOutputCleanup).
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks' from state Created to SelfClosed
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks' to state DefaultsApplied.
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks' to state Initialized.
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'binaries' rule action BinaryBasePlugin.Rules#binaries(BinaryContainer)
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating binaries using BinaryBasePlugin.Rules#binaries(BinaryContainer)
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries' to state Discovered.
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'bridgedBinaries' rule action JavaBasePlugin.apply()
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating bridgedBinaries using JavaBasePlugin.apply()
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'bridgedBinaries' to state Discovered.
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'buildDir' rule action Project.<init>.buildDir()
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating buildDir using Project.<init>.buildDir()
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'buildDir' to state Discovered.
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'componentSpecFactory' rule action ComponentBasePlugin.PluginRules#componentSpecFactory(ProjectIdentifier, Instantiator, ITaskFactory, SourceDirectorySetFactory)
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating componentSpecFactory using ComponentBasePlugin.PluginRules#componentSpecFactory(ProjectIdentifier, Instantiator, ITaskFactory, SourceDirectorySetFactory)
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'componentSpecFactory' to state Discovered.
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'components' rule action ComponentBasePlugin.PluginRules#components(ComponentSpecContainer)
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating components using ComponentBasePlugin.PluginRules#components(ComponentSpecContainer)
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'components' to state Discovered.
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'extensionContainer' rule action Project.<init>.extensionContainer()
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating extensionContainer using Project.<init>.extensionContainer()
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'extensionContainer' to state Discovered.
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'fileOperations' rule action DefaultProject.BasicServicesRules#fileOperations(ServiceRegistry)
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating fileOperations using DefaultProject.BasicServicesRules#fileOperations(ServiceRegistry)
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'fileOperations' to state Discovered.
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'instantiator' rule action DefaultProject.BasicServicesRules#instantiator(ServiceRegistry)
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating instantiator using DefaultProject.BasicServicesRules#instantiator(ServiceRegistry)
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'instantiator' to state Discovered.
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'nodeInitializerRegistry' rule action DefaultProject.BasicServicesRules#nodeInitializerRegistry(ModelSchemaStore, StructBindingsStore)
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating nodeInitializerRegistry using DefaultProject.BasicServicesRules#nodeInitializerRegistry(ModelSchemaStore, StructBindingsStore)
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'nodeInitializerRegistry' to state Discovered.
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'projectIdentifier' rule action Project.<init>.projectIdentifier()
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating projectIdentifier using Project.<init>.projectIdentifier()
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'projectIdentifier' to state Discovered.
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'proxyFactory' rule action DefaultProject.BasicServicesRules#proxyFactory(ServiceRegistry)
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating proxyFactory using DefaultProject.BasicServicesRules#proxyFactory(ServiceRegistry)
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'proxyFactory' to state Discovered.
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'schemaStore' rule action DefaultProject.BasicServicesRules#schemaStore(ServiceRegistry)
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating schemaStore using DefaultProject.BasicServicesRules#schemaStore(ServiceRegistry)
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'schemaStore' to state Discovered.
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'serviceRegistry' rule action Project.<init>.serviceRegistry()
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating serviceRegistry using Project.<init>.serviceRegistry()
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'serviceRegistry' to state Discovered.
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'sourceDirectorySetFactory' rule action DefaultProject.BasicServicesRules#sourceDirectorySetFactory(ServiceRegistry)
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating sourceDirectorySetFactory using DefaultProject.BasicServicesRules#sourceDirectorySetFactory(ServiceRegistry)
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'sourceDirectorySetFactory' to state Discovered.
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'sources' rule action LanguageBasePlugin.Rules#sources(Instantiator)
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating sources using LanguageBasePlugin.Rules#sources(Instantiator)
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'sources' to state Discovered.
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'structBindingsStore' rule action DefaultProject.BasicServicesRules#structBindingsStore(ServiceRegistry)
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating structBindingsStore using DefaultProject.BasicServicesRules#structBindingsStore(ServiceRegistry)
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'structBindingsStore' to state Discovered.
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'taskFactory' rule action DefaultProject.BasicServicesRules#taskFactory(ServiceRegistry)
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating taskFactory using DefaultProject.BasicServicesRules#taskFactory(ServiceRegistry)
+17:27:35.162 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'taskFactory' to state Discovered.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'typeConverter' rule action DefaultProject.BasicServicesRules#typeConverter(ServiceRegistry)
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating typeConverter using DefaultProject.BasicServicesRules#typeConverter(ServiceRegistry)
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'typeConverter' to state Discovered.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'serviceRegistry' rule action Project.<init>.serviceRegistry()
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating serviceRegistry using Project.<init>.serviceRegistry()
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'serviceRegistry' to state Created.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'serviceRegistry' to state DefaultsApplied.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'serviceRegistry' to state Initialized.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'serviceRegistry' to state Mutated.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'serviceRegistry' to state Finalized.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'serviceRegistry' to state SelfClosed.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'serviceRegistry' to state GraphClosed.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'schemaStore' rule action DefaultProject.BasicServicesRules#schemaStore(ServiceRegistry)
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating schemaStore using DefaultProject.BasicServicesRules#schemaStore(ServiceRegistry)
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'schemaStore' to state Created.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'schemaStore' to state DefaultsApplied.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'schemaStore' to state Initialized.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'schemaStore' to state Mutated.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'schemaStore' to state Finalized.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'schemaStore' to state SelfClosed.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'schemaStore' to state GraphClosed.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'structBindingsStore' rule action DefaultProject.BasicServicesRules#structBindingsStore(ServiceRegistry)
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating structBindingsStore using DefaultProject.BasicServicesRules#structBindingsStore(ServiceRegistry)
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'structBindingsStore' to state Created.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'structBindingsStore' to state DefaultsApplied.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'structBindingsStore' to state Initialized.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'structBindingsStore' to state Mutated.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'structBindingsStore' to state Finalized.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'structBindingsStore' to state SelfClosed.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'structBindingsStore' to state GraphClosed.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'nodeInitializerRegistry' rule action DefaultProject.BasicServicesRules#nodeInitializerRegistry(ModelSchemaStore, StructBindingsStore)
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating nodeInitializerRegistry using DefaultProject.BasicServicesRules#nodeInitializerRegistry(ModelSchemaStore, StructBindingsStore)
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'nodeInitializerRegistry' to state Created.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'nodeInitializerRegistry' to state DefaultsApplied.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'nodeInitializerRegistry' to state Initialized.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'projectIdentifier' rule action Project.<init>.projectIdentifier()
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating projectIdentifier using Project.<init>.projectIdentifier()
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'projectIdentifier' to state Created.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'projectIdentifier' to state DefaultsApplied.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'projectIdentifier' to state Initialized.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'projectIdentifier' to state Mutated.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'projectIdentifier' to state Finalized.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'projectIdentifier' to state SelfClosed.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'projectIdentifier' to state GraphClosed.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'instantiator' rule action DefaultProject.BasicServicesRules#instantiator(ServiceRegistry)
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating instantiator using DefaultProject.BasicServicesRules#instantiator(ServiceRegistry)
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'instantiator' to state Created.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'instantiator' to state DefaultsApplied.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'instantiator' to state Initialized.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'instantiator' to state Mutated.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'instantiator' to state Finalized.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'instantiator' to state SelfClosed.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'instantiator' to state GraphClosed.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'taskFactory' rule action DefaultProject.BasicServicesRules#taskFactory(ServiceRegistry)
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating taskFactory using DefaultProject.BasicServicesRules#taskFactory(ServiceRegistry)
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'taskFactory' to state Created.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'taskFactory' to state DefaultsApplied.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'taskFactory' to state Initialized.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'taskFactory' to state Mutated.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'taskFactory' to state Finalized.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'taskFactory' to state SelfClosed.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'taskFactory' to state GraphClosed.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'sourceDirectorySetFactory' rule action DefaultProject.BasicServicesRules#sourceDirectorySetFactory(ServiceRegistry)
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating sourceDirectorySetFactory using DefaultProject.BasicServicesRules#sourceDirectorySetFactory(ServiceRegistry)
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'sourceDirectorySetFactory' to state Created.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'sourceDirectorySetFactory' to state DefaultsApplied.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'sourceDirectorySetFactory' to state Initialized.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'sourceDirectorySetFactory' to state Mutated.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'sourceDirectorySetFactory' to state Finalized.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'sourceDirectorySetFactory' to state SelfClosed.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'sourceDirectorySetFactory' to state GraphClosed.
+17:27:35.167 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'componentSpecFactory' rule action ComponentBasePlugin.PluginRules#componentSpecFactory(ProjectIdentifier, Instantiator, ITaskFactory, SourceDirectorySetFactory)
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating componentSpecFactory using ComponentBasePlugin.PluginRules#componentSpecFactory(ProjectIdentifier, Instantiator, ITaskFactory, SourceDirectorySetFactory)
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'componentSpecFactory' to state Created.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'componentSpecFactory' to state DefaultsApplied.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'componentSpecFactory' to state Initialized.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'componentSpecFactory' rule action ComponentBasePlugin.PluginRules#registerComponentSpec(TypeBuilder<ComponentSpec>)
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating componentSpecFactory using ComponentBasePlugin.PluginRules#registerComponentSpec(TypeBuilder<ComponentSpec>)
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'componentSpecFactory' rule action LanguageBasePlugin.Rules#registerBaseLanguageSourceSet(TypeBuilder<LanguageSourceSet>)
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating componentSpecFactory using LanguageBasePlugin.Rules#registerBaseLanguageSourceSet(TypeBuilder<LanguageSourceSet>)
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'componentSpecFactory' rule action BinaryBasePlugin.Rules#registerBaseBinarySpec(TypeBuilder<BinarySpec>)
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating componentSpecFactory using BinaryBasePlugin.Rules#registerBaseBinarySpec(TypeBuilder<BinarySpec>)
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'componentSpecFactory' to state Mutated.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'componentSpecFactory' to state Finalized.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'componentSpecFactory' rule action ComponentBasePlugin.PluginRules#validateComponentSpecRegistrations(ComponentSpecFactory)
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating componentSpecFactory using ComponentBasePlugin.PluginRules#validateComponentSpecRegistrations(ComponentSpecFactory)
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'componentSpecFactory' to state SelfClosed.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'componentSpecFactory' to state GraphClosed.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'nodeInitializerRegistry' rule action ComponentBasePlugin.PluginRules#registerNodeInitializerExtractors(NodeInitializerRegistry, ComponentSpecFactory, StructBindingsStore)
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating nodeInitializerRegistry using ComponentBasePlugin.PluginRules#registerNodeInitializerExtractors(NodeInitializerRegistry, ComponentSpecFactory, StructBindingsStore)
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'nodeInitializerRegistry' to state Mutated.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'nodeInitializerRegistry' to state Finalized.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'nodeInitializerRegistry' to state SelfClosed.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'nodeInitializerRegistry' to state GraphClosed.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'binaries' rule action BinaryBasePlugin.Rules#binaries(BinaryContainer)
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating binaries using BinaryBasePlugin.Rules#binaries(BinaryContainer)
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries' to state Created.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries' to state DefaultsApplied.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'binaries' rule action BinaryBasePlugin.Rules#binaries(BinaryContainer)
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating binaries using BinaryBasePlugin.Rules#binaries(BinaryContainer)
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries' to state Initialized.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'bridgedBinaries' rule action JavaBasePlugin.apply()
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating bridgedBinaries using JavaBasePlugin.apply()
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'bridgedBinaries' to state Created.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'bridgedBinaries' to state DefaultsApplied.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'bridgedBinaries' to state Initialized.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'bridgedBinaries' to state Mutated.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'bridgedBinaries' to state Finalized.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'bridgedBinaries' to state SelfClosed.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'bridgedBinaries' to state GraphClosed.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'binaries' rule action JavaBasePlugin.Rules#attachBridgedBinaries(BinaryContainer, JavaBasePlugin.BridgedBinaries)
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating binaries using JavaBasePlugin.Rules#attachBridgedBinaries(BinaryContainer, JavaBasePlugin.BridgedBinaries)
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'binaries.main' (hidden = false)
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Registering model element 'binaries.test' (hidden = false)
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries' to state Mutated.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries' to state Finalized.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries' to state SelfClosed.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'binaries.main' rule action JavaBasePlugin.Rules#attachBridgedBinaries(BinaryContainer, JavaBasePlugin.BridgedBinaries) > put()
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating binaries.main using JavaBasePlugin.Rules#attachBridgedBinaries(BinaryContainer, JavaBasePlugin.BridgedBinaries) > put()
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries.main' to state Discovered.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'binaries.main' rule action JavaBasePlugin.Rules#attachBridgedBinaries(BinaryContainer, JavaBasePlugin.BridgedBinaries) > put()
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating binaries.main using JavaBasePlugin.Rules#attachBridgedBinaries(BinaryContainer, JavaBasePlugin.BridgedBinaries) > put()
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries.main' to state Created.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries.main' to state DefaultsApplied.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries.main' to state Initialized.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries.main' to state Mutated.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'binaries.main' rule action BinaryBasePlugin.Rules#defineBuildLifecycleTask(BinarySpecInternal, ITaskFactory)
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating binaries.main using BinaryBasePlugin.Rules#defineBuildLifecycleTask(BinarySpecInternal, ITaskFactory)
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'binaries.main' rule action BinaryBasePlugin.Rules#addSourceSetsOwnedByBinariesToTheirInputs(BinarySpecInternal)
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating binaries.main using BinaryBasePlugin.Rules#addSourceSetsOwnedByBinariesToTheirInputs(BinarySpecInternal)
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries.main' to state Finalized.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries.main' to state SelfClosed.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries.main' to state GraphClosed.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'binaries.test' rule action JavaBasePlugin.Rules#attachBridgedBinaries(BinaryContainer, JavaBasePlugin.BridgedBinaries) > put()
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating binaries.test using JavaBasePlugin.Rules#attachBridgedBinaries(BinaryContainer, JavaBasePlugin.BridgedBinaries) > put()
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries.test' to state Discovered.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'binaries.test' rule action JavaBasePlugin.Rules#attachBridgedBinaries(BinaryContainer, JavaBasePlugin.BridgedBinaries) > put()
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating binaries.test using JavaBasePlugin.Rules#attachBridgedBinaries(BinaryContainer, JavaBasePlugin.BridgedBinaries) > put()
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries.test' to state Created.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries.test' to state DefaultsApplied.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries.test' to state Initialized.
+17:27:35.172 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries.test' to state Mutated.
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'binaries.test' rule action BinaryBasePlugin.Rules#defineBuildLifecycleTask(BinarySpecInternal, ITaskFactory)
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating binaries.test using BinaryBasePlugin.Rules#defineBuildLifecycleTask(BinarySpecInternal, ITaskFactory)
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'binaries.test' rule action BinaryBasePlugin.Rules#addSourceSetsOwnedByBinariesToTheirInputs(BinarySpecInternal)
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating binaries.test using BinaryBasePlugin.Rules#addSourceSetsOwnedByBinariesToTheirInputs(BinarySpecInternal)
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries.test' to state Finalized.
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries.test' to state SelfClosed.
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries.test' to state GraphClosed.
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries' to state GraphClosed.
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks' rule action BinaryBasePlugin.Rules#copyBinaryTasksToTaskContainer(TaskContainer, BinaryContainer)
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks using BinaryBasePlugin.Rules#copyBinaryTasksToTaskContainer(TaskContainer, BinaryContainer)
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries.main' from state GraphClosed to Discovered
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries.test' from state GraphClosed to Discovered
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries.main' from state GraphClosed to Initialized
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries.main' from state GraphClosed to Discovered
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries.test' from state GraphClosed to Initialized
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'binaries.test' from state GraphClosed to Discovered
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks' to state Mutated.
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks' to state Finalized.
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks' to state SelfClosed.
+17:27:35.177 [INFO] [org.gradle.execution.TaskNameResolvingBuildConfigurationAction] Selected primary task 'test' from project :
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.test' from state Registered to GraphClosed
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.test' rule action Project.<init>.tasks.test()
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.test using Project.<init>.tasks.test()
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.test' to state Discovered.
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.test' rule action Project.<init>.tasks.test()
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.test using Project.<init>.tasks.test()
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.test' to state Created.
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.test' to state DefaultsApplied.
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.test' rule action copyToTaskContainer
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.test using copyToTaskContainer
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.test' to state Initialized.
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.test' to state Mutated.
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.test' to state Finalized.
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.test' to state SelfClosed.
+17:27:35.177 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.test' to state GraphClosed.
+17:27:35.177 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Acquiring file lock for artifact cache (D:\dev\pl\groovy\tools\.gradle\caches\modules-2)
+17:27:35.182 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on artifact cache (D:\dev\pl\groovy\tools\.gradle\caches\modules-2).
+17:27:35.182 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on artifact cache (D:\dev\pl\groovy\tools\.gradle\caches\modules-2).
+17:27:35.182 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.DefaultArtifactDependencyResolver] Resolving configuration ':testRuntimeClasspath'
+17:27:35.182 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Visiting configuration :cld2test:unspecified(testRuntimeClasspath).
+17:27:35.182 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] dependency: clarabridge:cld2-windows:1.0.0 from-conf: compile to-conf: null is filtered.
+17:27:35.182 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] dependency: junit:junit:4.12 from-conf: testCompile to-conf: null is filtered.
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.classes' from state Registered to GraphClosed
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.classes' rule action Project.<init>.tasks.classes()
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.classes using Project.<init>.tasks.classes()
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.classes' to state Discovered.
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.classes' rule action Project.<init>.tasks.classes()
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.classes using Project.<init>.tasks.classes()
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.classes' to state Created.
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.classes' to state DefaultsApplied.
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.classes' rule action copyToTaskContainer
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.classes using copyToTaskContainer
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.classes' to state Initialized.
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.classes' to state Mutated.
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.classes' to state Finalized.
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.classes' to state SelfClosed.
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.classes' to state GraphClosed.
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.processResources' from state Registered to GraphClosed
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.processResources' rule action Project.<init>.tasks.processResources()
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.processResources using Project.<init>.tasks.processResources()
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.processResources' to state Discovered.
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.processResources' rule action Project.<init>.tasks.processResources()
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.processResources using Project.<init>.tasks.processResources()
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.processResources' to state Created.
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.processResources' to state DefaultsApplied.
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.processResources' rule action copyToTaskContainer
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.processResources using copyToTaskContainer
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.processResources' to state Initialized.
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.processResources' to state Mutated.
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.processResources' to state Finalized.
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.processResources' to state SelfClosed.
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.processResources' to state GraphClosed.
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.compileJava' from state Registered to GraphClosed
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.compileJava' rule action Project.<init>.tasks.compileJava()
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.compileJava using Project.<init>.tasks.compileJava()
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.compileJava' to state Discovered.
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.compileJava' rule action Project.<init>.tasks.compileJava()
+17:27:35.182 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.compileJava using Project.<init>.tasks.compileJava()
+17:27:35.187 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.compileJava' to state Created.
+17:27:35.187 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.compileJava' to state DefaultsApplied.
+17:27:35.187 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.compileJava' rule action copyToTaskContainer
+17:27:35.187 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.compileJava using copyToTaskContainer
+17:27:35.187 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.compileJava' to state Initialized.
+17:27:35.187 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.compileJava' to state Mutated.
+17:27:35.187 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.compileJava' to state Finalized.
+17:27:35.187 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.compileJava' to state SelfClosed.
+17:27:35.187 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.compileJava' to state GraphClosed.
+17:27:35.187 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.DefaultArtifactDependencyResolver] Resolving configuration ':compileClasspath'
+17:27:35.187 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Visiting configuration :cld2test:unspecified(compileClasspath).
+17:27:35.187 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] dependency: clarabridge:cld2-windows:1.0.0 from-conf: compile to-conf: null is filtered.
+17:27:35.187 [INFO] [org.gradle.cache.internal.DefaultCacheAccess] Creating new cache for fileHashes, path D:\dev\prj\gra\cld2test\.gradle\3.4.1\taskHistory\fileHashes.bin, access org.gradle.cache.internal.DefaultCacheAccess@62f0f38
+17:27:35.187 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Acquiring file lock for task history cache (D:\dev\prj\gra\cld2test\.gradle\3.4.1\taskHistory)
+17:27:35.192 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on task history cache (D:\dev\prj\gra\cld2test\.gradle\3.4.1\taskHistory).
+17:27:35.192 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on task history cache (D:\dev\prj\gra\cld2test\.gradle\3.4.1\taskHistory).
+17:27:35.192 [INFO] [org.gradle.cache.internal.DefaultCacheAccess] Creating new cache for annotation-processors, path D:\dev\prj\gra\cld2test\.gradle\3.4.1\fileContent\annotation-processors.bin, access org.gradle.cache.internal.DefaultCacheAccess@62dfa18e
+17:27:35.192 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Acquiring file lock for file content cache (D:\dev\prj\gra\cld2test\.gradle\3.4.1\fileContent)
+17:27:35.192 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on file content cache (D:\dev\prj\gra\cld2test\.gradle\3.4.1\fileContent).
+17:27:35.192 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on file content cache (D:\dev\prj\gra\cld2test\.gradle\3.4.1\fileContent).
+17:27:35.192 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.testClasses' from state Registered to GraphClosed
+17:27:35.192 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.testClasses' rule action Project.<init>.tasks.testClasses()
+17:27:35.192 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.testClasses using Project.<init>.tasks.testClasses()
+17:27:35.192 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.testClasses' to state Discovered.
+17:27:35.192 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.testClasses' rule action Project.<init>.tasks.testClasses()
+17:27:35.192 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.testClasses using Project.<init>.tasks.testClasses()
+17:27:35.192 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.testClasses' to state Created.
+17:27:35.192 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.testClasses' to state DefaultsApplied.
+17:27:35.192 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.testClasses' rule action copyToTaskContainer
+17:27:35.192 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.testClasses using copyToTaskContainer
+17:27:35.192 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.testClasses' to state Initialized.
+17:27:35.192 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.testClasses' to state Mutated.
+17:27:35.192 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.testClasses' to state Finalized.
+17:27:35.192 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.testClasses' to state SelfClosed.
+17:27:35.192 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.testClasses' to state GraphClosed.
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.compileTestJava' from state Registered to GraphClosed
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.compileTestJava' rule action Project.<init>.tasks.compileTestJava()
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.compileTestJava using Project.<init>.tasks.compileTestJava()
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.compileTestJava' to state Discovered.
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.compileTestJava' rule action Project.<init>.tasks.compileTestJava()
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.compileTestJava using Project.<init>.tasks.compileTestJava()
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.compileTestJava' to state Created.
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.compileTestJava' to state DefaultsApplied.
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.compileTestJava' rule action copyToTaskContainer
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.compileTestJava using copyToTaskContainer
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.compileTestJava' to state Initialized.
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.compileTestJava' to state Mutated.
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.compileTestJava' to state Finalized.
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.compileTestJava' to state SelfClosed.
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.compileTestJava' to state GraphClosed.
+17:27:35.197 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.DefaultArtifactDependencyResolver] Resolving configuration ':testCompileClasspath'
+17:27:35.197 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Visiting configuration :cld2test:unspecified(testCompileClasspath).
+17:27:35.197 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] dependency: clarabridge:cld2-windows:1.0.0 from-conf: compile to-conf: null is filtered.
+17:27:35.197 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] dependency: junit:junit:4.12 from-conf: testCompile to-conf: null is filtered.
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.processTestResources' from state Registered to GraphClosed
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.processTestResources' rule action Project.<init>.tasks.processTestResources()
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.processTestResources using Project.<init>.tasks.processTestResources()
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.processTestResources' to state Discovered.
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.processTestResources' rule action Project.<init>.tasks.processTestResources()
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.processTestResources using Project.<init>.tasks.processTestResources()
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.processTestResources' to state Created.
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.processTestResources' to state DefaultsApplied.
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.processTestResources' rule action copyToTaskContainer
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.processTestResources using copyToTaskContainer
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.processTestResources' to state Initialized.
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.processTestResources' to state Mutated.
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.processTestResources' to state Finalized.
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.processTestResources' to state SelfClosed.
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.processTestResources' to state GraphClosed.
+17:27:35.197 [DEBUG] [org.gradle.execution.taskgraph.DefaultTaskGraphExecuter] Timing: Creating the DAG took 0.021 secs
+17:27:35.197 [INFO] [org.gradle.internal.buildevents.BuildLogger] Tasks to be executed: [task ':compileJava', task ':processResources', task ':classes', task ':compileTestJava', task ':processTestResources', task ':testClasses', task ':test']
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.build' rule action tasks.addPlaceholderAction(build)
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.build using tasks.addPlaceholderAction(build)
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.build' to state Discovered.
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.buildDependents' rule action Project.<init>.tasks.buildDependents()
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.buildDependents using Project.<init>.tasks.buildDependents()
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.buildDependents' to state Discovered.
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.buildEnvironment' rule action tasks.addPlaceholderAction(buildEnvironment)
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.buildEnvironment using tasks.addPlaceholderAction(buildEnvironment)
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.buildEnvironment' to state Discovered.
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.buildNeeded' rule action Project.<init>.tasks.buildNeeded()
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.buildNeeded using Project.<init>.tasks.buildNeeded()
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.buildNeeded' to state Discovered.
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.clean' rule action tasks.addPlaceholderAction(clean)
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.clean using tasks.addPlaceholderAction(clean)
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.clean' to state Discovered.
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.components' rule action tasks.addPlaceholderAction(components)
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.components using tasks.addPlaceholderAction(components)
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.components' to state Discovered.
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.dependencies' rule action tasks.addPlaceholderAction(dependencies)
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.dependencies using tasks.addPlaceholderAction(dependencies)
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.dependencies' to state Discovered.
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.dependencyInsight' rule action tasks.addPlaceholderAction(dependencyInsight)
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.dependencyInsight using tasks.addPlaceholderAction(dependencyInsight)
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.dependencyInsight' to state Discovered.
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.dependentComponents' rule action tasks.addPlaceholderAction(dependentComponents)
+17:27:35.197 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.dependentComponents using tasks.addPlaceholderAction(dependentComponents)
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.dependentComponents' to state Discovered.
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.help' rule action tasks.addPlaceholderAction(help)
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.help using tasks.addPlaceholderAction(help)
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.help' to state Discovered.
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.init' rule action tasks.addPlaceholderAction(init)
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.init using tasks.addPlaceholderAction(init)
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.init' to state Discovered.
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.jar' rule action Project.<init>.tasks.jar()
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.jar using Project.<init>.tasks.jar()
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.jar' to state Discovered.
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.javadoc' rule action Project.<init>.tasks.javadoc()
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.javadoc using Project.<init>.tasks.javadoc()
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.javadoc' to state Discovered.
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.model' rule action tasks.addPlaceholderAction(model)
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.model using tasks.addPlaceholderAction(model)
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.model' to state Discovered.
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.projects' rule action tasks.addPlaceholderAction(projects)
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.projects using tasks.addPlaceholderAction(projects)
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.projects' to state Discovered.
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.properties' rule action tasks.addPlaceholderAction(properties)
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.properties using tasks.addPlaceholderAction(properties)
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.properties' to state Discovered.
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.tasks' rule action tasks.addPlaceholderAction(tasks)
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.tasks using tasks.addPlaceholderAction(tasks)
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.tasks' to state Discovered.
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Running model element 'tasks.wrapper' rule action tasks.addPlaceholderAction(wrapper)
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Mutating tasks.wrapper using tasks.addPlaceholderAction(wrapper)
+17:27:35.202 [DEBUG] [org.gradle.model.internal.registry.DefaultModelRegistry] Project : - Transitioning model element 'tasks.wrapper' to state Discovered.
+17:27:35.202 [INFO] [org.gradle.cache.internal.DefaultCacheAccess] Creating new cache for jvmClassSignatures, path D:\dev\prj\gra\cld2test\.gradle\3.4.1\taskHistory\jvmClassSignatures.bin, access org.gradle.cache.internal.DefaultCacheAccess@62f0f38
+17:27:35.202 [INFO] [org.gradle.cache.internal.DefaultCacheAccess] Creating new cache for fileSnapshots, path D:\dev\prj\gra\cld2test\.gradle\3.4.1\taskHistory\fileSnapshots.bin, access org.gradle.cache.internal.DefaultCacheAccess@62f0f38
+17:27:35.202 [INFO] [org.gradle.cache.internal.DefaultCacheAccess] Creating new cache for taskHistory, path D:\dev\prj\gra\cld2test\.gradle\3.4.1\taskHistory\taskHistory.bin, access org.gradle.cache.internal.DefaultCacheAccess@62f0f38
+17:27:35.202 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Worker root.1 started (1 in use).
+17:27:35.202 [INFO] [org.gradle.execution.taskgraph.AbstractTaskPlanExecutor] :compileJava (Thread[Daemon worker Thread 5,5,main]) started.
+17:27:35.202 [LIFECYCLE] [class org.gradle.internal.buildevents.TaskExecutionLogger] :compileJava
+17:27:35.202 [DEBUG] [org.gradle.api.internal.tasks.execution.ExecuteAtMostOnceTaskExecuter] Starting to execute task ':compileJava'
+17:27:35.202 [INFO] [org.gradle.api.internal.tasks.execution.ResolveTaskArtifactStateTaskExecuter] Putting task artifact state for task ':compileJava' into context took 0.001 secs.
+17:27:35.202 [DEBUG] [org.gradle.api.internal.tasks.execution.SkipUpToDateTaskExecuter] Determining if task ':compileJava' is up-to-date
+17:27:35.202 [INFO] [org.gradle.api.internal.changedetection.rules.TaskTypeTaskStateChanges] Task :compileJava class loader hash: ac08a4e08b0ff990510d13105b85ea38
+17:27:35.202 [INFO] [org.gradle.api.internal.changedetection.rules.TaskTypeTaskStateChanges] Task :compileJava actions class loader hash: 1526b3b109d06b230b32697697c7e0ca
+17:27:35.207 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.DefaultArtifactDependencyResolver] Resolving configuration ':compileClasspath'
+17:27:35.207 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.memcache.InMemoryCachedRepositoryFactory] Creating new in-memory cache for repo 'MavenRepo' [4471c3b2f5ea2d40ffaa8b3948cdbacd].
+17:27:35.207 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.memcache.InMemoryCachedRepositoryFactory] Creating new in-memory cache for repo 'maven' [d927d674d62bcd7f3b74e8a9bb830f82].
+17:27:35.207 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Visiting configuration :cld2test:unspecified(compileClasspath).
+17:27:35.207 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Visiting dependency :cld2test:unspecified(compileClasspath) -> dependency: clarabridge:cld2-windows:1.0.0 from-conf: compile to-conf: null
+17:27:35.207 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Selecting new module version clarabridge:cld2-windows:1.0.0
+17:27:35.212 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver] Attempting to resolve component for clarabridge:cld2-windows:1.0.0 using repositories [MavenRepo, maven]
+17:27:35.212 [INFO] [org.gradle.cache.internal.DefaultCacheAccess] Creating new cache for metadata-2.23/module-metadata, path D:\dev\pl\groovy\tools\.gradle\caches\modules-2\metadata-2.23\module-metadata.bin, access org.gradle.cache.internal.DefaultCacheAccess@34bee89f
+17:27:35.212 [DEBUG] [org.gradle.cache.internal.btree.BTreePersistentIndexedCache] Opening cache module-metadata.bin (D:\dev\pl\groovy\tools\.gradle\caches\modules-2\metadata-2.23\module-metadata.bin)
+17:27:35.212 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.CachingModuleComponentRepository] Detected non-existence of module 'clarabridge:cld2-windows:1.0.0' in resolver cache 'MavenRepo'
+17:27:35.212 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.CachingModuleComponentRepository] Using cached module metadata for module 'clarabridge:cld2-windows:1.0.0' in 'maven'
+17:27:35.212 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver] Using clarabridge:cld2-windows:1.0.0 from Maven repository 'maven'
+17:27:35.212 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Visiting configuration clarabridge:cld2-windows:1.0.0(default).
+17:27:35.217 [INFO] [org.gradle.cache.internal.DefaultCacheAccess] Creating new cache for metadata-2.23/module-artifacts, path D:\dev\pl\groovy\tools\.gradle\caches\modules-2\metadata-2.23\module-artifacts.bin, access org.gradle.cache.internal.DefaultCacheAccess@34bee89f
+17:27:35.217 [DEBUG] [org.gradle.cache.internal.btree.BTreePersistentIndexedCache] Opening cache module-artifacts.bin (D:\dev\pl\groovy\tools\.gradle\caches\modules-2\metadata-2.23\module-artifacts.bin)
+17:27:35.217 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.oldresult.TransientConfigurationResultsBuilder] Flushing resolved configuration data in Binary store in D:\Temp\gradle4579124043164689956.bin. Wrote root 2.
+17:27:35.217 [INFO] [org.gradle.cache.internal.DefaultCacheAccess] Creating new cache for metadata-2.23/artifact-at-repository, path D:\dev\pl\groovy\tools\.gradle\caches\modules-2\metadata-2.23\artifact-at-repository.bin, access org.gradle.cache.internal.DefaultCacheAccess@34bee89f
+17:27:35.217 [DEBUG] [org.gradle.cache.internal.btree.BTreePersistentIndexedCache] Opening cache artifact-at-repository.bin (D:\dev\pl\groovy\tools\.gradle\caches\modules-2\metadata-2.23\artifact-at-repository.bin)
+17:27:35.217 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.CachingModuleComponentRepository] Found artifact 'cld2-windows.dll (clarabridge:cld2-windows:1.0.0)' in resolver cache: D:\dev\pl\groovy\tools\.gradle\caches\modules-2\files-2.1\clarabridge\cld2-windows\1.0.0\7be7474c1b74d6f6563f1f0f83fff589512daed8\cld2-windows-1.0.0.dll
+17:27:35.217 [INFO] [org.gradle.api.internal.tasks.execution.SkipUpToDateTaskExecuter] Skipping task ':compileJava' as it is up-to-date (took 0.014 secs).
+17:27:35.217 [DEBUG] [org.gradle.api.internal.tasks.execution.ResolveTaskArtifactStateTaskExecuter] Removed task artifact state for {} from context.
+17:27:35.217 [DEBUG] [org.gradle.api.internal.tasks.execution.ExecuteAtMostOnceTaskExecuter] Finished executing task ':compileJava'
+17:27:35.217 [LIFECYCLE] [class org.gradle.internal.buildevents.TaskExecutionLogger] :compileJava UP-TO-DATE
+17:27:35.217 [INFO] [org.gradle.execution.taskgraph.AbstractTaskPlanExecutor] :compileJava (Thread[Daemon worker Thread 5,5,main]) completed. Took 0.017 secs.
+17:27:35.217 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Worker root.1 completed (0 in use)
+17:27:35.217 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Worker root.2 started (1 in use).
+17:27:35.217 [INFO] [org.gradle.execution.taskgraph.AbstractTaskPlanExecutor] :processResources (Thread[Daemon worker Thread 5,5,main]) started.
+17:27:35.217 [LIFECYCLE] [class org.gradle.internal.buildevents.TaskExecutionLogger] :processResources
+17:27:35.217 [DEBUG] [org.gradle.api.internal.tasks.execution.ExecuteAtMostOnceTaskExecuter] Starting to execute task ':processResources'
+17:27:35.222 [INFO] [org.gradle.api.internal.tasks.execution.ResolveTaskArtifactStateTaskExecuter] Putting task artifact state for task ':processResources' into context took 0.001 secs.
+17:27:35.222 [INFO] [org.gradle.api.internal.file.collections.DirectoryFileTree] file or directory 'D:\dev\prj\gra\cld2test\src\main\resources', not found
+17:27:35.222 [INFO] [org.gradle.api.internal.tasks.execution.SkipEmptySourceFilesTaskExecuter] Skipping task ':processResources' as it has no source files and no previous output files.
+17:27:35.222 [DEBUG] [org.gradle.api.internal.tasks.execution.ResolveTaskArtifactStateTaskExecuter] Removed task artifact state for {} from context.
+17:27:35.222 [DEBUG] [org.gradle.api.internal.tasks.execution.ExecuteAtMostOnceTaskExecuter] Finished executing task ':processResources'
+17:27:35.222 [LIFECYCLE] [class org.gradle.internal.buildevents.TaskExecutionLogger] :processResources NO-SOURCE
+17:27:35.222 [INFO] [org.gradle.execution.taskgraph.AbstractTaskPlanExecutor] :processResources (Thread[Daemon worker Thread 5,5,main]) completed. Took 0.002 secs.
+17:27:35.222 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Worker root.2 completed (0 in use)
+17:27:35.222 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Worker root.3 started (1 in use).
+17:27:35.222 [INFO] [org.gradle.execution.taskgraph.AbstractTaskPlanExecutor] :classes (Thread[Daemon worker Thread 5,5,main]) started.
+17:27:35.222 [LIFECYCLE] [class org.gradle.internal.buildevents.TaskExecutionLogger] :classes
+17:27:35.222 [DEBUG] [org.gradle.api.internal.tasks.execution.ExecuteAtMostOnceTaskExecuter] Starting to execute task ':classes'
+17:27:35.222 [INFO] [org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter] Skipping task ':classes' as it has no actions.
+17:27:35.222 [DEBUG] [org.gradle.api.internal.tasks.execution.ExecuteAtMostOnceTaskExecuter] Finished executing task ':classes'
+17:27:35.222 [LIFECYCLE] [class org.gradle.internal.buildevents.TaskExecutionLogger] :classes UP-TO-DATE
+17:27:35.222 [INFO] [org.gradle.execution.taskgraph.AbstractTaskPlanExecutor] :classes (Thread[Daemon worker Thread 5,5,main]) completed. Took 0.001 secs.
+17:27:35.222 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Worker root.3 completed (0 in use)
+17:27:35.222 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Worker root.4 started (1 in use).
+17:27:35.222 [INFO] [org.gradle.execution.taskgraph.AbstractTaskPlanExecutor] :compileTestJava (Thread[Daemon worker Thread 5,5,main]) started.
+17:27:35.222 [LIFECYCLE] [class org.gradle.internal.buildevents.TaskExecutionLogger] :compileTestJava
+17:27:35.222 [DEBUG] [org.gradle.api.internal.tasks.execution.ExecuteAtMostOnceTaskExecuter] Starting to execute task ':compileTestJava'
+17:27:35.222 [INFO] [org.gradle.api.internal.tasks.execution.ResolveTaskArtifactStateTaskExecuter] Putting task artifact state for task ':compileTestJava' into context took 0.001 secs.
+17:27:35.222 [DEBUG] [org.gradle.api.internal.tasks.execution.SkipUpToDateTaskExecuter] Determining if task ':compileTestJava' is up-to-date
+17:27:35.222 [INFO] [org.gradle.api.internal.changedetection.rules.TaskTypeTaskStateChanges] Task :compileTestJava class loader hash: ac08a4e08b0ff990510d13105b85ea38
+17:27:35.222 [INFO] [org.gradle.api.internal.changedetection.rules.TaskTypeTaskStateChanges] Task :compileTestJava actions class loader hash: 1526b3b109d06b230b32697697c7e0ca
+17:27:35.227 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.DefaultArtifactDependencyResolver] Resolving configuration ':testCompileClasspath'
+17:27:35.227 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.memcache.InMemoryCachedRepositoryFactory] Reusing in-memory cache for repo 'MavenRepo' [4471c3b2f5ea2d40ffaa8b3948cdbacd].
+17:27:35.227 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.memcache.InMemoryCachedRepositoryFactory] Reusing in-memory cache for repo 'maven' [d927d674d62bcd7f3b74e8a9bb830f82].
+17:27:35.227 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Visiting configuration :cld2test:unspecified(testCompileClasspath).
+17:27:35.227 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Visiting dependency :cld2test:unspecified(testCompileClasspath) -> dependency: clarabridge:cld2-windows:1.0.0 from-conf: compile to-conf: null
+17:27:35.227 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Selecting new module version clarabridge:cld2-windows:1.0.0
+17:27:35.227 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver] Attempting to resolve component for clarabridge:cld2-windows:1.0.0 using repositories [MavenRepo, maven]
+17:27:35.227 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver] Using clarabridge:cld2-windows:1.0.0 from Maven repository 'maven'
+17:27:35.227 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Visiting dependency :cld2test:unspecified(testCompileClasspath) -> dependency: junit:junit:4.12 from-conf: testCompile to-conf: null
+17:27:35.227 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Selecting new module version junit:junit:4.12
+17:27:35.227 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver] Attempting to resolve component for junit:junit:4.12 using repositories [MavenRepo, maven]
+17:27:35.227 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.CachingModuleComponentRepository] Using cached module metadata for module 'junit:junit:4.12' in 'MavenRepo'
+17:27:35.232 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver] Using junit:junit:4.12 from Maven repository 'MavenRepo'
+17:27:35.232 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Visiting configuration clarabridge:cld2-windows:1.0.0(default).
+17:27:35.232 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Visiting configuration junit:junit:4.12(default).
+17:27:35.232 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Visiting dependency junit:junit:4.12(default) -> dependency: org.hamcrest:hamcrest-core:1.3, scope: Compile, optional: false
+17:27:35.232 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Selecting new module version org.hamcrest:hamcrest-core:1.3
+17:27:35.232 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver] Attempting to resolve component for org.hamcrest:hamcrest-core:1.3 using repositories [MavenRepo, maven]
+17:27:35.232 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.CachingModuleComponentRepository] Using cached module metadata for module 'org.hamcrest:hamcrest-core:1.3' in 'MavenRepo'
+17:27:35.232 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver] Using org.hamcrest:hamcrest-core:1.3 from Maven repository 'MavenRepo'
+17:27:35.232 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Visiting configuration org.hamcrest:hamcrest-core:1.3(runtime).
+17:27:35.232 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.oldresult.TransientConfigurationResultsBuilder] Flushing resolved configuration data in Binary store in D:\Temp\gradle4579124043164689956.bin. Wrote root 2.
+17:27:35.232 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.CachingModuleComponentRepository] Found artifact 'junit.jar (junit:junit:4.12)' in resolver cache: D:\dev\pl\groovy\tools\.gradle\caches\modules-2\files-2.1\junit\junit\4.12\2973d150c0dc1fefe998f834810d68f278ea58ec\junit-4.12.jar
+17:27:35.232 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.CachingModuleComponentRepository] Found artifact 'hamcrest-core.jar (org.hamcrest:hamcrest-core:1.3)' in resolver cache: D:\dev\pl\groovy\tools\.gradle\caches\modules-2\files-2.1\org.hamcrest\hamcrest-core\1.3\42a25dc3219429f0e5d060061f71acb49bf010a0\hamcrest-core-1.3.jar
+17:27:35.237 [INFO] [org.gradle.api.internal.tasks.execution.SkipUpToDateTaskExecuter] Skipping task ':compileTestJava' as it is up-to-date (took 0.012 secs).
+17:27:35.237 [DEBUG] [org.gradle.api.internal.tasks.execution.ResolveTaskArtifactStateTaskExecuter] Removed task artifact state for {} from context.
+17:27:35.237 [DEBUG] [org.gradle.api.internal.tasks.execution.ExecuteAtMostOnceTaskExecuter] Finished executing task ':compileTestJava'
+17:27:35.237 [LIFECYCLE] [class org.gradle.internal.buildevents.TaskExecutionLogger] :compileTestJava UP-TO-DATE
+17:27:35.237 [INFO] [org.gradle.execution.taskgraph.AbstractTaskPlanExecutor] :compileTestJava (Thread[Daemon worker Thread 5,5,main]) completed. Took 0.014 secs.
+17:27:35.237 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Worker root.4 completed (0 in use)
+17:27:35.237 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Worker root.5 started (1 in use).
+17:27:35.237 [INFO] [org.gradle.execution.taskgraph.AbstractTaskPlanExecutor] :processTestResources (Thread[Daemon worker Thread 5,5,main]) started.
+17:27:35.237 [LIFECYCLE] [class org.gradle.internal.buildevents.TaskExecutionLogger] :processTestResources
+17:27:35.237 [DEBUG] [org.gradle.api.internal.tasks.execution.ExecuteAtMostOnceTaskExecuter] Starting to execute task ':processTestResources'
+17:27:35.237 [INFO] [org.gradle.api.internal.tasks.execution.ResolveTaskArtifactStateTaskExecuter] Putting task artifact state for task ':processTestResources' into context took 0.001 secs.
+17:27:35.237 [INFO] [org.gradle.api.internal.file.collections.DirectoryFileTree] file or directory 'D:\dev\prj\gra\cld2test\src\test\resources', not found
+17:27:35.237 [INFO] [org.gradle.api.internal.tasks.execution.SkipEmptySourceFilesTaskExecuter] Skipping task ':processTestResources' as it has no source files and no previous output files.
+17:27:35.237 [DEBUG] [org.gradle.api.internal.tasks.execution.ResolveTaskArtifactStateTaskExecuter] Removed task artifact state for {} from context.
+17:27:35.237 [DEBUG] [org.gradle.api.internal.tasks.execution.ExecuteAtMostOnceTaskExecuter] Finished executing task ':processTestResources'
+17:27:35.237 [LIFECYCLE] [class org.gradle.internal.buildevents.TaskExecutionLogger] :processTestResources NO-SOURCE
+17:27:35.237 [INFO] [org.gradle.execution.taskgraph.AbstractTaskPlanExecutor] :processTestResources (Thread[Daemon worker Thread 5,5,main]) completed. Took 0.002 secs.
+17:27:35.237 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Worker root.5 completed (0 in use)
+17:27:35.237 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Worker root.6 started (1 in use).
+17:27:35.237 [INFO] [org.gradle.execution.taskgraph.AbstractTaskPlanExecutor] :testClasses (Thread[Daemon worker Thread 5,5,main]) started.
+17:27:35.237 [LIFECYCLE] [class org.gradle.internal.buildevents.TaskExecutionLogger] :testClasses
+17:27:35.237 [DEBUG] [org.gradle.api.internal.tasks.execution.ExecuteAtMostOnceTaskExecuter] Starting to execute task ':testClasses'
+17:27:35.237 [INFO] [org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter] Skipping task ':testClasses' as it has no actions.
+17:27:35.237 [DEBUG] [org.gradle.api.internal.tasks.execution.ExecuteAtMostOnceTaskExecuter] Finished executing task ':testClasses'
+17:27:35.237 [LIFECYCLE] [class org.gradle.internal.buildevents.TaskExecutionLogger] :testClasses UP-TO-DATE
+17:27:35.237 [INFO] [org.gradle.execution.taskgraph.AbstractTaskPlanExecutor] :testClasses (Thread[Daemon worker Thread 5,5,main]) completed. Took 0.001 secs.
+17:27:35.237 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Worker root.6 completed (0 in use)
+17:27:35.237 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Worker root.7 started (1 in use).
+17:27:35.237 [INFO] [org.gradle.execution.taskgraph.AbstractTaskPlanExecutor] :test (Thread[Daemon worker Thread 5,5,main]) started.
+17:27:35.237 [LIFECYCLE] [class org.gradle.internal.buildevents.TaskExecutionLogger] :test
+17:27:35.242 [DEBUG] [org.gradle.api.internal.tasks.execution.ExecuteAtMostOnceTaskExecuter] Starting to execute task ':test'
+17:27:35.242 [INFO] [org.gradle.api.internal.tasks.execution.ResolveTaskArtifactStateTaskExecuter] Putting task artifact state for task ':test' into context took 0.003 secs.
+17:27:35.242 [DEBUG] [org.gradle.api.internal.tasks.execution.SkipUpToDateTaskExecuter] Determining if task ':test' is up-to-date
+17:27:35.242 [INFO] [org.gradle.api.internal.changedetection.rules.TaskTypeTaskStateChanges] Task :test class loader hash: ac08a4e08b0ff990510d13105b85ea38
+17:27:35.242 [INFO] [org.gradle.api.internal.changedetection.rules.TaskTypeTaskStateChanges] Task :test actions class loader hash: 1526b3b109d06b230b32697697c7e0ca
+17:27:35.242 [DEBUG] [org.gradle.cache.internal.btree.BTreePersistentIndexedCache] Opening cache fileHashes.bin (D:\dev\prj\gra\cld2test\.gradle\3.4.1\taskHistory\fileHashes.bin)
+17:27:35.247 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.DefaultArtifactDependencyResolver] Resolving configuration ':testRuntimeClasspath'
+17:27:35.247 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.memcache.InMemoryCachedRepositoryFactory] Reusing in-memory cache for repo 'MavenRepo' [4471c3b2f5ea2d40ffaa8b3948cdbacd].
+17:27:35.247 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.memcache.InMemoryCachedRepositoryFactory] Reusing in-memory cache for repo 'maven' [d927d674d62bcd7f3b74e8a9bb830f82].
+17:27:35.247 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Visiting configuration :cld2test:unspecified(testRuntimeClasspath).
+17:27:35.247 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Visiting dependency :cld2test:unspecified(testRuntimeClasspath) -> dependency: clarabridge:cld2-windows:1.0.0 from-conf: compile to-conf: null
+17:27:35.252 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Selecting new module version clarabridge:cld2-windows:1.0.0
+17:27:35.252 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver] Attempting to resolve component for clarabridge:cld2-windows:1.0.0 using repositories [MavenRepo, maven]
+17:27:35.252 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver] Using clarabridge:cld2-windows:1.0.0 from Maven repository 'maven'
+17:27:35.252 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Visiting dependency :cld2test:unspecified(testRuntimeClasspath) -> dependency: junit:junit:4.12 from-conf: testCompile to-conf: null
+17:27:35.252 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Selecting new module version junit:junit:4.12
+17:27:35.252 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver] Attempting to resolve component for junit:junit:4.12 using repositories [MavenRepo, maven]
+17:27:35.252 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver] Using junit:junit:4.12 from Maven repository 'MavenRepo'
+17:27:35.252 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Visiting configuration clarabridge:cld2-windows:1.0.0(default).
+17:27:35.252 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Visiting configuration junit:junit:4.12(default).
+17:27:35.252 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Visiting dependency junit:junit:4.12(default) -> dependency: org.hamcrest:hamcrest-core:1.3, scope: Compile, optional: false
+17:27:35.252 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Selecting new module version org.hamcrest:hamcrest-core:1.3
+17:27:35.252 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver] Attempting to resolve component for org.hamcrest:hamcrest-core:1.3 using repositories [MavenRepo, maven]
+17:27:35.252 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.ivyresolve.RepositoryChainComponentMetaDataResolver] Using org.hamcrest:hamcrest-core:1.3 from Maven repository 'MavenRepo'
+17:27:35.252 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.graph.DependencyGraphBuilder] Visiting configuration org.hamcrest:hamcrest-core:1.3(runtime).
+17:27:35.252 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.oldresult.TransientConfigurationResultsBuilder] Flushing resolved configuration data in Binary store in D:\Temp\gradle4579124043164689956.bin. Wrote root 2.
+17:27:35.252 [INFO] [org.gradle.api.internal.tasks.execution.SkipUpToDateTaskExecuter] Executing task ':test' (up-to-date check took 0.009 secs) due to:
+  Output property 'binResultsDir' file D:\dev\prj\gra\cld2test\build\test-results\test\binary\results.bin has changed.
+  Output property 'reports.enabledDirectoryReportDestinations.html' file D:\dev\prj\gra\cld2test\build\reports\tests\test\classes\MyTest.html has changed.
+  Output property 'reports.enabledDirectoryReportDestinations.html' file D:\dev\prj\gra\cld2test\build\reports\tests\test\index.html has changed.
+17:27:35.252 [DEBUG] [org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter] Executing actions for task ':test'.
+17:27:35.257 [DEBUG] [org.gradle.api.internal.file.delete.Deleter] Deleting D:\dev\prj\gra\cld2test\build\test-results\test\binary
+17:27:35.262 [DEBUG] [TestEventLogger] 
+17:27:35.262 [DEBUG] [TestEventLogger] Gradle Test Run :test STARTED
+17:27:35.267 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Worker root.7.8 started (1 in use).
+17:27:35.272 [DEBUG] [org.gradle.internal.remote.internal.inet.TcpIncomingConnector] Listening on [3e539e22-36d7-4364-9061-8c52cdca066a port:54262, addresses:[/127.0.0.1, /0:0:0:0:0:0:0:1]].
+17:27:35.272 [DEBUG] [org.gradle.process.internal.worker.DefaultWorkerProcessBuilder] Creating Gradle Test Executor 1
+17:27:35.272 [DEBUG] [org.gradle.process.internal.worker.DefaultWorkerProcessBuilder] Using application classpath [D:\dev\prj\gra\cld2test\build\classes\test, D:\dev\prj\gra\cld2test\build\resources\test, D:\dev\prj\gra\cld2test\build\classes\main, D:\dev\prj\gra\cld2test\build\resources\main, D:\dev\pl\groovy\tools\.gradle\caches\modules-2\files-2.1\clarabridge\cld2-windows\1.0.0\7be7474c1b74d6f6563f1f0f83fff589512daed8\cld2-windows-1.0.0.dll, D:\dev\pl\groovy\tools\.gradle\caches\modules-2\files-2.1\junit\junit\4.12\2973d150c0dc1fefe998f834810d68f278ea58ec\junit-4.12.jar, D:\dev\pl\groovy\tools\.gradle\caches\modules-2\files-2.1\org.hamcrest\hamcrest-core\1.3\42a25dc3219429f0e5d060061f71acb49bf010a0\hamcrest-core-1.3.jar]
+17:27:35.272 [DEBUG] [org.gradle.process.internal.worker.DefaultWorkerProcessBuilder] Using implementation classpath [file:/D:/dev/pl/groovy/tools/gradle-3.4.1/lib/gradle-version-info-3.4.1.jar, file:/D:/dev/pl/groovy/tools/gradle-3.4.1/lib/gradle-core-3.4.1.jar, file:/D:/dev/pl/groovy/tools/gradle-3.4.1/lib/gradle-logging-3.4.1.jar, file:/D:/dev/pl/groovy/tools/gradle-3.4.1/lib/gradle-messaging-3.4.1.jar, file:/D:/dev/pl/groovy/tools/gradle-3.4.1/lib/gradle-base-services-3.4.1.jar, file:/D:/dev/pl/groovy/tools/gradle-3.4.1/lib/gradle-cli-3.4.1.jar, file:/D:/dev/pl/groovy/tools/gradle-3.4.1/lib/gradle-native-3.4.1.jar, file:/D:/dev/pl/groovy/tools/gradle-3.4.1/lib/plugins/gradle-testing-base-3.4.1.jar, file:/D:/dev/pl/groovy/tools/gradle-3.4.1/lib/plugins/gradle-testing-jvm-3.4.1.jar, file:/D:/dev/pl/groovy/tools/gradle-3.4.1/lib/guava-jdk5-17.0.jar, file:/D:/dev/pl/groovy/tools/gradle-3.4.1/lib/slf4j-api-1.7.10.jar, file:/D:/dev/pl/groovy/tools/gradle-3.4.1/lib/jul-to-slf4j-1.7.10.jar, file:/D:/dev/pl/groovy/tools/gradle-3.4.1/lib/native-platform-0.13.jar, file:/D:/dev/pl/groovy/tools/gradle-3.4.1/lib/kryo-2.20.jar, file:/D:/dev/pl/groovy/tools/gradle-3.4.1/lib/commons-lang-2.6.jar, file:/D:/dev/pl/groovy/tools/gradle-3.4.1/lib/plugins/junit-4.12.jar]
+17:27:35.272 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire shared lock on cache directory workerMain (D:\dev\pl\groovy\tools\.gradle\caches\3.4.1\workerMain).
+17:27:35.272 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on cache directory workerMain (D:\dev\pl\groovy\tools\.gradle\caches\3.4.1\workerMain).
+17:27:35.272 [DEBUG] [org.gradle.process.internal.worker.child.WorkerProcessClassPathProvider] Using worker process classpath: [D:\dev\pl\groovy\tools\.gradle\caches\3.4.1\workerMain\gradle-worker.jar]
+17:27:35.277 [INFO] [org.gradle.process.internal.DefaultExecHandle] Starting process 'Gradle Test Executor 1'. Working directory: D:\dev\prj\gra\cld2test Command: D:\dev\pl\java\jdk64\jdk1.8.0_112\bin\java.exe -Djava.security.manager=worker.org.gradle.process.internal.worker.child.BootstrapSecurityManager -Dfile.encoding=windows-1252 -Duser.country=US -Duser.language=en -Duser.variant -ea -cp D:\dev\pl\groovy\tools\.gradle\caches\3.4.1\workerMain\gradle-worker.jar worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Test Executor 1'
+17:27:35.277 [DEBUG] [org.gradle.process.internal.DefaultExecHandle] Environment for process 'Gradle Test Executor 1': {USERDOMAIN_ROAMINGPROFILE=GOMEL, PROCESSOR_LEVEL=6, ConEmuWorkDrive=C:, FP_NO_HOST_CHECK=NO, VS140COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\, ALLUSERSPROFILE=C:\ProgramData, PROCESSOR_ARCHITECTURE=AMD64, ConEmuANSI=ON, PSModulePath=C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules\;D:\dev\utils\opscode\chefdk\modules\, SystemDrive=C:, =ExitCode=00000000, VS100COMNTOOLS=D:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\Tools\, BIN_ROOT=D:\dev, ConEmuDrawHWND=0x000F06B8, DIRNAME=D:\dev\pl\groovy\tools\gradle-3.4.1\bin\, USERNAME=Ihar_Hancharenka, USERDNSDOMAIN=GOMEL.EPAM.COM, CMD_LINE_ARGS=-Pjboss.home=D:/clb/inst/server test -d, ProgramFiles(x86)=C:\Program Files (x86), ConEmuServerPID=7392, APP_HOME=D:\dev\pl\groovy\tools\gradle-3.4.1\bin\.., ConEmuBaseDir=D:\dev\utils\term\ConEmuPack\ConEmu, PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC, ConEmuIsAdmin=ADMIN, ProgramData=C:\ProgramData, ProgramW6432=C:\Program Files, HOMEPATH=\Users\Ihar_Hancharenka, PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 60 Stepping 3, GenuineIntel, ConEmuBackHWND=0x00160410, ProgramFiles=C:\Program Files, PUBLIC=C:\Users\Public, ANSICON_DEF=7, windir=C:\WINDOWS, ConEmuWorkDir=C:\Users\Ihar_Hancharenka, _SKIP=2, ConEmuHooks=Enabled, PL_ROOT=D:\dev\pl, LOCALAPPDATA=C:\Users\Ihar_Hancharenka\AppData\Local, ChocolateyLastPathUpdate=Thu Aug 11 08:50:46 2016, USERDOMAIN=GOMEL, LOGONSERVER=\\EVBYGOMSA0003, JAVA_HOME=D:\dev\pl\java\jdk64\jdk1.8.0_112, PROMPT=$p$_$$$S, ConEmuConfig=, ConEmuArgs=, GRADLE_HOME=D:\dev\pl\groovy\tools\gradle-3.4.1, ConEmuDrive=D:, =C:=C:\Users\Ihar_Hancharenka, APPDATA=C:\Users\Ihar_Hancharenka\AppData\Roaming, GRADLE_USER_HOME=D:\dev\pl\groovy\tools\.gradle, ConEmuHWND=0x000201EC, JAVA_EXE=D:\dev\pl\java\jdk64\jdk1.8.0_112/bin/java.exe, ChocolateyInstall=D:\dev\utils\choco, VBOX_MSI_INSTALL_PATH=D:\dev\utils\virtualbox\, CommonProgramFiles=C:\Program Files\Common Files, Path=D:\dev\bin\wrk;D:\dev\bin\wrk\clb\fxlp;D:\dev\bin\wrk\hub;D:\dev\bin\wrk\dprj;D:\dev\bin\wrk\cps;D:\dev\bin\wrk\clb;D:\dev\bin\cmd;D:\dev\bin\cmd\util\repo\git\hub;D:\dev\bin\cmd\util\repo\svn;D:\dev\bin\cmd\util\repo\hg;D:\dev\bin\cmd\util\repo\git;D:\dev\bin\cmd\util\db\postgres;D:\dev\bin\cmd\util\db\oracle;D:\dev\bin\cmd\util\db\mssql;D:\dev\bin\cmd\util\vim;D:\dev\bin\cmd\util\vbox;D:\dev\bin\cmd\util\vagrant;D:\dev\bin\cmd\util\soapui;D:\dev\bin\cmd\util\shell;D:\dev\bin\cmd\util\repo;D:\dev\bin\cmd\util\r;D:\dev\bin\cmd\util\npp;D:\dev\bin\cmd\util\misc;D:\dev\bin\cmd\util\docker;D:\dev\bin\cmd\util\db;D:\dev\bin\cmd\util\chef;D:\dev\bin\cmd\util\arc;D:\dev\bin\cmd\pl\vscode;D:\dev\bin\cmd\pl\tex;D:\dev\bin\cmd\pl\rust;D:\dev\bin\cmd\pl\python;D:\dev\bin\cmd\pl\jvm;D:\dev\bin\cmd\pl\haskell;D:\dev\bin\cmd\pl\groovy;D:\dev\bin\cmd\pl\go;D:\dev\bin\cmd\util;D:\dev\bin\cmd\pl;D:\dev\bin\cmd\clb;D:\dev\utils\term\ConEmuPack\ConEmu\Scripts;D:\dev\utils\term\ConEmuPack;D:\dev\utils\term\ConEmuPack\ConEmu;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\idmu\common;D:\dev\bin;D:\dev\utils\choco\bin;D:\dev\utils\Vagrant\bin;D:\dev\utils\opscode\chefdk\bin\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files (x86)\Skype\Phone\;d:\dev\utils\vcs\git\cmd;C:\Users\Ihar_Hancharenka\.cargo\bin;C:\Users\Ihar_Hancharenka\AppData\Local\atom\bin, OS=Windows_NT, COMPUTERNAME=EPBYGOMW0024, ConEmuAnsiLog=, PROCESSOR_REVISION=3c03, CLASSPATH=D:\dev\pl\groovy\tools\gradle-3.4.1\bin\..\lib\gradle-launcher-3.4.1.jar, CommonProgramW6432=C:\Program Files\Common Files, ConEmuPID=4284, ComSpec=C:\WINDOWS\system32\cmd.exe, UATDATA=C:\WINDOWS\CCM\UATData\D9F8C395-CAB8-491d-B8AC-179A1FE1BE77, APP_BASE_NAME=gradle, ConEmuDir=D:\dev\utils\term\ConEmuPack, ConEmuBuild=150813c, =D:=d:\dev\prj\gra\cld2test, SystemRoot=C:\WINDOWS, TEMP=D:\Temp, HOMEDRIVE=C:, USERPROFILE=C:\Users\Ihar_Hancharenka, TMP=D:\Temp, CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files, NUMBER_OF_PROCESSORS=8, ANSICON=192x1000 (192x44)}
+17:27:35.277 [DEBUG] [org.gradle.process.internal.DefaultExecHandle] Changing state to: STARTING
+17:27:35.277 [DEBUG] [org.gradle.process.internal.DefaultExecHandle] Waiting until process started: Gradle Test Executor 1.
+17:27:35.282 [DEBUG] [org.gradle.process.internal.DefaultExecHandle] Changing state to: STARTED
+17:27:35.282 [DEBUG] [org.gradle.process.internal.ExecHandleRunner] waiting until streams are handled...
+17:27:35.282 [INFO] [org.gradle.process.internal.DefaultExecHandle] Successfully started process 'Gradle Test Executor 1'
+17:27:35.447 [DEBUG] [org.gradle.process.internal.health.memory.MemoryManager] Emitting OS memory status event {Total: 34261512192, Free: 26003517440}
+17:27:35.447 [DEBUG] [org.gradle.launcher.daemon.server.health.LowMemoryDaemonExpirationStrategy] Received memory status update: {Total: 34261512192, Free: 26003517440}
+17:27:35.447 [DEBUG] [org.gradle.process.internal.health.memory.MemoryManager] Emitting JVM memory status event {Maximum: 954728448, Committed: 624951296}
+17:27:35.492 [DEBUG] [org.gradle.internal.remote.internal.inet.TcpIncomingConnector] Accepted connection from /127.0.0.1:54263 to /127.0.0.1:54262.
+17:27:35.492 [DEBUG] [org.gradle.process.internal.worker.DefaultWorkerProcess] Received connection org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection@799b287d from Gradle Test Executor 1
+17:27:35.557 [DEBUG] [org.gradle.process.internal.worker.child.ActionExecutionWorker] Starting Gradle Test Executor 1.
+17:27:35.582 [INFO] [org.gradle.internal.nativeintegration.services.NativeServices] Initialized native services in: D:\dev\pl\groovy\tools\.gradle\native
+17:27:35.582 [INFO] [org.gradle.api.internal.tasks.testing.worker.TestWorker] Gradle Test Executor 1 started executing tests.
+17:27:35.657 [DEBUG] [TestEventLogger] 
+17:27:35.657 [DEBUG] [TestEventLogger] Gradle Test Executor 1 STARTED
+17:27:35.657 [DEBUG] [org.gradle.api.internal.tasks.testing.junit.JUnitTestClassProcessor] Executing test class MyTest
+17:27:35.657 [DEBUG] [TestEventLogger] 
+17:27:35.657 [DEBUG] [TestEventLogger] MyTest STARTED
+17:27:35.677 [DEBUG] [TestEventLogger] 
+17:27:35.677 [DEBUG] [TestEventLogger] MyTest > testMy STARTED
+17:27:35.682 [INFO] [org.gradle.api.internal.tasks.testing.worker.TestWorker] Gradle Test Executor 1 finished executing tests.
+17:27:35.682 [DEBUG] [org.gradle.process.internal.worker.child.ActionExecutionWorker] Completed Gradle Test Executor 1.
+17:27:35.692 [DEBUG] [TestEventLogger] 
+17:27:35.692 [DEBUG] [TestEventLogger] MyTest > testMy FAILED
+17:27:35.692 [DEBUG] [TestEventLogger]     java.lang.UnsatisfiedLinkError: no cld2-windows-1.0.0 in java.library.path
+17:27:35.692 [DEBUG] [TestEventLogger]         at java.lang.ClassLoader.loadLibrary(ClassLoader.java:1867)
+17:27:35.692 [DEBUG] [TestEventLogger]         at java.lang.Runtime.loadLibrary0(Runtime.java:870)
+17:27:35.692 [DEBUG] [TestEventLogger]         at java.lang.System.loadLibrary(System.java:1122)
+17:27:35.692 [DEBUG] [TestEventLogger]         at My.<clinit>(My.java:3)
+17:27:35.692 [DEBUG] [TestEventLogger]         at MyTest.testMy(MyTest.java:5)
+17:27:35.692 [DEBUG] [TestEventLogger]         at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+17:27:35.692 [DEBUG] [TestEventLogger]         at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+17:27:35.692 [DEBUG] [TestEventLogger]         at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+17:27:35.692 [DEBUG] [TestEventLogger]         at java.lang.reflect.Method.invoke(Method.java:498)
+17:27:35.692 [DEBUG] [TestEventLogger]         at junit.framework.TestCase.runTest(TestCase.java:176)
+17:27:35.692 [DEBUG] [TestEventLogger]         at junit.framework.TestCase.runBare(TestCase.java:141)
+17:27:35.692 [DEBUG] [TestEventLogger]         at junit.framework.TestResult$1.protect(TestResult.java:122)
+17:27:35.692 [DEBUG] [TestEventLogger]         at junit.framework.TestResult.runProtected(TestResult.java:142)
+17:27:35.692 [DEBUG] [TestEventLogger]         at junit.framework.TestResult.run(TestResult.java:125)
+17:27:35.692 [DEBUG] [TestEventLogger]         at junit.framework.TestCase.run(TestCase.java:129)
+17:27:35.692 [DEBUG] [TestEventLogger]         at junit.framework.TestSuite.runTest(TestSuite.java:252)
+17:27:35.692 [DEBUG] [TestEventLogger]         at junit.framework.TestSuite.run(TestSuite.java:247)
+17:27:35.692 [DEBUG] [TestEventLogger]         at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:86)
+17:27:35.692 [DEBUG] [TestEventLogger]         at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.runTestClass(JUnitTestClassExecuter.java:114)
+17:27:35.692 [DEBUG] [TestEventLogger]         at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.execute(JUnitTestClassExecuter.java:57)
+17:27:35.692 [DEBUG] [TestEventLogger]         at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassProcessor.processTestClass(JUnitTestClassProcessor.java:66)
+17:27:35.692 [DEBUG] [TestEventLogger]         at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+17:27:35.692 [DEBUG] [TestEventLogger]         at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+17:27:35.692 [DEBUG] [TestEventLogger]         at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+17:27:35.692 [DEBUG] [TestEventLogger]         at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+17:27:35.692 [DEBUG] [TestEventLogger]         at java.lang.reflect.Method.invoke(Method.java:498)
+17:27:35.692 [DEBUG] [TestEventLogger]         at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+17:27:35.692 [DEBUG] [TestEventLogger]         at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+17:27:35.692 [DEBUG] [TestEventLogger]         at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+17:27:35.692 [DEBUG] [TestEventLogger]         at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+17:27:35.692 [DEBUG] [TestEventLogger]         at com.sun.proxy.$Proxy3.processTestClass(Unknown Source)
+17:27:35.692 [DEBUG] [TestEventLogger]         at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:109)
+17:27:35.692 [DEBUG] [TestEventLogger]         at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+17:27:35.692 [DEBUG] [TestEventLogger]         at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+17:27:35.692 [DEBUG] [TestEventLogger]         at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+17:27:35.692 [DEBUG] [TestEventLogger]         at java.lang.reflect.Method.invoke(Method.java:498)
+17:27:35.692 [DEBUG] [TestEventLogger]         at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+17:27:35.692 [DEBUG] [TestEventLogger]         at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+17:27:35.692 [DEBUG] [TestEventLogger]         at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:147)
+17:27:35.692 [DEBUG] [TestEventLogger]         at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:129)
+17:27:35.692 [DEBUG] [TestEventLogger]         at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+17:27:35.692 [DEBUG] [TestEventLogger]         at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+17:27:35.692 [DEBUG] [TestEventLogger]         at org.gradle.internal.concurrent.StoppableExecutorImpl$1.run(StoppableExecutorImpl.java:46)
+17:27:35.692 [DEBUG] [TestEventLogger]         at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+17:27:35.692 [DEBUG] [TestEventLogger]         at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+17:27:35.692 [DEBUG] [TestEventLogger]         at java.lang.Thread.run(Thread.java:745)
+17:27:35.692 [DEBUG] [TestEventLogger] 
+17:27:35.692 [DEBUG] [TestEventLogger] MyTest FAILED
+17:27:35.697 [DEBUG] [TestEventLogger] 
+17:27:35.697 [DEBUG] [TestEventLogger] Gradle Test Executor 1 FAILED
+17:27:35.707 [DEBUG] [org.gradle.process.internal.DefaultExecHandle] Changing state to: SUCCEEDED
+17:27:35.712 [DEBUG] [org.gradle.process.internal.DefaultExecHandle] Process 'Gradle Test Executor 1' finished with exit value 0 (state: SUCCEEDED)
+17:27:35.712 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Worker root.7.8 completed (1 in use)
+17:27:35.712 [DEBUG] [TestEventLogger] 
+17:27:35.712 [DEBUG] [TestEventLogger] Gradle Test Run :test FAILED
+17:27:35.712 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Worker root.7.9 started (1 in use).
+17:27:35.717 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Worker root.7.9 completed (1 in use)
+17:27:35.717 [INFO] [org.gradle.api.internal.tasks.testing.junit.result.Binary2JUnitXmlReportGenerator] Finished generating test XML results (0.002 secs) into: D:\dev\prj\gra\cld2test\build\test-results\test
+17:27:35.717 [INFO] [org.gradle.api.internal.tasks.testing.junit.report.DefaultTestReport] Generating HTML test report...
+17:27:35.717 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Worker root.7.10 started (1 in use).
+17:27:35.717 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Worker root.7.11 started (2 in use).
+17:27:35.717 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Worker root.7.12 started (3 in use).
+17:27:35.717 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Worker root.7.11 completed (2 in use)
+17:27:35.717 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Worker root.7.10 completed (1 in use)
+17:27:35.717 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Worker root.7.12 completed (1 in use)
+17:27:35.717 [INFO] [org.gradle.api.internal.tasks.testing.junit.report.DefaultTestReport] Finished generating test html results (0.004 secs) into: D:\dev\prj\gra\cld2test\build\reports\tests\test
+17:27:35.722 [DEBUG] [org.gradle.api.internal.tasks.execution.ResolveTaskArtifactStateTaskExecuter] Removed task artifact state for {} from context.
+17:27:35.722 [DEBUG] [org.gradle.api.internal.tasks.execution.ExecuteAtMostOnceTaskExecuter] Finished executing task ':test'
+17:27:35.722 [LIFECYCLE] [class org.gradle.internal.buildevents.TaskExecutionLogger] :test FAILED
+17:27:35.722 [INFO] [org.gradle.execution.taskgraph.AbstractTaskPlanExecutor] :test (Thread[Daemon worker Thread 5,5,main]) completed. Took 0.48 secs.
+17:27:35.722 [DEBUG] [org.gradle.internal.operations.DefaultBuildOperationWorkerRegistry] Worker root.7 completed (0 in use)
+17:27:35.722 [DEBUG] [org.gradle.execution.taskgraph.AbstractTaskPlanExecutor] Task worker [Thread[Daemon worker Thread 5,5,main]] finished, busy: 0.517 secs, idle: 0.0 secs
+17:27:35.722 [LIFECYCLE] [org.gradle.internal.buildevents.BuildResultLogger] 
+17:27:35.722 [LIFECYCLE] [org.gradle.internal.buildevents.BuildResultLogger] BUILD FAILED
+17:27:35.722 [LIFECYCLE] [org.gradle.internal.buildevents.BuildResultLogger] 
+17:27:35.722 [LIFECYCLE] [org.gradle.internal.buildevents.BuildResultLogger] Total time: 1.294 secs
+17:27:35.722 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Releasing file lock for file content cache (D:\dev\prj\gra\cld2test\.gradle\3.4.1\fileContent)
+17:27:35.722 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on file content cache (D:\dev\prj\gra\cld2test\.gradle\3.4.1\fileContent).
+17:27:35.722 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Releasing file lock for task history cache (D:\dev\prj\gra\cld2test\.gradle\3.4.1\taskHistory)
+17:27:35.722 [DEBUG] [org.gradle.cache.internal.btree.BTreePersistentIndexedCache] Closing cache fileHashes.bin (D:\dev\prj\gra\cld2test\.gradle\3.4.1\taskHistory\fileHashes.bin)
+17:27:35.722 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on task history cache (D:\dev\prj\gra\cld2test\.gradle\3.4.1\taskHistory).
+17:27:35.727 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.store.CachedStoreFactory] Resolution result cache closed. Cache reads: 0, disk reads: 0 (avg: 0.0 secs, total: 0.0 secs)
+17:27:35.727 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.store.CachedStoreFactory] Resolution result cache closed. Cache reads: 0, disk reads: 0 (avg: 0.0 secs, total: 0.0 secs)
+17:27:35.727 [DEBUG] [org.gradle.api.internal.artifacts.ivyservice.resolveengine.store.ResolutionResultsStoreFactory] Deleted 2 resolution results binary files in 0.001 secs
+17:27:35.727 [DEBUG] [org.gradle.cache.internal.DefaultCacheAccess] Cache Plugin Resolution Cache (D:\dev\pl\groovy\tools\.gradle\caches\3.4.1\plugin-resolution) was closed 0 times.
+17:27:35.727 [DEBUG] [org.gradle.process.internal.daemon.WorkerDaemonManager] Stopping 0 worker daemon(s).
+17:27:35.727 [INFO] [org.gradle.process.internal.daemon.WorkerDaemonManager] Stopped 0 worker daemon(s).
+17:27:35.727 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on cache directory workerMain (D:\dev\pl\groovy\tools\.gradle\caches\3.4.1\workerMain).
+17:27:35.727 [DEBUG] [org.gradle.deployment.internal.DefaultDeploymentRegistry] Stopping 0 deployment handles
+17:27:35.727 [DEBUG] [org.gradle.deployment.internal.DefaultDeploymentRegistry] Stopped deployment handles
+17:27:35.727 [DEBUG] [org.gradle.cache.internal.DefaultCacheAccess] Cache Generated Gradle JARs cache (D:\dev\pl\groovy\tools\.gradle\caches\3.4.1\generated-gradle-jars) was closed 0 times.
+17:27:35.727 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Releasing file lock for artifact cache (D:\dev\pl\groovy\tools\.gradle\caches\modules-2)
+17:27:35.727 [DEBUG] [org.gradle.cache.internal.btree.BTreePersistentIndexedCache] Closing cache artifact-at-repository.bin (D:\dev\pl\groovy\tools\.gradle\caches\modules-2\metadata-2.23\artifact-at-repository.bin)
+17:27:35.727 [DEBUG] [org.gradle.cache.internal.btree.BTreePersistentIndexedCache] Closing cache module-metadata.bin (D:\dev\pl\groovy\tools\.gradle\caches\modules-2\metadata-2.23\module-metadata.bin)
+17:27:35.727 [DEBUG] [org.gradle.cache.internal.btree.BTreePersistentIndexedCache] Closing cache module-artifacts.bin (D:\dev\pl\groovy\tools\.gradle\caches\modules-2\metadata-2.23\module-artifacts.bin)
+17:27:35.727 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on artifact cache (D:\dev\pl\groovy\tools\.gradle\caches\modules-2).
+17:27:35.727 [DEBUG] [org.gradle.launcher.daemon.server.exec.ExecuteBuild] The daemon has finished executing the build.
+17:27:35.757 [DEBUG] [org.gradle.launcher.daemon.client.DaemonClientInputForwarder] Dispatching close input message: org.gradle.launcher.daemon.protocol.CloseInput@19875a0d
+17:27:35.757 [DEBUG] [org.gradle.launcher.daemon.client.DaemonClientConnection] thread 14: dispatching class org.gradle.launcher.daemon.protocol.CloseInput
+17:27:35.757 [INFO] [org.gradle.launcher.daemon.client.DaemonClient] Received result Failure[value=org.gradle.initialization.ReportedException: org.gradle.internal.exceptions.LocationAwareException: Execution failed for task ':test'.] from daemon DaemonInfo{pid=39856, address=[9b21d52c-8958-4d76-959c-e8116729f114 port:54012, addresses:[/127.0.0.1, /0:0:0:0:0:0:0:1]], state=Idle, lastBusy=1490711022764, context=DefaultDaemonContext[uid=8a0b224c-dd45-4029-b804-e3926aade581,javaHome=D:\dev\pl\java\jdk64\jdk1.8.0_112,daemonRegistryDir=D:\dev\pl\groovy\tools\.gradle\daemon,pid=39856,idleTimeout=10800000,daemonOpts=-XX:MaxPermSize=256m,-XX:+HeapDumpOnOutOfMemoryError,-Xmx1024m,-Dfile.encoding=windows-1252,-Duser.country=US,-Duser.language=en,-Duser.variant]} (build should be done).
+17:27:35.757 [DEBUG] [org.gradle.launcher.daemon.client.DaemonClientConnection] thread 1: dispatching class org.gradle.launcher.daemon.protocol.Finished
+17:27:35.757 [DEBUG] [org.gradle.launcher.daemon.client.DaemonClientConnection] thread 1: connection stop

@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url project.'nexus.repo.snapshots'
+    }
+}
+
+dependencies {
+    compile 'clarabridge:cld2-windows:1.0.0'
+
+    testCompile 'junit:junit:4.12'
+}
+
+test {
+    // https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.Test.html 
+    systemProperty 'java.library.path', 'd:/dev/pl/groovy/tools/.gradle/caches/modules-2/files-2.1/clarabridge/cld2-windows/1.0.0/7be7474c1b74d6f6563f1f0f83fff589512daed8'
+}
