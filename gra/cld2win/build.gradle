@@ -7,8 +7,9 @@ model {
 
     toolChains {
         visualCpp(VisualCpp) {
-            installDir "${project.'vs.base'}"
+            //installDir "${project.'vs.base'}"
         }
+        gcc(Gcc)
     }
 
     platforms {
@@ -18,11 +19,16 @@ model {
     }
 
     binaries {
-        all {
+        withType(SharedLibraryBinarySpec) { // all
             cppCompiler.define "NDEBUG"
             // Define toolchain-specific compiler and linker options
             if (toolChain in Gcc) {
-                cppCompiler.args '-std=c++0x' // "-O2", "-fno-access-control"
+                println 'toolchain is Gcc!'
+                // "-O2", "-fno-access-control"
+                cppCompiler.args '-std=c++0x', '-Wno-narrowing'
+            }
+            if (toolChain in VisualCpp) {
+                println 'toolchain is VisualCpp!'
             }
         }
     }
@@ -38,8 +44,7 @@ model {
                         //include "**/*.cpp"
                         include 'debug.cc'
 
-                        include 'generated_ulscript.cc'
-                        include 'generated_language.cc'
+                        include 'generated_ulscript.cc', 'generated_language.cc'
 
                         include 'lang_script.cc'
 
@@ -49,8 +54,7 @@ model {
 
                         include 'utf8statetable.cc'
 
-                        include 'cldutil_shared.cc'
-                        include 'cldutil.cc'
+                        include 'cldutil_shared.cc', 'cldutil.cc'
 
 			include 'cld_generated_cjk_delta_bi_32.cc' // _4
 			include 'cld2_generated_distinctocta0122.cc'
@@ -66,8 +70,7 @@ model {
 
 			include 'generated_entities.cc'
 
-			include 'getonescriptspan.cc'
-			include 'scoreonescriptspan.cc'
+			include 'getonescriptspan.cc', 'scoreonescriptspan.cc'
 
                         include 'compact_lang_det_hint_code.cc'
 
@@ -105,20 +108,9 @@ model {
 // 2 cld2_generated_distinctocta0122.cc  cld_generated_score_quad_octa_0122.cc
 // 24
 
-
 task inst {
 }
 
 inst.dependsOn {
     tasks.findAll { task -> task.name.startsWith('install') }
 }
-
-task myTask {
-    dependsOn 'cld2SharedLibrary'
-    doLast {
-        println linkCld2SharedLibrary.outputFile
-        //properties
-        //sharedLibraryFile
-    }
-}
-
