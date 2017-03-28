@@ -140,31 +140,22 @@ repositories {
     }
 }
 
-/*uploadArchives {
-    repositories {
-        add project.repositories.cld2shared
-        ivy {
-            credentials {
-                username "username"
-                password "pw"
-            }
-            url "http://repo.mycompany.com"
-        }
-    }
-}*/
-
 publishing {
     publications {
         cld2(MavenPublication) {
             groupId 'clarabridge'
             artifactId name + '-' + curOS // project.publishing.publications.cld2.name, by default - projectName
-            version '1.0.0' // semver
+            //version version // project.version, semver
         }
     }
     repositories {
         maven {
             // change to point to your repo, e.g. http://my.org/repo
-            url "$buildDir/repo"
+            url project.'nexus.repo.snapshots' //"$buildDir/repo"
+            credentials {
+                username = project.'nexus.deploy.user'
+                password = project.'nexus.deploy.password'
+            }
         }
     }
 }
