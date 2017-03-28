@@ -1,11 +1,18 @@
 apply plugin: "base"
 apply plugin: "cpp"
+apply plugin: 'maven-publish'
 
-repositories {
-    flatDir {
-        name "cld2shared"
-        dirs "build/libs/cld2/shared"
+import org.gradle.internal.os.OperatingSystem
+
+//ext.getCurOS = {
+//    return OperatingSystem.current().isWindows() ? 'windows' : 'linux'
+//}
+
+ext {
+    getCurOS = {
+        return OperatingSystem.current().isWindows() ? 'windows' : 'linux'
     }
+    curOS = getCurOS()
 }
 
 model {
@@ -96,8 +103,12 @@ model {
                 buildable = false
             }
             binaries.withType(SharedLibraryBinarySpec) {
-                println it.component.baseName + " -> " + it.sharedLibraryFile
                 // println it.properties it.tasks
+                //println it.component.baseName + ' -> ' + it.sharedLibraryFile
+                project.repositories.cld2shared.dir(it.sharedLibraryFile.parentFile) // println '-> ' + project.repositories.cld2shared.dirs
+                project.publishing.publications.cld2.artifact([source: it.sharedLibraryFile]) // , extension: 'dll'
+                //println '-> ' + project.publishing.publications.cld2.properties
+                //println '-> ' + project.properties
             }
         }
     }
@@ -123,7 +134,13 @@ inst.dependsOn {
     tasks.findAll { task -> task.name.startsWith('install') }
 }
 
-uploadArchives {
+repositories {
+    flatDir {
+        name "cld2shared"
+    }
+}
+
+/*uploadArchives {
     repositories {
         add project.repositories.cld2shared
         ivy {
@@ -132,6 +149,16 @@ uploadArchives {
                 password "pw"
             }
             url "http://repo.mycompany.com"
+        }
+    }
+}*/
+
+publishing {
+    publications {
+        cld2(MavenPublication) {
+            groupId 'clarabridge'
+            artifactId name + '-' + curOS // project.publishing.publications.cld2.name, by default - projectName
+            version '1.0.0' // semver
         }
     }
 }

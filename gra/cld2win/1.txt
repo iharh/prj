@@ -1,0 +1,66 @@
+-> [flavors:[flavor 'default'], parent:null, classLoaderScope:org.gradle.api.internal.initialization.DefaultClassLoaderScope@16713397, plugins:[org.gradle.api.plugins.HelpTasksPlugin@1a8edbbb, org.gradle.language.base.plugins.LifecycleBasePlugin@866c7ef, org.gradle.api.plugins.BasePlugin@a6534d7, org.gradle.platform.base.plugins.ComponentBasePlugin@4dcc9c30, org.gradle.language.base.plugins.LanguageBasePlugin@1355c9f4, org.gradle.platform.base.plugins.BinaryBasePlugin@17a4104e, org.gradle.language.base.plugins.ComponentModelBasePlugin@3e870ff9, org.gradle.nativeplatform.plugins.NativeComponentModelPlugin@697c8d8e, org.gradle.nativeplatform.toolchain.plugins.MicrosoftVisualCppCompilerPlugin@185687a6, org.gradle.nativeplatform.toolchain.plugins.GccCompilerPlugin@60df183e, org.gradle.nativeplatform.toolchain.plugins.ClangCompilerPlugin@6f8a2190, org.gradle.nativeplatform.toolchain.internal.plugins.StandardToolChainsPlugin@6297c112, org.gradle.nativeplatform.plugins.NativeComponentPlugin@4ed01151, org.gradle.language.cpp.plugins.CppLangPlugin@5656ee5d, org.gradle.language.cpp.plugins.CppPlugin@68eed3a6, org.gradle.api.plugins.ReportingBasePlugin@6b1b8654, org.gradle.api.plugins.JavaBasePlugin@595aff3f, org.gradle.api.plugins.JavaPlugin@7ce86b83, org.gradle.api.publish.plugins.PublishingPlugin@6b600e85, org.gradle.api.publish.maven.plugins.MavenPublishPlugin@43dd0526], configurations:[configuration ':apiElements', configuration ':archives', configuration ':compile', configuration ':compileClasspath', configuration ':compileOnly', configuration ':default', configuration ':implementation', configuration ':runtime', configuration ':runtimeClasspath', configuration ':runtimeElements', configuration ':runtimeOnly', configuration ':testCompile', configuration ':testCompileClasspath', configuration ':testCompileOnly', configuration ':testImplementation', configuration ':testRuntime', configuration ':testRuntimeClasspath', configuration ':testRuntimeOnly'], logger:org.gradle.internal.logging.slf4j.OutputEventListenerBackedLogger@23ba1fbe, rootDir:D:\dev\prj\gra\cld2win, projectRegistry:org.gradle.api.internal.project.DefaultProjectRegistry@1c8dd288, path::, testResultsDirName:test-results, targetCompatibility:1.8, childProjects:[:], jar:task ':jar', state:project state 'EXECUTED', processResources:task ':processResources', publishing:org.gradle.api.publish.internal.DefaultPublishingExtension_Decorated@13f8898f, serviceRegistryFactory:org.gradle.internal.service.scopes.ProjectScopeServices$4@5b0f70c8, tasks:[task ':assemble', task ':buildDependents', task ':buildNeeded', task ':check', task ':classes', task ':compileJava', task ':compileTestJava', task ':inst', task ':jar', task ':javadoc', task ':processResources', task ':processTestResources', task ':publish', task ':publishToMavenLocal', task ':test', task ':testClasses'], ext:org.gradle.api.internal.plugins.DefaultExtraPropertiesExtension@44fd1db5, projectDir:D:\dev\prj\gra\cld2win, projectEvaluationBroadcaster:ProjectEvaluationListener broadcast, projectPath::, module:org.gradle.api.internal.artifacts.ProjectBackedModule@7193eb1b, inheritedScope:org.gradle.api.internal.ExtensibleDynamicObject$InheritedDynamicObject@36969e30, version:unspecified, dependencies:org.gradle.api.internal.artifacts.dsl.dependencies.DefaultDependencyHandler_Decorated@61f5dd9c, processTestResources:task ':processTestResources', extensions:org.gradle.api.internal.plugins.DefaultConvention@415c785a, modelRegistry:org.gradle.model.internal.registry.DefaultModelRegistry@6de0c571, projectEvaluator:org.gradle.configuration.project.LifecycleProjectEvaluator@6f05b1e3, buildNeeded:task ':buildNeeded', jboss.home:D:/clb/inst/server, archivesBaseName:cld2win, logging:org.gradle.internal.logging.services.DefaultLoggingManager@205388a2, configurationActions:org.gradle.configuration.project.DefaultProjectConfigurationActionContainer@2efaa5a, sourceCompatibility:1.8, status:integration, subprojects:[], components:[org.gradle.api.internal.java.JavaLibrary@694f3c3b], displayName:root project 'cld2win', parentIdentifier:null, testClasses:task ':testClasses', antBuilderFactory:org.gradle.api.internal.project.DefaultAntBuilderFactory@2b070258, javadoc:task ':javadoc', standardOutputCapture:org.gradle.internal.logging.services.DefaultLoggingManager@205388a2, docsDir:D:\dev\prj\gra\cld2win\build\docs, defaultTasks:[], buildScriptSource:org.gradle.groovy.scripts.UriScriptSource@172d8902, reportsDir:D:\dev\prj\gra\cld2win\build\reports, baseClassLoaderScope:org.gradle.api.internal.initialization.DefaultClassLoaderScope@686f4cc7, services:ProjectScopeServices, assemble:task ':assemble', vs.base:D:/Program Files (x86)/Microsoft Visual Studio 10.0, gradle:build 'cld2win', distsDirName:distributions, buildFile:D:\dev\prj\gra\cld2win\build.gradle, depth:0, docsDirName:docs, inst:task ':inst', toolChains:[Tool chain 'gcc' (GNU GCC), Tool chain 'visualCpp' (Visual Studio)], testResultsDir:D:\dev\prj\gra\cld2win\build\test-results, buildDir:D:\dev\prj\gra\cld2win\build, scriptHandlerFactory:org.gradle.api.internal.initialization.DefaultScriptHandlerFactory@78511b15, deferredProjectConfiguration:org.gradle.api.internal.project.DeferredProjectConfiguration@6b57c385, project:root project 'cld2win', platforms:[platform 'x64'], repositories:[org.gradle.api.internal.artifacts.repositories.DefaultFlatDirArtifactRepository_Decorated@10493274], scriptPluginFactory:org.gradle.configuration.ScriptPluginFactorySelector@2d24dce, testReportDir:D:\dev\prj\gra\cld2win\build\reports\tests, group:, artifacts:org.gradle.api.internal.artifacts.dsl.DefaultArtifactHandler_Decorated@72ab6732, test:task ':test', compileJava:task ':compileJava', check:task ':check', fileResolver:org.gradle.api.internal.file.BaseDirFileResolver@2735c909, name:cld2win, testReportDirName:tests, buildscript:org.gradle.api.internal.initialization.DefaultScriptHandler@7eb69509, processOperations:org.gradle.api.internal.file.DefaultFileOperations@6e1a0b2c, buildDependents:task ':buildDependents', asDynamicObject:DynamicObject for root project 'cld2win', classes:task ':classes', identityPath::, description:null, sourceSets:[source set 'main', source set 'test'], fileOperations:org.gradle.api.internal.file.DefaultFileOperations@6e1a0b2c, pluginManager:org.gradle.api.internal.plugins.DefaultPluginManager_Decorated@47a1732a, defaultArtifacts:org.gradle.api.internal.plugins.DefaultArtifactPublicationSet_Decorated@4ed59756, dependencyCacheDirName:dependency-cache, class:class org.gradle.api.internal.project.DefaultProject_Decorated, modelSchemaStore:org.gradle.model.internal.manage.schema.extract.DefaultModelSchemaStore@455eee1d, reporting:org.gradle.api.reporting.ReportingExtension_Decorated@4814d58, convention:org.gradle.api.internal.plugins.DefaultConvention@415c785a, allprojects:[root project 'cld2win'], ant:org.gradle.api.internal.project.DefaultAntBuilder@3afc758f, resources:org.gradle.api.internal.resources.DefaultResourceHandler@760879d9, compileTestJava:task ':compileTestJava', dependencyCacheDir:D:\dev\prj\gra\cld2win\build\dependency-cache, buildTypes:[build type 'release'], publish:task ':publish', libsDir:D:\dev\prj\gra\cld2win\build\libs, publishToMavenLocal:task ':publishToMavenLocal', distsDir:D:\dev\prj\gra\cld2win\build\distributions, rootProject:root project 'cld2win', libsDirName:libs, properties:(this Map)]
+toolchain is VisualCpp!
+:components
+
+------------------------------------------------------------
+Root project
+------------------------------------------------------------
+
+Native library 'cld2'
+---------------------
+
+Source sets
+    C++ source 'cld2:cpp'
+        srcDir: src\main\cpp\cld2\internal
+        includes: debug.cc, generated_ulscript.cc, generated_language.cc, lang_script.cc, tote.cc, offsetmap.cc, utf8statetable.cc, cldutil_shared.cc, cldutil.cc, cld_generated_cjk_delta_bi_32.cc, cld2_generated_distinctocta0122.cc, cld2_generated_quad0122.cc, cld2_generated_deltaocta0122.cc, generated_distinct_bi_0.cc, cld_generated_score_quad_octa_0122.cc, cld_generated_cjk_uni_prop_80.cc, cld2_generated_cjk_compatible.cc, fixunicodevalue.cc, generated_entities.cc, getonescriptspan.cc, scoreonescriptspan.cc, compact_lang_det_hint_code.cc, compact_lang_det_impl.cc
+
+Binaries
+    Shared library 'cld2:sharedLibrary'
+        build using task: :cld2SharedLibrary
+        build type: build type 'release'
+        flavor: flavor 'default'
+        target platform: platform 'x64'
+        tool chain: Tool chain 'visualCpp' (Visual Studio)
+        shared library file: build\libs\cld2\shared\cld2.dll
+    Static library 'cld2:staticLibrary' (not buildable)
+        build using task: :cld2StaticLibrary
+        build type: build type 'release'
+        flavor: flavor 'default'
+        target platform: platform 'x64'
+        tool chain: Tool chain 'visualCpp' (Visual Studio)
+        static library file: build\libs\cld2\static\cld2.lib
+        Disabled by user
+
+Additional source sets
+----------------------
+Java source 'main:java'
+    srcDir: src\main\java
+    limit to: **/*.java
+Java source 'test:java'
+    srcDir: src\test\java
+    limit to: **/*.java
+JVM resources 'main:resources'
+    srcDir: src\main\resources
+JVM resources 'test:resources'
+    srcDir: src\test\resources
+
+Additional binaries
+-------------------
+Classes 'main'
+    build using task: :classes
+    target platform: Java SE 8
+    tool chain: JDK 8 (1.8)
+    classes dir: build\classes\main
+    resources dir: build\resources\main
+Classes 'test'
+    build using task: :testClasses
+    target platform: Java SE 8
+    tool chain: JDK 8 (1.8)
+    classes dir: build\classes\test
+    resources dir: build\resources\test
+
+Note: currently not all plugins register their components, so some components may not be visible here.
+
+BUILD SUCCESSFUL
+
+Total time: 1.039 secs
