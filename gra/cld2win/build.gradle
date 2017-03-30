@@ -13,6 +13,12 @@ ext {
     curOS = getCurOS()
 }
 
+def getOSArtifactName(name) {
+    def osPref = OperatingSystem.current().isWindows() ? '' : 'lib'
+    def osSuf = OperatingSystem.current().isWindows() ? 'windows' : 'linux'
+    return "${osPref}${name}-${osSuf}"
+}
+
 model {
     buildTypes {
         release
@@ -145,7 +151,7 @@ publishing {
     publications {
         cld2(MavenPublication) {
             groupId 'clarabridge'
-            artifactId name + '-' + curOS // project.publishing.publications.cld2.name, by default - projectName
+            artifactId getOSArtifactName(name) // project.publishing.publications.cld2.name, by default - projectName
             //version version // project.version, semver
         }
     }

@@ -8,7 +8,8 @@ public class MyTest extends TestCase {
     }
 
     public void testMy() throws Exception {
-        LibCld2 cld2 = LibraryLoader.create(LibCld2.class).load("cld2-windows-1.0.0");
+        final String libName = "cld2-linux-1.0.0"; // -windows-
+        LibCld2 cld2 = LibraryLoader.create(LibCld2.class).load(libName);
         assertNotNull(cld2);
 
         assertEquals(2, cld2.puts(""));

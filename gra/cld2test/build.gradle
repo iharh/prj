@@ -11,6 +11,14 @@ ext {
     curOS = getCurOS()
 }
 
+def getOSArtifactName(name) {
+    def osPref = OperatingSystem.current().isWindows() ? '' : 'lib'
+    def osSuf = OperatingSystem.current().isWindows() ? 'windows' : 'linux'
+    return "${osPref}${name}-${osSuf}"
+}
+
+def cld2ArtifactName = getOSArtifactName('cld2')
+
 def cld2LibDir =  "${libsDir}/cld2/shared"
 
 repositories {
@@ -25,7 +33,7 @@ configurations {
 }
 
 dependencies {
-    cld2cfg "clarabridge:cld2-${curOS}:1.0.0"
+    cld2cfg "clarabridge:${cld2ArtifactName}:1.0.0"
     compile group: 'com.github.jnr', name: 'jnr-ffi', version:'2.1.5', changing: true
 
     testCompile 'junit:junit:4.12'
