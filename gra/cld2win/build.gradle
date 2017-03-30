@@ -56,6 +56,9 @@ model {
             sources {
                 cpp {
                     source {
+                        srcDirs 'src/main/cpp/cld2/clb'
+                        include 'clb.cc'
+
                         srcDirs 'src/main/cpp/cld2/internal'
 
                         //include "**/*.cpp"

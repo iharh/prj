@@ -11,7 +11,7 @@ public class MyTest extends TestCase {
         LibCld2 cld2 = LibraryLoader.create(LibCld2.class).load("cld2-windows-1.0.0");
         assertNotNull(cld2);
 
-        assertEquals(1, cld2.puts(""));
+        assertEquals(2, cld2.puts(""));
         //My obj = new My();
         //assertNotNull(obj);
     }

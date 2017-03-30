@@ -17,14 +17,22 @@ configurations {
 
 dependencies {
     cld2cfg 'clarabridge:cld2-windows:1.0.0'
-    compile 'com.github.jnr:jnr-ffi:2.1.5'
+    compile group: 'com.github.jnr', name: 'jnr-ffi', version:'2.1.5', changing: true
 
     testCompile 'junit:junit:4.12'
+}
+
+configurations.all {
+    // https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.ResolutionStrategy.html
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
+    //transitive = false
 }
 
 test {
     // https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.Test.html 
     systemProperty 'java.library.path', cld2LibDir
+    systemProperty 'jnr.ffi.compile.dump', 'true'
 }
 
 task cpCld2(type: Copy) {
