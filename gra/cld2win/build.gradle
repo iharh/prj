@@ -6,10 +6,6 @@ plugins {
 
 import org.gradle.internal.os.OperatingSystem
 
-//ext.getCurOS = {
-//    return OperatingSystem.current().isWindows() ? 'windows' : 'linux'
-//}
-
 ext {
     getCurOS = {
         return OperatingSystem.current().isWindows() ? 'windows' : 'linux'
