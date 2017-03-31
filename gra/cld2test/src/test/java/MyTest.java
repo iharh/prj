@@ -16,7 +16,7 @@ public class MyTest extends TestCase {
         LibCld2 cld2 = LibraryLoader.create(LibCld2.class).load(libName);
         assertNotNull(cld2);
 
-        //assertEquals(0, cld2.detectLangClb("I know and like so much my round table"));
+        assertEquals(0, cld2.detectLangClb("I know and like so much my round table"));
         assertEquals(4, cld2.detectLangClb("quatre petits enfants, trois filles malades"));
     }
 }
