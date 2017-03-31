@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <cstring>
+
 #include "encodings.h"
 #include "lang_script.h"
 #include "compact_lang_det_impl.h"
@@ -29,7 +32,7 @@ int detectLangClb(const char *buffer) {
     CLD2::Language detectedLangId = CLD2::UNKNOWN_LANGUAGE;
 
     if (buffer != NULL) {
-        int buffer_length = strlen(buffer);
+        int buffer_length = std::strlen(buffer);
 
         bool is_plain_text = true;
 
