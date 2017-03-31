@@ -37,6 +37,7 @@ dependencies {
     compile group: 'com.github.jnr', name: 'jnr-ffi', version:'2.1.5', changing: true
 
     testCompile 'junit:junit:4.12'
+    testCompile 'org.apache.commons:commons-lang3:3.5'
 }
 
 configurations.all {
