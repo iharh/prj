@@ -5,6 +5,8 @@ plugins {
 import org.gradle.internal.os.OperatingSystem
 
 ext {
+    versions = [:]
+    libraries = [:]
     getCurOS = {
         return OperatingSystem.current().isWindows() ? 'windows' : 'linux'
     }
@@ -32,22 +34,54 @@ configurations {
     cld2cfg
 }
 
-dependencies {
-    cld2cfg "clarabridge:${cld2ArtifactName}:1.0.0"
-    compile group: 'com.github.jnr', name: 'jnr-ffi', version:'2.1.5', changing: true
-    compile "org.apache.commons:commons-csv:1.4"
-    compile "org.projectlombok:lombok:1.16.16"
+versions += [
+    metrics: '3.2.2'
+]
 
-    compile "org.slf4j:slf4j-api:1.7.25"
+libraries += [
+    dropwizard_metrics_annotation:   "io.dropwizard.metrics:metrics-annotation:${versions.metrics}",
+    dropwizard_metrics_core:         "io.dropwizard.metrics:metrics-core:${versions.metrics}",
+    dropwizard_metrics_jvm:          "io.dropwizard.metrics:metrics-jvm:${versions.metrics}",
+    //dropwizard_metrics_healthchecks: "io.dropwizard.metrics:metrics-healthchecks:${versions.metrics}",
+    //dropwizard_metrics_graphite:     "io.dropwizard.metrics:metrics-graphite:${versions.metrics}",
 
+    lombok:     'org.projectlombok:lombok:1.16.16',
+    jnr_ffi:    'com.github.jnr:jnr-ffi:2.1.5',
+
+    commons_csv:    'org.apache.commons:commons-csv:1.4',
+    commons_lang3:  'org.apache.commons:commons-lang3:3.5',
+
+    slf4j_api:          'org.slf4j:slf4j-api:1.7.25',
     //compile "org.slf4j:slf4j-log4j12:1.7.25"
     //compile "log4j:log4j:1.2.17"
+    logback_classic:    'ch.qos.logback:logback-classic:1.2.3',
 
-    compile('org.codehaus.groovy:groovy-all:2.4.10')
-    compile('ch.qos.logback:logback-classic:1.2.3')
+    groovy_all: 'org.codehaus.groovy:groovy-all:2.4.10',
 
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.apache.commons:commons-lang3:3.5'
+    junit:  'junit:junit:4.12'
+]
+
+dependencies {
+    // group: '', name: '', version: '', changing: ''
+    cld2cfg "clarabridge:${cld2ArtifactName}:1.0.0"
+
+    compile libraries.jnr_ffi
+    compile libraries.lombok
+    compile libraries.commons_csv
+    compile libraries.commons_lang3
+
+    compile libraries.slf4j_api
+    compile libraries.logback_classic
+
+    compile libraries.groovy_all
+
+    compile libraries.dropwizard_metrics_annotation
+    compile libraries.dropwizard_metrics_core
+    compile libraries.dropwizard_metrics_jvm
+    //compile libraries.dropwizard_metrics_graphite
+    //compile libraries.ryantenney_metrics_spring
+
+    testCompile libraries.junit
 }
 
 configurations.all {
