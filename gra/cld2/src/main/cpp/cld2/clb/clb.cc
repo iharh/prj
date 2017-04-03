@@ -33,6 +33,7 @@ int detectLangClb(const char *buffer) {
 
     if (buffer != NULL) {
         int buffer_length = std::strlen(buffer);
+        //detectedLangId = static_cast<CLD2::Language>(buffer_length);
 
         bool is_plain_text = true;
 
