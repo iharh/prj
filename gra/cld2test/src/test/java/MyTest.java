@@ -60,9 +60,7 @@ public class MyTest {
     //    Map<MetricName, Metric> getMetrics();
     //}
 
-    public void doIter(LibCld2 cld2, CSVFormat csvFormat, Map<String, Gauge> gauges) throws IOException {
-        //List<String> langCodes = Arrays.asList("de", "ar", "en", "es", "fr", "it", "ja", "ko", "nl", "pt", "ru", "tr", "zh");
-        List<String> langCodes = Arrays.asList("en");
+    public void doIter(LibCld2 cld2, CSVFormat csvFormat, List<String> langCodes, Map<String, Gauge> gauges) throws IOException {
         for (String langCode : langCodes) {
             processForLang(cld2, csvFormat, langCode);
         }
@@ -70,12 +68,13 @@ public class MyTest {
         Long valInit = (Long)gauges.get("memory.total.init").getValue();
         Long valMax  = (Long)gauges.get("memory.total.max").getValue();
         Long valUsed = (Long)gauges.get("memory.total.used").getValue();
-        log.info("{}, {}, {}", valInit, valMax, valUsed);
+        Long valCommitted = (Long)gauges.get("memory.total.committed").getValue();
+        log.info("{}, {}, {}, {}", valInit, valMax, valUsed, valCommitted);
     }
 
     @Test
     public void testMy() throws Exception {
-        log.info("total.init, total.max, total.used");
+        log.info("total.init, total.max, total.used, total.committed");
 
         final MetricRegistry metrics = new MetricRegistry();
         metrics.register("memory", new MemoryUsageGaugeSet());
@@ -89,9 +88,16 @@ public class MyTest {
             .withSkipHeaderRecord(true)
             .withHeader("TEXT");
 
-        for (int i = 0; i < 3; ++i) {
-            doIter(cld2, csvFormat, metrics.getGauges());
+        List<String> langCodes = Arrays.asList("de", "ar", "en", "es", "fr", "it", "ja", "ko", "nl", "pt", "ru", "tr", "zh");
+        //List<String> langCodes = Arrays.asList("en");
+        final Map<String, Gauge> gauges = metrics.getGauges();
+        for (int i = 0; i < 30; ++i) {
+            doIter(cld2, csvFormat, langCodes, gauges);
         }
+
+        //for (Map.Entry<String, Gauge> entry : gauges.entrySet()) {
+        //    log.info("name: {} val: {}", entry.getKey(), entry.getValue().getValue());
+        //}
 
         //26 - de?
         //assertThat(cld2.detectLangClb("I know and like so much my round table"), is(0));
