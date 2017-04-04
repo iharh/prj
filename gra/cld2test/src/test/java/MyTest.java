@@ -40,6 +40,7 @@ public class MyTest {
     @Encoding("UTF-8")
     public static interface LibCld2 {
         int detectLangClb(String text);
+        int getMemoryUsage();
     }
 
     private void processForLang(LibCld2 cld2, CSVFormat csvFormat, String langCode) throws IOException {
@@ -69,12 +70,13 @@ public class MyTest {
         Long valMax  = (Long)gauges.get("memory.total.max").getValue();
         Long valUsed = (Long)gauges.get("memory.total.used").getValue();
         Long valCommitted = (Long)gauges.get("memory.total.committed").getValue();
-        log.info("{}, {}, {}, {}", valInit, valMax, valUsed, valCommitted);
+        int nativeMemUsage = cld2.getMemoryUsage();
+        log.info("{}, {}, {}, {}, {}", nativeMemUsage, valInit, valMax, valUsed, valCommitted);
     }
 
     @Test
     public void testMy() throws Exception {
-        log.info("total.init, total.max, total.used, total.committed");
+        log.info("native, total.init, total.max, total.used, total.committed");
 
         final MetricRegistry metrics = new MetricRegistry();
         metrics.register("memory", new MemoryUsageGaugeSet());
@@ -91,7 +93,7 @@ public class MyTest {
         List<String> langCodes = Arrays.asList("de", "ar", "en", "es", "fr", "it", "ja", "ko", "nl", "pt", "ru", "tr", "zh");
         //List<String> langCodes = Arrays.asList("en");
         final Map<String, Gauge> gauges = metrics.getGauges();
-        for (int i = 0; i < 60; ++i) {
+        for (int i = 0; i < 10; ++i) {
             doIter(cld2, csvFormat, langCodes, gauges);
         }
 
