@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <cstring>
 
+#include <malloc.h>
+
 #include "encodings.h"
 #include "lang_script.h"
 #include "compact_lang_det_impl.h"
@@ -73,9 +75,9 @@ int detectLangClb(const char *buffer) {
 }
 
 CLD_EXPORT
-long getMemoryUsage()
+int getMemoryUsage()
 {
-    long result = 0;
+    int result = 0;
     try
     {
 #if defined(_WIN32) || defined(__WIN32__) || defined(WIN32) || defined(_WINDOWS)
@@ -97,7 +99,7 @@ long getMemoryUsage()
         }*/
 #elif defined __unix__
         struct mallinfo mem_info = ::mallinfo();
-        result = (jlong)mem_info.arena;
+        result = (int)mem_info.arena;
 #else
     #error "Unsupported platform"
 #endif
