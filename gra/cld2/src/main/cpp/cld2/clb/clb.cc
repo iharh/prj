@@ -71,3 +71,40 @@ int detectLangClb(const char *buffer) {
     }
     return static_cast<int>(detectedLangId);
 }
+
+CLD_EXPORT
+long getMemoryUsage()
+{
+    long result = 0;
+    try
+    {
+#if defined(_WIN32) || defined(__WIN32__) || defined(WIN32) || defined(_WINDOWS)
+        _HEAPINFO hInfo;
+        int status;
+        hInfo._pentry = NULL;
+        while ((status = _heapwalk(&hInfo)) == _HEAPOK)
+        {
+            if (_USEDENTRY == hInfo._useflag)
+                result += hInfo._size;
+        }
+        /*switch (status)
+        {
+        case _HEAPEMPTY:
+        case _HEAPEND:
+            //return result;
+        default:
+            //JNIUtils::ThrowJavaException(pEnv, "java/lang/RuntimeException", "Heap corrupted");
+        }*/
+#elif defined __unix__
+        struct mallinfo mem_info = ::mallinfo();
+        result = (jlong)mem_info.arena;
+#else
+    #error "Unsupported platform"
+#endif
+    }
+    catch (...)
+    {
+        //JNIUtils::ThrowJavaException(pEnv, "java/lang/RuntimeException", "Unknown reason");
+    }
+    return result; // -1
+}

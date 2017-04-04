@@ -91,7 +91,7 @@ public class MyTest {
         List<String> langCodes = Arrays.asList("de", "ar", "en", "es", "fr", "it", "ja", "ko", "nl", "pt", "ru", "tr", "zh");
         //List<String> langCodes = Arrays.asList("en");
         final Map<String, Gauge> gauges = metrics.getGauges();
-        for (int i = 0; i < 30; ++i) {
+        for (int i = 0; i < 60; ++i) {
             doIter(cld2, csvFormat, langCodes, gauges);
         }
 
