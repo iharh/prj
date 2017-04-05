@@ -109,9 +109,9 @@ public class Cld2Test {
             //.doOnEach((v) -> log.info("{} - {}", Thread.currentThread().getName(), v))
             .doOnNext((v) -> {
                 try {
-                    log.info("start {} - {}", Thread.currentThread().getName(), v);
+                    //log.info("start {} - {}", Thread.currentThread().getName(), v);
                     doIter(cld2, csvFormat, langCodes, gauges);
-                    log.info("finish {} - {}", Thread.currentThread().getName(), v);
+                    //log.info("finish {} - {}", Thread.currentThread().getName(), v);
                 } catch (Exception e) {
                     log.error(e.getMessage(), e);
                 }
