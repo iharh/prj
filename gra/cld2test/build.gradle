@@ -58,6 +58,8 @@ libraries += [
 
     groovy_all: 'org.codehaus.groovy:groovy-all:2.4.10',
 
+    reactor_core: 'io.projectreactor:reactor-core:3.0.6.RELEASE',
+
     junit:  'junit:junit:4.12'
 ]
 
@@ -81,6 +83,7 @@ dependencies {
     //compile libraries.dropwizard_metrics_graphite
     //compile libraries.ryantenney_metrics_spring
 
+    testCompile libraries.reactor_core
     testCompile libraries.junit
 }
 

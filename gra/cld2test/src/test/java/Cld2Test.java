@@ -19,6 +19,10 @@ import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.MetricSet;
 import com.codahale.metrics.jvm.MemoryUsageGaugeSet;
 
+import reactor.core.publisher.Flux;
+import reactor.core.scheduler.Scheduler;
+import reactor.core.scheduler.Schedulers;
+
 import org.apache.commons.lang3.SystemUtils;
 
 import java.util.Map;
@@ -31,7 +35,7 @@ import java.io.IOException;
 import static java.nio.charset.StandardCharsets.*;
 
 @Slf4j
-public class MyTest {
+public class Cld2Test {
     private static final String CLD2_VER = "1.0.0";
     private static final boolean isLin = SystemUtils.IS_OS_LINUX;
     private static final String libName = String.format("cld2-%s-%s", (isLin ? "linux" : "windows"), CLD2_VER);
@@ -65,7 +69,6 @@ public class MyTest {
         for (String langCode : langCodes) {
             processForLang(cld2, csvFormat, langCode);
         }
-
         Long valInit = (Long)gauges.get("memory.total.init").getValue();
         Long valMax  = (Long)gauges.get("memory.total.max").getValue();
         Long valUsed = (Long)gauges.get("memory.total.used").getValue();
@@ -74,14 +77,18 @@ public class MyTest {
         log.info("{}, {}, {}, {}, {}", nativeMemUsage, valInit, valMax, valUsed, valCommitted);
     }
 
+    private LibCld2 getCld2() {
+        return LibraryLoader.create(LibCld2.class).load(libName);
+    }
+
     @Test
-    public void testMy() throws Exception {
+    public void testCld() throws Exception {
         log.info("native, total.init, total.max, total.used, total.committed");
 
         final MetricRegistry metrics = new MetricRegistry();
         metrics.register("memory", new MemoryUsageGaugeSet());
 
-        LibCld2 cld2 = LibraryLoader.create(LibCld2.class).load(libName);
+        LibCld2 cld2 = getCld2();
         assertThat(cld2, is(notNullValue()));
 
         final CSVFormat csvFormat = CSVFormat.DEFAULT
@@ -93,16 +100,47 @@ public class MyTest {
         List<String> langCodes = Arrays.asList("de", "ar", "en", "es", "fr", "it", "ja", "ko", "nl", "pt", "ru", "tr", "zh");
         //List<String> langCodes = Arrays.asList("en");
         final Map<String, Gauge> gauges = metrics.getGauges();
-        for (int i = 0; i < 10; ++i) {
-            doIter(cld2, csvFormat, langCodes, gauges);
-        }
 
-        //for (Map.Entry<String, Gauge> entry : gauges.entrySet()) {
-        //    log.info("name: {} val: {}", entry.getKey(), entry.getValue().getValue());
-        //}
+        Scheduler s = Schedulers.newParallel("cld2thread");
 
+        Flux.range(1, 10)
+            .parallel(2)
+            .runOn(s)
+            //.doOnEach((v) -> log.info("{} - {}", Thread.currentThread().getName(), v))
+            .doOnNext((v) -> {
+                try {
+                    log.info("start {} - {}", Thread.currentThread().getName(), v);
+                    doIter(cld2, csvFormat, langCodes, gauges);
+                    log.info("finish {} - {}", Thread.currentThread().getName(), v);
+                } catch (Exception e) {
+                    log.error(e.getMessage(), e);
+                }
+            })
+            .sequential()
+            .blockLast()
+            ;
+    }
+
+    @Ignore
+    public void testMisc() throws Exception {
+        LibCld2 cld2 = getCld2();
+        assertThat(cld2, is(notNullValue()));
         //26 - de?
-        //assertThat(cld2.detectLangClb("I know and like so much my round table"), is(0));
-        //assertEquals(cld2.detectLangClb("quatre petits enfants, trois filles malades"), is(4));
+        assertThat(cld2.detectLangClb("I know and like so much my round table"), is(0));
+        assertThat(cld2.detectLangClb("quatre petits enfants, trois filles malades"), is(4));
+    }
+
+    @Ignore
+    public void testParallel() throws Exception {
+        Scheduler s = Schedulers.newParallel("cld2thread");
+
+        Flux.range(1, 10)
+            .parallel(2)
+            .runOn(s)
+            //.doOnEach((v) -> log.info("{} - {}", Thread.currentThread().getName(), v))
+            .doOnNext((v) -> log.info("{} - {}", Thread.currentThread().getName(), v))
+            .sequential()
+            .blockLast()
+            ;
     }
 }
