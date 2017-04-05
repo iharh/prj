@@ -3,10 +3,10 @@ import org.junit.Ignore;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.CoreMatchers.*;
 
-import lombok.extern.slf4j.Slf4j;
+import com.clarabridge.cld2.LibCld2;
+import com.clarabridge.cld2.Cld2Loader;
 
-import jnr.ffi.LibraryLoader;
-import jnr.ffi.annotations.Encoding;
+import lombok.extern.slf4j.Slf4j;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -36,16 +36,7 @@ import static java.nio.charset.StandardCharsets.*;
 
 @Slf4j
 public class Cld2Test {
-    private static final String CLD2_VER = "1.0.0";
-    private static final boolean isLin = SystemUtils.IS_OS_LINUX;
-    private static final String libName = String.format("cld2-%s-%s", (isLin ? "linux" : "windows"), CLD2_VER);
-    private static final String inFileDir = (isLin ? "/data/wrk/clb" : "D:/clb/src") + "/spikes/iharh/ld/selected";
-
-    @Encoding("UTF-8")
-    public static interface LibCld2 {
-        int detectLangClb(String text);
-        int getMemoryUsage();
-    }
+    private static final String inFileDir = (SystemUtils.IS_OS_LINUX ? "/data/wrk/clb" : "D:/clb/src") + "/spikes/iharh/ld/selected";
 
     private void processForLang(LibCld2 cld2, CSVFormat csvFormat, String langCode) throws IOException {
         final String inFileName = inFileDir + "/" + langCode + ".csv";
@@ -77,10 +68,6 @@ public class Cld2Test {
         log.info("{}, {}, {}, {}, {}", nativeMemUsage, valInit, valMax, valUsed, valCommitted);
     }
 
-    private LibCld2 getCld2() {
-        return LibraryLoader.create(LibCld2.class).load(libName);
-    }
-
     @Test
     public void testCld() throws Exception {
         log.info("native, total.init, total.max, total.used, total.committed");
@@ -88,7 +75,7 @@ public class Cld2Test {
         final MetricRegistry metrics = new MetricRegistry();
         metrics.register("memory", new MemoryUsageGaugeSet());
 
-        LibCld2 cld2 = getCld2();
+        LibCld2 cld2 = Cld2Loader.load();
         assertThat(cld2, is(notNullValue()));
 
         final CSVFormat csvFormat = CSVFormat.DEFAULT
@@ -101,17 +88,18 @@ public class Cld2Test {
         //List<String> langCodes = Arrays.asList("en");
         final Map<String, Gauge> gauges = metrics.getGauges();
 
-        Scheduler s = Schedulers.newParallel("cld2thread");
+        //doIter(cld2, csvFormat, langCodes, gauges);
 
-        Flux.range(1, 10)
-            .parallel(2)
+        int numCpu = 6;
+        Scheduler s = Schedulers.newParallel("cld2thread", numCpu);
+
+        Flux.range(1, 60)
+            .parallel(numCpu)
             .runOn(s)
             //.doOnEach((v) -> log.info("{} - {}", Thread.currentThread().getName(), v))
             .doOnNext((v) -> {
                 try {
-                    //log.info("start {} - {}", Thread.currentThread().getName(), v);
                     doIter(cld2, csvFormat, langCodes, gauges);
-                    //log.info("finish {} - {}", Thread.currentThread().getName(), v);
                 } catch (Exception e) {
                     log.error(e.getMessage(), e);
                 }
@@ -123,7 +111,7 @@ public class Cld2Test {
 
     @Ignore
     public void testMisc() throws Exception {
-        LibCld2 cld2 = getCld2();
+        LibCld2 cld2 = Cld2Loader.load();
         assertThat(cld2, is(notNullValue()));
         //26 - de?
         assertThat(cld2.detectLangClb("I know and like so much my round table"), is(0));
@@ -134,7 +122,7 @@ public class Cld2Test {
     public void testParallel() throws Exception {
         Scheduler s = Schedulers.newParallel("cld2thread");
 
-        Flux.range(1, 10)
+        Flux.range(1, 60)
             .parallel(2)
             .runOn(s)
             //.doOnEach((v) -> log.info("{} - {}", Thread.currentThread().getName(), v))
