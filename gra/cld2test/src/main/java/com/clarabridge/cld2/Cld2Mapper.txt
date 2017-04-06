@@ -1,7 +1,0 @@
-package com.clarabridge.cld2;
-
-public class Cld2Mapper {
-    public static String mapToCode(int id) {
-        return "un";
-    }
-}
