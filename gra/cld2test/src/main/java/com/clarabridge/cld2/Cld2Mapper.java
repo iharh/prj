@@ -1,7 +1,7 @@
 package com.clarabridge.cld2;
 
 public class Cld2Mapper {
-    private static UN = "un";
+    private static final String UN = "un";
 
     private static String [] CLD2_CODES_LO = {
         "en",   // 000, en, English
@@ -303,6 +303,6 @@ X_Takri                      = 613,  // xx-Takr
     };
 
     public static String mapToCode(int idx) {
-        return idx >= 0 && idx < LD2_CODES_LO.length ? LD2_CODES_LO[idx] : UN;
+        return idx >= 0 && idx < CLD2_CODES_LO.length ? CLD2_CODES_LO[idx] : UN;
     }
 }

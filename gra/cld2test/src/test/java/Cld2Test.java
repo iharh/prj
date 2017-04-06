@@ -5,6 +5,7 @@ import static org.hamcrest.CoreMatchers.*;
 
 import com.clarabridge.cld2.LibCld2;
 import com.clarabridge.cld2.Cld2Loader;
+import com.clarabridge.cld2.Cld2Mapper;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -68,8 +69,8 @@ public class Cld2Test {
         log.info("{}, {}, {}, {}, {}", nativeMemUsage, valInit, valMax, valUsed, valCommitted);
     }
 
-    @Test
-    public void testCld() throws Exception {
+    @Ignore
+    public void testStress() throws Exception {
         log.info("native, total.init, total.max, total.used, total.committed");
 
         final MetricRegistry metrics = new MetricRegistry();
@@ -87,8 +88,6 @@ public class Cld2Test {
         List<String> langCodes = Arrays.asList("de", "ar", "en", "es", "fr", "it", "ja", "ko", "nl", "pt", "ru", "tr", "zh");
         //List<String> langCodes = Arrays.asList("en");
         final Map<String, Gauge> gauges = metrics.getGauges();
-
-        //doIter(cld2, csvFormat, langCodes, gauges);
 
         int numCpu = 6;
         Scheduler s = Schedulers.newParallel("cld2thread", numCpu);
@@ -109,26 +108,16 @@ public class Cld2Test {
             ;
     }
 
-    @Ignore
+    private String detectLangCode(LibCld2 cld2, String text) {
+        return Cld2Mapper.mapToCode(cld2.detectLangClb(text));
+    }
+
+    @Test
     public void testMisc() throws Exception {
         LibCld2 cld2 = Cld2Loader.load();
         assertThat(cld2, is(notNullValue()));
         //26 - de?
-        assertThat(cld2.detectLangClb("I know and like so much my round table"), is(0));
-        assertThat(cld2.detectLangClb("quatre petits enfants, trois filles malades"), is(4));
-    }
-
-    @Ignore
-    public void testParallel() throws Exception {
-        Scheduler s = Schedulers.newParallel("cld2thread");
-
-        Flux.range(1, 60)
-            .parallel(2)
-            .runOn(s)
-            //.doOnEach((v) -> log.info("{} - {}", Thread.currentThread().getName(), v))
-            .doOnNext((v) -> log.info("{} - {}", Thread.currentThread().getName(), v))
-            .sequential()
-            .blockLast()
-            ;
+        assertThat(detectLangCode(cld2, "I know and like so much my round table"), is("en"));
+        assertThat(detectLangCode(cld2, "quatre petits enfants, trois filles malades"), is("fr"));
     }
 }
