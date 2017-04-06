@@ -5,7 +5,6 @@ lazy val dstPath = settingKey[String]("Dst path")
 lazy val copydf    = taskKey[Unit]("Dotfiles copy task")
 lazy val copynotes = taskKey[Unit]("Notes copy task")
 lazy val copywnotes = taskKey[Unit]("Notes copy task")
-lazy val copyprj = taskKey[Unit]("Prj copy task")
 lazy val copybin = taskKey[Unit]("Bin copy task")
 lazy val copykeepass = taskKey[Unit]("KeePass copy task")
 lazy val copyff = taskKey[Unit]("FF bookmarks copy task")
@@ -65,10 +64,6 @@ copywnotes := {
     copy_x("wnotes")
 }
 
-copyprj := {
-    copy_x("prj")
-}
-
 copybin := {
     copy_x("bin")
 }
@@ -107,4 +102,4 @@ copyff := {
     IO.copy(rebasedFilesToCopy)
 }
 
-addCommandAlias("copyall", ";copydf;copynotes;copywnotes;copyprj;copybin;copykeepass;copyff")
+addCommandAlias("copyall", ";copydf;copynotes;copywnotes;copybin;copykeepass;copyff") // copyprj is too big
