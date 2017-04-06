@@ -34,42 +34,45 @@ int detectLangClb(const char *buffer) {
     CLD2::Language detectedLangId = CLD2::UNKNOWN_LANGUAGE;
 
     if (buffer != NULL) {
-        int buffer_length = std::strlen(buffer);
-        //detectedLangId = static_cast<CLD2::Language>(buffer_length);
+        try {
+            int buffer_length = std::strlen(buffer);
+            //detectedLangId = static_cast<CLD2::Language>(buffer_length);
 
-        bool is_plain_text = true;
+            bool is_plain_text = true;
 
-        const char *tld_hint = "";
-        int encoding_hint = CLD2::UNKNOWN_ENCODING;
-        CLD2::Language language_hint = CLD2::UNKNOWN_LANGUAGE;
-        CLD2::CLDHints cldhints = {NULL, tld_hint, encoding_hint, language_hint};
+            const char *tld_hint = "";
+            int encoding_hint = CLD2::UNKNOWN_ENCODING;
+            CLD2::Language language_hint = CLD2::UNKNOWN_LANGUAGE;
+            CLD2::CLDHints cldhints = {NULL, tld_hint, encoding_hint, language_hint};
 
-        bool allow_extended_lang = false;
+            bool allow_extended_lang = false;
 
-        CLD2::Language language3[3];
-        int percent3[3];
-        double normalized_score3[3];
-        int text_bytes;
-        int flags = 0;
-        CLD2::Language plus_one = CLD2::UNKNOWN_LANGUAGE;
+            CLD2::Language language3[3];
+            int percent3[3];
+            double normalized_score3[3];
+            int text_bytes;
+            int flags = 0;
+            CLD2::Language plus_one = CLD2::UNKNOWN_LANGUAGE;
 
-        bool is_reliable = false;
+            bool is_reliable = false;
 
-        detectedLangId = CLD2::DetectLanguageSummaryV2(
-            buffer,
-            buffer_length,
-            is_plain_text,
-            &cldhints,
-            allow_extended_lang,
-            flags,
-            plus_one,
-            language3,
-            percent3,
-            normalized_score3,
-            NULL,
-            &text_bytes,
-            &is_reliable
-        );
+            detectedLangId = CLD2::DetectLanguageSummaryV2(
+                buffer,
+                buffer_length,
+                is_plain_text,
+                &cldhints,
+                allow_extended_lang,
+                flags,
+                plus_one,
+                language3,
+                percent3,
+                normalized_score3,
+                NULL,
+                &text_bytes,
+                &is_reliable
+            );
+        } catch (...) {
+        }
     }
     return static_cast<int>(detectedLangId);
 }
