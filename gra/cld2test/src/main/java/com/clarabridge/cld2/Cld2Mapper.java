@@ -1,7 +1,7 @@
 package com.clarabridge.cld2;
 
 public class Cld2Mapper {
-    private static final String UN = "un";
+    private static final String UN = "@u";
 
     private static String [] CLD2_CODES_LO = {
         "en",   // 000, en, English
