@@ -5,6 +5,7 @@ plugins {
 import org.gradle.internal.os.OperatingSystem
 
 ext {
+    moduleName = 'cld2'
     versions = [:]
     libraries = [:]
     getCurOS = {
@@ -13,22 +14,8 @@ ext {
     curOS = getCurOS()
 }
 
-def getOSArtifactName(name) {
-    def osPref = OperatingSystem.current().isWindows() ? '' : 'lib'
-    def osSuf = OperatingSystem.current().isWindows() ? 'windows' : 'linux'
-    return "${osPref}${name}-${osSuf}"
-}
-def getOSLibName(name) {
-    def osPref = OperatingSystem.current().isWindows() ? '' : 'lib'
-    def osExt = OperatingSystem.current().isWindows() ? 'dll' : 'so'
-    return "${osPref}${name}.${osExt}"
-}
-
-def cld2Name = 'cld2'
-def cld2ArtifactName = getOSArtifactName(cld2Name)
-def cld2LibName = getOSLibName(cld2Name)
-
-def cld2LibDir =  "${libsDir}/${cld2Name}/shared"
+def cld2ArtifactName = OperatingSystem.current().isWindows() ? "${moduleName}-windows" : "lib${moduleName}-linux"
+def cld2LibDir =  "${libsDir}/${moduleName}/shared"
 
 repositories {
     mavenCentral()
@@ -110,7 +97,7 @@ test {
 task cpCld2(type: Copy) {
     shouldRunAfter testClasses
     from (configurations.cld2cfg) {
-        rename { filename -> cld2LibName }
+        rename { filename -> OperatingSystem.current().isWindows() ? "${moduleName}.dll" : "lib${moduleName}.so" }
     }
     into cld2LibDir
 }
