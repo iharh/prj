@@ -117,6 +117,8 @@ public class Cld2Test {
         LibCld2 cld2 = Cld2Loader.load();
         assertThat(cld2, is(notNullValue()));
         //26 - de?
+        assertThat(detectLangCode(cld2, "მარგალური ნინა"), is("ka"));
+        //
         assertThat(detectLangCode(cld2, "I know and like so much my round table"), is("en"));
         assertThat(detectLangCode(cld2, "quatre petits enfants, trois filles malades"), is("fr"));
     }
