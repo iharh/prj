@@ -18,10 +18,17 @@ def getOSArtifactName(name) {
     def osSuf = OperatingSystem.current().isWindows() ? 'windows' : 'linux'
     return "${osPref}${name}-${osSuf}"
 }
+def getOSLibName(name) {
+    def osPref = OperatingSystem.current().isWindows() ? '' : 'lib'
+    def osExt = OperatingSystem.current().isWindows() ? 'dll' : 'so'
+    return "${osPref}${name}.${osExt}"
+}
 
-def cld2ArtifactName = getOSArtifactName('cld2')
+def cld2Name = 'cld2'
+def cld2ArtifactName = getOSArtifactName(cld2Name)
+def cld2LibName = getOSLibName(cld2Name)
 
-def cld2LibDir =  "${libsDir}/cld2/shared"
+def cld2LibDir =  "${libsDir}/${cld2Name}/shared"
 
 repositories {
     mavenCentral()
@@ -70,7 +77,6 @@ dependencies {
     compile libraries.jnr_ffi
     compile libraries.lombok
     compile libraries.commons_csv
-    compile libraries.commons_lang3
 
     compile libraries.slf4j_api
     compile libraries.logback_classic
@@ -83,6 +89,7 @@ dependencies {
     //compile libraries.dropwizard_metrics_graphite
     //compile libraries.ryantenney_metrics_spring
 
+    testCompile libraries.commons_lang3
     testCompile libraries.reactor_core
     testCompile libraries.junit
 }
@@ -102,7 +109,9 @@ test {
 
 task cpCld2(type: Copy) {
     shouldRunAfter testClasses
-    from configurations.cld2cfg
+    from (configurations.cld2cfg) {
+        rename { filename -> cld2LibName }
+    }
     into cld2LibDir
 }
 
