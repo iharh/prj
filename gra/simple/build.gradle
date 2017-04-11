@@ -1,6 +1,11 @@
-apply plugin: 'java'
-apply plugin: 'groovy'
- 
+plugins {
+    id 'java'
+    id 'groovy'
+
+    id 'org.ajoberstar.release-base' version '1.7.1'
+    id 'org.ajoberstar.release-opinion' version '1.7.1'
+}
+
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 

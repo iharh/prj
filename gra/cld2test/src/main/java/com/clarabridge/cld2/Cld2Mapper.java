@@ -10,7 +10,7 @@ public class Cld2Mapper {
         "fi",   // 003, fi, Finish
         "fr",   // 004, fr, French
         "de",   // 005, de, German
-        "iw",   // 006, iw, Hebrew
+        "he",   // 006, iw, Hebrew !!!
         "it",   // 007, it, Italian
         "ja",   // 008, ja, Japanese
         "ko",   // 009, ko, Korean
@@ -111,9 +111,9 @@ public class Cld2Mapper {
         "km",   // 104, km, Khmer
         "bo",   // 105, bo, Tibetan
         "dv",   // 106, dv, Dhivehi
-        "chr",  // 107, chr, Cherokee
-        "syr",  // 108, syr, Syriac
-        "lif",  // 109, lif, Limbu
+        UN  ,   // 107, chr, Cherokee !!!
+        UN  ,   // 108, syr, Syriac !!!
+        "li",   // 109, lif, Limbu !!! Limburgish
         "or",   // 110, or, Oriya
         "as",   // 111, as, Assamese
         "co",   // 112, co, Corsican
@@ -141,7 +141,7 @@ public class Cld2Mapper {
         "bi",   // 134, bi, Bislama
         "dz",   // 135, dz, Dzongkha
         "fj",   // 136, fj, Fijian
-        "kl",   // 137, kl, Greenlandic
+        "kl",   // 137, kl, Greenlandic !!! Kalaallisut
         "ha",   // 138, ha, Hausa
         "ht",   // 139, ht, HaitianCreole
         "ik",   // 140, ik, Inupiak
@@ -155,38 +155,38 @@ public class Cld2Mapper {
         "sm",   // 148, sm, Samoan
         "sg",   // 149, sg, Sango
         "sa",   // 150, sa, Sanskrit
-        "ss",   // 151, ss, Siswant
+        "ss",   // 151, ss, Siswant !!! Swati
         "ts",   // 152, ts, Tsonga
         "tn",   // 153, tn, Tswana
         "vo",   // 154, vo, Volapuk
         "za",   // 155, za, Zhuang
-        "kha",  // 156, kha, Khasi
-        "sco",  // 157, sco, Scots
+        UN  ,   // 156, kha, Khasi !!!
+        UN  ,   // 157, sco, Scots !!!
         "lg",   // 158, lg, Ganda
         "gv",   // 159, gv, Manx
-        "sr-ME",// 160, sr-ME, Montenegrin
+        UN  ,   // 160, sr-ME, Montenegrin !!!
         "ak",   // 161, ak, Akan
         "ig",   // 162, ig, Igbo
-        "mfe",  // 163, mfe, MauritianCreole
-        "haw",  // 164, haw, Hawaiian
-        "ceb",  // 165, ceb, Cebuano
+        UN  ,   // 163, mfe, MauritianCreole !!!
+        UN  ,   // 164, haw, Hawaiian !!!
+        UN  ,   // 165, ceb, Cebuano !!!
         "ee",   // 166, ee, Ewe
-        "gaa",  // 167, gaa, Ga
-        "blu",  // 168, blu, Hmong
-        "kri",  // 169, kri, Krio
-        "loz",  // 170, loz, Lozi
-        "lua",  // 171, lua, LubaLulua
-        "luo",  // 172, luo, LuoKenyaAndTanzania
-        "new",  // 173, new, Hewari
-        "ny",   // 174, ny, Nyanja
+        UN  ,   // 167, gaa, Ga !!!
+        UN  ,   // 168, blu, Hmong !!!
+        UN  ,   // 169, kri, Krio !!!
+        UN  ,   // 170, loz, Lozi
+        "lu",   // 171, lua, LubaLulua !!!
+        "lu",   // 172, luo, LuoKenyaAndTanzania !!!
+        UN  ,   // 173, new, Hewari !!!
+        "ny",   // 174, ny, Nyanja !!! Chichewa
         "os",   // 175, os, Ossetian
-        "pam",  // 176, pam, Pampanga
-        "nso",  // 177, nso, Pedi
-        "raj",  // 178, raj, Rajasthani
-        "crs",  // 179, crs, Seselwa
-        "tum",  // 180, tum, Tumbuka
+        UN  ,   // 176, pam, Pampanga !!!
+        UN  ,   // 177, nso, Pedi !!!
+        UN  ,   // 178, raj, Rajasthani !!!
+        UN  ,   // 179, crs, Seselwa !!!
+        UN  ,   // 180, tum, Tumbuka !!!
         "ve",   // 181, ve, Venda
-        "war"   // 182, war, WarayPhilippines
+        UN  ,   // 182, war, WarayPhilippines !!!
     };
 
     private static String [] CLD2_CODES_HI = {
