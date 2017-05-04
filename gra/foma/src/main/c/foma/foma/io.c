@@ -1,5 +1,5 @@
 /*   Foma: a finite-state toolkit and library.                                 */
-/*   Copyright © 2008-2015 Mans Hulden                                         */
+/*   Copyright c 2008-2015 Mans Hulden                                         */
 
 /*   This file is part of foma.                                                */
 
@@ -20,7 +20,7 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include "foma.h"
-#include "zlib.h"
+// !!! clb !!! include "zlib.h"
 
 #define TYPE_TRANSITION 1
 #define TYPE_SYMBOL 2
@@ -56,10 +56,12 @@ struct io_buf_handle *io_init();
 void io_free(struct io_buf_handle *iobh);
 static int io_gets(struct io_buf_handle *iobh, char *target);
 static size_t io_get_gz_file_size(char *filename);
-static size_t io_get_file_size(char *filename);
+// !!! clb !!! static size_t io_get_file_size(char *filename);
 static size_t io_get_regular_file_size(char *filename);
+/* !!! clb !!!
 size_t io_gz_file_to_mem (struct io_buf_handle *iobh, char *filename);
 int foma_net_print(struct fsm *net, gzFile outfile);
+*/
 struct fsm *io_net_read(struct io_buf_handle *iobh, char **net_name);
 static INLINE int explode_line (char *buf, int *values);
 
@@ -508,7 +510,7 @@ struct fsm *fsm_read_text_file(char *filename) {
     xxfree(text);
     return(fsm_trie_done(th));
 }
-
+/* !!! clb !!!
 int fsm_write_binary_file(struct fsm *net, char *filename) {
     gzFile outfile;
     if ((outfile = gzopen(filename,"wb")) == NULL) {
@@ -518,6 +520,7 @@ int fsm_write_binary_file(struct fsm *net, char *filename) {
     gzclose(outfile);
     return(0);
 }
+*/
 
 struct fsm *fsm_read_binary_file_multiple(fsm_read_binary_handle fsrh) {
     char *net_name;
@@ -534,6 +537,7 @@ struct fsm *fsm_read_binary_file_multiple(fsm_read_binary_handle fsrh) {
     }
 }
 
+/* !!! clb !!!
 fsm_read_binary_handle fsm_read_binary_file_multiple_init(char *filename) {
 
     struct io_buf_handle *iobh;
@@ -581,6 +585,7 @@ int save_defined(struct defined_networks *def, char *filename) {
     gzclose(outfile);
     return(1);
 }
+*/
 
 int load_defined(struct defined_networks *def, char *filename) {
     struct fsm *net;
@@ -834,15 +839,16 @@ static int io_gets(struct io_buf_handle *iobh, char *target) {
     return(i);
 }
 
+/* !!! clb !!!
 int foma_net_print(struct fsm *net, gzFile outfile) {
     struct sigma *sigma;
     struct fsm_state *fsm;
     int i, maxsigma, laststate, *cm, extras;
 
-    /* Header */
+    // Header
     gzprintf(outfile, "%s","##foma-net 1.0##\n");
 
-    /* Properties */
+    // Properties
     gzprintf(outfile, "%s","##props##\n");
 
     extras = (net->is_completed) | (net->arcs_sorted_in << 2) | (net->arcs_sorted_out << 4);
@@ -850,13 +856,13 @@ int foma_net_print(struct fsm *net, gzFile outfile) {
     gzprintf(outfile, 
 	     "%i %i %i %i %i %lld %i %i %i %i %i %i %s\n", net->arity, net->arccount, net->statecount, net->linecount, net->finalcount, net->pathcount, net->is_deterministic, net->is_pruned, net->is_minimized, net->is_epsilon_free, net->is_loop_free, extras, net->name);
     
-    /* Sigma */
+    // Sigma
     gzprintf(outfile, "%s","##sigma##\n");
     for (sigma = net->sigma; sigma != NULL && sigma->number != -1; sigma = sigma->next) {
         gzprintf(outfile, "%i %s\n",sigma->number, sigma->symbol);
     }
 
-    /* State array */
+    // State array
     laststate = -1;
     gzprintf(outfile, "%s","##states##\n");
     for (fsm = net->states; fsm->state_no !=-1; fsm++) {
@@ -875,10 +881,10 @@ int foma_net_print(struct fsm *net, gzFile outfile) {
         }
         laststate = fsm->state_no;
     }
-    /* Sentinel for states */
+    // Sentinel for states
     gzprintf(outfile, "-1 -1 -1 -1 -1\n");
 
-    /* Store confusion matrix */
+    // Store confusion matrix
     if (net->medlookup != NULL && net->medlookup->confusion_matrix != NULL) {
 
         gzprintf(outfile, "%s","##cmatrix##\n");
@@ -889,10 +895,11 @@ int foma_net_print(struct fsm *net, gzFile outfile) {
         }
     }
 
-    /* End */
+    // End
     gzprintf(outfile, "%s","##end##\n");
     return(1);
 }
+*/
 
 int net_print_att(struct fsm *net, FILE *outfile) {
     struct fsm_state *fsm;
@@ -950,7 +957,7 @@ static size_t io_get_regular_file_size(char *filename) {
     return(numbytes);
 }
 
-
+/* !!! clb !!!
 static size_t io_get_file_size(char *filename) {
     gzFile FILE;
     size_t size;
@@ -985,6 +992,7 @@ size_t io_gz_file_to_mem(struct io_buf_handle *iobh, char *filename) {
     iobh->io_buf_ptr = iobh->io_buf;
     return(size);
 }
+*/
 
 char *file_to_mem(char *name) {
     FILE    *infile;

@@ -67,6 +67,7 @@ model {
                         //include "**/*.cpp"
                         include 'mem.c'
                         include 'utf8.c'
+                        include 'io.c'
                         include 'sigma.c'
                         include 'miminize.c'
                         include 'lexcread.c'
