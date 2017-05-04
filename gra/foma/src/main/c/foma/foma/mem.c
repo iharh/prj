@@ -1,5 +1,5 @@
 /*   Foma: a finite-state toolkit and library.                                 */
-/*   Copyright © 2008-2015 Mans Hulden                                         */
+/*   Copyright c 2008-2015 Mans Hulden                                         */
 
 /*   This file is part of foma.                                                */
 
@@ -73,6 +73,7 @@ unsigned int round_up_to_power_of_two(unsigned int v) {
     return(v);
 }
 
+/* !!! clb !!!
 INLINE void *xxmalloc(size_t size) {
     return(malloc(size));
 }
@@ -92,4 +93,4 @@ INLINE void *xxcalloc(size_t nmemb, size_t size) {
 INLINE char *xxstrdup(const char *s) {
     return(strdup(s));
 }
-
+*/

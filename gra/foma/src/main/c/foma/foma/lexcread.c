@@ -508,6 +508,7 @@ void lexc_medpad() {
     /* !!! clb !!!
     int matrix[s1len+2][s2len+2];
     int dirmatrix[s1len+2][s2len+2];
+	http://stackoverflow.com/questions/7303740/error-c2057-expected-constant-expression
     */
     int matrix[1002][1002];
     int dirmatrix[1002][1002];
