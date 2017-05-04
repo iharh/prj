@@ -75,6 +75,7 @@ model {
                         include 'dynarray.c'
                         include 'constructions.c'
                         include 'rewrite.c'
+                        include 'determinize.c'
                         include 'sigma.c'
                         include 'miminize.c'
                         include 'lexcread.c'
