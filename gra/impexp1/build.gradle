@@ -1,0 +1,65 @@
+plugins {
+    id 'base'
+    id 'c'
+}
+
+model {
+    buildTypes {
+        release
+    }
+
+    toolChains {
+        visualCpp(VisualCpp) {
+            //installDir "${project.'vs.base'}"
+        }
+        gcc(Gcc)
+    }
+
+    platforms {
+        x64 {
+            architecture "x86_64"
+        }
+    }
+
+    binaries {
+        withType(SharedLibraryBinarySpec) { // all
+            // cppCompiler.define "NDEBUG"
+            // Define toolchain-specific compiler and linker options
+            if (toolChain in Gcc) {
+                println 'toolchain is Gcc!'
+                // "-O2", "-fno-access-control"
+                //cppCompiler.args '-std=c++0x', '-Wno-narrowing'
+            }
+            if (toolChain in VisualCpp) {
+                cCompiler.define "YY_NO_UNISTD_H"
+                println 'toolchain is VisualCpp!'
+            }
+        }
+    }
+
+    components {
+ 	foma(NativeLibrarySpec) { // SharedLibraryBinarySpec
+            targetPlatform 'x64'
+            sources {
+                c {
+                    source {
+                        srcDirs 'src/main/c/impexp'
+                        //include "**/*.c"
+                        include 'main.c'
+                        include 'func.c'
+                    }
+                    exportedHeaders {
+                        srcDirs 'src/main/c/impexp'
+                    }
+                }
+            }
+        }
+        all {
+            binaries.withType(StaticLibraryBinarySpec) {
+                buildable = false
+            }
+            binaries.withType(SharedLibraryBinarySpec) {
+            }
+        }
+    }
+}
