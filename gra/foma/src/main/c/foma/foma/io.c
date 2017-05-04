@@ -585,7 +585,6 @@ int save_defined(struct defined_networks *def, char *filename) {
     gzclose(outfile);
     return(1);
 }
-*/
 
 int load_defined(struct defined_networks *def, char *filename) {
     struct fsm *net;
@@ -605,6 +604,7 @@ int load_defined(struct defined_networks *def, char *filename) {
     io_free(iobh);
     return(1);
 }
+*/
 
 static INLINE int explode_line(char *buf, int *values) {
     int i, j, items;
