@@ -78,6 +78,7 @@ model {
                         include 'determinize.c'
                         include 'minimize.c'
                         include 'coaccessible.c'
+                        include 'topsort.c'
                         include 'sigma.c'
                         include 'miminize.c'
                         include 'lexcread.c'
