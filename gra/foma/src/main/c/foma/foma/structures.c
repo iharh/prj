@@ -1,5 +1,5 @@
 /*   Foma: a finite-state toolkit and library.                                 */
-/*   Copyright © 2008-2015 Mans Hulden                                         */
+/*   Copyright c 2008-2015 Mans Hulden                                         */
 
 /*   This file is part of foma.                                                */
 
@@ -18,7 +18,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <sys/time.h>
+// !!! clb !!! include <sys/time.h>
 #include "foma.h"
 
 static struct defined_quantifiers *quantifiers;

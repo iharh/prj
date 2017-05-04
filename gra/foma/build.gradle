@@ -69,6 +69,7 @@ model {
                         include 'utf8.c'
                         include 'define.c'
                         include 'io.c'
+                        include 'structures.c'
                         include 'sigma.c'
                         include 'miminize.c'
                         include 'lexcread.c'
