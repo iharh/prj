@@ -1,5 +1,5 @@
 /*   Foma: a finite-state toolkit and library.                                 */
-/*   Copyright © 2008-2015 Mans Hulden                                         */
+/*   Copyright c 2008-2015 Mans Hulden                                         */
 
 /*   This file is part of foma.                                                */
 
@@ -505,8 +505,12 @@ void lexc_medpad() {
     for (i = 0; cwordout[i] != -1; i++) { }
     s2len = i;
     
+    /* !!! clb !!!
     int matrix[s1len+2][s2len+2];
     int dirmatrix[s1len+2][s2len+2];
+    */
+    int matrix[1002][1002];
+    int dirmatrix[1002][1002];
 
     matrix[0][0] = 0;
     dirmatrix[0][0] = 0;

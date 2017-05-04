@@ -64,9 +64,8 @@ model {
                         include 'lex.lexc.c'
 
                         srcDirs 'src/main/c/foma/foma'
-
                         //include "**/*.cpp"
-                        //include 'debug.cc'
+                        include 'lexcread.c'
                     }
                     exportedHeaders {
                         srcDirs 'src/main/c/foma/gen', 'src/main/c/foma/foma'
