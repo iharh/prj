@@ -66,6 +66,7 @@ model {
                         srcDirs 'src/main/c/foma/foma'
                         //include "**/*.cpp"
                         include 'mem.c'
+                        include 'utf8.c'
                         include 'miminize.c'
                         include 'lexcread.c'
                     }
