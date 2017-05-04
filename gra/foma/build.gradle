@@ -66,6 +66,7 @@ model {
                         include 'regex.c'
                         include 'lex.lexc.c'
                         include 'lex.yy.c'
+                        include 'lex.cmatrix.c'
 
                         srcDirs 'src/main/c/foma/foma'
                         //include "**/*.cpp"
