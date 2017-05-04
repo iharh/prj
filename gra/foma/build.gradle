@@ -62,6 +62,7 @@ model {
                     source {
                         srcDirs 'src/main/c/foma/gen'
                         include 'lex.lexc.c'
+                        //include 'lex.yy.c'
 
                         srcDirs 'src/main/c/foma/foma'
                         //include "**/*.cpp"
@@ -74,6 +75,7 @@ model {
                         include 'structures.c'
                         include 'dynarray.c'
                         include 'constructions.c'
+                        include 'trie.c'
                         include 'rewrite.c'
                         include 'determinize.c'
                         include 'minimize.c'
