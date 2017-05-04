@@ -1,5 +1,5 @@
 /*   Foma: a finite-state toolkit and library.                                 */
-/*   Copyright © 2008-2015 Mans Hulden                                         */
+/*   Copyright c 2008-2015 Mans Hulden                                         */
 
 /*   This file is part of foma.                                                */
 
@@ -91,6 +91,8 @@ static void sigma_to_pairs(struct fsm *net);
 static INLINE int symbol_pair_to_single_symbol(int in, int out);
 static void generate_inverse(struct fsm *net);
 
+// !!! clb !!!
+FEXPORT
 struct fsm *fsm_minimize(struct fsm *net) {
     extern int g_minimal;
     extern int g_minimize_hopcroft;

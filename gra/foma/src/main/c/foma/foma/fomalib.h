@@ -206,7 +206,8 @@ FEXPORT char *fsm_get_library_version_string();
 FEXPORT struct fsm *fsm_determinize(struct fsm *net);
 FEXPORT struct fsm *fsm_epsilon_remove(struct fsm *net);
 FEXPORT struct fsm *fsm_find_ambiguous(struct fsm *net, int **extras);
-FEXPORT struct fsm *fsm_minimize(struct fsm *net);
+// !!! clb !!! FEXPORT
+extern struct fsm *fsm_minimize(struct fsm *net);
 FEXPORT struct fsm *fsm_coaccessible(struct fsm *net);
 FEXPORT struct fsm *fsm_topsort(struct fsm *net);
 FEXPORT void fsm_sort_arcs(struct fsm *net, int direction);
