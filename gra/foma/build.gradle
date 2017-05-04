@@ -71,6 +71,7 @@ model {
                         include 'io.c'
                         include 'structures.c'
                         include 'dynarray.c'
+                        include 'constructions.c'
                         include 'sigma.c'
                         include 'miminize.c'
                         include 'lexcread.c'
