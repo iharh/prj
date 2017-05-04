@@ -48,6 +48,8 @@ model {
                 cppCompiler.args '-std=c++0x', '-Wno-narrowing'
             }
             if (toolChain in VisualCpp) {
+                // #if defined (__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
+                cCompiler.define "__STDC_VERSION__=199901L"
                 cCompiler.define "YY_NO_UNISTD_H"
                 println 'toolchain is VisualCpp!'
             }
@@ -63,7 +65,7 @@ model {
                         srcDirs 'src/main/c/foma/gen'
                         include 'regex.c'
                         include 'lex.lexc.c'
-                        //include 'lex.yy.c'
+                        include 'lex.yy.c'
 
                         srcDirs 'src/main/c/foma/foma'
                         //include "**/*.cpp"
