@@ -331,3 +331,4 @@ INLINE char *xxstrdup(const char *s) {
 #define xxfree free
 #define xxcalloc calloc
 #define xxstrdup strdup
+#define xxrealloc realloc

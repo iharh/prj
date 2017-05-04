@@ -61,6 +61,7 @@ model {
                 c {
                     source {
                         srcDirs 'src/main/c/foma/gen'
+                        include 'regex.c'
                         include 'lex.lexc.c'
                         //include 'lex.yy.c'
 
@@ -82,6 +83,7 @@ model {
                         include 'coaccessible.c'
                         include 'topsort.c'
                         include 'extract.c'
+                        include 'reverse.c'
                         include 'sigma.c'
                         include 'miminize.c'
                         include 'lexcread.c'
