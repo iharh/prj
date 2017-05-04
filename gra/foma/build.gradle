@@ -1,7 +1,7 @@
 plugins {
     id 'base'
     id 'cpp'
-    id 'maven-publish'
+    //id 'maven-publish'
 }
 
 import org.gradle.internal.os.OperatingSystem
@@ -56,18 +56,18 @@ model {
  	cld2(NativeLibrarySpec) { // SharedLibraryBinarySpec
             targetPlatform 'x64'
             sources {
-                cpp {
+                c {
                     source {
-                        srcDirs 'src/main/c/foma/clb'
-                        include 'clb.cc'
+                        srcDirs 'src/main/c/foma/gen'
+                        include 'lex.lexc.c'
 
-                        srcDirs 'src/main/cpp/cld2/internal'
+                        srcDirs 'src/main/c/foma/foma'
 
                         //include "**/*.cpp"
-                        include 'debug.cc'
+                        //include 'debug.cc'
                     }
                     exportedHeaders {
-                        //srcDirs 'src/main/c/foma/public', 'src/main/c/foma/internal'
+                        srcDirs 'src/main/c/foma/gen', 'src/main/c/foma/foma'
                     }
                 }
             }
