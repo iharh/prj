@@ -68,6 +68,7 @@ model {
                         include 'mem.c'
                         include 'utf8.c'
                         include 'define.c'
+                        include 'flags.c'
                         include 'io.c'
                         include 'structures.c'
                         include 'dynarray.c'
