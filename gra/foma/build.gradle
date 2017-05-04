@@ -76,6 +76,7 @@ model {
                         include 'constructions.c'
                         include 'rewrite.c'
                         include 'determinize.c'
+                        include 'minimize.c'
                         include 'sigma.c'
                         include 'miminize.c'
                         include 'lexcread.c'
