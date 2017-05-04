@@ -79,6 +79,7 @@ model {
                         include 'minimize.c'
                         include 'coaccessible.c'
                         include 'topsort.c'
+                        include 'extract.c'
                         include 'sigma.c'
                         include 'miminize.c'
                         include 'lexcread.c'
