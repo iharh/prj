@@ -1,0 +1,83 @@
+plugins {
+    id 'base'
+    id 'cpp'
+    id 'maven-publish'
+}
+
+import org.gradle.internal.os.OperatingSystem
+
+ext {
+    getCurOS = {
+        return OperatingSystem.current().isWindows() ? 'windows' : 'linux'
+    }
+    curOS = getCurOS()
+}
+
+def getOSArtifactName(name) {
+    def osPref = OperatingSystem.current().isWindows() ? '' : 'lib'
+    def osSuf = OperatingSystem.current().isWindows() ? 'windows' : 'linux'
+    return "${osPref}${name}-${osSuf}"
+}
+
+model {
+    buildTypes {
+        release
+    }
+
+    toolChains {
+        visualCpp(VisualCpp) {
+            //installDir "${project.'vs.base'}"
+        }
+        gcc(Gcc)
+    }
+
+    platforms {
+        x64 {
+            architecture "x86_64"
+        }
+    }
+
+    binaries {
+        withType(SharedLibraryBinarySpec) { // all
+            cppCompiler.define "NDEBUG"
+            // Define toolchain-specific compiler and linker options
+            if (toolChain in Gcc) {
+                println 'toolchain is Gcc!'
+                // "-O2", "-fno-access-control"
+                cppCompiler.args '-std=c++0x', '-Wno-narrowing'
+            }
+            if (toolChain in VisualCpp) {
+                println 'toolchain is VisualCpp!'
+            }
+        }
+    }
+
+    components {
+ 	cld2(NativeLibrarySpec) { // SharedLibraryBinarySpec
+            targetPlatform 'x64'
+            sources {
+                cpp {
+                    source {
+                        srcDirs 'src/main/c/foma/clb'
+                        include 'clb.cc'
+
+                        srcDirs 'src/main/cpp/cld2/internal'
+
+                        //include "**/*.cpp"
+                        include 'debug.cc'
+                    }
+                    exportedHeaders {
+                        //srcDirs 'src/main/c/foma/public', 'src/main/c/foma/internal'
+                    }
+                }
+            }
+        }
+        all {
+            binaries.withType(StaticLibraryBinarySpec) {
+                buildable = false
+            }
+            binaries.withType(SharedLibraryBinarySpec) {
+            }
+        }
+    }
+}
