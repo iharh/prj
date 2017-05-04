@@ -1,5 +1,5 @@
 /*   Foma: a finite-state toolkit and library.                                 */
-/*   Copyright © 2008-2015 Mans Hulden                                         */
+/*   Copyright c 2008-2015 Mans Hulden                                         */
 
 /*   This file is part of foma.                                                */
 
@@ -21,11 +21,20 @@ extern "C" {
 #include <stdio.h>
 #include <inttypes.h>
 #include <string.h>
-#include "zlib.h"
+/*!!! clb !!! #include "zlib.h" */
 
 #define INLINE inline
 
-#define FEXPORT __attribute__((visibility("default")))
+/* !!! clb !!!
+define FEXPORT __attribute__((visibility("default")))
+*/
+#if defined(_MSC_VER)
+    #define FEXPORT extern "C" __declspec(dllexport)
+#elif defined(__GNUC__)
+    #define FEXPORT extern "C" __attribute__ ((visibility("default")))
+#else
+    #error Unsupported compiler
+#endif
 
 /* Library version */
 #define MAJOR_VERSION 0
@@ -167,7 +176,8 @@ struct rewrite_set {
     int rule_direction;    /* || \\ // \/ */
 };
 
-FEXPORT void fsm_clear_contexts(struct fsmcontexts *contexts);
+/*FEXPORT*/
+void fsm_clear_contexts(struct fsmcontexts *contexts);
 
 /** Linked list of sigma */
 /** number < IDENTITY is reserved for special symbols */
@@ -176,10 +186,11 @@ struct sigma {
     char *symbol;
     struct sigma *next;
 };
-
+/*
 #include "fomalibconf.h"
-
+*/
 /* Define functions */
+/*
 FEXPORT struct defined_networks *defined_networks_init(void);
 FEXPORT struct defined_functions *defined_functions_init(void);
 struct fsm *find_defined(struct defined_networks *def, char *string);
@@ -191,7 +202,7 @@ int remove_defined (struct defined_networks *def, char *string);
 /********************/
 /* Basic operations */
 /********************/
-
+/*
 FEXPORT char *fsm_get_library_version_string();
 
 FEXPORT struct fsm *fsm_determinize(struct fsm *net);
@@ -272,54 +283,55 @@ FEXPORT struct fsm *fsm_flatten(struct fsm *net, struct fsm *epsilon);
 FEXPORT struct fsm *fsm_unflatten(struct fsm *net, char *epsilon_sym, char *repeat_sym);   
 FEXPORT struct fsm *fsm_close_sigma(struct fsm *net, int mode);
 FEXPORT char *fsm_network_to_char(struct fsm *net);
-
+*/
 /* Remove those symbols from sigma that have the same distribution as IDENTITY */
+/*
 FEXPORT void fsm_compact(struct fsm *net);
-
 FEXPORT int flag_build(int ftype, char *fname, char *fvalue, int fftype, char *ffname, char *ffvalue);
-
+*/
 /* Eliminate flag diacritics and return equivalent FSM          */
 /* with name = NULL the function eliminates all flag diacritics */
+/*
 FEXPORT struct fsm *flag_eliminate(struct fsm *net, char *name);
-
+*/
 /* Enforce twosided flag diacritics */
-FEXPORT struct fsm *flag_twosided(struct fsm *net);
+//FEXPORT struct fsm *flag_twosided(struct fsm *net);
 
 /* Compile a rewrite rule */
-FEXPORT struct fsm *fsm_rewrite();
+//FEXPORT struct fsm *fsm_rewrite();
 
 /* Boolean tests */
-FEXPORT int fsm_isempty(struct fsm *net);
+/*FEXPORT int fsm_isempty(struct fsm *net);
 FEXPORT int fsm_isfunctional(struct fsm *net);
 FEXPORT int fsm_isunambiguous(struct fsm *net);
 FEXPORT int fsm_isidentity(struct fsm *net);
 FEXPORT int fsm_isuniversal(struct fsm *net);
 FEXPORT int fsm_issequential(struct fsm *net);
 FEXPORT int fsm_equivalent(struct fsm *net1, struct fsm *net2);
-
+*/
 /* Test if a symbol occurs in a FSM */
 /* side = M_UPPER (upper side) M_LOWER (lower side), M_UPPER+M_LOWER (both) */
-FEXPORT int fsm_symbol_occurs(struct fsm *net, char *symbol, int side);
+//FEXPORT int fsm_symbol_occurs(struct fsm *net, char *symbol, int side);
 
 /* Merges two alphabets destructively */
-FEXPORT void fsm_merge_sigma(struct fsm *net1, struct fsm *net2);
+//FEXPORT void fsm_merge_sigma(struct fsm *net1, struct fsm *net2);
 
 /* Copies an alphabet */
 
-FEXPORT struct sigma *sigma_copy(struct sigma *sigma);
+//FEXPORT struct sigma *sigma_copy(struct sigma *sigma);
 
 /* Create empty FSM */
-FEXPORT struct fsm *fsm_create(char *name);
-FEXPORT struct fsm_state *fsm_empty();
+//FEXPORT struct fsm *fsm_create(char *name);
+//FEXPORT struct fsm_state *fsm_empty();
 
 /* Frees alphabet */
-FEXPORT int fsm_sigma_destroy(struct sigma *sigma);
+//FEXPORT int fsm_sigma_destroy(struct sigma *sigma);
 
 /* Frees a FSM, associated data such as alphabet and confusion matrix */
-FEXPORT int fsm_destroy(struct fsm *net);
+//FEXPORT int fsm_destroy(struct fsm *net);
 
 /* IO functions */
-FEXPORT struct fsm *read_att(char *filename);
+/*FEXPORT struct fsm *read_att(char *filename);
 FEXPORT int net_print_att(struct fsm *net, FILE *outfile);
 FEXPORT struct fsm *fsm_read_prolog(char *filename);
 FEXPORT char *file_to_mem(char *name);
@@ -334,13 +346,13 @@ FEXPORT int save_defined(struct defined_networks *def, char *filename);
 FEXPORT int save_stack_att();
 FEXPORT int foma_write_prolog(struct fsm *net, char *filename);
 FEXPORT int foma_net_print(struct fsm *net, gzFile outfile);
-
+*/
 /* Lookups */
 
 /* Frees memory alloced by apply_init */
-FEXPORT void apply_clear(struct apply_handle *h);
+//FEXPORT void apply_clear(struct apply_handle *h);
 /* To be called before applying words */
-FEXPORT struct apply_handle *apply_init(struct fsm *net);
+/*FEXPORT struct apply_handle *apply_init(struct fsm *net);
 FEXPORT struct apply_med_handle *apply_med_init(struct fsm *net);
 FEXPORT void apply_med_clear(struct apply_med_handle *h);
 
@@ -361,8 +373,9 @@ FEXPORT char *apply_words(struct apply_handle *h);
 FEXPORT char *apply_random_lower(struct apply_handle *h);
 FEXPORT char *apply_random_upper(struct apply_handle *h);
 FEXPORT char *apply_random_words(struct apply_handle *h);
+*/
 /* Reset the iterator to start anew with enumerating functions */
-FEXPORT void apply_reset_enumerator(struct apply_handle *h);
+/*FEXPORT void apply_reset_enumerator(struct apply_handle *h);
 FEXPORT void apply_index(struct apply_handle *h, int inout, int densitycutoff, int mem_limit, int flags_only);
 FEXPORT void apply_set_show_flags(struct apply_handle *h, int value);
 FEXPORT void apply_set_obey_flags(struct apply_handle *h, int value);
@@ -371,9 +384,9 @@ FEXPORT void apply_set_print_pairs(struct apply_handle *h, int value);
 FEXPORT void apply_set_space_symbol(struct apply_handle *h, char *space);
 FEXPORT void apply_set_separator(struct apply_handle *h, char *symbol);
 FEXPORT void apply_set_epsilon(struct apply_handle *h, char *symbol);
-    
+*/
 /* Minimum edit distance & spelling correction */
-FEXPORT void fsm_create_letter_lookup(struct apply_med_handle *medh, struct fsm *net);
+/*FEXPORT void fsm_create_letter_lookup(struct apply_med_handle *medh, struct fsm *net);
 FEXPORT void cmatrix_init(struct fsm *net);
 FEXPORT void cmatrix_default_substitute(struct fsm *net, int cost);
 FEXPORT void cmatrix_default_insert(struct fsm *net, int cost);
@@ -381,15 +394,16 @@ FEXPORT void cmatrix_default_delete(struct fsm *net, int cost);
 FEXPORT void cmatrix_set_cost(struct fsm *net, char *in, char *out, int cost);
 FEXPORT void cmatrix_print(struct fsm *net);
 FEXPORT void cmatrix_print_att(struct fsm *net, FILE *outfile);
-
+*/
 /* Lexc */
+/*
   FEXPORT struct fsm *fsm_lexc_parse_file(char *myfile, int verbose);
   FEXPORT struct fsm *fsm_lexc_parse_string(char *mystring, int verbose);
-
+*/
 /*************************/
 /* Construction routines */
 /*************************/
-
+/*
 FEXPORT struct fsm_construct_handle *fsm_construct_init(char *name);
 FEXPORT void fsm_construct_set_final(struct fsm_construct_handle *handle, int state_no);
 FEXPORT void fsm_construct_set_initial(struct fsm_construct_handle *handle, int state_no);
@@ -399,7 +413,7 @@ FEXPORT int fsm_construct_add_symbol(struct fsm_construct_handle *handle, char *
 FEXPORT int fsm_construct_check_symbol(struct fsm_construct_handle *handle, char *symbol);
 FEXPORT void fsm_construct_copy_sigma(struct fsm_construct_handle *handle, struct sigma *sigma);
 FEXPORT struct fsm *fsm_construct_done(struct fsm_construct_handle *handle);
-
+*/
 
 /******************/
 /* String hashing */
@@ -447,13 +461,13 @@ struct fsm_trie_handle {
     unsigned int statesize;
     struct sh_handle *sh_hash;
 };
-
+/*
 FEXPORT struct fsm_trie_handle *fsm_trie_init();
 FEXPORT struct fsm *fsm_trie_done(struct fsm_trie_handle *th);
 FEXPORT void fsm_trie_add_word(struct fsm_trie_handle *th, char *word);
 FEXPORT void fsm_trie_end_word(struct fsm_trie_handle *th);
 FEXPORT void fsm_trie_symbol(struct fsm_trie_handle *th, char *insym, char *outsym);
-
+*/
 /***********************/
 /* Extraction routines */
 /***********************/
@@ -474,14 +488,16 @@ struct fsm_read_handle {
     unsigned char *lookuptable;
     _Bool has_unknowns;
 };
-
+/*
 FEXPORT struct fsm_read_handle *fsm_read_init(struct fsm *net);
 FEXPORT void fsm_read_reset(struct fsm_read_handle *handle);
 FEXPORT int fsm_read_is_final(struct fsm_read_handle *h, int state);
 FEXPORT int fsm_read_is_initial(struct fsm_read_handle *h, int state);
 FEXPORT int fsm_get_num_states(struct fsm_read_handle *handle);
 FEXPORT int fsm_get_has_unknowns(struct fsm_read_handle *handle);
+*/
 /* Move iterator one arc forward. Returns 0 on no more arcs */
+/*
 FEXPORT int fsm_get_next_arc(struct fsm_read_handle *handle);
 FEXPORT int fsm_get_arc_source(struct fsm_read_handle *handle);
 FEXPORT int fsm_get_arc_target(struct fsm_read_handle *handle);
@@ -490,15 +506,16 @@ FEXPORT char *fsm_get_arc_out(struct fsm_read_handle *handle);
 FEXPORT int fsm_get_arc_num_in(struct fsm_read_handle *handle);
 FEXPORT int fsm_get_arc_num_out(struct fsm_read_handle *handle);
 FEXPORT int fsm_get_symbol_number(struct fsm_read_handle *handle, char *symbol);
-
+*/
 /* Iterates over initial and final states, returns -1 on end */
+/*
 FEXPORT int fsm_get_next_initial(struct fsm_read_handle *handle);
 FEXPORT int fsm_get_next_final(struct fsm_read_handle *handle);
 FEXPORT int fsm_get_next_state(struct fsm_read_handle *handle);
 FEXPORT int fsm_get_next_state_arc(struct fsm_read_handle *handle);
-
+*/
 /* Frees memory associated with a read handle */
-FEXPORT void fsm_read_done(struct fsm_read_handle *handle);
+//FEXPORT void fsm_read_done(struct fsm_read_handle *handle);
 
 #ifdef  __cplusplus
 }

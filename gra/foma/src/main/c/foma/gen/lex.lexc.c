@@ -128,7 +128,8 @@
 
 /* C99 systems have <inttypes.h>. Non-C99 systems may or may not. */
 
-#if defined (__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
+// !!! clb !!! #if defined (__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
+#if defined(_MSC_VER)
 
 /* C99 says to define __STDC_LIMIT_MACROS before including stdint.h,
  * if you want the limit (max/min) macros for int types. 
@@ -1368,9 +1369,9 @@ static int yy_more_len = 0;
 #define YY_MORE_ADJ (yy_more_len)
 #define YY_RESTORE_YY_MORE_OFFSET
 char *lexctext;
-#line 1 "lexc.l"
+//#line 1 "lexc.l"
 /*   Foma: a finite-state toolkit and library.                                 */
-/*   Copyright © 2008-2015 Mans Hulden                                         */
+/*   Copyright c 2008-2015 Mans Hulden                                         */
 /*   This file is part of foma.                                                */
 /*   Licensed under the Apache License, Version 2.0 (the "License");           */
 /*   you may not use this file except in compliance with the License.          */
@@ -1383,7 +1384,7 @@ char *lexctext;
 /*   limitations under the License.                                            */
 #define YY_NO_INPUT 1
 
-#line 25 "lexc.l"
+//#line 25 "lexc.l"
 #include <stdio.h>
 #include "foma.h"
 #include "lexc.h"
@@ -1437,7 +1438,7 @@ void lexc_trim(char *s) {
 }
 
 #line 1439 "lex.lexc.c"
-#line 80 "lexc.l"
+//#line 80 "lexc.l"
  /* Nonreserved = anything except ; < > ! or space */
 
 #line 1443 "lex.lexc.c"
@@ -1673,7 +1674,7 @@ YY_DECL
 		}
 
 	{
-#line 95 "lexc.l"
+//#line 95 "lexc.l"
 
 
  /* Files begin with one of these three identifiers */
@@ -1765,14 +1766,14 @@ do_action:	/* This label is used only to access EOF actions. */
 	{ /* beginning of action switch */
 case 1:
 YY_RULE_SETUP
-#line 98 "lexc.l"
+//#line 98 "lexc.l"
 {
   BEGIN(MCS);
 }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 102 "lexc.l"
+//#line 102 "lexc.l"
 {
     BEGIN(DEF);
 }
@@ -1782,20 +1783,20 @@ YY_RULE_SETUP
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 108 "lexc.l"
+//#line 108 "lexc.l"
 {
   yymore();
 }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 112 "lexc.l"
+//#line 112 "lexc.l"
 { }
 	YY_BREAK
 case 5:
 /* rule 5 can match eol */
 YY_RULE_SETUP
-#line 113 "lexc.l"
+//#line 113 "lexc.l"
 { lexclineno++; lexccolumn = 1;}
 	YY_BREAK
 /* Multichar definitions */
@@ -1803,7 +1804,7 @@ YY_RULE_SETUP
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 117 "lexc.l"
+//#line 117 "lexc.l"
 {
   lexc_add_mc(lexctext);
 }
@@ -1811,7 +1812,7 @@ YY_RULE_SETUP
 case 7:
 /* rule 7 can match eol */
 YY_RULE_SETUP
-#line 121 "lexc.l"
+//#line 121 "lexc.l"
 {
   lexc_trim(lexctext+8);
   if (lexentries != -1) {
@@ -1827,7 +1828,7 @@ YY_RULE_SETUP
 /* Grab info string */
 case 8:
 YY_RULE_SETUP
-#line 134 "lexc.l"
+//#line 134 "lexc.l"
 {
   BEGIN(LEXENTRIES);
 }
@@ -1836,7 +1837,7 @@ YY_RULE_SETUP
 case 9:
 /* rule 9 can match eol */
 YY_RULE_SETUP
-#line 138 "lexc.l"
+//#line 138 "lexc.l"
 {
     lexc_trim(lexctext);
     lexc_set_current_lexicon(lexctext, TARGET_LEXICON);
@@ -1854,7 +1855,7 @@ YY_RULE_SETUP
 case 10:
 /* rule 10 can match eol */
 YY_RULE_SETUP
-#line 153 "lexc.l"
+//#line 153 "lexc.l"
 {
       lexc_set_current_word(lexctext);
 }
@@ -1862,7 +1863,7 @@ YY_RULE_SETUP
 case 11:
 /* rule 11 can match eol */
 YY_RULE_SETUP
-#line 158 "lexc.l"
+//#line 158 "lexc.l"
 {
     //printf("[%s]\n", lexctext);
     lexc_trim(lexctext);
@@ -1879,7 +1880,7 @@ YY_RULE_SETUP
 /* A REGEX entry begins and ends with a < , > */
 case 12:
 YY_RULE_SETUP
-#line 172 "lexc.l"
+//#line 172 "lexc.l"
 {
   BEGIN(REGEX);
 }
@@ -1887,7 +1888,7 @@ YY_RULE_SETUP
 /* \076 = > */
 case 13:
 YY_RULE_SETUP
-#line 176 "lexc.l"
+//#line 176 "lexc.l"
 {
     *(lexctext+lexcleng-1) = ';';
     if (my_yyparse(lexctext, lexclineno, g_defines, NULL) == 0) {
@@ -1898,7 +1899,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 184 "lexc.l"
+//#line 184 "lexc.l"
 {
   BEGIN(REGEXB);
   yymore();
@@ -1907,14 +1908,14 @@ YY_RULE_SETUP
 case 15:
 /* rule 15 can match eol */
 YY_RULE_SETUP
-#line 188 "lexc.l"
+//#line 188 "lexc.l"
 {
   yymore();
 }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 191 "lexc.l"
+//#line 191 "lexc.l"
 {
   BEGIN(REGEX);
   yymore();
@@ -1922,7 +1923,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 195 "lexc.l"
+//#line 195 "lexc.l"
 {
   BEGIN(REGEXQ);
   yymore();
@@ -1931,14 +1932,14 @@ YY_RULE_SETUP
 case 18:
 /* rule 18 can match eol */
 YY_RULE_SETUP
-#line 199 "lexc.l"
+//#line 199 "lexc.l"
 {
   yymore();
 }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 202 "lexc.l"
+//#line 202 "lexc.l"
 {
   BEGIN(REGEX);
   yymore();
@@ -1947,7 +1948,7 @@ YY_RULE_SETUP
 case 20:
 /* rule 20 can match eol */
 YY_RULE_SETUP
-#line 206 "lexc.l"
+//#line 206 "lexc.l"
 {
     lexc_trim(lexctext);
     tempstr = xxstrdup(lexctext);
@@ -1957,7 +1958,7 @@ YY_RULE_SETUP
 /* \073 = ; */
 case 21:
 YY_RULE_SETUP
-#line 212 "lexc.l"
+//#line 212 "lexc.l"
 {
     if (my_yyparse(lexctext, lexclineno, g_defines, NULL) == 0) {
       add_defined(g_defines, fsm_topsort(fsm_minimize(current_parse)),tempstr);
@@ -1969,14 +1970,14 @@ YY_RULE_SETUP
 case 22:
 /* rule 22 can match eol */
 YY_RULE_SETUP
-#line 219 "lexc.l"
+//#line 219 "lexc.l"
 {
   yymore();
 }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 222 "lexc.l"
+//#line 222 "lexc.l"
 {
   BEGIN(DEFREGEXB);
   yymore();
@@ -1985,14 +1986,14 @@ YY_RULE_SETUP
 case 24:
 /* rule 24 can match eol */
 YY_RULE_SETUP
-#line 226 "lexc.l"
+//#line 226 "lexc.l"
 {
   yymore();
 }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 229 "lexc.l"
+//#line 229 "lexc.l"
 {
   BEGIN(DEFREGEX);
   yymore();
@@ -2000,7 +2001,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 233 "lexc.l"
+//#line 233 "lexc.l"
 {
   BEGIN(DEFREGEXQ);
   yymore();
@@ -2009,14 +2010,14 @@ YY_RULE_SETUP
 case 27:
 /* rule 27 can match eol */
 YY_RULE_SETUP
-#line 237 "lexc.l"
+//#line 237 "lexc.l"
 {
   yymore();
 }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 240 "lexc.l"
+//#line 240 "lexc.l"
 {
   BEGIN(DEFREGEX);
   yymore();
@@ -2025,17 +2026,17 @@ YY_RULE_SETUP
 case 29:
 /* rule 29 can match eol */
 YY_RULE_SETUP
-#line 244 "lexc.l"
+//#line 244 "lexc.l"
 {  /* printf ("Comment: [%s]\n",lexctext); */  }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 246 "lexc.l"
+//#line 246 "lexc.l"
 { printf("\n***Syntax error on line %i column %i at '%s'\n",lexclineno,lexccolumn,lexctext); return 1;}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 247 "lexc.l"
+//#line 247 "lexc.l"
 ECHO;
 	YY_BREAK
 #line 2041 "lex.lexc.c"
@@ -2988,4 +2989,4 @@ void lexcfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 247 "lexc.l"
+//#line 247 "lexc.l"

@@ -1,6 +1,7 @@
 plugins {
     id 'base'
-    id 'cpp'
+    //id 'cpp'
+    id 'c'
     //id 'maven-publish'
 }
 
@@ -53,7 +54,7 @@ model {
     }
 
     components {
- 	cld2(NativeLibrarySpec) { // SharedLibraryBinarySpec
+ 	foma(NativeLibrarySpec) { // SharedLibraryBinarySpec
             targetPlatform 'x64'
             sources {
                 c {
