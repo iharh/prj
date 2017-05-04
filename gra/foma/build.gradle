@@ -91,6 +91,7 @@ model {
                         include 'sigma.c'
                         include 'miminize.c'
                         include 'lexcread.c'
+                        include 'spelling.c'
                     }
                     exportedHeaders {
                         srcDirs 'src/main/c/foma/gen', 'src/main/c/foma/foma'
