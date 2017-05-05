@@ -97,6 +97,8 @@ model {
                         include 'miminize.c'
                         include 'lexcread.c'
                         include 'spelling.c'
+                        //
+                        include 'apply.c'
                     }
                     exportedHeaders {
                         srcDirs 'src/main/c/foma/foma' //, 'src/main/c/foma/gen'
