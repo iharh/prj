@@ -27,7 +27,11 @@ extern "C" {
 
 // !!!clb!!!
 #if defined(_MSC_VER)
-    #define FEXPORT __declspec(dllexport)
+#   ifdef DLL_BLD
+#       define FEXPORT __declspec(dllexport)
+#   else
+#       define FEXPORT __declspec(dllimport)
+#   endif
 #elif defined(__GNUC__)
     #define FEXPORT __attribute__ ((visibility("default")))
 #else
