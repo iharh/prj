@@ -20,7 +20,7 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include "foma.h"
-// !!! clb !!! include "zlib.h"
+#include "zlib.h"
 
 #define TYPE_TRANSITION 1
 #define TYPE_SYMBOL 2
@@ -56,12 +56,10 @@ struct io_buf_handle *io_init();
 void io_free(struct io_buf_handle *iobh);
 static int io_gets(struct io_buf_handle *iobh, char *target);
 static size_t io_get_gz_file_size(char *filename);
-// !!! clb !!! static size_t io_get_file_size(char *filename);
+static size_t io_get_file_size(char *filename);
 static size_t io_get_regular_file_size(char *filename);
-/* !!! clb !!!
 size_t io_gz_file_to_mem (struct io_buf_handle *iobh, char *filename);
-int foma_net_print(struct fsm *net, gzFile outfile);
-*/
+// !!! clb !!! int foma_net_print(struct fsm *net, gzFile outfile);
 struct fsm *io_net_read(struct io_buf_handle *iobh, char **net_name);
 static INLINE int explode_line (char *buf, int *values);
 
@@ -520,7 +518,6 @@ int fsm_write_binary_file(struct fsm *net, char *filename) {
     gzclose(outfile);
     return(0);
 }
-*/
 
 struct fsm *fsm_read_binary_file_multiple(fsm_read_binary_handle fsrh) {
     char *net_name;
@@ -537,7 +534,6 @@ struct fsm *fsm_read_binary_file_multiple(fsm_read_binary_handle fsrh) {
     }
 }
 
-/* !!! clb !!!
 fsm_read_binary_handle fsm_read_binary_file_multiple_init(char *filename) {
 
     struct io_buf_handle *iobh;
@@ -551,6 +547,7 @@ fsm_read_binary_handle fsm_read_binary_file_multiple_init(char *filename) {
     fsm_read_handle = (void *) iobh;
     return(fsm_read_handle);
 }
+*/
 
 struct fsm *fsm_read_binary_file(char *filename) {
     char *net_name;
@@ -566,6 +563,7 @@ struct fsm *fsm_read_binary_file(char *filename) {
     return(net);
 }
 
+/* !!! clb !!!
 int save_defined(struct defined_networks *def, char *filename) {
     struct defined_networks *d;
     gzFile outfile;
@@ -957,7 +955,6 @@ static size_t io_get_regular_file_size(char *filename) {
     return(numbytes);
 }
 
-/* !!! clb !!!
 static size_t io_get_file_size(char *filename) {
     gzFile FILE;
     size_t size;
@@ -992,7 +989,6 @@ size_t io_gz_file_to_mem(struct io_buf_handle *iobh, char *filename) {
     iobh->io_buf_ptr = iobh->io_buf;
     return(size);
 }
-*/
 
 char *file_to_mem(char *name) {
     FILE    *infile;

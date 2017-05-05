@@ -1,23 +1,6 @@
 plugins {
     id 'base'
-    //id 'cpp'
     id 'c'
-    //id 'maven-publish'
-}
-
-import org.gradle.internal.os.OperatingSystem
-
-ext {
-    getCurOS = {
-        return OperatingSystem.current().isWindows() ? 'windows' : 'linux'
-    }
-    curOS = getCurOS()
-}
-
-def getOSArtifactName(name) {
-    def osPref = OperatingSystem.current().isWindows() ? '' : 'lib'
-    def osSuf = OperatingSystem.current().isWindows() ? 'windows' : 'linux'
-    return "${osPref}${name}-${osSuf}"
 }
 
 model {
@@ -56,6 +39,27 @@ model {
         }
     }
 
+    repositories {
+        libs(PrebuiltLibraries) {
+            zlib_win {
+                def libName = "zlib"
+                def userHome = System.getProperty("user.home")
+                // conan install zlib/1.2.11@lasote/stable -b -s arch="x86_64" -s build_type="Release" -s compiler="Visual Studio" -s compiler.runtime="MT" -s compiler.version="10" -s os="Windows" -o shared="True" 
+                // shared="False"
+                def packageHash = 'deeef9847bd36121da67dea498a190a923f6c7a0'
+                def baseDir = "${userHome}/.conan/data/${libName}/1.2.11/lasote/stable/package/${packageHash}"
+                headers.srcDir "${baseDir}/include"
+                //binaries.withType(StaticLibraryBinary) {
+                //    staticLibraryFile = file("${baseDir}/lib/${libName}static.lib")
+                //}
+                binaries.withType(SharedLibraryBinary) {
+                    sharedLibraryFile = file("${baseDir}/bin/${libName}.dll")
+                    sharedLibraryLinkFile = file("${baseDir}/lib/${libName}.lib")
+                }
+            }
+        }
+    }
+
     components {
  	foma(NativeLibrarySpec) { // SharedLibraryBinarySpec
             targetPlatform 'x64'
@@ -69,7 +73,7 @@ model {
                         include 'lex.cmatrix.c'
 
                         srcDirs 'src/main/c/foma/foma'
-                        //include "**/*.cpp"
+                        //include "**/*.c"
                         include 'mem.c'
                         include 'utf8.c'
                         include 'stringhash.c'
@@ -94,8 +98,9 @@ model {
                         include 'spelling.c'
                     }
                     exportedHeaders {
-                        srcDirs 'src/main/c/foma/gen', 'src/main/c/foma/foma'
+                        srcDirs 'src/main/c/foma/foma' //, 'src/main/c/foma/gen'
                     }
+                    lib library: 'zlib_win' //, linkage: 'static'
                 }
             }
         }
@@ -104,6 +109,10 @@ model {
                 buildable = false
             }
             binaries.withType(SharedLibraryBinarySpec) {
+                //if (toolChain in VisualCpp) {
+                    //cCompiler.args '/MT'
+                    //linker.args '/MT'
+                //} 
             }
         }
     }
@@ -114,4 +123,3 @@ model {
 //apply.o // called from iface.c
 //rewrite.o lexcread.o topsort.o flags.o minimize.o reverse.o extract.o sigma.o io.o structures.o constructions.o coaccessible.o utf8.o spelling.o dynarray.o mem.o stringhash.o trie.o
 //lex.lexc.o lex.yy.o lex.cmatrix.o regex.o
-
