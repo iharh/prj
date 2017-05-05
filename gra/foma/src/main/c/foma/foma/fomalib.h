@@ -21,14 +21,11 @@ extern "C" {
 #include <stdio.h>
 #include <inttypes.h>
 #include <string.h>
-/*!!! clb !!! #include "zlib.h" */
+#include "zlib.h"
 
 #define INLINE inline
 
-/* !!! clb !!!
-define FEXPORT __attribute__((visibility("default")))
-extern "C" does not compile - dislike ??? string ???
-*/
+// !!!clb!!!
 #if defined(_MSC_VER)
     #define FEXPORT __declspec(dllexport)
 #elif defined(__GNUC__)
@@ -206,8 +203,7 @@ FEXPORT char *fsm_get_library_version_string();
 FEXPORT struct fsm *fsm_determinize(struct fsm *net);
 FEXPORT struct fsm *fsm_epsilon_remove(struct fsm *net);
 FEXPORT struct fsm *fsm_find_ambiguous(struct fsm *net, int **extras);
-// !!! clb !!! FEXPORT
-extern struct fsm *fsm_minimize(struct fsm *net);
+FEXPORT struct fsm *fsm_minimize(struct fsm *net);
 FEXPORT struct fsm *fsm_coaccessible(struct fsm *net);
 FEXPORT struct fsm *fsm_topsort(struct fsm *net);
 FEXPORT void fsm_sort_arcs(struct fsm *net, int direction);
@@ -341,7 +337,7 @@ FEXPORT int load_defined(struct defined_networks *def, char *filename);
 FEXPORT int save_defined(struct defined_networks *def, char *filename);
 FEXPORT int save_stack_att();
 FEXPORT int foma_write_prolog(struct fsm *net, char *filename);
-// !!! clb !!! FEXPORT int foma_net_print(struct fsm *net, gzFile outfile);
+FEXPORT int foma_net_print(struct fsm *net, gzFile outfile);
 
 /* Lookups */
 

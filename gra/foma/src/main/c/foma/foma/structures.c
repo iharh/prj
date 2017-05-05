@@ -18,7 +18,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-// !!! clb !!! include <sys/time.h>
+// !!!clb!!! include <sys/time.h>
 #include "foma.h"
 
 static struct defined_quantifiers *quantifiers;
@@ -902,4 +902,3 @@ struct fsm *fsm_logical_precedence(char *string1, char *string2) {
 struct fsm *fsm_logical_eq(char *string1, char *string2) {
   return(fsm_concat(fsm_universal(),fsm_concat(fsm_ignore(fsm_union(fsm_concat(fsm_symbol(string1),fsm_symbol(string2)),fsm_concat(fsm_symbol(string2),fsm_symbol(string1))),union_quantifiers(),OP_IGNORE_ALL),fsm_concat(fsm_universal(),fsm_concat(fsm_ignore(fsm_union(fsm_concat(fsm_symbol(string1),fsm_symbol(string2)),fsm_concat(fsm_symbol(string2),fsm_symbol(string1))),union_quantifiers(),OP_IGNORE_ALL),fsm_universal())))));
 }
-

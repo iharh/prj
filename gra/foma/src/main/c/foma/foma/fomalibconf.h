@@ -296,39 +296,10 @@ char *trim(char *string);
 void strip_newline(char *s);
 char *streqrep(char *s, char *oldstring, char *newstring);
 char *xxstrndup(const char *s, size_t n);
-/* !!! clb !!!
-char *xxstrdup(const char *s);
+/*!!!clb!!!*/ FEXPORT char *xxstrdup(const char *s);
 FEXPORT void *xxmalloc(size_t size);
-void *xxcalloc(size_t nmemb, size_t size);
-void *xxrealloc(void *ptr, size_t size);
-void xxfree(void *ptr);
-*/
+/*!!!clb!!!*/ FEXPORT void *xxcalloc(size_t nmemb, size_t size);
+/*!!!clb!!!*/ FEXPORT void *xxrealloc(void *ptr, size_t size);
+/*!!!clb!!!*/ FEXPORT void xxfree(void *ptr);
 int next_power_of_two(int v);
 unsigned int round_up_to_power_of_two(unsigned int v);
-
-/* !!! clb !!!
-INLINE void *xxmalloc(size_t size) {
-    return(malloc(size));
-}
-
-INLINE void xxfree(void *ptr) {
-    free(ptr);
-}
-
-void *xxrealloc(void *ptr, size_t size) {
-    return(realloc(ptr, size));
-}
-
-INLINE void *xxcalloc(size_t nmemb, size_t size) {
-    return(calloc(nmemb,size));
-}
-
-INLINE char *xxstrdup(const char *s) {
-    return(strdup(s));
-}
-*/
-#define xxmalloc malloc
-#define xxfree free
-#define xxcalloc calloc
-#define xxstrdup strdup
-#define xxrealloc realloc

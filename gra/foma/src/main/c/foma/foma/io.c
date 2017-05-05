@@ -59,7 +59,7 @@ static size_t io_get_gz_file_size(char *filename);
 static size_t io_get_file_size(char *filename);
 static size_t io_get_regular_file_size(char *filename);
 size_t io_gz_file_to_mem (struct io_buf_handle *iobh, char *filename);
-// !!! clb !!! int foma_net_print(struct fsm *net, gzFile outfile);
+int foma_net_print(struct fsm *net, gzFile outfile);
 struct fsm *io_net_read(struct io_buf_handle *iobh, char **net_name);
 static INLINE int explode_line (char *buf, int *values);
 
@@ -508,7 +508,7 @@ struct fsm *fsm_read_text_file(char *filename) {
     xxfree(text);
     return(fsm_trie_done(th));
 }
-/* !!! clb !!!
+
 int fsm_write_binary_file(struct fsm *net, char *filename) {
     gzFile outfile;
     if ((outfile = gzopen(filename,"wb")) == NULL) {
@@ -547,7 +547,6 @@ fsm_read_binary_handle fsm_read_binary_file_multiple_init(char *filename) {
     fsm_read_handle = (void *) iobh;
     return(fsm_read_handle);
 }
-*/
 
 struct fsm *fsm_read_binary_file(char *filename) {
     char *net_name;
@@ -563,7 +562,6 @@ struct fsm *fsm_read_binary_file(char *filename) {
     return(net);
 }
 
-/* !!! clb !!!
 int save_defined(struct defined_networks *def, char *filename) {
     struct defined_networks *d;
     gzFile outfile;
@@ -602,7 +600,6 @@ int load_defined(struct defined_networks *def, char *filename) {
     io_free(iobh);
     return(1);
 }
-*/
 
 static INLINE int explode_line(char *buf, int *values) {
     int i, j, items;
@@ -837,7 +834,6 @@ static int io_gets(struct io_buf_handle *iobh, char *target) {
     return(i);
 }
 
-/* !!! clb !!!
 int foma_net_print(struct fsm *net, gzFile outfile) {
     struct sigma *sigma;
     struct fsm_state *fsm;
@@ -897,7 +893,6 @@ int foma_net_print(struct fsm *net, gzFile outfile) {
     gzprintf(outfile, "%s","##end##\n");
     return(1);
 }
-*/
 
 int net_print_att(struct fsm *net, FILE *outfile) {
     struct fsm_state *fsm;
