@@ -32,11 +32,11 @@ extern "C" {
 
 /* Misc */
 char *xxstrndup(const char *s, size_t n);
-char *xxstrdup(const char *s);
+FEXPORT char *xxstrdup(const char *s);
 FEXPORT void *xxmalloc(size_t size);
 void *xxcalloc(size_t nmemb, size_t size);
 void *xxrealloc(void *ptr, size_t size);
-void xxfree(void *ptr);
+FEXPORT void xxfree(void *ptr);
 
 #ifdef  __cplusplus
 }

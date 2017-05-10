@@ -1,9 +1,5 @@
 //include "foma.h"
 
-#define xxmalloc malloc
-#define xxfree free
-#define xxstrdup strdup
-
 #define NO  0
 
 typedef void *fsm_read_binary_handle;
