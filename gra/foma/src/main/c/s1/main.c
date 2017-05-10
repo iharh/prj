@@ -958,6 +958,41 @@ my_apply_init(struct fsm *net) {
 }
 
 void
+my_apply_set_print_space(struct apply_handle *h, int value) {
+    h->print_space = value;
+    h->space_symbol = xxstrdup(" ");
+}
+
+void
+my_apply_set_print_pairs(struct apply_handle *h, int value) {
+    h->print_pairs = value;
+}
+
+void
+my_apply_set_show_flags(struct apply_handle *h, int value) {
+    h->show_flags = value;
+}
+
+void
+my_apply_set_obey_flags(struct apply_handle *h, int value) {
+    h->obey_flags = value;
+}
+
+void
+my_iface_apply_set_params(struct apply_handle *h) {
+    // !!!clb!!! was global
+    int g_print_space = 0; 
+    int g_print_pairs = 0; 
+    int g_show_flags = 0; 
+    int g_obey_flags = 1; 
+
+    my_apply_set_print_space(h, g_print_space);
+    my_apply_set_print_pairs(h, g_print_pairs);
+    my_apply_set_show_flags(h, g_show_flags);
+    my_apply_set_obey_flags(h, g_obey_flags);
+}
+
+void
 my_iface_apply_up(char *word, struct fsm *fsm) {
     int i;
     char *result;
@@ -969,9 +1004,9 @@ my_iface_apply_up(char *word, struct fsm *fsm) {
     //	se->ah = apply_init(se->fsm);
     //}
     ah = my_apply_init(fsm);
-/*
-    iface_apply_set_params(ah);
-    result = apply_up(ah, word);
+
+    my_iface_apply_set_params(ah);
+/*    result = apply_up(ah, word);
 
     if (result == NULL) {
         printf("???\n");
