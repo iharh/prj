@@ -117,6 +117,19 @@ model {
                 //} 
             }
         }
+ 	s1(NativeExecutableSpec) { // SharedLibraryBinarySpec
+            targetPlatform 'x64'
+            sources {
+                c {
+                    source {
+                        srcDirs 'src/main/c/s1'
+                        include 'main.c'
+                    }
+                    library: "foma"
+                    //lib library: 'zlib_win' //, linkage: 'static'
+                }
+            }
+        }
     }
 }
 
