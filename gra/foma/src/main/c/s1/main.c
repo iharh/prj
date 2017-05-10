@@ -1974,6 +1974,7 @@ main(void) {
     printf("start\n");
 
     p_fsm = my_iface_load_stack("morphind");
+    my_iface_apply_up("kirim", p_fsm);
     my_fsm_destroy(p_fsm);
 
     printf("finish\n");
