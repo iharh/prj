@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "foma.h"
+#include "smallrt.h"
 
 struct my_test_struct {
     char *p1;
