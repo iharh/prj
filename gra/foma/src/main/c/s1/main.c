@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
+#include <limits.h>
 #include <time.h>
 
 #include "smallrt.h"
@@ -124,7 +126,7 @@ struct apply_handle {
     int outstringtop;
     int iterate_old;
     int iterator;
-    // !!!clb!!! uint8_t *flagstates;
+    uint8_t *flagstates;
     char *outstring;
     char *instring;
     struct sigs {
@@ -595,6 +597,13 @@ my_iface_load_stack(char *filename) {
 #define DEFAULT_OUTSTRING_SIZE 4096
 #define DEFAULT_STACK_SIZE 128
 
+#define BITMASK(b) (1 << ((b) & 7))
+#define BITSLOT(b) ((b) >> 3)
+#define BITSET(a,b) ((a)[BITSLOT(b)] |= BITMASK(b))
+#define BITCLEAR(a,b) ((a)[BITSLOT(b)] &= ~BITMASK(b))
+#define BITTEST(a,b) ((a)[BITSLOT(b)] & BITMASK(b))
+#define BITNSLOTS(nb) ((nb + CHAR_BIT - 1) / CHAR_BIT)
+
 void
 my_apply_create_statemap(struct apply_handle *h, struct fsm *net) {
     int i;
@@ -741,6 +750,32 @@ my_flag_get_type(char *string) {
     return 0;
 }
 
+char *
+my_flag_get_value(char *string) {
+    int i, first, start, end, len;
+    first = start = end = 0;
+    len = strlen(string);
+
+    for (i=0; i < len; i += (my_utf8skip(string+i) + 1)) {
+	if (*(string+i) == '.' && first == 0) {
+	    first = i+1;
+	    continue;
+	}
+	if (*(string+i) == '@' && start != 0) {
+	    end = i;
+	    break;
+	}
+	if (*(string+i) == '.' && first != 0) {
+	    start = i+1;
+	    continue;
+	}
+    }
+    if (start > 0 && end > 0) {
+	return(xxstrndup(string+start,end-start));
+    }
+    return NULL;
+}
+
 void
 my_apply_add_flag(struct apply_handle *h, char *name) {
     struct flag_list *flist, *flist_prev;
@@ -760,6 +795,68 @@ my_apply_add_flag(struct apply_handle *h, char *name) {
     flist->neg = 0;
     flist->next = NULL;
     return;
+}
+
+void
+my_apply_mark_flagstates(struct apply_handle *h) {
+    int i;
+    struct fsm_state *fsm;
+
+    /* Create bitarray with those states that have a flag symbol on an arc */
+    /* This is needed to decide whether we can perform a binary search.    */
+
+    if (!h->has_flags || h->flag_lookup == NULL) {
+	return;
+    }
+    if (h->flagstates) {
+	xxfree(h->flagstates);
+    }
+    h->flagstates = xxcalloc(BITNSLOTS(h->last_net->statecount), sizeof(uint8_t));
+    fsm = h->last_net->states;
+    for (i=0; (fsm+i)->state_no != -1; i++) {
+	if ((fsm+i)->target == -1) {
+	    continue;
+	}
+	if ((h->flag_lookup+(fsm+i)->in)->type) {
+	    BITSET(h->flagstates,(fsm+i)->state_no);
+	}
+	if ((h->flag_lookup+(fsm+i)->out)->type) {
+	    BITSET(h->flagstates,(fsm+i)->state_no);
+	}
+    }
+}
+
+void
+my_apply_add_sigma_trie(struct apply_handle *h, int number, char *symbol, int len) {
+
+    /* Create a trie of sigma symbols (prefixes) so we can    */
+    /* quickly (in O(n)) tokenize an arbitrary string into    */
+    /* integer sequences representing symbols, using longest- */
+    /* leftmost factorization.                                */
+
+    int i;
+    struct sigma_trie *st;
+    struct sigma_trie_arrays *sta;
+
+    st = h->sigma_trie;
+    for (i = 0; i < len; i++) {
+	st = st+(unsigned char)*(symbol+i);
+	if (i == (len-1)) {
+	    st->signum = number;
+	} else {
+	    if (st->next == NULL) {
+		st->next = xxcalloc(256,sizeof(struct sigma_trie));
+		st = st->next;
+		/* store these arrays to free them later */
+		sta = xxmalloc(sizeof(struct sigma_trie_arrays));
+		sta->arr = st;
+		sta->next = h->sigma_trie_arrays;
+		h->sigma_trie_arrays = sta;
+	    } else {
+		st = st->next;
+	    }
+	}
+    }
 }
 
 void
@@ -796,7 +893,7 @@ my_apply_create_sigarray(struct apply_handle *h, struct fsm *net) {
 	(h->sigs+(sig->number))->length = strlen(sig->symbol);
 	/* Add sigma entry to trie */
 	if (sig->number > IDENTITY) {
-	    apply_add_sigma_trie(h, sig->number, sig->symbol, (h->sigs+(sig->number))->length);
+	    my_apply_add_sigma_trie(h, sig->number, sig->symbol, (h->sigs+(sig->number))->length);
 	}
     }
     if (maxsigma >= IDENTITY) {
@@ -819,10 +916,10 @@ my_apply_create_sigarray(struct apply_handle *h, struct fsm *net) {
 	    if (my_flag_check(sig->symbol)) {
 		(h->flag_lookup+sig->number)->type = my_flag_get_type(sig->symbol);
 		(h->flag_lookup+sig->number)->name = my_flag_get_name(sig->symbol);
-		(h->flag_lookup+sig->number)->value = flag_get_value(sig->symbol);
+		(h->flag_lookup+sig->number)->value = my_flag_get_value(sig->symbol);
 	    }
 	}
-	apply_mark_flagstates(h);
+	my_apply_mark_flagstates(h);
     }
 }
 
