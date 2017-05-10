@@ -24,7 +24,7 @@ model {
     binaries {
         withType(SharedLibraryBinarySpec) { // all
             cppCompiler.define "NDEBUG"
-            cppCompiler.define "ZLIB"
+            cCompiler.define "ZLIB"
             // Define toolchain-specific compiler and linker options
             if (toolChain in Gcc) {
                 println 'toolchain is Gcc!'
@@ -115,7 +115,7 @@ model {
                         srcDirs 'src/main/c/s1'
                         include 'main.c'
                     }
-                    lib library: "foma"
+                    // lib library: "foma"
                 }
             }
         }

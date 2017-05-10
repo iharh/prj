@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 //include "foma.h"
 
 #define xxmalloc malloc
@@ -451,26 +449,4 @@ my_iface_load_stack(char *filename) {
     net = my_fsm_read_binary_file_multiple(fsrh);
     //printf("loaded fsm\n");
     return net;
-}
-
-struct my_test_struct {
-    char *p1;
-    char *p2;
-};
-
-int
-main(void) {
-    printf("start\n");
-
-
-    struct my_test_struct *pTS;
-    pTS = malloc(sizeof(struct my_test_struct)); // xxmalloc
-    printf("1\n");
-    (pTS->p1) = 0; // NULL
-    printf("2\n");
-
-    //struct fsm *fsm = my_iface_load_stack("morphind");
-    //my_fsm_destroy(fsm);
-    printf("finish\n");
-    return 0;
 }

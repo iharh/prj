@@ -1,5 +1,5 @@
 /*     Foma: a finite-state toolkit and library.                             */
-/*     Copyright © 2008-2014 Mans Hulden                                     */
+/*     Copyright c 2008-2014 Mans Hulden                                     */
 
 /*     This file is part of foma.                                            */
 
