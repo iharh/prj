@@ -1,19 +1,19 @@
-/*   Foma: a finite-state toolkit and library.                                 */
-/*   Copyright c 2008-2015 Mans Hulden                                         */
+/*     Foma: a finite-state toolkit and library.                             */
+/*     Copyright © 2008-2015 Mans Hulden                                     */
 
-/*   This file is part of foma.                                                */
+/*     This file is part of foma.                                            */
 
-/*   Licensed under the Apache License, Version 2.0 (the "License");           */
-/*   you may not use this file except in compliance with the License.          */
-/*   You may obtain a copy of the License at                                   */
+/*     Foma is free software: you can redistribute it and/or modify          */
+/*     it under the terms of the GNU General Public License version 2 as     */
+/*     published by the Free Software Foundation. */
 
-/*      http://www.apache.org/licenses/LICENSE-2.0                             */
+/*     Foma is distributed in the hope that it will be useful,               */
+/*     but WITHOUT ANY WARRANTY; without even the implied warranty of        */
+/*     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         */
+/*     GNU General Public License for more details.                          */
 
-/*   Unless required by applicable law or agreed to in writing, software       */
-/*   distributed under the License is distributed on an "AS IS" BASIS,         */
-/*   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  */
-/*   See the License for the specific language governing permissions and       */
-/*   limitations under the License.                                            */
+/*     You should have received a copy of the GNU General Public License     */
+/*     along with foma.  If not, see <http://www.gnu.org/licenses/>.         */
 
 #ifdef  __cplusplus
 extern "C" {
@@ -21,22 +21,27 @@ extern "C" {
 #include <stdio.h>
 #include <inttypes.h>
 #include <string.h>
+#ifdef ORIGINAL
 #include "zlib.h"
+#else // #ifdef ORIGINAL
+  #ifdef ZLIB
+    #include "zlib.h"
+  #endif
+#endif // #ifdef ORIGINAL
 
+#ifdef ORIGINAL
 #define INLINE inline
 
-// !!!clb!!!
-#if defined(_MSC_VER)
-#   ifdef DLL_BLD
-#       define FEXPORT __declspec(dllexport)
-#   else
-#       define FEXPORT __declspec(dllimport)
-#   endif
-#elif defined(__GNUC__)
-    #define FEXPORT __attribute__ ((visibility("default")))
-#else
-    #error Unsupported compiler
-#endif
+#define FEXPORT __attribute__((visibility("default")))
+#else // #ifdef ORIGINAL
+  #ifdef _MSC_VER
+    #define FEXPORT __declspec(dllexport)
+    #define INLINE
+  #else
+    #define INLINE inline
+    #define FEXPORT __attribute__((visibility("default")))
+  #endif
+#endif // #ifdef ORIGINAL
 
 /* Library version */
 #define MAJOR_VERSION 0
@@ -54,10 +59,10 @@ extern "C" {
 #define OP_IGNORE_INTERNAL 2
 
 /* Replacement direction */
-#define OP_UPWARD_REPLACE    1
+#define OP_UPWARD_REPLACE 1
 #define OP_RIGHTWARD_REPLACE 2
-#define OP_LEFTWARD_REPLACE  3
-#define OP_DOWNWARD_REPLACE  4
+#define OP_LEFTWARD_REPLACE 3
+#define OP_DOWNWARD_REPLACE 4
 #define OP_TWO_LEVEL_REPLACE 5
 
 /* Arrow types in fsmrules */
@@ -163,7 +168,7 @@ struct fsmcontexts {
 
 struct fsmrules {
     struct fsm *left;
-    struct fsm *right;   
+    struct fsm *right;
     struct fsm *right2;    /*Only needed for A -> B ... C rules*/
     struct fsm *cross_product;
     struct fsmrules *next;
@@ -175,6 +180,7 @@ struct rewrite_set {
     struct fsmrules *rewrite_rules;
     struct fsmcontexts *rewrite_contexts;
     struct rewrite_set *next;
+    struct fsm *cpunion;
     int rule_direction;    /* || \\ // \/ */
 };
 
@@ -196,12 +202,13 @@ FEXPORT struct defined_functions *defined_functions_init(void);
 struct fsm *find_defined(struct defined_networks *def, char *string);
 char *find_defined_function(struct defined_functions *deff, char *name, int numargs);
 FEXPORT int add_defined(struct defined_networks *def, struct fsm *net, char *string);
-FEXPORT int add_defined_function (struct defined_functions *deff, char *name, char *regex, int numargs);
+int add_defined_function (struct defined_functions *deff, char *name, char *regex, int numargs);
 int remove_defined (struct defined_networks *def, char *string);
 
 /********************/
 /* Basic operations */
 /********************/
+
 FEXPORT char *fsm_get_library_version_string();
 
 FEXPORT struct fsm *fsm_determinize(struct fsm *net);
@@ -279,12 +286,13 @@ FEXPORT struct fsm *fsm_add_loop(struct fsm *net, struct fsm *marker, int finals
 FEXPORT struct fsm *fsm_add_sink(struct fsm *net, int final);
 FEXPORT struct fsm *fsm_left_rewr(struct fsm *net, struct fsm *rewr);
 FEXPORT struct fsm *fsm_flatten(struct fsm *net, struct fsm *epsilon);
-FEXPORT struct fsm *fsm_unflatten(struct fsm *net, char *epsilon_sym, char *repeat_sym);   
+FEXPORT struct fsm *fsm_unflatten(struct fsm *net, char *epsilon_sym, char *repeat_sym);
 FEXPORT struct fsm *fsm_close_sigma(struct fsm *net, int mode);
 FEXPORT char *fsm_network_to_char(struct fsm *net);
 
 /* Remove those symbols from sigma that have the same distribution as IDENTITY */
 FEXPORT void fsm_compact(struct fsm *net);
+
 FEXPORT int flag_build(int ftype, char *fname, char *fvalue, int fftype, char *ffname, char *ffvalue);
 
 /* Eliminate flag diacritics and return equivalent FSM          */
@@ -314,6 +322,7 @@ FEXPORT int fsm_symbol_occurs(struct fsm *net, char *symbol, int side);
 FEXPORT void fsm_merge_sigma(struct fsm *net1, struct fsm *net2);
 
 /* Copies an alphabet */
+
 FEXPORT struct sigma *sigma_copy(struct sigma *sigma);
 
 /* Create empty FSM */
@@ -341,7 +350,13 @@ FEXPORT int load_defined(struct defined_networks *def, char *filename);
 FEXPORT int save_defined(struct defined_networks *def, char *filename);
 FEXPORT int save_stack_att();
 FEXPORT int foma_write_prolog(struct fsm *net, char *filename);
+#ifdef ORIGINAL
 FEXPORT int foma_net_print(struct fsm *net, gzFile outfile);
+#else // #ifdef ORIGINAL
+  #ifdef ZLIB
+    FEXPORT int foma_net_print(struct fsm *net, gzFile outfile);
+  #endif
+#endif // #ifdef ORIGINAL
 
 /* Lookups */
 
@@ -369,7 +384,6 @@ FEXPORT char *apply_words(struct apply_handle *h);
 FEXPORT char *apply_random_lower(struct apply_handle *h);
 FEXPORT char *apply_random_upper(struct apply_handle *h);
 FEXPORT char *apply_random_words(struct apply_handle *h);
-
 /* Reset the iterator to start anew with enumerating functions */
 FEXPORT void apply_reset_enumerator(struct apply_handle *h);
 FEXPORT void apply_index(struct apply_handle *h, int inout, int densitycutoff, int mem_limit, int flags_only);
@@ -380,7 +394,7 @@ FEXPORT void apply_set_print_pairs(struct apply_handle *h, int value);
 FEXPORT void apply_set_space_symbol(struct apply_handle *h, char *space);
 FEXPORT void apply_set_separator(struct apply_handle *h, char *symbol);
 FEXPORT void apply_set_epsilon(struct apply_handle *h, char *symbol);
-
+    
 /* Minimum edit distance & spelling correction */
 FEXPORT void fsm_create_letter_lookup(struct apply_med_handle *medh, struct fsm *net);
 FEXPORT void cmatrix_init(struct fsm *net);
@@ -398,6 +412,7 @@ FEXPORT void cmatrix_print_att(struct fsm *net, FILE *outfile);
 /*************************/
 /* Construction routines */
 /*************************/
+
 FEXPORT struct fsm_construct_handle *fsm_construct_init(char *name);
 FEXPORT void fsm_construct_set_final(struct fsm_construct_handle *handle, int state_no);
 FEXPORT void fsm_construct_set_initial(struct fsm_construct_handle *handle, int state_no);
@@ -407,6 +422,7 @@ FEXPORT int fsm_construct_add_symbol(struct fsm_construct_handle *handle, char *
 FEXPORT int fsm_construct_check_symbol(struct fsm_construct_handle *handle, char *symbol);
 FEXPORT void fsm_construct_copy_sigma(struct fsm_construct_handle *handle, struct sigma *sigma);
 FEXPORT struct fsm *fsm_construct_done(struct fsm_construct_handle *handle);
+
 
 /******************/
 /* String hashing */
@@ -443,7 +459,7 @@ struct trie_hash {
 };
 
 struct trie_states {
-    _Bool is_final;
+    Boolean is_final;
 };
 
 struct fsm_trie_handle {
@@ -479,7 +495,7 @@ struct fsm_read_handle {
     int sigma_list_size;
     struct fsm *net;
     unsigned char *lookuptable;
-    _Bool has_unknowns;
+    Boolean has_unknowns;
 };
 
 FEXPORT struct fsm_read_handle *fsm_read_init(struct fsm *net);
@@ -488,7 +504,6 @@ FEXPORT int fsm_read_is_final(struct fsm_read_handle *h, int state);
 FEXPORT int fsm_read_is_initial(struct fsm_read_handle *h, int state);
 FEXPORT int fsm_get_num_states(struct fsm_read_handle *handle);
 FEXPORT int fsm_get_has_unknowns(struct fsm_read_handle *handle);
-
 /* Move iterator one arc forward. Returns 0 on no more arcs */
 FEXPORT int fsm_get_next_arc(struct fsm_read_handle *handle);
 FEXPORT int fsm_get_arc_source(struct fsm_read_handle *handle);

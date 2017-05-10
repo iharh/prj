@@ -1,25 +1,28 @@
-/*   Foma: a finite-state toolkit and library.                                 */
-/*   Copyright c 2008-2015 Mans Hulden                                         */
+/*     Foma: a finite-state toolkit and library.                             */
+/*     Copyright © 2008-2015 Mans Hulden                                     */
 
-/*   This file is part of foma.                                                */
+/*     This file is part of foma.                                            */
 
-/*   Licensed under the Apache License, Version 2.0 (the "License");           */
-/*   you may not use this file except in compliance with the License.          */
-/*   You may obtain a copy of the License at                                   */
+/*     Foma is free software: you can redistribute it and/or modify          */
+/*     it under the terms of the GNU General Public License version 2 as     */
+/*     published by the Free Software Foundation.                            */
 
-/*      http://www.apache.org/licenses/LICENSE-2.0                             */
+/*     Foma is distributed in the hope that it will be useful,               */
+/*     but WITHOUT ANY WARRANTY; without even the implied warranty of        */
+/*     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         */
+/*     GNU General Public License for more details.                          */
 
-/*   Unless required by applicable law or agreed to in writing, software       */
-/*   distributed under the License is distributed on an "AS IS" BASIS,         */
-/*   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  */
-/*   See the License for the specific language governing permissions and       */
-/*   limitations under the License.                                            */
+/*     You should have received a copy of the GNU General Public License     */
+/*     along with foma.  If not, see <http://www.gnu.org/licenses/>.         */
 
 #include "foma.h"
 #include <stdlib.h>
 #include <string.h>
 
 /* Global variables */
+// HFST MODIFICATIONS: Defined here, declared extern in foma.h
+struct defined_networks   *g_defines;
+struct defined_functions  *g_defines_f;
 int g_show_flags = 0;
 int g_obey_flags = 1;
 int g_flag_is_epsilon = 0;
@@ -90,5 +93,12 @@ INLINE void *xxcalloc(size_t nmemb, size_t size) {
 }
 
 INLINE char *xxstrdup(const char *s) {
-    return(strdup(s));
+  //    return(strdup(s));
+  size_t size = strlen(s) + 1;
+  char *p = malloc(size);
+  if (p) {
+    memcpy(p, s, size);
+  }
+  return p;
 }
+

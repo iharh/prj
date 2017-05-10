@@ -1,19 +1,19 @@
-/*   Foma: a finite-state toolkit and library.                                 */
-/*   Copyright © 2008-2015 Mans Hulden                                         */
+/*     Foma: a finite-state toolkit and library.                             */
+/*     Copyright © 2008-2010 Mans Hulden                                     */
 
-/*   This file is part of foma.                                                */
+/*     This file is part of foma.                                            */
 
-/*   Licensed under the Apache License, Version 2.0 (the "License");           */
-/*   you may not use this file except in compliance with the License.          */
-/*   You may obtain a copy of the License at                                   */
+/*     Foma is free software: you can redistribute it and/or modify          */
+/*     it under the terms of the GNU General Public License version 2 as     */
+/*     published by the Free Software Foundation. */
 
-/*      http://www.apache.org/licenses/LICENSE-2.0                             */
+/*     Foma is distributed in the hope that it will be useful,               */
+/*     but WITHOUT ANY WARRANTY; without even the implied warranty of        */
+/*     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         */
+/*     GNU General Public License for more details.                          */
 
-/*   Unless required by applicable law or agreed to in writing, software       */
-/*   distributed under the License is distributed on an "AS IS" BASIS,         */
-/*   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  */
-/*   See the License for the specific language governing permissions and       */
-/*   limitations under the License.                                            */
+/*     You should have received a copy of the GNU General Public License     */
+/*     along with foma.  If not, see <http://www.gnu.org/licenses/>.         */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,7 +31,7 @@
 
 static int fsm_linecount, num_states, num_symbols, epsilon_symbol, *single_sigma_array, *double_sigma_array, limit, num_start_states, op;
 
-static _Bool *finals, deterministic, numss;
+static Boolean *finals, deterministic, numss;
 
 struct e_closure_memo {
     int state;
@@ -59,13 +59,17 @@ struct T_memo {
     unsigned int set_offset;
 };
 
-struct trans_list {
+// HFST MODIFICATIONS: struct trans_list -> struct trans_list_struct
+//                     struct trans_array -> struct trans_list_array
+// because some compilers complain about struct and variable having the same name
+
+static struct trans_list_struct {
     int inout;
     int target;
 } *trans_list;
 
-struct trans_array {
-    struct trans_list *transitions;
+static struct trans_array_struct {
+    struct trans_list_struct *transitions;
     unsigned int size;
     unsigned int tail;
 } *trans_array;
@@ -147,7 +151,7 @@ int fsm_isstarfree(struct fsm *net) {
         if (v == (curr_ptr+1)->state_no) {
             ptr_stack_push(curr_ptr+1);
         }
-        if (*(dfs_map+vp) == DFS_WHITE) { 
+        if (*(dfs_map+vp) == DFS_WHITE) {
             curr_ptr = (state_array+vp)->transitions;
             goto nopop;
         }
@@ -221,8 +225,8 @@ static struct fsm *fsm_subset(struct fsm *net, int operation) {
 
     do {
         int i, j, tail, setsize, *theset, stateno, has_trans, minsym, next_minsym, trgt, symbol_in, symbol_out;
-        struct trans_list *transitions;
-        struct trans_array *tptr;
+        struct trans_list_struct *transitions;
+        struct trans_array_struct *tptr;
 
         fsm_state_set_current_state(T, (T_ptr+T)->finalstart, T == 0 ? 1 : 0);
         
@@ -299,7 +303,7 @@ static struct fsm *fsm_subset(struct fsm *net, int operation) {
             if (operation == SUBSET_TEST_STAR_FREE) {
                 mainloop++;
                 if ((U = e_closure(j)) != -1) {
-                    single_symbol_to_symbol_pair(minsym, &symbol_in, &symbol_out);                   
+                    single_symbol_to_symbol_pair(minsym, &symbol_in, &symbol_out);
                     fsm_state_add_arc(T, symbol_in, symbol_out, U, (T_ptr+T)->finalstart, T == 0 ? 1 : 0);
                     if (star_free_mark == 1) {
                         //fsm_state_add_arc(T, maxsigma, maxsigma, U, (T_ptr+T)->finalstart, T == 0 ? 1 : 0);
@@ -376,16 +380,16 @@ static void init(struct fsm *net) {
 }
 
 static int trans_sort_cmp(const void *a, const void *b) {
-  return (((const struct trans_list *)a)->inout - ((const struct trans_list *)b)->inout);
+  return (((const struct trans_list_struct *)a)->inout - ((const struct trans_list_struct *)b)->inout);
 }
 
 static void init_trans_array(struct fsm *net) {
-    struct trans_list *arrptr;
+    struct trans_list_struct *arrptr;
     struct fsm_state *fsm;
     int i, j, laststate, lastsym, inout, size, state;
 
-    arrptr = trans_list = xxmalloc(net->linecount * sizeof(struct trans_list));
-    trans_array = xxcalloc(net->statecount, sizeof(struct trans_array));
+    arrptr = trans_list = xxmalloc(net->linecount * sizeof(struct trans_list_struct));
+    trans_array = xxcalloc(net->statecount, sizeof(struct trans_array_struct));
     
     laststate = -1;
     fsm = net->states;
@@ -421,7 +425,7 @@ static void init_trans_array(struct fsm *net) {
         arrptr = (trans_array+i)->transitions;
         size = (trans_array+i)->size;
         if (size > 1) {
-            qsort(arrptr, size, sizeof(struct trans_list), trans_sort_cmp);
+            qsort(arrptr, size, sizeof(struct trans_list_struct), trans_sort_cmp);
             lastsym = -1;
             /* Figure out if we're already deterministic */
             for (j=0; j < size; j++) {
@@ -524,7 +528,7 @@ static int initial_e_closure(struct fsm *net) {
     struct fsm_state *fsm;
     int i,j;
 
-    finals = xxcalloc(num_states, sizeof(_Bool));
+    finals = xxcalloc(num_states, sizeof(Boolean));
 
     num_start_states = 0;
     fsm = net->states;
@@ -577,7 +581,7 @@ static void memoize_e_closure(struct fsm_state *fsm) {
         state = (fsm+i)->state_no;
         
         if (state != laststate) {
-            if (!int_stack_isempty()) {                
+            if (!int_stack_isempty()) {
                 deterministic = 0;
                 ptr = e_closure_memo+laststate;
                 ptr->target = e_closure_memo+int_stack_pop();
@@ -641,7 +645,7 @@ static void sigma_to_pairs(struct fsm *net) {
 
   fsm = net->states;
 
-  epsilon_symbol = -1; 
+  epsilon_symbol = -1;
   maxsigma = sigma_max(net->sigma);
   maxsigma++;
 
@@ -746,7 +750,7 @@ INLINE static int hashf(int *set, int setsize) {
   unsigned int hashval, sum = 0;
   hashval = 6703271;
   for (i = 0; i < setsize; i++) {
-      hashval = (unsigned int) (*(set+i) + 1103 * setsize) * hashval; 
+      hashval = (unsigned int) (*(set+i) + 1103 * setsize) * hashval;
       sum += *(set+i) + i;
   }
   hashval = hashval + sum * 31;
@@ -768,8 +772,8 @@ static unsigned int move_set(int *set, int setsize) {
     return(old_offset);
 }
 
-static int nhash_insert(int hashval, int *set, int setsize) { 
-  struct nhash_list *tableptr;  
+static int nhash_insert(int hashval, int *set, int setsize) {
+  struct nhash_list *tableptr;
   int i, fs = 0;
 
   current_setnum++;

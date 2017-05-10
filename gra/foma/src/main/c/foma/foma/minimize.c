@@ -1,19 +1,19 @@
-/*   Foma: a finite-state toolkit and library.                                 */
-/*   Copyright © 2008-2015 Mans Hulden                                         */
+/*     Foma: a finite-state toolkit and library.                             */
+/*     Copyright © 2008-2010 Mans Hulden                                     */
 
-/*   This file is part of foma.                                                */
+/*     This file is part of foma.                                            */
 
-/*   Licensed under the Apache License, Version 2.0 (the "License");           */
-/*   you may not use this file except in compliance with the License.          */
-/*   You may obtain a copy of the License at                                   */
+/*     Foma is free software: you can redistribute it and/or modify          */
+/*     it under the terms of the GNU General Public License version 2 as     */
+/*     published by the Free Software Foundation. */
 
-/*      http://www.apache.org/licenses/LICENSE-2.0                             */
+/*     Foma is distributed in the hope that it will be useful,               */
+/*     but WITHOUT ANY WARRANTY; without even the implied warranty of        */
+/*     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         */
+/*     GNU General Public License for more details.                          */
 
-/*   Unless required by applicable law or agreed to in writing, software       */
-/*   distributed under the License is distributed on an "AS IS" BASIS,         */
-/*   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  */
-/*   See the License for the specific language governing permissions and       */
-/*   limitations under the License.                                            */
+/*     You should have received a copy of the GNU General Public License     */
+/*     along with foma.  If not, see <http://www.gnu.org/licenses/>.         */
 
 #include <stdlib.h>
 #include <assert.h>
@@ -27,7 +27,7 @@ static struct fsm *rebuild_machine(struct fsm *net);
 
 static int *single_sigma_array, *double_sigma_array, *memo_table, *temp_move, *temp_group, maxsigma, epsilon_symbol, num_states, num_symbols, num_finals, mainloop, total_states;
 
-static _Bool *finals;
+static Boolean *finals;
 
 struct statesym {
     int target;
@@ -63,21 +63,24 @@ struct e {
 struct agenda {
   struct p *p;
   struct agenda *next;
-  _Bool index;
+  Boolean index;
 };
 
-struct trans_list {
+// HFST MODIFICATIONS: struct trans_list -> struct trans_list_struct
+//                     struct trans_array -> struct trans_list_array
+// because some compilers complain about struct and variable having the same name
+
+static struct trans_list_struct {
     int inout;
     int source;
 } *trans_list;
 
-struct trans_array {
-    struct trans_list *transitions;
+
+static struct trans_array_struct {
+    struct trans_list_struct *transitions;
     unsigned int size;
     unsigned int tail;
 } *trans_array;
-
-
 
 static struct p *P, *Phead, *Pnext, *current_w;
 static struct e *E;
@@ -105,8 +108,8 @@ struct fsm *fsm_minimize(struct fsm *net) {
         if (g_minimize_hopcroft != 0) {
             net = fsm_minimize_hop(net);
         }
-        else 
-            net = fsm_minimize_brz(net);        
+        else
+            net = fsm_minimize_brz(net);
         fsm_update_flags(net,YES,YES,YES,YES,UNK,UNK);
     }
     return(net);
@@ -119,9 +122,9 @@ static struct fsm *fsm_minimize_brz(struct fsm *net) {
 static struct fsm *fsm_minimize_hop(struct fsm *net) {
 
     struct e *temp_E;
-    struct trans_array *tptr;
-    struct trans_list *transitions;
-    int i,j,minsym,next_minsym,current_i, stateno, thissize, source;  
+    struct trans_array_struct *tptr;
+    struct trans_list_struct *transitions;
+    int i,j,minsym,next_minsym,current_i, stateno, thissize, source;
     unsigned int tail;
 
     fsm_count(net);
@@ -134,7 +137,7 @@ static struct fsm *fsm_minimize_hop(struct fsm *net) {
     
     P = NULL;
 
-    /* 
+    /*
        1. generate the inverse lookup table
        2. generate P and E (partitions, states linked list)
        3. Init Agenda = {Q, Q-F}
@@ -310,7 +313,7 @@ static INLINE int refine_states(int invstates) {
     struct e *thise;
     struct p *tP, *newP = NULL;
 
-  /* 
+  /*
      1. add inverse(P,a) to table of inverses, disallowing duplicates
      2. first pass on S, touch each state once, increasing P->t_count
      3. for each P where counter != count, split and add to agenda
@@ -343,7 +346,7 @@ static INLINE int refine_states(int invstates) {
       continue;
     }
     
-    if ((tP->t_count != tP->count) && (tP->count > 1) && (tP->t_count > 0)) {      
+    if ((tP->t_count != tP->count) && (tP->count > 1) && (tP->t_count > 0)) {
         
         /* Check if we already split this */
         newP = tP->current_split;
@@ -392,7 +395,7 @@ static INLINE int refine_states(int invstates) {
                 selfsplit = 1;
             } else {
                 /* If the block is not on the agenda, we add */
-                /* the smaller of tP, newP and start the symloop from 0 */                
+                /* the smaller of tP, newP and start the symloop from 0 */
                 agenda_add((tP->inv_count < tP->inv_t_count ? tP : newP),0);
             }
             /* Add to middle of P-chain */
@@ -459,7 +462,7 @@ static void agenda_add(struct p *pptr, int start) {
 static void init_PE() {
   /* Create two members of P
      (nonfinals,finals)
-     and put both of them on the agenda 
+     and put both of them on the agenda
   */
 
   int i;
@@ -554,19 +557,19 @@ static void init_PE() {
 }
 
 static int trans_sort_cmp(const void *a, const void *b) {
-  return (((const struct trans_list *)a)->inout - ((const struct trans_list *)b)->inout);
+  return (((const struct trans_list_struct *)a)->inout - ((const struct trans_list_struct *)b)->inout);
 }
 
 static void generate_inverse(struct fsm *net) {
     
     struct fsm_state *fsm;
-    struct trans_array *tptr;
-    struct trans_list *listptr;
+    struct trans_array_struct *tptr;
+    struct trans_list_struct *listptr;
 
     int i, source, target, offsetcount, symbol, size;
     fsm = net->states;
-    trans_array = xxcalloc(net->statecount, sizeof(struct trans_array));
-    trans_list = xxcalloc(net->arccount, sizeof(struct trans_list));
+    trans_array = xxcalloc(net->statecount, sizeof(struct trans_array_struct));
+    trans_list = xxcalloc(net->arccount, sizeof(struct trans_list_struct));
 
     /* Figure out the number of transitions each one has */
     for (i=0; (fsm+i)->state_no != -1; i++) {
@@ -587,7 +590,7 @@ static void generate_inverse(struct fsm *net) {
         if ((fsm+i)->target == -1) {
             continue;
         }
-        symbol = symbol_pair_to_single_symbol((fsm+i)->in,(fsm+i)->out);        
+        symbol = symbol_pair_to_single_symbol((fsm+i)->in,(fsm+i)->out);
         source = (fsm+i)->state_no;
         target = (fsm+i)->target;
         tptr = trans_array + target;
@@ -600,7 +603,7 @@ static void generate_inverse(struct fsm *net) {
         listptr = (trans_array+i)->transitions;
         size = (trans_array+i)->size;
         if (size > 1)
-            qsort(listptr, size, sizeof(struct trans_list), trans_sort_cmp);
+            qsort(listptr, size, sizeof(struct trans_list_struct), trans_sort_cmp);
     }
 }
 
@@ -611,7 +614,7 @@ static void sigma_to_pairs(struct fsm *net) {
 
   fsm = net->states;
   
-  epsilon_symbol = -1; 
+  epsilon_symbol = -1;
   maxsigma = sigma_max(net->sigma);
 
   maxsigma++;
@@ -639,7 +642,7 @@ static void sigma_to_pairs(struct fsm *net) {
 
   /* Table for checking whether a state is final */
 
-  finals = xxcalloc(num_states, sizeof(_Bool));
+  finals = xxcalloc(num_states, sizeof(Boolean));
   x = 0; num_finals = 0;
   net->arity = 1;
   for (i=0; (fsm+i)->state_no != -1; i++) {

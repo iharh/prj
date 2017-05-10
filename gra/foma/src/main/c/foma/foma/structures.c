@@ -1,24 +1,26 @@
-/*   Foma: a finite-state toolkit and library.                                 */
-/*   Copyright c 2008-2015 Mans Hulden                                         */
+/*     Foma: a finite-state toolkit and library.                             */
+/*     Copyright © 2008-2010 Mans Hulden                                     */
 
-/*   This file is part of foma.                                                */
+/*     This file is part of foma.                                            */
 
-/*   Licensed under the Apache License, Version 2.0 (the "License");           */
-/*   you may not use this file except in compliance with the License.          */
-/*   You may obtain a copy of the License at                                   */
+/*     Foma is free software: you can redistribute it and/or modify          */
+/*     it under the terms of the GNU General Public License version 2 as     */
+/*     published by the Free Software Foundation. */
 
-/*      http://www.apache.org/licenses/LICENSE-2.0                             */
+/*     Foma is distributed in the hope that it will be useful,               */
+/*     but WITHOUT ANY WARRANTY; without even the implied warranty of        */
+/*     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         */
+/*     GNU General Public License for more details.                          */
 
-/*   Unless required by applicable law or agreed to in writing, software       */
-/*   distributed under the License is distributed on an "AS IS" BASIS,         */
-/*   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  */
-/*   See the License for the specific language governing permissions and       */
-/*   limitations under the License.                                            */
+/*     You should have received a copy of the GNU General Public License     */
+/*     along with foma.  If not, see <http://www.gnu.org/licenses/>.         */
 
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-// !!!clb!!! include <sys/time.h>
+#if defined(ORIGINAL) || ! defined(_MSC_VER)
+  #include <sys/time.h>
+#endif
 #include "foma.h"
 
 static struct defined_quantifiers *quantifiers;
@@ -29,6 +31,7 @@ char *fsm_get_library_version_string() {
     return(s);
 }
 
+#ifdef ORIGINAL
 int linesortcompin(struct fsm_state *a, struct fsm_state *b) {
     return (a->in - b->in);
 }
@@ -36,13 +39,27 @@ int linesortcompin(struct fsm_state *a, struct fsm_state *b) {
 int linesortcompout(struct fsm_state *a, struct fsm_state *b) {
     return (a->out - b->out);
 }
+#else
+  int linesortcompin(const void *a, const void *b) {
+      return (((struct fsm_state*)a)->in - ((struct fsm_state*)b)->in);
+    }
+  int linesortcompout(const void *a, const void *b) {
+      return (((struct fsm_state*)a)->out - ((struct fsm_state*)b)->out);
+    }
+#endif
+
 
 void fsm_sort_arcs(struct fsm *net, int direction) {
     /* direction 1 = in, direction = 2, out */
     struct fsm_state *fsm;
     int i, lasthead, numlines;
+#ifdef ORIGINAL
     int(*scin)() = linesortcompin;
     int(*scout)() = linesortcompout;
+#else
+    int(*scin)(const void*, const void*) = linesortcompin;
+    int(*scout)(const void*, const void*) = linesortcompout;
+#endif
     fsm = net->states;
     for (i=0, numlines = 0, lasthead = 0 ; (fsm+i)->state_no != -1; i++) {
 	if ((fsm+i)->state_no != (fsm+i+1)->state_no || (fsm+i)->target == -1) {
@@ -55,7 +72,7 @@ void fsm_sort_arcs(struct fsm *net, int direction) {
 		if (direction == 1)
 		    qsort(fsm+lasthead, numlines, sizeof(struct fsm_state), scin);
 		else
-		    qsort(fsm+lasthead, numlines, sizeof(struct fsm_state), scout);		
+		    qsort(fsm+lasthead, numlines, sizeof(struct fsm_state), scout);
 	    }
 	    numlines = 0;
 	    lasthead = i + 1;
@@ -75,7 +92,7 @@ void fsm_sort_arcs(struct fsm *net, int direction) {
     if (direction == 2) {
 	net->arcs_sorted_out = 1;
 	net->arcs_sorted_in = 0;
-    }    
+    }
 }
 
 struct state_array *map_firstlines(struct fsm *net) {
@@ -294,7 +311,7 @@ int fsm_isuniversal(struct fsm *net) {
     net = fsm_minimize(net);
     fsm_compact(net);
     fsm = net->states;
-    if ((fsm->target == 0 && fsm->final_state == 1 && (fsm+1)->state_no == 0) && 
+    if ((fsm->target == 0 && fsm->final_state == 1 && (fsm+1)->state_no == 0) &&
         (fsm->in == IDENTITY && fsm->out == IDENTITY) &&
         ((fsm+1)->state_no == -1) &&
         (sigma_max(net->sigma)<3) ) {
@@ -310,7 +327,7 @@ int fsm_isempty(struct fsm *net) {
     fsm = net->states;
     if (fsm->target == -1 && fsm->final_state == 0 && (fsm+1)->state_no == -1)
         return 1;
-    else 
+    else
         return 0;
 }
 
@@ -410,7 +427,7 @@ int fsm_isidentity(struct fsm *net) {
     struct discrepancy {
         short int *string;
         short int length;
-        _Bool visited;
+        Boolean visited;
     };
 
     struct state_array *state_array;
@@ -568,7 +585,7 @@ struct fsm *fsm_lowerdet(struct fsm *net) {
     }
     if (maxarc > (maxsigma-2)) {
         for (i=maxarc; i > (maxsigma-2); i--) {
-            sprintf(repstr,"%012X",newsym++);        
+            sprintf(repstr,"%012X",newsym++);
             sigma_add(repstr, net->sigma);
         }
         sigma_sort(net);
@@ -607,7 +624,7 @@ struct fsm *fsm_lowerdeteps(struct fsm *net) {
     }
     if (maxarc > (maxsigma-2)) {
         for (i=maxarc; i > (maxsigma-2); i--) {
-            sprintf(repstr,"%012X",newsym++);        
+            sprintf(repstr,"%012X",newsym++);
             sigma_add(repstr, net->sigma);
         }
         sigma_sort(net);
@@ -632,7 +649,7 @@ struct fsm *fsm_extract_nonidentity(struct fsm *net) {
     struct discrepancy {
         short int *string;
         short int length;
-        _Bool visited;
+        Boolean visited;
     };
 
     struct state_array *state_array;
@@ -751,11 +768,11 @@ struct fsm *fsm_extract_nonidentity(struct fsm *net) {
             goto nopop;
         }
         continue;
-    fail:        
+    fail:
         curr_ptr->out = killnum;
         if (curr_ptr->state_no == (curr_ptr+1)->state_no) {
             ptr_stack_push(curr_ptr+1);
-        }        
+        }
     }
     ptr_stack_clear();
     sigma_sort(net);
@@ -777,7 +794,7 @@ struct fsm *fsm_copy (struct fsm *net) {
 
     fsm_count(net);
     net_copy->sigma = sigma_copy(net->sigma);
-    net_copy->states = fsm_state_copy(net->states, net->linecount);      
+    net_copy->states = fsm_state_copy(net->states, net->linecount);
     return(net_copy);
 }
 
@@ -815,7 +832,7 @@ void add_quantifier (char *string) {
     if (quantifiers == NULL) {
 	q = xxmalloc(sizeof(struct defined_quantifiers));
 	quantifiers = q;
-    } else { 
+    } else {
 	for (q = quantifiers; q->next != NULL; q = q->next) {
 	    
 	}
@@ -865,7 +882,7 @@ char *find_quantifier (char *string) {
 }
 
 void purge_quantifier (char *string) {
-    struct defined_quantifiers *q, *q_prev;    
+    struct defined_quantifiers *q, *q_prev;
     for (q = quantifiers, q_prev = NULL; q != NULL; q_prev = q, q = q->next) {
 	if (strcmp(string, q->name) == 0) {
 	    if (q_prev != NULL) {
@@ -902,3 +919,4 @@ struct fsm *fsm_logical_precedence(char *string1, char *string2) {
 struct fsm *fsm_logical_eq(char *string1, char *string2) {
   return(fsm_concat(fsm_universal(),fsm_concat(fsm_ignore(fsm_union(fsm_concat(fsm_symbol(string1),fsm_symbol(string2)),fsm_concat(fsm_symbol(string2),fsm_symbol(string1))),union_quantifiers(),OP_IGNORE_ALL),fsm_concat(fsm_universal(),fsm_concat(fsm_ignore(fsm_union(fsm_concat(fsm_symbol(string1),fsm_symbol(string2)),fsm_concat(fsm_symbol(string2),fsm_symbol(string1))),union_quantifiers(),OP_IGNORE_ALL),fsm_universal())))));
 }
+

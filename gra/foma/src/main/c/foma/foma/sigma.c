@@ -1,19 +1,19 @@
-/*   Foma: a finite-state toolkit and library.                                 */
-/*   Copyright © 2008-2015 Mans Hulden                                         */
+/*     Foma: a finite-state toolkit and library.                             */
+/*     Copyright © 2008-2012 Mans Hulden                                     */
 
-/*   This file is part of foma.                                                */
+/*     This file is part of foma.                                            */
 
-/*   Licensed under the Apache License, Version 2.0 (the "License");           */
-/*   you may not use this file except in compliance with the License.          */
-/*   You may obtain a copy of the License at                                   */
+/*     Foma is free software: you can redistribute it and/or modify          */
+/*     it under the terms of the GNU General Public License version 2 as     */
+/*     published by the Free Software Foundation. */
 
-/*      http://www.apache.org/licenses/LICENSE-2.0                             */
+/*     Foma is distributed in the hope that it will be useful,               */
+/*     but WITHOUT ANY WARRANTY; without even the implied warranty of        */
+/*     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         */
+/*     GNU General Public License for more details.                          */
 
-/*   Unless required by applicable law or agreed to in writing, software       */
-/*   distributed under the License is distributed on an "AS IS" BASIS,         */
-/*   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  */
-/*   See the License for the specific language governing permissions and       */
-/*   limitations under the License.                                            */
+/*     You should have received a copy of the GNU General Public License     */
+/*     along with foma.  If not, see <http://www.gnu.org/licenses/>.         */
 
 #include <string.h>
 #include <stdlib.h>
@@ -82,7 +82,7 @@ int sigma_add_special (int symbol, struct sigma *sigma) {
 	(sigma_previous)->next = sigma_splice;
 	sigma_splice->number = symbol;
 	sigma_splice->symbol = str;
-	(sigma_splice)->next = sigma; 
+	(sigma_splice)->next = sigma;
 	return(symbol);
       } else {
 	sigma_splice->symbol = sigma->symbol;
@@ -130,7 +130,7 @@ int sigma_add (char *symbol, struct sigma *sigma) {
       }
       sigma = sigma->next;
     }
-    sigma->next = NULL;  
+    sigma->next = NULL;
     sigma->symbol = xxstrdup(symbol);
     return(sigma->number);
   } else {
@@ -146,7 +146,7 @@ int sigma_add (char *symbol, struct sigma *sigma) {
 	sigma_splice->number = assert;
 	sigma_splice->symbol = xxmalloc(sizeof(char)*(strlen(symbol)+1));
 	strcpy(sigma_splice->symbol, symbol);
-	(sigma_splice)->next = sigma; 
+	(sigma_splice)->next = sigma;
 	return(assert);
       } else {
 	sigma_splice->symbol = sigma->symbol;
@@ -200,7 +200,7 @@ void sigma_cleanup (struct fsm *net, int force) {
             j++;
         }
     }
-    for (i=0; (fsm+i)->state_no != -1; i++) {        
+    for (i=0; (fsm+i)->state_no != -1; i++) {
         if ((fsm+i)->in > 2)
             (fsm+i)->in = *(attested+(fsm+i)->in);
         if ((fsm+i)->out > 2)
@@ -233,7 +233,7 @@ void sigma_cleanup (struct fsm *net, int force) {
 int sigma_max(struct sigma *sigma) {
   int i;
   if (sigma == NULL)
-      return -1;
+    return -1;
   for (i=-1; sigma != NULL; sigma = sigma->next)
       i = sigma->number > i ? sigma->number : i;
   return(i);
@@ -313,7 +313,7 @@ int sigma_substitute(char *symbol, char *sub, struct sigma *sigma) {
     for (; sigma != NULL && sigma->number != -1 ; sigma = sigma->next) {
         if (strcmp(sigma->symbol, symbol) == 0) {
 	    xxfree(sigma->symbol);
-	    sigma->symbol = strdup(sub);
+	    sigma->symbol = xxstrdup(sub);
             return(sigma->number);
         }
     }
@@ -338,9 +338,15 @@ struct ssort {
   int number;
 };
 
+#ifdef ORIGINAL
 int ssortcmp(struct ssort *a, struct ssort *b) {
   return(strcmp(a->symbol, b->symbol));
 }
+#else
+  int ssortcmp(const void *a, const void *b) {
+    return(strcmp(((struct ssort*)a)->symbol, ((struct ssort*)b)->symbol));
+  }
+#endif
 
 struct sigma *sigma_copy(struct sigma *sigma) {
     int f = 0;
@@ -369,7 +375,11 @@ struct sigma *sigma_copy(struct sigma *sigma) {
 /* and sorts the sigma based on the symbol string contents        */
 
 int sigma_sort(struct fsm *net) {
+#ifdef ORIGINAL
   int(*comp)() = ssortcmp;
+#else
+  int(*comp)(const void*, const void*) = ssortcmp;
+#endif
   int size, i, max, *replacearray;
   struct ssort *ssort;
   struct sigma *sigma;

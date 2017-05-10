@@ -1,19 +1,19 @@
-/*   Foma: a finite-state toolkit and library.                                 */
-/*   Copyright c 2008-2015 Mans Hulden                                         */
+/*     Foma: a finite-state toolkit and library.                             */
+/*     Copyright © 2008-2015 Mans Hulden                                     */
 
-/*   This file is part of foma.                                                */
+/*     This file is part of foma.                                            */
 
-/*   Licensed under the Apache License, Version 2.0 (the "License");           */
-/*   you may not use this file except in compliance with the License.          */
-/*   You may obtain a copy of the License at                                   */
+/*     Foma is free software: you can redistribute it and/or modify          */
+/*     it under the terms of the GNU General Public License version 2 as     */
+/*     published by the Free Software Foundation. */
 
-/*      http://www.apache.org/licenses/LICENSE-2.0                             */
+/*     Foma is distributed in the hope that it will be useful,               */
+/*     but WITHOUT ANY WARRANTY; without even the implied warranty of        */
+/*     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         */
+/*     GNU General Public License for more details.                          */
 
-/*   Unless required by applicable law or agreed to in writing, software       */
-/*   distributed under the License is distributed on an "AS IS" BASIS,         */
-/*   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  */
-/*   See the License for the specific language governing permissions and       */
-/*   limitations under the License.                                            */
+/*     You should have received a copy of the GNU General Public License     */
+/*     along with foma.  If not, see <http://www.gnu.org/licenses/>.         */
 
 struct state_array {
     struct fsm_state *transitions;
@@ -26,10 +26,21 @@ struct fsm_trans_list {
     struct fsm_trans_list *next;
 };
 
+#ifndef __cplusplus
+  #ifndef bool
+    #define bool int
+    #define false ((bool)0)
+    #define true  ((bool)1)
+  #endif
+#endif // __cplusplus
+
+// _Bool changed to Boolean in HFST
+#define Boolean bool
+
 struct fsm_state_list {
-    _Bool used;
-    _Bool is_final;
-    _Bool is_initial;
+    Boolean used;
+    Boolean is_final;
+    Boolean is_initial;
     short int num_trans;
     int state_number;
     struct fsm_trans_list *fsm_trans_list;
@@ -63,23 +74,23 @@ struct fsm_construct_handle {
 
 struct apply_med_handle {
     struct astarnode {
-	short int wordpos;
-	int fsmstate;
-	short int f;
-	short int g;
-	short int h;
-	int in;
-	int out;
-	int parent;
+        short int wordpos;
+        int fsmstate;
+        short int f;
+        short int g;
+        short int h;
+        int in;
+        int out;
+        int parent;
     } *agenda;
     int bytes_per_letter_array;
     uint8_t *letterbits;
     uint8_t *nletterbits;
     int astarcount;
     int heapcount;
-    int heap_size;  
+    int heap_size;
     int agenda_size;
-    int maxdepth; 
+    int maxdepth;
     int maxsigma;
     int wordlen;
     int utf8len;
@@ -108,34 +119,34 @@ struct apply_med_handle {
     struct state_array *state_array;
     struct fsm *net;
     struct fsm_state *curr_ptr;
-    _Bool hascm;
+    Boolean hascm;
 };
 
 struct apply_handle {
 
     int ptr;
-    int curr_ptr; 
+    int curr_ptr;
     int ipos;
     int opos;
     int mode;
     int printcount;
     int *numlines;
-    int *statemap; 
+    int *statemap;
     int *marks;
 
     struct sigma_trie {
-	int signum;
-	struct sigma_trie *next;
+        int signum;
+        struct sigma_trie *next;
     } *sigma_trie;
 
     struct sigmatch_array {
-	int signumber ;
-	int consumes ;
+        int signumber ;
+        int consumes ;
     } *sigmatch_array;
 
     struct sigma_trie_arrays {
-	struct sigma_trie *arr;
-	struct sigma_trie_arrays *next;
+        struct sigma_trie *arr;
+        struct sigma_trie_arrays *next;
     } *sigma_trie_arrays;
 
     int binsearch;
@@ -153,7 +164,7 @@ struct apply_handle {
     char *epsilon_symbol;
     int print_pairs;
     int apply_stack_ptr;
-    int apply_stack_top; 
+    int apply_stack_top;
     int oldflagneg;
     int outstringtop;
     int iterate_old;
@@ -162,8 +173,8 @@ struct apply_handle {
     char *outstring;
     char *instring;
     struct sigs {
-	char *symbol;
-	int length;
+        char *symbol;
+        int length;
     } *sigs;
     char *oldflagvalue;
     
@@ -171,33 +182,33 @@ struct apply_handle {
     struct fsm_state *gstates;
     struct sigma *gsigma;
     struct apply_state_index {
-	int fsmptr;
-	struct apply_state_index *next;
+        int fsmptr;
+        struct apply_state_index *next;
     } **index_in, **index_out, *iptr;
 
     struct flag_list {
-	char *name;
-	char *value;
-	short neg;
-	struct flag_list *next;	
+        char *name;
+        char *value;
+        short int neg;
+        struct flag_list *next;
     } *flag_list;
 
     struct flag_lookup {
-	int type;
-	char *name;
-	char *value;
+        int type;
+        char *name;
+        char *value;
     } *flag_lookup ;
 
     struct searchstack {
-	int offset;
-	struct apply_state_index *iptr;
-	int state_has_index;
-	int opos;
-	int ipos;
-	int visitmark;
-	char *flagname;
-	char *flagvalue;
-	int flagneg;
+        int offset;
+        struct apply_state_index *iptr;
+        int state_has_index;
+        int opos;
+        int ipos;
+        int visitmark;
+        char *flagname;
+        char *flagvalue;
+        int flagneg;
     } *searchstack ;
 };
 
@@ -296,10 +307,10 @@ char *trim(char *string);
 void strip_newline(char *s);
 char *streqrep(char *s, char *oldstring, char *newstring);
 char *xxstrndup(const char *s, size_t n);
-/*!!!clb!!!*/ FEXPORT char *xxstrdup(const char *s);
+char *xxstrdup(const char *s);
 FEXPORT void *xxmalloc(size_t size);
-/*!!!clb!!!*/ FEXPORT void *xxcalloc(size_t nmemb, size_t size);
-/*!!!clb!!!*/ FEXPORT void *xxrealloc(void *ptr, size_t size);
-/*!!!clb!!!*/ FEXPORT void xxfree(void *ptr);
+void *xxcalloc(size_t nmemb, size_t size);
+void *xxrealloc(void *ptr, size_t size);
+void xxfree(void *ptr);
 int next_power_of_two(int v);
 unsigned int round_up_to_power_of_two(unsigned int v);

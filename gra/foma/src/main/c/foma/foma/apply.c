@@ -1,19 +1,19 @@
-/*   Foma: a finite-state toolkit and library.                                 */
-/*   Copyright © 2008-2015 Mans Hulden                                         */
+/*     Foma: a finite-state toolkit and library.                             */
+/*     Copyright © 2008-2015 Mans Hulden                                     */
 
-/*   This file is part of foma.                                                */
+/*     This file is part of foma.                                            */
 
-/*   Licensed under the Apache License, Version 2.0 (the "License");           */
-/*   you may not use this file except in compliance with the License.          */
-/*   You may obtain a copy of the License at                                   */
+/*     Foma is free software: you can redistribute it and/or modify          */
+/*     it under the terms of the GNU General Public License version 2 as     */
+/*     published by the Free Software Foundation.                            */
 
-/*      http://www.apache.org/licenses/LICENSE-2.0                             */
+/*     Foma is distributed in the hope that it will be useful,               */
+/*     but WITHOUT ANY WARRANTY; without even the implied warranty of        */
+/*     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         */
+/*     GNU General Public License for more details.                          */
 
-/*   Unless required by applicable law or agreed to in writing, software       */
-/*   distributed under the License is distributed on an "AS IS" BASIS,         */
-/*   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  */
-/*   See the License for the specific language governing permissions and       */
-/*   limitations under the License.                                            */
+/*     You should have received a copy of the GNU General Public License     */
+/*     along with foma.  If not, see <http://www.gnu.org/licenses/>.         */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -79,22 +79,22 @@ void apply_set_show_flags(struct apply_handle *h, int value) {
 
 void apply_set_print_space(struct apply_handle *h, int value) {
     h->print_space = value;
-    h->space_symbol = strdup(" ");
+    h->space_symbol = xxstrdup(" ");
 }
 
 void apply_set_separator(struct apply_handle *h, char *symbol) {
-    h->separator = strdup(symbol);
+    h->separator = xxstrdup(symbol);
 }
 
 void apply_set_epsilon(struct apply_handle *h, char *symbol) {
     xxfree(h->epsilon_symbol);
-    h->epsilon_symbol = strdup(symbol);
+    h->epsilon_symbol = xxstrdup(symbol);
     (h->sigs+EPSILON)->symbol = h->epsilon_symbol;
     (h->sigs+EPSILON)->length =  strlen(h->epsilon_symbol);
 }
 
 void apply_set_space_symbol(struct apply_handle *h, char *space) {
-    h->space_symbol = strdup(space);
+    h->space_symbol = xxstrdup(space);
     h->print_space = 1;
 }
 
@@ -160,7 +160,7 @@ char *apply_random_words(struct apply_handle *h) {
 
 char *apply_random_lower(struct apply_handle *h) {
     apply_clear_flags(h);
-    h->mode = DOWN + ENUMERATE + LOWER + RANDOM;    
+    h->mode = DOWN + ENUMERATE + LOWER + RANDOM;
     return(apply_enumerate(h));
 }
 
@@ -211,7 +211,7 @@ void apply_clear(struct apply_handle *h) {
     if (h->flagstates != NULL) {
 	xxfree(h->flagstates);
 	h->flagstates = NULL;
-    }    
+    }
     apply_clear_index(h);
     h->last_net = NULL;
     h->iterator = 0;
@@ -247,7 +247,7 @@ char *apply_updown(struct apply_handle *h, char *word) {
 char *apply_down(struct apply_handle *h, char *word) {
     
     h->mode = DOWN;
-    if (h->index_in) { 
+    if (h->index_in) {
 	h->indexed = 1;
     } else {
 	h->indexed = 0;
@@ -284,8 +284,8 @@ struct apply_handle *apply_init(struct fsm *net) {
     h->show_flags = 0;
     h->print_space = 0;
     h->print_pairs = 0;
-    h->separator = strdup(":");
-    h->epsilon_symbol = strdup("0");
+    h->separator = xxstrdup(":");
+    h->epsilon_symbol = xxstrdup("0");
     h->last_net = net;
     h->outstring = xxmalloc(sizeof(char)*DEFAULT_OUTSTRING_SIZE);
     h->outstringtop = DEFAULT_OUTSTRING_SIZE;
@@ -412,10 +412,19 @@ void apply_clear_index(struct apply_handle *h) {
 }
 
 void apply_index(struct apply_handle *h, int inout, int densitycutoff, int mem_limit, int flags_only) {
+#ifdef ORIGINAL
     struct fsm_state *fsm;
+#else
+    // variable initialization needed for cl.exe compiler
+    struct fsm_state *fsm = h->gstates;
+#endif
     unsigned int cnt = 0;
     int i, j, maxtrans, numtrans, laststate, sym;
+#ifdef ORIGINAL
     fsm = h->gstates;
+#else
+    // variable already initialized
+#endif
 
     struct apply_state_index **indexptr, *iptr, *tempiptr;
 
@@ -506,7 +515,7 @@ void apply_index(struct apply_handle *h, int inout, int densitycutoff, int mem_l
 		    if (j == EPSILON)
 			(*(indexptr + tp->state_no) + j)->next = NULL;
 		    else
-			(*(indexptr + tp->state_no) + j)->next = (*(indexptr + tp->state_no)); /* all tails point to epsilon */		    
+			(*(indexptr + tp->state_no) + j)->next = (*(indexptr + tp->state_no)); /* all tails point to epsilon */
 		}
 	    }
 	}
@@ -695,10 +704,10 @@ int apply_follow_next_arc(struct apply_handle *h) {
 		    }
 		}
 		if ((h->gstates+h->curr_ptr)->state_no == (h->gstates+h->curr_ptr+1)->state_no) {
-		    h->curr_ptr++; 
+		    h->curr_ptr++;
 		    h->ptr = h->curr_ptr;
-		    if ((h->gstates+h->curr_ptr)-> target == -1) { 
-			return 0; 
+		    if ((h->gstates+h->curr_ptr)-> target == -1) {
+			return 0;
 		    }
 		    continue;
 		}
@@ -708,7 +717,7 @@ int apply_follow_next_arc(struct apply_handle *h) {
     } else {
 	for (h->curr_ptr = h->ptr; (h->gstates+h->curr_ptr)->state_no == (h->gstates+h->ptr)->state_no && (h->gstates+h->curr_ptr)-> in != -1; (h->curr_ptr)++) {
 	    
-	    /* Select one random arc to follow out of all outgoing arcs */	
+	    /* Select one random arc to follow out of all outgoing arcs */
 	    if ((h->mode & RANDOM) == RANDOM) {
 		vcount = 0;
 		for (h->curr_ptr = h->ptr;  (h->gstates+h->curr_ptr)->state_no == (h->gstates+h->ptr)->state_no && (h->gstates+h->curr_ptr)-> in != -1; (h->curr_ptr)++) {
@@ -998,7 +1007,7 @@ int apply_append(struct apply_handle *h, int cptr, int sym) {
 		bstring = ""; blen = 0;
 	    }
 	    if (((h->mode) & (UPPER|LOWER)) == UPPER) {
-		pstring = astring; 
+		pstring = astring;
 		len = alen;
 	    } else {
 		pstring = bstring;
@@ -1168,7 +1177,7 @@ void apply_add_sigma_trie(struct apply_handle *h, int number, char *symbol, int 
 	    st->signum = number;
 	} else {
 	    if (st->next == NULL) {
-		st->next = xxcalloc(256,sizeof(struct sigma_trie));		
+		st->next = xxcalloc(256,sizeof(struct sigma_trie));
 		st = st->next;
 		/* store these arrays to free them later */
 		sta = xxmalloc(sizeof(struct sigma_trie_arrays));
@@ -1198,7 +1207,7 @@ void apply_mark_flagstates(struct apply_handle *h) {
     h->flagstates = xxcalloc(BITNSLOTS(h->last_net->statecount), sizeof(uint8_t));
     fsm = h->last_net->states;
     for (i=0; (fsm+i)->state_no != -1; i++) {
-	if ((fsm+i)->target == -1) { 
+	if ((fsm+i)->target == -1) {
 	    continue;
 	}
 	if ((h->flag_lookup+(fsm+i)->in)->type) {
@@ -1266,7 +1275,7 @@ void apply_create_sigarray(struct apply_handle *h, struct fsm *net) {
 	    if (flag_check(sig->symbol)) {
 		(h->flag_lookup+sig->number)->type = flag_get_type(sig->symbol);
 		(h->flag_lookup+sig->number)->name = flag_get_name(sig->symbol);
-		(h->flag_lookup+sig->number)->value = flag_get_value(sig->symbol);		
+		(h->flag_lookup+sig->number)->value = flag_get_value(sig->symbol);
 	    }
 	}
 	apply_mark_flagstates(h);
@@ -1393,12 +1402,12 @@ int apply_check_flag(struct apply_handle *h, int type, char *name, char *value) 
 	    return SUCCEED;
 	}
 	else if (strcmp(value, flist->value) == 0 && flist->neg == 0) {
-	    return SUCCEED;	    
+	    return SUCCEED;
 	} else if (strcmp(value, flist->value) != 0 && flist->neg == 1) {
 	    flist->value = xxstrdup(value);
 	    flist->neg = 0;
 	    return SUCCEED;
-	}  
+	}
 	return FAIL;
     }
 
@@ -1482,7 +1491,7 @@ int apply_check_flag(struct apply_handle *h, int type, char *name, char *value) 
 	}  else if (strcmp(flist2->value, flist->value) == 0 && flist->neg == flist2->neg) {
 	    return SUCCEED;
 	}
-	return FAIL;	
+	return FAIL;
     }
     fprintf(stderr,"***Don't know what do with flag [%i][%s][%s]\n", type, name, value);
     return FAIL;

@@ -1,26 +1,32 @@
-/*   Foma: a finite-state toolkit and library.                                 */
-/*   Copyright c 2008-2015 Mans Hulden                                         */
+/*     Foma: a finite-state toolkit and library.                             */
+/*     Copyright © 2008-2014 Mans Hulden                                     */
 
-/*   This file is part of foma.                                                */
+/*     This file is part of foma.                                            */
 
-/*   Licensed under the Apache License, Version 2.0 (the "License");           */
-/*   you may not use this file except in compliance with the License.          */
-/*   You may obtain a copy of the License at                                   */
+/*     Foma is free software: you can redistribute it and/or modify          */
+/*     it under the terms of the GNU General Public License version 2 as     */
+/*     published by the Free Software Foundation.                            */
 
-/*      http://www.apache.org/licenses/LICENSE-2.0                             */
+/*     Foma is distributed in the hope that it will be useful,               */
+/*     but WITHOUT ANY WARRANTY; without even the implied warranty of        */
+/*     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         */
+/*     GNU General Public License for more details.                          */
 
-/*   Unless required by applicable law or agreed to in writing, software       */
-/*   distributed under the License is distributed on an "AS IS" BASIS,         */
-/*   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  */
-/*   See the License for the specific language governing permissions and       */
-/*   limitations under the License.                                            */
+/*     You should have received a copy of the GNU General Public License     */
+/*     along with foma.  If not, see <http://www.gnu.org/licenses/>.         */
 
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <stdarg.h>
 #include "foma.h"
+#ifdef ORIGINAL
 #include "zlib.h"
+#else
+  #ifdef ZLIB
+    #include "zlib.h"
+  #endif
+#endif
 
 #define TYPE_TRANSITION 1
 #define TYPE_SYMBOL 2
@@ -52,6 +58,7 @@ struct io_buf_handle {
     char *io_buf_ptr;
 };
 
+#ifdef ORIGINAL
 struct io_buf_handle *io_init();
 void io_free(struct io_buf_handle *iobh);
 static int io_gets(struct io_buf_handle *iobh, char *target);
@@ -62,14 +69,64 @@ size_t io_gz_file_to_mem (struct io_buf_handle *iobh, char *filename);
 int foma_net_print(struct fsm *net, gzFile outfile);
 struct fsm *io_net_read(struct io_buf_handle *iobh, char **net_name);
 static INLINE int explode_line (char *buf, int *values);
+#else // #ifdef ORIGINAL
+  struct io_buf_handle *io_init();
+  void io_free(struct io_buf_handle *iobh);
+  #ifdef ZLIB
+    static int io_gets(struct io_buf_handle *iobh, char *target);
+    static size_t io_get_gz_file_size(char *filename);
+    static size_t io_get_file_size(char *filename);
+    static size_t io_get_regular_file_size(char *filename);
+  #endif // ZLIB
+  size_t io_gz_file_to_mem (struct io_buf_handle *iobh, char *filename);
+  #ifdef ZLIB
+    int foma_net_print(struct fsm *net, gzFile outfile);
+  #endif // ZLIB
+  struct fsm *io_net_read(struct io_buf_handle *iobh, char **net_name);
+  #ifdef ZLIB
+    static INLINE int explode_line (char *buf, int *values);
+  #endif
+#endif // #ifdef ORIGINAL
 
+#ifndef ORIGINAL
+  #if defined (_MSC_VER) || (__MINGW32__)
+    #define LONG_LONG_SPECIFIER "%I64d"
+  #else
+    #define LONG_LONG_SPECIFIER "%lld"
+  #endif
+#endif // #ifndef ORIGINAL
 
+#ifndef ORIGINAL
+// HFST addition. Dummy implementations for non static io functions
+// that could be called outside io.c when ZLIB is not defined.
+  #ifndef ZLIB
+    static void io_error() { fprintf(stderr, "IO_C_ERROR\n"); exit(1); }
+    struct io_buf_handle *io_init() {  io_error(); return NULL; }
+    void io_free(struct io_buf_handle *iobh) { io_error(); return; }
+    size_t io_gz_file_to_mem (struct io_buf_handle *iobh, char *filename) {
+      io_error(); return 0; }
+    struct fsm *io_net_read(struct io_buf_handle *iobh, char **net_name) {
+      io_error(); return NULL; }
+    struct fsm *fsm_read_binary_file(char *filename) { io_error(); return NULL; }
+    struct fsm *fsm_read_binary_file_multiple(fsm_read_binary_handle fsrh) {
+      io_error(); return NULL; }
+    fsm_read_binary_handle fsm_read_binary_file_multiple_init(char *filename) {
+      io_error(); return NULL; }
+    struct fsm *read_att(char *filename) { io_error(); return NULL; }
+    struct fsm *fsm_read_prolog(char *filename) { io_error(); return NULL; }
+    int load_defined(struct defined_networks *def, char *filename) { io_error(); return 0; }
+    int save_defined(struct defined_networks *def, char *filename) { io_error(); return 0; }
+    int foma_write_prolog(struct fsm *net, char *filename) { io_error(); return 0; }
+  #endif // #ifndef ZLIB
+#endif // #ifndef ORIGINAL
+
+#if defined(ORIGINAL) || defined(ZLIB)
 void escape_print(FILE *stream, char* string) {
     int i;
     if (strchr(string, '"') != NULL) {
 	for (i = 0; *(string+i) != '\0'; i++) {
 	    if (*(string+i) == '"') {
-		fprintf(stream, "\\\""); 
+		fprintf(stream, "\\\"");
 	    } else {
 		fputc(*(string+i), stream);
 	    }
@@ -126,10 +183,10 @@ int foma_write_prolog (struct fsm *net, char *filename) {
       instring = sigma_string(i, net->sigma);
       if (strcmp(instring,"0") == 0) {
 	  instring = "%0";
-      } 
+      }
       fprintf(out, "symbol(%s, \"", identifier);
       escape_print(out, instring);
-      fprintf(out, "\").\n"); 
+      fprintf(out, "\").\n");
 
     }
   }
@@ -161,11 +218,11 @@ int foma_write_prolog (struct fsm *net, char *filename) {
 	escape_print(out, instring);
 	fprintf(out, "\").\n");
     }
-    else if (net->arity == 2) {	
+    else if (net->arity == 2) {
       fprintf(out, "\"");
       escape_print(out, instring);
       fprintf(out, "\":\"");
-      escape_print(out, outstring); 
+      escape_print(out, outstring);
       fprintf(out, "\").\n");
     }
     else if (net->arity == 1) {
@@ -291,7 +348,7 @@ struct fsm *fsm_read_prolog (char *filename) {
 	    
 	    if (fsm_construct_check_symbol(outh, temp) == -1) {
 		fsm_construct_add_symbol(outh, temp);
-	    }      
+	    }
 	    continue;
 	}
 	if (strstr(buf, "arc(") == buf) {
@@ -322,7 +379,7 @@ struct fsm *fsm_read_prolog (char *filename) {
 	    
 	    temp_ptr = strstr(temp_ptr2, "\"");
 	    temp_ptr++;
-	    if (arity == 2)  { 
+	    if (arity == 2)  {
 		temp_ptr2 = strstr(temp_ptr, "\":");
 	    } else {
 		temp_ptr2 = strstr(temp_ptr, "\").");
@@ -365,8 +422,8 @@ struct fsm *fsm_read_prolog (char *filename) {
 		strcpy(out,"?");
 	    }
 	    
-	    if (arity == 1) { 
-		fsm_construct_add_arc(outh, source, target, in, in);	    
+	    if (arity == 1) {
+		fsm_construct_add_arc(outh, source, target, in, in);
 	    } else {
 		fsm_construct_add_arc(outh, source, target, in, out);
 	    }
@@ -399,16 +456,18 @@ void io_free(struct io_buf_handle *iobh) {
     xxfree(iobh);
 }
 
+#endif // #if defined(ORIGINAL) || defined(ZLIB)
+
 char *spacedtext_get_next_line(char **text) {
     char *t, *ret;
     ret = *text;
     if (**text == '\0')
 	return NULL;
-    for (t = *text; *t != '\0' && *t != '\n'; t++) {	
+    for (t = *text; *t != '\0' && *t != '\n'; t++) {
     }
     if (*t == '\0')
 	*text = t;
-    else 
+    else
 	*text = t+1;
     *t = '\0';
     return(ret);
@@ -508,6 +567,8 @@ struct fsm *fsm_read_text_file(char *filename) {
     xxfree(text);
     return(fsm_trie_done(th));
 }
+
+#if defined(ORIGINAL) || defined(ZLIB)
 
 int fsm_write_binary_file(struct fsm *net, char *filename) {
     gzFile outfile;
@@ -629,7 +690,7 @@ static INLINE int explode_line(char *buf, int *values) {
 /* ##sigma## */
 /* ...SIGMA LINES... */
 /* ##states## */
-/* ...TRANSITION LINES... */ 
+/* ...TRANSITION LINES... */
 /* ##end## */
 
 /* Several networks may be concatenated in one file */
@@ -703,7 +764,11 @@ struct fsm *io_net_read(struct io_buf_handle *iobh, char **net_name) {
     /* Properties */
     io_gets(iobh, buf);
     extras = 0;
+#ifdef ORIGINAL
     sscanf(buf, "%i %i %i %i %i %lld %i %i %i %i %i %i %s", &net->arity, &net->arccount, &net->statecount, &net->linecount, &net->finalcount, &net->pathcount, &net->is_deterministic, &net->is_pruned, &net->is_minimized, &net->is_epsilon_free, &net->is_loop_free, &extras, buf);
+#else
+    sscanf(buf, "%i %i %i %i %i "LONG_LONG_SPECIFIER" %i %i %i %i %i %i %s", &net->arity, &net->arccount, &net->statecount, &net->linecount, &net->finalcount, &net->pathcount, &net->is_deterministic, &net->is_pruned, &net->is_minimized, &net->is_epsilon_free, &net->is_loop_free, &extras, buf);
+#endif
     strcpy(net->name, buf);
     *net_name = xxstrdup(buf);
     io_gets(iobh, buf);
@@ -839,24 +904,29 @@ int foma_net_print(struct fsm *net, gzFile outfile) {
     struct fsm_state *fsm;
     int i, maxsigma, laststate, *cm, extras;
 
-    // Header
+    /* Header */
     gzprintf(outfile, "%s","##foma-net 1.0##\n");
 
-    // Properties
+    /* Properties */
     gzprintf(outfile, "%s","##props##\n");
 
     extras = (net->is_completed) | (net->arcs_sorted_in << 2) | (net->arcs_sorted_out << 4);
  
-    gzprintf(outfile, 
+#ifdef ORIGINAL
+    gzprintf(outfile,
 	     "%i %i %i %i %i %lld %i %i %i %i %i %i %s\n", net->arity, net->arccount, net->statecount, net->linecount, net->finalcount, net->pathcount, net->is_deterministic, net->is_pruned, net->is_minimized, net->is_epsilon_free, net->is_loop_free, extras, net->name);
+#else
+    gzprintf(outfile,
+	     "%i %i %i %i %i "LONG_LONG_SPECIFIER" %i %i %i %i %i %i %s\n", net->arity, net->arccount, net->statecount, net->linecount, net->finalcount, net->pathcount, net->is_deterministic, net->is_pruned, net->is_minimized, net->is_epsilon_free, net->is_loop_free, extras, net->name);
+#endif
     
-    // Sigma
+    /* Sigma */
     gzprintf(outfile, "%s","##sigma##\n");
     for (sigma = net->sigma; sigma != NULL && sigma->number != -1; sigma = sigma->next) {
         gzprintf(outfile, "%i %s\n",sigma->number, sigma->symbol);
     }
 
-    // State array
+    /* State array */
     laststate = -1;
     gzprintf(outfile, "%s","##states##\n");
     for (fsm = net->states; fsm->state_no !=-1; fsm++) {
@@ -875,10 +945,10 @@ int foma_net_print(struct fsm *net, gzFile outfile) {
         }
         laststate = fsm->state_no;
     }
-    // Sentinel for states
+    /* Sentinel for states */
     gzprintf(outfile, "-1 -1 -1 -1 -1\n");
 
-    // Store confusion matrix
+    /* Store confusion matrix */
     if (net->medlookup != NULL && net->medlookup->confusion_matrix != NULL) {
 
         gzprintf(outfile, "%s","##cmatrix##\n");
@@ -889,10 +959,12 @@ int foma_net_print(struct fsm *net, gzFile outfile) {
         }
     }
 
-    // End
+    /* End */
     gzprintf(outfile, "%s","##end##\n");
     return(1);
 }
+
+#endif // #if defined(ORIGINAL) || defined(ZLIB)
 
 int net_print_att(struct fsm *net, FILE *outfile) {
     struct fsm_state *fsm;
@@ -906,7 +978,7 @@ int net_print_att(struct fsm *net, FILE *outfile) {
     }
     for (i=0; (fsm+i)->state_no != -1; i++) {
         if ((fsm+i)->target != -1) {
-            fprintf(outfile, "%i\t%i\t%s\t%s\n",(fsm+i)->state_no,(fsm+i)->target, (sl+(fsm+i)->in)->symbol, (sl+(fsm+i)->out)->symbol);            
+            fprintf(outfile, "%i\t%i\t%s\t%s\n",(fsm+i)->state_no,(fsm+i)->target, (sl+(fsm+i)->in)->symbol, (sl+(fsm+i)->out)->symbol);
         }
     }
     prev = -1;
@@ -919,6 +991,8 @@ int net_print_att(struct fsm *net, FILE *outfile) {
     return(1);
 }
 
+#if defined(ORIGINAL) || defined(ZLIB)
+
 static size_t io_get_gz_file_size(char *filename) {
 
     FILE    *infile;
@@ -929,7 +1003,8 @@ static size_t io_get_gz_file_size(char *filename) {
     /* The last four bytes in a .gz file shows the size of the uncompressed data */
     infile = fopen(filename, "r");
     fseek(infile, -4, SEEK_END);
-    fread(&bytes, 1, 4, infile);
+    if (fread(&bytes, 1, 4, infile) != 4) // value of fread was not checked in foma, this is an HFST addition
+      return -1;
     fclose(infile);
     for (i = 0 ; i < 4 ; i++) {
         ints[i] = bytes[i];
@@ -949,6 +1024,7 @@ static size_t io_get_regular_file_size(char *filename) {
     fclose(infile);
     return(numbytes);
 }
+
 
 static size_t io_get_file_size(char *filename) {
     gzFile FILE;
@@ -984,6 +1060,8 @@ size_t io_gz_file_to_mem(struct io_buf_handle *iobh, char *filename) {
     iobh->io_buf_ptr = iobh->io_buf;
     return(size);
 }
+
+#endif // #if defined(ORIGINAL) || defined(ZLIB)
 
 char *file_to_mem(char *name) {
     FILE    *infile;

@@ -1,19 +1,19 @@
-/*   Foma: a finite-state toolkit and library.                                 */
-/*   Copyright © 2008-2015 Mans Hulden                                         */
+/*     Foma: a finite-state toolkit and library.                             */
+/*     Copyright © 2008-2011 Mans Hulden                                     */
 
-/*   This file is part of foma.                                                */
+/*     This file is part of foma.                                            */
 
-/*   Licensed under the Apache License, Version 2.0 (the "License");           */
-/*   you may not use this file except in compliance with the License.          */
-/*   You may obtain a copy of the License at                                   */
+/*     Foma is free software: you can redistribute it and/or modify          */
+/*     it under the terms of the GNU General Public License version 2 as     */
+/*     published by the Free Software Foundation. */
 
-/*      http://www.apache.org/licenses/LICENSE-2.0                             */
+/*     Foma is distributed in the hope that it will be useful,               */
+/*     but WITHOUT ANY WARRANTY; without even the implied warranty of        */
+/*     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         */
+/*     GNU General Public License for more details.                          */
 
-/*   Unless required by applicable law or agreed to in writing, software       */
-/*   distributed under the License is distributed on an "AS IS" BASIS,         */
-/*   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  */
-/*   See the License for the specific language governing permissions and       */
-/*   limitations under the License.                                            */
+/*     You should have received a copy of the GNU General Public License     */
+/*     along with foma.  If not, see <http://www.gnu.org/licenses/>.         */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -95,7 +95,7 @@ void print_match(struct apply_med_handle *medh, struct astarnode *node, struct s
 	medh->instring = xxrealloc(medh->instring, medh->instring_length*sizeof(char));
     }
     for (i = 0; !(int_stack_isempty()); ) {
-        sym = int_stack_pop();	
+        sym = int_stack_pop();
         if (sym > 2) {
             printptr += sprintf(medh->instring+printptr,"%s", print_sym(sym, sigma));
             i += utf8skip(word+i)+1;
@@ -115,7 +115,7 @@ void print_match(struct apply_med_handle *medh, struct astarnode *node, struct s
             }
         }
     }
-    medh->cost = node->g;    
+    medh->cost = node->g;
     // printf("Cost[f]: %i\n\n", node->g);
 }
 
@@ -149,7 +149,7 @@ struct apply_med_handle *apply_med_init(struct fsm *net) {
 
     struct apply_med_handle *medh;
     struct sigma *sigma;
-    medh = xxcalloc(1,sizeof(struct apply_med_handle));    
+    medh = xxcalloc(1,sizeof(struct apply_med_handle));
     medh->net = net;
     medh->agenda = xxmalloc(sizeof(struct astarnode)*INITIAL_AGENDA_SIZE);
     medh->agenda->f = -1;
@@ -260,7 +260,7 @@ char *apply_med(struct apply_med_handle *medh, char *word) {
 	thisskip = utf8skip(word+i)+1;
 	strncpy(temputf, word+i, thisskip);
 	temputf[thisskip] = '\0';
-	if (sh_find_string(medh->sigmahash, temputf) != NULL) {	    
+	if (sh_find_string(medh->sigmahash, temputf) != NULL) {
 	    *(medh->intword+j) = sh_get_value(medh->sigmahash);
 	} else {
             *(medh->intword+j) = IDENTITY;
@@ -353,7 +353,7 @@ char *apply_med(struct apply_med_handle *medh, char *word) {
             if (g+h <= medh->med_cutoff) {
                 if (!node_insert(medh, medh->curr_pos, target, g, h, in, out, medh->curr_agenda_offset)) {
 		    goto out;
-		}            
+		}
 	    }
             if (medh->curr_pos == medh->utf8len)
                 goto skip;
@@ -451,16 +451,16 @@ struct astarnode *node_delete_min(struct apply_med_handle *medh) {
         child = i<<1;
         
         /* If right child is smaller (higher priority) than left child */
-        if (child != medh->heapcount && 
-            ((medh->agenda+medh->heap[child+1])->f < (medh->agenda+medh->heap[child])->f || 
-             ((medh->agenda+medh->heap[child+1])->f <= (medh->agenda+medh->heap[child])->f && 
+        if (child != medh->heapcount &&
+            ((medh->agenda+medh->heap[child+1])->f < (medh->agenda+medh->heap[child])->f ||
+             ((medh->agenda+medh->heap[child+1])->f <= (medh->agenda+medh->heap[child])->f &&
               (medh->agenda+medh->heap[child+1])->wordpos > (medh->agenda+medh->heap[child])->wordpos))) {
             child++;
         }
         
         /* If child has lower priority than last element */
-        if ((medh->agenda+medh->heap[child])->f < lastptr->f || 
-            ((medh->agenda+medh->heap[child])->f <= lastptr->f && 
+        if ((medh->agenda+medh->heap[child])->f < lastptr->f ||
+            ((medh->agenda+medh->heap[child])->f <= lastptr->f &&
              (medh->agenda+medh->heap[child])->wordpos > lastptr->wordpos)) {
             
             medh->heap[i] = medh->heap[child];
@@ -686,7 +686,7 @@ void fsm_create_letter_lookup(struct apply_med_handle *medh, struct fsm *net) {
             if (BITTEST(medh->letterbits+(i*medh->bytes_per_letter_array),j)) {
                 //printf("[%i]",j);
             }
-        }    
+        }
         //printf("\n");
     }
     int_stack_clear();
@@ -735,7 +735,7 @@ void cmatrix_print_att(struct fsm *net, FILE *outfile) {
     cm = net->medlookup->confusion_matrix;
 
 
-    for (i = 0; i < maxsigma ; i++) {        
+    for (i = 0; i < maxsigma ; i++) {
         for (j = 0; j < maxsigma ; j++) {
             if ((i != 0 && i < 3) || (j != 0 && j < 3)) { continue; }
             if (i == 0 && j != 0) {
@@ -776,7 +776,7 @@ void cmatrix_print(struct fsm *net) {
 
     printf("\n");
 
-    for (i = 0; i < maxsigma ; i++) {        
+    for (i = 0; i < maxsigma ; i++) {
         for (j = 0; j < maxsigma ; j++) {
             if (j == 0) {
                 if (i == 0) {
@@ -818,7 +818,7 @@ void cmatrix_init(struct fsm *net) {
             else
                 *(cm+i*maxsigma+j) = 1;
         }
-    } 
+    }
 }
 
 void cmatrix_default_substitute(struct fsm *net, int cost) {
@@ -828,12 +828,12 @@ void cmatrix_default_substitute(struct fsm *net, int cost) {
     for (i = 1; i < maxsigma; i++) {
         for (j = 1; j < maxsigma; j++) {
             if (i == j) {
-                *(cm+i*maxsigma+j) = 0;                
+                *(cm+i*maxsigma+j) = 0;
             } else {
                 *(cm+i*maxsigma+j) = cost;
             }
         }
-    } 
+    }
 }
 
 void cmatrix_default_insert(struct fsm *net, int cost) {
