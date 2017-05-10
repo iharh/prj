@@ -1,5 +1,5 @@
 /*     Foma: a finite-state toolkit and library.                             */
-/*     Copyright © 2008-2014 Mans Hulden                                     */
+/*     Copyright c 2008-2014 Mans Hulden                                     */
 
 /*     This file is part of foma.                                            */
 
@@ -27,7 +27,7 @@
 #define REGEX_ENTRY 2
 
 #ifndef ORIGINAL
-extern int verbose_lexc_;
+// !!!clb!!! extern int verbose_lexc_;
 #endif
 
 extern int g_lexc_align;
@@ -92,7 +92,7 @@ static char *mystrncpy(char *dest, char *src, int len);
 static void lexc_string_to_tokens(char *string, int *intarr);
 static void lexc_pad();
 static void lexc_medpad();
-static void lexc_number_states();
+// !!!clb!!! static void lexc_number_states();
 static void lexc_cleanup();
 static unsigned int lexc_suffix_hash(int offset);
 static unsigned int lexc_symbol_hash(char *s);
@@ -507,8 +507,12 @@ void lexc_medpad() {
     for (i = 0; cwordout[i] != -1; i++) { }
     s2len = i;
     
+    /* !!!clb!!! - do not need this for minimized version of load/apply-up stuff
     int matrix[s1len+2][s2len+2];
     int dirmatrix[s1len+2][s2len+2];
+    */
+    int matrix[1002][1002];
+    int dirmatrix[1002][1002];
 
     matrix[0][0] = 0;
     dirmatrix[0][0] = 0;
@@ -775,7 +779,7 @@ void lexc_add_word() {
     }
     return;
 }
-
+/* !!!clb!!!
 void lexc_number_states() {
     int n, smax, hasroot;
     struct statelist *s;
@@ -793,7 +797,9 @@ void lexc_number_states() {
             break;
         }
     }
+*/
     /* If there is no Root lexicon, the first lexicon mentioned is Root */
+/*
     if (!hasroot) {
         for (s = statelist; s != NULL; s = s->next) {
             if (s->next == NULL) {
@@ -812,14 +818,18 @@ void lexc_number_states() {
             }
         }
     }
+*/
     /* Mark # as the last state */
+/*
     for (s = statelist; s != NULL; s = s->next) {
         if (s->state->lexstate != NULL && strcmp(s->state->lexstate->name, "#") == 0) {
             s->state->number = smax-1;
             s->final = 1;
             hasfinal = 1;
         } else if (s->state->lexstate != NULL && strcmp(s->state->lexstate->name, "#") != 0 && s->state->lexstate->has_outgoing == 0) {
+*/
 	    /* Also mark uncontinued states as final (this is warned about elsewhere) */
+/*
             s->final = 1;
 	}
     }
@@ -859,7 +869,7 @@ void lexc_number_states() {
         }
     }
 }
-
+*/
 int lexc_eq_paths(struct states *one, struct states *two) {
     while (one->lexstate == NULL && two->lexstate == NULL) {
         if (one->trans->in != two->trans->in || one->trans->out != two->trans->out)
@@ -1008,6 +1018,7 @@ void lexc_merge_states() {
     xxfree(lenlist);
 }
 
+/* !!!clb!!!
 struct fsm *lexc_to_fsm() {
     struct statelist *s, *sa;
     struct fsm_state *fsm;
@@ -1110,7 +1121,7 @@ struct fsm *lexc_to_fsm() {
 #endif
     return(net);
 }
-
+*/
 void lexc_cleanup() {
     struct lexstates *l, *ln;
     struct statelist *s, *sn;

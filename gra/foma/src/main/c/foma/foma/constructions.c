@@ -1,5 +1,5 @@
 /*   Foma: a finite-state toolkit and library.                                 */
-/*   Copyright © 2008-2015 Mans Hulden                                         */
+/*   Copyright c 2008-2015 Mans Hulden                                         */
 
 /*   This file is part of foma.                                                */
 
@@ -3014,12 +3014,12 @@ struct fsm *fsm_mark_fsm_tail(struct fsm *net, struct fsm *marker) {
     xxfree(mappings);
     return(newnet);
 }
-
+/* !!!clb!!!
 struct fsm *fsm_context_restrict(struct fsm *X, struct fsmcontexts *LR) {
 
     struct fsm *Var, *Notvar, *UnionL, *UnionP, *Result, *Word;
     struct fsmcontexts *pairs;
-
+*/
     /* [.#. \.#.* .#.]-`[[ [\X* X C X \X*]&~[\X* [L1 X \X* X R1|...|Ln X \X* X Rn] \X*]],X,0] */
     /* Where X = variable symbol */
     /* The above only works if we do the subtraction iff the right hand side contains .#. in */
@@ -3028,17 +3028,17 @@ struct fsm *fsm_context_restrict(struct fsm *X, struct fsmcontexts *LR) {
 
     /* `[[[(?) \.#.* (?)] - `[[[\X* X C X \X*] - [\X* [L1 X \X* X R1|...|Ln X \X* X Rn] \X*] ],X,0],.#.,0]; */
     /* Here, the LHS is another way of saying ~[?+ .#. ?+] */
-
+/*
     Var = fsm_symbol("@VARX@");
     Notvar = fsm_minimize(fsm_kleene_star(fsm_term_negation(fsm_symbol("@VARX@"))));
-
+*/
     /* We add the variable symbol to all alphabets to avoid ? mathing it */
     /* which would cause extra nondeterminism */
-    sigma_add("@VARX@", X->sigma);
+/*    sigma_add("@VARX@", X->sigma);
     sigma_sort(X);
-    
+*/    
     /* Also, if any L or R is undeclared we add 0 */
-    for (pairs = LR; pairs != NULL; pairs = pairs->next) {
+/*    for (pairs = LR; pairs != NULL; pairs = pairs->next) {
         if (pairs->left == NULL) {
             pairs->left = fsm_empty_string();
         } else {
@@ -3082,7 +3082,7 @@ struct fsm *fsm_context_restrict(struct fsm *X, struct fsmcontexts *LR) {
     fsm_clear_contexts(pairs);
     return(Result);
 }
-
+*/
 struct fsm *fsm_flatten(struct fsm *net, struct fsm *epsilon) {
     struct fsm *newnet;
     struct fsm_construct_handle *outh;

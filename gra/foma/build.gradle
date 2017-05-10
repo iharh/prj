@@ -68,10 +68,10 @@ model {
                 c {
                     source {
                         srcDirs 'src/main/c/foma/gen'
-                        include 'regex.c'
-                        include 'lex.lexc.c'
-                        include 'lex.yy.c'
-                        include 'lex.cmatrix.c'
+                        //include 'regex.c'
+                        //include 'lex.lexc.c'
+                        //include 'lex.yy.c'
+                        //include 'lex.cmatrix.c'
 
                         srcDirs 'src/main/c/foma/foma'
                         //include "**/*.c"
@@ -86,7 +86,6 @@ model {
                         include 'dynarray.c'
                         include 'constructions.c'
                         include 'trie.c'
-                        include 'rewrite.c'
                         include 'determinize.c'
                         include 'minimize.c'
                         include 'coaccessible.c'
@@ -124,5 +123,7 @@ model {
 //FOMAOBJS = foma.o stack.o iface.o lex.interface.o
 //LIBOBJS = int_stack.o define.o determinize.o
 //apply.o // called from iface.c
-//rewrite.o lexcread.o topsort.o flags.o minimize.o reverse.o extract.o sigma.o io.o structures.o constructions.o coaccessible.o utf8.o spelling.o dynarray.o mem.o stringhash.o trie.o
+//lexcread.o topsort.o flags.o minimize.o reverse.o extract.o sigma.o io.o structures.o constructions.o coaccessible.o utf8.o spelling.o dynarray.o mem.o stringhash.o trie.o
 //lex.lexc.o lex.yy.o lex.cmatrix.o regex.o
+
+//not needed: 'rewrite.c'

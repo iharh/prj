@@ -1,5 +1,5 @@
 /*     Foma: a finite-state toolkit and library.                             */
-/*     Copyright © 2008-2015 Mans Hulden                                     */
+/*     Copyright c 2008-2015 Mans Hulden                                     */
 
 /*     This file is part of foma.                                            */
 
@@ -253,7 +253,7 @@ FEXPORT struct fsm *fsm_complement(struct fsm *net);
 FEXPORT struct fsm *fsm_term_negation(struct fsm *net1);
 FEXPORT struct fsm *fsm_minus(struct fsm *net1, struct fsm *net2);
 FEXPORT struct fsm *fsm_simple_replace(struct fsm *net1, struct fsm *net2);
-FEXPORT struct fsm *fsm_context_restrict(struct fsm *X, struct fsmcontexts *LR);
+// !!! clb !!! FEXPORT struct fsm *fsm_context_restrict(struct fsm *X, struct fsmcontexts *LR);
 FEXPORT struct fsm *fsm_contains(struct fsm *net);
 FEXPORT struct fsm *fsm_contains_opt_one(struct fsm *net);
 FEXPORT struct fsm *fsm_contains_one(struct fsm *net);
