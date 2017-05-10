@@ -22,6 +22,15 @@
 
 #define NO  0
 
+#define RANDOM 1
+#define ENUMERATE 2
+//#define MATCH 4
+#define UP 8
+#define DOWN 16
+//#define LOWER 32
+//#define UPPER 64
+//#define SPACE 128
+
 typedef void *fsm_read_binary_handle;
 
 struct io_buf_handle {
@@ -660,6 +669,42 @@ my_utf8skip(char *str) {
   return -1;
 }
 
+/* Checks if the next character in the string is a combining character     */
+/* according to Unicode 7.0                                                */
+/* i.e. codepoints 0300-036F  Combining Diacritical Marks                  */
+/*                 1AB0-1ABE  Combining Diacritical Marks Extended         */
+/*                 1DC0-1DFF  Combining Diacritical Marks Supplement       */
+/*                 20D0-20F0  Combining Diacritical Marks for Symbols      */
+/*                 FE20-FE2D  Combining Half Marks                         */
+/* Returns number of bytes of char. representation, or 0 if not combining  */
+int
+my_utf8iscombining(unsigned char *s) {
+    if (*s == '\0' || *(s+1) == '\0')
+	return 0;
+    if (!(*s == 0xcc || *s == 0xcd || *s == 0xe1 || *s == 0xe2 || *s == 0xef))
+	return 0;
+    /* 0300-036F */
+    if (*s == 0xcc && *(s+1) >= 0x80 && *(s+1) <= 0xbf)
+	return 2;
+    if (*s == 0xcd && *(s+1) >= 0x80 && *(s+1) <= 0xaf)
+	return 2;
+    if (*(s+2) == '\0')
+	return 0;
+    /* 1AB0-1ABE */
+    if (*s == 0xe1 && *(s+1) == 0xaa && *(s+2) >= 0xb0 && *(s+2) <= 0xbe)
+	return 3;
+    /* 1DC0-1DFF */
+    if (*s == 0xe1 && *(s+1) == 0xb7 && *(s+2) >= 0x80 && *(s+2) <= 0xbf)
+	return 3;
+    /* 20D0-20F0 */
+    if (*s == 0xe2 && *(s+1) == 0x83 && *(s+2) >= 0x90 && *(s+2) <= 0xb0)
+	return 3;
+    /* FE20-FE2D */
+    if (*s == 0xef && *(s+1) == 0xb8 && *(s+2) >= 0xa0 && *(s+2) <= 0xad)
+	return 3;
+    return 0;
+}
+
 int
 my_flag_check(char *s) {
     
@@ -992,6 +1037,226 @@ my_iface_apply_set_params(struct apply_handle *h) {
     my_apply_set_obey_flags(h, g_obey_flags);
 }
 
+/* map h->ptr (line pointer) to h->iptr (index pointer) */
+void
+my_apply_set_iptr(struct apply_handle *h) {
+    struct apply_state_index **idx, *sidx;
+    int stateno, seeksym;
+    /* Check if state has index */
+    if ((idx = ((h->mode) & DOWN) == DOWN ? (h->index_in) : (h->index_out)) == NULL) {
+	return;
+    }
+ 
+    h->iptr = NULL;
+    h->state_has_index = 0;
+    stateno = (h->gstates+h->ptr)->state_no;
+    if (stateno < 0) {
+	return;
+    }
+   
+    sidx = *(idx + stateno);
+    if (sidx == NULL) { return; }
+    seeksym = (h->sigmatch_array+h->ipos)->signumber;
+    h->state_has_index = 1;
+    sidx = sidx + seeksym;
+    if (sidx->fsmptr == -1) {
+	if (sidx->next == NULL) {
+	    return;
+	} else {
+	    sidx = sidx->next;
+	}
+    }
+    h->iptr = sidx;
+    if (sidx->fsmptr == -1) {
+	h->iptr = NULL;
+    }
+    h->state_has_index = 1;
+}
+
+char *
+my_apply_net(struct apply_handle *h) {
+
+/*     We perform a basic DFS on the graph, with two minor complications:       */
+
+/*     1. We keep a mark for each state which indicates how many input symbols  */
+/*        we had consumed the last time we entered that state on the current    */
+/*        "run."  If we reach a state seen twice without consuming input, we    */
+/*        terminate that branch of the search.                                  */
+/*        As we pop a position, we also unmark the state we came from.          */
+ 
+/*     2. If the graph has flags, we push the previous flag value when          */
+/*        traversing a flag-modifying arc (P,U,N, or C).  This is because a     */
+/*        flag may have been set during the previous "run" and may not apply.   */
+/*        Since we're doing a DFS, we can be sure to return to the previous     */
+/*        global flag state by just remembering that last flag change.          */
+
+/*     3. The whole system needs to work as an iterator, meaning we need to     */
+/*        store the global state of the search so we can resume it later to     */
+/*        to yield more possible output words with the same input string.       */
+
+    char *returnstring;
+
+    if (h->iterate_old == 1) {     /* If called with NULL as the input word, this will be set */
+        goto resume;
+    }
+
+    h->iptr = NULL; h->ptr = 0; h->ipos = 0; h->opos = 0;
+    my_apply_set_iptr(h);
+
+    my_apply_stack_clear(h);
+
+    if (h->has_flags) {
+	apply_clear_flags(h);
+    }
+    
+    /* "The use of four-letter words like goto can occasionally be justified */
+    /*  even in the best of company." Knuth (1974).                          */
+
+    goto L2;
+
+    while(!apply_stack_isempty(h)) {
+	apply_stack_pop(h);
+	/* If last line was popped */
+	if (apply_at_last_arc(h)) {
+	    *(h->marks+(h->gstates+h->ptr)->state_no) = 0; /* Unmark   */
+	    continue;                                      /* pop next */
+	}
+	apply_skip_this_arc(h);                            /* skip old pushed arc */
+    L1:
+	if (!apply_follow_next_arc(h)) {
+	    *(h->marks+(h->gstates+h->ptr)->state_no) = 0; /* Unmark   */
+	    continue;                                      /* pop next */
+	}
+    L2:
+	/* Print accumulated string upon entry to state */
+	if ((h->gstates+h->ptr)->final_state == 1 && (h->ipos == h->current_instring_length || ((h->mode) & ENUMERATE) == ENUMERATE)) {
+	    if ((returnstring = (apply_return_string(h))) != NULL) {
+		return(returnstring);
+	    }
+	}
+
+    resume:
+       	apply_mark_state(h);  /* Mark upon arrival to new state */
+	goto L1;
+    }
+    if ((h->mode & RANDOM) == RANDOM) {
+          my_apply_stack_clear(h);
+          h->iterator = 0;
+          h->iterate_old = 0;
+          return(h->outstring);
+    }
+    my_apply_stack_clear(h);
+    return NULL;
+}
+
+/* We need to know which symbols in sigma we can match for all positions           */
+/* in the input string.  Alternatively, if there is no input string as is the case */
+/* when we just list the words or randomly search the graph, we can match          */
+/* any symbol in sigma.                                                            */
+
+/* We create an array that for each position in the input string        */
+/* has information on which symbol we can match at that position        */
+/* as well as how many symbols matching consumes                        */
+
+void
+my_apply_create_sigmatch(struct apply_handle *h) {
+    char *symbol;
+    struct sigma_trie *st;
+    int i, j, inlen, lastmatch, consumes, cons;
+    /* We create a sigmatch array only in case we match against a real string */
+    if (((h->mode) & ENUMERATE) == ENUMERATE) {
+	return;
+    }
+    symbol = h->instring;
+    inlen = strlen(symbol);
+    h->current_instring_length = inlen;
+    if (inlen >= h->sigmatch_array_size) {
+	xxfree(h->sigmatch_array);
+	h->sigmatch_array = xxmalloc(sizeof(struct sigmatch_array)*(inlen));
+	h->sigmatch_array_size = inlen;
+    }
+    /* Find longest match in alphabet at current position */
+    /* by traversing the trie of alphabet symbols         */
+    for (i=0; i < inlen; i += consumes ) {
+	st = h->sigma_trie;
+	for (j=0, lastmatch = 0; ; j++) {
+	    if (*(symbol+i+j) == '\0') {
+		break;
+	    }
+	    st = st+(unsigned char)*(symbol+i+j);
+	    if (st->signum != 0) {
+		lastmatch = st->signum;
+		if (st->next == NULL)
+		    break;
+		st = st->next;
+	    } else if (st->next != NULL) {
+		st = st->next;
+	    } else {
+		break;
+	    }
+	}
+	if (lastmatch != 0) {
+	    (h->sigmatch_array+i)->signumber = lastmatch;
+	    consumes = (h->sigs+lastmatch)->length;
+	} else {
+	    /* Not found in trie */
+	    (h->sigmatch_array+i)->signumber = IDENTITY;
+	    consumes = my_utf8skip(symbol+i)+1;
+	}
+
+	/* If we now find trailing unicode combining characters (0300-036F):      */
+	/* (1) Merge them all with current symbol                                 */
+	/* (2) Declare the whole sequence one ? (IDENTITY) symbol                 */
+        /*     Step 2 is motivated by the fact that                               */
+	/*     if the input is S(symbol) + D(diacritic)                           */
+        /*     and SD were a symbol in the alphabet, then this would have been    */
+        /*     found when searching the alphabet symbols earlier, so SD+ => ?     */
+        /*     Note that this means that a multi-char symbol followed by a        */
+        /*     diacritic gets converted to a single ?, e.g.                       */
+        /*     [TAG] + D => ? if [TAG] is in the alphabet, but [TAG]+D isn't.     */
+
+	for (  ; (cons = my_utf8iscombining((unsigned char *)(symbol+i+consumes))); consumes += cons) {
+	    (h->sigmatch_array+i)->signumber = IDENTITY;
+	}
+	(h->sigmatch_array+i)->consumes = consumes;
+    }
+}
+
+char *
+my_apply_updown(struct apply_handle *h, char *word) {
+
+    char *result = NULL;
+
+    if (h->last_net == NULL || h->last_net->finalcount == 0)
+        return (NULL);
+    if (word == NULL) {
+        h->iterate_old = 1;
+        result = my_apply_net(h);
+    }
+    else if (word != NULL) {
+        h->iterate_old = 0;
+        h->instring = word;
+        my_apply_create_sigmatch(h);
+	/* Remove old marks if necessary TODO: only pop marks */
+	apply_force_clear_stack(h);
+        result = my_apply_net(h);
+    }
+    return(result);
+}
+
+char *
+my_apply_up(struct apply_handle *h, char *word) {
+
+    h->mode = UP;
+    if (h->index_out) {
+	h->indexed = 1;
+    } else {
+	h->indexed = 0;
+    }
+    h->binsearch = (h->last_net->arcs_sorted_out == 1) ? 1 : 0;
+    return(my_apply_updown(h, word));
+}
+
 void
 my_iface_apply_up(char *word, struct fsm *fsm) {
     int i;
@@ -1006,7 +1271,7 @@ my_iface_apply_up(char *word, struct fsm *fsm) {
     ah = my_apply_init(fsm);
 
     my_iface_apply_set_params(ah);
-/*    result = apply_up(ah, word);
+    result = my_apply_up(ah, word);
 
     if (result == NULL) {
         printf("???\n");
@@ -1014,15 +1279,15 @@ my_iface_apply_up(char *word, struct fsm *fsm) {
     } else {
         printf("%s\n",result);
     }
+/*
     for (i = g_list_limit; i > 0; i--) {
-        result = apply_up(ah, NULL);
+        result = my_apply_up(ah, NULL);
         if (result == NULL)
             break;
         printf("%s\n",result);
     }
 */
 }
-
 
 int
 main(void) {
