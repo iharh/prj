@@ -24,6 +24,7 @@ model {
     binaries {
         withType(SharedLibraryBinarySpec) { // all
             cppCompiler.define "NDEBUG"
+            cppCompiler.define "ZLIB"
             // Define toolchain-specific compiler and linker options
             if (toolChain in Gcc) {
                 println 'toolchain is Gcc!'
@@ -106,6 +107,18 @@ model {
                 }
             }
         }
+ 	s1(NativeExecutableSpec) { // SharedLibraryBinarySpec
+            targetPlatform 'x64'
+            sources {
+                c {
+                    source {
+                        srcDirs 'src/main/c/s1'
+                        include 'main.c'
+                    }
+                    lib library: "foma"
+                }
+            }
+        }
         all {
             binaries.withType(StaticLibraryBinarySpec) {
                 buildable = false
@@ -115,19 +128,6 @@ model {
                     //cCompiler.args '/MT'
                     //linker.args '/MT'
                 //} 
-            }
-        }
- 	s1(NativeExecutableSpec) { // SharedLibraryBinarySpec
-            targetPlatform 'x64'
-            sources {
-                c {
-                    source {
-                        srcDirs 'src/main/c/s1'
-                        include 'main.c'
-                    }
-                    library: "foma"
-                    //lib library: 'zlib_win' //, linkage: 'static'
-                }
             }
         }
     }
