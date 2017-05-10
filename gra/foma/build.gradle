@@ -23,7 +23,7 @@ model {
 
     binaries {
         withType(SharedLibraryBinarySpec) { // all
-            cppCompiler.define "NDEBUG"
+            // cppCompiler.define "NDEBUG"
             cCompiler.define "ZLIB"
             // Define toolchain-specific compiler and linker options
             if (toolChain in Gcc) {
@@ -63,47 +63,33 @@ model {
     }
 
     components {
- 	foma(NativeLibrarySpec) { // SharedLibraryBinarySpec
+ 	/*foma(NativeLibrarySpec) { // SharedLibraryBinarySpec
             targetPlatform 'x64'
             sources {
                 c {
                     source {
-                        srcDirs 'src/main/c/foma/gen'
-                        //include 'regex.c'
-                        //include 'lex.lexc.c'
-                        //include 'lex.yy.c'
-                        //include 'lex.cmatrix.c'
-
-                        srcDirs 'src/main/c/foma/foma'
-                        //include "**/*.c"
+                        srcDirs 'src/main/c/foma'
+                        //include "** /*.c"
                         include 'mem.c'
-                        include 'utf8.c'
-                        include 'stringhash.c'
-                        include 'define.c'
-                        include 'flags.c'
-                        include 'int_stack.c'
-                        include 'io.c'
-                        include 'structures.c'
-                        include 'dynarray.c'
-                        include 'constructions.c'
-                        include 'trie.c'
-                        include 'determinize.c'
-                        include 'minimize.c'
-                        include 'coaccessible.c'
-                        include 'topsort.c'
-                        include 'extract.c'
-                        include 'reverse.c'
-                        include 'sigma.c'
-                        include 'miminize.c'
-                        include 'lexcread.c'
-                        include 'spelling.c'
-                        //
-                        include 'apply.c'
                     }
                     exportedHeaders {
-                        srcDirs 'src/main/c/foma/foma' //, 'src/main/c/foma/gen'
+                        srcDirs 'src/main/c/foma'
                     }
-                    lib library: 'zlib_win' //, linkage: 'static'
+                    //lib library: 'zlib_win' //, linkage: 'static'
+                }
+            }
+        }*/
+ 	smallrt(NativeLibrarySpec) { // SharedLibraryBinarySpec
+            targetPlatform 'x64'
+            sources {
+                c {
+                    source {
+                        srcDirs 'src/main/c/smallrt'
+                        include "**/*.c"
+                    }
+                    exportedHeaders {
+                        srcDirs 'src/main/c/smallrt'
+                    }
                 }
             }
         }
@@ -115,7 +101,7 @@ model {
                         srcDirs 'src/main/c/s1'
                         include 'main.c'
                     }
-                    // lib library: "foma"
+                    lib library: "smallrt" // smallrt
                 }
             }
         }
