@@ -28,13 +28,13 @@ model {
             if (toolChain in Gcc) {
                 println 'toolchain is Gcc!'
                 // "-O2", "-fno-access-control"
-                cppCompiler.args '-std=c++0x', '-Wno-narrowing'
+                // cppCompiler.args '-std=c++0x', '-Wno-narrowing'
             }
             if (toolChain in VisualCpp) {
                 // #if defined (__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
-                cCompiler.define "__STDC_VERSION__=199901L"
-                cCompiler.define "YY_NO_UNISTD_H"
-                cCompiler.define "DLL_BLD"
+                //cCompiler.define "__STDC_VERSION__=199901L"
+                //cCompiler.define "YY_NO_UNISTD_H"
+                //cCompiler.define "DLL_BLD"
                 println 'toolchain is VisualCpp!'
             }
         }
