@@ -1,6 +1,22 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 #include "smallrt.h"
+
+/* Special symbols on arcs */
+#define EPSILON 0
+#define UNKNOWN 1
+#define IDENTITY 2
+
+/* Flag types */
+#define FLAG_UNIFY 1
+#define FLAG_CLEAR 2
+#define FLAG_DISALLOW 4
+#define FLAG_NEGATIVE 8
+#define FLAG_POSITIVE 16
+#define FLAG_REQUIRE 32
+#define FLAG_EQUAL 64
 
 #define NO  0
 
@@ -59,7 +75,102 @@ struct fsm_state {
     char start_state ;
 };
 
+// apply_up stuff
+
+struct apply_handle {
+
+    int ptr;
+    int curr_ptr;
+    int ipos;
+    int opos;
+    int mode;
+    int printcount;
+    int *numlines;
+    int *statemap;
+    int *marks;
+
+    struct sigma_trie {
+        int signum;
+        struct sigma_trie *next;
+    } *sigma_trie;
+
+    struct sigmatch_array {
+        int signumber ;
+        int consumes ;
+    } *sigmatch_array;
+
+    struct sigma_trie_arrays {
+        struct sigma_trie *arr;
+        struct sigma_trie_arrays *next;
+    } *sigma_trie_arrays;
+
+    int binsearch;
+    int indexed;
+    int state_has_index;
+    int sigma_size;
+    int sigmatch_array_size;
+    int current_instring_length;
+    int has_flags;
+    int obey_flags;
+    int show_flags;
+    int print_space;
+    char *space_symbol;
+    char *separator;
+    char *epsilon_symbol;
+    int print_pairs;
+    int apply_stack_ptr;
+    int apply_stack_top;
+    int oldflagneg;
+    int outstringtop;
+    int iterate_old;
+    int iterator;
+    // !!!clb!!! uint8_t *flagstates;
+    char *outstring;
+    char *instring;
+    struct sigs {
+        char *symbol;
+        int length;
+    } *sigs;
+    char *oldflagvalue;
+    
+    struct fsm *last_net;
+    struct fsm_state *gstates;
+    struct sigma *gsigma;
+    struct apply_state_index {
+        int fsmptr;
+        struct apply_state_index *next;
+    } **index_in, **index_out, *iptr;
+
+    struct flag_list {
+        char *name;
+        char *value;
+        short int neg;
+        struct flag_list *next;
+    } *flag_list;
+
+    struct flag_lookup {
+        int type;
+        char *name;
+        char *value;
+    } *flag_lookup ;
+
+    struct searchstack {
+        int offset;
+        struct apply_state_index *iptr;
+        int state_has_index;
+        int opos;
+        int ipos;
+        int visitmark;
+        char *flagname;
+        char *flagvalue;
+        int flagneg;
+    } *searchstack ;
+};
+
 // done with foma.h stuff
+
+
+
 
 struct sigma *my_sigma_create() {
   struct sigma *sigma;
@@ -426,6 +537,40 @@ my_fsm_read_binary_file_multiple(fsm_read_binary_handle fsrh) {
     }
 }
 
+void
+my_fsm_count(struct fsm *net) {
+  struct fsm_state *fsm;
+  int i, linecount, arccount, oldstate, finalcount, maxstate;
+  linecount = arccount = finalcount = maxstate = 0;
+
+  oldstate = -1;
+
+  fsm = net->states;
+  for (i=0; (fsm+i)->state_no != -1; i++) {
+    if ((fsm+i)->state_no > maxstate)
+      maxstate = (fsm+i)->state_no;
+
+    linecount++;
+    if ((fsm+i)->target != -1) {
+        arccount++;
+	//        if (((fsm+i)->in != (fsm+i)->out) || ((fsm+i)->in == UNKNOWN) || ((fsm+i)->out == UNKNOWN))
+        //    arity = 2;
+    }
+    if ((fsm+i)->state_no != oldstate) {
+        if ((fsm+i)->final_state) {
+            finalcount++;
+        }
+        oldstate = (fsm+i)->state_no;
+    }
+  }
+
+  linecount++;
+  net->statecount = maxstate+1;
+  net->linecount = linecount;
+  net->arccount = arccount;
+  net->finalcount = finalcount;
+}
+
 struct fsm *
 my_iface_load_stack(char *filename) {
     struct fsm *net;
@@ -434,12 +579,318 @@ my_iface_load_stack(char *filename) {
     if ((fsrh = fsm_read_text_file_multiple_init(filename)) == NULL) {
 	fprintf(stderr, "%s: ", filename);
         perror("File error");
-        return;
+        return NULL;
     }
     net = my_fsm_read_binary_file_multiple(fsrh);
-    //printf("loaded fsm\n");
+    // !!!clb!!! stack_add(net)
+    my_fsm_count(net);
+    if (strcmp(net->name,"") == 0)
+        sprintf(net->name, "%X",rand());
+
     return net;
 }
+
+// apply_up
+
+#define DEFAULT_OUTSTRING_SIZE 4096
+#define DEFAULT_STACK_SIZE 128
+
+void
+my_apply_create_statemap(struct apply_handle *h, struct fsm *net) {
+    int i;
+    struct fsm_state *fsm;
+    fsm = net->states;
+    h->statemap = xxmalloc(sizeof(int)*net->statecount);
+    h->marks = xxmalloc(sizeof(int)*net->statecount);
+    h->numlines = xxmalloc(sizeof(int)*net->statecount);
+
+    for (i=0; i < net->statecount; i++) {
+	*(h->numlines+i) = 0;  /* Only needed in binary search */
+	*(h->statemap+i) = -1;
+	*(h->marks+i) = 0;
+    }
+    for (i=0; (fsm+i)->state_no != -1; i++) {
+	*(h->numlines+(fsm+i)->state_no) = *(h->numlines+(fsm+i)->state_no)+1;
+	if (*(h->statemap+(fsm+i)->state_no) == -1) {
+	    *(h->statemap+(fsm+i)->state_no) = i;
+	}
+    }
+}
+
+void
+my_apply_stack_clear (struct apply_handle *h) {
+    h->apply_stack_ptr = 0;
+}
+
+int
+my_sigma_max(struct sigma *sigma) {
+  int i;
+  if (sigma == NULL)
+    return -1;
+  for (i=-1; sigma != NULL; sigma = sigma->next)
+      i = sigma->number > i ? sigma->number : i;
+  return(i);
+}
+
+int
+my_utf8skip(char *str) {
+  unsigned char s;
+
+  s = (unsigned char)(unsigned int) (*str);
+  if (s < 0x80)
+    return 0;
+  if ((s & 0xe0) == 0xc0) {
+    return 1;
+  }
+  if ((s & 0xf0) == 0xe0) {
+    return 2;
+  }
+  if ((s & 0xf8) == 0xf0) {
+    return 3;
+  }
+  return -1;
+}
+
+int
+my_flag_check(char *s) {
+    
+    /* We simply simulate this regex (where ND is not dot) */
+    /* "@" [U|P|N|R|E|D] "." ND+ "." ND+ "@" | "@" [D|R|C] "." ND+ "@" */
+    /* and return 1 if it matches */
+
+    int i;
+    i = 0;
+    
+    if (*(s+i) == '@') { i++; goto s1; } return 0;
+ s1:
+    if (*(s+i) == 'C') { i++; goto s4; }
+    if (*(s+i) == 'N' || *(s+i) == 'E' || *(s+i) == 'U' || *(s+i) == 'P') { i++; goto s2; }
+    if (*(s+i) == 'R' || *(s+i) == 'D') { i++; goto s3; } return 0;
+ s2:
+    if (*(s+i) == '.') { i++; goto s5; } return 0;
+ s3:
+    if (*(s+i) == '.') { i++; goto s6; } return 0;
+ s4:
+    if (*(s+i) == '.') { i++; goto s7; } return 0;
+ s5:
+    if (*(s+i) != '.' && *(s+i) != '\0') { i++; goto s8; } return 0;
+ s6:
+    if (*(s+i) != '.' && *(s+i) != '\0') { i++; goto s9; } return 0;
+ s7:
+    if (*(s+i) != '.' && *(s+i) != '\0') { i++; goto s10; } return 0;
+ s8:
+   if (*(s+i) == '.') { i++; goto s7; }
+   if (*(s+i) != '.' && *(s+i) != '\0') { i++; goto s8; } return 0;
+ s9:
+    if (*(s+i) == '@') { i++; goto s11; }
+    if (*(s+i) == '.') { i++; goto s7; }
+    if (*(s+i) != '.' && *(s+i) != '\0') { i++; goto s9; } return 0;
+
+ s10:
+    if (*(s+i) == '@') {i++; goto s11;}
+    if (*(s+i) != '.' && *(s+i) != '\0') { i++; goto s10; } return 0;
+ s11:
+    if (*(s+i) == '\0') {return 1;} return 0;
+}
+
+char *
+my_flag_get_name(char *string) {
+    int i, start, end, len;
+    start = end = 0;
+    len = strlen(string);
+
+    for (i=0; i < len; i += (my_utf8skip(string+i) + 1)) {
+	if (*(string+i) == '.' && start == 0) {
+	    start = i+1;
+	    continue;
+	}
+	if ((*(string+i) == '.' || *(string+i) == '@')  && start != 0) {
+	    end = i;
+	    break;
+	}
+    }
+    if (start > 0 && end > 0) {
+	return(xxstrndup(string+start,end-start));
+    }
+    return NULL;
+}
+
+int
+my_flag_get_type(char *string) {
+    if (strncmp(string+1,"U.",2) == 0) {
+	return FLAG_UNIFY;
+    }
+    if (strncmp(string+1,"C.",2) == 0) {
+	return FLAG_CLEAR;
+    }
+    if (strncmp(string+1,"D.",2) == 0) {
+	return FLAG_DISALLOW;
+    }
+    if (strncmp(string+1,"N.",2) == 0) {
+	return FLAG_NEGATIVE;
+    }
+    if (strncmp(string+1,"P.",2) == 0) {
+	return FLAG_POSITIVE;
+    }
+    if (strncmp(string+1,"R.",2) == 0) {
+	return FLAG_REQUIRE;
+    }
+    if (strncmp(string+1,"E.",2) == 0) {
+	return FLAG_EQUAL;
+    }
+    return 0;
+}
+
+void
+my_apply_add_flag(struct apply_handle *h, char *name) {
+    struct flag_list *flist, *flist_prev;
+    if (h->flag_list == NULL) {
+	flist = h->flag_list = xxmalloc(sizeof(struct flag_list));
+    } else {
+	for (flist = h->flag_list; flist != NULL; flist_prev = flist, flist = flist->next) {
+	    if (strcmp(flist->name, name) == 0) {
+		return;
+	    }
+	}
+	flist = xxmalloc(sizeof(struct flag_list));
+	flist_prev->next = flist;
+    }
+    flist->name = name;
+    flist->value = NULL;
+    flist->neg = 0;
+    flist->next = NULL;
+    return;
+}
+
+void
+my_apply_create_sigarray(struct apply_handle *h, struct fsm *net) {
+    struct sigma *sig;
+    int i, maxsigma;
+    
+    maxsigma = my_sigma_max(net->sigma);
+    h->sigma_size = maxsigma+1;
+    // Default size created at init, resized later if necessary
+    h->sigmatch_array = xxcalloc(1024,sizeof(struct sigmatch_array));
+    h->sigmatch_array_size = 1024;
+
+    h->sigs = xxmalloc(sizeof(struct sigs)*(maxsigma+1));
+    h->has_flags = 0;
+    h->flag_list = NULL;
+
+    /* Malloc first array of trie and store trie ptrs to be able to free later */
+    /* when apply_clear() is called.                                           */
+
+    h->sigma_trie = xxcalloc(256,sizeof(struct sigma_trie));
+    h->sigma_trie_arrays = xxmalloc(sizeof(struct sigma_trie_arrays));
+    h->sigma_trie_arrays->arr = h->sigma_trie;
+    h->sigma_trie_arrays->next = NULL;
+
+    for (i=0;i<256;i++)
+	(h->sigma_trie+i)->next = NULL;
+    for (sig = h->gsigma; sig != NULL && sig->number != -1; sig = sig->next) {
+	if (my_flag_check(sig->symbol)) {
+	    h->has_flags = 1;
+	    my_apply_add_flag(h, my_flag_get_name(sig->symbol));
+	}
+	(h->sigs+(sig->number))->symbol = sig->symbol;
+	(h->sigs+(sig->number))->length = strlen(sig->symbol);
+	/* Add sigma entry to trie */
+	if (sig->number > IDENTITY) {
+	    apply_add_sigma_trie(h, sig->number, sig->symbol, (h->sigs+(sig->number))->length);
+	}
+    }
+    if (maxsigma >= IDENTITY) {
+	(h->sigs+EPSILON)->symbol = h->epsilon_symbol;
+	(h->sigs+EPSILON)->length =  strlen(h->epsilon_symbol);
+	(h->sigs+UNKNOWN)->symbol = "?";
+	(h->sigs+UNKNOWN)->length =  1;
+	(h->sigs+IDENTITY)->symbol = "@";
+	(h->sigs+IDENTITY)->length =  1;
+    }
+    if (h->has_flags) {
+
+	h->flag_lookup = xxmalloc(sizeof(struct flag_lookup)*(maxsigma+1));
+	for (i=0; i <= maxsigma; i++) {
+	    (h->flag_lookup+i)->type = 0;
+	    (h->flag_lookup+i)->name = NULL;
+	    (h->flag_lookup+i)->value = NULL;
+	}
+	for (sig = h->gsigma; sig != NULL ; sig = sig->next) {
+	    if (my_flag_check(sig->symbol)) {
+		(h->flag_lookup+sig->number)->type = my_flag_get_type(sig->symbol);
+		(h->flag_lookup+sig->number)->name = my_flag_get_name(sig->symbol);
+		(h->flag_lookup+sig->number)->value = flag_get_value(sig->symbol);
+	    }
+	}
+	apply_mark_flagstates(h);
+    }
+}
+
+struct apply_handle *
+my_apply_init(struct fsm *net) {
+    struct apply_handle *h;
+
+    srand((unsigned int) time(NULL));
+    h = calloc(1,sizeof(struct apply_handle));
+    /* Init */
+
+    h->iterate_old = 0;
+    h->iterator = 0;
+    h->instring = NULL;
+    h->flag_list = NULL;
+    h->flag_lookup = NULL;
+    h->obey_flags = 1;
+    h->show_flags = 0;
+    h->print_space = 0;
+    h->print_pairs = 0;
+    h->separator = xxstrdup(":");
+    h->epsilon_symbol = xxstrdup("0");
+    h->last_net = net;
+    h->outstring = xxmalloc(sizeof(char)*DEFAULT_OUTSTRING_SIZE);
+    h->outstringtop = DEFAULT_OUTSTRING_SIZE;
+    *(h->outstring) = '\0';
+    h->gstates = net->states;
+    h->gsigma = net->sigma;
+    h->printcount = 1;
+    my_apply_create_statemap(h, net);
+    h->searchstack = xxmalloc(sizeof(struct searchstack) * DEFAULT_STACK_SIZE);
+    h->apply_stack_top = DEFAULT_STACK_SIZE;
+    my_apply_stack_clear(h);
+    my_apply_create_sigarray(h, net);
+    return(h);
+}
+
+void
+my_iface_apply_up(char *word, struct fsm *fsm) {
+    int i;
+    char *result;
+    struct apply_handle *ah;
+
+    // !!!clb!!!
+    //ah = stack_get_ah();
+    //if (se->ah == NULL) {
+    //	se->ah = apply_init(se->fsm);
+    //}
+    ah = my_apply_init(fsm);
+/*
+    iface_apply_set_params(ah);
+    result = apply_up(ah, word);
+
+    if (result == NULL) {
+        printf("???\n");
+        return;
+    } else {
+        printf("%s\n",result);
+    }
+    for (i = g_list_limit; i > 0; i--) {
+        result = apply_up(ah, NULL);
+        if (result == NULL)
+            break;
+        printf("%s\n",result);
+    }
+*/
+}
+
 
 int
 main(void) {
