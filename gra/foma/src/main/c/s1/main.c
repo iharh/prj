@@ -1949,7 +1949,7 @@ my_iface_apply_up(char *word, struct fsm *fsm) {
     ah = my_apply_init(fsm);
 
     my_iface_apply_set_params(ah);
-    result = my_apply_up(ah, word);
+    result = my_apply_up(ah, word); // returns always h->outstring or NULL
 
     if (result == NULL) {
         printf("???\n");
