@@ -10,7 +10,9 @@ model {
 
     toolChains {
         visualCpp(VisualCpp) {
-            installDir "${project.'vs.base'}" // if omitted - the latest version of MSVC will be used
+            // if omitted - the latest version of MSVC will be used
+            // !!!uncommend for win!!!
+            // installDir "${project.'vs.base'}" 
         }
         gcc(Gcc)
     }
