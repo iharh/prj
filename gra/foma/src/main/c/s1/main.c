@@ -396,7 +396,6 @@ my_io_net_read(struct io_buf_handle *iobh, char **net_name) {
     if (my_io_gets(iobh, buf) == 0) {
         return NULL;
     }
-    
     net = my_fsm_create("");
 
     if (strcmp(buf, "##foma-net 1.0##") != 0) {
@@ -437,12 +436,19 @@ my_io_net_read(struct io_buf_handle *iobh, char **net_name) {
     }
 
     for (;;) {
+        printf("1\n");
         my_io_gets(iobh, buf);
         if (buf[0] == '#') break;
         if (buf[0] == '\0') continue;
+        printf("buf: %s\n", buf);
         new_symbol = strstr(buf, " ");
+        printf("buf: %p, new_symbol: %p\n", buf, new_symbol);
+        printf("new_symbol: %s\n", new_symbol);
+        printf("3\n");
 	new_symbol[0] = '\0';
+        printf("4\n");
 	new_symbol++;
+        printf("5\n");
 	if (new_symbol[0] == '\0') {
 	    sscanf(buf,"%i", &new_symbol_number);
 	    my_sigma_add_number(net->sigma, "\n", new_symbol_number);
@@ -450,6 +456,7 @@ my_io_net_read(struct io_buf_handle *iobh, char **net_name) {
 	    sscanf(buf,"%i", &new_symbol_number);
 	    my_sigma_add_number(net->sigma, new_symbol, new_symbol_number);
 	}
+        printf("6\n");
     }
 
     /* States */
@@ -1064,6 +1071,42 @@ my_apply_binarysearch(struct apply_handle *h) {
 	    return 1;
 	}
     }
+}
+
+/* map h->ptr (line pointer) to h->iptr (index pointer) */
+void
+my_apply_set_iptr(struct apply_handle *h) {
+    struct apply_state_index **idx, *sidx;
+    int stateno, seeksym;
+    /* Check if state has index */
+    if ((idx = ((h->mode) & DOWN) == DOWN ? (h->index_in) : (h->index_out)) == NULL) {
+	return;
+    }
+ 
+    h->iptr = NULL;
+    h->state_has_index = 0;
+    stateno = (h->gstates+h->ptr)->state_no;
+    if (stateno < 0) {
+	return;
+    }
+   
+    sidx = *(idx + stateno);
+    if (sidx == NULL) { return; }
+    seeksym = (h->sigmatch_array+h->ipos)->signumber;
+    h->state_has_index = 1;
+    sidx = sidx + seeksym;
+    if (sidx->fsmptr == -1) {
+	if (sidx->next == NULL) {
+	    return;
+	} else {
+	    sidx = sidx->next;
+	}
+    }
+    h->iptr = sidx;
+    if (sidx->fsmptr == -1) {
+	h->iptr = NULL;
+    }
+    h->state_has_index = 1;
 }
 
 int
@@ -1713,42 +1756,6 @@ my_iface_apply_set_params(struct apply_handle *h) {
     my_apply_set_print_pairs(h, g_print_pairs);
     my_apply_set_show_flags(h, g_show_flags);
     my_apply_set_obey_flags(h, g_obey_flags);
-}
-
-/* map h->ptr (line pointer) to h->iptr (index pointer) */
-void
-my_apply_set_iptr(struct apply_handle *h) {
-    struct apply_state_index **idx, *sidx;
-    int stateno, seeksym;
-    /* Check if state has index */
-    if ((idx = ((h->mode) & DOWN) == DOWN ? (h->index_in) : (h->index_out)) == NULL) {
-	return;
-    }
- 
-    h->iptr = NULL;
-    h->state_has_index = 0;
-    stateno = (h->gstates+h->ptr)->state_no;
-    if (stateno < 0) {
-	return;
-    }
-   
-    sidx = *(idx + stateno);
-    if (sidx == NULL) { return; }
-    seeksym = (h->sigmatch_array+h->ipos)->signumber;
-    h->state_has_index = 1;
-    sidx = sidx + seeksym;
-    if (sidx->fsmptr == -1) {
-	if (sidx->next == NULL) {
-	    return;
-	} else {
-	    sidx = sidx->next;
-	}
-    }
-    h->iptr = sidx;
-    if (sidx->fsmptr == -1) {
-	h->iptr = NULL;
-    }
-    h->state_has_index = 1;
 }
 
 char *
