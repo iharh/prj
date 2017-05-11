@@ -63,7 +63,7 @@ model {
                         srcDirs 'src/main/c/s1'
                         include '*.c'
                     }
-                    lib library: "smallrt"
+                    //lib library: "smallrt"
                 }
             }
         }

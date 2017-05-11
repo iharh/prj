@@ -4,7 +4,48 @@
 #include <limits.h>
 #include <time.h>
 
-#include "smallrt.h"
+//#include "smallrt.h"
+// need this in order to correct invalid behaviour when str pointer has higher than 32-bits
+char *strstr(const char *str, const char *strSearch);
+
+void *xxmalloc(size_t size) {
+    return(malloc(size));
+}
+
+char *xxstrndup(const char *s, size_t n) {
+    char *r = NULL;
+    const char *p = s;
+    while(*p++ && n--);
+    n = p - s - 1;
+    r = (char *) xxmalloc(n + 1);
+    if(r != NULL) {
+        memcpy(r, s, n);
+        r[n] = 0;
+    }
+    return r;
+}
+
+void xxfree(void *ptr) {
+    free(ptr);
+}
+
+void *xxrealloc(void *ptr, size_t size) {
+    return(realloc(ptr, size));
+}
+
+void *xxcalloc(size_t nmemb, size_t size) {
+    return(calloc(nmemb,size));
+}
+
+char *xxstrdup(const char *s) {
+  //    return(strdup(s));
+  size_t size = strlen(s) + 1;
+  char *p = malloc(size);
+  if (p) {
+    memcpy(p, s, size);
+  }
+  return p;
+}
 
 /* Special symbols on arcs */
 #define EPSILON 0
@@ -373,13 +414,11 @@ struct fsm *my_fsm_create (char *name) {
 
 #define READ_BUF_SIZE 4096
 
-#ifndef ORIGINAL
-  #if defined (_MSC_VER) || (__MINGW32__)
-    #define LONG_LONG_SPECIFIER "%I64d"
-  #else
-    #define LONG_LONG_SPECIFIER "%lld"
-  #endif
-#endif // #ifndef ORIGINAL
+#if defined (_MSC_VER) || (__MINGW32__)
+#define LONG_LONG_SPECIFIER "%I64d"
+#else
+#define LONG_LONG_SPECIFIER "%lld"
+#endif
 
 struct fsm *
 my_io_net_read(struct io_buf_handle *iobh, char **net_name) {
@@ -436,19 +475,12 @@ my_io_net_read(struct io_buf_handle *iobh, char **net_name) {
     }
 
     for (;;) {
-        printf("1\n");
         my_io_gets(iobh, buf);
         if (buf[0] == '#') break;
         if (buf[0] == '\0') continue;
-        printf("buf: %s\n", buf);
-        new_symbol = strstr(buf, " ");
-        printf("buf: %p, new_symbol: %p\n", buf, new_symbol);
-        printf("new_symbol: %s\n", new_symbol);
-        printf("3\n");
+        new_symbol = strstr(buf, " "); // !!! need to declare strstr before !!!
 	new_symbol[0] = '\0';
-        printf("4\n");
 	new_symbol++;
-        printf("5\n");
 	if (new_symbol[0] == '\0') {
 	    sscanf(buf,"%i", &new_symbol_number);
 	    my_sigma_add_number(net->sigma, "\n", new_symbol_number);
@@ -456,7 +488,6 @@ my_io_net_read(struct io_buf_handle *iobh, char **net_name) {
 	    sscanf(buf,"%i", &new_symbol_number);
 	    my_sigma_add_number(net->sigma, new_symbol, new_symbol_number);
 	}
-        printf("6\n");
     }
 
     /* States */
@@ -1689,6 +1720,7 @@ my_apply_create_sigarray(struct apply_handle *h, struct fsm *net) {
     }
 }
 
+
 struct apply_handle *
 my_apply_init(struct fsm *net) {
     struct apply_handle *h;
@@ -1721,6 +1753,96 @@ my_apply_init(struct fsm *net) {
     my_apply_stack_clear(h);
     my_apply_create_sigarray(h, net);
     return(h);
+}
+
+void
+my_apply_clear_index_list(struct apply_handle *h, struct apply_state_index **index) {
+    int i, j, statecount;
+    struct apply_state_index *iptr, *iptr_tmp, *iptr_zero;
+    if (index == NULL)
+	return;
+    statecount = h->last_net->statecount;
+    for (i = 0; i < statecount; i++) {
+	iptr = *(index+i);
+	if (iptr == NULL) {
+	    continue;
+	}
+	iptr_zero = *(index+i);
+	for (j = h->sigma_size - 1 ; j >= 0; j--) { /* Make sure to not free the list in EPSILON    */
+	    iptr = *(index+i) + j;                  /* as the other states lists' tails point to it */
+	    for (iptr = iptr->next ; iptr != NULL && iptr != iptr_zero; iptr = iptr_tmp) {
+		iptr_tmp = iptr->next;
+		xxfree(iptr);
+	    }
+	}
+	xxfree(*(index+i));
+    }
+}
+
+void
+my_apply_clear_index(struct apply_handle *h) {
+    if (h->index_in) {
+	my_apply_clear_index_list(h, h->index_in);
+	xxfree(h->index_in);
+	h->index_in = NULL;
+    }
+    if (h->index_out) {
+	my_apply_clear_index_list(h, h->index_out);
+	xxfree(h->index_out);
+	h->index_out = NULL;
+    }
+}
+
+/* Frees memory associated with applies */
+void
+my_apply_clear(struct apply_handle *h) {
+    struct sigma_trie_arrays *sta, *stap;
+    for (sta = h->sigma_trie_arrays; sta != NULL; ) {
+	stap = sta;
+	xxfree(sta->arr);
+	sta = sta->next;
+	xxfree(stap);
+    }
+    h->sigma_trie_arrays = NULL;
+    if (h->statemap != NULL) {
+        xxfree(h->statemap);
+        h->statemap = NULL;
+    }
+    if (h->numlines != NULL) {
+        xxfree(h->numlines);
+        h->numlines = NULL;
+    }
+    if (h->marks != NULL) {
+        xxfree(h->marks);
+        h->marks = NULL;
+    }
+    if (h->searchstack != NULL) {
+        xxfree(h->searchstack);
+        h->searchstack = NULL;
+    }
+    if (h->sigs != NULL) {
+        xxfree(h->sigs);
+        h->sigs = NULL;
+    }
+    if (h->flag_lookup != NULL) {
+        xxfree(h->flag_lookup);
+        h->flag_lookup = NULL;
+    }
+    if (h->sigmatch_array != NULL) {
+	xxfree(h->sigmatch_array);
+	h->sigmatch_array = NULL;
+    }
+    if (h->flagstates != NULL) {
+	xxfree(h->flagstates);
+	h->flagstates = NULL;
+    }    
+    my_apply_clear_index(h);
+    h->last_net = NULL;
+    h->iterator = 0;
+    xxfree(h->outstring);
+    xxfree(h->separator);
+    xxfree(h->epsilon_symbol);
+    xxfree(h);
 }
 
 void
@@ -1943,19 +2065,11 @@ my_apply_up(struct apply_handle *h, char *word) {
 }
 
 void
-my_iface_apply_up(char *word, struct fsm *fsm) {
+my_iface_apply_up(char *word, struct fsm *fsm, struct apply_handle *ah) {
+    int g_list_limit = 100;
     int i;
     char *result;
-    struct apply_handle *ah;
 
-    // !!!clb!!!
-    //ah = stack_get_ah();
-    //if (se->ah == NULL) {
-    //	se->ah = apply_init(se->fsm);
-    //}
-    ah = my_apply_init(fsm);
-
-    my_iface_apply_set_params(ah);
     result = my_apply_up(ah, word); // returns always h->outstring or NULL
 
     if (result == NULL) {
@@ -1964,24 +2078,31 @@ my_iface_apply_up(char *word, struct fsm *fsm) {
     } else {
         printf("%s\n",result);
     }
-/*
+
     for (i = g_list_limit; i > 0; i--) {
         result = my_apply_up(ah, NULL);
         if (result == NULL)
             break;
         printf("%s\n",result);
     }
-*/
 }
 
 int
 main(void) {
     struct fsm *p_fsm;
+    struct apply_handle *p_ah;
 
     printf("start\n");
 
     p_fsm = my_iface_load_stack("morphind");
-    my_iface_apply_up("kirim", p_fsm);
+
+    p_ah = my_apply_init(p_fsm);
+    my_iface_apply_set_params(p_ah);
+
+    my_iface_apply_up("kirim", p_fsm, p_ah);
+    my_iface_apply_up("aku", p_fsm, p_ah);
+
+    my_apply_clear(p_ah);
     my_fsm_destroy(p_fsm);
 
     printf("finish\n");
