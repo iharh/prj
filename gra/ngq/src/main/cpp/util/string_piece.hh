@@ -48,7 +48,7 @@
 #ifndef UTIL_STRING_PIECE_H
 #define UTIL_STRING_PIECE_H
 
-// clb!!! include "util/have.hh"
+#include "util/have.hh"
 
 #include <cstring>
 #include <iosfwd>
