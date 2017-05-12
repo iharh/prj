@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "lm/config.hh"
 #include "util/string_piece.hh"
 
 namespace lm {
@@ -11,8 +12,8 @@ public:
     }
 };
 
-float Query(const ProbingModel &model, StringPiece word) {
-    std::cout << "word: " << word << std::endl;
+void Query(const ProbingModel &model, StringPiece word) {
+    std::cout << "word: " << word << " total: " << 0.0 << std::endl;
 /*
     typename ProbingModel::State state, out;
     // iterate lines
@@ -30,7 +31,6 @@ float Query(const ProbingModel &model, StringPiece word) {
     //printer.Line(oov, total);
     return total;
 */
-    return 0.0;
 }
 
 } // namespace ngram
@@ -41,10 +41,11 @@ int
 main(void) {
     const char *file = "";
     void *config = NULL;
+
     lm::ngram::ProbingModel model(file, config);
 
-    float total = Query(model, StringPiece("V"));
+    Query(model, StringPiece("V"));
+    Query(model, StringPiece("P"));
 
-    std::cout << "total: " << total << std::endl;
     return 0;
 }

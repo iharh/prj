@@ -40,7 +40,11 @@ model {
                     source {
                         srcDirs 'src/main/cpp/ngq'
                         include '*.cpp'
+                        srcDirs 'src/main/cpp/lm'
+                        include '*.cc'
                         srcDirs 'src/main/cpp/util'
+                        include '*.cc'
+                        srcDirs 'src/main/cpp/util/double-conversion'
                         include '*.cc'
                     }
                     exportedHeaders {
