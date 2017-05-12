@@ -19,7 +19,7 @@ model {
         visualCpp(VisualCpp) {
             // if omitted - the latest version of MSVC will be used
             // !!!uncommend for win!!!
-            //installDir "${project.'vs.base'}" 
+            installDir "${project.'vs.base'}" 
         }
         gcc(Gcc)
     }
@@ -67,10 +67,7 @@ model {
                     }
                     exportedHeaders {
                         srcDirs 'src/main/cpp'
-                        //if (targetPlatform.operatingSystem.windows) {
-                            srcDirs getExtraSdkDirs()
-                            // 'C:\\Program Files (x86)\\Windows Kits\\8.1\\Include\\shared', "C:\\Program Files (x86)\\Windows Kits\\8.1\\Include\\um"
-                        //}
+                        srcDirs getExtraSdkDirs()
                     }
                 }
             }
