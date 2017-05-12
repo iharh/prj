@@ -8,7 +8,7 @@ namespace ngram {
 
 class ProbingModel {
 public:
-    ProbingModel(const char *file, void *config) {
+    ProbingModel(const char *file, Config &config) {
     }
 };
 
@@ -40,8 +40,8 @@ void Query(const ProbingModel &model, StringPiece word) {
 int
 main(void) {
     const char *file = "";
-    void *config = NULL;
 
+    lm::ngram::Config config;
     lm::ngram::ProbingModel model(file, config);
 
     Query(model, StringPiece("V"));
