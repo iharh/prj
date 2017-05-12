@@ -112,7 +112,8 @@ void ReadBackoff(util::FilePiece &in, float &backoff) {
       backoff = in.ReadFloat();
       if (backoff == ngram::kExtensionBackoff) backoff = ngram::kNoExtensionBackoff;
       {
-#if defined(WIN32) && !defined(__MINGW32__)
+// clb!!! ...!defined(__MINGW32__)
+#if defined(_WIN32) || defined(_WIN64)
 		int float_class = _fpclass(backoff);
         UTIL_THROW_IF(float_class == _FPCLASS_SNAN || float_class == _FPCLASS_QNAN || float_class == _FPCLASS_NINF || float_class == _FPCLASS_PINF, FormatLoadException, "Bad backoff " << backoff);
 #else

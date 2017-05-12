@@ -180,7 +180,8 @@ StringPiece FirstToken(StringPiece str) {
 // std::isnan is technically C++11 not C++98.  But in practice this is a problem for visual studio.
 template <class T> inline int CrossPlatformIsNaN(T value) {
 #if defined(_WIN32) || defined(_WIN64)
-  return isnan(value);
+  // clb!!!
+  return _isnan(value);
 #else
   return std::isnan(value);
 #endif
