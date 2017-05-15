@@ -5,7 +5,7 @@
 #include "lm/binary_format.hh"
 #include "lm/config.hh"
 #include "lm/facade.hh"
-// clb!!! #include "lm/quantize.hh"
+#include "lm/quantize.hh"
 #include "lm/search_hashed.hh"
 #include "lm/search_trie.hh"
 #include "lm/state.hh"
@@ -134,13 +134,12 @@ class name : public from {\
 };
 
 LM_NAME_MODEL(ProbingModel, detail::GenericModel<detail::HashedSearch<BackoffValue> LM_COMMA() ProbingVocabulary>);
-/* clb!!!
 LM_NAME_MODEL(RestProbingModel, detail::GenericModel<detail::HashedSearch<RestValue> LM_COMMA() ProbingVocabulary>);
 LM_NAME_MODEL(TrieModel, detail::GenericModel<trie::TrieSearch<DontQuantize LM_COMMA() trie::DontBhiksha> LM_COMMA() SortedVocabulary>);
 LM_NAME_MODEL(ArrayTrieModel, detail::GenericModel<trie::TrieSearch<DontQuantize LM_COMMA() trie::ArrayBhiksha> LM_COMMA() SortedVocabulary>);
 LM_NAME_MODEL(QuantTrieModel, detail::GenericModel<trie::TrieSearch<SeparatelyQuantize LM_COMMA() trie::DontBhiksha> LM_COMMA() SortedVocabulary>);
 LM_NAME_MODEL(QuantArrayTrieModel, detail::GenericModel<trie::TrieSearch<SeparatelyQuantize LM_COMMA() trie::ArrayBhiksha> LM_COMMA() SortedVocabulary>);
-*/
+
 // Default implementation.  No real reason for it to be the default.
 typedef ::lm::ngram::ProbingVocabulary Vocabulary;
 typedef ProbingModel Model;
@@ -148,7 +147,7 @@ typedef ProbingModel Model;
 /* Autorecognize the file type, load, and return the virtual base class.  Don't
  * use the virtual base class if you can avoid it.  Instead, use the above
  * classes as template arguments to your own virtual feature function.*/
-// clb!!! base::Model *LoadVirtual(const char *file_name, const Config &config = Config(), ModelType if_arpa = PROBING);
+base::Model *LoadVirtual(const char *file_name, const Config &config = Config(), ModelType if_arpa = PROBING);
 
 } // namespace ngram
 } // namespace lm

@@ -318,16 +318,13 @@ template <class Search, class VocabularyT> float GenericModel<Search, Vocabulary
 
 template class GenericModel<HashedSearch<BackoffValue>, ProbingVocabulary>;
 template class GenericModel<HashedSearch<RestValue>, ProbingVocabulary>;
-/* clb!!!
 template class GenericModel<trie::TrieSearch<DontQuantize, trie::DontBhiksha>, SortedVocabulary>;
 template class GenericModel<trie::TrieSearch<DontQuantize, trie::ArrayBhiksha>, SortedVocabulary>;
 template class GenericModel<trie::TrieSearch<SeparatelyQuantize, trie::DontBhiksha>, SortedVocabulary>;
 template class GenericModel<trie::TrieSearch<SeparatelyQuantize, trie::ArrayBhiksha>, SortedVocabulary>;
-*/
 
 } // namespace detail
 
-/* clb!!!
 base::Model *LoadVirtual(const char *file_name, const Config &config, ModelType model_type) {
   RecognizeBinary(file_name, model_type);
   switch (model_type) {
@@ -347,7 +344,6 @@ base::Model *LoadVirtual(const char *file_name, const Config &config, ModelType 
       UTIL_THROW(FormatLoadException, "Confused by model type " << model_type);
   }
 }
-*/
 
 } // namespace ngram
 } // namespace lm
