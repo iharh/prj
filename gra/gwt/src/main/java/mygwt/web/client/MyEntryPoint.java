@@ -31,7 +31,8 @@ public class MyEntryPoint implements EntryPoint, FinishHandler {
     public void onModuleLoad() {
         popup = new SentimentsWizard(this);
 
-        Image img = new Image("images/action_transfer.png"); // SentimentsImages.INSTANCE.action_transfer()
+        // SentimentsImages.INSTANCE.action_transfer()
+        Image img = new Image("images/wrench.svg"); // "images/action_transfer.png"
 
 	RootPanel.get().add(new OkButton("Do"));
 
