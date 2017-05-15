@@ -1,23 +1,17 @@
 #include <iostream>
 
 #include "lm/config.hh"
+#include "lm/model.hh"
 #include "util/string_piece.hh"
 
 namespace lm {
 namespace ngram {
 
-class ProbingModel {
-public:
-    ProbingModel(const char *file, Config &config) {
-    }
-};
-
 void Query(const ProbingModel &model, StringPiece word) {
-    std::cout << "word: " << word << " total: " << 0.0 << std::endl;
-/*
-    typename ProbingModel::State state, out;
+    //typename ProbingModel::State state, out;
+    ProbingModel::State out;
     // iterate lines
-    state = model.BeginSentenceState() : // model.NullContextState(); if !sentence_context
+    ProbingModel::State state = model.BeginSentenceState(); // : model.NullContextState(); if !sentence_context
     //while (in.ReadWordSameLine(word)) {
     lm::WordIndex vocab = model.GetVocabulary().Index(word);
     lm::FullScoreReturn ret = model.FullScore(state, vocab, out);
@@ -29,8 +23,8 @@ void Query(const ProbingModel &model, StringPiece word) {
     total += ret.prob;
     //printer.Word("</s>", model.GetVocabulary().EndSentence(), ret);
     //printer.Line(oov, total);
-    return total;
-*/
+    //return total;
+    std::cout << "word: " << word << " total: " << total << std::endl;
 }
 
 } // namespace ngram
