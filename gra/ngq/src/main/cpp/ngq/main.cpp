@@ -33,10 +33,8 @@ void Query(const ProbingModel &model, StringPiece word) {
 
 int
 main(void) {
-    const char *file = "";
-
     lm::ngram::Config config;
-    lm::ngram::ProbingModel model(file, config);
+    lm::ngram::ProbingModel model("tag.lm.bin", config);
 
     Query(model, StringPiece("V"));
     Query(model, StringPiece("P"));
