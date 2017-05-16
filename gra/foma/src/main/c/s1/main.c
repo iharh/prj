@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <limits.h>
 #include <time.h>
-#include <memory.h>
+#include <string.h>
 
 //#include "smallrt.h"
 // need this in order to correct invalid behaviour when str pointer has higher than 32-bits
