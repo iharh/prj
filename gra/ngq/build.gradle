@@ -4,11 +4,17 @@ plugins {
 }
 
 import org.gradle.internal.os.OperatingSystem
+import net.rubygrapefruit.platform.WindowsRegistry
 
 // to fix include order - need windows skd first to successfully being able including "windows.h"
 def getExtraSdkDirs() {
     return OperatingSystem.current().isWindows() ? ['C:\\Program Files (x86)\\Windows Kits\\8.1\\Include\\shared', "C:\\Program Files (x86)\\Windows Kits\\8.1\\Include\\um"]
         : [];
+}
+
+def getSDK() {
+    WindowsRegistry
+    return new DefaultWindowsSdkLocator(OperatingSystem.current(), 
 }
 
 model {
