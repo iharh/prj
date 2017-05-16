@@ -3,8 +3,25 @@ plugins {
     id 'cpp'
 }
 
+import org.gradle.internal.nativeintegration.services.NativeServices;
 import org.gradle.internal.os.OperatingSystem
-import net.rubygrapefruit.platform.WindowsRegistry
+
+// https://github.com/adammurdoch/native-platform
+// nativePlatform: 'net.rubygrapefruit:native-platform:0.14'
+// import net.rubygrapefruit.platform.WindowsRegistry
+// net.rubygrapefruit.platform.WindowsRegistry wr = net.rubygrapefruit.platform.Native.get(net.rubygrapefruit.platform.WindowsRegistry.class);
+
+//import org.gradle.nativeplatform.toolchain.internal.msvcpp.VisualStudioLocator
+
+//import org.gradle.nativeplatform.toolchain.internal.msvcpp.WindowsSdkLocator
+
+import org.gradle.internal.service.scopes.PluginServiceRegistry
+
+import org.gradle.api.plugins.AppliedPlugin
+import org.gradle.nativeplatform.toolchain.plugins.MicrosoftVisualCppCompilerPlugin
+
+import org.gradle.nativeplatform.toolchain.VisualCpp
+
 
 // to fix include order - need windows skd first to successfully being able including "windows.h"
 def getExtraSdkDirs() {
@@ -12,9 +29,24 @@ def getExtraSdkDirs() {
         : [];
 }
 
-def getSDK() {
-    WindowsRegistry
-    return new DefaultWindowsSdkLocator(OperatingSystem.current(), 
+def getSDKLocator(VisualCpp toolChain) {
+    //Memory memory = NativeServices.getInstance().get(Memory.class);
+    //WindowsRegistry winreg = NativeServices.getInstance().get(WindowsRegistry.class);
+    //WindowsSdkLocator locator = NativeServices.getInstance().get(WindowsSdkLocator.class);
+    //VisualStudioLocator visualStudioLocator = NativeServices.getInstance().get(VisualStudioLocator.class);
+
+    //def ppp = NativeServices.getInstance().getAll(PluginServiceRegistry.class) // sessionServices.getAll(PluginServiceRegistry.class)
+    //for (PluginServiceRegistry pluginServiceRegistry : ppp) { 
+    //    println "abc!!!"
+    //}
+    //AppliedPlugin p = project.getPluginManager().findPlugin('cpp')
+    MicrosoftVisualCppCompilerPlugin p = project.getPluginManager().getPluginContainer().getPlugin(MicrosoftVisualCppCompilerPlugin.class);
+    def ttt = (VisualCpp)toolChain;
+    //def sdkDir = toolChains.getWindowsSdkDir()
+    //def sdkDir = ""; 
+    // VisualCppToolChain vcpptc = ... getToolChain
+    println "getSDKLocator: ${p}, tc: ${ttt.getClass()}"
+
 }
 
 model {
@@ -26,6 +58,7 @@ model {
             // if omitted - the latest version of MSVC will be used
             // !!!uncommend for win!!!
             installDir "${project.'vs.base'}" 
+            // windowsSdkDir - make ext prop
         }
         gcc(Gcc)
     }
@@ -36,12 +69,14 @@ model {
     }
     binaries {
         all {
-            //if (targetPlatform.operatingSystem.windows) {
-            //    println 'platform is win!'
-            //}
+            if (targetPlatform.operatingSystem.windows) {
+                println 'platform is win!'
+            }
             cppCompiler.define "KENLM_MAX_ORDER=6"
             if (toolChain in VisualCpp) {
                 cppCompiler.args "/EHsc"
+                println toolChain.windowsSdkDir
+                println getSDKLocator(toolChain)
             }
         }
         withType(SharedLibraryBinarySpec) { // all
