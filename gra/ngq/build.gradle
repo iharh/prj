@@ -18,9 +18,9 @@ import org.gradle.internal.os.OperatingSystem
 import org.gradle.internal.service.scopes.PluginServiceRegistry
 
 import org.gradle.api.plugins.AppliedPlugin
-import org.gradle.nativeplatform.toolchain.plugins.MicrosoftVisualCppCompilerPlugin
+//import org.gradle.nativeplatform.toolchain.plugins.MicrosoftVisualCppCompilerPlugin
 
-import org.gradle.nativeplatform.toolchain.VisualCpp
+//import org.gradle.nativeplatform.toolchain.VisualCpp
 
 
 // to fix include order - need windows skd first to successfully being able including "windows.h"
@@ -29,7 +29,7 @@ def getExtraSdkDirs() {
         : [];
 }
 
-def getSDKLocator(VisualCpp toolChain) {
+def getSDKLocator(toolChain) {
     //Memory memory = NativeServices.getInstance().get(Memory.class);
     //WindowsRegistry winreg = NativeServices.getInstance().get(WindowsRegistry.class);
     //WindowsSdkLocator locator = NativeServices.getInstance().get(WindowsSdkLocator.class);
@@ -40,13 +40,23 @@ def getSDKLocator(VisualCpp toolChain) {
     //    println "abc!!!"
     //}
     //AppliedPlugin p = project.getPluginManager().findPlugin('cpp')
-    MicrosoftVisualCppCompilerPlugin p = project.getPluginManager().getPluginContainer().getPlugin(MicrosoftVisualCppCompilerPlugin.class);
-    def ttt = (VisualCpp)toolChain;
+    //MicrosoftVisualCppCompilerPlugin p = project.getPluginManager().getPluginContainer().getPlugin(MicrosoftVisualCppCompilerPlugin.class);
     //def sdkDir = toolChains.getWindowsSdkDir()
     //def sdkDir = ""; 
     // VisualCppToolChain vcpptc = ... getToolChain
-    println "getSDKLocator: ${p}, tc: ${ttt.getClass()}"
+    println "getSDKLocator tc: ${toolChain.getClass()}"
+    println "getSDKLocator typeName: ${toolChain.typeName}"
+    // println "getSDKLocator typeName: ${toolChain.typeName}"
+    // public File getWindowsSdkDir() { installDir
 
+    // org.gradle.nativeplatform.toolchain.internal.gcc.GccToolChain_Decorated
+
+    // core/src/main/java/org/gradle/api/internal/AsmBackedClassGenerator.java
+    //  core/src/main/java/org/gradle/api/internal/AbstractClassGenerator.java
+    //   base-services/src/main/java/org/gradle/internal/reflect/ClassInspector.java
+    //   base-services/src/main/java/org/gradle/internal/reflect/PropertyAccessorType.java
+    // core/src/test/groovy/org/gradle/api/internal/AsmBackedClassGeneratorTest.java
+    // InMemoryDecoratedCache.java InMemoryCacheDecoratorFactory.java
 }
 
 model {
@@ -76,8 +86,8 @@ model {
             if (toolChain in VisualCpp) {
                 cppCompiler.args "/EHsc"
                 println toolChain.windowsSdkDir
-                println getSDKLocator(toolChain)
             }
+            println getSDKLocator(toolChain)
         }
         withType(SharedLibraryBinarySpec) { // all
             if (toolChain in Gcc) {
