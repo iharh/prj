@@ -3,6 +3,32 @@ plugins {
     id 'cpp'
 }
 
+apply plugin: GreetingPlugin
+
+import org.gradle.model.Defaults
+import org.gradle.internal.service.ServiceRegistry
+import org.gradle.nativeplatform.toolchain.internal.NativeToolChainRegistryInternal
+
+class GreetingPlugin implements Plugin<Project> {
+    void apply(Project project) {
+        project.task('hello') {
+            doLast {
+                println "Hello from the GreetingPlugin"
+            }
+        }
+    }
+
+    static class Rules extends RuleSource {
+        @Defaults
+        public static void addToolChain(NativeToolChainRegistryInternal toolChainRegistry, ServiceRegistry serviceRegistry) {
+            println "Hello from addToolChain toolChainRegistry: ${toolChainRegistry}, serviceRegistry: ${serviceRegistry.class}"
+            // serviceRegistry: "ProjectScopeServices"
+            // class org.gradle.internal.service.scopes.ProjectScopeServices
+            (new Exception("abc")).printStackTrace()
+        }
+    }
+}
+
 import org.gradle.internal.nativeintegration.services.NativeServices;
 import org.gradle.internal.os.OperatingSystem
 
@@ -46,7 +72,9 @@ def getSDKLocator(toolChain) {
     // VisualCppToolChain vcpptc = ... getToolChain
     println "getSDKLocator tc: ${toolChain.getClass()}"
     println "getSDKLocator typeName: ${toolChain.typeName}"
-    // println "getSDKLocator typeName: ${toolChain.typeName}"
+    println "getSDKLocator installDir: ${toolChain.installDir}"
+    println "getSDKLocator installDir2: ${toolChain.getInstallDir()}"
+    println "getSDKLocator windowsSdkDir: ${toolChain.windowsSdkDir}"
     // public File getWindowsSdkDir() { installDir
 
     // org.gradle.nativeplatform.toolchain.internal.gcc.GccToolChain_Decorated
