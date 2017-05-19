@@ -5,7 +5,8 @@ plugins {
 
 model {
     buildTypes {
-        release
+        //release
+        debug
     }
 
     toolChains {
@@ -15,6 +16,7 @@ model {
             // installDir "${project.'vs.base'}" 
         }
         gcc(Gcc)
+        //clang(Clang)
     }
 
     platforms {
@@ -32,6 +34,11 @@ model {
                 // "-O2", "-fno-access-control"
                 // cppCompiler.args '-std=c++0x', '-Wno-narrowing'
             }
+            //if (toolChain in Clang) {
+            //    println 'toolchain is Clang!'
+            //    cCompiler.args '-fsanitize=address', '-fno-omit-frame-pointer'
+            //    linker.args '-fsanitize=address'
+            //}
             if (toolChain in VisualCpp) {
                 // #if defined (__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
                 //cCompiler.define "__STDC_VERSION__=199901L"

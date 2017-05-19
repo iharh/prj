@@ -2095,7 +2095,7 @@ main(void) {
 
     printf("start\n");
 
-    p_fsm = my_iface_load_stack("morphind");
+    p_fsm = my_iface_load_stack("bin/morphind");
 
     p_ah = my_apply_init(p_fsm);
     my_iface_apply_set_params(p_ah);
