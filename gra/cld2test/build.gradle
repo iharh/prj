@@ -17,8 +17,8 @@ ext {
     curOS = getCurOS()
 }
 
-def cld2ArtifactName = OperatingSystem.current().isWindows() ? "${moduleName}-windows" : "lib${moduleName}-linux"
-def cld2LibDir =  "${libsDir}/${moduleName}/shared"
+def nativeModuleArtifactName = OperatingSystem.current().isWindows() ? "${moduleName}-windows" : "lib${moduleName}-linux"
+def nativeModuleLibDir =  "${libsDir}/${moduleName}/shared"
 
 repositories {
     mavenCentral()
@@ -28,7 +28,7 @@ repositories {
 }
 
 configurations {
-    cld2cfg
+    nativeModuleCfg
 }
 
 versions += [
@@ -62,7 +62,7 @@ libraries += [
 
 dependencies {
     // group: '', name: '', version: '', changing: ''
-    cld2cfg "clarabridge:${cld2ArtifactName}:1.0.0"
+    nativeModuleCfg "clarabridge:${nativeModuleArtifactName}:1.0.0"
 
     compile libraries.jnr_ffi
     compile libraries.lombok
@@ -93,16 +93,16 @@ configurations.all {
 
 test {
     // https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.Test.html 
-    systemProperty 'java.library.path', cld2LibDir
+    systemProperty 'java.library.path', nativeModuleLibDir
     systemProperty 'jnr.ffi.compile.dump', 'true'
 }
 
-task cpCld2(type: Copy) {
+task cpNative(type: Copy) {
     shouldRunAfter testClasses
-    from (configurations.cld2cfg) {
+    from (configurations.nativeModuleCfg) {
         rename { filename -> OperatingSystem.current().isWindows() ? "${moduleName}.dll" : "lib${moduleName}.so" }
     }
-    into cld2LibDir
+    into nativeModuleLibDir
 }
 
-test.dependsOn cpCld2
+test.dependsOn cpNative
