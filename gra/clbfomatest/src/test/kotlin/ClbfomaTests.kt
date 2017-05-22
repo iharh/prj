@@ -16,15 +16,6 @@ class ClbfomaTests : StringSpec() {
 	row("kirim", "kirim<v>_VSA"),
 	row("aku"  , "aku<v>_VSA")
     )
-
-    init {
-	"clbfoma lib should be loaded" {
-	    val clbFoma = FomaConfig.getLibFoma()
-	    clbFoma shouldNotBe null
-	    val pFsm = FomaConfig.getFsm()
-	    pFsm shouldNotBe null
-	}.config(enabled = true)
-    }
     init {
 	"clbfoma lib should be loaded and behave as expected" {
 	    val clbFoma = FomaConfig.getLibFoma()
@@ -42,5 +33,13 @@ class ClbfomaTests : StringSpec() {
 
 	    clbFoma.apply_clear(pApply)
 	}.config(threads = 8, invocations = 8)
+    }
+    init {
+	"clbfoma lib should be loaded" {
+	    val clbFoma = FomaConfig.getLibFoma()
+	    clbFoma shouldNotBe null
+	    val pFsm = FomaConfig.getFsm()
+	    pFsm shouldNotBe null
+	}.config(enabled = true)
     }
 }
