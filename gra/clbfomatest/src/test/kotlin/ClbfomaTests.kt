@@ -24,6 +24,12 @@ class ClbfomaTests : StringSpec() {
 
 	    clbFoma.apply_clear(pApply)
 	    clbFoma.fsm_destroy(pFsm)
-	}
+	}.config(enabled = false)
+    }
+    init {
+	"clbfoma lib should be loaded" {
+	    val clbFoma = ClbFomaLoader.load()
+	    clbFoma shouldBe null
+	}.config(enabled = false)
     }
 }

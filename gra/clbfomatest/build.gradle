@@ -25,9 +25,7 @@ repositories {
     mavenLocal()
     jcenter()
     mavenCentral()
-    maven {
-        url project.'nexus.repo'
-    }
+    maven { url project.'nexus.repo' }
 }
 
 import org.gradle.internal.os.OperatingSystem
@@ -41,7 +39,6 @@ ext {
     libraries = [
         jnr_ffi:    'com.github.jnr:jnr-ffi:2.1.5',
 
-        //junit:  'junit:junit:4.12',
         kotlintest: "io.kotlintest:kotlintest:${versions.kotlintest}"
     ]
     getCurOS = {
@@ -57,13 +54,11 @@ configurations {
     nativeModuleCfg
 }
 
-
 dependencies {
     nativeModuleCfg "clarabridge:${nativeModuleArtifactName}:${versions.clbfoma}"
 
     compile libraries.jnr_ffi
 
-    //testCompile libraries.junit // compile
     testCompile libraries.kotlintest
 }
 

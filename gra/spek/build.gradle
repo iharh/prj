@@ -1,8 +1,9 @@
 buildscript {
     ext {
-        ver_kotlin = '1.1.1' // 1.0.6
-        ver_junit_platform = '1.0.0-M3'
+        ver_kotlin = '1.1.2-3' // 1.1.1 1.1.2-3
+        //ver_junit_platform = '1.0.0-M3' // for Junit 5
     }
+
     repositories {
         mavenLocal()
         jcenter()
@@ -10,67 +11,73 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$ver_kotlin"
-        classpath "org.junit.platform:junit-platform-gradle-plugin:$ver_junit_platform"
+        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.0-M4'
     }
+}
+
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.1.2' // 1.1.1
 }
 
 apply plugin: 'org.junit.platform.gradle.plugin'
-apply plugin: 'java'
-apply plugin: 'kotlin'
-//apply plugin: 'kotlin-kapt'
-//apply plugin: 'idea'
 
-junitPlatform {
-    platformVersion ver_junit_platform
-    filters {
-        engines {
-            include 'spek'
-        }
-    }
-}
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
 
-compileKotlin {
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-}
+compileKotlin.kotlinOptions.jvmTarget = '1.8'
 
 repositories {
     mavenLocal()
     jcenter()
     mavenCentral()
-    maven { url "http://dl.bintray.com/jetbrains/spek" }
+    maven { url project.'nexus.repo' }
+    maven { url 'http://dl.bintray.com/jetbrains/spek' }
 }
 
 ext {
-    versions = [:]
-    libraries = [:]
+    //moduleName = 'mymodulename'
+    versions = [
+        //kotlintest: '2.0.2',
+        //hamcrest:   '2.0.0.0',
+        junit:      '4.12',
+        spek:       '1.1.1'
+    ]
+    libraries = [
+        junit:      "junit:junit:${versions.junit}"
+        //hamcrest:   "org.hamcrest:java-hamcrest:${versions.hamcrest}"
+            // https://github.com/npryce/hamkrest
+        //kotlintest: "io.kotlintest:kotlintest:${versions.kotlintest}"
+    ]
 }
 
-versions += [
-    spek:       '1.1.0-beta4', // 1.1.19
-    //kotlintest: '1.3.5' // 1.0.5 1.1.6 1.2.0 1.3.5 .. 1.3.6, 1.3.7 - require newer ver of kt
-    hamkrest:   '1.1.0.0'
-]
-
-libraries += [
-    spec_api:   "org.jetbrains.spek:spek-api:${versions.spek}",
-    spec_junit_platform_engine: "org.jetbrains.spek:spek-junit-platform-engine:${versions.spek}",
-    spec_subject_extension: "org.jetbrains.spek:spek-subject-extension:1.1.0-beta4",
-    //kotlintest: "io.kotlintest:kotlintest:${versions.kotlintest}"
-    hamkrest:   "com.natpryce:hamkrest:${versions.hamkrest}"
-]
-
 dependencies {
-    //compile 'org.jetbrains.kotlin:kotlin-stdlib'
-    //compile 'org.jetbrains.kotlin:kotlin-reflect'
-    //testCompile 'com.natpryce:hamkrest'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$ver_kotlin"
 
-    testCompile libraries.spec_api
-    testCompile libraries.spec_junit_platform_engine
-    testCompile libraries.spec_subject_extension
+    testCompile "org.jetbrains.kotlin:kotlin-reflect:$ver_kotlin"
+    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$ver_kotlin"
+
+    testCompile libraries.junit
+    //testCompile libraries.hamcrest
     //testCompile libraries.kotlintest
-    testCompile libraries.hamkrest
 
-    testCompile "org.junit.platform:junit-platform-console:${ver_junit_platform}"
+    //testCompile "org.junit.platform:junit-platform-console:${ver_junit_platform}"
+    testCompile "org.jetbrains.spek:spek-junit-platform-engine:1.1.1"
+    testCompile ("org.jetbrains.spek:spek-api:${versions.spek}") {
+        exclude group: 'org.jetbrains.kotlin'
+    }
+    testRuntime ("org.jetbrains.spek:spek-junit-platform-engine:${versions.spek}") {
+        exclude group: 'org.junit.platform'
+        exclude group: 'org.jetbrains.kotlin'
+    }
+}
+
+junitPlatform {
+    //platformVersion ver_junit_platform
+    //reportsDir file("$buildDir/reports")
+    /*filters {
+        engines {
+            include 'spek'
+        }
+    }*/
 }
