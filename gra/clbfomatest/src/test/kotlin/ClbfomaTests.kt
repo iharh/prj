@@ -10,6 +10,13 @@ import com.clarabridge.clbfoma.LibClbFoma;
 import com.clarabridge.clbfoma.ClbFomaLoader;
 
 class ClbfomaTests : StringSpec() {
+    val maxIterations = 1; // 1000000
+    val myTable = table(
+	headers("token", "result"),
+	row("kirim", "kirim<v>_VSA"),
+	row("aku"  , "aku<v>_VSA")
+    )
+
     init {
 	"clbfoma lib should be loaded" {
 	    val clbFoma = FomaConfig.getLibFoma()
@@ -26,17 +33,14 @@ class ClbfomaTests : StringSpec() {
 	    val pApply = clbFoma.apply_init(pFsm)
 	    pApply shouldNotBe null
 
-	    val myTable = table(
-		headers("token", "result"),
-		row("kirim", "kirim<v>_VSA"),
-		row("aku"  , "aku<v>_VSA")
-	    )
-	    forAll(myTable) { token, result ->
-		var analyzed = clbFoma.apply_up(pApply, token)
-		analyzed shouldBe result
+	    for (i in 1..maxIterations) {
+		forAll(myTable) { token, result ->
+		    var analyzed = clbFoma.apply_up(pApply, token)
+		    analyzed shouldBe result
+		}
 	    }
 
 	    clbFoma.apply_clear(pApply)
-	}
+	}.config(threads = 8, invocations = 8)
     }
 }

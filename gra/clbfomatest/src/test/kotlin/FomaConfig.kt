@@ -6,15 +6,15 @@ import com.clarabridge.clbfoma.ClbFomaLoader;
 import jnr.ffi.Pointer;
 
 object FomaConfig : ProjectConfig() {
-    lateinit val clbFoma: LibClbFoma // = ClbFomaLoader.load() // clbFoma shouldNotBe null
-    lateinit val pFsm: Pointer // = clbFoma.iface_load_file("bin/morphind") // pFsm shouldNotBe null
+    lateinit var clbFoma: LibClbFoma
+    lateinit var pFsm: Pointer
 
     fun getLibFoma() : LibClbFoma { return clbFoma }
     fun getFsm() : Pointer { return pFsm }
 
     override fun beforeAll() {
-	clbFoma = ClbFomaLoader.load() // clbFoma shouldNotBe null
-	pFsm = clbFoma.iface_load_file("bin/morphind") // pFsm shouldNotBe null
+	clbFoma = ClbFomaLoader.load()
+	pFsm = clbFoma.iface_load_file("bin/morphind")
 	//println("beforeAll called !!!")
     }
     override fun afterAll() {
