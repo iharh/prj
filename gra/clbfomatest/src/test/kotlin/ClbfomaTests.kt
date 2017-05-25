@@ -26,7 +26,7 @@ class ClbfomaTests : StringSpec() {
 
 	    for (i in 1..maxIterations) {
 		forAll(myTable) { token, result ->
-		    var analyzed = clbFoma.apply_up(pApply, token)
+		    val analyzed = clbFoma.apply_up(pApply, token)
 		    analyzed shouldBe result
 		}
 	    }
@@ -35,11 +35,23 @@ class ClbfomaTests : StringSpec() {
 	}.config(threads = 8, invocations = 8)
     }
     init {
-	"clbfoma lib should be loaded" {
+	"multi-output" {
 	    val clbFoma = FomaConfig.getLibFoma()
 	    clbFoma shouldNotBe null
 	    val pFsm = FomaConfig.getFsm()
 	    pFsm shouldNotBe null
+
+	    val pApply = clbFoma.apply_init(pFsm)
+	    val a1 = clbFoma.apply_up(pApply, "aku")
+	    a1 shouldBe "aku<v>_VSA"
+	    val a2 = clbFoma.apply_up(pApply, null)
+	    a2 shouldBe "a<f>_F--+aku<p>_PS1"
+	    val a3 = clbFoma.apply_up(pApply, null)
+	    a3 shouldBe "aku<p>_PS1"
+	    val a4 = clbFoma.apply_up(pApply, null)
+	    a4 shouldBe null
+
+	    clbFoma.apply_clear(pApply)
 	}.config(enabled = true)
     }
 }

@@ -33,7 +33,7 @@ import org.gradle.internal.os.OperatingSystem
 ext {
     moduleName = 'clbfoma'
     versions = [
-        clbfoma: '1.0.1-dev.2+a518069', // 1.0.0
+        clbfoma: '0.1.0', // 1.0.0
         kotlintest: '2.0.2'
     ]
     libraries = [
