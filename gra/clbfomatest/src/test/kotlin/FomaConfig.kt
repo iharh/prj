@@ -7,6 +7,7 @@ import jnr.ffi.Pointer;
 
 object FomaConfig : ProjectConfig() {
     lateinit var clbFoma: LibClbFoma
+    lateinit var pIO: Pointer
     lateinit var pFsm: Pointer
 
     fun getLibFoma() : LibClbFoma { return clbFoma }
@@ -14,10 +15,12 @@ object FomaConfig : ProjectConfig() {
 
     override fun beforeAll() {
 	clbFoma = ClbFomaLoader.load()
-	pFsm = clbFoma.iface_load_file("bin/morphind")
+	pIO = clbFoma.io_init_text_file("bin/morphind")
+	pFsm = clbFoma.iface_load_buf(pIO)
 	//println("beforeAll called !!!")
     }
     override fun afterAll() {
+	clbFoma.io_free(pIO)
 	clbFoma.fsm_destroy(pFsm)
 	//println("afterAll called !!!")
     }

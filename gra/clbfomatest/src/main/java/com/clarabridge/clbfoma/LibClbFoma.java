@@ -4,7 +4,10 @@ import jnr.ffi.Pointer;
 import jnr.ffi.annotations.Encoding;
 
 public interface LibClbFoma {
-    Pointer iface_load_file(String fileName);
+    Pointer io_init_text_file(String fileName);
+    void io_free(Pointer pIO);
+
+    Pointer iface_load_buf(Pointer pIO);
     void fsm_destroy(Pointer pFsm);
 
     Pointer apply_init(Pointer pFsm);
