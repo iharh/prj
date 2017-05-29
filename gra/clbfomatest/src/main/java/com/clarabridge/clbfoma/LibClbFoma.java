@@ -2,9 +2,12 @@ package com.clarabridge.clbfoma;
 
 import jnr.ffi.Pointer;
 import jnr.ffi.annotations.Encoding;
+import jnr.ffi.types.size_t;
 
 public interface LibClbFoma {
     Pointer io_init_text_file(String fileName);
+    Pointer io_init_buf_ptr(@size_t int size, byte [] data);
+
     void io_free(Pointer pIO);
 
     Pointer iface_load_buf(Pointer pIO);

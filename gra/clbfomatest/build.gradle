@@ -38,6 +38,7 @@ ext {
     ]
     libraries = [
         jnr_ffi:    'com.github.jnr:jnr-ffi:2.1.5',
+        commons_io: 'commons-io:commons-io:2.5',
 
         kotlintest: "io.kotlintest:kotlintest:${versions.kotlintest}"
     ]
@@ -58,6 +59,7 @@ dependencies {
     nativeModuleCfg "clarabridge:${nativeModuleArtifactName}:${versions.clbfoma}"
 
     compile libraries.jnr_ffi
+    compile libraries.commons_io
 
     testCompile libraries.kotlintest
 }
