@@ -1,0 +1,85 @@
+buildscript {
+    ext {
+        ver_kotlin = '1.1.2-2' // 1.0.6 1.1.1
+    }
+    repositories {
+        mavenLocal()
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$ver_kotlin"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+apply plugin: 'idea'
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+repositories {
+    mavenLocal()
+    jcenter()
+    mavenCentral()
+}
+
+ext {
+    versions = [:]
+    libraries = [:]
+}
+
+versions += [
+    requery:        '1.3.1',
+    rxjava2:        '2.1.0',
+    konfig:         '1.6.1.0',
+    kotlin_logging: '1.4.4',
+    log4j:          '1.2.17',
+    slf4j_log4j12:  '1.7.5',
+    kotlintest:     '2.0.3'
+]
+
+libraries += [
+    requery:            "io.requery:requery:${versions.requery}",
+    requery_kotlin:     "io.requery:requery-kotlin:${versions.requery}",
+    requery_processor:  "io.requery:requery-processor:${versions.requery}",
+
+    konfig:         "com.natpryce:konfig:${versions.konfig}",
+    rxjava2:        "io.reactivex.rxjava2:rxjava:${versions.rxjava2}",
+    kotlin_logging: "io.github.microutils:kotlin-logging:${versions.kotlin_logging}",
+    log4j:          "log4j:log4j:${versions.log4j}",
+    slf4j_log4j12:  "org.slf4j:slf4j-log4j12:${versions.slf4j_log4j12}",
+    
+    kotlintest:     "io.kotlintest:kotlintest:${versions.kotlintest}"
+]
+
+sourceSets {
+    generated {
+        "${buildDir}/generated/source/kapt/main/"
+    }
+}
+
+dependencies {
+    compile libraries.requery
+    compile libraries.requery_kotlin
+
+    kapt libraries.requery_processor
+
+    compile libraries.konfig
+    compile libraries.kotlin_logging
+    compile libraries.log4j
+    compile libraries.slf4j_log4j12
+    compile libraries.rxjava2 // testCompile
+
+    compile 'org.postgresql:postgresql:42.0.0'
+
+    testCompile libraries.kotlintest
+}
+
+kapt {
+    generateStubs = true
+}

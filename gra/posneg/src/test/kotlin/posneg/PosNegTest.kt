@@ -1,4 +1,4 @@
-package myrequery
+package posneg
 
 import io.kotlintest.specs.FunSpec
 import io.kotlintest.matchers.shouldBe
@@ -32,12 +32,22 @@ import java.io.File
 
 import java.util.concurrent.Executors
 
+//import mu.KLogging
+import mu.KLoggable
+import mu.NamedKLogging
+//import mu.KotlinLogging
+
+//private val log = KotlinLogging.logger {} 
+
 class ReQueryTest : FunSpec() {
-    companion object {
+    //companion object: KLogging()
+    companion object: Any(), KLoggable by NamedKLogging("posneg.ReQueryTest")
+
+    /*companion object {
 	const val PRJ_ID = 0L
 	const val PROP_EXPORT_TARGET_DIR = "SENT.EXPORT.TARGET_DIR"
 	const val PROP_EXPORT_TARGET_DIR_VAL = "D:\\clb\\inst/exportedSentiment"
-    }
+    }*/
 
     object cmpDS : PropertyGroup() {
 	val name by stringType // database name
@@ -46,7 +56,9 @@ class ReQueryTest : FunSpec() {
     }
 
     init {
-        test("property.export") {
+        test("pu_positive_negative.export") {
+	    logger.info("abc")
+	    /*
 	    val config = ConfigurationProperties.systemProperties() overriding
 		 EnvironmentVariables() overriding
 		 ConfigurationProperties.fromFile(File("database.system.properties"));
@@ -68,13 +80,14 @@ class ReQueryTest : FunSpec() {
             val data: KotlinEntityDataStore<Any> = KotlinEntityDataStore<Any>(configuration)
 
             data.invoke {
-                val result = select(Prop::class) where((Prop::projectId eq PRJ_ID) and (Prop::name eq PROP_EXPORT_TARGET_DIR)) limit 1
-                val p1: Prop = result.get().first()
+                val result = select(PosNeg::class)
+                val posnegs = result.get()
 
-                PRJ_ID shouldBe p1.projectId
-                PROP_EXPORT_TARGET_DIR shouldBe p1.name
-                PROP_EXPORT_TARGET_DIR_VAL shouldBe p1.value
+                //PRJ_ID shouldBe p1.projectId
+                //PROP_EXPORT_TARGET_DIR shouldBe p1.name
+                //PROP_EXPORT_TARGET_DIR_VAL shouldBe p1.value
             }
+	    */
         }
     }
 }
