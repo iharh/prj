@@ -20,7 +20,7 @@ import io.requery.reactivex.KotlinReactiveEntityStore
 import io.requery.meta.EntityModel
 
 // ?? something that brings up PropertyExtensions into scope
-//import io.requery.kotlin.* 
+import io.requery.kotlin.* 
 import io.requery.kotlin.Selection
 import io.requery.kotlin.WhereAndOr
 import io.requery.kotlin.Conditional
@@ -57,8 +57,6 @@ class ReQueryTest : FunSpec() {
 
     init {
         test("pu_positive_negative.export") {
-	    logger.info("abc")
-	    /*
 	    val config = ConfigurationProperties.systemProperties() overriding
 		 EnvironmentVariables() overriding
 		 ConfigurationProperties.fromFile(File("database.system.properties"));
@@ -79,15 +77,16 @@ class ReQueryTest : FunSpec() {
             //val data: KotlinReactiveEntityStore<Persistable> = KotlinReactiveEntityStore<Persistable>(KotlinEntityDataStore(configuration))
             val data: KotlinEntityDataStore<Any> = KotlinEntityDataStore<Any>(configuration)
 
-            data.invoke {
-                val result = select(PosNeg::class)
-                val posnegs = result.get()
+	    File("abc.txt").printWriter().use { writer ->
+		data.invoke {
+		    val result = select(PosNeg::class).get()
+		    result.forEach { writer.println(it.word) }
 
-                //PRJ_ID shouldBe p1.projectId
-                //PROP_EXPORT_TARGET_DIR shouldBe p1.name
-                //PROP_EXPORT_TARGET_DIR_VAL shouldBe p1.value
-            }
-	    */
+		    //PRJ_ID shouldBe p1.projectId
+		    //PROP_EXPORT_TARGET_DIR shouldBe p1.name
+		    //PROP_EXPORT_TARGET_DIR_VAL shouldBe p1.value
+		}
+	    }
         }
     }
 }

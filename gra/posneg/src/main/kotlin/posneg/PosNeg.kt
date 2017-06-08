@@ -1,4 +1,4 @@
-package myrequery
+package posneg
 
 import io.requery.*
 
