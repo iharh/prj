@@ -38,10 +38,6 @@ public class Main {
         return new BufferedReader(new InputStreamReader(Main.class.getResourceAsStream("/" + resName), UTF_8));
     }
 
-    private static String getSqlForPortion(List<String> portion) {
-        return "select ms_token_name from p_ms_token where ms_token_name in ('" + String.join("', '", portion) + "')";
-    }
-
     private static DataSource getPGDS(String url, String username, String password) throws SQLException {
         final PGSimpleDataSource ds = new PGSimpleDataSource();
         ds.setUrl(url);
@@ -110,7 +106,7 @@ public class Main {
     }
 
     private static void processPortion(JdbcTemplate jdbcTemplate, Set<String> posnegWordsCache, List<String> portion) {
-        final String sql = getSqlForPortion(portion);
+        final String sql = "select ms_token_name from p_ms_token where ms_token_name in ('" + String.join("', '", portion) + "')";
         jdbcTemplate.query(sql, new RowCallbackHandler() {
             @Override
             public void processRow(ResultSet rs) throws SQLException {
