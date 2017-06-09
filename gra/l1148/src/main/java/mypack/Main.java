@@ -28,7 +28,10 @@ import javax.sql.DataSource;
 import static java.nio.charset.StandardCharsets.*;
 
 public class Main {
-    private static int PORTION_SIZE = 1000;
+    private static int CHECK_TOKENS_PORTION_SIZE = 1000;
+
+    private static final String CHECK_TOKENS_PORTION = "select ms_token_name from p_ms_token where ms_token_name in ('%s')";
+
 
     private static Config getConf(String dsId) {
         return ConfigFactory.parseFile(new File("cfg/db-" + dsId + ".properties"));
@@ -106,7 +109,7 @@ public class Main {
     }
 
     private static void processPortion(JdbcTemplate jdbcTemplate, Set<String> posnegWordsCache, List<String> portion) {
-        final String sql = "select ms_token_name from p_ms_token where ms_token_name in ('" + String.join("', '", portion) + "')";
+        final String sql = String.format(CHECK_TOKENS_PORTION, String.join("', '", portion));
         jdbcTemplate.query(sql, new RowCallbackHandler() {
             @Override
             public void processRow(ResultSet rs) throws SQLException {
@@ -120,7 +123,7 @@ public class Main {
         List<String> portion = new ArrayList<String>();
         for (String word: posnegWords) {
             portion.add(word);
-            if (portion.size() >= PORTION_SIZE) {
+            if (portion.size() >= CHECK_TOKENS_PORTION_SIZE) {
                 processPortion(psT, posnegWordsCache, portion);
                 portion.clear();
             }
