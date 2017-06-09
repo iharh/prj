@@ -30,6 +30,10 @@ import static java.nio.charset.StandardCharsets.*;
 public class Main {
     private static int PORTION_SIZE = 1000;
 
+    private static Config getConf(String dsId) {
+        return ConfigFactory.parseFile(new File("cfg/db-" + dsId + ".properties"));
+    }
+
     private static BufferedReader getR(final String resName) {
         return new BufferedReader(new InputStreamReader(Main.class.getResourceAsStream("/" + resName), UTF_8));
     }
@@ -38,15 +42,7 @@ public class Main {
         return "select ms_token_name from p_ms_token where ms_token_name in ('" + String.join("', '", portion) + "')";
     }
 
-    private static DataSource getPGDS(String dsId) {
-        final Config conf = ConfigFactory.parseFile(new File("cfg/db-" + dsId + ".properties"));
-
-        final String url = conf.getString("cmpDS.url");
-        final String dbname = conf.getString("cmpDS.name");
-        final String username = conf.getString("psDS.username");
-        final String password = conf.getString("psDS.password");
-        //System.out.println(String.format("Hello %s - %s", username, password));
-
+    private static DataSource getPGDS(String url, String username, String password) throws SQLException {
         final PGSimpleDataSource ds = new PGSimpleDataSource();
         ds.setUrl(url);
         //ds.setDatabaseName(dbname);
@@ -54,7 +50,6 @@ public class Main {
         ds.setPassword(password);
         return ds;
     }
-
     private static DataSource getOraDS(String url, String username, String password) throws SQLException {
         final OracleDataSource ds = new OracleDataSource();
         ds.setURL(url);
@@ -64,15 +59,29 @@ public class Main {
         return ds;
     }
 
+    private static DataSource getPGSysDS(String dsId) throws SQLException {
+        final Config conf = getConf(dsId);
+        return getPGDS(conf.getString("cmpDS.url"), conf.getString("cmpDS.username"), conf.getString("cmpDS.password"));
+    }
+    private static DataSource getPGPSDS(String dsId) throws SQLException {
+        final Config conf = getConf(dsId);
+        return getPGDS(conf.getString("cmpDS.url"), conf.getString("psDS.username"), conf.getString("psDS.password"));
+    }
     private static DataSource getOraSysDS(String dsId) throws SQLException {
-        final Config conf = ConfigFactory.parseFile(new File("cfg/db-" + dsId + ".properties"));
+        final Config conf = getConf(dsId);
         return getOraDS(conf.getString("cmpDS.url"), conf.getString("cmpDS.username"), conf.getString("cmpDS.password"));
     }
     private static DataSource getOraPSDS(String dsId) throws SQLException {
-        final Config conf = ConfigFactory.parseFile(new File("cfg/db-" + dsId + ".properties"));
+        final Config conf = getConf(dsId);
         return getOraDS(conf.getString("cmpDS.url"), conf.getString("psDS.username"), conf.getString("psDS.password"));
     }
 
+    private static JdbcTemplate getPGSysT(String dsId) throws SQLException {
+        return new JdbcTemplate(getPGSysDS(dsId));
+    }
+    private static JdbcTemplate getPGPST(String dsId) throws SQLException {
+        return new JdbcTemplate(getPGPSDS(dsId));
+    }
     private static JdbcTemplate getOraSysT(String dsId) throws SQLException {
         return new JdbcTemplate(getOraSysDS(dsId));
     }
@@ -80,16 +89,6 @@ public class Main {
         return new JdbcTemplate(getOraPSDS(dsId));
     }
 
-    private static void processPortion(JdbcTemplate jdbcTemplate, Set<String> posnegWordsCache, List<String> portion) {
-        final String sql = getSqlForPortion(portion);
-        jdbcTemplate.query(sql, new RowCallbackHandler() {
-            @Override
-            public void processRow(ResultSet rs) throws SQLException {
-                String token = rs.getString(1);
-                posnegWordsCache.remove(token);
-            }
-        });
-    }
 
     private static void cntPrj(JdbcTemplate sysT) {
         Integer cnt = sysT.queryForObject("select count(*) from cb_project", Integer.class);
@@ -110,14 +109,22 @@ public class Main {
         });
     }
 
+    private static void processPortion(JdbcTemplate jdbcTemplate, Set<String> posnegWordsCache, List<String> portion) {
+        final String sql = getSqlForPortion(portion);
+        jdbcTemplate.query(sql, new RowCallbackHandler() {
+            @Override
+            public void processRow(ResultSet rs) throws SQLException {
+                String token = rs.getString(1);
+                posnegWordsCache.remove(token);
+            }
+        });
+    }
+
     private static void checkPosNeg(JdbcTemplate psT, List<String> posnegWords, Set<String> posnegWordsCache) {
         List<String> portion = new ArrayList<String>();
-        int i = 0;
         for (String word: posnegWords) {
-            ++i;
             portion.add(word);
             if (portion.size() >= PORTION_SIZE) {
-                System.out.println("processed: " + i);
                 processPortion(psT, posnegWordsCache, portion);
                 portion.clear();
             }
@@ -128,6 +135,7 @@ public class Main {
     public static void main(final String[] args) {
         List<String> posnegWords = new ArrayList<String>();
         Set<String> posnegWordsCache = new HashSet<String>();
+        // TODO: move to the cache
         try(
             final BufferedReader inR = getR("posneg.txt");
         ) {
@@ -140,18 +148,13 @@ public class Main {
             System.err.println(e);
         }
 
-        //final DataSource ds = getPGDS("local");
-
         long beginMillis = System.currentTimeMillis();
-
         try {
-            checkPosNeg(getOraPST("bart"), posnegWords, posnegWordsCache);
-            //cntPrj(getOraSysT("bart"));
-            //printDataSources(getOraSysT("bart"));
+            final JdbcTemplate psT = getPGPST("local"); // getOraPST("bart"), 
+            checkPosNeg(psT, posnegWords, posnegWordsCache);
         } catch (SQLException e) {
             System.err.println(e);
         }
-
         long endMillis = System.currentTimeMillis();
 
         System.out.println(String.format("Total time: %d millis", (endMillis - beginMillis)));
