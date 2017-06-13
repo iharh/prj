@@ -1,22 +1,18 @@
 package mockiface;
 
 import org.junit.Test;
-//import org.junit.Ignore;
 
-import static org.junit.Assert.assertThat;
-import static org.hamcrest.CoreMatchers.*;
+import static org.mockito.Mockito.*;
 
-//import lombok.extern.slf4j.Slf4j;
-
-//@Slf4j
 public class MockIfaceTest {
-
     @Test
     public void testMisc() throws Exception {
-        //public interface SomeIface {
-        //    void onSome(String arg);
-        //}
+        SomeIface someIface = mock(SomeIface.class);
 
-        assertThat(true, is(true));
+        someIface.onSome("abc");
+        someIface.onSome("def");
+
+        verify(someIface, times(1)).onSome("abc");
+        verify(someIface, times(1)).onSome("def");
     }
 }
