@@ -13,6 +13,10 @@ public class MockIfaceTest {
 
     @Test
     public void testMisc() throws Exception {
+        //public interface SomeIface {
+        //    void onSome(String arg);
+        //}
+
         assertThat(true, is(true));
     }
 }

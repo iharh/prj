@@ -12,13 +12,16 @@ repositories {
 
 ext {
     versions = [
-        junit:  '4.12'
+        junit:          '4.12',
+        mockito_core:   '2.7.22'
     ]
     libraries = [
-        junit:  "junit:junit:${versions.junit}"
+        junit:          "junit:junit:${versions.junit}",
+        mockito_core:   "org.mockito:mockito-core:${versions.mockito_core}"
     ]
 }
 
 dependencies {
     testCompile libraries.junit
+    testCompile libraries.mockito_core
 }
