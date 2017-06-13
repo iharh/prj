@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+//sourceCompatibility = JavaVersion.VERSION_1_8
+//targetCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+ext {
+    versions = [
+        junit:  '4.12'
+    ]
+    libraries = [
+        junit:  "junit:junit:${versions.junit}"
+    ]
+}
+
+dependencies {
+    testCompile libraries.junit
+}
