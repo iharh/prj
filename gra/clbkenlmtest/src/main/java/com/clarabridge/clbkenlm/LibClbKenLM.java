@@ -5,9 +5,7 @@ import jnr.ffi.annotations.Encoding;
 import jnr.ffi.types.size_t;
 
 public interface LibClbKenLM {
-    // fileName
-    //Pointer io_init_buf_ptr(@size_t int size, byte [] data);
-    Pointer kenlm_init();
+    Pointer kenlm_init(@size_t int size, byte [] data);
 
     void kenlm_clean(Pointer pHandle);
 

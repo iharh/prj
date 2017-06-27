@@ -10,6 +10,10 @@ import io.kotlintest.specs.StringSpec
 import com.clarabridge.clbkenlm.LibClbKenLM
 import com.clarabridge.clbkenlm.ClbKenLMLoader
 
+import org.apache.commons.io.FileUtils
+
+import java.io.File
+
 class ClbfomaTests : StringSpec() {
     val myTable = table(
 	headers("tag", "result"),
@@ -19,7 +23,12 @@ class ClbfomaTests : StringSpec() {
     init {
 	"clbkenlm lib should match result" {
 	    val clbKenLM = ClbKenLMLoader.load()
-	    val pHandle = clbKenLM.kenlm_init();
+
+	    val f = File("tag.lm.bin")
+	    val d = FileUtils.readFileToByteArray(f)
+	    val s: Int = d.size
+
+	    val pHandle = clbKenLM.kenlm_init(s, d)
 	    pHandle shouldNotBe null
 
 	    forAll(myTable) { tag, result ->
