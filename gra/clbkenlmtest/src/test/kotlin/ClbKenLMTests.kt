@@ -18,7 +18,9 @@ class ClbfomaTests : StringSpec() {
     val myTable = table(
 	headers("tag", "result"),
 	row("V", -4.3251605),
-	row("P", -3.6845271)
+	row("P", -3.6845271),
+	row("V P", -5.83864),
+	row("P V", -4.46062)
     )
     init {
 	"clbkenlm lib should match result" {
