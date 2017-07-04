@@ -10,9 +10,16 @@ import io.kotlintest.specs.StringSpec
 import com.clarabridge.clbkenlm.LibClbKenLM
 import com.clarabridge.clbkenlm.ClbKenLMLoader
 
+import jnr.ffi.Memory
+import jnr.ffi.Runtime
+import jnr.ffi.Pointer
+
 import org.apache.commons.io.FileUtils
 
 import java.io.File
+import java.nio.ByteBuffer
+
+import java.nio.charset.StandardCharsets.UTF_8
 
 class ClbfomaTests : StringSpec() {
     val myTable = table(
@@ -26,11 +33,18 @@ class ClbfomaTests : StringSpec() {
 	"clbkenlm lib should match result" {
 	    val clbKenLM = ClbKenLMLoader.load()
 
-	    val f = File("tag.lm.bin")
+	    val f = File("build.gradle") // "tag.lm.bin"
 	    val d = FileUtils.readFileToByteArray(f)
 	    val s: Int = d.size
 
-	    val pHandle = clbKenLM.kenlm_init(s, d)
+	    val runtime = Runtime.getRuntime(clbKenLM)
+	    val ex_message = Memory.allocateDirect(runtime, 1024)
+
+	    val pHandle = clbKenLM.kenlm_init(s, d, ex_message)
+	    if (pHandle == null) {
+		val msg = ex_message.getString(0, 1024, UTF_8) // Charset.forName("UTF-8")
+		"" shouldBe msg
+	    }
 	    pHandle shouldNotBe null
 
 	    forAll(myTable) { tag, result ->
