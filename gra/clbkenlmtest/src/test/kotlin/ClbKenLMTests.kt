@@ -28,10 +28,10 @@ class ClbfomaTests : StringSpec() {
 
     val myTable = table(
 	headers("tag", "result"),
-	row("V", -4.3251605)
-	//row("P", -3.6845271),
-	//row("V P", -5.83864),
-	//row("P V", -4.46062)
+	row("V", -4.3251605),
+	row("P", -3.6845271),
+	row("V P", -5.83864),
+	row("P V", -4.46062)
     )
     init {
 	"clbkenlm lib should match result" {
@@ -42,11 +42,11 @@ class ClbfomaTests : StringSpec() {
 	    val s: Int = d.size
 
 	    val runtime = Runtime.getRuntime(clbKenLM)
-	    val exMsg = Memory.allocateDirect(runtime, EX_MSG_SIZE)
+	    val exMsg = Memory.allocateDirect(runtime, 1024) // EX_MSG_SIZE
 
-	    val pHandle = clbKenLM.kenlm_init(s, d, EX_MSG_SIZE, exMsg)
+	    val pHandle = clbKenLM.kenlm_init(s, d, 1024, exMsg) // EX_MSG_SIZE
 	    if (pHandle == null) {
-		val msg = exMsg.getString(0, EX_MSG_SIZE, UTF_8)
+		val msg = exMsg.getString(0, 1024, UTF_8) // EX_MSG_SIZE
 		"" shouldBe msg
 	    }
 	    pHandle shouldNotBe null
