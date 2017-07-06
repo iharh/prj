@@ -7,25 +7,7 @@ import io.kotlintest.properties.table
 import io.kotlintest.properties.forAll
 import io.kotlintest.specs.StringSpec
 
-import com.clarabridge.clbkenlm.LibClbKenLM
-import com.clarabridge.clbkenlm.ClbKenLMLoader
-
-import jnr.ffi.Memory
-import jnr.ffi.Runtime
-import jnr.ffi.Pointer
-
-import org.apache.commons.io.FileUtils
-
-import java.io.File
-import java.nio.ByteBuffer
-
-import java.nio.charset.StandardCharsets.UTF_8
-
 class ClbfomaTests : StringSpec() {
-    companion object {
-        const val EX_MSG_SIZE = 2048
-    }
-
     val myTable = table(
 	headers("tag", "result"),
 	row("V", -4.3251605),
@@ -35,28 +17,15 @@ class ClbfomaTests : StringSpec() {
     )
     init {
 	"clbkenlm lib should match result" {
-	    val clbKenLM = ClbKenLMLoader.load()
+	    val clbKenLM = KenLMConfig.getLibKenLM()
 
-	    val f = File("tag.lm.bin") // "tag.lm.bin", "build.gradle"
-	    val d = FileUtils.readFileToByteArray(f)
-	    val s: Int = d.size
-
-	    val runtime = Runtime.getRuntime(clbKenLM)
-	    val exMsg = Memory.allocateDirect(runtime, 1024) // EX_MSG_SIZE
-
-	    val pHandle = clbKenLM.kenlm_init(s, d, 1024, exMsg) // EX_MSG_SIZE
-	    if (pHandle == null) {
-		val msg = exMsg.getString(0, 1024, UTF_8) // EX_MSG_SIZE
-		"" shouldBe msg
-	    }
-	    pHandle shouldNotBe null
+            val pModel = KenLMConfig.getModel()
+	    pModel shouldNotBe null
 
 	    forAll(myTable) { tag, result ->
-		val analyzed = clbKenLM.kenlm_query(pHandle, tag)
+		val analyzed = clbKenLM.kenlm_query(pModel, tag)
 		analyzed shouldBe (result plusOrMinus 0.001)
 	    }
-
-	    clbKenLM.kenlm_clean(pHandle)
 	}
     }
 }
