@@ -33,7 +33,7 @@ import org.gradle.internal.os.OperatingSystem
 ext {
     moduleName = 'clbkenlm'
     versions = [
-        clbkenlm: '0.1.0', // '0.1.1-dev.0.uncommitted+45ce3dc'
+        clbkenlm: '1.0.0', // '0.1.1-dev.0.uncommitted+45ce3dc'
         kotlintest: '2.0.3'
     ]
     libraries = [

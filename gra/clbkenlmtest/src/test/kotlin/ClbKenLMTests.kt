@@ -8,7 +8,7 @@ import io.kotlintest.properties.forAll
 import io.kotlintest.specs.StringSpec
 
 class ClbfomaTests : StringSpec() {
-    val maxIterations = 1000000; // 1000000
+    val maxIterations = 1; // 500 * 1000000;
 
     val myTable = table(
 	headers("tag", "result"),

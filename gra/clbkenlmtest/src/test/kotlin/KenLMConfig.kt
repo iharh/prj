@@ -34,7 +34,7 @@ object KenLMConfig : ProjectConfig() {
 
         pModel = clbKenLM.kenlm_init(s, d, EX_MSG_SIZE, exMsg)
         if (pModel.address() == 0L) {
-            val msg = exMsg.getString(0, KenLMConfig.EX_MSG_SIZE, UTF_8)
+            //val msg = exMsg.getString(0, KenLMConfig.EX_MSG_SIZE, UTF_8)
             //throw IllegalArgumentException(exMsg)
         }
     }
