@@ -25,7 +25,7 @@ object KenLMConfig : ProjectConfig() {
     override fun beforeAll() {
 	clbKenLM = ClbKenLMLoader.load()
 
-        val f = File("tag.lm.bin") // "tag.lm.bin", "build.gradle"
+        val f = File("bin/tag.lm.bin") // "tag.lm.bin", "build.gradle"
         val d = FileUtils.readFileToByteArray(f)
         val s: Int = d.size
 
