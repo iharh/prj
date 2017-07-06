@@ -8,6 +8,8 @@ import io.kotlintest.properties.forAll
 import io.kotlintest.specs.StringSpec
 
 class ClbfomaTests : StringSpec() {
+    val maxIterations = 1000000; // 1000000
+
     val myTable = table(
 	headers("tag", "result"),
 	row("V", -4.3251605),
@@ -22,10 +24,12 @@ class ClbfomaTests : StringSpec() {
             val pModel = KenLMConfig.getModel()
 	    pModel shouldNotBe null
 
-	    forAll(myTable) { tag, result ->
-		val analyzed = clbKenLM.kenlm_query(pModel, tag)
-		analyzed shouldBe (result plusOrMinus 0.001)
-	    }
-	}
+	    for (i in 1..maxIterations) {
+                forAll(myTable) { tag, result ->
+                    val analyzed = clbKenLM.kenlm_query(pModel, tag)
+                    analyzed shouldBe (result plusOrMinus 0.001)
+                }
+            }
+	}.config(threads = 8, invocations = 8)
     }
 }
