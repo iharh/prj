@@ -1,0 +1,8 @@
+<project name="trace" default="trace" basedir=".">
+    <target name="trace">
+        <exec executable="sh" dir="${basedir}">
+            <arg value="-c"/>
+            <arg value="ls -la"/>
+        </exec>
+    </target>
+</project>
