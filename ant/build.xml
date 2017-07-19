@@ -1,5 +1,27 @@
 <project name="trace" default="trace" basedir=".">
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+      <classpath>
+          <pathelement location="/data/wrk/clb/svnmain/lib/ant-contrib/1.0/ant-contrib-1.0b2.jar"/>
+      </classpath>
+    </taskdef>
+
     <target name="trace">
+        <property name="current.platform" value="linux-x64"/>
+
+        <if>
+            <contains string="${current.platform}" substring="windows" />
+            <then>
+                <property name="build.morph.name" value="build_morph"/>
+            </then>
+            <elseif>
+                <contains string="${current.platform}" substring="linux" />
+                <then>
+                    <property name="build.morph.name" value="build_morph."/>
+                </then>
+            </elseif>
+        </if>
+        <echo message = "!!! current.platform: ${current.platform} build.morph.name: ${build.morph.name}"/>
+
         <exec executable="sh" dir="${basedir}">
             <arg value="-c"/>
             <arg value="ls -la"/>
