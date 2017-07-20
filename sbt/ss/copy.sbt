@@ -3,8 +3,7 @@ parallelExecution := false
 lazy val dstPath = settingKey[String]("Dst path")
 
 lazy val copydf    = taskKey[Unit]("Dotfiles copy task")
-lazy val copynotes = taskKey[Unit]("Notes copy task")
-lazy val copywnotes = taskKey[Unit]("Notes copy task")
+lazy val copywnotes = taskKey[Unit]("Wnotes copy task")
 lazy val copybin = taskKey[Unit]("Bin copy task")
 lazy val copykeepass = taskKey[Unit]("KeePass copy task")
 lazy val copyff = taskKey[Unit]("FF bookmarks copy task")
@@ -56,10 +55,6 @@ def copy_x(n: String): Unit = {
     println("finish copy" + n)
 }
 
-copynotes := {
-    copy_x("notes")
-}
-
 copywnotes := {
     copy_x("wnotes")
 }
@@ -102,4 +97,4 @@ copyff := {
     IO.copy(rebasedFilesToCopy)
 }
 
-addCommandAlias("copyall", ";copydf;copynotes;copywnotes;copybin;copykeepass;copyff") // copyprj is too big
+addCommandAlias("copyall", ";copydf;copywnotes;copybin;copykeepass;copyff") // copyprj is too big
