@@ -17,6 +17,7 @@ copydf := {
     // IO.copy(...).get map {f => (f, dst / f.getName)})
     val src = Path.userHome // .absolutePath
     val vimfiles = src / "vimfiles"
+    val nvimfiles = src / "AppData" / "Local" / "nvim"
     val filesToCopy = (
         (
 	    (vimfiles ***)
@@ -26,6 +27,7 @@ copydf := {
 	)
         +++ (src * "_*rc")
 	+++ (src / ".gitconfig")
+	+++ (nvimfiles / "*.vim")
 	//+++ (src / ".vimsauce" ***)
 	//+++ (src / ".unite" / "bookmark" ***)
     )
