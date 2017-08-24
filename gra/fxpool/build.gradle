@@ -1,0 +1,17 @@
+plugins {
+    id 'org.springframework.boot' version '1.5.6.RELEASE'
+    id 'java'
+}
+
+repositories {
+    jcenter()
+}
+
+sourceCompatibility = 1.8
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    //runtime('org.postgresql:postgresql')
+    //compileOnly('org.projectlombok:lombok')
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
