@@ -1,5 +1,7 @@
 package fxpool;
 
+import com.clarabridge.fx.ProcessorPool;
+
 import org.springframework.context.annotation.Bean;
 
 import org.springframework.boot.SpringApplication;
@@ -15,11 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 
+import java.util.Map;
+import java.util.HashMap;
+
 //@Controller
 @EnableAutoConfiguration
 @RestController
 @RequestMapping("/v1")
 public class FXPoolController {
+    private final Map<String, ProcessorPool> mapLangPool = new HashMap<String, ProcessorPool>();
 
     @RequestMapping("/hello")
     @ResponseBody
