@@ -1,6 +1,6 @@
 plugins {
     id "java"
-    id "com.github.johnrengelman.shadow" version "1.2.4"
+    id "com.github.johnrengelman.shadow" version "2.0.1"
 }
 
 repositories {
@@ -10,14 +10,14 @@ repositories {
 dependencies {
     compile 'org.javassist:javassist:3.18.1-GA'
 
-    testCompile 'ch.qos.logback:logback-classic:1.1.2'
-    testCompile "org.testcontainers:testcontainers:1.2.1"
-    testCompile "io.github.openfeign:feign-core:9.3.1"
-    testCompile 'org.assertj:assertj-core:3.5.2'
-    testCompileOnly "org.projectlombok:lombok:1.16.10"
+    testCompile 'ch.qos.logback:logback-classic:1.2.3'
+    testCompile "org.testcontainers:testcontainers:1.4.2"
+    testCompile "io.github.openfeign:feign-core:9.5.1"
+    testCompile 'org.assertj:assertj-core:3.8.0'
+    testCompileOnly "org.projectlombok:lombok:1.16.18"
 
     // for Grapes and IDEA
-    testCompileOnly "org.codehaus.groovy:groovy-all:2.4.7"
+    testCompileOnly "org.codehaus.groovy:groovy-all:2.4.12"
     testCompileOnly 'org.apache.ivy:ivy:2.4.0'
 }
 
