@@ -56,9 +56,12 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
 
     // compile
-    compileOnly group: 'Clarabridge', name: "FX-${currentOS}-${arch}", version: project.'fx.version', configuration: 'publish'
+    //compileOnly('org.projectlombok:lombok')
+    //compileOnly group: 'Clarabridge', name: "FX-${currentOS}-${arch}", version: project.'fx.version', configuration: 'publish'
 
     //runtime('org.postgresql:postgresql')
-    //compileOnly('org.projectlombok:lombok')
-    testCompile("org.springframework.boot:spring-boot-starter-test")
+
+    //testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile libraries.testcontainers
+    testCompile libraries.visible_assertions
 }

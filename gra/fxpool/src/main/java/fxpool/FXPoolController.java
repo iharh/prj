@@ -1,6 +1,6 @@
 package fxpool;
 
-import com.clarabridge.fx.ProcessorPool;
+//import com.clarabridge.fx.ProcessorPool;
 
 import org.springframework.context.annotation.Bean;
 
@@ -25,7 +25,7 @@ import java.util.HashMap;
 @RestController
 @RequestMapping("/v1")
 public class FXPoolController {
-    private final Map<String, ProcessorPool> mapLangPool = new HashMap<String, ProcessorPool>();
+    //private final Map<String, ProcessorPool> mapLangPool = new HashMap<String, ProcessorPool>();
 
     @RequestMapping("/hello")
     @ResponseBody
