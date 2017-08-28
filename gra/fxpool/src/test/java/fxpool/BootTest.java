@@ -3,7 +3,6 @@ package fxpool;
 import org.junit.ClassRule;
 import org.junit.Test;
 
-// https://github.com/OpenFeign/feign/blob/master/core/src/main/java/feign/Response.java
 import feign.Response;
 
 import java.io.BufferedReader;
@@ -14,10 +13,9 @@ import java.io.StringWriter;
 
 import java.nio.charset.Charset;
 
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 
-// https://github.com/joel-costigliola/assertj-core
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BootTest {
@@ -38,23 +36,6 @@ public class BootTest {
             .isNotNull()
             .startsWith("os.name: ")
         ;
-    }
-
-    // https://github.com/joel-costigliola/assertj-core/blob/master/src/main/java/org/assertj/core/internal/Diff.java
-    // https://github.com/joel-costigliola/assertj-core/blob/master/src/main/java/org/assertj/core/api/Assertions.java
-    //  contentOf -> Files.contentOf
-    // https://github.com/joel-costigliola/assertj-core/blob/master/src/main/java/org/assertj/core/util/Files.java
-    //  loadContents, loadLines
-    // https://github.com/joel-costigliola/assertj-core/blob/master/src/main/java/org/assertj/core/util/URLs.java
-    //  loadContents
-
-    private List<String> linesFromBufferedReader(BufferedReader reader) throws IOException {
-        String line;
-        List<String> lines = new ArrayList<>();
-        while ((line = reader.readLine()) != null) {
-            lines.add(line);
-        }
-        return lines;
     }
 
     private static String loadContents(InputStream stream) throws IOException {
@@ -78,4 +59,13 @@ public class BootTest {
             }
         }
     }
+
+    /* private List<String> linesFromBufferedReader(BufferedReader reader) throws IOException {
+        String line;
+        List<String> lines = new ArrayList<>();
+        while ((line = reader.readLine()) != null) {
+            lines.add(line);
+        }
+        return lines;
+    }*/
 }
