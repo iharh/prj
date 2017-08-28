@@ -1,0 +1,10 @@
+import org.gradle.api.internal.artifacts.dependencies.DefaultProjectDependency
+import org.gradle.internal.os.OperatingSystem
+
+ext.getCurrentOS = {
+    def currentOS = 'windows'
+    if (!OperatingSystem.current().isWindows()) {
+        currentOS = 'linux'
+    }
+    return currentOS
+}

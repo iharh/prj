@@ -1,0 +1,19 @@
+ext {
+    versions = [
+        testcontainers: '1.4.2',
+        //dropwizard_metrics: '3.2.2',
+        visible_assertions: '2.0.0'
+    ]
+    libraries = [
+        testcontainers: "org.testcontainers:testcontainers:${versions.testcontainers}",
+        visible_assertions: "org.rnorth.visible-assertions:visible-assertions:${versions.visible_assertions}",
+        reactor_core: 'io.projectreactor:reactor-core:3.0.7.RELEASE'
+
+        //dropwizard_metrics_annotation:   "io.dropwizard.metrics:metrics-annotation:${versions.dropwizard_metrics}",
+        //dropwizard_metrics_core:         "io.dropwizard.metrics:metrics-core:${versions.dropwizard_metrics}",
+        //dropwizard_metrics_jvm:          "io.dropwizard.metrics:metrics-jvm:${versions.dropwizard_metrics}",
+        ////dropwizard_metrics_healthchecks: "io.dropwizard.metrics:metrics-healthchecks:${versions.dropwizard_metrics}",
+        ////dropwizard_metrics_graphite:     "io.dropwizard.metrics:metrics-graphite:${versions.dropwizard_metrics}",
+    ]
+}
+

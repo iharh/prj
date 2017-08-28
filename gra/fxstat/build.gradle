@@ -1,0 +1,25 @@
+plugins {
+    id 'org.springframework.boot' version '1.5.6.RELEASE'
+    id 'java'
+}
+
+apply from: 'gradle/dependencies.gradle'
+apply from: 'gradle/build-utils.gradle'
+
+repositories {
+    jcenter()
+}
+
+sourceCompatibility = 1.8
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter")
+    compile("org.springframework.boot:spring-boot-starter-logging")
+
+    compile libraries.reactor_core
+
+    // compile
+    compileOnly('org.projectlombok:lombok')
+
+    //testCompile("org.springframework.boot:spring-boot-starter-test")
+}
