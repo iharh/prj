@@ -1,23 +1,31 @@
 package fxpool;
 
-//import org.slf4j.LoggerFactory;
+import org.slf4j.LoggerFactory;
 
 //import org.testcontainers.containers.BindMode;
 import org.testcontainers.containers.GenericContainer;
-//import org.testcontainers.containers.output.Slf4jLogConsumer;
+import org.testcontainers.containers.output.Slf4jLogConsumer;
 import org.testcontainers.containers.wait.HttpWaitStrategy;
 import org.testcontainers.images.builder.ImageFromDockerfile;
 
+import feign.Feign;
+import feign.RequestLine;
+import feign.Response;
+
 import java.io.File;
 
+import lombok.Getter;
+
 public class JavaTestContainer<SELF extends JavaTestContainer<SELF>> extends GenericContainer<SELF> {
+
+    @Getter(lazy = true)
+    private final Client client = Feign.builder().target(Client.class, getURL());
 
     public JavaTestContainer() {
         super(new ImageFromDockerfile("myboot", false)
             .withDockerfileFromBuilder(builder ->
                 builder.from("java:8")
                     .copy("/tmp/fxpool.jar", "fxpool.jar")
-                    //.cmd("cat /foo/test/resources/test-recursive-file.txt")
                     .cmd("java -jar fxpool.jar")
                     .build()
             )
@@ -30,11 +38,15 @@ public class JavaTestContainer<SELF extends JavaTestContainer<SELF>> extends Gen
 
         withExposedPorts(18080);
         setWaitStrategy(new HttpWaitStrategy().forPath("/v1/hello/"));
-        //withLogConsumer(new Slf4jLogConsumer(LoggerFactory.getLogger(script)));
+        withLogConsumer(new Slf4jLogConsumer(LoggerFactory.getLogger(JavaTestContainer.class)));
     }
-/*
+
     public String getURL() {
         return "http://" + getContainerIpAddress() + ":" + getMappedPort(getExposedPorts().get(0)); // ? 18080
     }
-*/
+
+    public interface Client { 
+        @RequestLine("GET /v1/hello/")
+        Response getHello();
+    }
 }

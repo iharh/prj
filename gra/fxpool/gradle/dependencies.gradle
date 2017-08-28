@@ -1,10 +1,14 @@
 ext {
     versions = [
         testcontainers: '1.4.2',
-        visible_assertions: '2.0.0'
+        visible_assertions: '2.0.0',
+        feign: '9.5.1',
+        lombok: '1.16.18'
     ]
     libraries = [
         testcontainers: "org.testcontainers:testcontainers:${versions.testcontainers}",
-        visible_assertions: "org.rnorth.visible-assertions:visible-assertions:${versions.visible_assertions}"
+        visible_assertions: "org.rnorth.visible-assertions:visible-assertions:${versions.visible_assertions}",
+        feign_core: "io.github.openfeign:feign-core:${versions.feign}",
+        lombok: "org.projectlombok:lombok:${versions.lombok}"
     ]
 }
