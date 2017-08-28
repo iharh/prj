@@ -32,6 +32,7 @@ dependencies {
     testCompile libraries.testcontainers
     testCompile libraries.feign_core
     testCompile libraries.visible_assertions
+    testCompile libraries.assertj_core
 }
 
 test {
