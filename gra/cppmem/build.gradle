@@ -1,0 +1,52 @@
+plugins {
+    id 'base'
+    id 'cpp'
+}
+
+model {
+    buildTypes {
+        release
+    }
+
+    toolChains {
+        visualCpp(VisualCpp) {
+            //installDir "${project.'vs.base'}"
+        }
+        gcc(Gcc)
+    }
+
+    platforms {
+        x64 {
+            architecture "x86_64"
+        }
+    }
+
+    binaries {
+        withType(SharedLibraryBinarySpec) { // all
+            cppCompiler.define "NDEBUG"
+            // Define toolchain-specific compiler and linker options
+            if (toolChain in Gcc) {
+                println 'toolchain is Gcc!'
+                // "-O2", "-fno-access-control"
+                cppCompiler.args '-std=c++0x', '-Wno-narrowing'
+            }
+            if (toolChain in VisualCpp) {
+                println 'toolchain is VisualCpp!'
+            }
+        }
+    }
+
+    components {
+ 	main(NativeExecutableSpec) {
+            targetPlatform 'x64'
+            sources {
+                cpp {
+                    source {
+                        srcDirs 'src/main/cpp'
+                        include '*.cpp'
+                    }
+                }
+            }
+        }
+    }
+}
