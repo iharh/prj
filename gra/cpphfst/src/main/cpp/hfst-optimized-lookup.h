@@ -795,28 +795,42 @@ class TransitionW
 
 class IndexTableReaderW
 {
- private:
-  TransitionTableIndex number_of_table_entries;
-  char * TableIndices;
-  TransitionWIndexVector indices;
-  size_t table_size;
+private:
+    TransitionTableIndex number_of_table_entries;
+    char *TableIndices;
+    TransitionWIndexVector indices;
+    size_t table_size;
   
-  void get_index_vector(void);
- public:
- IndexTableReaderW(FILE * f,
-              TransitionTableIndex index_count): 
-  number_of_table_entries(index_count)
+    void get_index_vector(void);
+
+public:
+    IndexTableReaderW(FILE *f, TransitionTableIndex index_count)
+    :
+        TableIndices(NULL),
+        number_of_table_entries(index_count)
     {
-      table_size = number_of_table_entries*TransitionWIndex::SIZE;
-      TableIndices = (char*)(malloc(table_size));
+        table_size = number_of_table_entries * TransitionWIndex::SIZE;
+        TableIndices = (char *)(malloc(table_size));
 
-      // This dummy variable is needed, since the compiler complains
-      // for not catching the return value of fread().
-      size_t dummy_number_of_bytes;
+        // This dummy variable is needed, since the compiler complains
+        // for not catching the return value of fread().
+        size_t dummy_number_of_bytes;
 
-      dummy_number_of_bytes = fread(TableIndices,table_size,1,f);
-      (void)dummy_number_of_bytes;
-      get_index_vector();
+        dummy_number_of_bytes = fread(TableIndices, table_size, 1, f);
+        (void)dummy_number_of_bytes;
+        get_index_vector();
+    }
+
+    ~IndexTableReaderW()
+    {
+        for (auto itr = indices.begin(); itr != indices.end(); ++itr) {
+            TransitionWIndex *pT = *itr;
+            delete pT;
+        }
+        if (TableIndices != NULL)
+        {
+            free(TableIndices);
+        }
     }
   
   bool get_finality(TransitionTableIndex i)
@@ -859,7 +873,17 @@ class TransitionTableReaderW
     (void)bytes;
     get_transition_vector();
       }
-  
+
+  ~TransitionTableReaderW()
+  {
+      for (auto itr = transitions.begin(); itr != transitions.end(); ++itr) {
+          TransitionW *pT = *itr;
+          delete pT;
+      }
+
+      free(TableTransitions);
+  }
+
   void Set(TransitionTableIndex pos);
 
   TransitionW * at(TransitionTableIndex i)
