@@ -12,8 +12,7 @@ model {
         visualCpp(VisualCpp) {
             //installDir "${project.'vs.base'}"
         }
-        //gcc(Gcc)
-        clang(Clang)
+        gcc(Gcc)
     }
 
     platforms {
@@ -27,16 +26,15 @@ model {
             if (targetPlatform.operatingSystem.windows) {
                 println 'platform is win!'
             }
-            cppCompiler.define "KENLM_MAX_ORDER=6"
+            //cppCompiler.define "KENLM_MAX_ORDER=6"
             if (toolChain in VisualCpp) {
                 cppCompiler.args "/EHsc"
                 println "toolChain.windowsSdkDir: ${toolChain.windowsSdkDir}"
             }
-            if (toolChain in Clang) {
-                println 'toolchain is Clang!'
-                //cppCompiler.args '-std=c++0x'
-                cppCompiler.args '-std=c++0x', '-O0', '-g', '-fsanitize=address', '-fno-omit-frame-pointer'
-                linker.args '-g', '-fsanitize=address'
+            if (toolChain in Gcc) {
+                println 'toolchain is Gcc!'
+                cppCompiler.args '-std=c++0x', '-O0', '-g', '-fno-omit-frame-pointer'
+                linker.args '-g'
             }
         }
     }

@@ -11,6 +11,5 @@ main(void)
     delete pT;
 
     ::fclose(f);
-
     return 0;
 }
