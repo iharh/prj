@@ -9,7 +9,7 @@ main(void)
 
     while (true) {
         //FILE *f = ::fopen("d:\\download\\turkish.morph", "rb");
-        FILE *f = ::fopen("/home/iharh/Downloads/turkish.morph", "rb");
+        FILE *f = ::fopen("./bin/turkish.morph", "rb");
         TransducerHeader header(f);
         TransducerAlphabet alphabet(f, header.symbol_count());
 
