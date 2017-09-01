@@ -1,13 +1,13 @@
-#include <iostream>
+//#include <iostream>
 
 #include "hfst-optimized-lookup.h"
 
 int
 main(void)
 {
-    std::cout << "start" << std::endl;
+    //std::cout << "start" << std::endl;
 
-    while (true) {
+    /*while (true)*/ {
         //FILE *f = ::fopen("d:\\download\\turkish.morph", "rb");
         FILE *f = ::fopen("./bin/turkish.morph", "rb");
         TransducerHeader header(f);
@@ -18,6 +18,6 @@ main(void)
 
         ::fclose(f);
     }
-    std::cout << "finish" << std::endl;
+    //std::cout << "finish" << std::endl;
     return 0;
 }

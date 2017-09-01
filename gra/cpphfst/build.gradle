@@ -12,7 +12,8 @@ model {
         visualCpp(VisualCpp) {
             //installDir "${project.'vs.base'}"
         }
-        gcc(Gcc)
+        //gcc(Gcc)
+        clang(Clang)
     }
 
     platforms {
@@ -22,16 +23,20 @@ model {
     }
 
     binaries {
-        withType(SharedLibraryBinarySpec) { // all
-            cppCompiler.define "NDEBUG"
-            // Define toolchain-specific compiler and linker options
-            if (toolChain in Gcc) {
-                println 'toolchain is Gcc!'
-                // "-O2", "-fno-access-control"
-                cppCompiler.args '-std=c++0x', '-Wno-narrowing'
+        all {
+            if (targetPlatform.operatingSystem.windows) {
+                println 'platform is win!'
             }
+            cppCompiler.define "KENLM_MAX_ORDER=6"
             if (toolChain in VisualCpp) {
-                println 'toolchain is VisualCpp!'
+                cppCompiler.args "/EHsc"
+                println "toolChain.windowsSdkDir: ${toolChain.windowsSdkDir}"
+            }
+            if (toolChain in Clang) {
+                println 'toolchain is Clang!'
+                //cppCompiler.args '-std=c++0x'
+                cppCompiler.args '-std=c++0x', '-O0', '-g', '-fsanitize=address', '-fno-omit-frame-pointer'
+                linker.args '-g', '-fsanitize=address'
             }
         }
     }
