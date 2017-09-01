@@ -158,6 +158,8 @@ void TransducerAlphabet::get_next_symbol(FILE * f, SymbolNumber k)
 
 void LetterTrie::add_string(const char * p, SymbolNumber symbol_key)
 {
+    // ==24623==ERROR: AddressSanitizer: global-buffer-overflow on address 0x003beb98eb41 at pc 0x003beb911668 bp 0x7ffc2c0a5d60 sp 0x7ffc2c0a5d58
+    // READ of size 1 at 0x003beb98eb41 thread T0
   if (*(p+1) == 0)
     {
       symbols[(unsigned char)(*p)] = symbol_key;
