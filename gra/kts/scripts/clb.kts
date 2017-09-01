@@ -9,7 +9,7 @@ buildscript {
     }
 }
 
-task("def") {
+task("clbCfg") {
     doLast {
         println("java home: " + SystemUtils.getJavaHome())
     }
