@@ -12,7 +12,8 @@ model {
         visualCpp(VisualCpp) {
             //installDir "${project.'vs.base'}"
         }
-        gcc(Gcc)
+        //gcc(Gcc)
+        clang(Clang)
     }
 
     platforms {
@@ -35,6 +36,11 @@ model {
                 println 'toolchain is Gcc!'
                 cppCompiler.args '-std=c++0x', '-O0', '-g', '-fno-omit-frame-pointer'
                 linker.args '-g'
+            }
+            if (toolChain in Clang) {
+                println 'toolchain is Clang!'
+                cppCompiler.args '-std=c++0x', '-O0', '-g', '-fsanitize=address', '-fno-omit-frame-pointer'
+                linker.args '-g', '-fsanitize=address'
             }
         }
     }
