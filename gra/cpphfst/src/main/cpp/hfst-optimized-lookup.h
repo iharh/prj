@@ -195,7 +195,16 @@ public:
 
 private:
     void get_next_symbol(FILE *f, SymbolNumber k);
-    void put_sym(SymbolNumber k, const char *p);
+
+    void put_sym(SymbolNumber k, const char *p)
+    {
+        char *pOld = const_cast<char *>(kt->operator[](k));
+        if (pOld != NULL)
+        {
+            free(pOld);
+        }
+        kt->operator[](k) = strdup(p);
+    }
 
     SymbolNumber number_of_symbols;
     KeyTable *kt;

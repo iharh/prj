@@ -157,17 +157,6 @@ TransducerAlphabet::get_next_symbol(FILE *f, SymbolNumber k)
   put_sym(k, line);
 }
 
-void
-TransducerAlphabet::put_sym(SymbolNumber k, const char *p)
-{
-    char *pOld = const_cast<char *>(kt->operator[](k));
-    if (pOld != NULL)
-    {
-        free(pOld);
-    }
-    kt->operator[](k) = strdup(p); // TODO: why asan reports a leak here ??? we free all stuff in d-tor
-}
-
 
 LetterTrie::LetterTrie()
 :
@@ -673,4 +662,3 @@ void TransducerW::get_analyses(SymbolNumber * input_symbol,
                  i+1);
     }
 }
-
