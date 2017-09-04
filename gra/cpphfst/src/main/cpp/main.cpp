@@ -5,9 +5,9 @@ main(void)
 {
     FILE *f = ::fopen("./bin/turkish.morph", "rb");
     TransducerHeader header(f);
-    TransducerAlphabet alphabet(f, header.symbol_count());
+    std::shared_ptr<TransducerAlphabet> pAlphabet(new TransducerAlphabet(f, header.symbol_count()));
 
-    TransducerW *pT = new TransducerW(f, header, alphabet);
+    TransducerW *pT = new TransducerW(f, header, pAlphabet);
     delete pT;
 
     ::fclose(f);

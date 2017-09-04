@@ -19,6 +19,7 @@
 #pragma once
 
 #include <cstring>
+#include <memory>
 
 #if defined(WIN32) || defined(WIN64)
 #   define strdup _strdup
@@ -144,7 +145,7 @@ class TransducerHeader
       val = fread(&number_of_states,sizeof(StateIdNumber),1,f);
       val = fread(&number_of_transitions,sizeof(TransitionNumber),1,f);
       
-      // TODO: ??? (void)val;
+      (void)val;
 
       read_property(weighted,f);
 
@@ -220,66 +221,29 @@ typedef std::vector<FlagDiacriticOperation> OperationVector;
 
 class TransducerAlphabet
 {
- private:
-  SymbolNumber number_of_symbols;
-  KeyTable *kt;
-  OperationVector operations;
-
-  void get_next_symbol(FILE * f, SymbolNumber k);
-
-  char *line;
-
-  std::map<std::string, SymbolNumber> feature_bucket;
-  std::map<std::string, ValueNumber> value_bucket;
-  ValueNumber val_num;
-  SymbolNumber feat_num;
- 
- public:
- TransducerAlphabet(FILE * f,SymbolNumber symbol_number):
-  number_of_symbols(symbol_number),
-    kt(new KeyTable),
-    operations(),
-    line((char*)(malloc(1000)))
-      {
-    feat_num = 0;
-    val_num = 1;
-    value_bucket[std::string()] = 0; // empty value = neutral
-    for (SymbolNumber k = 0; k < number_of_symbols; ++k)
-      {
-        get_next_symbol(f,k);
-      }
-    // assume the first symbol is epsilon which we don't want to print
-    kt->operator[](0) = "";
-    free(line);
-      }
-
-    ~TransducerAlphabet()
-    {
-        std::set<char *> ptrset;
-
-        for (auto itr = kt->begin(); itr != kt->end(); ++itr)
-        {
-            char *p = const_cast<char *>(itr->second);
-            if (p != NULL && strlen(p) > 0) {
-                ptrset.insert(p);
-            }
-        }
-        for (auto it = ptrset.begin(); it != ptrset.end(); ++it) {
-            char *p = *it;
-            free(p);
-        }
-        // delete kt;
-    }
+public:
+    TransducerAlphabet(FILE *f,SymbolNumber symbol_number);
+    ~TransducerAlphabet();
   
-  KeyTable * get_key_table(void)
-  { return kt; }
+    KeyTable * get_key_table(void) { return kt; }
 
-  OperationVector get_operation_vector(void)
-  { return operations; }
+    OperationVector get_operation_vector(void) { return operations; }
 
-  SymbolNumber get_state_size(void)
-  { return (SymbolNumber) feature_bucket.size(); }
-  
+    SymbolNumber get_state_size(void) { return (SymbolNumber) feature_bucket.size(); }
+
+private:
+    SymbolNumber number_of_symbols;
+    KeyTable *kt;
+    OperationVector operations;
+
+    void get_next_symbol(FILE *f, SymbolNumber k);
+
+    char *line;
+
+    std::map<std::string, SymbolNumber> feature_bucket;
+    std::map<std::string, ValueNumber> value_bucket;
+    ValueNumber val_num;
+    SymbolNumber feat_num;
 };
 
 class LetterTrie;
@@ -586,17 +550,16 @@ class TransitionTableReaderW
 
 class TransducerW
 {
- protected:
-
+protected:
   TransducerHeader header;
-  TransducerAlphabet alphabet;
+  std::shared_ptr<TransducerAlphabet> pAlphabet;
   KeyTable * keys;
   IndexTableReaderW index_reader;
   TransitionTableReaderW transition_reader;
   Encoder encoder;
   DisplayMultiMap display_map;
 
-  SymbolNumber * output_string;
+  SymbolNumber *output_string;
 
   static const TransitionTableIndex START_INDEX = 0;
 
@@ -658,31 +621,8 @@ class TransducerW
   }
 
 public:
-    TransducerW(FILE * f, TransducerHeader h, TransducerAlphabet a)
-    :
-        header(h),
-        alphabet(a),
-        keys(alphabet.get_key_table()),
-        index_reader(f,header.index_table_size()),
-        transition_reader(f,header.target_table_size()),
-        encoder(keys,header.input_symbol_count()),
-        display_map(),
-        output_string((SymbolNumber *)(malloc(2000))),
-        indices(index_reader()),
-        transitions(transition_reader()),
-        current_weight(0.0)
-    {
-        for (int i = 0; i < 1000; ++i)
-        {
-            output_string[i] = NO_SYMBOL_NUMBER;
-        }
-        set_symbol_table();
-    }
-
-    ~TransducerW()
-    {
-        free(output_string);
-    }
+    TransducerW(FILE *f, TransducerHeader h, std::shared_ptr<TransducerAlphabet> pA);
+    ~TransducerW();
 
   const DisplayMultiMap& get_display_map()
   {

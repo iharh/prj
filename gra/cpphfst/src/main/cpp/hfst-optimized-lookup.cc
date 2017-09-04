@@ -86,6 +86,37 @@ void TransducerHeader::skip_hfst3_header(FILE * f)
     }
 }
 
+TransducerAlphabet::TransducerAlphabet(FILE * f,SymbolNumber symbol_number)
+:
+    number_of_symbols(symbol_number),
+    kt(new KeyTable),
+    operations(),
+    line((char*)(malloc(1000)))
+{
+    feat_num = 0;
+    val_num = 1;
+    value_bucket[std::string()] = 0; // empty value = neutral
+    for (SymbolNumber k = 0; k < number_of_symbols; ++k)
+    {
+        get_next_symbol(f,k);
+    }
+    // assume the first symbol is epsilon which we don't want to print
+    kt->operator[](0) = "";
+    free(line);
+}
+
+TransducerAlphabet::~TransducerAlphabet()
+{
+    for (auto itr = kt->begin(); itr != kt->end(); ++itr)
+    {
+        char *p = const_cast<char *>(itr->second);
+        if (p != NULL && strlen(p) > 0) {
+            free(p);
+        }
+    }
+    delete kt;
+}
+
 void TransducerAlphabet::get_next_symbol(FILE * f, SymbolNumber k)
 {
   int byte;
@@ -159,6 +190,7 @@ LetterTrie::LetterTrie()
 
 LetterTrie::~LetterTrie()
 {
+    // TODO: overlap with KeyTable stuff ???
     for (auto itr = letters.begin(); itr != letters.end(); ++itr) {
         delete (*itr);
     }
@@ -200,19 +232,19 @@ SymbolNumber LetterTrie::find_key(const char ** p)
   return s;
 }
 
-void Encoder::read_input_symbols(KeyTable * kt)
+void
+Encoder::read_input_symbols(KeyTable *kt)
 {
-  for (SymbolNumber k = 0; k < number_of_input_symbols; ++k)
+    for (SymbolNumber k = 0; k < number_of_input_symbols; ++k)
     {
 #if DEBUG
-      assert(kt->find(k) != kt->end());
+        assert(kt->find(k) != kt->end());
 #endif
-      const char * p = kt->operator[](k);
-      if ((strlen(p) == 1) && (unsigned char)(*p) <= 127)
-        {
-          ascii_symbols[(unsigned char)(*p)] = k;
+        const char *p = kt->operator[](k);
+        if ((strlen(p) == 1) && (unsigned char)(*p) <= 127) {
+            ascii_symbols[(unsigned char)(*p)] = k;
         }
-      letters.add_string(p,k);
+        letters.add_string(p, k);
     }
 }
 
@@ -394,24 +426,47 @@ bool TransitionTableReaderW::get_finality(TransitionTableIndex i)
 }
 
 
-void TransducerW::set_symbol_table(void)
+TransducerW::TransducerW(FILE *f, TransducerHeader h, std::shared_ptr<TransducerAlphabet> pA)
+:
+    header(h),
+    pAlphabet(pA),
+    keys(pA->get_key_table()),
+    index_reader(f,header.index_table_size()),
+    transition_reader(f,header.target_table_size()),
+    encoder(keys,header.input_symbol_count()),
+    display_map(),
+    output_string((SymbolNumber *)(malloc(2000))),
+    indices(index_reader()),
+    transitions(transition_reader()),
+    current_weight(0.0)
 {
-  for(KeyTable::iterator it = keys->begin();
-      it != keys->end();
-      ++it)
+    for (int i = 0; i < 1000; ++i)
     {
-      const char * key_name =
-        it->second;
+        output_string[i] = NO_SYMBOL_NUMBER;
+    }
+    set_symbol_table();
+}
 
-      symbol_table.push_back(key_name);
+TransducerW::~TransducerW()
+{
+    free(output_string);
+}
+
+void
+TransducerW::set_symbol_table(void)
+{
+    for(KeyTable::iterator it = keys->begin(); it != keys->end(); ++it)
+    {
+        const char *key_name = it->second;
+        symbol_table.push_back(key_name);
     }
 }
 
-void TransducerW::try_epsilon_transitions(SymbolNumber * input_symbol,
-                                          SymbolNumber * output_symbol,
-                                          SymbolNumber * 
-                                          original_output_string,
-                                          TransitionTableIndex i)
+void
+TransducerW::try_epsilon_transitions(SymbolNumber *input_symbol,
+      SymbolNumber *output_symbol,
+      SymbolNumber *original_output_string,
+      TransitionTableIndex i)
 {
 #if OL_FULL_DEBUG
   std::cerr << "try epsilon transitions " << i << " " << current_weight << std::endl;
