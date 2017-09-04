@@ -76,6 +76,7 @@ void TransducerHeader::skip_hfst3_header(FILE * f)
                 throw HeaderParsingException();
             }
         }
+        delete [] headervalue;
     } else // nope. put back what we've taken
     {
         ungetc(c, f); // first the non-matching character
@@ -101,7 +102,7 @@ TransducerAlphabet::TransducerAlphabet(FILE * f,SymbolNumber symbol_number)
         get_next_symbol(f,k);
     }
     // assume the first symbol is epsilon which we don't want to print
-    kt->operator[](0) = "";
+    kt->operator[](0) = strdup(""); // TODO: was just ""
     free(line);
 }
 
@@ -110,7 +111,7 @@ TransducerAlphabet::~TransducerAlphabet()
     for (auto itr = kt->begin(); itr != kt->end(); ++itr)
     {
         char *p = const_cast<char *>(itr->second);
-        if (p != NULL && strlen(p) > 0) {
+        if (p != NULL /*&& strlen(p) > 0*/) {
             free(p);
         }
     }
@@ -178,7 +179,7 @@ void TransducerAlphabet::get_next_symbol(FILE * f, SymbolNumber k)
   std::cout << "symbol number " << k << " is \"" << line << "\"" << std::endl;
 #endif
   
-  kt->operator[](k) = strdup(line);
+  kt->operator[](k) = strdup(line); // TODO: leak here ???
 }
 
 LetterTrie::LetterTrie()
