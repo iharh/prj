@@ -59,18 +59,12 @@ typedef unsigned short SymbolNumber;
 typedef unsigned int TransitionTableIndex;
 typedef unsigned int TransitionNumber;
 typedef unsigned int StateIdNumber;
-typedef unsigned int ArcNumber;
-typedef short ValueNumber;
 typedef std::vector<SymbolNumber> SymbolNumberVector;
-typedef std::map<SymbolNumber,const char*> KeyTable;
+typedef std::map<SymbolNumber,const char *> KeyTable;
  
 const StateIdNumber NO_ID_NUMBER = UINT_MAX;
 const SymbolNumber NO_SYMBOL_NUMBER = USHRT_MAX;
 const TransitionTableIndex NO_TABLE_INDEX = UINT_MAX;
-
-// the flag diacritic operators as given in
-// Beesley & Karttunen, Finite State Morphology (U of C Press 2003)
-enum FlagDiacriticOperator {P, N, R, D, C, U};
 
 enum HeaderFlag {Weighted, Deterministic, Input_deterministic, Minimized,
          Cyclic, Has_epsilon_epsilon_transitions,
@@ -130,7 +124,7 @@ class TransducerHeader
  public:
   TransducerHeader(FILE * f)
     {
-    skip_hfst3_header(f);
+      skip_hfst3_header(f);
     
       // The silly compiler complains about not catching the return value
       // of fread(). Hence this dummy variable is needed.
@@ -187,37 +181,7 @@ class TransducerHeader
     }
     return false;
   }
-  
 };
-
-class FlagDiacriticOperation
-{
- private:
-  FlagDiacriticOperator operation;
-  SymbolNumber feature;
-  ValueNumber value;
- public:
- FlagDiacriticOperation(FlagDiacriticOperator op, SymbolNumber feat, ValueNumber val):
-  operation(op), feature(feat), value(val) {}
-
-  // dummy constructor
- FlagDiacriticOperation():
-  operation(P), feature(NO_SYMBOL_NUMBER), value(0) {}
-  
-  bool isFlag(void) { return feature != NO_SYMBOL_NUMBER; }
-  FlagDiacriticOperator Operation(void) { return operation; }
-  SymbolNumber Feature(void) { return feature; }
-  ValueNumber Value(void) { return value; }
-
-#if OL_FULL_DEBUG
-  void print(void)
-  {
-    std::cout << operation << "\t" << feature << "\t" << value << std::endl;
-  }
-#endif
-};
-
-typedef std::vector<FlagDiacriticOperation> OperationVector;
 
 class TransducerAlphabet
 {
@@ -227,22 +191,18 @@ public:
   
     KeyTable * get_key_table(void) { return kt; }
 
-    OperationVector get_operation_vector(void) { return operations; }
-
     SymbolNumber get_state_size(void) { return (SymbolNumber) feature_bucket.size(); }
 
 private:
+    void get_next_symbol(FILE *f, SymbolNumber k);
+    void put_sym(SymbolNumber k, const char *p);
+
     SymbolNumber number_of_symbols;
     KeyTable *kt;
-    OperationVector operations;
-
-    void get_next_symbol(FILE *f, SymbolNumber k);
 
     char *line;
 
     std::map<std::string, SymbolNumber> feature_bucket;
-    std::map<std::string, ValueNumber> value_bucket;
-    ValueNumber val_num;
     SymbolNumber feat_num;
 };
 
@@ -283,9 +243,6 @@ class Encoder {
   
   SymbolNumber find_key(const char ** p);
 };
-
-typedef std::vector<ValueNumber> FlagDiacriticState;
-typedef std::vector<FlagDiacriticState> FlagDiacriticStateStack;
 
 /*
  * BEGIN old transducer.h

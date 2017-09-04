@@ -91,19 +91,15 @@ TransducerAlphabet::TransducerAlphabet(FILE * f,SymbolNumber symbol_number)
 :
     number_of_symbols(symbol_number),
     kt(new KeyTable),
-    operations(),
     line((char*)(malloc(1000)))
 {
     feat_num = 0;
-    val_num = 1;
-    value_bucket[std::string()] = 0; // empty value = neutral
     for (SymbolNumber k = 0; k < number_of_symbols; ++k)
     {
-        get_next_symbol(f,k);
+        get_next_symbol(f, k);
     }
     // assume the first symbol is epsilon which we don't want to print
-    kt->operator[](0) = strdup(""); // TODO: was just ""
-    free(line);
+    put_sym(0, "");
 }
 
 TransducerAlphabet::~TransducerAlphabet()
@@ -111,17 +107,17 @@ TransducerAlphabet::~TransducerAlphabet()
     for (auto itr = kt->begin(); itr != kt->end(); ++itr)
     {
         char *p = const_cast<char *>(itr->second);
-        if (p != NULL /*&& strlen(p) > 0*/) {
-            free(p);
-        }
+        free(p);
     }
     delete kt;
+    free(line);
 }
 
-void TransducerAlphabet::get_next_symbol(FILE * f, SymbolNumber k)
+void
+TransducerAlphabet::get_next_symbol(FILE *f, SymbolNumber k)
 {
   int byte;
-  char * sym = line;
+  char *sym = line;
   while ( (byte = fgetc(f)) != 0 )
     {
       if (byte == EOF)
@@ -136,51 +132,42 @@ void TransducerAlphabet::get_next_symbol(FILE * f, SymbolNumber k)
   if (strlen(line) >= 5 && line[0] == '@' && line[strlen(line) - 1] == '@' && line[2] == '.')
     { // a special symbol needs to be parsed
       std::string feat;
-      std::string val;
-      FlagDiacriticOperator op = P; // g++ worries about this falling through uninitialized
-      switch (line[1]) {
-      case 'P': op = P; break;
-      case 'N': op = N; break;
-      case 'R': op = R; break;
-      case 'D': op = D; break;
-      case 'C': op = C; break;
-      case 'U': op = U; break;
-      }
-      char * c = line;
+      char *c = line;
       // as long as we're working with utf-8, this should be ok
       for (c +=3; *c != '.' && *c != '@'; c++) { feat.append(c,1); }
-      if (*c == '.')
-        {
-          for (++c; *c != '@'; c++) { val.append(c,1); }
-        }
       if (feature_bucket.count(feat) == 0)
         {
           feature_bucket[feat] = feat_num;
           ++feat_num;
         }
-      if (value_bucket.count(val) == 0)
-        {
-          value_bucket[val] = val_num;
-          ++val_num;
-        }
-      operations.push_back(FlagDiacriticOperation(op, feature_bucket[feat], value_bucket[val]));
-      kt->operator[](k) = strdup("");
+      put_sym(k, "");
       
 #if OL_FULL_DEBUG
       std::cout << "symbol number " << k << " (flag) is \"" << line << "\"" << std::endl;
-      kt->operator[](k) = strdup(line);
+      put_sym(k, line);
 #endif
       
       return;
     }
-  operations.push_back(FlagDiacriticOperation()); // dummy flag
 
 #if OL_FULL_DEBUG
   std::cout << "symbol number " << k << " is \"" << line << "\"" << std::endl;
 #endif
   
-  kt->operator[](k) = strdup(line); // TODO: leak here ???
+  put_sym(k, line);
 }
+
+void
+TransducerAlphabet::put_sym(SymbolNumber k, const char *p)
+{
+    char *pOld = const_cast<char *>(kt->operator[](k));
+    if (pOld != NULL)
+    {
+        free(pOld);
+    }
+    kt->operator[](k) = strdup(p); // TODO: why asan reports a leak here ??? we free all stuff in d-tor
+}
+
 
 LetterTrie::LetterTrie()
 :
@@ -263,13 +250,13 @@ SymbolNumber Encoder::find_key(const char ** p)
 template <class genericTransducer>
 void runTransducer (genericTransducer T)
 {
-  SymbolNumber * input_string = (SymbolNumber*)(malloc(2000));
+  SymbolNumber * input_string = (SymbolNumber *)(malloc(2000));
   for (int i = 0; i < 1000; ++i)
     {
       input_string[i] = NO_SYMBOL_NUMBER;
     }
   
-  char * str = (char*)(malloc(MAX_IO_STRING*sizeof(char)));  
+  char * str = (char*)(malloc(MAX_IO_STRING * sizeof(char)));  
   *str = 0;
   char * old_str = str;
 
@@ -543,7 +530,6 @@ void TransducerW::find_transitions(SymbolNumber input,
         }
       ++i;
     }
-  
 }
 
 void TransducerW::find_index(SymbolNumber input,

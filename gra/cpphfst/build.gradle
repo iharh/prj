@@ -12,8 +12,8 @@ model {
         visualCpp(VisualCpp) {
             //installDir "${project.'vs.base'}"
         }
-        //gcc(Gcc)
-        clang(Clang)
+        gcc(Gcc)
+        //clang(Clang)
     }
 
     platforms {
