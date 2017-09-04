@@ -16,6 +16,14 @@
   
 */
 
+#pragma once
+
+#include <cstring>
+
+#if defined(WIN32) || defined(WIN64)
+#   define strdup _strdup
+#endif
+
 /*
 config.h-defined constants
  */
@@ -214,12 +222,12 @@ class TransducerAlphabet
 {
  private:
   SymbolNumber number_of_symbols;
-  KeyTable * kt;
+  KeyTable *kt;
   OperationVector operations;
 
   void get_next_symbol(FILE * f, SymbolNumber k);
 
-  char * line;
+  char *line;
 
   std::map<std::string, SymbolNumber> feature_bucket;
   std::map<std::string, ValueNumber> value_bucket;
@@ -244,6 +252,24 @@ class TransducerAlphabet
     kt->operator[](0) = "";
     free(line);
       }
+
+    ~TransducerAlphabet()
+    {
+        std::set<char *> ptrset;
+
+        for (auto itr = kt->begin(); itr != kt->end(); ++itr)
+        {
+            char *p = const_cast<char *>(itr->second);
+            if (p != NULL && strlen(p) > 0) {
+                ptrset.insert(p);
+            }
+        }
+        for (auto it = ptrset.begin(); it != ptrset.end(); ++it) {
+            char *p = *it;
+            free(p);
+        }
+        // delete kt;
+    }
   
   KeyTable * get_key_table(void)
   { return kt; }
@@ -631,26 +657,32 @@ class TransducerW
     return transitions[i]->get_weight();
   }
 
- public:
- TransducerW(FILE * f, TransducerHeader h, TransducerAlphabet a) :
-  header(h),
-    alphabet(a),
-    keys(alphabet.get_key_table()),
-    index_reader(f,header.index_table_size()),
-    transition_reader(f,header.target_table_size()),
-    encoder(keys,header.input_symbol_count()),
-    display_map(),
-    output_string((SymbolNumber*)(malloc(2000))),
-    indices(index_reader()),
-    transitions(transition_reader()),
-    current_weight(0.0)
-      {
-    for (int i = 0; i < 1000; ++i)
-      {
-        output_string[i] = NO_SYMBOL_NUMBER;
-      }
-    set_symbol_table();
-      }
+public:
+    TransducerW(FILE * f, TransducerHeader h, TransducerAlphabet a)
+    :
+        header(h),
+        alphabet(a),
+        keys(alphabet.get_key_table()),
+        index_reader(f,header.index_table_size()),
+        transition_reader(f,header.target_table_size()),
+        encoder(keys,header.input_symbol_count()),
+        display_map(),
+        output_string((SymbolNumber *)(malloc(2000))),
+        indices(index_reader()),
+        transitions(transition_reader()),
+        current_weight(0.0)
+    {
+        for (int i = 0; i < 1000; ++i)
+        {
+            output_string[i] = NO_SYMBOL_NUMBER;
+        }
+        set_symbol_table();
+    }
+
+    ~TransducerW()
+    {
+        free(output_string);
+    }
 
   const DisplayMultiMap& get_display_map()
   {

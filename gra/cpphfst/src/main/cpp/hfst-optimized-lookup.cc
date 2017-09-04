@@ -23,13 +23,7 @@
   TODO: USE THE EXISTING HFST-TOOLS FRAMEWORK BETTER.
  */
 
-#include <cstring>
-
 #include "hfst-optimized-lookup.h"
-
-#if defined(WIN32) || defined(WIN64)
-#   define strdup _strdup
-#endif
 
 // the following flags are only meaningful with certain debugging #defines
 bool timingFlag = false;
