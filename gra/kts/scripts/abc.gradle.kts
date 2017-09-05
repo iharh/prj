@@ -1,4 +1,4 @@
-import org.apache.commons.lang3.SystemUtils
+//import org.apache.commons.lang3.SystemUtils
 
 buildscript {
     repositories {
@@ -11,6 +11,7 @@ buildscript {
 
 task("abc") {
     doLast {
-        println("host name: " + SystemUtils.OS_NAME)
+        //println("host name: " + SystemUtils.OS_NAME)
+        println("abc stuff")
     }
 }
