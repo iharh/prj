@@ -19,9 +19,11 @@ apply {
 
 val hello by tasks.creating {
     doLast {
-	println(listOf("hello", "world"))
         println("host name: " + SystemUtils.OS_NAME)
+        //mySuperFun()
+	println(listOf("hello", "world"))
     }
 }
 
 declareMyTask()
+mySuperFun()

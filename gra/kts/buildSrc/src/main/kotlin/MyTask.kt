@@ -1,5 +1,7 @@
-import org.gradle.api.*
-import org.gradle.api.tasks.*
+import org.gradle.api.DefaultTask
+import org.gradle.api.Project
+import org.gradle.api.tasks.TaskAction
+// TODO: investigate *
 import org.gradle.kotlin.dsl.*
 
 import org.apache.commons.lang3.SystemUtils
@@ -20,3 +22,7 @@ fun Project.declareMyTask()
     = task<MyTask>("myTask")
 val Project.myTask: MyTask
     get() = tasks["myTask"] as MyTask
+
+fun mySuperFun() {
+    println("mySuperFun called!!!")
+}
