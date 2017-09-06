@@ -15,7 +15,7 @@ plugins {
 idea {
     project {
         languageLevel = IdeaLanguageLevel(JavaVersion.VERSION_1_8) // "1.8"
-        vcs = "Git"
+        //vcs = "Git"
     }
 }
 

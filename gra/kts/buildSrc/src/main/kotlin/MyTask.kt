@@ -1,8 +1,8 @@
 import org.gradle.api.DefaultTask
 import org.gradle.api.Project
 import org.gradle.api.tasks.TaskAction
-// TODO: investigate *
-import org.gradle.kotlin.dsl.*
+import org.gradle.kotlin.dsl.get
+import org.gradle.kotlin.dsl.task
 
 open class MyTask : DefaultTask() {
     init {
