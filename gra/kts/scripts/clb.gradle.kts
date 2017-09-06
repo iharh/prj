@@ -1,38 +1,18 @@
-//import org.apache.commons.lang3.SystemUtils
-
-import java.io.FileInputStream
-import java.io.FileOutputStream
-
 import java.util.Properties
-
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath("org.apache.commons:commons-lang3:3.6")
-    }
-}
 
 val clbCfg by tasks.creating {
     doLast {
-        // println("java home: " + SystemUtils.getJavaHome())
-
-	val propFileName = "${rootProject.projectDir}/a.properties"
+	val instFolder = "D:/clb/inst"
+	val propFolder = "${instFolder}/configurer" // "${rootProject.projectDir}"
+	val propFileName = "${propFolder}/configurer-cmp.properties" 
 	val propFile = File(propFileName) // propertiesFile.exists()
-	val cfg = Properties();
-
-	FileInputStream(propFile).use { propInputStream ->
-	    cfg.load(propInputStream)
-	    //cfg.each {
-	    //   key, value -> println("${key} = ${value}") // project.ext[key] = value
-	    //}
-	}
-
-	cfg.setProperty("directory.install", "D:/clb/inst");
-
-	FileOutputStream("${rootProject.projectDir}/b.properties").use { propOutputStream ->
-	    cfg.store(propOutputStream, null)
-	}
+	val cfg = Properties()
+	propFile.inputStream().use { cfg.load(it) }
+	cfg.setProperty("directory.install", instFolder)
+	val tmpFileName = "tmp.properties"
+	val tmpFile = File("${propFolder}/${tmpFileName}")
+	tmpFile.outputStream().use { cfg.store(it, null) }
+	tmpFile.copyTo(propFile, true)
+	tmpFile.delete()
     }
 }
