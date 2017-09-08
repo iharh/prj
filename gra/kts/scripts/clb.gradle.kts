@@ -3,7 +3,7 @@ import java.util.Properties
 val clbCfg by tasks.creating {
     doLast {
 	val instFolder = "D:/clb/inst"
-	val propFolder = "${instFolder}/configurer" // "${rootProject.projectDir}"
+	val propFolder = "${instFolder}/configurer"
 	val propFileName = "${propFolder}/configurer-cmp.properties" 
 	val propFile = File(propFileName) // propertiesFile.exists()
 	val cfg = Properties()

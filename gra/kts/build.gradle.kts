@@ -1,7 +1,7 @@
 import org.gradle.plugins.ide.idea.model.IdeaLanguageLevel
 
 apply {
-    File("scripts").walk()
+    File("${rootProject.projectDir}/scripts").walk()
         .filter { !it.isDirectory() && it.toString().endsWith(".gradle.kts") && !it.toString().endsWith(".swp") }
         .forEach {
             from(it.toString())
