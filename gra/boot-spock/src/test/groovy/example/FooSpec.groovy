@@ -10,11 +10,15 @@ import org.springframework.http.HttpStatus
 import spock.lang.Specification
 
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.DEFINED_PORT
 
-@SpringBootTest(webEnvironment = RANDOM_PORT)
+@SpringBootTest(webEnvironment = DEFINED_PORT, properties = ['server.port=18080', 'graphite.enabled=false'])
 class FooSpec extends Specification {
     @Autowired
     TestRestTemplate restTemplate
+
+    @Shared
+    int port = 18080;
 
     def '/foo should return world'() {
         when:
