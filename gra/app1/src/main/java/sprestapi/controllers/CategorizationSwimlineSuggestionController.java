@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @RestController
 @RequestMapping("/v1")
-public class CategorizationSwimlineSuggestionController extends ControllerBase {
+public class CategorizationSwimlineSuggestionController {
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String hello() {
