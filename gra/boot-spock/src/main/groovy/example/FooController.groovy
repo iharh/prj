@@ -15,4 +15,9 @@ class FooController {
     Hello hello() {
         service.hello()
     }
+
+    @GetMapping('/other')
+    String other() {
+        'other'
+    }
 }
