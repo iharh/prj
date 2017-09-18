@@ -1,0 +1,28 @@
+plugins {
+    id 'groovy'
+    //id 'java'
+    id 'org.springframework.boot' version '1.5.5.RELEASE' // '1.5.6.RELEASE' // '1.5.1.RELEASE'
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    // Groovy
+    compile 'org.codehaus.groovy:groovy-all:2.4.7'
+
+    // Spring
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-jetty'
+    //runtime 'org.springframework.boot:spring-boot-devtools'
+
+    // Spock
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile 'org.spockframework:spock-core:1.1-groovy-2.4-rc-3'
+    testCompile 'org.spockframework:spock-spring:1.1-groovy-2.4-rc-3'
+    testRuntime 'cglib:cglib-nodep:3.2.4'
+}
