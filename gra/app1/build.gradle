@@ -1,7 +1,7 @@
 plugins {
     id 'groovy'
     //id 'java'
-    id 'org.springframework.boot' version '1.5.7.RELEASE' // '1.5.1.RELEASE'
+    id 'org.springframework.boot' version '1.5.7.RELEASE'
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -18,12 +18,11 @@ dependencies {
     // Spring
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-jetty'
-    //runtime 'org.springframework.boot:spring-boot-devtools'
 
     //Spring Clound
-    compile 'org.springframework.cloud:spring-cloud-starter-eureka-server:1.0.3.RELEASE'
-    compile 'org.springframework.cloud:spring-cloud-starter-eureka:1.0.3.RELEASE'
-    //Spring Security TODO: do we need to upgrade ?
-    compile 'org.springframework.security.oauth:spring-security-oauth2:2.0.8.RELEASE'
-    compile 'org.springframework.security:spring-security-crypto:3.2.7.RELEASE'
+    compile 'org.springframework.cloud:spring-cloud-starter-eureka-server:1.3.4.RELEASE'
+    compile 'org.springframework.cloud:spring-cloud-starter-eureka:1.3.4.RELEASE'
+    //Spring Security
+    compile 'org.springframework.security.oauth:spring-security-oauth2:2.1.1.RELEASE'
+    compile 'org.springframework.security:spring-security-crypto:4.2.3.RELEASE'
 }
