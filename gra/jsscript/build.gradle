@@ -10,6 +10,7 @@ buildscript {
 ext {
     junitPlatformVersion = '1.0.0'
     junitJupiterVersion = '5.0.0'
+    xmlunitVersion = '2.5.0'
 }
 
 apply plugin: 'java'
@@ -28,6 +29,9 @@ dependencies {
     // JUnit Jupiter API and TestEngine implementation
     testCompile("org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}")
     testRuntime("org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}")
+
+    testCompile("org.xmlunit:xmlunit-core:${xmlunitVersion}")
+    testCompile("org.xmlunit:xmlunit-matchers:${xmlunitVersion}")
 }
 
 junitPlatform {
