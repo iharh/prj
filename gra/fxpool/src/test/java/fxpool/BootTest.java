@@ -59,13 +59,4 @@ public class BootTest {
             }
         }
     }
-
-    /* private List<String> linesFromBufferedReader(BufferedReader reader) throws IOException {
-        String line;
-        List<String> lines = new ArrayList<>();
-        while ((line = reader.readLine()) != null) {
-            lines.add(line);
-        }
-        return lines;
-    }*/
 }
