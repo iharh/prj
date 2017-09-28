@@ -25,7 +25,7 @@ public class JavaTestContainer<SELF extends JavaTestContainer<SELF>> extends Gen
     private final Client client = Feign
         .builder()
         .logLevel(Logger.Level.FULL)
-        .logger(new Slf4jLogger()) // Client.class
+        .logger(new Slf4jLogger(Client.class))
         .target(Client.class, getURL());
 
     public JavaTestContainer() {
