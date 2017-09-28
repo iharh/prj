@@ -6,11 +6,6 @@ plugins {
 apply from: 'gradle/dependencies.gradle'
 apply from: 'gradle/build-utils.gradle'
 
-ext {
-    currentOS = getCurrentOS()
-    nexusUrl = project.'mvn.repo'
-}
-
 repositories {
     jcenter()
 }
@@ -31,6 +26,7 @@ dependencies {
     // testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile libraries.testcontainers
     testCompile libraries.feign_core
+    testCompile libraries.feign_slf4j
     testCompile libraries.visible_assertions
     testCompile libraries.assertj_core
 }

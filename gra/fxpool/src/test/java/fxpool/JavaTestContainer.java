@@ -9,8 +9,11 @@ import org.testcontainers.containers.wait.HttpWaitStrategy;
 import org.testcontainers.images.builder.ImageFromDockerfile;
 
 import feign.Feign;
+import feign.Logger;
 import feign.RequestLine;
 import feign.Response;
+
+import feign.slf4j.Slf4jLogger;
 
 import java.io.File;
 
@@ -19,7 +22,11 @@ import lombok.Getter;
 public class JavaTestContainer<SELF extends JavaTestContainer<SELF>> extends GenericContainer<SELF> {
 
     @Getter(lazy = true)
-    private final Client client = Feign.builder().target(Client.class, getURL());
+    private final Client client = Feign
+        .builder()
+        .logLevel(Logger.Level.FULL)
+        .logger(new Slf4jLogger()) // Client.class
+        .target(Client.class, getURL());
 
     public JavaTestContainer() {
         super(new ImageFromDockerfile("myboot", false)

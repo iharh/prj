@@ -9,6 +9,7 @@ ext {
     libraries = [
         testcontainers: "org.testcontainers:testcontainers:${versions.testcontainers}",
         feign_core: "io.github.openfeign:feign-core:${versions.feign}",
+        feign_slf4j: "io.github.openfeign:feign-slf4j:${versions.feign}",
         lombok: "org.projectlombok:lombok:${versions.lombok}",
         visible_assertions: "org.rnorth.visible-assertions:visible-assertions:${versions.visible_assertions}",
         assertj_core: "org.assertj:assertj-core:${versions.assertj}"
