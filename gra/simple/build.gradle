@@ -1,22 +1,20 @@
 plugins {
     id 'java'
-    id 'groovy'
+    //id 'groovy'
 
-    id 'org.ajoberstar.release-base' version '1.7.1'
-    id 'org.ajoberstar.release-opinion' version '1.7.1'
+    //id 'org.ajoberstar.release-base' version '1.7.1'
+    //id 'org.ajoberstar.release-opinion' version '1.7.1'
 }
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = JavaVersion.VERSION_1_9
+targetCompatibility = JavaVersion.VERSION_1_9
 
 repositories {
-    mavenCentral()
-    mavenLocal()
     //jcenter() // spock-reports
 }
 
 dependencies {
-    compile('org.codehaus.groovy:groovy-all:2.4.4') // 2.4.5
-    testCompile('org.spockframework:spock-core:1.0-groovy-2.4')
+    //compile('org.codehaus.groovy:groovy-all:2.4.4') // 2.4.5
+    //testCompile('org.spockframework:spock-core:1.0-groovy-2.4')
     //testCompile('org.spockframework:spock-core:1.1-groovy-2.4-rc-4')
 }
