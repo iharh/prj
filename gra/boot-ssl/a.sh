@@ -1,2 +1,2 @@
 #! /usr/bin/env bash
-curl http://localhost:8080/other 
+curl -k https://localhost:8443/other 
