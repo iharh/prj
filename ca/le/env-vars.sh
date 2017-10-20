@@ -20,4 +20,6 @@ WELL_KNOWN_DIR=$CERT_BASE_DIR/.well-known/acme-challenge
 
 DOMAINS="-d eureka1.iharh.ml -d eureka2.iharh.ml"
 
+CERT_DIR=$CERT_BASE_DIR/cert
+
 rm -f acme.log
