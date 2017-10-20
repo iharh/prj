@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 set -e
 
-OPT_LOG="--log-dir . --log-level DEBUG"
+ACME_CLIENT_CMD="java -jar lib/acme_client.jar --log-dir . --log-level DEBUG"
 
 ACCOUNT_KEY=~/.ssh/id_rsa
 
