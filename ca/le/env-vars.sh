@@ -22,4 +22,11 @@ DOMAINS="-d eureka1.iharh.ml -d eureka2.iharh.ml"
 
 CERT_DIR=$CERT_BASE_DIR/cert
 
+CERT_FULLCHAIN=$CERT_DIR/fullchain.pem
+
+EXPORT_DIR=$CERT_BASE_DIR/pkcs12
+EXPORT_PKCS12=$EXPORT_DIR/iharh.ml.pkcs12
+
+export PKCS12_PASS=pwd
+
 rm -f acme.log
