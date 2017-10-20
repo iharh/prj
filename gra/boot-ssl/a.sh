@@ -1,3 +1,3 @@
 #! /usr/bin/env bash
-curl https://iharh.github.io:8443/other 
+curl https://eureka1.github.io:8443/other
 # -k

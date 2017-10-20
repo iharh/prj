@@ -1,7 +1,7 @@
 server:
   port: 8443
   ssl:
-    key-store: /data/wrk/wnotes/ca/certdir/iharh.github.io.pkcs12
+    key-store: /data/wrk/wnotes/ca/pkcs12/iharh.ml.pkcs12
     key-store-type: pkcs12
     key-store-password: pwd
     keyAlias: 1
