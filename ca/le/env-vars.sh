@@ -18,6 +18,6 @@ CERT_CSR=$CERT_CSR_DIR/iharh.ml.csr
 WORK_DIR=$CERT_BASE_DIR/.workdir
 WELL_KNOWN_DIR=$CERT_BASE_DIR/.well-known/acme-challenge 
 
-DOMAINS="-d eureka1.github.io -d eureka2.github.io"
+DOMAINS="-d eureka1.iharh.ml -d eureka2.iharh.ml"
 
 rm -f acme.log
