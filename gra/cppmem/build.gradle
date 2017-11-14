@@ -5,7 +5,8 @@ plugins {
 
 model {
     buildTypes {
-        release
+        //release
+        debug
     }
 
     toolChains {
