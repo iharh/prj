@@ -1,4 +1,4 @@
-FROM centos:centos6.7
+FROM centos:centos6.9
 
 RUN yum -y update && yum -y install sudo which vim curl tar
 
@@ -19,12 +19,13 @@ RUN yum -y install git
 
 # Oracle Java
 
-ENV JAVA_PKG_NAME jdk-8u77-linux-x64
-ENV JAVA_PKG_DIR 8u77-b03
+ENV JAVA_PKG_NAME jdk-8u152-linux-x64
+ENV JAVA_PKG_DIR 8u152-b16
+ENV JAVA_PKG_HASH aa0333dd3019491ca4f6ddbe78cdb6d0
 
-#http://download.oracle.com/otn-pub/java/jdk/8u77-b03/jdk-8u77-linux-x64
+#http://download.oracle.com/otn-pub/java/jdk/8u152-b16/aa0333dd3019491ca4f6ddbe78cdb6d0/jdk-8u152-linux-x64.rpm
 
-RUN curl -LO http://download.oracle.com/otn-pub/java/jdk/$JAVA_PKG_DIR/$JAVA_PKG_NAME.rpm -H 'Cookie: oraclelicense=accept-securebackup-cookie'
+RUN curl -LO http://download.oracle.com/otn-pub/java/jdk/$JAVA_PKG_DIR/$JAVA_PKG_HASH/$JAVA_PKG_NAME.rpm -H 'Cookie: oraclelicense=accept-securebackup-cookie'
 
 RUN rpm -i ${JAVA_PKG_NAME}.rpm &&\
     rm -f ${JAVA_PKG_NAME}.rpm &&\
