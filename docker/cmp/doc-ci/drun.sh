@@ -7,7 +7,8 @@ CTX_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 CMN_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../../../.." && pwd )"
 CACHE_DIR=$CMN_DIR/docker-cache
 CLB_BASE=$CMN_DIR/clb
-SVN_BASE=$CLB_BASE/svnmain
+#SVN_BASE=$CLB_BASE/svnmain
+SVN_BASE=$CLB_BASE/fx
 GIT_BASE=$CLB_BASE/platform
 
 RUN_CMD="$@"
