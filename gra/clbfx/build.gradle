@@ -47,8 +47,8 @@ task cpSharedLibs(type: Copy) {
     from (configurations.shlibcfg) {
         rename { filename -> filename.replace("-${fullFxVer}", "") }
     }
-    // include 'lib*'
-    includes = ['lib*', '*.jar']
+    // includes = ['lib*', '*.dll', '*.jar'] // include 'lib*'
+    includes = ['*.dll', '*.jar'] // include 'lib*'
     into shLibDir
 }
 
