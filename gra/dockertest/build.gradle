@@ -45,11 +45,12 @@ task listImages(type: DockerListImages) {
 }
 
 task buildDocker(type: DockerBuildImage) {
+    from 'docker-registry.clarabridge.net:5000/cb_plat/cb-java:8u152'
 //    dependsOn shadowJar
 //    doLast { println "buildDocker ended" }
 //    inputDir = project.projectDir
-    tag = "prefix/$project.name:$project.version"
-    noCache = true
+//    tag = "prefix/$project.name:$project.version"
+//    noCache = true
 //    doFirst {
 //        copy {
 //            from('cb-cps-app/build/libs/') {
