@@ -1,0 +1,5 @@
+task printApi {
+    doLast {
+        println 'taskApi called'
+    }
+}

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package mp_service;
+option java_package = "org.someorg.serialization.proto";
+option java_outer_classname = "MPService";
+
+service MPPService {
+    rpc Process (stream MPRequest) returns (stream MPResponse);
+}
+
+message NLPRequest {
+    bool debug = 1;
+    string text = 2;
+}
+
+message NLPResponse {
+    string res = 1;
+}

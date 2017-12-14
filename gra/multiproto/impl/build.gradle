@@ -1,0 +1,12 @@
+// description = 'Centralized Prediction Service'
+
+dependencies {
+    compile project(':api')
+    // compile('org.springframework.security.oauth:spring-security-oauth2')
+}
+
+task printImpl {
+    doLast {
+        println 'taskImpl called'
+    }
+}
