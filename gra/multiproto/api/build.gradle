@@ -19,7 +19,7 @@ protobuf {
         // Download from repositories
         artifact = 'com.google.protobuf:protoc:3.5.0'
     }
-    generatedFilesBaseDir = "${project(':api').projectDir}/generated"
+    generatedFilesBaseDir = "${project(':api').buildDir}/generated"
 }
 
 repositories {
