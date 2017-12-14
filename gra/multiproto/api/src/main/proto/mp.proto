@@ -8,11 +8,11 @@ service MPPService {
     rpc Process (stream MPRequest) returns (stream MPResponse);
 }
 
-message NLPRequest {
+message MPRequest {
     bool debug = 1;
     string text = 2;
 }
 
-message NLPResponse {
+message MPResponse {
     string res = 1;
 }

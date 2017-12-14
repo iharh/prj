@@ -55,6 +55,6 @@ subprojects {
     }*/
 
     dependencies {
-        compile('org.projectlombok:lombok')
+        //compile('org.projectlombok:lombok')
     }
 }

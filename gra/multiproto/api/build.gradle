@@ -1,3 +1,39 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.3'
+    }
+}
+
+apply plugin: 'com.google.protobuf'
+
+artifacts {
+    compile jar
+}
+
+protobuf {
+    // Configure the protoc executable
+    protoc {
+        // Download from repositories
+        artifact = 'com.google.protobuf:protoc:3.5.0'
+    }
+    generatedFilesBaseDir = "${project(':api').projectDir}/generated"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.google.protobuf:protobuf-java:3.5.0'
+}
+
+clean {
+    delete protobuf.generatedFilesBaseDir
+}
+
 task printApi {
     doLast {
         println 'taskApi called'
