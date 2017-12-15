@@ -19,7 +19,7 @@ protobuf {
         // Download from repositories
         artifact = 'com.google.protobuf:protoc:3.5.0'
     }
-    generatedFilesBaseDir = "${project(':api').buildDir}/generated"
+    generatedFilesBaseDir = file("${project(':api').buildDir}/generated")
 }
 
 repositories {
@@ -29,6 +29,8 @@ repositories {
 dependencies {
     compile 'com.google.protobuf:protobuf-java:3.5.0'
 }
+
+jar.archiveName = "foo-api-${version}.jar"
 
 clean {
     delete protobuf.generatedFilesBaseDir
