@@ -4,9 +4,9 @@ package mp_service;
 option java_package = "org.someorg.serialization.proto";
 option java_outer_classname = "MPService";
 
-service MPPService {
-    rpc Process (stream MPRequest) returns (stream MPResponse);
-}
+//service MPPService {
+//    rpc Process (stream MPRequest) returns (stream MPResponse);
+//}
 
 message MPRequest {
     bool debug = 1;
