@@ -1,3 +1,7 @@
+import de.neuland.jade4j.Jade4J
+import de.neuland.jade4j.JadeConfiguration
+import de.neuland.jade4j.template.ClasspathTemplateLoader
+
 import org.apache.commons.compress.archivers.ArchiveEntry
 import org.apache.commons.compress.archivers.ArchiveInputStream
 import org.apache.commons.compress.archivers.ArchiveStreamFactory
@@ -44,28 +48,33 @@ fun unzipTo(fileNameArchive: String, dirNameTarget: String) {
     }
 }
 
-fun doBench(dirLP: String) {
-    val dirBuild = "${dirLP}/.build"
-    val dirTarget = "${dirBuild}/target"
-    val dirTargetData = "${dirTarget}/data"
-
-    val dirDataSetPerf = "${dirLP}/datasets/Performance"
-
+fun prepareBenchData(dirTargetData: String, fileNameArchivedDataSet: String) {
     cleanupDir(dirTargetData)
-
-    //val fileNameArchivedDataSet = "${dirDataSetPerf}/10000 files of 2-3 Kb.zip"
-    val fileNameArchivedDataSet = "${dirDataSetPerf}/100f.zip"
     unzipTo(fileNameArchivedDataSet, dirTargetData)
-
-    // echo file="${fxlib.dir}/log4j.xml"
-    val dirFxLib = "${dirTarget}/lib"
-/*
-    <target name="-init-fx" depends="-init-contrib">
-        <delete dir="${target.dir}" />
-        <mkdir dir="${fxlib.dir}" />
-
-        <ivy:resolve file="${common.basedir}/ivy.xml" conf="fx" />
-        <ivy:retrieve pattern="${fxlib.dir}/[originalname](.[ext])" conf="fx" type="jar,dll" />
-    </target>
-*/
 }
+
+fun doGenLogCfg(templateName: String, dirFxLib: String, dirReport: String) {
+    val datasetName = "datasetname"
+
+    val loader = ClasspathTemplateLoader()
+    val cfg = JadeConfiguration()
+    cfg.setTemplateLoader(loader)
+    cfg.setMode(Jade4J.Mode.XML)
+    cfg.setPrettyPrint(true)
+
+    val template = cfg.getTemplate(templateName)
+
+    //val model = emptyMap<String, Object>()
+    val model = mapOf(
+	"dirReport" to dirReport,
+	"metric" to "time",
+	"dataset" to datasetName,
+	"logLevel" to "TSTAT"
+    )
+
+    File("${dirFxLib}/log4j.xml").bufferedWriter().use { writer ->
+	writer.write("<!DOCTYPE log4j:configuration SYSTEM \"log4j.dtd\">")
+	cfg.renderTemplate(template, model, writer)
+    }
+}
+
