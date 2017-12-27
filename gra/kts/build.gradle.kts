@@ -14,16 +14,23 @@ plugins {
 
 idea {
     project {
-        languageLevel = IdeaLanguageLevel(JavaVersion.VERSION_1_8) // "1.8"
+        languageLevel = IdeaLanguageLevel(JavaVersion.VERSION_1_8)
         //vcs = "Git"
     }
 }
 
 val hello by tasks.creating {
     doLast {
-        //mySuperFun()
 	println(listOf("hello", "world"))
 	mySuperFun()
+    }
+}
+
+val benchEn by tasks.creating {
+    doLast {
+	val dirMain = "d:/clb/src/main"
+	val dirLP = "${dirMain}/lang-packs/english"
+	doBench(dirLP)
     }
 }
 
