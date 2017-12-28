@@ -14,9 +14,15 @@ import org.apache.commons.io.FileUtils
 import java.io.File
 import java.io.InputStream
 
-fun mySuperFun() {
-    println("mySuperFun called!!!")
-    println("host name: " + SystemUtils.OS_NAME)
+import org.gradle.api.*
+import org.gradle.api.tasks.*
+import org.gradle.kotlin.dsl.*
+import org.gradle.kotlin.dsl.accessors.*
+
+fun mySuperFun(dirReport: String) {
+    println("dirReport: ${dirReport}")
+    // delete(dirReport)
+    println("os name: " + SystemUtils.OS_NAME)
 }
 
 fun cleanupDir(dirName: String) {
@@ -77,4 +83,3 @@ fun doGenLogCfg(templateName: String, dirFxLib: String, dirReport: String) {
 	cfg.renderTemplate(template, model, writer)
     }
 }
-

@@ -51,21 +51,14 @@ val dirTargetData = "${dirTarget}/data"
 val dirResBase = "${dirLP}/resources/target"
 
 val dirDataSetPerf = "${dirLP}/datasets/Performance"
-//val fileNameArchivedDataSet = "${dirDataSetPerf}/10000 files of 2-3 Kb.zip"
-val fileNameArchivedDataSet = "${dirDataSetPerf}/100f.zip"
+val fileNameArchivedDataSet = "${dirDataSetPerf}/10000 files of 2-3 Kb.zip"
+//val fileNameArchivedDataSet = "${dirDataSetPerf}/100f.zip"
 
 val dirReport = "${dirBuild}/reports"
 
 val fileNameLPCfg = "${dirLP}/resources/config/config.xml"
 
 tasks {
-    "hello" {
-	doLast {
-	    println("fullFxVer: ${fullFxVer}")
-	    println(listOf("hello", "world"))
-	    mySuperFun()
-	}
-    }
     "cpSharedLibs" {
 	doLast {
 	    delete(dirFxLib)
@@ -79,36 +72,46 @@ tasks {
             }
 	}
     }
-    "genLogCfg" {
-	doLast {
-	    delete(dirReport)
-	    mkdir(dirReport)
-	    doGenLogCfg("log4j-bench.jade", dirFxLib, dirReport)
-	}
-    }
     "benchEn" {
-	dependsOn("cpSharedLibs")
-	dependsOn("genLogCfg")
+	// dependsOn("cpSharedLibs")
+	// dependsOn("genLogCfg")
 	doLast {
 	    prepareBenchData(dirTargetData, fileNameArchivedDataSet)
-	    javaexec {
-		main = "com.clarabridge.fx.Main"
-		classpath = shlibcfg
-		setWorkingDir(dirFxLib)
-		setIgnoreExitValue(true)
-		// systemProperty("log4j.debug", "true")
-		systemProperty("log4j.configuration", "file:/${dirFxLib}/log4j.xml")
-		systemProperty("java.library.path", dirFxLib)
-		setArgs(listOf(
-		    "-config", fileNameLPCfg,
-		    "-resbasedir", dirResBase,
-		    dirTargetData
-		))
+	    val cpJfx = fileTree(dirFxLib) {
+		include("**/*.jar")
+	    }
+	    //cpJfx.forEach { println(it) }
+
+	    //delete(dirReport)
+	    //mkdir(dirReport)
+	    for (i in 1..5) {
+		doGenLogCfg("log4j-bench.jade", dirFxLib, "${dirReport}/${i}")
+		javaexec {
+		    main = "com.clarabridge.fx.Main"
+		    classpath = cpJfx // shlibcfg
+		    setWorkingDir(dirFxLib)
+		    setIgnoreExitValue(true)
+		    // systemProperty("log4j.debug", "true")
+		    systemProperty("log4j.configuration", "file:/${dirFxLib}/log4j.xml")
+		    systemProperty("java.library.path", dirFxLib)
+		    setArgs(listOf(
+			"-config", fileNameLPCfg,
+			"-resbasedir", dirResBase,
+			dirTargetData
+		    ))
+		}
 	    }
 	}
     }
+    "hello" {
+	doLast {
+	    println("fullFxVer: ${fullFxVer}")
+	    for (i in 1..3) {
+		println(listOf("hello", "world", i))
+	    }
+	    mySuperFun(dirReport)
+	}
+    }
 }
-
-// java.exe -Djava.library.path=d:/clb/src/main/lang-packs/english/.build/target/lib -Dlog4j.configuration=d:/clb/src/main/lang-packs/english/.build/target/lib/log4j.xml -Dfile.encoding=windows-1252 -Duser.country=US -Duser.language=en -Duser.variant 
 
 declareMyTask()
