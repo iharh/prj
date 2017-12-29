@@ -58,7 +58,7 @@ val dirBuild = "${dirLP}/.build"
 val dirTarget = "${dirBuild}/target"
 val dirFxLib = "${dirTarget}/lib"
 val dirTargetData = "${dirTarget}/data"
-val dirResBase = "${dirLP}/resources/target"
+//val dirResBase = "${dirLP}/resources/target"
 
 val dirDataSetPerf = "${dirLP}/datasets/Performance"
 val fileNameArchivedDataSet = "${dirDataSetPerf}/10000 files of 2-3 Kb.zip"
@@ -102,10 +102,9 @@ tasks {
 	    }
 	}
     }
-    "benchEn" {
+    "bench" {
 	// dependsOn("cpFX")
 	// dependsOn("cpLP")
-	// dependsOn("genLogCfg")
 	doLast {
 	    prepareBenchData(dirTargetData, fileNameArchivedDataSet)
 	    val cpJfx = fileTree(dirFxLib) {
