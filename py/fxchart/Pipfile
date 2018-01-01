@@ -9,6 +9,7 @@ name = "pypi"
 
 altair = "*"
 jupyter = "*"
+matplotlib = "*"
 
 
 [dev-packages]
