@@ -1,3 +1,4 @@
 vec/in
 vec/out
 **/.venv/*
+**/.ipynb_checkpoints
