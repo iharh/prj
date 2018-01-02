@@ -1,4 +1,5 @@
 import org.gradle.plugins.ide.idea.model.IdeaLanguageLevel
+import krangl.*
 
 apply {
     File("${rootProject.projectDir}/scripts").walk()
@@ -9,6 +10,7 @@ apply {
 }
 
 plugins {
+    // `kotlin-dsl` // just to support compile in dependencies
     idea
 }
 
@@ -39,7 +41,7 @@ val fullFxVer = rootProject.extra["fx.version"] as String
 val fullLpEnVer = rootProject.extra["lp.english.version"] as String
 
 dependencies {
-    compile("de.mpicbg.scicomp:krangl:0.6")
+    // compile("de.mpicbg.scicomp:krangl:0.6")
 
     // shared libs
     shlibcfg(group = "Clarabridge", name = "FX-windows-x64", version = fullFxVer, configuration = "publish")
@@ -134,6 +136,18 @@ tasks {
 		}
 	    }
 	}
+    }
+    "stat" {
+        val df = DataFrame.fromCSV("data/ex1.csv")
+        // df.print()
+        df.glimpse()
+        val groupedDf: DataFrame = df.groupBy("name")
+        groupedDf.glimpse()
+        val summarizedDf = groupedDf.summarize(
+            "minval" `=` { it["value"].min() },
+            "maxval" `=` { it["value"].max() }
+        )
+        summarizedDf.glimpse()
     }
     "hello" {
 	doLast {
