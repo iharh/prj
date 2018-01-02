@@ -138,9 +138,11 @@ tasks {
 	}
     }
     "stat" {
+        val s = fxBenchParse("/home/iharh/Downloads/7.5.0.0-7.3.0.0/1/benchmark-time-datasetname.txt")
+        println("all: ${s.all} cpu: ${s.cpu}")
+        /*
         val df = DataFrame.fromCSV("data/ex1.csv")
-        // df.print()
-        df.glimpse()
+        df.glimpse() // df.print()
         val groupedDf: DataFrame = df.groupBy("name")
         groupedDf.glimpse()
         val summarizedDf = groupedDf.summarize(
@@ -148,6 +150,7 @@ tasks {
             "maxval" `=` { it["value"].max() }
         )
         summarizedDf.glimpse()
+        */
     }
     "hello" {
 	doLast {
