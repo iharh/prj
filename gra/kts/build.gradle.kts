@@ -39,6 +39,8 @@ val fullFxVer = rootProject.extra["fx.version"] as String
 val fullLpEnVer = rootProject.extra["lp.english.version"] as String
 
 dependencies {
+    compile("de.mpicbg.scicomp:krangl:0.6")
+
     // shared libs
     shlibcfg(group = "Clarabridge", name = "FX-windows-x64", version = fullFxVer, configuration = "publish")
 
