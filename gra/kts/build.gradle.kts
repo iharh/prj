@@ -147,19 +147,22 @@ tasks {
         */
 
         val df = DataFrame.fromCSV("data/stat0.csv")
+            .select("name", "cpu")
+            .sortedBy("name", "cpu")
+        df.glimpse()
+        df.writeCSV("data/cpu1.csv")
+        /*
         val groupedDf: DataFrame = df.groupBy("name")
 
         val summarizedDf = groupedDf.summarize(
-            "minall"  `=` { it["all"].min()  },
-            "maxall"  `=` { it["all"].max()  },
-            "meanall" `=` { it["all"].mean() },
-            "mincpu"  `=` { it["cpu"].min()  },
-            "maxcpu"  `=` { it["cpu"].max()  },
-            "meancpu" `=` { it["cpu"].mean() }
+            "min"  `=` { it["all"].min()  },
+            "max"  `=` { it["all"].max()  },
+            "mean" `=` { it["all"].mean() },
         )
         println("Summarized DF:")
         summarizedDf.glimpse()
-        summarizedDf.writeCSV("data/stat1.csv")
+        summarizedDf.writeCSV("data/.csv")
+        */
     }
     "hello" {
 	doLast {
