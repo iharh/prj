@@ -138,13 +138,16 @@ tasks {
 	}
     }
     "stat" {
+        /*
         val userHome = System.getProperty("user.home") // user.dir
         fxBenchParseGenCSV("a", "${userHome}/Downloads/7.5.0.0-7.3.0.0")
+        fxBenchParseGenCSV("b", "${userHome}/Downloads/7.5.1.0-7.3.1.0")
+        fxBenchParseGenCSV("c", "${userHome}/Downloads/7.5.2.0-7.3.2.0")
+        fxBenchParseGenCSV("d", "${userHome}/Downloads/7.5.2.15-7.3.2.1")
+        */
 
-        val df = DataFrame.fromCSV("data/a0.csv")
+        val df = DataFrame.fromCSV("data/stat0.csv")
         val groupedDf: DataFrame = df.groupBy("name")
-        //println("Grouped DF:")
-        //groupedDf.glimpse() // ??? empty
 
         val summarizedDf = groupedDf.summarize(
             "minall"  `=` { it["all"].min()  },
@@ -156,7 +159,7 @@ tasks {
         )
         println("Summarized DF:")
         summarizedDf.glimpse()
-        summarizedDf.writeCSV("data/a1.csv")
+        summarizedDf.writeCSV("data/stat1.csv")
     }
     "hello" {
 	doLast {
