@@ -1,2 +1,2 @@
 # Notes
-My projects and stuff.
+My projects and stuff

@@ -1,11 +1,20 @@
+import java.nio.file.Files
+import java.nio.file.Paths
+
 import java.io.File
+
+import java.util.stream.Collectors
+import java.util.stream.Stream
 
 val recName = "All modules:"
 val recSuffix = "sec"
 
 data class BenchStat(val all: Double, val cpu: Double)
 
-fun fxBenchParse(fileNameBench: String): BenchStat {
+private fun lineToDouble(line: String): Double =
+    line.substring(recName.length, line.length - recSuffix.length).trim().toDouble()
+
+private fun fxBenchParseReport(fileNameBench: File): BenchStat {
     val sectionAllName = "Total for all files:"
     var sectionAllFound = false
 
@@ -15,7 +24,7 @@ fun fxBenchParse(fileNameBench: String): BenchStat {
     var totalAll: Double = 0.0
     var totalCPU: Double = 0.0
 
-    File(fileNameBench).bufferedReader().use {
+    fileNameBench.bufferedReader().use {
         it.forEachLine { line ->
             if (line.startsWith(sectionAllName)) {
                 sectionAllFound = true
@@ -36,5 +45,14 @@ fun fxBenchParse(fileNameBench: String): BenchStat {
     return BenchStat(totalAll, totalCPU)
 }
 
-private fun lineToDouble(line: String): Double =
-    line.substring(recName.length + 1, line.length - recSuffix.length - 1).toDouble()
+fun fxBenchParseReports(dirNameReports: String): List<BenchStat> {
+    val result = Files.list(Paths.get(dirNameReports))
+        .filter {
+            it.toFile().isDirectory()
+        }.map {
+            val fileNameBench = it.resolve("benchmark-time-datasetname.txt")
+            fxBenchParseReport(fileNameBench.toFile())
+        }.collect(Collectors.toList<BenchStat>())
+    result.forEach { println("all: ${it.all} cpu: ${it.cpu}") }
+    return result
+}
