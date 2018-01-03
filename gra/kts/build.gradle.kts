@@ -139,12 +139,7 @@ tasks {
     }
     "stat" {
         val userHome = System.getProperty("user.home") // user.dir
-        // val s = fxBenchParseReports("${userHome}/Downloads/7.5.0.0-7.3.0.0")
-        // s.forEach { println("all: ${it.all} cpu: ${it.cpu}") }
-        // val df = s.asDataFrame { mapOf( "name" to "A", "all" to it.all, "cpu" to it.cpu) }
-        // println("Original DF:")
-        // df.glimpse() // df.print()
-        // df.writeCSV("data/a0.csv")
+        fxBenchParseGenCSV("a", "${userHome}/Downloads/7.5.0.0-7.3.0.0")
 
         val df = DataFrame.fromCSV("data/a0.csv")
         val groupedDf: DataFrame = df.groupBy("name")
@@ -152,13 +147,16 @@ tasks {
         //groupedDf.glimpse() // ??? empty
 
         val summarizedDf = groupedDf.summarize(
-            "minall" `=` { it["all"].min() },
-            "maxall" `=` { it["all"].max() },
-            "mincpu" `=` { it["cpu"].min() },
-            "maxcpu" `=` { it["cpu"].max() }
+            "minall"  `=` { it["all"].min()  },
+            "maxall"  `=` { it["all"].max()  },
+            "meanall" `=` { it["all"].mean() },
+            "mincpu"  `=` { it["cpu"].min()  },
+            "maxcpu"  `=` { it["cpu"].max()  },
+            "meancpu" `=` { it["cpu"].mean() }
         )
         println("Summarized DF:")
         summarizedDf.glimpse()
+        summarizedDf.writeCSV("data/a1.csv")
     }
     "hello" {
 	doLast {

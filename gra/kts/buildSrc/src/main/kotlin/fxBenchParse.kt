@@ -1,3 +1,5 @@
+import krangl.*
+
 import java.nio.file.Files
 import java.nio.file.Paths
 
@@ -45,7 +47,7 @@ private fun fxBenchParseReport(fileNameBench: File): BenchStat {
     return BenchStat(totalAll, totalCPU)
 }
 
-fun fxBenchParseReports(dirNameReports: String): List<BenchStat> {
+private fun fxBenchParseReports(dirNameReports: String): List<BenchStat> {
     val result = Files.list(Paths.get(dirNameReports))
         .filter {
             it.toFile().isDirectory()
@@ -55,4 +57,13 @@ fun fxBenchParseReports(dirNameReports: String): List<BenchStat> {
         }.collect(Collectors.toList<BenchStat>())
     result.forEach { println("all: ${it.all} cpu: ${it.cpu}") }
     return result
+}
+
+fun fxBenchParseGenCSV(name: String, dirNameReports: String) {
+    val s = fxBenchParseReports(dirNameReports)
+    s.forEach { println("all: ${it.all} cpu: ${it.cpu}") }
+    val df = s.asDataFrame { mapOf( "name" to name.toUpperCase(), "all" to it.all, "cpu" to it.cpu) }
+    println("Original DF:")
+    df.glimpse() // df.print()
+    df.writeCSV("data/${name}0.csv")
 }
