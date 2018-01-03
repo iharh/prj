@@ -118,7 +118,7 @@ tasks {
 
 	    //delete(dirReport)
 	    //mkdir(dirReport)
-	    for (i in 1..5) {
+	    for (i in 1..15) {
 		doGenLogCfg("log4j-bench.jade", dirFxLib, "${dirReport}/${i}")
 		javaexec {
 		    main = "com.clarabridge.fx.Main"
