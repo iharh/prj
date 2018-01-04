@@ -139,13 +139,12 @@ tasks {
     }
     "stat" {
 	doLast {
-	    /*
 	    val userHome = System.getProperty("user.home") // user.dir
-	    fxBenchParseGenCSV("a", "${userHome}/Downloads/7.5.0.0-7.3.0.0")
-	    fxBenchParseGenCSV("b", "${userHome}/Downloads/7.5.1.0-7.3.1.0")
-	    fxBenchParseGenCSV("c", "${userHome}/Downloads/7.5.2.0-7.3.2.0")
-	    fxBenchParseGenCSV("d", "${userHome}/Downloads/7.5.2.15-7.3.2.1")
-	    */
+	    //fxBenchParseGenCSV("a", "${userHome}/Downloads/7.5.0.0-7.3.0.0")
+	    //fxBenchParseGenCSV("b", "${userHome}/Downloads/7.5.1.0-7.3.1.0")
+	    //fxBenchParseGenCSV("c", "${userHome}/Downloads/7.5.2.0-7.3.2.0")
+	    //fxBenchParseGenCSV("d", "${userHome}/Downloads/7.5.2.15-7.3.2.1")
+	    fxBenchParseGenCSV("e", "${userHome}/Downloads/7.5.2.11-7.3.2.0")
 	}
     }
     "hello" {
