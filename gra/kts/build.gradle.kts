@@ -138,31 +138,33 @@ tasks {
 	}
     }
     "stat" {
-        /*
-        val userHome = System.getProperty("user.home") // user.dir
-        fxBenchParseGenCSV("a", "${userHome}/Downloads/7.5.0.0-7.3.0.0")
-        fxBenchParseGenCSV("b", "${userHome}/Downloads/7.5.1.0-7.3.1.0")
-        fxBenchParseGenCSV("c", "${userHome}/Downloads/7.5.2.0-7.3.2.0")
-        fxBenchParseGenCSV("d", "${userHome}/Downloads/7.5.2.15-7.3.2.1")
-        */
+	doLast {
+	    /*
+	    val userHome = System.getProperty("user.home") // user.dir
+	    fxBenchParseGenCSV("a", "${userHome}/Downloads/7.5.0.0-7.3.0.0")
+	    fxBenchParseGenCSV("b", "${userHome}/Downloads/7.5.1.0-7.3.1.0")
+	    fxBenchParseGenCSV("c", "${userHome}/Downloads/7.5.2.0-7.3.2.0")
+	    fxBenchParseGenCSV("d", "${userHome}/Downloads/7.5.2.15-7.3.2.1")
+	    */
 
-        val df = DataFrame.fromCSV("data/stat0.csv")
-            .select("name", "cpu")
-            .sortedBy("name", "cpu")
-        df.glimpse()
-        df.writeCSV("data/cpu1.csv")
-        /*
-        val groupedDf: DataFrame = df.groupBy("name")
+	    val df = DataFrame.fromCSV("data/stat0.csv")
+		.select("name", "cpu")
+		.sortedBy("name", "cpu")
+	    df.glimpse()
+	    df.writeCSV("data/cpu1.csv")
+	    /*
+	    val groupedDf: DataFrame = df.groupBy("name")
 
-        val summarizedDf = groupedDf.summarize(
-            "min"  `=` { it["all"].min()  },
-            "max"  `=` { it["all"].max()  },
-            "mean" `=` { it["all"].mean() },
-        )
-        println("Summarized DF:")
-        summarizedDf.glimpse()
-        summarizedDf.writeCSV("data/.csv")
-        */
+	    val summarizedDf = groupedDf.summarize(
+		"min"  `=` { it["all"].min()  },
+		"max"  `=` { it["all"].max()  },
+		"mean" `=` { it["all"].mean() },
+	    )
+	    println("Summarized DF:")
+	    summarizedDf.glimpse()
+	    summarizedDf.writeCSV("data/.csv")
+	    */
+	}
     }
     "hello" {
 	doLast {
