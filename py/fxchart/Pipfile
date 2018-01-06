@@ -11,6 +11,7 @@ altair = "*"
 jupyter = "*"
 matplotlib = "*"
 sympy = "*"
+plotly = "*"
 
 
 [dev-packages]
