@@ -146,9 +146,10 @@ tasks {
 	    fxBenchParseGenCSV("d", "${dirNameReports}/7.5.2.10-7.3.2.0")
 	    fxBenchParseGenCSV("e", "${dirNameReports}/7.5.2.10-7.3.2.0-i2")
 	    fxBenchParseGenCSV("f", "${dirNameReports}/7.5.2.11-7.3.2.0")
-	    fxBenchParseGenCSV("g", "${dirNameReports}/7.5.2.13-7.3.2.0")
-	    fxBenchParseGenCSV("h", "${dirNameReports}/7.5.2.14-7.3.2.0")
-	    fxBenchParseGenCSV("i", "${dirNameReports}/7.5.2.15-7.3.2.1")
+	    fxBenchParseGenCSV("g", "${dirNameReports}/7.5.2.11-7.3.2.0-i2")
+	    fxBenchParseGenCSV("h", "${dirNameReports}/7.5.2.13-7.3.2.0")
+	    fxBenchParseGenCSV("i", "${dirNameReports}/7.5.2.14-7.3.2.0")
+	    fxBenchParseGenCSV("j", "${dirNameReports}/7.5.2.15-7.3.2.1")
 	}
     }
     "hello" {
