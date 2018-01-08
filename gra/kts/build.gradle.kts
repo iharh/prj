@@ -139,18 +139,22 @@ tasks {
     }
     "stat" {
 	doLast {
-	    val dirNameReports = System.getProperty("user.home") + "/Downloads/reports" // user.dir
+            val userHome = System.getProperty("user.home") // user.dir
+	    val dirNameReports = "${userHome}/Downloads/reports"
 	    fxBenchParseGenCSV("a", "${dirNameReports}/7.5.0.0-7.3.0.0")
 	    fxBenchParseGenCSV("b", "${dirNameReports}/7.5.1.0-7.3.1.0")
 	    fxBenchParseGenCSV("c", "${dirNameReports}/7.5.2.0-7.3.2.0")
 	    fxBenchParseGenCSV("d", "${dirNameReports}/7.5.2.10-7.3.2.0")
-	    fxBenchParseGenCSV("e", "${dirNameReports}/7.5.2.10-7.3.2.0-i2")
-	    fxBenchParseGenCSV("f", "${dirNameReports}/7.5.2.11-7.3.2.0")
-	    fxBenchParseGenCSV("g", "${dirNameReports}/7.5.2.11-7.3.2.0-i2")
-	    fxBenchParseGenCSV("h", "${dirNameReports}/7.5.2.13-7.3.2.0")
-	    fxBenchParseGenCSV("i", "${dirNameReports}/7.5.2.13-7.3.2.0-i2")
-	    fxBenchParseGenCSV("j", "${dirNameReports}/7.5.2.14-7.3.2.0")
-	    fxBenchParseGenCSV("k", "${dirNameReports}/7.5.2.15-7.3.2.1")
+	    fxBenchParseGenCSV("e", "${dirNameReports}/7.5.2.11-7.3.2.0")
+	    fxBenchParseGenCSV("f", "${dirNameReports}/7.5.2.13-7.3.2.0")
+	    fxBenchParseGenCSV("g", "${dirNameReports}/7.5.2.14-7.3.2.0")
+	    fxBenchParseGenCSV("h", "${dirNameReports}/7.5.2.15-7.3.2.0")
+
+	    val dirNameReportsBig = "${userHome}/Downloads/reports-big"
+	    fxBenchParseGenCSV("w", "${dirNameReportsBig}/7.5.2.10-7.3.2.0")
+	    fxBenchParseGenCSV("x", "${dirNameReportsBig}/7.5.2.11-7.3.2.0")
+	    fxBenchParseGenCSV("y", "${dirNameReportsBig}/7.5.2.13-7.3.2.0")
+	    fxBenchParseGenCSV("z", "${dirNameReportsBig}/7.5.2.15-7.3.2.1")
 	}
     }
     "hello" {
