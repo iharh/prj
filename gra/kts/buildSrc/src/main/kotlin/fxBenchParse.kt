@@ -59,11 +59,19 @@ private fun fxBenchParseReports(dirNameReports: String): List<BenchStat> {
     return result
 }
 
-fun fxBenchParseGenCSV(name: String, dirNameReports: String) {
-    val s = fxBenchParseReports(dirNameReports)
-    s.forEach { println("all: ${it.all} cpu: ${it.cpu}") }
-    val df = s.asDataFrame { mapOf( "name" to name.toUpperCase(), "all" to it.all, "cpu" to it.cpu) }
-    println("Original DF:")
-    df.glimpse() // df.print()
-    df.writeCSV("data/${name}0.csv")
+fun fxBenchParseGenCSV(serie: Int, startLetter: Char, dirNameReportsBase: String, reportNames: Array<String>) {
+    var letter = startLetter
+    for (reportName in reportNames) {
+        val dirNameReports = "${dirNameReportsBase}/${reportName}"
+        val nameUp = letter.toUpperCase()
+        val nameDown = letter.toLowerCase()
+        letter = letter.inc()
+
+        val s = fxBenchParseReports(dirNameReports)
+        s.forEach { println("all: ${it.all} cpu: ${it.cpu}") }
+        val df = s.asDataFrame { mapOf( "name" to nameUp, "all" to it.all, "cpu" to it.cpu) }
+        println("Original DF:")
+        df.glimpse() // df.print()
+        df.writeCSV("data/${nameDown}${serie}.csv")
+    }
 }
