@@ -1,0 +1,19 @@
+#!/usr/bin/env run-cargo-script
+//! ```cargo
+//! [dependencies]
+//! time = "*"
+//! assert_cli = "*"
+//! ```
+
+extern crate time;
+#[macro_use] extern crate assert_cli;
+
+fn main() {
+    println!("Hello, World!");
+    println!("{}", time::now().rfc822z());
+
+    let test = assert_cmd!(ls ".")
+        .stdout().contains("a1.crs")
+        .execute();
+    assert!(test.is_ok());
+}
