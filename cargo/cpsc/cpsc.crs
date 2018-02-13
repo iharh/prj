@@ -1,0 +1,45 @@
+#!/usr/bin/env run-cargo-script
+//! ```cargo
+//! [dependencies]
+//! walkdir = "*"
+//! assert_cli = "*"
+//! ```
+extern crate walkdir;
+#[macro_use] extern crate assert_cli;
+
+use std::env;
+use walkdir::WalkDir;
+// use std::path::Path;
+
+fn main() {
+    let clb_base_dir = env::var("CLB_BASE_DIR").expect("CLB_BASE_DIR env var absent");
+    println!("CLB_BASE_DIR: {}", clb_base_dir);
+
+    let lp_dir = clb_base_dir.clone() + "/svnmain/lang-packs";
+    let lpschemes_dir = clb_base_dir.clone() + "/fx/lpschemes/src/main/resources";
+
+    for entry in WalkDir::new(lp_dir.clone())
+        .min_depth(1)
+        .max_depth(1)
+        .into_iter()
+        .filter_map(|e| e.ok())
+        .filter(|e| e.file_name() != "docs" && e.file_name() != "shared")
+    {
+        let lang = entry.file_name().to_string_lossy(); // entry.path().display()
+
+        let scheme_src: String = lp_dir.clone().to_string() + "/" + &lang + "/resources/scheme/" + &lang + ".xml";
+
+        println!("{} -> {} ...", scheme_src, lpschemes_dir);
+
+        let cmd = assert_cli::Assert::command(&["cp", &scheme_src, &lpschemes_dir]) 
+            .execute();
+        assert!(cmd.is_ok());
+
+        println!("done");
+    }
+
+    let test = assert_cmd!(ls ".").stdout().contains("cpsc.crs")
+        .execute();
+
+    assert!(test.is_ok());
+}
