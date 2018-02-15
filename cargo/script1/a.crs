@@ -1,19 +1,42 @@
 #!/usr/bin/env run-cargo-script
 //! ```cargo
 //! [dependencies]
+//! concat-string = "*"
 //! time = "*"
-//! assert_cli = "*"
+//assert_cli = "*"
 //! ```
 
 extern crate time;
-#[macro_use] extern crate assert_cli;
+#[macro_use] extern crate concat_string;
+//#[macro_use] extern crate assert_cli;
+
+use std::error::Error;
+
+fn run() -> Result<(), Box<Error>> {
+    let str1: &'static str = "Hello world 1";
+    println!("{}", str1);
+    println!("{}", str1);
+    // let str2: String = concat_string!("Hello", String::from(" "), "world 2");
+    let str2: String = concat_string!("Hello", " ", "world 2");
+    println!("{}", str2);
+    println!("{}", str2);
+
+    let str3: &'static str = concat!("test", 10, String::from(" "), true);
+    println!("{}", str3);
+
+    Ok(())
+}
 
 fn main() {
-    println!("Hello, World!");
+    if let Err(err) = run() {
+        eprintln!("error: {}", err);
+        std::process::exit(1);
+    }
+
     println!("{}", time::now().rfc822z());
 
-    let test = assert_cmd!(ls ".")
-        .stdout().contains("a1.crs")
-        .execute();
-    assert!(test.is_ok());
+    //let test = assert_cmd!(ls ".")
+    //    .stdout().contains("a1.crs")
+    //    .execute();
+    //assert!(test.is_ok());
 }
