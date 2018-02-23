@@ -1,0 +1,38 @@
+plugins {
+    id 'org.springframework.boot' version '1.5.6.RELEASE'
+    id 'java'
+}
+
+apply from: 'gradle/dependencies.gradle'
+
+repositories {
+    jcenter()
+}
+
+sourceCompatibility = 1.8
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-logging")
+
+    // compile
+    // compileOnly libraries.lombok
+
+    // runtime('org.postgresql:postgresql')
+
+    //testCompileOnly libraries.lombok
+
+    // testCompile("org.springframework.boot:spring-boot-starter-test")
+
+    //testCompile libraries.testcontainers
+    //testCompile libraries.feign_core
+    //testCompile libraries.feign_slf4j
+    //testCompile libraries.visible_assertions
+    //testCompile libraries.assertj_core
+}
+
+test {
+    testLogging {
+        showStandardStreams true
+    }
+}
