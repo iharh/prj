@@ -1,17 +1,27 @@
 ext {
+    groups = [
+        lombok:     'org.projectlombok',
+        feign:      'io.github.openfeign',
+        slf4j:      'org.slf4j'
+    ]
     versions = [
+        lombok:         '1.16.20',
+        feign:          '9.5.1',
+        slf4j:          '1.7.5',
         //testcontainers: '1.4.2',
-        feign: '9.5.1',
-        //lombok: '1.16.18',
         //visible_assertions: '2.0.0',
         //assertj: '3.8.0'
     ]
     libraries = [
-        //testcontainers: "org.testcontainers:testcontainers:${versions.testcontainers}",
-        feign_core: "io.github.openfeign:feign-core:${versions.feign}",
-        feign_slf4j: "io.github.openfeign:feign-slf4j:${versions.feign}",
-        //lombok: "org.projectlombok:lombok:${versions.lombok}",
-        //visible_assertions: "org.rnorth.visible-assertions:visible-assertions:${versions.visible_assertions}",
-        //assertj_core: "org.assertj:assertj-core:${versions.assertj}"
+        lombok:             "${groups.lombok}:lombok:${versions.lombok}",
+        // feign
+        feign_core:         "${groups.feign}:feign-core:${versions.feign}",
+        feign_slf4j:        "${groups.feign}:feign-slf4j:${versions.feign}",
+        // slf4j
+        slf4j_api:          "${groups.slf4j}:slf4j-api:${versions.slf4j}",
+        slf4j_log4j12:      "${groups.slf4j}:slf4j-log4j12:${versions.slf4j}",
+        //testcontainers:       "org.testcontainers:testcontainers:${versions.testcontainers}",
+        //visible_assertions:   "org.rnorth.visible-assertions:visible-assertions:${versions.visible_assertions}",
+        //assertj_core:         "org.assertj:assertj-core:${versions.assertj}"
     ]
 }

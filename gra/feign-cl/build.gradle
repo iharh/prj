@@ -1,35 +1,66 @@
-plugins {
-    id 'org.springframework.boot' version '1.5.6.RELEASE'
-    id 'java'
+buildscript {
+    ext {
+        springBootVersion = '2.0.0.RC2'
+    }
+    repositories {
+        maven { url 'https://repo.spring.io/libs-milestone' }
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    }
 }
+
+plugins {
+    id 'java'
+    id 'net.ltgt.apt' version '0.10'
+}
+
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'net.ltgt.apt' 
 
 apply from: 'gradle/dependencies.gradle'
 
 repositories {
     jcenter()
+    maven { url 'https://repo.spring.io/libs-milestone' }
 }
 
 sourceCompatibility = 1.8
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.boot:spring-boot-starter-logging")
+    // spring boot
+    compile('org.springframework.boot:spring-boot-starter') {
+        exclude module : 'spring-boot-starter-logging' // https://stackoverflow.com/questions/23984009/disable-logback-in-springboot
+    }
 
-    // compile
-    // compileOnly libraries.lombok
+    // lombok
+    compileOnly libraries.lombok
+    apt         libraries.lombok
 
-    // runtime('org.postgresql:postgresql')
+    // feign
+    compile libraries.feign_core
+    compile libraries.feign_slf4j
 
-    //testCompileOnly libraries.lombok
+    // slf4j
+    compile libraries.slf4j_api
+    compile libraries.slf4j_log4j12
 
     // testCompile("org.springframework.boot:spring-boot-starter-test")
-
+    //testCompileOnly libraries.lombok
     //testCompile libraries.testcontainers
-    //testCompile libraries.feign_core
-    //testCompile libraries.feign_slf4j
     //testCompile libraries.visible_assertions
     //testCompile libraries.assertj_core
 }
+
+bootRun {
+    main = 'cl.Main'
+    jvmArgs = ['-Dlog4j.debug=true']
+}
+
+//springBoot {
+//    mainClassName = 'cl.Main'
+//}
 
 test {
     testLogging {
