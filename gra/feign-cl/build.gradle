@@ -28,20 +28,29 @@ repositories {
 
 sourceCompatibility = 1.8
 
+dependencyManagement {
+     imports {
+          mavenBom 'org.springframework.cloud:spring-cloud-netflix:2.0.0.M6'
+     }
+}
+
 dependencies {
     // spring boot
     compile('org.springframework.boot:spring-boot-starter') {
         exclude module : 'spring-boot-starter-logging' // https://stackoverflow.com/questions/23984009/disable-logback-in-springboot
     }
+    // spring cloud
+    compile('org.springframework.cloud:spring-cloud-starter-openfeign') {
+        exclude module : 'spring-boot-starter-logging' // https://stackoverflow.com/questions/23984009/disable-logback-in-springboot
+    }
+    //compile 'org.springframework.cloud:spring-cloud-starter-eureka'
 
     // lombok
     compileOnly libraries.lombok
     apt         libraries.lombok
-
     // feign
     compile libraries.feign_core
     compile libraries.feign_slf4j
-
     // slf4j
     compile libraries.slf4j_api
     compile libraries.slf4j_log4j12
