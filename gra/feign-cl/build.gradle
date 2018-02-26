@@ -55,7 +55,7 @@ dependencies {
 
 bootRun {
     main = 'cl.Main'
-    jvmArgs = ['-Dlog4j.debug=true']
+    // jvmArgs = ['-Dlog4j.debug=true']
 }
 
 //springBoot {
