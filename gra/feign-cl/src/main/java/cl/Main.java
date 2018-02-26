@@ -3,6 +3,7 @@ package cl;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.feign.FeignClient;
 
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,12 +17,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import lombok.extern.slf4j.Slf4j;
 
 @EnableAutoConfiguration
+@ComponentScan("cl")
 @EnableFeignClients
 @Slf4j
 public class Main implements CommandLineRunner {
-
-    @FeignClient(name = "fxresource", url="http://epbygomw0024.gomel.epam.com:18080")
-    public interface FXResourceService { 
+    //, configuration=FXResourceServiceConfiguration.class
+    @FeignClient(name="fxresource", url="http://epbygomw0024.gomel.epam.com:18080")
+    public static interface FXResourceService { 
 	@RequestMapping(value = "/mobile/rest/fxresources/lexicons/export/{accountId}/{lexiconType}", method = RequestMethod.GET)
         // ResponseEntity<byte[]>
         ResponseEntity<String> exportLexicon(
