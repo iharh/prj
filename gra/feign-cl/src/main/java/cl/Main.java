@@ -22,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Main implements CommandLineRunner {
     //, configuration=FXResourceServiceConfiguration.class
-    @FeignClient(name="fxresource", url="http://epbygomw0024.gomel.epam.com:18080")
+    @FeignClient(name="fxresource", url="localhost:18080") // url="http://epbygomw0024.gomel.epam.com:18080"
     public static interface FXResourceService { 
 	@RequestMapping(value = "/mobile/rest/fxresources/lexicons/export/{accountId}/{lexiconType}", method = RequestMethod.GET)
         // ResponseEntity<byte[]>

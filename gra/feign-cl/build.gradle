@@ -12,7 +12,7 @@ buildscript {
 
 plugins {
     id 'java'
-    id 'net.ltgt.apt' version '0.10'
+    id 'net.ltgt.apt' version '0.14'
 }
 
 apply plugin: 'org.springframework.boot'
@@ -64,8 +64,11 @@ dependencies {
 
 bootRun {
     main = 'cl.Main'
-    // jvmArgs = ['-Dlog4j.debug=true']
-    jvmArgs = ['-Dcmp.pwd=admin']
+    jvmArgs = [
+        // '-Dlog4j.debug=true',
+        '-Dcmp.usr=admin',
+        '-Dcmp.pwd=admin'
+    ]
 }
 
 //springBoot {

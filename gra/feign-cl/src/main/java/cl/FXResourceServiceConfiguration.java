@@ -12,11 +12,15 @@ import lombok.Getter;
 @Configuration
 public class FXResourceServiceConfiguration {
     @Getter
+    @Value("${cmp.usr}")
+    private String cmpUsr;
+
+    @Getter
     @Value("${cmp.pwd}")
-    private String pwd;
+    private String cmpPwd;
 
     @Bean
     RequestInterceptor feignRequestInterceptor() {
-        return new BasicAuthRequestInterceptor("admin", pwd);
+        return new BasicAuthRequestInterceptor(cmpUsr, cmpPwd);
     }
 }
