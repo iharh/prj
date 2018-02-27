@@ -29,9 +29,9 @@ repositories {
 sourceCompatibility = 1.8
 
 dependencyManagement {
-     imports {
-          mavenBom 'org.springframework.cloud:spring-cloud-netflix:2.0.0.M6'
-     }
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-netflix:2.0.0.M6'
+    }
 }
 
 // https://stackoverflow.com/questions/23984009/disable-logback-in-springboot
