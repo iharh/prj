@@ -2,12 +2,14 @@ ext {
     groups = [
         lombok:     'org.projectlombok',
         feign:      'io.github.openfeign',
-        slf4j:      'org.slf4j'
+        slf4j:      'org.slf4j',
+        logback:    'logback',
     ]
     versions = [
         lombok:         '1.16.20',
         feign:          '9.5.1',
         slf4j:          '1.7.5',
+        logback:        '1.2.3',
         //testcontainers: '1.4.2',
         //visible_assertions: '2.0.0',
         //assertj: '3.8.0'

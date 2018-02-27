@@ -34,14 +34,18 @@ dependencyManagement {
      }
 }
 
+configurations {
+    all*.exclude module : 'spring-boot-starter-logging'
+}
+
 dependencies {
     // spring boot
     compile('org.springframework.boot:spring-boot-starter') {
-        exclude module : 'spring-boot-starter-logging' // https://stackoverflow.com/questions/23984009/disable-logback-in-springboot
+        //exclude module : 'spring-boot-starter-logging' // https://stackoverflow.com/questions/23984009/disable-logback-in-springboot
     }
     // spring cloud
     compile('org.springframework.cloud:spring-cloud-starter-openfeign') {
-        exclude module : 'spring-boot-starter-logging' // https://stackoverflow.com/questions/23984009/disable-logback-in-springboot
+        //exclude module : 'spring-boot-starter-logging' // https://stackoverflow.com/questions/23984009/disable-logback-in-springboot
     }
     //compile 'org.springframework.cloud:spring-cloud-starter-eureka'
 
