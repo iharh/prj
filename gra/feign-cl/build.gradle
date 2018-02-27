@@ -34,6 +34,7 @@ dependencyManagement {
      }
 }
 
+// https://stackoverflow.com/questions/23984009/disable-logback-in-springboot
 configurations {
     all*.exclude module : 'spring-boot-starter-logging'
 }
@@ -41,11 +42,11 @@ configurations {
 dependencies {
     // spring boot
     compile('org.springframework.boot:spring-boot-starter') {
-        //exclude module : 'spring-boot-starter-logging' // https://stackoverflow.com/questions/23984009/disable-logback-in-springboot
+        //exclude module : 'spring-boot-starter-logging' 
     }
     // spring cloud
     compile('org.springframework.cloud:spring-cloud-starter-openfeign') {
-        //exclude module : 'spring-boot-starter-logging' // https://stackoverflow.com/questions/23984009/disable-logback-in-springboot
+        //exclude module : 'spring-boot-starter-logging'
     }
     //compile 'org.springframework.cloud:spring-cloud-starter-eureka'
 
@@ -60,7 +61,6 @@ dependencies {
     compile libraries.slf4j_log4j12
 
     // testCompile("org.springframework.boot:spring-boot-starter-test")
-    //testCompileOnly libraries.lombok
     //testCompile libraries.testcontainers
     //testCompile libraries.visible_assertions
     //testCompile libraries.assertj_core
