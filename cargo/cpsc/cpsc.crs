@@ -3,6 +3,7 @@
 //! [dependencies]
 //! walkdir = "*"
 //! assert_cli = "*"
+//! backtrace = "*"
 //! ```
 extern crate walkdir;
 #[macro_use] extern crate assert_cli;
@@ -11,7 +12,26 @@ use std::env;
 use walkdir::WalkDir;
 // use std::path::Path;
 
+extern crate backtrace;
+use backtrace::Backtrace;
+
+fn some_other_fn() {
+    println!("start");
+    let bt = Backtrace::new();
+    println!("{:?}", bt);
+    println!("end");
+}
+
+fn some_fn() {
+    some_other_fn();
+}
+
 fn main() {
+    some_fn();
+}
+
+#[allow(dead_code)]
+fn cp_schemes() {
     let clb_base_dir = env::var("CLB_BASE_DIR").expect("CLB_BASE_DIR env var absent");
     println!("CLB_BASE_DIR: {}", clb_base_dir);
 
