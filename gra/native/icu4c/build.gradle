@@ -29,7 +29,8 @@ model {
             if (toolChain in Clang) {
                 println 'toolchain is Clang!'
                 cppCompiler.args '-std=c++0x', '-O0', '-g', '-fno-omit-frame-pointer' //, '-fsanitize=address'
-                linker.args '-g' //, '-fsanitize=address'
+                linker.args '-g', '-licuuc' // , '-licudata' //, '-fsanitize=address'
+                // lib library: 'icuuc', linkage: 'static'
             }
         }
     }
@@ -43,6 +44,7 @@ model {
                         srcDirs 'src/main/cpp'
                         include '*.cpp'
                     }
+                    // lib library: 'icuuc'
                 }
             }
         }
