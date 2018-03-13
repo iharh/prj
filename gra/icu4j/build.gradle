@@ -1,0 +1,30 @@
+plugins {
+    id 'base'
+    id 'java'
+    id 'application'
+}
+
+ext {
+    groups = [
+        icu4j:      'com.ibm.icu',
+    ]
+    versions = [
+        icu4j:      '60.2',
+    ]
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    // lombok
+    //compileOnly libraries.lombok
+    //apt         libraries.lombok
+
+    // icu4j
+    compile "${groups.icu4j}:icu4j:${versions.icu4j}"
+}
+
+mainClassName = 'sample.Main'
