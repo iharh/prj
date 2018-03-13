@@ -1,0 +1,50 @@
+plugins {
+    id 'base'
+    id 'cpp'
+}
+
+model {
+    buildTypes {
+        //release
+        debug
+    }
+
+    toolChains {
+        visualCpp(VisualCpp) {
+            //installDir "${project.'vs.base'}"
+        }
+        //gcc(Gcc)
+        clang(Clang)
+    }
+
+    platforms {
+        x64 {
+            architecture "x86_64"
+        }
+    }
+
+    binaries {
+        all { // withType(SharedLibraryBinarySpec)
+        //    cppCompiler.define "NDEBUG"
+            if (toolChain in Clang) {
+                println 'toolchain is Clang!'
+                cppCompiler.args '-std=c++0x', '-O0', '-g', '-fno-omit-frame-pointer' //, '-fsanitize=address'
+                linker.args '-g' //, '-fsanitize=address'
+            }
+        }
+    }
+
+    components {
+ 	main(NativeExecutableSpec) {
+            targetPlatform 'x64'
+            sources {
+                cpp {
+                    source {
+                        srcDirs 'src/main/cpp'
+                        include '*.cpp'
+                    }
+                }
+            }
+        }
+    }
+}
