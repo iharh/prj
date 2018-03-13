@@ -1,8 +1,32 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.0.RELEASE'
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        //classpath 'org.junit.platform:junit-platform-gradle-plugin:1.1.0'
+    }
+}
+
 plugins {
     id 'base'
     id 'java'
     id 'application'
+    //id "net.ltgt.apt" version '0.14'
 }
+
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+//apply plugin: 'org.junit.platform.gradle.plugin'
+
+//dependencyManagement {
+//    applyMavenExclusions false
+//    imports {
+//        // https://repo.spring.io/libs-milestone/org/springframework/cloud/spring-cloud-netflix/2.0.0.M7/
+//        // mavenBom "org.springframework.cloud:spring-cloud-netflix:${springCloudVersion}"
+//        // mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+//    }
+//}
 
 ext {
     groups = [
@@ -19,6 +43,9 @@ repositories {
 }
 
 dependencies {
+    // spring boot
+    compile('org.springframework.boot:spring-boot-starter')
+
     // lombok
     //compileOnly libraries.lombok
     //apt         libraries.lombok
@@ -27,4 +54,29 @@ dependencies {
     compile "${groups.icu4j}:icu4j:${versions.icu4j}"
 }
 
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+}
+compileTestJava.options.encoding = 'UTF-8'
+
 mainClassName = 'sample.Main'
+
+bootRun {
+    // mainClassName = 'org.springframework.boot.loader.PropertiesLauncher'
+    // systemProperty 'java.library.path', shLibDir
+    // execSpec {
+    //    systemProperty 'java.library.path', shLibDir
+    // }
+    //jvmArgs = ['-Dlang.id=de']
+    jvmArgs = ['-Dlang.id=en']
+}
+
+//bootJar {
+    //archiveName = "${rootProject.name}-impl-${version}.jar"
+//    manifest {
+//        attributes 'Main-Class': 'sample.Main'
+//    }
+//}
