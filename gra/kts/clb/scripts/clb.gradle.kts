@@ -10,15 +10,26 @@ val clbCfg by tasks.creating {
 	val instFolder = if (SystemUtils.IS_OS_LINUX) linInstFolder else winInstFolder
 
 	val propFolder = "${instFolder}/configurer"
-	val propFileName = "${propFolder}/configurer-cmp.properties" 
-	val propFile = File(propFileName) // propertiesFile.exists()
-	val cfg = Properties()
-	propFile.inputStream().use { cfg.load(it) }
-	cfg.setProperty("directory.install", instFolder)
-	val tmpFileName = "tmp.properties"
-	val tmpFile = File("${propFolder}/${tmpFileName}")
-	tmpFile.outputStream().use { cfg.store(it, null) }
-	tmpFile.copyTo(propFile, true)
-	tmpFile.delete()
+        val serverFolder = "${instFolder}/server"
+        val tempFolder = "${serverFolder}/temp"
+
+	val propConfigurerCmpFileName = "${propFolder}/configurer-cmp.properties" 
+	val propConfigurerCmpFile = File(propConfigurerCmpFileName) // propConfigurerCmpFile.exists()
+	val configurerCmpProps = Properties()
+	propConfigurerCmpFile.inputStream().use { configurerCmpProps.load(it) }
+	configurerCmpProps.setProperty("directory.install", instFolder)
+
+	val tempConfigurerCmpFile = File("${propFolder}/temp-configurer-cmp.properties")
+	tempConfigurerCmpFile.outputStream().use { configurerCmpProps.store(it, null) }
+	tempConfigurerCmpFile.copyTo(propConfigurerCmpFile, true)
+	tempConfigurerCmpFile.delete()
+
+        val serverConfFolder = "${serverFolder}/conf"
+	val propServiceCustomFileName = "${serverConfFolder}/properties-service-custom.properties" 
+	val propServiceCustomFile = File(propServiceCustomFileName)
+	val serviceCustomProps = Properties()
+	serviceCustomProps.setProperty("ehcache.cache.name", "ehcache.dev")
+	serviceCustomProps.setProperty("ehcache.alerts.cache.name", "ehcache-alerts.dev")
+	propServiceCustomFile.outputStream().use { serviceCustomProps.store(it, null) }
     }
 }
