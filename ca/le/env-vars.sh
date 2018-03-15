@@ -1,6 +1,7 @@
 #! /usr/bin/env bash
 set -e
 
+# PJAC uses acme4j under the hood
 ACME_CLIENT_CMD="java -jar lib/acme_client.jar --log-dir . --log-level DEBUG"
 
 ACCOUNT_KEY=~/.ssh/id_rsa
