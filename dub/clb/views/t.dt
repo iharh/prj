@@ -1,0 +1,8 @@
+doctype xml
+soapenv:Envelope(xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/", xmlns:proj="http://project.cbapi.clarabridge.com/")
+    soapenv:Header
+    soapenv:Body
+        proj:createProject
+            createProjectRequest
+                language #{langId}
+                name #{prjName}
