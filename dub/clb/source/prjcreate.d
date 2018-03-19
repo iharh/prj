@@ -26,7 +26,7 @@ void prjCreate(string data) {
 
 void main() {
     string langId = "en";
-    string prjName = langId ~ "2";
+    string prjName = langId ~ "0ext";
     auto data = compile(langId, prjName);
     writeln(format("generated data: %s", data));
     prjCreate(data);
