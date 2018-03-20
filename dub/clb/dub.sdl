@@ -1,8 +1,5 @@
 name "clb"
-description "cld utils"
-authors "Ihar Hancharenka"
-copyright "Copyright © 2018, Ihar Hancharenka"
-license "proprietary"
-dependency "requests" version="~>0.7.3"
-dependency "diet-ng" version="~>1.4.5"
 targetType "executable"
+
+dependency "clb:utils" version="*"
+subPackage "./utils/"

@@ -1,0 +1,5 @@
+name "utils"
+targetType "staticLibrary"
+
+dependency "requests" version="~>0.7.3"
+dependency "diet-ng" version="~>1.4.5"
