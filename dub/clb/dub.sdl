@@ -4,14 +4,6 @@ configuration "prjcreate" {
     targetType "executable"
     targetName "prjcreate"
     targetPath "target"
-    sourcePaths "src-prjcreate"
-}
-
-configuration "doc" {
-    targetType "executable"
-    targetName "doc"
-    targetPath "target"
-    sourcePaths "src-doc"
 }
 
 dependency "clb:utils" version="*"
