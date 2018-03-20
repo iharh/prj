@@ -1,5 +1,8 @@
 name "clb"
-targetType "executable"
+
+configuration "prjcreate" {
+    targetType "executable"
+}
 
 dependency "clb:utils" version="*"
 subPackage "./utils/"
