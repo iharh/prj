@@ -23,24 +23,15 @@ void wsdl(string name, string data) {
     writeln(format("resp: %s", rs.responseBody));
 }
 
-void wsdlProject(string data) {
-    wsdl("project", data);
-}
-
-void wsdlRealtime(string data) {
-    wsdl("realtime", data);
-}
-
 void prjCreate(string langId, string prjName) {
     auto app = appender!string;
     app.compileHTMLDietFile!("prjCreate.dt", langId, prjName);
-    wsdlProject(app.data);
+    wsdl("project", app.data);
 }
 
-void pmvd(string prjName, string verbatimText) {
+void pmvd(string prjName, bool isSave, string verbatimText) {
     auto app = appender!string;
-    app.compileHTMLDietFile!("pmvd.dt", prjName, verbatimText);
-
+    app.compileHTMLDietFile!("pmvd.dt", prjName, isSave, verbatimText);
     writeln(format("compiled to: %s", app.data));
-    wsdlRealtime(app.data);
+    wsdl("realtime", app.data);
 }

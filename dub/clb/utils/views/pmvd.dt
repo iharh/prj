@@ -5,7 +5,7 @@ soapenv:Envelope(xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/", xmln
         real:processMultiVerbatimDocument
             processMultiVerbatimDocumentRequest
                 responseLevel FULL
-                save(dupDetection="NONE") false
+                save(dupDetection="NONE") #{isSave}
                 limitByWordRank true
                 includeWorldAwareness true
                 projectName #{prjName}
