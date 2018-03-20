@@ -7,5 +7,5 @@ void main() {
     string langId = "en";
     string prjName = langId ~ "0ext";
     // prjCreate(langId, prjName);
-    pmvd(prjName, "I like my round table");
+    pmvd(prjName, "I like my round dreamliner");
 }
