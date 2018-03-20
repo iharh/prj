@@ -27,3 +27,11 @@ void prjCreate(string langId, string prjName) {
     app.compileHTMLDietFile!("prjCreate.dt", langId, prjName);
     wsdlProject(app.data);
 }
+
+void pmvd(string prjName, string verbatimText) {
+    auto app = appender!string;
+    app.compileHTMLDietFile!("pmvd.dt", prjName, verbatimText);
+
+    writeln(format("compiled to: %s", app.data));
+    // wsdlRealtime(app.data);
+}

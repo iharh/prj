@@ -5,5 +5,7 @@ import clbutils;
 
 void main() {
     string langId = "en";
-    prjCreate(langId, langId ~ "0ext");
+    string prjName = langId ~ "0ext";
+    // prjCreate(langId, prjName);
+    pmvd(prjName, "I like my round table");
 }
