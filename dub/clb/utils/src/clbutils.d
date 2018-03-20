@@ -12,12 +12,6 @@ import core.time;
 
 //extern(C) void test();
 
-string compile(string templateName, string langId, string prjName) {
-    auto result = appender!string;
-    result.compileHTMLDietFile!(templateName ~ ".dt", langId, prjName);
-    return result.data;
-}
-
 void wsdlProject(string data) {
     auto rq = Request();
     rq.verbosity = 2;
@@ -29,6 +23,7 @@ void wsdlProject(string data) {
 }
 
 void prjCreate(string langId, string prjName) {
-    auto data = compile("prjCreate", langId, prjName);
-    wsdlProject(data);
+    auto app = appender!string;
+    app.compileHTMLDietFile!("prjCreate.dt", langId, prjName);
+    wsdlProject(app.data);
 }

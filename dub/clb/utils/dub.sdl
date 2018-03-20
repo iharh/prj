@@ -1,5 +1,9 @@
 name "utils"
-targetType "staticLibrary"
+
+configuration "utils" {
+    targetType "staticLibrary"
+    targetPath "target"
+}
 
 dependency "requests" version="~>0.7.3"
 dependency "diet-ng" version="~>1.4.5"

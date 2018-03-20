@@ -2,6 +2,8 @@ name "clb"
 
 configuration "prjcreate" {
     targetType "executable"
+    targetName "prjcreate"
+    targetPath "target"
 }
 
 dependency "clb:utils" version="*"
