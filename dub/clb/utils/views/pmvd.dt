@@ -1,5 +1,5 @@
 doctype xml
-soapenv:Envelope(xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/", xmlns:proj="http://realtime.cbapi.clarabridge.com/")
+soapenv:Envelope(xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/", xmlns:real="http://realtime.cbapi.clarabridge.com/")
     soapenv:Header
     soapenv:Body
         real:processMultiVerbatimDocument
