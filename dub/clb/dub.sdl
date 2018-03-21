@@ -1,6 +1,6 @@
 name "clb"
 
-configuration "prjcreate" {
+configuration "default" {
     targetType "executable"
     targetName "prjcreate"
     targetPath "target"

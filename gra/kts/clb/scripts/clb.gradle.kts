@@ -4,10 +4,17 @@ import java.util.Properties
 
 val clbCfg by tasks.creating {
     doLast {
-	val winInstFolder = "D:/clb/inst"
-	val linInstFolder = "/data/wrk/clb/inst"
+        // is it possible to do this with val ?
+	var instFolder = "" 
+        var fxsvcHost = ""
+        if (SystemUtils.IS_OS_LINUX) {
+            instFolder = "/data/wrk/clb/inst"
+            fxsvcHost = "localhost"
 
-	val instFolder = if (SystemUtils.IS_OS_LINUX) linInstFolder else winInstFolder
+        } else {
+            instFolder = "D:/clb/inst"
+            fxsvcHost = "192.168.235.101"
+        }
 
 	val propFolder = "${instFolder}/configurer"
         val serverFolder = "${instFolder}/server"
@@ -30,6 +37,7 @@ val clbCfg by tasks.creating {
 	val serviceCustomProps = Properties()
 	serviceCustomProps.setProperty("ehcache.cache.name", "ehcache.dev")
 	serviceCustomProps.setProperty("ehcache.alerts.cache.name", "ehcache-alerts.dev")
+        serviceCustomProps.setProperty("feign.fxservice.en.host", "http://${fxsvcHost}:8080")
 	propServiceCustomFile.outputStream().use { serviceCustomProps.store(it, null) }
     }
 }
