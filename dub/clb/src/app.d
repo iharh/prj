@@ -5,7 +5,7 @@ import clbutils;
 
 void main() {
     string langId = "en";
-    string prjSuffix = "0int";
+    string prjSuffix = "0ext";
     string prjName = langId ~ prjSuffix;
     //prjCreate(langId, prjName);
     //prjCreate(langId, langId ~ "0ext");
