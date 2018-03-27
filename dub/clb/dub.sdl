@@ -4,6 +4,7 @@ configuration "default" {
     targetType "executable"
     targetName "prjcreate"
     targetPath "target"
+    dependency "darg" version="~>0.0.4"
 }
 
 dependency "clb:utils" version="*"
