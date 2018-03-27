@@ -24,15 +24,6 @@ struct Options {
 immutable usage = usageString!Options("clb");
 immutable help = helpString!Options;
 
-void uploadByLine(string prjName, string fileName) {
-    auto f = File(fileName);
-    auto lines = f.byLineCopy();
-    foreach (lineNum, line; lines.enumerate(1)) {
-        writeln(format("line %d: %s", lineNum, line));
-        pmvd(prjName, true, line);
-    }
-}
-
 int main(string[] args) {
     auto langId = "en";
     string[] prjNames = [ langId ~ "0int", langId ~ "0ext" ];
@@ -71,9 +62,14 @@ int main(string[] args) {
         respFile.write(responseBody);
     }
     if (options.upload) {
-        foreach (prjName; prjNames) {
-            writeln(format("uploading data to %s ...", prjName));
-            // uploadByLine(prjName, langId ~ "100.txt");
+        auto fileName = langId ~ "100.txt";
+        auto f = File(fileName);
+        auto lines = f.byLineCopy();
+        foreach (lineNum, line; lines.enumerate(1)) {
+            foreach (prjName; prjNames) {
+                writeln(format("line %d: prj: %s", lineNum, prjName));
+                pmvd(prjName, true, line);
+            }
         }
     }
     return 0;
