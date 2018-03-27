@@ -5,6 +5,8 @@ configuration "default" {
     targetName "prjcreate"
     targetPath "target"
     dependency "darg" version="~>0.0.4"
+    //dependency "database" version="~>0.1.0"
+    //subConfiguration "database" "postgresql"
 }
 
 dependency "clb:utils" version="*"

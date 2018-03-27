@@ -4,7 +4,8 @@ import std.stdio;
 
 import darg;
 
-import clbutils;
+import clbdb;
+import clbrest;
 
 struct Options {
     @Option("help", "h") @Help("Prints this help.")
@@ -18,6 +19,9 @@ struct Options {
 
     @Option("upload", "u") @Help("Upload data")
     OptionFlag upload;
+
+    @Option("db", "d") @Help("DB test")
+    OptionFlag db;
 }
 
 // Generate the usage and help string at compile time.
@@ -71,6 +75,9 @@ int main(string[] args) {
                 pmvd(prjName, true, line);
             }
         }
+    }
+    if (options.db) {
+        dbTest();
     }
     return 0;
 }

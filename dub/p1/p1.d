@@ -13,8 +13,12 @@ import database;
 
 void main() {
     writeln("begin");
-    Database db = new Database("postgresql://postgres:PGSQL-123@localhost:5432/postgres?charset=utf-8");
-    Statement statement = db.prepare("select * from my");
+    Database db = new Database("postgresql://lin_ss:clb@localhost:5432/postgres?charset=utf-8");
+    Statement statement = db.prepare("select * from cb_properties where prop_name='VERSION'");
+
+    //Database db = new Database("postgresql://postgres:PGSQL-123@localhost:5432/postgres?charset=utf-8");
+    //Statement statement = db.prepare("select * from my");
+
     ResultSet rs = statement.query();
     foreach(row; rs)
     {

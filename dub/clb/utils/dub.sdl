@@ -3,7 +3,8 @@ name "utils"
 configuration "utils" {
     targetType "staticLibrary"
     targetPath "target"
+    dependency "requests" version="~>0.7.3"
+    dependency "diet-ng" version="~>1.4.5"
+    dependency "database" version="~>0.1.0"
+    subConfiguration "database" "postgresql"
 }
-
-dependency "requests" version="~>0.7.3"
-dependency "diet-ng" version="~>1.4.5"
