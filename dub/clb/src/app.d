@@ -67,7 +67,7 @@ int main(string[] args) {
         auto lines = f.byLineCopy();
         foreach (lineNum, line; lines.enumerate(1)) {
             foreach (prjName; prjNames) {
-                writeln(format("line %d: prj: %s", lineNum, prjName));
+                writeln(format("line %d: prj: %s ...", lineNum, prjName));
                 pmvd(prjName, true, line);
             }
         }
