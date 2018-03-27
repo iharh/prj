@@ -77,7 +77,7 @@ int main(string[] args) {
         }
     }
     if (options.db) {
-        dbTest();
+        dbCfgPrj("lin_ss", "clb", prjNames[1]);
     }
     return 0;
 }

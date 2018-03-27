@@ -2,7 +2,7 @@ name "clb"
 
 configuration "default" {
     targetType "executable"
-    targetName "prjcreate"
+    targetName "clb"
     targetPath "target"
     dependency "darg" version="~>0.0.4"
     //dependency "database" version="~>0.1.0"
