@@ -6,34 +6,47 @@ import std.stdio;
 
 import database;
 
+string sysTbl(string tableName) {
+    return "lin_ss." ~ tableName;
+}
+
+string qS(string strVal) {
+    return "'" ~ strVal ~ "'";
+}
+
 void dbCfgPrj(string usr, string pwd, string prjName) {
     auto connectStr = format("postgresql://%s:%s@localhost:5432/postgres?charset=utf-8", usr, pwd);
     Database db = new Database(connectStr);
 
     // "select * from cb_properties where prop_name='VERSION'"
-    auto sqlQuery = // format("select id from cb_project where name = '%s'", prjName); // lin_ss.
-        db.createSqlBuilder()
+    auto sqlQuery = db.createSqlBuilder()
         .select("id")
-        .from("lin_ss.cb_project")
-        .eq("name", "'" ~ prjName ~ "'")
+        .from(sysTbl("cb_project"))
+        .eq("name", qS(prjName))
         .build()
         .toString();
 
-    writeln(format("sqlQuery: %s", sqlQuery));
-
     Statement statement = db.prepare(sqlQuery);
-    // stmt.setParameter(":username","viile");
-
-    // ResultSet rs = .query()
-    // Row row = rs.front();
-    //foreach(row; rs) { writeln(row); }
 
     Row row = statement.fetch();
     int prjId = row[0].to!int;
-    writeln(format("prjId: %d", prjId));
+    writeln("prjId: " ~ prjId.to!string);
 
-    //string sqlIns = "insert into public.test(id, name) VALUES (1, 1);"
-    //int result = db.execute(sqlIns);
-
+    string[] flagNames = [ "fx_use_fxservice", "fx_use_jdbc_mapping" ];
+    foreach (flagName; flagNames) {
+        // insert into cb_properties (prop_name, prop_value, id_project) values ('flagName', 'true', prjId);
+        string sqlIns = 
+            db.createSqlBuilder()
+            .insert(sysTbl("cb_properties"))
+            .values([
+                "prop_name" : qS(flagName),
+                "prop_value": qS("true"),
+                "id_project": qS(prjId.to!string)])
+            .build()
+            .toString();
+        writeln("sql: " ~ sqlIns);
+        int numInserted = db.execute(sqlIns);
+        writeln("numInserted: " ~ numInserted.to!string);
+    }
     db.close();
 }
