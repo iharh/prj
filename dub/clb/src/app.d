@@ -30,7 +30,9 @@ immutable help = helpString!Options;
 
 int main(string[] args) {
     auto langId = "en";
-    string[] prjNames = [ langId ~ "0int", langId ~ "0ext" ];
+    string prjNameInt = langId ~ "0int";
+    string prjNameExt = langId ~ "0ext";
+    string[] prjNames = [ prjNameInt , prjNameExt ];
 
     Options options;
     try
@@ -61,7 +63,7 @@ int main(string[] args) {
     if (options.realtime) {
         writeln("process realtime ...");
         bool isSave = false;
-        string responseBody = pmvd(prjNames[0], isSave, "I like my round dreamliner");
+        string responseBody = pmvd(prjNameExt, isSave, "I like my round dreamliner");
         auto respFile = File("result.xml", "w");
         respFile.write(responseBody);
     }
@@ -77,7 +79,7 @@ int main(string[] args) {
         }
     }
     if (options.db) {
-        dbCfgPrj("lin_ss", "clb", prjNames[1]);
+        dbCfgPrj("lin_ss", "clb", prjNameExt);
     }
     return 0;
 }
