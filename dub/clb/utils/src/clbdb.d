@@ -6,8 +6,8 @@ import std.stdio;
 
 import database;
 
-string sysTbl(string tableName) {
-    return "lin_ss." ~ tableName;
+string sysTbl(string usr, string tableName) {
+    return usr ~ "." ~ tableName;
 }
 
 string qS(string strVal) {
@@ -21,7 +21,7 @@ void dbCfgPrj(string usr, string pwd, string prjName) {
     // "select * from cb_properties where prop_name='VERSION'"
     auto sqlQuery = db.createSqlBuilder()
         .select("id")
-        .from(sysTbl("cb_project"))
+        .from(sysTbl(usr, "cb_project"))
         .eq("name", qS(prjName))
         .build()
         .toString();
@@ -37,7 +37,7 @@ void dbCfgPrj(string usr, string pwd, string prjName) {
         // insert into cb_properties (prop_name, prop_value, id_project) values ('flagName', 'true', prjId);
         string sqlIns = 
             db.createSqlBuilder()
-            .insert(sysTbl("cb_properties"))
+            .insert(sysTbl(usr, "cb_properties"))
             .values([
                 "prop_name" : qS(flagName),
                 "prop_value": qS("true"),
