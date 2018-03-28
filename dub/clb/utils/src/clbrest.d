@@ -4,11 +4,13 @@ import requests;
 
 import diet.html;
 
-import std.stdio;
-import std.format;
-import std.array; // appender
-
 import core.time;
+
+import std.array; // appender
+import std.conv;
+import std.exception;
+import std.format;
+import std.stdio;
 
 //extern(C) void test();
 
@@ -19,8 +21,10 @@ string wsdl(string name, string data) {
     rq.authenticator = new BasicAuthentication("admin", "admin");
     string url = format("http://localhost:18080/cbapi/%s?wsdl", name);
     auto rs = rq.post(url, data, "text/xml");
-    writeln(format("code: %d", rs.code));
+
     writeln(format("body: %d", rs.responseBody));
+    enforce(200 == rs.code, "invalide response code: " ~ rs.code.to!string);
+
     return rs.responseBody.toString();
 }
 
