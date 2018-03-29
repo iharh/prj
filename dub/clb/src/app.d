@@ -30,9 +30,10 @@ immutable help = helpString!Options;
 
 int main(string[] args) {
     auto langId = "en";
-    string prjNameInt = langId ~ "0int";
-    string prjNameExt = langId ~ "0ext";
-    string[] prjNames = [ prjNameInt , prjNameExt ];
+    auto prjNameInt = langId ~ "0int";
+    auto prjNameExt = langId ~ "0ext";
+    auto prjNames = [ prjNameInt , prjNameExt ];
+    auto dataFileName = langId ~ "100.txt";
 
     Options options;
     try
@@ -50,7 +51,7 @@ int main(string[] args) {
             writeln("process realtime ...");
             bool isSave = false;
             auto prjName = prjNameExt;
-            auto lines = File(langId ~ "100.txt").byLineCopy();
+            auto lines = File(dataFileName).byLineCopy();
             foreach (lineNum, line; lines.enumerate(1)) {
                 writeln(format("save: %s line %d: prj: %s ...", isSave, lineNum, prjName));
                 pmvd(prjName, isSave, line);
@@ -61,7 +62,7 @@ int main(string[] args) {
         }
         if (options.upload) {
             bool isSave = true;
-            auto lines = File(langId ~ "100.txt").byLineCopy();
+            auto lines = File(dataFileName).byLineCopy();
             foreach (lineNum, line; lines.enumerate(1)) {
                 foreach (prjName; prjNames) {
                     writeln(format("line %d: prj: %s ...", lineNum, prjName));
