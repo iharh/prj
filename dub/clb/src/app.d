@@ -3,6 +3,7 @@ import clbrest;
 
 import darg;
 
+import std.conv;
 import std.format;
 import std.range;
 import std.stdio;
@@ -51,12 +52,14 @@ int main(string[] args) {
             writeln("process realtime ...");
             bool isSave = false;
             auto prjName = prjNameExt;
+            /*
             auto lines = File(dataFileName).byLineCopy();
             foreach (lineNum, line; lines.enumerate(1)) {
                 writeln(format("save: %s line %d: prj: %s ...", isSave, lineNum, prjName));
                 pmvd(prjName, isSave, line);
             }
-            // string responseBody = pmvd(prjNameExt, isSave, "I like my round dreamliner");
+            */
+            string responseBody = pmvd(prjNameExt, isSave, "I like my round dreamliner", "natId1");
             // auto respFile = File("result.xml", "w");
             // respFile.write(responseBody);
         }
@@ -66,7 +69,7 @@ int main(string[] args) {
             foreach (lineNum, line; lines.enumerate(1)) {
                 foreach (prjName; prjNames) {
                     writeln(format("line %d: prj: %s ...", lineNum, prjName));
-                    pmvd(prjName, isSave, line);
+                    pmvd(prjName, isSave, line, "natId" ~ lineNum.to!string);
                 }
             }
         }

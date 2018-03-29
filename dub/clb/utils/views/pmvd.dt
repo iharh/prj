@@ -11,3 +11,4 @@ soapenv:Envelope(xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/", xmln
                 projectName #{prjName}
                 verbatimSet
                     verbatim(type="REVIEW") #{verbatimText}
+                attribute(name="NATURAL_ID",stringValue="#{naturalId}")

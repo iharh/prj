@@ -34,9 +34,9 @@ void prjCreate(string langId, string prjName) {
     wsdl("project", app.data);
 }
 
-string pmvd(string prjName, bool isSave, string verbatimText) {
+string pmvd(string prjName, bool isSave, string verbatimText, string naturalId) {
     auto app = appender!string;
-    app.compileHTMLDietFile!("pmvd.dt", prjName, isSave, verbatimText);
+    app.compileHTMLDietFile!("pmvd.dt", prjName, isSave, verbatimText, naturalId);
     writeln(format("compiled to: %s", app.data));
     return wsdl("realtime", app.data);
 }
