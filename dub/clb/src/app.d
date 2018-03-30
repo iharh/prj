@@ -34,7 +34,7 @@ int main(string[] args) {
     auto prjNameInt = langId ~ "0int";
     auto prjNameExt = langId ~ "0ext";
     auto prjNames = [ prjNameInt , prjNameExt ];
-    auto dataFileName = langId ~ "100.txt";
+    auto dataFileName = langId ~ "1.txt"; // 100.txt
 
     Options options;
     try
@@ -51,7 +51,7 @@ int main(string[] args) {
         if (options.realtime) {
             writeln("process realtime ...");
             bool isSave = false;
-            auto prjName = prjNameExt;
+            auto prjName = prjNameInt;
             /*
             auto lines = File(dataFileName).byLineCopy();
             foreach (lineNum, line; lines.enumerate(1)) {
@@ -59,9 +59,11 @@ int main(string[] args) {
                 pmvd(prjName, isSave, line);
             }
             */
-            string responseBody = pmvd(prjNameExt, isSave, "I like my round dreamliner", "natId1");
-            // auto respFile = File("result.xml", "w");
-            // respFile.write(responseBody);
+            // auto sent = "I like my round dreamliner";
+            auto sent = "[...](press unlock and then put in your information and after that check your email)or if that does not work just search up boostmobile referral program and click the second link on google and click \"were you referred\" and type in the email kawiibear@hotmail.com -you should then get an email-~this is for those that would like 25 dollars credited to their account :)the other man that left his info did not go through so just putting mine out their for all of you!"; 
+            auto responseBody = pmvd(prjNameExt, isSave, sent, "natId1");
+            auto respFile = File("result.xml", "w");
+            respFile.write(responseBody);
         }
         if (options.upload) {
             bool isSave = true;
