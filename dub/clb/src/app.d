@@ -61,7 +61,7 @@ int main(string[] args) {
             // auto sent = "I like my round dreamliner";
             // auto sent = "[...](press unlock and then put in your information and after that check your email)or if that does not work just search up boostmobile referral program and click the second link on google and click \"were you referred\" and type in the email kawiibear@hotmail.com -you should then get an email-~this is for those that would like 25 dollars credited to their account :)the other man that left his info did not go through so just putting mine out their for all of you!"; 
             auto sent = "their account :)the other man that left";
-            auto responseBody = pmvd(prjNameExt, isSave, sent, "natId1");
+            auto responseBody = pmvdNatId(prjNameExt, isSave, sent, "natId1");
             //auto respFile = File("result.xml", "w");
             //respFile.write(responseBody);
         }
@@ -72,12 +72,12 @@ int main(string[] args) {
             foreach (lineNum, line; lines.enumerate(1)) {
                 foreach (prjName; prjNames) {
                     writeln(format("line %d: prj: %s ...", lineNum, prjName));
-                    pmvd(prjName, isSave, line, "natId" ~ lineNum.to!string);
+                    pmvdNatId(prjName, isSave, line, "natId" ~ lineNum.to!string);
                 }
             }
             */
             auto sent = "their account :)the other man that left";
-            auto responseBody = pmvd(prjNameExt, isSave, sent, "natId5");
+            auto responseBody = pmvd(prjNameExt, isSave, sent);
         }
         if (options.db) {
             dbCfgPrj("lin_ss", "clb", prjNameExt);
