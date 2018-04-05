@@ -79,7 +79,7 @@ int main(string[] args) {
             //auto sent = "their account :)the other man that left";
             //auto responseBody = pmvd(prjNameExt, isSave, sent);
 
-            auto line = "Unable to send message to ___@___ when you try to send a text message to an e-mail address";
+            auto line = "Send a message to an address";
             auto lineNum = 1;
             foreach (prjName; prjNames) {
                 writeln(format("line %d: prj: %s ...", lineNum, prjName));
