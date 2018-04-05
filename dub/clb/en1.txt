@@ -1,1 +1,1 @@
-their account :)the other man that left
+Tell-tale error messages include "Unable to Retrieve Message" when you try to download an MMS message shown in your inbox, "Unable to send message to ___@___" when you try to send a text message to an e-mail address, and "Connection failed!"
