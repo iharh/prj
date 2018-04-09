@@ -67,7 +67,6 @@ int main(string[] args) {
         }
         if (options.upload) {
             bool isSave = true;
-            /*
             auto lines = File(dataFileName).byLineCopy();
             foreach (lineNum, line; lines.enumerate(1)) {
                 foreach (prjName; prjNames) {
@@ -75,16 +74,16 @@ int main(string[] args) {
                     pmvdNatId(prjName, isSave, line, "natId" ~ lineNum.to!string);
                 }
             }
-            */
             //auto sent = "their account :)the other man that left";
             //auto responseBody = pmvd(prjNameExt, isSave, sent);
-
+            /*
             auto line = "Send a message to an address";
             auto lineNum = 1;
             foreach (prjName; prjNames) {
                 writeln(format("line %d: prj: %s ...", lineNum, prjName));
                 pmvdNatId(prjName, isSave, line, "natId" ~ lineNum.to!string);
             }
+            */
         }
         if (options.db) {
             dbCfgPrj("lin_ss", "clb", prjNameExt);
