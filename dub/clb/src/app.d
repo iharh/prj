@@ -34,7 +34,8 @@ int main(string[] args) {
     auto prjNameInt = langId ~ "0int";
     auto prjNameExt = langId ~ "0ext";
     auto prjNames = [ prjNameInt , prjNameExt ];
-    auto dataFileName = langId ~ "100.txt"; // 1.txt
+    auto dataFileName = langId ~ "1.txt";
+    //auto dataFileName = langId ~ "100.txt";
 
     Options options;
     try {
@@ -60,8 +61,10 @@ int main(string[] args) {
             */
             // auto sent = "I like my round dreamliner";
             // auto sent = "[...](press unlock and then put in your information and after that check your email)or if that does not work just search up boostmobile referral program and click the second link on google and click \"were you referred\" and type in the email kawiibear@hotmail.com -you should then get an email-~this is for those that would like 25 dollars credited to their account :)the other man that left his info did not go through so just putting mine out their for all of you!"; 
-            auto sent = "their account :)the other man that left";
-            auto responseBody = pmvdNatId(prjNameExt, isSave, sent, "natId1");
+            // auto sent = "their account :)the other man that left";
+            // auto responseBody = pmvdNatId(prjNameExt, isSave, sent, "natId1");
+            auto sent = "Table";
+            pmvd(prjNameExt, true, sent);
             //auto respFile = File("result.xml", "w");
             //respFile.write(responseBody);
         }
