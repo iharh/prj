@@ -11,7 +11,7 @@
 		"libevent": "2.0.2+2.0.16",
 		"memutils": "0.4.10",
 		"openssl": "1.1.6+1.0.1g",
-		"requests": "0.7.3",
+		"requests": "0.7.4",
 		"stdx-allocator": "2.77.1",
 		"taggedalgebraic": "0.10.11",
 		"utils": "0.1.9",
