@@ -3,7 +3,10 @@ import clbrest;
 
 import darg;
 
+import dxml.parser;
+
 import std.conv;
+import std.file;
 import std.format;
 import std.range;
 import std.stdio;
@@ -23,6 +26,9 @@ struct Options {
 
     @Option("db", "d") @Help("DB test")
     OptionFlag db;
+
+    @Option("xml", "x") @Help("XML test")
+    OptionFlag xml;
 }
 
 // Generate the usage and help string at compile time.
@@ -63,8 +69,8 @@ int main(string[] args) {
             // auto sent = "[...](press unlock and then put in your information and after that check your email)or if that does not work just search up boostmobile referral program and click the second link on google and click \"were you referred\" and type in the email kawiibear@hotmail.com -you should then get an email-~this is for those that would like 25 dollars credited to their account :)the other man that left his info did not go through so just putting mine out their for all of you!"; 
             // auto sent = "their account :)the other man that left";
             // auto responseBody = pmvdNatId(prjNameExt, isSave, sent, "natId1");
-            auto sent = "Table";
-            pmvd(prjNameExt, true, sent);
+            auto sent = "http://www.google.com";
+            pmvd("en1", true, sent);
             //auto respFile = File("result.xml", "w");
             //respFile.write(responseBody);
         }
@@ -91,7 +97,13 @@ int main(string[] args) {
         if (options.db) {
             dbCfgPrj("lin_ss", "clb", prjNameExt);
         }
-
+        if (options.xml) {
+            // auto content = readText("a.xml");
+            auto content = readText("./res-int.xml");
+            auto range = parseXML(content);
+            range = range.skipToPath("S:Body/ns2:processMultiVerbatimDocumentResponse/return/status");
+            writeln(range.front.name);
+        }
     }
     catch (ArgParseError e) {
         writeln(e.msg);

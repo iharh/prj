@@ -5,6 +5,7 @@ configuration "default" {
     targetName "clb"
     targetPath "target"
     dependency "darg" version="~>0.0.4"
+    dependency "dxml" version="~>0.2.3"
     //dependency "database" version="~>0.1.0"
     //subConfiguration "database" "postgresql"
 }
