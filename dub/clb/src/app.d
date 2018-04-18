@@ -3,7 +3,9 @@ import clbrest;
 
 import darg;
 
+import dxml.dom;
 import dxml.parser;
+import dxml.util;
 
 import std.conv;
 import std.file;
@@ -102,7 +104,11 @@ int main(string[] args) {
             auto content = readText("./res-int.xml");
             auto range = parseXML(content);
             range = range.skipToPath("S:Body/ns2:processMultiVerbatimDocumentResponse/return/status");
+
             writeln(range.front.name);
+
+            range.popFront();
+            writeln(range.front.text);
         }
     }
     catch (ArgParseError e) {
