@@ -105,10 +105,11 @@ int main(string[] args) {
             auto range = parseXML(content);
             range = range.skipToPath("S:Body/ns2:processMultiVerbatimDocumentResponse/return/status");
 
-            writeln(range.front.name);
-
+            auto elName = range.front.name;
             range.popFront();
-            writeln(range.front.text);
+            auto elText = range.front.text;
+
+            writeln(format("%s -> %s", elName, elText));
         }
     }
     catch (ArgParseError e) {
