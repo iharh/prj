@@ -1,15 +1,21 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <script src="https://d3js.org/d3.v4.min.js"/></script>
+    <script src="https://d3js.org/d3.v5.min.js"/></script>
+    <style>
+        body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
+    </style>
 </head>
 <body>
-<div id="grid"></div>
-
 <script type="text/javascript">
 var NUM_ROWS = 8;
 var NUM_COLS = 8;
+var CELL_W = 50;
+var CELL_H = 50;
 var STYLE_COLORS = [ "#2C93E8", "#F56C4E", "#838690", "#fff" ];
+
+var TOTAL_W = (CELL_W + 1) * NUM_COLS;
+var TOTAL_H = (CELL_H + 1) * NUM_ROWS;
 
 function buildGridData(numRows, numCols) {
     var data = new Array();
@@ -17,9 +23,6 @@ function buildGridData(numRows, numCols) {
     //starting xpos and ypos at 1 so the stroke will show when we make the grid below
     var xpos = 1; 
     var ypos = 1;
-
-    var width = 50;
-    var height = 50;
 
     var click = 0;
     
@@ -35,17 +38,17 @@ function buildGridData(numRows, numCols) {
             data[row].push({
                 x: xpos,
                 y: ypos,
-                width: width,
-                height: height,
+                width: CELL_W,
+                height: CELL_H,
                 click: click
             })
             // increment the x position. I.e. move it over by 50 (width variable)
-            xpos += width;
+            xpos += CELL_W;
         }
         // reset the x position after a row is complete
         xpos = 1;
         // increment the y position for the next row. Move it down 50 (height variable)
-        ypos += height;	
+        ypos += CELL_H;	
     }
     return data;
 }
@@ -58,16 +61,15 @@ var gridData = buildGridData(NUM_ROWS, NUM_COLS);
 // I like to log the data to the console for quick debugging
 //console.log(gridData);
 
-var grid = d3.select("#grid")
+var svg = d3.select("body")
     .append("svg")
-    // ??? (50 + 1) * 10 ???
-    .attr("width", ((50 + 1) * NUM_COLS) + "px") 
-    .attr("height", ((50 + 1) * NUM_ROWS) + "px");
-	
-var row = grid.selectAll(".row")
+    .attr("width", TOTAL_W)
+    .attr("height", TOTAL_H)
+
+var row = svg.selectAll(".row")
     .data(gridData)
     .enter().append("g")
-    .attr("class", "row");
+    .attr("class", "row")
 	
 var column = row.selectAll(".square")
     .data(function(d) { return d; })
@@ -80,7 +82,7 @@ var column = row.selectAll(".square")
     //.style("fill", "#fff")
     .style("stroke", "#222")
     .style("fill", function(d) { return STYLE_COLORS[d.click]; });
-    //.on('click', onClickFun);
+    //.on('click', onClickFun)
 </script>
 </body>
 </html>
