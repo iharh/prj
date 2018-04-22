@@ -1,7 +1,6 @@
 // import { add, subtract } from "./script.js";
 import * as funcs from "./script.js";
-import * as d3sel from 'd3-selection'; 
-import * as d3col from 'd3-color'; 
+import * as d3 from "./d3.js";
 
 console.log(funcs.add(5, 15));
 //console.log(funcs.subtract(25, 5));
@@ -63,7 +62,7 @@ var gridData = buildGridData(NUM_ROWS, NUM_COLS);
 // I like to log the data to the console for quick debugging
 //console.log(gridData);
 
-var svg = d3sel.select("body")
+var svg = d3.select("body")
     .append("svg")
     .attr("width", TOTAL_W)
     .attr("height", TOTAL_H)
