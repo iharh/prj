@@ -1,11 +1,29 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    devServer: {
-        contentBase: __dirname + "/public",
-        port: 3000
+    // mode: 'production',
+    mode: 'development',
+    entry: './src/app.js',
+    output: {
+        path: __dirname + "/public", // need to be absolute
+        filename: 'bundle.js'
     },
     plugins: [
-        new HtmlWebpackPlugin()
-    ]
+        new HtmlWebpackPlugin({
+            hash: true,
+            filename: './index.html'
+        })
+    ],
+    devServer: {
+        contentBase: __dirname + "/public/",
+        port: 3000
+    },
+    module: {
+        rules: [
+            {
+                loader: "babel-loader",
+                test: /\.js/
+            }
+        ]
+    }
 }
