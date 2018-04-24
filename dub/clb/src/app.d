@@ -53,8 +53,8 @@ int main(string[] args) {
     auto prjNameExt = langId ~ "0ext";
     auto prjNames = [ prjNameInt , prjNameExt ];
     //auto dataFileName = langId ~ "1.txt";
-    //auto dataFileName = langId ~ "100.txt";
-    auto dataFileName = langId ~ "1802.txt";
+    auto dataFileName = langId ~ "100.txt";
+    //auto dataFileName = langId ~ "1802.txt";
 
     Options options;
     try {
@@ -96,7 +96,10 @@ int main(string[] args) {
             foreach (lineNum, line; lines.enumerate(1)) {
                 foreach (prjName; prjNames) {
                     writeln(format("line %d: prj: %s ...", lineNum, prjName));
-                    pmvdNatId(prjName, isSave, line, "natId" ~ lineNum.to!string);
+                    auto responseBody = pmvdNatId(prjName, isSave, line, "natId" ~ lineNum.to!string);
+                    if (getRespStatus(responseBody) != "SUCCESS") {
+                        throw new Exception("failed !!!");
+                    }
                 }
             }
             //auto sent = "their account :)the other man that left";
