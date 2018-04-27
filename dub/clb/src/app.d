@@ -52,8 +52,8 @@ int main(string[] args) {
     auto prjNameInt = langId ~ "0int";
     auto prjNameExt = langId ~ "0ext";
     auto prjNames = [ prjNameInt , prjNameExt ];
-    auto dataFileName = langId ~ "1.txt";
-    //auto dataFileName = langId ~ "100.txt";
+    //auto dataFileName = langId ~ "1.txt";
+    auto dataFileName = langId ~ "100.txt";
     //auto dataFileName = langId ~ "1802.txt";
 
     Options options;
@@ -93,15 +93,15 @@ int main(string[] args) {
         if (options.upload) {
             bool isSave = true;
             auto lines = File(dataFileName).byLineCopy();
-            foreach (lineNum, line; lines.enumerate(3)) {
-                //foreach (prjName; prjNames) {
-                    auto prjName = prjNameExt;
+            foreach (lineNum, line; lines.enumerate(1)) {
+                foreach (prjName; prjNames) {
+                    //auto prjName = prjNameExt;
                     writeln(format("line %d: prj: %s ...", lineNum, prjName));
                     auto responseBody = pmvdNatId(prjName, isSave, line, "natId" ~ lineNum.to!string);
                     if (getRespStatus(responseBody) != "SUCCESS") {
                         throw new Exception("failed !!!");
                     }
-                //}
+                }
             }
             /*auto line = "Send a message to an address";
             auto lineNum = 1;
