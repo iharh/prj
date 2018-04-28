@@ -95,7 +95,7 @@ int main(string[] args) {
             bool isSave = true;
             auto lines = File(dataFileName).byLineCopy();
             foreach (lineNum, line; lines.enumerate(1)) {
-                stdin.readln();
+                // stdin.readln();
                 foreach (prjName; prjNames) {
                     //auto prjName = prjNameExt;
                     writeln(format("line %d: prj: %s ...", lineNum, prjName));
