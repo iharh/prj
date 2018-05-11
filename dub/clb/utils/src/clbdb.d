@@ -20,7 +20,7 @@ void dbCfgPrj(string usr, string pwd, string prjName) {
 
     // "select * from cb_properties where prop_name='VERSION'"
     auto sqlQuery = db.createSqlBuilder()
-        .select("id")
+        .select(["id"])
         .from(sysTbl(usr, "cb_project"))
         .eq("name", qS(prjName))
         .build()
