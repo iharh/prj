@@ -10,5 +10,8 @@
     },
     "include": [
         "./src/**/*.tsx"
-    ]
+    ],
+    "awesomeTypescriptLoaderOptions": {
+        "useBabel" : false
+    }
 }
