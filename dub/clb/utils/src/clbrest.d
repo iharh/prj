@@ -12,8 +12,6 @@ import std.exception;
 import std.format;
 import std.stdio;
 
-//extern(C) void test();
-
 string wsdl(string name, string data) {
     auto rq = Request();
     rq.verbosity = 2;
@@ -37,8 +35,13 @@ void prjCreate(string langId, string prjName) {
 string pmvd(string prjName, bool isSave, string verbatimText) {
     auto app = appender!string;
     app.compileHTMLDietFile!("pmvd.dt", prjName, isSave, verbatimText);
-    writeln(format("compiled to: %s", app.data));
-    return wsdl("realtime", app.data);
+    auto data = app.data;
+
+    //auto dataFile = File("req-dbg.xml", "w");
+    //dataFile.write(data);
+
+    writeln(format("compiled to: %s", data));
+    return wsdl("realtime", data);
 }
 
 string pmvdNatId(string prjName, bool isSave, string verbatimText, string naturalId) {

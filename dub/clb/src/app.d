@@ -80,6 +80,8 @@ int main(string[] args) {
                 if (getRespStatus(responseBody) != "SUCCESS") {
                     throw new Exception("failed !!!");
                 }
+                //auto reqFile = File(format("req-%d.xml", lineNum), "w");
+                //reqFile.write(line);
                 //auto respFile = File(format("result-%d.xml", lineNum), "w");
                 //respFile.write(responseBody);
             }
