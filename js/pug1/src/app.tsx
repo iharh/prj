@@ -12,5 +12,3 @@ ReactDOM.render(
     <TaskGrid/>,
     document.getElementById("rootsvg")
 );
-    //  g(class="row")
-    //    rect(class="square" x="1" y="1" width="50" height="50" style="stroke: rgb(34, 34, 34); fill: white;")
