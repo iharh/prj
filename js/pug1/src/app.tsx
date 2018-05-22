@@ -4,11 +4,11 @@ import * as ReactDOM from "react-dom";
 import { Hello } from "./components/Hello";
 import { TaskGrid } from "./components/TaskGrid";
 
-ReactDOM.render(
+/*ReactDOM.render(
     <Hello compiler="TypeScript" framework="React" />,
     document.getElementById("root")
-);
+);*/
 ReactDOM.render(
-    <TaskGrid/>,
+    <TaskGrid cellSize={50}/>,
     document.getElementById("rootsvg")
 );
