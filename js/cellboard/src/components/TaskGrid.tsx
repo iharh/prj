@@ -9,12 +9,9 @@ const taskGridStyle= {stroke:"black", fill:"white"};
 
 export const TaskGrid = (props: TaskGridProps) => {
     let gridBoxMapper = (i: number) => <GridBox x={1+i*props.cellSize} cellSize={props.cellSize} />;
+    let makeRow = (i: number, j: number) => <g transform={"translate(0 " + (1 + i*props.cellSize) +")"}> {Range(0, 2).map(gridBoxMapper)} </g>;
     return <g style={taskGridStyle}>
-        <g transform="translate(0 1)">
-            {Range(0, 2).map(gridBoxMapper)}
-        </g>
-        <g transform="translate(0 51)">
-            {[0, 1, 2].map(gridBoxMapper)}
-        </g>
+        {makeRow(0)}
+        {makeRow(1)}
     </g>;
 };
