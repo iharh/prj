@@ -1,7 +1,7 @@
 {
-  "name": "pug1",
+  "name": "cellboard",
   "version": "1.0.0",
-  "description": "pug1 descr",
+  "description": "cellboard descr",
   "main": "index.js",
   "scripts": {
     "webpack": "webpack",
