@@ -48,8 +48,7 @@ string getRespStatus(string content) {
 }
 
 int main(string[] args) {
-    auto langId = "ar";
-    //auto langId = "en";
+    auto langId = "es"; // en ar
     auto prjNameInt = langId ~ "0int";
     auto prjNameExt = langId ~ "0ext";
     auto prjNames = [ prjNameInt , prjNameExt ];
