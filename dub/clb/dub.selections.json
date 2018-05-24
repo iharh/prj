@@ -14,7 +14,7 @@
 		"memutils": "0.4.10",
 		"openssl": "1.1.6+1.0.1g",
 		"requests": "0.7.4",
-		"stdx-allocator": "2.77.1",
+		"stdx-allocator": "2.77.2",
 		"taggedalgebraic": "0.10.11",
 		"utils": "0.1.9",
 		"vibe-core": "1.4.0",
