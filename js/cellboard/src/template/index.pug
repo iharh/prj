@@ -3,16 +3,11 @@ html(lang="en")
   head
     title= pageTitle
     script(type='text/javascript').
-      console.log("log 2")
+      // console.log("log 2")
   body
-    h1 Some pug header
+    h1 Выбери цвет и отметь клетки:
     // p This is some pug stuff 2!!!
     div(id="root")
-    svg(id="rootsvg" with="300" height="300")
+    svg(id="gridsvg" with="300" height="300")
     //p
-    //svg(id="samplesvg" with="52" height="52")
-    //  g
-    //    rect(x="1" y="1" width="50" height="50" stroke="rgb(34, 34, 34)" fill="white")
-
-// g(class="row")
-//   rect(class="square" style="stroke: rgb(34, 34, 34); fill: white;")
+    //svg(id="colorsvg" with="52" height="52")
