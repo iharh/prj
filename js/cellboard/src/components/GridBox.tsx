@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as ColorPalete from "./ColorPalete";
 
 export interface GridBoxProps {
     cellSize: number;
@@ -9,8 +10,6 @@ export interface GridBoxProps {
 export interface GridBoxState {
     colorIndex: number;
 }
-
-const BOX_COLORS = [ "#2C93E8", "#F56C4E", "#838690", "#fff" ];
 
 export class GridBox extends React.Component<GridBoxProps, GridBoxState> {
     constructor(props: any) {
@@ -26,7 +25,7 @@ export class GridBox extends React.Component<GridBoxProps, GridBoxState> {
     }
     render() {
         const props = this.props;
-        const colorVal = BOX_COLORS[this.state.colorIndex];
+        const colorVal = ColorPalete.BOX_COLORS[this.state.colorIndex];
         return <rect x={1+props.idx*props.cellSize} width={props.cellSize} height={props.cellSize} rx={5} ry={5}
             style={{fill: colorVal}}
             onClick={this.doOnClick}/>;
