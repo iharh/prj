@@ -3,7 +3,8 @@
 $newPath=$env:PATH
 
 # dot-folders are automatically filtered out without -force
-get-childitem -path "/data/wrk/bin/cmd" -recurse | where psiscontainer |
+# "/data/wrk/bin/cmd"
+get-childitem -path "d:/dev/bin/cmd" -recurse | where psiscontainer |
 foreach-object {
     $dirname = $_.fullname
     $newPath="${newPath}:${dirname}"
