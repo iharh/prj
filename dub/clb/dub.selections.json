@@ -7,17 +7,18 @@
 		"database": "0.1.1",
 		"diet-ng": "1.4.5",
 		"dxml": "0.2.3",
-		"eventcore": "0.8.34",
+		"eventcore": "0.8.35",
 		"libasync": "0.8.3",
 		"libdominator": "1.1.6",
 		"libevent": "2.0.2+2.0.16",
 		"memutils": "0.4.10",
+		"mir-linux-kernel": "1.0.0",
 		"openssl": "1.1.6+1.0.1g",
 		"requests": "0.7.4",
 		"stdx-allocator": "2.77.2",
 		"taggedalgebraic": "0.10.11",
 		"utils": "0.1.9",
 		"vibe-core": "1.4.0",
-		"vibe-d": "0.8.3"
+		"vibe-d": "0.8.4"
 	}
 }
