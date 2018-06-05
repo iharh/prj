@@ -52,6 +52,7 @@ int main(string[] args) {
     auto prjNameInt = langId ~ "0int";
     auto prjNameExt = langId ~ "0ext";
     auto prjNames = [ prjNameInt , prjNameExt ];
+    //auto prjNames = [ prjNameInt ];
     auto dataFileName = langId ~ "1.txt";
     //auto dataFileName = langId ~ "100.txt";
     //auto dataFileName = langId ~ "111.txt";
