@@ -53,7 +53,7 @@ def copy_x(n: String): Unit = {
     copy_x_y(src, dst, "wrk")
 
     //p1.lines.foreach(println)
-    Process("cmd /c git archive HEAD -o " + dst / (n + ".tar"), src).run()
+    // Process("cmd /c git archive HEAD -o " + dst / (n + ".tar"), src).run()
     println("finish copy" + n)
 }
 
