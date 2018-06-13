@@ -1,9 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.0.0.RC1'
-    }
-    repositories {
-        maven { url 'https://repo.spring.io/libs-milestone' }
+        springBootVersion = '2.0.1.RELEASE'
     }
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
@@ -21,7 +18,6 @@ apply plugin: 'io.spring.dependency-management'
 
 repositories {
     jcenter()
-    maven { url 'https://repo.spring.io/libs-milestone' }
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8

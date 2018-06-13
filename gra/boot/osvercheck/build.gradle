@@ -1,0 +1,55 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.1.RELEASE'
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    }
+}
+
+plugins {
+    id 'java'
+    id "net.ltgt.apt" version '0.15'
+}
+
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+ext {
+    groups = [
+        lombok:         'org.projectlombok',
+        apache_commons: 'org.apache.commons',
+    ]
+    versions = [
+        lombok:         '1.18.0',
+        lang3:          '3.1',
+    ]
+    libraries = [
+        lombok:         "${groups.lombok}:lombok:${versions.lombok}",
+    ]
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    // boot
+    compile('org.springframework.boot:spring-boot-starter')
+
+    // lombok
+    compileOnly         libraries.lombok
+    annotationProcessor libraries.lombok
+
+    // commons
+    compile("${groups.apache_commons}:commons-lang3:${versions.lang3}")
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+}
+compileTestJava.options.encoding = 'UTF-8'
