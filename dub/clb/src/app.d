@@ -54,8 +54,8 @@ int main(string[] args) {
     auto prjNames = [ prjNameInt , prjNameExt ];
     //auto prjNames = [ prjNameInt ];
     //auto prjNames = [ prjNameExt ];
-    auto dataFileName = langId ~ "1.txt";
-    //auto dataFileName = langId ~ "100.txt";
+    //auto dataFileName = langId ~ "1.txt";
+    auto dataFileName = langId ~ "100.txt";
     //auto dataFileName = langId ~ "111.txt";
     //auto dataFileName = langId ~ "1802.txt";
 
@@ -98,7 +98,7 @@ int main(string[] args) {
         if (options.upload) {
             bool isSave = true;
             auto lines = File(dataFileName).byLineCopy();
-            foreach (lineNum, line; lines.enumerate(1)) {
+            foreach (lineNum, line; lines.enumerate(3)) {
                 // stdin.readln();
                 foreach (prjName; prjNames) {
                     //auto prjName = prjNameExt;
