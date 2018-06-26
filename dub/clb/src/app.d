@@ -98,7 +98,7 @@ int main(string[] args) {
         if (options.upload) {
             bool isSave = true;
             auto lines = File(dataFileName).byLineCopy();
-            foreach (lineNum, line; lines.enumerate(3)) {
+            foreach (lineNum, line; lines.enumerate(1)) {
                 // stdin.readln();
                 foreach (prjName; prjNames) {
                     //auto prjName = prjNameExt;
