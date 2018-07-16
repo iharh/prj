@@ -73,7 +73,7 @@ int main(string[] args) {
         if (options.realtime) {
             writeln("process realtime ...");
             bool isSave = false;
-            auto prjName = prjNameExt;
+            auto prjName = prjNameInt;
             auto lines = File(dataFileName).byLineCopy();
             foreach (lineNum, line; lines.enumerate(1)) {
                 writeln(format("process: %s line %d: prj: %s ...", isSave, lineNum, prjName));
