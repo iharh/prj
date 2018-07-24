@@ -1,23 +1,14 @@
 ext {
     groups = [
         lombok:     'org.projectlombok',
-        feign:      'io.github.openfeign',
-        slf4j:      'org.slf4j',
-        logback:    'logback',
+        caffeine:   'com.github.ben-manes.caffeine',
     ]
     versions = [
         lombok:         '1.16.20',
-        feign:          '9.5.1',
-        slf4j:          '1.7.5',
-        logback:        '1.2.3',
+        caffeine:       '2.3.3',
     ]
     libraries = [
         lombok:             "${groups.lombok}:lombok:${versions.lombok}",
-        // feign
-        feign_core:         "${groups.feign}:feign-core:${versions.feign}",
-        feign_slf4j:        "${groups.feign}:feign-slf4j:${versions.feign}",
-        // slf4j
-        slf4j_api:          "${groups.slf4j}:slf4j-api:${versions.slf4j}",
-        slf4j_log4j12:      "${groups.slf4j}:slf4j-log4j12:${versions.slf4j}",
+        caffeine:           "${groups.caffeine}:caffeine:${versions.caffeine}",
     ]
 }

@@ -32,6 +32,8 @@ dependencies {
     annotationProcessor libraries.lombok
     // boot
     compile('org.springframework.boot:spring-boot-starter-cache')
+    // caffeine
+    compile             libraries.caffeine
 
     //testCompile('org.springframework.boot:spring-boot-starter-test')
 }
