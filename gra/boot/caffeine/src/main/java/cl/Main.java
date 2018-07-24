@@ -10,6 +10,7 @@ public class Main implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         log.info("start");
+        log.debug("some debug");
     }
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
