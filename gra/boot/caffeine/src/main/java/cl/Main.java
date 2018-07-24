@@ -3,21 +3,19 @@ package cl;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+
 import org.springframework.cache.CacheManager;
 
 import lombok.extern.slf4j.Slf4j;
 
+@ComponentScan({"cl"})
 @Slf4j
 public class Main implements CommandLineRunner {
 
-    private final CacheManager cacheManager;
+    @Autowired private CacheManager cacheManager;
     // private final ResourceService resourceService;
-
-    // @Autowired
-    public Main(CacheManager cacheManager/*, ResourceService resourceService*/) {
-        this.cacheManager = cacheManager;
-        // this.resourceService = resourceService;
-    }
 
     @Override
     public void run(String... args) throws Exception {
