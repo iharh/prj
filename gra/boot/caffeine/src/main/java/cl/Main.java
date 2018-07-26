@@ -6,8 +6,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 
-import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.Cache;
 
 import java.util.concurrent.TimeUnit;
 
@@ -28,12 +29,23 @@ public class Main implements CommandLineRunner {
         log.info("cacheManager null: {}", cacheManager == null);
         log.info("resourceService null: {}", resourceService == null);
 
-        val r1 = resourceService.getByKey(KEY1);
+        resourceService.getByKey(KEY1);
         log.info("done 1");
-        val r2 = resourceService.getByKey(KEY1);
+        resourceService.getByKey(KEY1);
         log.info("done 2");
-        val r3 = resourceService.getByKey(KEY1);
+        resourceService.getByKey(KEY1);
         log.info("done 3");
+
+
+        log.info("sleep 3 sec");
+        TimeUnit.SECONDS.sleep(3);
+
+        resourceService.getByKey(KEY1);
+        log.info("done 4");
+        resourceService.getByKey(KEY1);
+        log.info("done 5");
+        resourceService.getByKey(KEY1);
+        log.info("done 6");
 
         TimeUnit.SECONDS.sleep(7);
         log.info("done sleep");

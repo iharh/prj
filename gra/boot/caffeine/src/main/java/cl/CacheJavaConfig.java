@@ -1,17 +1,26 @@
 package cl;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.caffeine.CaffeineCacheManager;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
+import com.github.benmanes.caffeine.cache.CaffeineSpec;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.concurrent.TimeUnit;
+import lombok.Getter;
+
+
 
 @Configuration
 public class CacheJavaConfig {
+    @Getter
+    @Value("${caffeine.spec}")
+    private String caffeineSpecStr; // initialCapacity=100,maximumSize=1000,expireAfterWrite=2s,recordStats
+
     @Bean
     public CacheManager cacheManager() {
         CaffeineCacheManager cacheManager = new CaffeineCacheManager("gazet", "cte");
@@ -21,12 +30,11 @@ public class CacheJavaConfig {
     }
 
     private Caffeine<Object, Object> caffeineCacheBuilder() {
-        return Caffeine.newBuilder()
-                .initialCapacity(100)
-                .maximumSize(150)
-                .expireAfterAccess(5, TimeUnit.SECONDS) // MINUTES
-                .weakKeys()
-                .removalListener(new CustomRemovalListener())
-                .recordStats();
+        return Caffeine.from(caffeineSpec())
+            .removalListener(new CustomRemovalListener());
+    }
+
+    private CaffeineSpec caffeineSpec() {
+        return CaffeineSpec.parse(caffeineSpecStr);
     }
 }
