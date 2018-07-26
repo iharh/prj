@@ -32,6 +32,7 @@ dependencies {
     annotationProcessor libraries.lombok
     // boot
     compile('org.springframework.boot:spring-boot-starter-cache')
+    compile 'org.springframework.boot:spring-boot-starter-actuator' // for manage
     // caffeine
     compile             libraries.caffeine
 
