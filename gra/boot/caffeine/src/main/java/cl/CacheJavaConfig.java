@@ -23,11 +23,13 @@ public class CacheJavaConfig {
     public CacheManager cacheManager() {
         CaffeineCacheManager cacheManager = new CaffeineCacheManager("gazet", "cte");
         cacheManager.setAllowNullValues(false); //can happen if you get a value from a @Cachable that returns null
-        cacheManager.setCaffeine(caffeineCacheBuilder());
+        Caffeine<ResourceKey, ResourceValue> caffeine = caffeineCacheBuilder();
+        // Caffeine<Object, Object> caffeineObj = (Caffeine<Object, Object>)caffeine;
+        cacheManager.setCaffeine(caffeine);
         return cacheManager;
     }
 
-    private Caffeine<Object, Object> caffeineCacheBuilder() {
+    private Caffeine<ResourceKey, ResourceValue> caffeineCacheBuilder() {
         return Caffeine.from(caffeineSpec())
             .removalListener(new CustomRemovalListener());
     }
