@@ -20,12 +20,12 @@ public class CacheJavaConfig {
     private String caffeineSpecStr; // initialCapacity=100,maximumSize=1000,expireAfterWrite=2s,recordStats
 
     @Bean
+    @SuppressWarnings("unchecked")
     public CacheManager cacheManager() {
         CaffeineCacheManager cacheManager = new CaffeineCacheManager("gazet", "cte");
         cacheManager.setAllowNullValues(false); //can happen if you get a value from a @Cachable that returns null
         Caffeine<ResourceKey, ResourceValue> caffeine = caffeineCacheBuilder();
-        // Caffeine<Object, Object> caffeineObj = (Caffeine<Object, Object>)caffeine;
-        cacheManager.setCaffeine(caffeine);
+        cacheManager.setCaffeine((Caffeine)caffeine);
         return cacheManager;
     }
 
