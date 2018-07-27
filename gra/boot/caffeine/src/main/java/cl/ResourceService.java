@@ -15,9 +15,9 @@ import lombok.extern.slf4j.Slf4j;
 public class ResourceService {
 
     @Cacheable(unless = "#result == null")
-    public ResourceValue getByKey(String key) {
+    public ResourceValue getByKey(ResourceKey key) {
         log.info("getByKey for key: {} \tCache MISS!", key);
-        return new ResourceValue("value-for-" + key);
+        return new ResourceValue("value-for-" + key.getAccountId() + "-" + key.getLexiconType());
     }
 
     @Caching(evict = {

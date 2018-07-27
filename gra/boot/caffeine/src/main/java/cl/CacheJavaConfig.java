@@ -13,8 +13,6 @@ import org.springframework.context.annotation.Configuration;
 
 import lombok.Getter;
 
-
-
 @Configuration
 public class CacheJavaConfig {
     @Getter

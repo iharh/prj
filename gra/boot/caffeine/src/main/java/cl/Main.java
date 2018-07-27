@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @EnableCaching
 @Slf4j
 public class Main implements CommandLineRunner {
-    private static final String KEY1 = "Key1";
+    private static final ResourceKey KEY1 = new ResourceKey(0, "lexType1");
 
     @Autowired private CacheManager cacheManager;
     @Autowired private ResourceService resourceService;
