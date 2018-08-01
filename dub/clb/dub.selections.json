@@ -3,8 +3,8 @@
 	"versions": {
 		"botan": "1.12.10",
 		"botan-math": "1.0.3",
-		"darg": "0.0.4",
-		"database": "0.1.6",
+		"darg": "0.0.5",
+		"database": "0.1.7",
 		"diet-ng": "1.4.5",
 		"dxml": "0.2.3",
 		"eventcore": "0.8.35",
