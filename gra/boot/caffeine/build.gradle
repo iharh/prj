@@ -24,6 +24,17 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+
+    // lib folder with 3rd party dependencies
+    ivy {
+        url '/data/wrk/clb/platform/lib'
+        layout "pattern" , {
+            artifact "[module]/[revision]/[artifact]-[revision].[ext]"
+            artifact "[module]/[revision]/[artifact].[ext]"
+            artifact "[organisation]/[revision]/[artifact]-[revision].[ext]"
+            ivy "[module]/[revision]/ivy-[revision].xml"
+        }
+    }
 }
 
 dependencies {
@@ -31,11 +42,12 @@ dependencies {
     compileOnly         libraries.lombok
     annotationProcessor libraries.lombok
     // boot
-    compile('org.springframework.boot:spring-boot-starter-cache')
+    compile 'org.springframework.boot:spring-boot-starter-cache'
     compile 'org.springframework.boot:spring-boot-starter-actuator' // for manage
     // caffeine
     compile             libraries.caffeine
 
+    compile 'javacsv:javacsv:2.1'
     //testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 

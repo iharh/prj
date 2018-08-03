@@ -15,6 +15,14 @@ import java.util.concurrent.TimeUnit;
 import lombok.val;
 import lombok.extern.slf4j.Slf4j;
 
+import com.csvreader.CsvReader;
+
+import java.io.File;
+import java.io.FileInputStream;
+
+import java.nio.charset.StandardCharsets;
+
+
 @ComponentScan({"cl"})
 @EnableCaching
 @Slf4j
@@ -26,6 +34,27 @@ public class Main implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        val reader = new CsvReader(
+            new FileInputStream(
+                new File("/data/wrk/clb/svnmain/lang-packs/bengali/installer/sql/p_sentiment_modifier.csv")
+            ),
+            StandardCharsets.UTF_8);
+
+        while (reader.readRecord()) {
+            String[] values = reader.getValues();
+
+            int len = values.length;
+            if (len != 3) {
+                log.info("values length: {}", len);
+            }
+            for (String v: values) {
+                if (v == null) {
+                    log.info("value is null !!!");
+                }
+            }
+        }
+
+        /*
         log.info("cacheManager null: {}", cacheManager == null);
         log.info("resourceService null: {}", resourceService == null);
 
@@ -49,6 +78,7 @@ public class Main implements CommandLineRunner {
 
         TimeUnit.SECONDS.sleep(7);
         log.info("done sleep");
+        */
     }
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
