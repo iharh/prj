@@ -68,21 +68,21 @@ main(int argc, char *argv[])
 
     try
     {
-        // !!! fstp.initAnalysis();
+        fstp.initAnalysis();
 
         if (!fstp.valid())
         {
             exit(EXIT_FAILURE);
         }
-        // !!! fstp.analysis(input.get(), output.get());
+        fstp.analysis(input.get(), output.get());
     }
     catch (std::exception &e)
     {
         std::wcerr << e.what();
-        /* !!! if (fstp.getNullFlush())
+        if (fstp.getNullFlush())
         {
-            fputwc_unlocked(L'\0', output.get);
-        }*/
+            fputwc_unlocked(L'\0', output.get());
+        }
         exit(1);
     }
 

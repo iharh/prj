@@ -19,10 +19,10 @@
 #define _FSTPROCESSOR_
 
 #include <lttoolbox/alphabet.h>
-//#include <lttoolbox/buffer.h>
-//#include <lttoolbox/ltstr.h>
+#include <lttoolbox/buffer.h>
+#include <lttoolbox/ltstr.h>
 #include <lttoolbox/my_stdio.h>
-//#include <lttoolbox/state.h>
+#include <lttoolbox/state.h>
 #include <lttoolbox/trans_exe.h>
 //#include <libxml/xmlreader.h>
 
@@ -76,22 +76,22 @@ private:
   /**
    * The final states of inconditional sections in the dictionaries
    */
-  //map<Node *, double> inconditional;
+  map<Node *, double> inconditional;
 
   /**
    * The final states of standard sections in the dictionaries
    */
-  //map<Node *, double> standard;
+  map<Node *, double> standard;
 
   /**
    * The final states of postblank sections in the dictionaries
    */
-  //map<Node *, double> postblank;
+  map<Node *, double> postblank;
 
   /**
    * The final states of preblank sections in the dictionaries
    */
-  //map<Node *, double> preblank;
+  map<Node *, double> preblank;
 
   /**
    * Merge of 'inconditional', 'standard', 'postblank' and 'preblank' sets
@@ -101,7 +101,7 @@ private:
   /**
    * Queue of blanks, used in reading methods
    */
-  //queue<wstring> blankqueue;
+  queue<wstring> blankqueue;
 
   /**
    * Set of characters being considered alphabetics
@@ -121,7 +121,7 @@ private:
   /**
    * Mapping of characters for simplistic diacritic restoration specified in RCX files
    */
-  //map<int, set<int> > rcx_map;
+  map<int, set<int> > rcx_map;
 
   /**
    * Original char being restored
@@ -136,12 +136,12 @@ private:
   /**
    * Input buffer
    */
-  //Buffer<int> input_buffer;
+  Buffer<int> input_buffer;
 
   /**
    * Begin of the transducer
    */
-  //Node root;
+  Node root;
 
   /**
    * true if the position of input stream is out of a word
@@ -235,14 +235,14 @@ private:
   /**
    * Prints an error of input stream and exits
    */
-  //void streamError();
+  void streamError();
 
   /**
    * Reads a character that is defined in the set of escaped_chars
    * @param input the stream to read from
    * @return code of the character
    */
-  //wchar_t readEscaped(FILE *input);
+  wchar_t readEscaped(FILE *input);
 
   /**
    * Reads a block from the stream input, enclosed by delim1 and delim2
@@ -250,28 +250,28 @@ private:
    * @param delim1 the delimiter of the beginning of the sequence
    * @param delim1 the delimiter of the end of the sequence
    */
-  //wstring readFullBlock(FILE *input, wchar_t const delim1, wchar_t const delim2);
+  wstring readFullBlock(FILE *input, wchar_t const delim1, wchar_t const delim2);
 
   /**
    * Returns true if the character code is identified as alphabetic
    * @param c the code provided by the user
    * @return true if it's alphabetic
    */
-  //bool isAlphabetic(wchar_t const c) const;
+  bool isAlphabetic(wchar_t const c) const;
 
   /**
    * Tests if a character is in the set of escaped_chars
    * @param c the character code provided by the user
    * @return true if it is in the set
    */
-  //bool isEscaped(wchar_t const c) const;
+  bool isEscaped(wchar_t const c) const;
 
   /**
    * Read text from stream (analysis version, also used in postgeneration)
    * @param input the stream to read
    * @return the next symbol in the stream
    */
-  //int readAnalysis(FILE *input);
+  int readAnalysis(FILE *input);
 
   /**
    * Read text from stream (generation version, also used in generation)
@@ -312,24 +312,24 @@ private:
    * Flush all the blanks remaining in the current process
    * @param output stream to write blanks
    */
-  //void flushBlanks(FILE *output);
+  void flushBlanks(FILE *output);
 
   /**
    * Calculate the initial state of parsing
    */
-  //void calcInitial();
+  void calcInitial();
 
   /**
    * Calculate all the results of the word being parsed
    */
-  //void classifyFinals();
+  void classifyFinals();
 
   /**
    * Write a string to an output stream,
    * @param str the string to write, escaping characters
    * @param output the stream to write in
    */
-  //void writeEscaped(wstring const &str, FILE *output);
+  void writeEscaped(wstring const &str, FILE *output);
 
 
   /**
@@ -347,7 +347,7 @@ private:
    * @param the searched suffix
    * @returns true if 'str' has the suffix 'suffix'
    */
-  //static bool endsWith(wstring const &str, wstring const &suffix);
+  static bool endsWith(wstring const &str, wstring const &suffix);
 
   /**
    * Prints a word
@@ -355,7 +355,7 @@ private:
    * @param lf lexical form of the word
    * @param output stream where the word is written
    */
-  //void printWord(wstring const &sf, wstring const &lf, FILE *output);
+  void printWord(wstring const &sf, wstring const &lf, FILE *output);
 
   /**
    * Prints a word (Bilingual version)
@@ -378,21 +378,21 @@ private:
    * @param sf surface form of the word
    * @param output stream where the word is written
    */
-  //void printUnknownWord(wstring const &sf, FILE *output);
+  void printUnknownWord(wstring const &sf, FILE *output);
 
   //void initDecompositionSymbols();
 
   //vector<wstring> numbers;
   //int readTMAnalysis(FILE *input);
 
-  //unsigned int lastBlank(wstring const &str);
-  //void printSpace(wchar_t const val, FILE *output);
+  unsigned int lastBlank(wstring const &str);
+  void printSpace(wchar_t const val, FILE *output);
   //void skipUntil(FILE *input, FILE *output, wint_t const character);
   //static wstring removeTags(wstring const &str);
-  //wstring compoundAnalysis(wstring str, bool uppercase, bool firstupper);
-  //size_t firstNotAlpha(wstring const &sf);
+  wstring compoundAnalysis(wstring str, bool uppercase, bool firstupper);
+  size_t firstNotAlpha(wstring const &sf);
 
-  //void analysis_wrapper_null_flush(FILE *input, FILE *output);
+  void analysis_wrapper_null_flush(FILE *input, FILE *output);
   //void lsx_wrapper_null_flush(FILE *input, FILE *output);
   //void bilingual_wrapper_null_flush(FILE *input, FILE *output);
   //void generation_wrapper_null_flush(FILE *input, FILE *output,
@@ -412,16 +412,19 @@ private:
   //xmlTextReaderPtr reader;
 public:
   FSTProcessor();
-/*
+
   void initAnalysis();
+/*
   void initTMAnalysis();
   void initSAO(){initAnalysis();};
   void initGeneration();
   void initPostgeneration();
   void initBiltrans();
   void initDecomposition();
+*/
 
   void analysis(FILE *input = stdin, FILE *output = stdout);
+/*
   void tm_analysis(FILE *input = stdin, FILE *output = stdout);
   void generation(FILE *input = stdin, FILE *output = stdout, GenerationMode mode = gm_unknown);
   void postgeneration(FILE *input = stdin, FILE *output = stdout);
@@ -447,18 +450,18 @@ public:
   //void setCaseSensitiveMode(bool const value);
 
   void setDictionaryCaseMode(bool const value);
-/*
-  void setBiltransSurfaceForms(bool const value);
-  void setIgnoredChars(bool const value);
-  void setRestoreChars(bool const value);
+  //void setBiltransSurfaceForms(bool const value);
+  //void setIgnoredChars(bool const value);
+  //void setRestoreChars(bool const value);
   void setNullFlush(bool const value);
+/*
   void setUseDefaultIgnoredChars(bool const value);
   void setDisplayWeightsMode(bool const value);
   void setMaxAnalysesValue(int const value);
   void setMaxWeightClassesValue(int const value);
-  bool getNullFlush();
-  bool getDecompoundingMode();
 */
+  bool getNullFlush();
+//  bool getDecompoundingMode();
 };
 
 #endif

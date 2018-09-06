@@ -16,7 +16,7 @@
  */
 #include <lttoolbox/fst_processor.h>
 #include <lttoolbox/compression.h>
-//#include <lttoolbox/exception.h>
+#include <lttoolbox/exception.h>
 //#include <lttoolbox/xml_parse_util.h>
 
 #include <iostream>
@@ -67,13 +67,14 @@ isLastBlankTM(false)
     initDefaultIgnoredCharacters();
   }
 }
-/*
+
 void
 FSTProcessor::streamError()
 {
   throw Exception("Error: Malformed input stream.");
 }
 
+/*
 void
 FSTProcessor::parseICX(string const &file)
 {
@@ -188,6 +189,7 @@ FSTProcessor::procNodeRCX()
     exit(EXIT_FAILURE);
   }
 }
+*/
 
 wchar_t
 FSTProcessor::readEscaped(FILE *input)
@@ -289,6 +291,7 @@ FSTProcessor::readAnalysis(FILE *input)
   return val;
 }
 
+/*
 int
 FSTProcessor::readTMAnalysis(FILE *input)
 {
@@ -626,6 +629,7 @@ FSTProcessor::readBilingual(FILE *input, FILE *output)
 
   return pair<wstring, int>(symbol, val);
 }
+*/
 
 void
 FSTProcessor::flushBlanks(FILE *output)
@@ -712,6 +716,7 @@ FSTProcessor::writeEscaped(wstring const &str, FILE *output)
   }
 }
 
+/*
 void
 FSTProcessor::writeEscapedWithTags(wstring const &str, FILE *output)
 {
@@ -730,6 +735,7 @@ FSTProcessor::writeEscapedWithTags(wstring const &str, FILE *output)
     fputwc_unlocked(str[i], output);
   }
 }
+*/
 
 
 
@@ -742,6 +748,7 @@ FSTProcessor::printWord(wstring const &sf, wstring const &lf, FILE *output)
   fputwc_unlocked(L'$', output);
 }
 
+/*
 void
 FSTProcessor::printWordBilingual(wstring const &sf, wstring const &lf, FILE *output)
 {
@@ -750,6 +757,7 @@ FSTProcessor::printWordBilingual(wstring const &sf, wstring const &lf, FILE *out
   fputws_unlocked(lf.c_str(), output);
   fputwc_unlocked(L'$', output);
 }
+*/
 
 void
 FSTProcessor::printUnknownWord(wstring const &sf, FILE *output)
@@ -800,7 +808,6 @@ FSTProcessor::isAlphabetic(wchar_t const c) const
 {
   return alphabetic_chars.find(c) != alphabetic_chars.end();
 }
-*/
 
 void
 FSTProcessor::load(FILE *input)
@@ -1111,6 +1118,7 @@ FSTProcessor::lsx(FILE *input, FILE *output)
 
   flushBlanks(output);
 }
+*/
 
 void
 FSTProcessor::initAnalysis()
@@ -1123,6 +1131,7 @@ FSTProcessor::initAnalysis()
   all_finals.insert(preblank.begin(), preblank.end());
 }
 
+/*
 void
 FSTProcessor::initTMAnalysis()
 {
@@ -1162,6 +1171,7 @@ FSTProcessor::initBiltrans()
 {
   initGeneration();
 }
+*/
 
 
 wstring
@@ -1205,7 +1215,7 @@ FSTProcessor::compoundAnalysis(wstring input_word, bool uppercase, bool firstupp
 }
 
 
-
+/*
 void
 FSTProcessor::initDecompositionSymbols()
 {
@@ -1244,6 +1254,7 @@ FSTProcessor::initDecomposition()
   initAnalysis();
   initDecompositionSymbols();
 }
+*/
 
 void
 FSTProcessor::analysis(FILE *input, FILE *output)
@@ -1558,6 +1569,7 @@ FSTProcessor::analysis_wrapper_null_flush(FILE *input, FILE *output)
   }
 }
 
+/*
 void
 FSTProcessor::generation_wrapper_null_flush(FILE *input, FILE *output,
                                             GenerationMode mode)
@@ -3528,13 +3540,13 @@ FSTProcessor::setDictionaryCaseMode(bool const value)
 {
   dictionaryCase = value;
 }
-/*
+
 void
 FSTProcessor::setNullFlush(bool const value)
 {
   nullFlush = value;
 }
-
+/*
 void
 FSTProcessor::setIgnoredChars(bool const value)
 {
@@ -3576,6 +3588,7 @@ FSTProcessor::getDecompoundingMode()
 {
   return do_decomposition;
 }
+*/
 
 bool
 FSTProcessor::getNullFlush()
@@ -3596,4 +3609,3 @@ FSTProcessor::firstNotAlpha(wstring const &sf)
 
   return wstring::npos;
 }
-*/
