@@ -93,7 +93,7 @@ private:
    * @param input the input symbol
    * @param alt the alternative input symbol
    */
-  void apply_careful(int const input, int const alt);
+  //void apply_careful(int const input, int const alt);
 
   /**
    * Make a transition, but overriding the output symbol
@@ -101,7 +101,7 @@ private:
    * @param output symbol we expect to appear
    * @param output symbol we want to appear
    */
-  void apply_override(int const input, int const old_sym, int const new_sym);
+  //void apply_override(int const input, int const old_sym, int const new_sym);
 
   /**
    * Calculate the epsilon closure over the current state, replacing
@@ -173,11 +173,11 @@ public:
 
   void step_case(wchar_t val, bool caseSensitive);
 
-  void step_case(wchar_t val, wchar_t val2, bool caseSensitive);
+  //void step_case(wchar_t val, wchar_t val2, bool caseSensitive);
 
-  void step_careful(int const input, int const alt);
+  //void step_careful(int const input, int const alt);
 
-  void step_override(int const input, int const old_sym, int const new_sym);
+  //void step_override(int const input, int const old_sym, int const new_sym);
 
   /**
    * Init the state with the initial node and empty output
@@ -254,13 +254,14 @@ public:
    * @param firstchar first character of the word
    * @return the result of the transduction
    */
+/*
   wstring filterFinalsSAO(map<Node *, double> const &finals,
                           Alphabet const &a,
                           set<wchar_t> const &escaped_chars,
                           bool uppercase = false,
                           bool firstupper = false,
                           int firstchar = 0) const;
-
+*/
 
   /**
    * Same as previous one, but  the output is adapted to the LRX system
@@ -273,14 +274,14 @@ public:
    * @param firstchar first character of the word
    * @return the result of the transduction
    */
-
+/*
   set<pair<wstring, vector<wstring> > > filterFinalsLRX(map<Node *, double> const &finals,
                                                         Alphabet const &a,
                                                         set<wchar_t> const &escaped_chars,
                                                         bool uppercase = false,
                                                         bool firstupper = false,
                                                         int firstchar = 0) const;
-
+*/
 
 
 
@@ -307,14 +308,15 @@ public:
   /**
    * Return the full states string (to allow debuging...) using a Java ArrayList.toString style
    */
-  wstring getReadableString(const Alphabet &a);
+  //wstring getReadableString(const Alphabet &a);
 
+/*
   wstring filterFinalsTM(map<Node *, double> const &finals,
                          Alphabet const &alphabet,
                          set<wchar_t> const &escaped_chars,
                          queue<wstring> &blanks,
                          vector<wstring> &numbers) const;
-
+*/
 };
 
 #endif

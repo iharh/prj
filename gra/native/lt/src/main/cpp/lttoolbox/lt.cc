@@ -1,7 +1,7 @@
 #include <lttoolbox/fst_processor.h>
 //#include <lttoolbox/lttoolbox_config.h>
 #include <lttoolbox/my_stdio.h>
-//#include <lttoolbox/lt_locale.h>
+#include <lttoolbox/lt_locale.h>
 
 #include <cstdlib>
 #include <iostream>
@@ -48,9 +48,7 @@ main(int argc, char *argv[])
     FSTProcessor fstp;
     fstp.setDictionaryCaseMode(true); // -w option
 
-    /* !!!
     LtLocale::tryToSetLocale();
-    */
 
     if (argc < 4)
     {
@@ -86,7 +84,7 @@ main(int argc, char *argv[])
         exit(1);
     }
 
-    std::wcout << "hello lt!" << std::endl;
+    std::wcout << "Done." << std::endl;
 
     return EXIT_SUCCESS;
 }
