@@ -66,7 +66,7 @@ private:
   /**
    * Initial state of every token
    */
-  //State initial_state;
+  State initial_state;
 
   /**
    * Default value of weight unless specified
@@ -96,7 +96,7 @@ private:
   /**
    * Merge of 'inconditional', 'standard', 'postblank' and 'preblank' sets
    */
-  //map<Node *, double> all_finals;
+  map<Node *, double> all_finals;
 
   /**
    * Queue of blanks, used in reading methods
@@ -442,7 +442,7 @@ public:
 
   //void lsx(FILE *input, FILE *output);
 
-  //bool valid() const;
+  bool valid() const;
 
   //void setCaseSensitiveMode(bool const value);
 

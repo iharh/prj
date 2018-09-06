@@ -3250,7 +3250,7 @@ FSTProcessor::biltransWithoutQueue(wstring const &input_word, bool with_delim)
   }
   return result;
 }
-
+*/
 
 bool
 FSTProcessor::valid() const
@@ -3274,6 +3274,7 @@ FSTProcessor::valid() const
   return true;
 }
 
+/*
 int
 FSTProcessor::readSAO(FILE *input)
 {
