@@ -1,4 +1,4 @@
-//#include <lttoolbox/fst_processor.h>
+#include <lttoolbox/fst_processor.h>
 //#include <lttoolbox/lttoolbox_config.h>
 #include <lttoolbox/my_stdio.h>
 //#include <lttoolbox/lt_locale.h>
@@ -45,10 +45,10 @@ printArgs(int argc, char *argv[])
 int
 main(int argc, char *argv[])
 {
-    /* !!!
     FSTProcessor fstp;
     fstp.setDictionaryCaseMode(true); // -w option
 
+    /* !!!
     LtLocale::tryToSetLocale();
     */
 
