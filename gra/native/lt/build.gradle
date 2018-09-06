@@ -1,0 +1,46 @@
+plugins {
+    id 'base'
+    id 'cpp'
+}
+
+model {
+    buildTypes {
+        release
+        //debug
+    }
+
+    toolChains {
+        gcc(Gcc)
+        //clang(Clang)
+    }
+
+    platforms {
+        x64 {
+            architecture "x86_64"
+        }
+    }
+
+    binaries {
+        withType(NativeExecutableSpec) { // all
+            if (toolChain in Gcc) {
+                println 'toolchain is Gcc!'
+                // "-O2", "-fno-access-control"
+                // cppCompiler.args '-std=c++0x', '-Wno-narrowing'
+            }
+        }
+    }
+
+    components {
+ 	lt(NativeExecutableSpec) {
+            targetPlatform 'x64'
+            sources {
+                cpp {
+                    source {
+                        srcDirs 'src/main/cpp/lt'
+                        include '*.cc'
+                    }
+                }
+            }
+        }
+    }
+}
