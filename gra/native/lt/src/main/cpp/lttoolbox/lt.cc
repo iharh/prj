@@ -1,6 +1,6 @@
-#include <lttoolbox/fst_processor.h>
+//#include <lttoolbox/fst_processor.h>
 //#include <lttoolbox/lttoolbox_config.h>
-//#include <lttoolbox/my_stdio.h>
+#include <lttoolbox/my_stdio.h>
 //#include <lttoolbox/lt_locale.h>
 
 #include <cstdlib>
@@ -81,7 +81,7 @@ main(int argc, char *argv[])
         std::wcerr << e.what();
         if (fstp.getNullFlush())
         {
-            fputwc_unlocked(L'\0', output);
+            fputwc_unlocked(L'\0', output.get);
         }
         exit(1);
     }
