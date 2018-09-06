@@ -18,12 +18,12 @@
 #ifndef _FSTPROCESSOR_
 #define _FSTPROCESSOR_
 
-//#include <lttoolbox/alphabet.h>
+#include <lttoolbox/alphabet.h>
 //#include <lttoolbox/buffer.h>
 //#include <lttoolbox/ltstr.h>
 #include <lttoolbox/my_stdio.h>
 //#include <lttoolbox/state.h>
-//#include <lttoolbox/trans_exe.h>
+#include <lttoolbox/trans_exe.h>
 //#include <libxml/xmlreader.h>
 
 #include <cwchar>
@@ -56,7 +56,7 @@ private:
   /**
    * Transducers in FSTP
    */
-  //map<wstring, TransExe, Ltstr> transducers;
+  map<wstring, TransExe, Ltstr> transducers;
 
   /**
    * Current state of lexical analysis
@@ -106,7 +106,7 @@ private:
   /**
    * Set of characters being considered alphabetics
    */
-  //set<wchar_t> alphabetic_chars;
+  set<wchar_t> alphabetic_chars;
 
   /**
    * Set of characters to escape with a backslash
@@ -131,7 +131,7 @@ private:
   /**
    * Alphabet
    */
-  //Alphabet alphabet;
+  Alphabet alphabet;
 
   /**
    * Input buffer

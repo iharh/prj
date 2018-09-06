@@ -820,7 +820,7 @@ FSTProcessor::load(FILE *input)
           fsetpos(input, &pos);
       }
   }
-/*
+
   // letters
   int len = Compression::multibyte_read(input);
   while(len > 0)
@@ -846,7 +846,6 @@ FSTProcessor::load(FILE *input)
     transducers[name].read(input, alphabet);
     len--;
   }
-*/
 }
 
 /*

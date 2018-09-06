@@ -265,6 +265,7 @@ Compression::wstring_write(wstring const &str, FILE *output)
     Compression::multibyte_write(static_cast<int>(c), output);
   }
 }
+*/
 
 wstring
 Compression::wstring_read(FILE *input)
@@ -279,7 +280,7 @@ Compression::wstring_read(FILE *input)
 
   return retval;
 }
-
+/*
 void
 Compression::string_write(string const &str, FILE *output)
 {
