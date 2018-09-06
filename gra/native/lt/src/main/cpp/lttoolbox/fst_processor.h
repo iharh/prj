@@ -436,15 +436,16 @@ public:
   void SAO(FILE *input = stdin, FILE *output = stdout);
   void parseICX(string const &file);
   void parseRCX(string const &file);
+*/
 
   void load(FILE *input);
 
-  void lsx(FILE *input, FILE *output);
+  //void lsx(FILE *input, FILE *output);
 
-  bool valid() const;
+  //bool valid() const;
 
-  void setCaseSensitiveMode(bool const value);
-*/
+  //void setCaseSensitiveMode(bool const value);
+
   void setDictionaryCaseMode(bool const value);
 /*
   void setBiltransSurfaceForms(bool const value);

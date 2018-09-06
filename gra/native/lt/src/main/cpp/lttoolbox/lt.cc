@@ -60,7 +60,7 @@ main(int argc, char *argv[])
 
     {
         FileHolder in(argv[1], "rb");
-        // !!! fstp.load(in.get());
+        fstp.load(in.get());
     }
 
     FileHolder input(argv[2], "rb");

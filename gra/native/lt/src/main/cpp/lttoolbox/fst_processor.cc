@@ -15,13 +15,14 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 #include <lttoolbox/fst_processor.h>
-//#include <lttoolbox/compression.h>
+#include <lttoolbox/compression.h>
 //#include <lttoolbox/exception.h>
 //#include <lttoolbox/xml_parse_util.h>
 
 #include <iostream>
 #include <cerrno>
 #include <climits>
+#include <cstring>
 
 using namespace std;
 
@@ -799,6 +800,7 @@ FSTProcessor::isAlphabetic(wchar_t const c) const
 {
   return alphabetic_chars.find(c) != alphabetic_chars.end();
 }
+*/
 
 void
 FSTProcessor::load(FILE *input)
@@ -818,7 +820,7 @@ FSTProcessor::load(FILE *input)
           fsetpos(input, &pos);
       }
   }
-
+/*
   // letters
   int len = Compression::multibyte_read(input);
   while(len > 0)
@@ -844,8 +846,10 @@ FSTProcessor::load(FILE *input)
     transducers[name].read(input, alphabet);
     len--;
   }
+*/
 }
 
+/*
 void
 FSTProcessor::lsx_wrapper_null_flush(FILE *input, FILE *output)
 {
