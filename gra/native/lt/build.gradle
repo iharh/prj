@@ -10,8 +10,8 @@ model {
     }
 
     toolChains {
-        //gcc(Gcc)
-        clang(Clang)
+        gcc(Gcc)
+        //clang(Clang)
     }
 
     platforms {
@@ -23,18 +23,12 @@ model {
     binaries {
         // all withType(NativeExecutableBinarySpec) withType(NativeExecutableSpec)
         all {
-            if (toolChain in Gcc) {
-                println 'toolchain is Gcc!'
-                // "-O2", "-fno-access-control"
-                // cppCompiler.args '-std=c++0x', '-Wno-narrowing'
-                cppCompiler.args '-std=c++0x', '-O0', '-g', '-fsanitize=address', '-fno-omit-frame-pointer'
-                linker.args '-g', '-fsanitize=address'
-            }
-            if (toolChain in Clang) {
-                println 'toolchain is Clang!'
-                cppCompiler.args '-std=c++0x', '-O0', '-g', '-fsanitize=address', '-fno-omit-frame-pointer'
-                linker.args '-g', '-fsanitize=address'
-            }
+            // if (toolChain in Gcc) { // Clang
+            println toolChain
+            // "-O2", "-fno-access-control"
+            // cppCompiler.args '-std=c++0x', '-Wno-narrowing'
+            cppCompiler.args '-std=c++0x', '-O0', '-g' // , '-fsanitize=address', '-fno-omit-frame-pointer'
+            linker.args '-g' // , '-fsanitize=address'
         }
     }
 

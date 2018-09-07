@@ -27,9 +27,7 @@ using namespace std;
 
 
 FSTProcessor::FSTProcessor() :
-default_weight(0.0000),
-outOfWord(false),
-isLastBlankTM(false)
+default_weight(0.0000)
 {
   // escaped_chars chars
   escaped_chars.insert(L'[');
@@ -44,37 +42,24 @@ isLastBlankTM(false)
   escaped_chars.insert(L'<');
   escaped_chars.insert(L'>');
 
-  caseSensitive = false;
   dictionaryCase = false;
+
   do_decomposition = false;
-  useIgnoredChars = false;
-  useDefaultIgnoredChars = true;
-  useRestoreChars = false;
   displayWeightsMode = false;
-  showControlSymbols = false;
-  biltransSurfaceForms = false;
+
   maxAnalyses = INT_MAX;
   maxWeightClasses = INT_MAX;
   compoundOnlyLSymbol = 0;
   compoundRSymbol = 0;
   compound_max_elements = 4;
 
-  if(useDefaultIgnoredChars)
-  {
-    initDefaultIgnoredCharacters();
-  }
+  ignored_chars.insert(173); // '\u00AD', soft hyphen
 }
 
 void
 FSTProcessor::streamError()
 {
   throw Exception("Error: Malformed input stream.");
-}
-
-void
-FSTProcessor::initDefaultIgnoredCharacters()
-{
-  ignored_chars.insert(173); // '\u00AD', soft hyphen
 }
 
 wchar_t
@@ -141,7 +126,7 @@ FSTProcessor::readAnalysis(astream_t &input)
     return 0;
   }
 
-  if((useIgnoredChars || useDefaultIgnoredChars) && ignored_chars.find(val) != ignored_chars.end())
+  if(ignored_chars.find(val) != ignored_chars.end())
   {
     input_buffer.add(val);
     input >> val;
@@ -390,7 +375,7 @@ FSTProcessor::compoundAnalysis(wstring input_word, bool uppercase, bool firstupp
   {
     wchar_t val=input_word.at(i);
 
-    current_state.step_case(val, caseSensitive);
+    current_state.step_case(val, false);
 
     if(current_state.size() > MAX_COMBINATIONS)
     {
@@ -526,30 +511,8 @@ FSTProcessor::analysis(astream_t &input, FILE *output)
       last = input_buffer.getPos();
     }
 
-    if(useRestoreChars && rcx_map.find(val) != rcx_map.end())
     {
-      rcx_map_ptr = rcx_map.find(val);
-      set<int> tmpset = rcx_map_ptr->second;
-      if(!iswupper(val) || caseSensitive)
-      {
-        current_state.step(val, tmpset);
-      }
-      else if(rcx_map.find(towlower(val)) != rcx_map.end())
-      {
-        rcx_map_ptr = rcx_map.find(tolower(val));
-        tmpset.insert(tolower(val));
-        tmpset.insert(rcx_map_ptr->second.begin(), rcx_map_ptr->second.end());
-        current_state.step(val, tmpset);
-      }
-      else
-      {
-        tmpset.insert(tolower(val));
-        current_state.step(val, tmpset);
-      }
-    }
-    else
-    {
-      if(!iswupper(val) || caseSensitive)
+      if(!iswupper(val))
       {
         current_state.step(val);
       }
@@ -687,13 +650,11 @@ FSTProcessor::analysis(astream_t &input, FILE *output)
           {
             printUnknownWord(unknown_word, output);
           }
-
         }
       }
       else
       {
-        printWord(sf.substr(0, sf.size()-input_buffer.diffPrevPos(last)),
-                  lf, output);
+        printWord(sf.substr(0, sf.size()-input_buffer.diffPrevPos(last)), lf, output);
         input_buffer.setPos(last);
         input_buffer.back(1);
       }

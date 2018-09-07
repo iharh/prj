@@ -141,41 +141,10 @@ private:
   Node root;
 
   /**
-   * true if the position of input stream is out of a word
-   */
-  bool outOfWord;
-
-  /**
-   * true if we're automatically removing surface forms.
-   */
-  bool biltransSurfaceForms;
-
-  /**
-   * if true, makes always difference between uppercase and lowercase
-   * characters
-   */
-  bool caseSensitive;
-
-  /**
    * if true, uses the dictionary case, discarding surface case
    * information
    */
   bool dictionaryCase;
-
-  /**
-   * if true, ignore the provided set of characters
-   */
-  bool useIgnoredChars;
-
-  /**
-   * if true, attempt simplistic diacritic restoration
-   */
-  bool useRestoreChars;
-
-  /**
-   * if true, skips loading the default set of ignored characters
-   */
-  bool useDefaultIgnoredChars;
 
   /**
    * if true, displays the final weights (if any)
@@ -196,11 +165,6 @@ private:
    * Symbol of CompoundR
    */
   int compoundRSymbol;
-
-  /**
-   * Show or not the controls symbols (as compoundRSymbol)
-   */
-   bool showControlSymbols;
 
   /**
    * Max compound elements
@@ -311,10 +275,6 @@ private:
   size_t firstNotAlpha(wstring const &sf);
 
   void analysis_wrapper_null_flush(istream &input, FILE *output);
-
-  void initDefaultIgnoredCharacters();
-
-  bool isLastBlankTM;
 
 public:
   FSTProcessor();

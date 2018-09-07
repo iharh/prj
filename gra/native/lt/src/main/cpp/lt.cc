@@ -6,32 +6,6 @@
 #include <iostream>
 #include <fstream>
 
-class FileHolder {
-private:
-    FILE *pF;
-public:
-    FileHolder(const char *file_name, const char *mode)
-    {
-        pF = fopen(file_name, mode);
-        if (pF == NULL || ferror(pF))
-        {
-            std::wcerr << "Error: Cannot not open file '" << file_name << "'." << std::endl << std::endl;
-            exit(EXIT_FAILURE);
-        }
-    }
-
-    ~FileHolder()
-    {
-        fclose(pF);
-    }
-
-    FILE *
-    get()
-    {
-        return pF;
-    }
-};
-
 void
 printArgs(int argc, char *argv[])
 {
@@ -41,36 +15,30 @@ printArgs(int argc, char *argv[])
     }
 }
 
-// 
-// using "argc", "argv" var-name is a kind-of magic - switchess off asan
-
 int
 main(int argc, char *argv[])
 {
 /*
     const char *fstFileName = "ben/ben.automorf.bin";
     const char *inFileName  = "data/in.txt";
-    const char *outFileName = "data/out.txt";
 */
     const char *fstFileName = argv[1];
     const char *inFileName  = argv[2];
-    const char *outFileName = argv[3];
 
     FSTProcessor fstp;
     fstp.setDictionaryCaseMode(true); // -w option
 
-    std::locale loc(std::locale(std::locale::classic(), "", std::locale::ctype));
+    //std::locale loc(std::locale(std::locale::classic(), "", std::locale::ctype));
+    std::locale loc("en_US.UTF8");
     LtLocale::tryToSetLocale();
 
     {
-        //FileHolder hFst(fstFileName, "rb");
         std::ifstream ifs(fstFileName, std::ifstream::binary);
         fstp.load(ifs); // hFst.get()
     }
 
-    std::wifstream infs(inFileName, std::ifstream::binary);
+    std::wifstream infs(inFileName, std::wifstream::binary);
     infs.imbue(loc);
-    FileHolder hOut(outFileName, "wb");
 
     try
     {
@@ -80,7 +48,7 @@ main(int argc, char *argv[])
             exit(EXIT_FAILURE);
         }
 
-        fstp.analysis(infs, hOut.get());
+        fstp.analysis(infs);
 
         std::wcout << "Done." << std::endl;
     }
@@ -89,8 +57,6 @@ main(int argc, char *argv[])
         std::wcerr << e.what();
         exit(1);
     }
-
-    { int *pB = new int; *pB = 3; }
 
     return EXIT_SUCCESS;
 }
