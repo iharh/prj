@@ -22,6 +22,7 @@
 #include <map>
 #include <set>
 #include <vector>
+#include <iostream>
 
 #include <lttoolbox/ltstr.h>
 
@@ -45,7 +46,6 @@ private:
    * @see slexic
    */
   vector<wstring> slexicinv;
-
 
   /**
    * Map from symbol-pairs to symbols; tags get negative numbers,
@@ -123,26 +123,10 @@ public:
   int size() const;
 
   /**
-   * Write method.
-   * @param output output stream.
-   */
-  // !!! void write(FILE *output);
-
-  /**
    * Read method.
    * @param input input stream.
    */
-  void read(FILE *input);
-
-  // !!! void serialise(std::ostream &serialised) const;
-  // !!! void deserialise(std::istream &serialised);
-
-  /**
-   * Write a symbol enclosed by angle brackets in the output stream.
-   * @param symbol symbol code.
-   * @param output output stream.
-   */
-  // !!! void writeSymbol(int const symbol, FILE *output) const;
+  void read(istream &input);
 
   /**
    * Concat a symbol in the string that is passed by reference.

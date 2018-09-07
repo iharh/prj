@@ -18,11 +18,12 @@
 #ifndef _TRANSEXE_
 #define _TRANSEXE_
 
-#include <cstdio>
-#include <cstdlib>
 #include <map>
 #include <set>
 #include <vector>
+#include <cstdio>
+#include <cstdlib>
+#include <iostream>
 
 #include <lttoolbox/alphabet.h>
 #include <lttoolbox/node.h>
@@ -96,7 +97,7 @@ public:
    * @param input the stream
    * @param alphabet the alphabet object to decode the symbols
    */
-  void read(FILE *input, Alphabet const &alphabet);
+  void read(istream &input, Alphabet const &alphabet);
 
   /**
    * Reduces all the final states to one

@@ -17,8 +17,6 @@
 #include <lttoolbox/alphabet.h>
 #include <lttoolbox/compression.h>
 #include <lttoolbox/my_stdio.h>
-//#include <lttoolbox/serialiser.h>
-//#include <lttoolbox/deserialiser.h>
 
 #include <cctype>
 #include <cstdlib>
@@ -126,31 +124,8 @@ Alphabet::size() const
   return slexic.size();
 }
 
-/* !!!
 void
-Alphabet::write(FILE *output)
-{
-  // First, we write the taglist
-  Compression::multibyte_write(slexicinv.size(), output);  // taglist size
-  for(unsigned int i = 0, limit = slexicinv.size(); i < limit; i++)
-  {
-    Compression::wstring_write(slexicinv[i].substr(1, slexicinv[i].size()-2), output);
-  }
-
-  // Then we write the list of pairs
-  // All numbers are biased + slexicinv.size() to be positive or zero
-  unsigned int bias = slexicinv.size();
-  Compression::multibyte_write(spairinv.size(), output);
-  for(unsigned int i = 0, limit = spairinv.size(); i != limit; i++)
-  {
-    Compression::multibyte_write(spairinv[i].first + bias, output);
-    Compression::multibyte_write(spairinv[i].second + bias, output);
-  }
-}
-*/
-
-void
-Alphabet::read(FILE *input)
+Alphabet::read(istream &input)
 {
   Alphabet a_new;
   a_new.spairinv.clear();
@@ -183,45 +158,6 @@ Alphabet::read(FILE *input)
 
   *this = a_new;
 }
-
-/* !!!
-void
-Alphabet::serialise(std::ostream &serialised) const
-{
-  Serialiser<const vector<wstring> >::serialise(slexicinv, serialised);
-  Serialiser<vector<pair<int, int> > >::serialise(spairinv, serialised);
-}
-
-void
-Alphabet::deserialise(std::istream &serialised)
-{
-  slexicinv.clear();
-  slexic.clear();
-  spairinv.clear();
-  spair.clear();
-  slexicinv = Deserialiser<vector<wstring> >::deserialise(serialised);
-  for (size_t i = 0; i < slexicinv.size(); i++) {
-    slexic[slexicinv[i]] = -i - 1;
-  }
-  spairinv = Deserialiser<vector<pair<int, int> > >::deserialise(serialised);
-  for (size_t i = 0; i < slexicinv.size(); i++) {
-    spair[spairinv[i]] = i;
-  }
-}
-
-void
-Alphabet::writeSymbol(int const symbol, FILE *output) const
-{
-  if(symbol < 0)
-  {
-    fputws_unlocked(slexicinv[-symbol-1].c_str(), output);
-  }
-  else
-  {
-    fputwc_unlocked(static_cast<wchar_t>(symbol), output);
-  }
-}
-*/
 
 void
 Alphabet::getSymbol(wstring &result, int const symbol, bool uppercase) const

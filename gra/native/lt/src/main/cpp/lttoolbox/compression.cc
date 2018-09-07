@@ -163,6 +163,20 @@ Compression::wstring_read(FILE *input)
   return retval;
 }
 
+wstring
+Compression::wstring_read(istream &input)
+{
+  wstring retval = L"";
+
+  for(unsigned int i = 0, limit = Compression::multibyte_read(input);
+      i != limit; i++)
+  {
+    retval += static_cast<wchar_t>(Compression::multibyte_read(input));
+  }
+
+  return retval;
+}
+
 string
 Compression::string_read(FILE *input)
 {

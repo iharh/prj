@@ -30,6 +30,7 @@
 #include <queue>
 #include <set>
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -330,7 +331,7 @@ public:
 
   void analysis(FILE *input = stdin, FILE *output = stdout);
 
-  void load(FILE *input);
+  void load(istream &input);
 
   bool valid() const;
 

@@ -4,6 +4,7 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <fstream>
 
 class FileHolder {
 private:
@@ -61,8 +62,9 @@ main(int argc, char *argv[])
     LtLocale::tryToSetLocale();
 
     {
-        FileHolder hFst(fstFileName, "rb");
-        fstp.load(hFst.get());
+        //FileHolder hFst(fstFileName, "rb");
+        std::ifstream ifs(fstFileName, std::ifstream::binary);
+        fstp.load(ifs); // hFst.get()
     }
 
     FileHolder hIn(inFileName, "rb");

@@ -64,14 +64,13 @@ TransExe::destroy()
 #include <iostream>
 
 void
-TransExe::read(FILE *input, Alphabet const &alphabet)
+TransExe::read(istream &input, Alphabet const &alphabet)
 {
   bool read_weights = false;
 
-  fpos_t pos;
-  if (fgetpos(input, &pos) == 0) {
+  if (input.tellg() == 0) {
       char header[4]{};
-      fread(header, 1, 4, input);
+      input.read(header, 4);
       if (strncmp(header, HEADER_TRANSDUCER, 4) == 0) {
           auto features = Compression::multibyte_read(input);
           if (features >= TDF_UNKNOWN) {
@@ -81,7 +80,7 @@ TransExe::read(FILE *input, Alphabet const &alphabet)
       }
       else {
           // Old binary format
-          fsetpos(input, &pos);
+          input.seekg(0, input.beg);
       }
   }
 

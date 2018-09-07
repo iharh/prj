@@ -79,6 +79,14 @@ public:
   static wstring wstring_read(FILE *input);
 
   /**
+   * This method reads a wide string from the input stream.
+   * @see wstring_write()
+   * @param input the input stream.
+   * @return the wide string read.
+   */
+  static wstring wstring_read(istream &input);
+
+  /**
    * This method reads a plain string from the input stream.
    * @see string_write()
    * @param input the input stream.
