@@ -24,7 +24,6 @@
 #include <lttoolbox/my_stdio.h>
 #include <lttoolbox/state.h>
 #include <lttoolbox/trans_exe.h>
-//#include <libxml/xmlreader.h>
 
 #include <cwchar>
 #include <map>
@@ -57,11 +56,6 @@ private:
    * Transducers in FSTP
    */
   map<wstring, TransExe, Ltstr> transducers;
-
-  /**
-   * Current state of lexical analysis
-   */
-  //State current_state;
 
   /**
    * Initial state of every token
@@ -152,7 +146,6 @@ private:
    * true if we're automatically removing surface forms.
    */
   bool biltransSurfaceForms;
-
 
   /**
    * if true, makes always difference between uppercase and lowercase
@@ -274,41 +267,6 @@ private:
   int readAnalysis(FILE *input);
 
   /**
-   * Read text from stream (generation version, also used in generation)
-   * @param input the stream to read
-   * @return the next symbol in the stream
-   */
-  //int readDecomposition(FILE *input, FILE *output);
-
-  /**
-   * Read text from stream (postgeneration version)
-   * @param input the stream to read
-   * @return the next symbol in the stream
-   */
-  //int readPostgeneration(FILE *input);
-
-  /**
-   * Read text from stream (generation version)
-   * @param input the stream to read
-   * @return the next symbol in the stream
-   */
-  //int readGeneration(FILE *input, FILE *output);
-
-  /**
-   * Read text from stream (biltrans version)
-   * @param input the stream to read
-   * @return the queue of 0-symbols, and the next symbol in the stream
-   */
-  //pair<wstring, int> readBilingual(FILE *input, FILE *output);
-
-  /**
-   * Read text from stream (SAO version)
-   * @param input the stream to read
-   * @return the next symbol in the stream
-   */
-  //int readSAO(FILE *input);
-
-  /**
    * Flush all the blanks remaining in the current process
    * @param output stream to write blanks
    */
@@ -331,16 +289,6 @@ private:
    */
   void writeEscaped(wstring const &str, FILE *output);
 
-
-  /**
-   * Write a string to an output stream, escaping all escapable characters
-   * but keeping symbols without escaping
-   * @param str the string to write, escaping characters
-   * @param output the stream to write in
-   */
-  //void writeEscapedWithTags(wstring const &str, FILE *output);
-
-
   /**
    * Checks if an string ends with a particular suffix
    * @param str the string to test
@@ -358,110 +306,37 @@ private:
   void printWord(wstring const &sf, wstring const &lf, FILE *output);
 
   /**
-   * Prints a word (Bilingual version)
-   * @param sf surface form of the word
-   * @param lf lexical form of the word
-   * @param output stream where the word is written
-   */
-  //void printWordBilingual(wstring const &sf, wstring const &lf, FILE *output);
-
-
-  /**
-   * Prints a word, SAO version
-   * @param lf lexical form
-   * @param output stream where the word is written
-   */
-  //void printSAOWord(wstring const &lf, FILE *output);
-
-  /**
    * Prints an unknown word
    * @param sf surface form of the word
    * @param output stream where the word is written
    */
   void printUnknownWord(wstring const &sf, FILE *output);
 
-  //void initDecompositionSymbols();
-
-  //vector<wstring> numbers;
-  //int readTMAnalysis(FILE *input);
-
   unsigned int lastBlank(wstring const &str);
   void printSpace(wchar_t const val, FILE *output);
-  //void skipUntil(FILE *input, FILE *output, wint_t const character);
-  //static wstring removeTags(wstring const &str);
   wstring compoundAnalysis(wstring str, bool uppercase, bool firstupper);
   size_t firstNotAlpha(wstring const &sf);
 
   void analysis_wrapper_null_flush(FILE *input, FILE *output);
-  //void lsx_wrapper_null_flush(FILE *input, FILE *output);
-  //void bilingual_wrapper_null_flush(FILE *input, FILE *output);
-  //void generation_wrapper_null_flush(FILE *input, FILE *output,
-  //                                   GenerationMode mode);
-  //void postgeneration_wrapper_null_flush(FILE *input, FILE *output);
-  //void intergeneration_wrapper_null_flush(FILE *input, FILE *output);
-  //void transliteration_wrapper_null_flush(FILE *input, FILE *output);
 
-  //wstring compose(wstring const &lexforms, wstring const &queue) const;
-
-  //void procNodeICX();
-  //void procNodeRCX();
   void initDefaultIgnoredCharacters();
 
   bool isLastBlankTM;
 
-  //xmlTextReaderPtr reader;
 public:
   FSTProcessor();
 
   void initAnalysis();
-/*
-  void initTMAnalysis();
-  void initSAO(){initAnalysis();};
-  void initGeneration();
-  void initPostgeneration();
-  void initBiltrans();
-  void initDecomposition();
-*/
 
   void analysis(FILE *input = stdin, FILE *output = stdout);
-/*
-  void tm_analysis(FILE *input = stdin, FILE *output = stdout);
-  void generation(FILE *input = stdin, FILE *output = stdout, GenerationMode mode = gm_unknown);
-  void postgeneration(FILE *input = stdin, FILE *output = stdout);
-  void intergeneration(FILE *input = stdin, FILE *output = stdout);
-  void transliteration(FILE *input = stdin, FILE *output = stdout);
-  void decomposition(FILE *input = stdin, FILE *output = stdout);
-  wstring biltrans(wstring const &input_word, bool with_delim = true);
-  wstring biltransfull(wstring const &input_word, bool with_delim = true);
-  void bilingual(FILE *input = stdin, FILE *output = stdout);
-  pair<wstring, int> biltransWithQueue(wstring const &input_word, bool with_delim = true);
-  wstring biltransWithoutQueue(wstring const &input_word, bool with_delim = true);
-  void SAO(FILE *input = stdin, FILE *output = stdout);
-  void parseICX(string const &file);
-  void parseRCX(string const &file);
-*/
 
   void load(FILE *input);
 
-  //void lsx(FILE *input, FILE *output);
-
   bool valid() const;
 
-  //void setCaseSensitiveMode(bool const value);
-
   void setDictionaryCaseMode(bool const value);
-  //void setBiltransSurfaceForms(bool const value);
-  //void setIgnoredChars(bool const value);
-  //void setRestoreChars(bool const value);
   void setNullFlush(bool const value);
-/*
-  void setUseDefaultIgnoredChars(bool const value);
-  void setDisplayWeightsMode(bool const value);
-  void setMaxAnalysesValue(int const value);
-  void setMaxWeightClassesValue(int const value);
-*/
   bool getNullFlush();
-//  bool getDecompoundingMode();
 };
 
 #endif

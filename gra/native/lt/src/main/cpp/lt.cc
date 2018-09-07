@@ -1,11 +1,9 @@
 #include <lttoolbox/fst_processor.h>
-//#include <lttoolbox/lttoolbox_config.h>
 #include <lttoolbox/my_stdio.h>
 #include <lttoolbox/lt_locale.h>
 
 #include <cstdlib>
 #include <iostream>
-//#include <libgen.h>
 
 class FileHolder {
 private:
@@ -80,9 +78,9 @@ main(int argc, char *argv[])
 
         fstp.analysis(hIn.get(), hOut.get());
 
-        { int *pA = new int; *pA = 7; }
+        int *pA = new int; *pA = 7;
 
-        std::wcout << "Done." << std::endl;
+        std::wcout << "Done." << *pA << std::endl;
     }
     catch (std::exception &e)
     {

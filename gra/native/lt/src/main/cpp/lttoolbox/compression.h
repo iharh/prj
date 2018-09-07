@@ -47,13 +47,6 @@ class Compression
 {
 private:
   /**
-   * Writing a byte
-   * @param byte char to write.
-   * @param output output stream.
-   */
-  //static void writeByte(unsigned char byte, FILE *output);
-
-  /**
    * Readinging a byte
    * @param input input stream
    * @return the value of the next byte in the input
@@ -61,22 +54,6 @@ private:
   static unsigned char readByte(FILE *input);
 
 public:
-  /**
-   * Encodes an integer value and writes it into the output stream
-   * @see multibyte_read()
-   * @param value integer to write.
-   * @param output output stream.
-   */
-  //static void multibyte_write(unsigned int value, FILE *output);
-
-  /**
-   * Encodes an integer value and writes it into the output stream
-   * @see multibyte_read()
-   * @param value integer to write.
-   * @param output output stream.
-   */
-  //static void multibyte_write(unsigned int value, ostream &os);
-
   /**
    * Read and decode an integer from the input stream.
    * @see multibyte_read()
@@ -94,15 +71,6 @@ public:
   static unsigned int multibyte_read(istream &is);
 
   /**
-   * This method allows to write a wide string to an output stream
-   * using its UCSencoding as integer.
-   * @see wstring_read()
-   * @param str the string to write.
-   * @param output the output stream.
-   */
-  //static void wstring_write(wstring const &str, FILE *output);
-
-  /**
    * This method reads a wide string from the input stream.
    * @see wstring_write()
    * @param input the input stream.
@@ -111,37 +79,12 @@ public:
   static wstring wstring_read(FILE *input);
 
   /**
-   * This method allows to write a plain string to an output stream
-   * using its UCSencoding as integer.
-   * @see string_read()
-   * @param str the string to write.
-   * @param output the output stream.
-   */
-  //static void string_write(string const &str, FILE *output);
-
-  /**
    * This method reads a plain string from the input stream.
    * @see string_write()
    * @param input the input stream.
    * @return the string read.
    */
   static string string_read(FILE *input);
-
-  /**
-   * Encodes a double value and writes it into the output stream
-   * @see long_multibyte_read()
-   * @param value double to write.
-   * @param output output stream.
-   */
-  //static void long_multibyte_write(const double& value, FILE *output);
-
-  /**
-   * Encodes a double value and writes it into the output stream
-   * @see long_multibyte_read()
-   * @param value double to write.
-   * @param output output stream.
-   */
-  //static void long_multibyte_write(const double& value, ostream &os);
 
   /**
    * Read and decode a double from the input stream.

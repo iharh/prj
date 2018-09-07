@@ -22,18 +22,6 @@
 #include <limits>
 #include <iostream>
 
-/*
-void
-Compression::writeByte(unsigned char byte, FILE *output)
-{
-  if(fwrite_unlocked(&byte, 1, 1, output) != 1)
-  {
-    wcerr << L"I/O Error writing" << endl;
-    exit(EXIT_FAILURE);
-  }
-}
-*/
-
 unsigned char
 Compression::readByte(FILE *input)
 {
@@ -47,100 +35,6 @@ Compression::readByte(FILE *input)
 
   return value;
 }
-
-/*
-void
-Compression::multibyte_write(unsigned int value, FILE *output)
-{
-  if(value < 0x00000040)
-  {
-    unsigned char byte = (unsigned char) value;
-    writeByte(byte, output);
-  }
-  else if(value < 0x00004000)
-  {
-    unsigned char low = (unsigned char) value;
-    unsigned char up =  (unsigned char) (value >> 8);
-    up = up | 0x40;
-    writeByte(up, output);
-    writeByte(low, output);
-  }
-  else if(value < 0x00400000)
-  {
-    unsigned char low = (unsigned char) value;
-    unsigned char middle = (unsigned char) (value >> 8);
-    unsigned char up = (unsigned char) (value >> 16);
-    up = up | 0x80;
-    writeByte(up, output);
-    writeByte(middle, output);
-    writeByte(low, output);
-  }
-  else if(value < 0x40000000)
-  {
-    unsigned char low = (unsigned char) value;
-    unsigned char middlelow = (unsigned char) (value >> 8);
-    unsigned char middleup = (unsigned char) (value >> 16);
-    unsigned char up = (unsigned char) (value >> 24);
-    up = up | 0xc0;
-    writeByte(up, output);
-    writeByte(middleup, output);
-    writeByte(middlelow, output);
-    writeByte(low, output);
-  }
-  else
-  {
-    wcerr << L"Out of range: " << value << endl;
-    exit(EXIT_FAILURE);
-  }
-}
-
-void
-Compression::multibyte_write(unsigned int value, ostream &output)
-{
-  if(value < 0x00000040)
-  {
-    unsigned char byte = (unsigned char) value;
-    output.write(reinterpret_cast<char *>(&byte), sizeof(char));
-  }
-  else if(value < 0x00004000)
-  {
-    unsigned char low = (unsigned char) value;
-    unsigned char up =  (unsigned char) (value >> 8);
-    up = up | 0x40;
-    output.write(reinterpret_cast<char *>(&up), sizeof(char));
-    output.write(reinterpret_cast<char *>(&low), sizeof(char));
-  }
-  else if(value < 0x00400000)
-  {
-    unsigned char low = (unsigned char) value;
-    unsigned char middle = (unsigned char) (value >> 8);
-    unsigned char up = (unsigned char) (value >> 16);
-    up = up | 0x80;
-    output.write(reinterpret_cast<char *>(&up), sizeof(char));
-    output.write(reinterpret_cast<char *>(&middle), sizeof(char));
-    output.write(reinterpret_cast<char *>(&low), sizeof(char));
-
-  }
-  else if(value < 0x40000000)
-  {
-    unsigned char low = (unsigned char) value;
-    unsigned char middlelow = (unsigned char) (value >> 8);
-    unsigned char middleup = (unsigned char) (value >> 16);
-    unsigned char up = (unsigned char) (value >> 24);
-    up = up | 0xc0;
-
-    output.write(reinterpret_cast<char *>(&up), sizeof(char));
-    output.write(reinterpret_cast<char *>(&middleup), sizeof(char));
-    output.write(reinterpret_cast<char *>(&middlelow), sizeof(char));
-    output.write(reinterpret_cast<char *>(&low), sizeof(char));
-  }
-  else
-  {
-    wcerr << "Out of range: " << value << endl;
-    exit(EXIT_FAILURE);
-  }
-}
-*/
 
 unsigned int
 Compression::multibyte_read(FILE *input)
@@ -255,18 +149,6 @@ Compression::multibyte_read(istream &input)
   return result;
 }
 
-/*
-void
-Compression::wstring_write(wstring const &str, FILE *output)
-{
-  Compression::multibyte_write(str.size(), output);
-  for(auto c : str)
-  {
-    Compression::multibyte_write(static_cast<int>(c), output);
-  }
-}
-*/
-
 wstring
 Compression::wstring_read(FILE *input)
 {
@@ -280,17 +162,6 @@ Compression::wstring_read(FILE *input)
 
   return retval;
 }
-/*
-void
-Compression::string_write(string const &str, FILE *output)
-{
-  Compression::multibyte_write(str.size(), output);
-  for(auto c : str)
-  {
-    Compression::multibyte_write(static_cast<int>(c), output);
-  }
-}
-*/
 
 string
 Compression::string_read(FILE *input)
@@ -305,82 +176,6 @@ Compression::string_read(FILE *input)
 
   return retval;
 }
-
-/*
-void
-Compression::long_multibyte_write(const double& value, FILE *output)
-{
-  int exp = 0;
-
-  unsigned int mantissa = static_cast<unsigned int>(0x40000000 * frexp(value, &exp));
-  unsigned int exponent = static_cast<unsigned int>(exp);
-
-  if(mantissa < 0x04000000)
-  {
-    multibyte_write(mantissa, output);
-  }
-  else
-  {
-    unsigned int low_mantissa = (unsigned int) (mantissa << 6);
-    low_mantissa = (unsigned int) (low_mantissa >> 6);
-    unsigned int up_mantissa = (unsigned int) (mantissa >> 26);
-    up_mantissa = up_mantissa | 0x04000000;
-    multibyte_write(up_mantissa, output);
-    multibyte_write(low_mantissa, output);
-  }
-
-  if(exponent < 0x04000000)
-  {
-    multibyte_write(exponent, output);
-  }
-  else
-  {
-    unsigned int low_exponent = (unsigned int) (exponent << 6);
-    low_exponent = (unsigned int) (low_exponent >> 6);
-    unsigned int up_exponent = (unsigned int) (exponent >> 26);
-    up_exponent = up_exponent | 0x04000000;
-    multibyte_write(up_exponent, output);
-    multibyte_write(low_exponent, output);
-  }
-}
-
-void
-Compression::long_multibyte_write(const double& value, ostream &output)
-{
-  int exp = 0;
-
-  unsigned int mantissa = static_cast<unsigned int>(0x40000000 * frexp(value, &exp));
-  unsigned int exponent = static_cast<unsigned int>(exp);
-
-  if(mantissa < 0x04000000)
-  {
-    multibyte_write(mantissa, output);
-  }
-  else
-  {
-    unsigned int low_mantissa = (unsigned int) (mantissa << 6);
-    low_mantissa = (unsigned int) (low_mantissa >> 6);
-    unsigned int up_mantissa = (unsigned int) (mantissa >> 26);
-    up_mantissa = up_mantissa | 0x04000000;
-    multibyte_write(up_mantissa, output);
-    multibyte_write(low_mantissa, output);
-  }
-
-  if(exponent < 0x04000000)
-  {
-    multibyte_write(exponent, output);
-  }
-  else
-  {
-    unsigned int low_exponent = (unsigned int) (exponent << 6);
-    low_exponent = (unsigned int) (low_exponent >> 6);
-    unsigned int up_exponent = (unsigned int) (exponent >> 26);
-    up_exponent = up_exponent | 0x04000000;
-    multibyte_write(up_exponent, output);
-    multibyte_write(low_exponent, output);
-  }
-}
-*/
 
 double
 Compression::long_multibyte_read(FILE *input)
@@ -467,4 +262,3 @@ Compression::long_multibyte_read(istream &input)
 
   return result;
 }
-
