@@ -1,1 +1,1 @@
-^খালিদ/*খালিদ$ ^জামিলকে/জামিল<np><ant><m><sg><obj>$ ^দেখে/দেখ<vblex><pcnd>/দেখ<vblex><pres><smpl><impers>/দেখ<vblex><pres><smpl><p3><infml>$ ^মনে/মন<n><mf><nn><sg><loc>$ ^হচ্ছে/হ<vblex><pres><cnt><impers>/হ<vblex><pres><cnt><p3><infml>$ ^খাঁচাবন্দি/*খাঁচাবন্দি$ ‘^বাঘ/বাঘ<n><m><aa><sg><nom>$’^!/!<sent>$ 
+^খালিদজামিলকেদেখেমনেহচ্ছেখাঁচাবন্দি/*খালিদজামিলকেদেখেমনেহচ্ছেখাঁচাবন্দি$‘^বাঘ/বাঘ<n><m><aa><sg><nom>$’

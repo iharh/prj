@@ -78,7 +78,7 @@ FSTProcessor::initDefaultIgnoredCharacters()
 }
 
 wchar_t
-FSTProcessor::readEscaped(wistream &input)
+FSTProcessor::readEscaped(astream_t &input)
 {
   if(input.eof())
   {
@@ -97,7 +97,7 @@ FSTProcessor::readEscaped(wistream &input)
 }
 
 wstring
-FSTProcessor::readFullBlock(wistream &input, wchar_t const delim1, wchar_t const delim2)
+FSTProcessor::readFullBlock(astream_t &input, wchar_t const delim1, wchar_t const delim2)
 {
   wstring result = L"";
   result += delim1;
@@ -126,7 +126,7 @@ FSTProcessor::readFullBlock(wistream &input, wchar_t const delim1, wchar_t const
 }
 
 int
-FSTProcessor::readAnalysis(wistream &input)
+FSTProcessor::readAnalysis(astream_t &input)
 {
   if(!input_buffer.isEmpty())
   {
@@ -420,7 +420,7 @@ FSTProcessor::compoundAnalysis(wstring input_word, bool uppercase, bool firstupp
 }
 
 void
-FSTProcessor::analysis(wistream &input, FILE *output)
+FSTProcessor::analysis(astream_t &input, FILE *output)
 {
   bool last_incond = false;
   bool last_postblank = false;

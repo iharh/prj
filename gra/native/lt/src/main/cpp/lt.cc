@@ -59,6 +59,7 @@ main(int argc, char *argv[])
     FSTProcessor fstp;
     fstp.setDictionaryCaseMode(true); // -w option
 
+    std::locale loc(std::locale(std::locale::classic(), "", std::locale::ctype));
     LtLocale::tryToSetLocale();
 
     {
@@ -68,6 +69,7 @@ main(int argc, char *argv[])
     }
 
     std::wifstream infs(inFileName, std::ifstream::binary);
+    infs.imbue(loc);
     FileHolder hOut(outFileName, "wb");
 
     try
