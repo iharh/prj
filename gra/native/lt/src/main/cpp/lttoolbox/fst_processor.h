@@ -161,16 +161,6 @@ private:
   bool dictionaryCase;
 
   /**
-   * if true, flush the output when the null character is found
-   */
-  bool nullFlush;
-
-  /**
-   * nullFlush property for the skipUntil function
-   */
-  bool nullFlushGeneration;
-
-  /**
    * if true, ignore the provided set of characters
    */
   bool useIgnoredChars;
@@ -236,7 +226,7 @@ private:
    * @param input the stream to read from
    * @return code of the character
    */
-  wchar_t readEscaped(FILE *input);
+  wchar_t readEscaped(wistream &input);
 
   /**
    * Reads a block from the stream input, enclosed by delim1 and delim2
@@ -244,7 +234,7 @@ private:
    * @param delim1 the delimiter of the beginning of the sequence
    * @param delim1 the delimiter of the end of the sequence
    */
-  wstring readFullBlock(FILE *input, wchar_t const delim1, wchar_t const delim2);
+  wstring readFullBlock(wistream &input, wchar_t const delim1, wchar_t const delim2);
 
   /**
    * Returns true if the character code is identified as alphabetic
@@ -265,7 +255,7 @@ private:
    * @param input the stream to read
    * @return the next symbol in the stream
    */
-  int readAnalysis(FILE *input);
+  int readAnalysis(wistream &input);
 
   /**
    * Flush all the blanks remaining in the current process
@@ -318,7 +308,7 @@ private:
   wstring compoundAnalysis(wstring str, bool uppercase, bool firstupper);
   size_t firstNotAlpha(wstring const &sf);
 
-  void analysis_wrapper_null_flush(FILE *input, FILE *output);
+  void analysis_wrapper_null_flush(istream &input, FILE *output);
 
   void initDefaultIgnoredCharacters();
 
@@ -329,15 +319,13 @@ public:
 
   void initAnalysis();
 
-  void analysis(FILE *input = stdin, FILE *output = stdout);
+  void analysis(wistream &input, FILE *output = stdout);
 
   void load(istream &input);
 
   bool valid() const;
 
   void setDictionaryCaseMode(bool const value);
-  void setNullFlush(bool const value);
-  bool getNullFlush();
 };
 
 #endif

@@ -67,7 +67,7 @@ main(int argc, char *argv[])
         fstp.load(ifs); // hFst.get()
     }
 
-    FileHolder hIn(inFileName, "rb");
+    std::wifstream infs(inFileName, std::ifstream::binary);
     FileHolder hOut(outFileName, "wb");
 
     try
@@ -78,19 +78,13 @@ main(int argc, char *argv[])
             exit(EXIT_FAILURE);
         }
 
-        fstp.analysis(hIn.get(), hOut.get());
+        fstp.analysis(infs, hOut.get());
 
-        int *pA = new int; *pA = 7;
-
-        std::wcout << "Done." << *pA << std::endl;
+        std::wcout << "Done." << std::endl;
     }
     catch (std::exception &e)
     {
         std::wcerr << e.what();
-        if (fstp.getNullFlush())
-        {
-            fputwc_unlocked(L'\0', hOut.get());
-        }
         exit(1);
     }
 
