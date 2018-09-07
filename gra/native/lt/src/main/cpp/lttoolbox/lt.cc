@@ -42,49 +42,59 @@ printArgs(int argc, char *argv[])
     }
 }
 
+// 
+// using "argc", "argv" var-name is a kind-of magic - switchess off asan
+
 int
 main(int argc, char *argv[])
 {
+/*
+    const char *fstFileName = "ben/ben.automorf.bin";
+    const char *inFileName  = "data/in.txt";
+    const char *outFileName = "data/out.txt";
+*/
+    const char *fstFileName = argv[1];
+    const char *inFileName  = argv[2];
+    const char *outFileName = argv[3];
+
     FSTProcessor fstp;
     fstp.setDictionaryCaseMode(true); // -w option
 
     LtLocale::tryToSetLocale();
 
-    if (argc < 4)
     {
-        std::wcerr << "Error: need at least 3 args, but specified only "  << argc - 1 << std::endl << std::endl;
-        exit(EXIT_FAILURE);
+        FileHolder hFst(fstFileName, "rb");
+        fstp.load(hFst.get());
     }
 
-    {
-        FileHolder in(argv[1], "rb");
-        fstp.load(in.get());
-    }
-
-    FileHolder input(argv[2], "rb");
-    FileHolder output(argv[3], "wb");
+    FileHolder hIn(inFileName, "rb");
+    FileHolder hOut(outFileName, "wb");
 
     try
     {
         fstp.initAnalysis();
-
         if (!fstp.valid())
         {
             exit(EXIT_FAILURE);
         }
-        fstp.analysis(input.get(), output.get());
+
+        fstp.analysis(hIn.get(), hOut.get());
+
+        { int *pA = new int; *pA = 7; }
+
+        std::wcout << "Done." << std::endl;
     }
     catch (std::exception &e)
     {
         std::wcerr << e.what();
         if (fstp.getNullFlush())
         {
-            fputwc_unlocked(L'\0', output.get());
+            fputwc_unlocked(L'\0', hOut.get());
         }
         exit(1);
     }
 
-    std::wcout << "Done." << std::endl;
+    { int *pB = new int; *pB = 3; }
 
     return EXIT_SUCCESS;
 }

@@ -5,13 +5,13 @@ plugins {
 
 model {
     buildTypes {
-        release
-        //debug
+        //release
+        debug
     }
 
     toolChains {
-        gcc(Gcc)
-        //clang(Clang)
+        //gcc(Gcc)
+        clang(Clang)
     }
 
     platforms {
@@ -21,11 +21,19 @@ model {
     }
 
     binaries {
-        withType(NativeExecutableSpec) { // all
+        // all withType(NativeExecutableBinarySpec) withType(NativeExecutableSpec)
+        all {
             if (toolChain in Gcc) {
                 println 'toolchain is Gcc!'
                 // "-O2", "-fno-access-control"
                 // cppCompiler.args '-std=c++0x', '-Wno-narrowing'
+                cppCompiler.args '-std=c++0x', '-O0', '-g', '-fsanitize=address', '-fno-omit-frame-pointer'
+                linker.args '-g', '-fsanitize=address'
+            }
+            if (toolChain in Clang) {
+                println 'toolchain is Clang!'
+                cppCompiler.args '-std=c++0x', '-O0', '-g', '-fsanitize=address', '-fno-omit-frame-pointer'
+                linker.args '-g', '-fsanitize=address'
             }
         }
     }
@@ -36,8 +44,8 @@ model {
             sources {
                 cpp {
                     source {
-                        srcDirs 'src/main/cpp/lttoolbox'
-                        include '*.cc'
+                        srcDirs 'src/main/cpp'
+                        include 'lttoolbox/*.cc'
                     }
                     exportedHeaders {
                         srcDirs 'src/main/cpp'
