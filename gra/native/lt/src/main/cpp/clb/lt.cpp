@@ -36,8 +36,8 @@ main(int argc, char *argv[])
         fstp.load(ifs); // hFst.get()
     }
 
-    //f_stream_stdio ins(inFileName, "rb");
-    f_stream_wifstream ins(inFileName);
+    //clb_stream_stdio ins(inFileName, "rb");
+    clb_stream_wif ins(inFileName);
 
     try
     {
@@ -59,7 +59,7 @@ main(int argc, char *argv[])
             exit(EXIT_FAILURE);
         }
 
-        fstp.analysis(ins);
+        fstp.analysis(ins.getStrStream());
 
         // std::wcout << "Done." << std::endl;
     }

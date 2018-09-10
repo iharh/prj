@@ -39,8 +39,8 @@ model {
                 cpp {
                     source {
                         srcDirs 'src/main/cpp'
-                        include '*.cc'
                         include 'lttoolbox/*.cc'
+                        include 'clb/*.cpp'
                     }
                     exportedHeaders {
                         srcDirs 'src/main/cpp'

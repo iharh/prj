@@ -24,7 +24,7 @@
 #include <lttoolbox/state.h>
 #include <lttoolbox/trans_exe.h>
 #include <lttoolbox/my_stdio.h>
-#include <lttoolbox/my_stream.h>
+#include <clb/clb_stream.h>
 
 #include <cwchar>
 #include <map>
@@ -190,7 +190,7 @@ private:
    * @param input the stream to read from
    * @return code of the character
    */
-  wchar_t readEscaped(astream_t input);
+  wchar_t readEscaped(clb_stream_t input);
 
   /**
    * Reads a block from the stream input, enclosed by delim1 and delim2
@@ -198,7 +198,7 @@ private:
    * @param delim1 the delimiter of the beginning of the sequence
    * @param delim1 the delimiter of the end of the sequence
    */
-  wstring readFullBlock(astream_t input, wchar_t const delim1, wchar_t const delim2);
+  wstring readFullBlock(clb_stream_t input, wchar_t const delim1, wchar_t const delim2);
 
   /**
    * Returns true if the character code is identified as alphabetic
@@ -219,7 +219,7 @@ private:
    * @param input the stream to read
    * @return the next symbol in the stream
    */
-  int readAnalysis(astream_t input);
+  int readAnalysis(clb_stream_t input);
 
   /**
    * Flush all the blanks remaining in the current process
@@ -279,7 +279,7 @@ public:
 
   void initAnalysis();
 
-  void analysis(astream_t input, FILE *output = stdout);
+  void analysis(clb_stream_t input, FILE *output = stdout);
 
   void load(istream &input);
 
