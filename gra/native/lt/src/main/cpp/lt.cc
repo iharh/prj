@@ -35,12 +35,12 @@ main(int argc, char *argv[])
         fstp.load(ifs); // hFst.get()
     }
 
-    f_stream infs(inFileName, "rb");
-    //wf_stream infs(inFileName);
+    //f_stream_stdio infs(inFileName, "rb");
+    f_stream_wifstream infs(inFileName);
 
     try
     {
-        /*
+        //while (!infs.eof()) { infs.getWC(); }
         fstp.initAnalysis();
         if (!fstp.valid())
         {
@@ -48,13 +48,8 @@ main(int argc, char *argv[])
         }
 
         fstp.analysis(infs);
-        */
-        while (!infs.eof())
-        {
-            infs.getWC();
-        }
 
-        std::wcout << "Done." << std::endl;
+        std::wcout << std::endl << "Done." << std::endl;
     }
     catch (std::exception &e)
     {

@@ -21,56 +21,18 @@
 #include <lttoolbox/alphabet.h>
 #include <lttoolbox/buffer.h>
 #include <lttoolbox/ltstr.h>
-#include <lttoolbox/my_stdio.h>
 #include <lttoolbox/state.h>
 #include <lttoolbox/trans_exe.h>
+#include <lttoolbox/my_stdio.h>
+#include <lttoolbox/my_stream.h>
 
 #include <cwchar>
 #include <map>
 #include <queue>
 #include <set>
 #include <string>
-#include <iostream>
-#include <fstream>
 
 using namespace std;
-
-class f_stream {
-private:
-    FILE *pF;
-public:
-    f_stream(const char *file_name, const char *mode) { pF = fopen(file_name, mode); }
-    ~f_stream() { fclose(pF); }
-    bool eof() { return feof(pF); }
-    wchar_t getWC() {
-        wchar_t result = static_cast<wchar_t>(fgetwc_unlocked(pF));
-        std::wcout << L": " << result << std::endl;
-        return result;
-    }
-};
-
-class wf_stream {
-private:
-    std::wifstream s;
-public:
-    wf_stream(const char *file_name)
-    :
-        s(file_name, std::wifstream::binary)
-    {
-        std::locale loc(std::locale(std::locale::classic(), "", std::locale::ctype)); // std::locale loc("en_US.UTF8");
-        s.imbue(loc);
-    }
-    bool eof() { return s.eof(); }
-    wchar_t getWC() {
-        wchar_t result;
-        s >> result;
-        std::wcout << L": " << result << std::endl;
-        return result;
-    }
-};
-
-//typedef f_stream &astream_t;
-typedef wf_stream &astream_t;
 
 /**
  * Kind of output of the generator module
