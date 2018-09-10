@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 void
 printArgs(int argc, char *argv[])
@@ -35,21 +36,32 @@ main(int argc, char *argv[])
         fstp.load(ifs); // hFst.get()
     }
 
-    //f_stream_stdio infs(inFileName, "rb");
-    f_stream_wifstream infs(inFileName);
+    //f_stream_stdio ins(inFileName, "rb");
+    f_stream_wifstream ins(inFileName);
 
     try
     {
-        //while (!infs.eof()) { infs.getWC(); }
+        /*
+        do
+        {
+            wchar_t ch = ins.getWC();
+            if (!ins.eof())
+            {
+                std::wcout << L": " << ch << std::endl;
+            }
+        }
+        while (!ins.eof());
+        */
+
         fstp.initAnalysis();
         if (!fstp.valid())
         {
             exit(EXIT_FAILURE);
         }
 
-        fstp.analysis(infs);
+        fstp.analysis(ins);
 
-        std::wcout << std::endl << "Done." << std::endl;
+        // std::wcout << "Done." << std::endl;
     }
     catch (std::exception &e)
     {

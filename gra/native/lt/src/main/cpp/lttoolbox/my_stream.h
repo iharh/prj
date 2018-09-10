@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 class f_stream_stdio {
 private:
@@ -19,21 +20,28 @@ public:
 
 class f_stream_wifstream {
 private:
-    std::wifstream s;
+    std::wstringstream contents; 
 public:
     f_stream_wifstream(const char *file_name)
-    :
-        s(file_name, std::wifstream::binary)
     {
-        std::locale loc(std::locale(std::locale::classic(), "", std::locale::ctype)); // std::locale loc("en_US.UTF8");
+        std::wifstream s(file_name, std::wifstream::binary);
+
+        // std::locale loc("en_US.UTF8");
+        std::locale loc(std::locale(std::locale::classic(), "", std::locale::ctype)); 
         s.imbue(loc);
+
+        //s.seekg(0, s.end);
+        //std::wifstream::pos_type file_size = s.tellg();
+        //s.seekg(0, s.beg);
+        //std::wcout << L"file_size: " << file_size << std::endl;
+
+        contents << s.rdbuf();
     }
-    bool eof() { return s.eof(); }
+    bool eof() { return contents.eof(); }
     wchar_t getWC() {
         wchar_t result;
         // >>-operator can't be used - it eats spaces
-        s.get(result); 
-        //std::wcout << L": " << result << std::endl;
+        contents.get(result); //std::wcout << L": " << result << std::endl;
         return result;
     }
 };
