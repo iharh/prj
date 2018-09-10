@@ -70,8 +70,7 @@ FSTProcessor::readEscaped(astream_t &input)
     streamError();
   }
 
-  wchar_t val;
-  input >> val;
+  wchar_t val = input.getWC();
 
   if(input.eof() || escaped_chars.find(val) == escaped_chars.end())
   {
@@ -90,7 +89,7 @@ FSTProcessor::readFullBlock(astream_t &input, wchar_t const delim1, wchar_t cons
 
   while(!input.eof() && c != delim2)
   {
-    input >> c;
+    c = input.getWC();
     result += c;
     if(c != L'\\')
     {
@@ -118,8 +117,7 @@ FSTProcessor::readAnalysis(astream_t &input)
     return input_buffer.next();
   }
 
-  wchar_t val;
-  input >> val;
+  wchar_t val = input.getWC();
   int altval = 0;
   if(input.eof())
   {
@@ -129,7 +127,7 @@ FSTProcessor::readAnalysis(astream_t &input)
   if(ignored_chars.find(val) != ignored_chars.end())
   {
     input_buffer.add(val);
-    input >> val;
+    val = input.getWC();
   }
 
   if(escaped_chars.find(val) != escaped_chars.end())
@@ -147,7 +145,7 @@ FSTProcessor::readAnalysis(astream_t &input)
         return static_cast<int>(L' ');
 
       case L'\\':
-        input >> val;
+        val = input.getWC();
         if(escaped_chars.find(val) == escaped_chars.end())
         {
           streamError();

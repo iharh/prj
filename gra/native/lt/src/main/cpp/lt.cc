@@ -28,8 +28,6 @@ main(int argc, char *argv[])
     FSTProcessor fstp;
     fstp.setDictionaryCaseMode(true); // -w option
 
-    //std::locale loc(std::locale(std::locale::classic(), "", std::locale::ctype));
-    std::locale loc("en_US.UTF8");
     LtLocale::tryToSetLocale();
 
     {
@@ -37,8 +35,11 @@ main(int argc, char *argv[])
         fstp.load(ifs); // hFst.get()
     }
 
-    std::wifstream infs(inFileName, std::wifstream::binary);
-    infs.imbue(loc);
+    //std::locale loc(std::locale(std::locale::classic(), "", std::locale::ctype)); // std::locale loc("en_US.UTF8");
+    //std::wifstream infs(inFileName, std::wifstream::binary);
+    //infs.imbue(loc);
+
+    f_stream infs(inFileName, "rb");
 
     try
     {

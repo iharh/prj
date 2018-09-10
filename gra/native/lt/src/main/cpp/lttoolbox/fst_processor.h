@@ -34,7 +34,36 @@
 
 using namespace std;
 
-typedef wistream astream_t;
+class f_stream {
+private:
+    FILE *pF;
+public:
+    f_stream(const char *file_name, const char *mode)
+    {
+        pF = fopen(file_name, mode);
+    }
+
+    ~f_stream()
+    {
+        fclose(pF);
+    }
+
+    bool
+    eof()
+    {
+        return feof(pF);
+    }
+
+    wchar_t
+    getWC()
+    {
+        return static_cast<wchar_t>(fgetwc_unlocked(pF));
+    }
+};
+
+//typedef wistream &astream_t;
+typedef f_stream &astream_t;
+
 
 /**
  * Kind of output of the generator module
@@ -192,7 +221,7 @@ private:
    * @param input the stream to read from
    * @return code of the character
    */
-  wchar_t readEscaped(astream_t &input);
+  wchar_t readEscaped(astream_t input);
 
   /**
    * Reads a block from the stream input, enclosed by delim1 and delim2
@@ -200,7 +229,7 @@ private:
    * @param delim1 the delimiter of the beginning of the sequence
    * @param delim1 the delimiter of the end of the sequence
    */
-  wstring readFullBlock(astream_t &input, wchar_t const delim1, wchar_t const delim2);
+  wstring readFullBlock(astream_t input, wchar_t const delim1, wchar_t const delim2);
 
   /**
    * Returns true if the character code is identified as alphabetic
@@ -221,7 +250,7 @@ private:
    * @param input the stream to read
    * @return the next symbol in the stream
    */
-  int readAnalysis(astream_t &input);
+  int readAnalysis(astream_t input);
 
   /**
    * Flush all the blanks remaining in the current process
@@ -281,7 +310,7 @@ public:
 
   void initAnalysis();
 
-  void analysis(astream_t &input, FILE *output = stdout);
+  void analysis(astream_t input, FILE *output = stdout);
 
   void load(istream &input);
 
