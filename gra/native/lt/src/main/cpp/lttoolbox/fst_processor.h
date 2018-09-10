@@ -35,7 +35,6 @@
 
 using namespace std;
 
-/*
 class f_stream {
 private:
     FILE *pF;
@@ -49,9 +48,6 @@ public:
         return result;
     }
 };
-
-typedef f_stream &astream_t;
-*/
 
 class wf_stream {
 private:
@@ -73,6 +69,7 @@ public:
     }
 };
 
+//typedef f_stream &astream_t;
 typedef wf_stream &astream_t;
 
 /**
