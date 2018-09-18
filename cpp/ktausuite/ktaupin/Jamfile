@@ -1,0 +1,160 @@
+import modules ;
+import path ;
+
+path-constant src_location :
+	src/main/cpp
+	;
+
+project ktausuite/ktaupin
+	: source-location
+	$(src_location)
+	;
+
+local ktaupin-requirements =
+	<include>$(src_location)/inc
+# compileflags don't work, so we use cxxflags/cflags instead
+	;
+
+
+local K_NATIVE_REPO_HOME = [ modules.peek : K_NATIVE_REPO_HOME ] ;
+
+local pin_dir = $(K_NATIVE_REPO_HOME)/pin-2.8-33586-msvc9-ia32_intel64-windows ;
+
+alias pin_lib : $(pin_dir)/ia32/lib/pin.lib
+	: # requirements
+	<target-os>windows
+	;
+
+alias pinvm_lib : $(pin_dir)/ia32/lib/pinvm.lib
+	: # requirements
+	<target-os>windows
+	;
+
+alias xed_lib : $(pin_dir)/extras/xed2-ia32/lib/libxed.lib
+	: # requirements
+	<target-os>windows
+	;
+
+alias ntdll-32_lib : $(pin_dir)/ia32/lib-ext/ntdll-32.lib
+	: # requirements
+	<target-os>windows
+	;
+
+#CXXFLAGS_NOMPI =
+#/O2
+#+ /Oi - enable intrinsic functions
+#-I"C:\Program Files\Microsoft Compute Cluster Pack\Include"
+#/I "c:\tau\pin\include"
+#/I "c:\tau\pin\include\gen"
+#/I "..\..\include"
+#+++ /D "NOMPI"
+#+/D "TARGET_IA32"
+#+/D "HOST_IA32"
+#+/D "TARGET_WINDOWS"
+#+/D "BIGARRAY_MULTIPLIER=1"
+#+/D "USING_XED"
+#+/D "_CRT_SECURE_NO_DEPRECATE"
+#+/D "WIN32"
+#+/MT
+#+/Gy  - separate functions for linker
+#/W3
+#/nologo
+#/c
+#/TP  - compile all as c++
+#+/wd4530
+#/errorReport:prompt
+#+/EHs-
+#+/EHa-
+#+/GS- - control stack checking calls
+#+/Gs0x7FFFFFFF
+
+#TAUPIN_LDFLAGS_NOMPI =
+#/OUT:"TauPinNoMpi.dll"
+#/INCREMENTAL:NO
+#/NOLOGO
+#/LIBPATH:"c:\tau\pin\lib"
+#/LIBPATH:"..\..\win32\lib"
+#/LIBPATH:"../libs/x86/regexp"
+#/LIBPATH:"C:\Program Files\Microsoft Compute Cluster Pack\Lib\i386"
+#/DLL
+#+/MANIFEST:NO
+#/OPT:REF
+#+/ENTRY:"Ptrace_DllMainCRTStartup@12"
+#+/BASE:"0x55000000"
+#+/MACHINE:X86
+#/ERRORREPORT:PROMPT
+#+/export:main
+
+#TAUPIN_LIBS_NOMPI =
+#+pin.lib
+#+libxed.lib
+#+pinvm.lib
+#libcpmt.lib
+#libcmt.lib
+#+kernel32.lib
+#+ntdll-32.lib
+#tau-profile-static.lib
+
+#D:\dev\Utils\MicrosoftComputeClusterPack
+
+lib ktaupin
+	: # sources 
+	[ path.glob-tree $(src_location)/common : *.c ]
+	[ path.glob-tree $(src_location)/common : *.cpp ]
+	/ktausuite//ktauprofile
+	pin_lib
+	pinvm_lib
+	xed_lib
+	ntdll-32_lib
+	: # requirements
+	$(ktaupin-requirements)
+	<runtime-link>static
+
+	<optimization>speed
+
+	<include>$(pin_dir)/source/include
+	<include>$(pin_dir)/source/include/gen
+	<include>$(pin_dir)/extras/xed2-ia32/include
+
+	<define>_CRT_SECURE_NO_DEPRECATE
+	<define>_SECURE_SCL=0
+
+	<define>TAU_STDCXXLIB
+
+	<define>WIN32
+
+	<define>NOMPI
+	<define>TARGET_IA32
+	<define>HOST_IA32
+	<define>TARGET_WINDOWS
+	<define>USING_XED
+	<define>BIGARRAY_MULTIPLIER=1
+
+#DBG	<define>TAUPIN_TRACE
+
+# PIN mandatory flags
+	<linkflags>/EXPORT:main
+#	<linkflags>/NODEFAULTLIB
+	<linkflags>/ENTRY:Ptrace_DllMainCRTStartup@12
+	<linkflags>/BASE:0x55000000
+
+	<embed-manifest>off
+
+	<cxxflags>/wd4530
+	<cxxflags>/Gy
+	<cxxflags>/Oi
+
+	<cxxflags>/GS
+	<cxxflags>/Gs0x7FFFFFFF
+
+	<exception-handling>off
+	<cxxflags>/EHs-
+	<cxxflags>/EHa-
+
+	<target-os>windows:<linkflags>Kernel32.lib
+	: # default build
+	: # usage requirements
+	$(ktaupin-requirements)
+	;
+
+#ktausuite-dist ktaupin ;

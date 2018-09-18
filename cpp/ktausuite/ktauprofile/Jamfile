@@ -1,0 +1,76 @@
+import modules ;
+import path ;
+
+path-constant src_location :
+	src/main/cpp
+	;
+
+project ktausuite/ktauprofile
+	: source-location
+	$(src_location)
+	;
+
+local ktauprofile-requirements =
+	<include>$(src_location)/inc
+# compileflags don't work, so we use cxxflags/cflags instead
+	;
+
+#CFLAGS=
+#+ /O2
+#+ /Gd
+#/nologo
+#/TP - compile all as c++
+#+ /EHsc
+# -I .
+
+#DEFINES=
+#+-DTAU_WINDOWS
+#+-DTAU_DOT_H_LESS_HEADERS
+#+-DTAU_LIBRARY_SOURCE
+#+-DTAU_DISABLE_SIGUSR
+#-DTAU_MPI
+#-DTAU_SYNCHRONIZE_CLOCKS
+
+lib ktauprofile
+	: # sources 
+	[ path.glob-tree $(src_location)/common : *.cpp ]
+	: # requirements
+	$(ktauprofile-requirements)
+
+	<define>_CRT_SECURE_NO_DEPRECATE
+	<define>_SECURE_SCL=0
+	<define>_SCL_SECURE_NO_DEPRECATE
+#	<define>_HAS_ITERATOR_DEBUGGING=0
+	<define>_CRT_SECURE_NO_WARNINGS
+
+	<link>static
+	<runtime-link>static
+
+	<cxxflags>/wd4996
+	<cxxflags>/Gd
+
+	<exception-handling>on
+	<asynch-exceptions>off
+	<extern-c-nothrow>on
+
+	<optimization>speed
+
+	<include>$(src_location)/inc/windows/etc
+
+	<define>TAU_WINDOWS
+	<define>TAU_DOT_H_LESS_HEADERS
+	<define>TAU_LIBRARY_SOURCE
+	<define>TAU_DISABLE_SIGUSR
+
+	<define>TAU_CALLPATH
+
+	<define>PROFILING_ON
+
+#DBG	<define>DEBUG_PROF
+
+	: # default build
+	: # usage requirements
+	$(ktauprofile-requirements)
+	;
+
+ktausuite-dist ktauprofile ;

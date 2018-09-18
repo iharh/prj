@@ -1,0 +1,117 @@
+import modules ;
+import path ;
+
+path-constant src_location :
+	src/main/cpp
+	;
+
+project ktausuite/k-tau-pin
+	: source-location
+	$(src_location)
+	;
+
+local k-tau-pin-requirements =
+	<include>$(src_location)/inc
+# compileflags don't work, so we use cxxflags/cflags instead
+	;
+
+
+local K_NATIVE_REPO_HOME = [ modules.peek : K_NATIVE_REPO_HOME ] ;
+
+local pin_dir = $(K_NATIVE_REPO_HOME)/pin-2.8-33586-msvc9-ia32_intel64-windows ;
+
+alias pin_lib : $(pin_dir)/ia32/lib/pin.lib
+	: # requirements
+	<target-os>windows
+	;
+
+alias pinvm_lib : $(pin_dir)/ia32/lib/pinvm.lib
+	: # requirements
+	<target-os>windows
+	;
+
+alias xed_lib : $(pin_dir)/extras/xed2-ia32/lib/libxed.lib
+	: # requirements
+	<target-os>windows
+	;
+
+alias ntdll-32_lib : $(pin_dir)/ia32/lib-ext/ntdll-32.lib
+	: # requirements
+	<target-os>windows
+	;
+
+#W_CXXFLAGS =
+#/O2
+#+ /GL - enable link time code generation
+#/D "WIN32"
+#/D "NDEBUG"
+#/D "_CONSOLE"
+#/D "_UNICODE"
+#/D "UNICODE"
+#+/EHsc
+#/MD
+#/W3
+#/nologo
+#/c
+#/Wp64 - enable 64 bit porting warnings
+#/TP - treat all files as C++
+#/errorReport:prompt 
+
+#W_LDFLAGS =
+#/OUT:"tau_pin.exe"
+#/INCREMENTAL:NO
+#/NOLOGO
+#/MANIFEST /MANIFESTFILE:"tau_pin.exe.intermediate.manifest"
+#/SUBSYSTEM:CONSOLE
+#/OPT:REF
+#/OPT:ICF
+#+/LTCG
+#/MACHINE:X86
+#/ERRORREPORT:PROMPT
+
+#WRAPPER_LIBS = 
+#kernel32.lib
+#user32.lib
+#gdi32.lib
+#winspool.lib
+#comdlg32.lib
+#advapi32.lib
+#shell32.lib
+#ole32.lib
+#oleaut32.lib
+#uuid.lib
+#odbc32.lib
+#odbccp32.lib
+
+#D:\dev\Utils\MicrosoftComputeClusterPack
+
+lib k-tau-pin
+	: # sources 
+	[ path.glob-tree $(src_location)/common : *.cpp ]
+	: # requirements
+	$(k-tau-pin-requirements)
+
+#	<define>_CRT_SECURE_NO_DEPRECATE
+#	<define>_SECURE_SCL=0
+
+	<define>WIN32
+
+	<cxxflags>/GL
+
+	<linkflags>/LTCG
+
+#	$(MT) /outputresource:"tau_pin.exe;#1" /manifest tau_pin.exe.intermediate.manifest 
+#	<embed-manifest>off
+
+	#/EHsc
+	<exception-handling>on
+	<asynch-exceptions>off
+	<extern-c-nothrow>on
+
+#	<target-os>windows:<linkflags>Kernel32.lib
+	: # default build
+	: # usage requirements
+	$(k-tau-pin-requirements)
+	;
+
+#ktausuite-dist k-tau-pin ;

@@ -1,0 +1,192 @@
+import modules ;
+import package ;
+import stage ;
+import path ;
+import os ;
+import errors ;
+
+import feature : feature ;
+
+feature character-set : ansi unicode multibyte : composite ;
+feature.compose <character-set>unicode : <define>_UNICODE <define>UNICODE ;
+feature.compose <character-set>multibyte : <define>_MBCS ;
+
+
+feature opt-pack : release-with-di : composite ;
+feature.compose <opt-pack>release-with-di
+	:
+	<character-set>unicode
+	<threading>multi
+#	<optimization>off
+#	<inlining>off
+	<debug-symbols>on
+	<debug-store>database
+	;
+
+feature msvc-opt-pack : ktausuite-msvc-options : composite ;
+feature.compose <msvc-opt-pack>ktausuite-msvc-options
+	:
+	<define>WIN32_LEAN_AND_MEAN
+# - problems while building google breakpad
+# disable warnings
+	<cxxflags>/wd4290
+	;
+
+local JAVA_HOME = [ modules.peek : JAVA_HOME ] ;
+local K_NATIVE_REPO_HOME = [ modules.peek : K_NATIVE_REPO_HOME ] ;
+
+path-constant ktausuite_dir :
+	.
+	;
+
+local headers-root =
+	common/inc
+	;
+
+local utils-headers-root =
+	utils/common/inc
+	;
+# remove this after doing headers export more strict
+
+local usage-requirements =
+	<opt-pack>release-with-di
+	<toolset>msvc:<msvc-opt-pack>ktausuite-msvc-options
+# include
+	<include>$(headers-root)
+	<include>$(utils-headers-root)
+	# boost
+#	<include>$(K_NATIVE_REPO_HOME)/boost_1_42_0
+#	<include>$(ktausuite_dir)/thirdparty/common/inc
+#	<include>$(JAVA_HOME)/include
+#	<target-os>windows:<include>$(JAVA_HOME)/include/win32
+# library
+#	<target-os>windows:<library-path>$(ktausuite_dir)/dist/lib
+	<target-os>windows:<linkflags>AdvAPI32.Lib
+	<target-os>windows:<linkflags>User32.Lib
+	;
+# compileflags don't work, so we use cxxflags/cflags instead
+
+
+local default-build ;
+if $(__file__:D) = ""
+{
+	default-build =
+		<variant>release
+		<threading>multi
+		<link>shared
+#		<link>static
+	;
+    
+	if [ os.name ] = NT
+	{
+		default-build += <runtime-link>shared ;
+#		default-build += <runtime-link>static ;
+	}
+}
+else
+{
+	default-build =
+		release
+	;
+}
+
+project ktausuite
+	: requirements
+	$(usage-requirements)
+	: usage-requirements
+	# error if we enable $(usage-requirements) here also
+	: build-dir
+	bin.v2
+	: default-build
+	$(default-build)
+	;
+
+dist-libraries =
+#	utils/ospr//ospr
+	;
+
+
+package.install dist-base
+	: # requirements
+#	<install-header-subdir>jace
+	<install-source-root>$(headers-root)
+	<install-default-prefix>dist
+	<install-no-version-symlinks>on
+	: # binaries
+	: # libraries
+	$(dist-libraries)
+	: # headers
+	[ path.glob-tree $(headers-root) : *.h *.tsd *.hpp *.c ]
+	;
+
+explicit dist-base ; # exclude from a build by default
+
+install dist-pdb
+	:
+	$(dist-libraries)
+	:
+	<location>dist/pdb
+	<install-type>PDB
+	;
+
+explicit dist-pdb ; # exclude from a build by default
+
+alias dist : dist-base dist-pdb ;
+explicit dist ;
+
+path-constant ktausuite_root :
+	.
+	;
+
+
+use-libraries = ktaupin
+	;
+
+# Make project ids of all libraries known.
+for local l in $(use-libraries)
+{
+	use-project /ktausuite/$(l) : $(l) ;
+}
+
+# This rule should be called from libraries' Jamfiles and will create install targets.
+# - libraries -- list of library targets to install.
+rule ktausuite-dist ( libraries * : header-requirements * : headers * )
+{
+#	errors.user-error "Please, use root rule for distribution!" ;
+
+	install dist-generated-headers
+		:
+		$(headers)
+		: # requirements
+		$(header-requirements)
+		<location>$(ktausuite_root)/dist/include
+	;
+
+	install dist-base
+		:
+		$(libraries)
+		:
+		<location>$(ktausuite_root)/dist/lib
+		<install-type>LIB
+	;
+
+	install dist-pdb
+		:
+		$(libraries)
+		:
+		<location>$(ktausuite_root)/dist/pdb
+		<install-type>PDB
+	;
+
+	local c = [ project.current ] ;
+	local project-module = [ $(c).project-module ] ;
+	module $(project-module)
+	{
+		explicit dist-generated-headers ;
+		explicit dist-base ;
+		explicit dist-pdb ;
+
+		alias dist : dist-generated-headers dist-base dist-pdb ;
+		explicit dist ;
+	}
+}
