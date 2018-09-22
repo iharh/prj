@@ -10,6 +10,7 @@ main()
 
     std::cout << "len: " << len << std::endl;
     std::cout << "sizeof(char): " << sizeof(char) << std::endl;
+    std::cout << "sizeof(unsigned short): " << sizeof(unsigned short) << std::endl;
     std::cout << "sizeof(wchar_t): " << sizeof(wchar_t) << std::endl;
 
     std::cout << std::hex << std::setfill('0');  // setfill needs to be set only once
