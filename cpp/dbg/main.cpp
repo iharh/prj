@@ -23,3 +23,17 @@ main()
 
     return 0;
 }
+
+    /*
+    void
+    printWC(const void *pStr, size_t len, size_t size)
+    {
+        std::cout << std::hex << std::setfill('0');  // setfill needs to be set only once
+        unsigned char *ptr = reinterpret_cast<unsigned char *>(const_cast<void *>(pStr));
+        for (size_t i = 0; i < len * size; ++i, ptr++)
+        {
+            std::cout << std::setw(2) << static_cast<unsigned>(*ptr) << " ";
+        }
+        std::cout << std::endl;
+    }
+    */
