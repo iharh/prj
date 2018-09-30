@@ -1,9 +1,9 @@
-// NativeLibrary.java
 import org.bytedeco.javacpp.Loader;
 import org.bytedeco.javacpp.Pointer;
+import org.bytedeco.javacpp.IntPointer;
 import org.bytedeco.javacpp.annotation.Platform;
 import org.bytedeco.javacpp.annotation.Namespace;
-import org.bytedeco.javacpp.annotation.StdString;
+import org.bytedeco.javacpp.annotation.StdWString;
 
 @Platform(include="NativeLibrary.h")
 @Namespace("NativeLibrary")
@@ -13,18 +13,19 @@ public class NativeLibrary {
         public NativeClass() { allocate(); }
         private native void allocate();
 
-        // to call the getter and setter functions 
-        public native @StdString String get_property(); public native void set_property(String property);
-
-        // to access the member variable directly
-        public native @StdString String property();     public native void property(String property);
+        public native @StdWString IntPointer getWString();
     }
 
     public static void main(String[] args) {
-        // Pointer objects allocated in Java get deallocated once they become unreachable,
-        // but C++ destructors can still be called in a timely fashion with Pointer.deallocate()
-        NativeClass l = new NativeClass();
-        l.set_property("Hello World!");
-        System.out.println(l.property());
+        System.out.println("start");
+        try (NativeClass l = new NativeClass()) {
+            IntPointer pI = l.getWString();
+            int [] arrI = pI.getStringCodePoints();
+            for (int i = 0; i < arrI.length; ++i) {
+                System.out.println(arrI[i]);
+            }
+            System.out.println(pI.getString());
+        }
+        System.out.println("finish");
     }
 }
