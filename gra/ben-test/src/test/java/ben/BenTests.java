@@ -44,9 +44,8 @@ public class BenTests {
     private static final int REQ_CONNECT_TIMEOUT = 20000;
 
     private static URI createURI() throws IOException{
-        URI lttURI = null;
         try {
-            lttURI = new URIBuilder()
+            return new URIBuilder()
                 .setScheme(HTTP_SCHEME)
                 .setHost(HTTP_HOST)
                 .setPort(HTTP_PORT)
@@ -54,19 +53,42 @@ public class BenTests {
         } catch (URISyntaxException e) {
             throw new IOException(e.getMessage(), e);
         }
-        return lttURI;
-
-        /* RequestConfig lttRequestConfig = RequestConfig.custom()
+    }
+    
+    private static RequestConfig createRequestConfig() {
+        return RequestConfig.custom()
             .setSocketTimeout(REQ_SOCKET_TIMEOUT)
             .setConnectTimeout(REQ_CONNECT_TIMEOUT)
             .build();
-        */
     }
+
+    /*
+    public static synchronized void process(InputStream in, OutputStream out) throws IOException {
+        CloseableHttpClient httpclient = mdmHttpClient; 
+
+        InputStreamEntity reqEntity = new InputStreamEntity(in, APPLICATION_XML);
+        reqEntity.setChunked(true);
+
+        HttpPost httppost = new HttpPost(mdmURI);
+        httppost.setConfig(mdmRequestConfig);
+        httppost.setEntity(reqEntity);
+
+        try (CloseableHttpResponse response = httpclient.execute(httppost)) {
+            HttpEntity resEntity = response.getEntity();
+            resEntity.writeTo(out);
+            EntityUtils.consume(resEntity); // we can use toString(resEntity) also
+        }
+    }
+    */
 
     @Test
     void justAnExample() throws Exception {
         try (CloseableHttpClient lttHttpClient = HttpClients.createDefault()) {
             assertNotNull(lttHttpClient);
+            URI lttURI = createURI();
+            assertNotNull(lttURI);
+            RequestConfig lttRequestConfig = createRequestConfig();
+            assertNotNull(lttRequestConfig);
         }
     }
 }
