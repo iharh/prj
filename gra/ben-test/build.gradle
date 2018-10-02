@@ -13,6 +13,10 @@ apply from: "${gradleRootDir}/java.gradle"
 apply from: "${gradleRootDir}/junit.gradle"
 
 dependencies {
+    // intentionally obsolete httpclient for compatibility
+    compile 'org.apache.httpcomponents:httpcore:4.3'
+    compile 'org.apache.httpcomponents:httpclient:4.3.1'
+
     testCompile libraries.junit_jupiter_api
     testCompile libraries.junit_jupiter_params
     testRuntime libraries.junit_jupiter_engine
