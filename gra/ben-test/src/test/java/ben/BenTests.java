@@ -2,13 +2,15 @@ package ben;
 
 import org.junit.jupiter.api.Test;
 
-//import org.apache.http.HttpEntity;
-//import org.apache.http.util.EntityUtils;
+import org.apache.http.HttpEntity;
+import org.apache.http.util.EntityUtils;
+import org.apache.http.HttpStatus;
+import org.apache.http.StatusLine;
 
 //import org.apache.http.entity.InputStreamEntity;
 import org.apache.http.client.config.RequestConfig;
-//import org.apache.http.client.methods.HttpPost;
-//import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.client.utils.URIBuilder;
@@ -32,23 +34,26 @@ import java.io.IOException;
 // import static org.apache.http.entity.ContentType.*;
 
 //import static org.junit.jupiter.api.Assertions.assertTrue;
-//import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class BenTests {
     private static final String HTTP_SCHEME = "http";
     private static final String HTTP_HOST = "localhost";
+    private static final String HTTP_PATH = "/analyze";
     private static final int HTTP_PORT = 8080;
 
     private static final int REQ_SOCKET_TIMEOUT = 20000;
     private static final int REQ_CONNECT_TIMEOUT = 20000;
 
-    private static URI createURI() throws IOException{
+    private static URI createURI(String text) throws IOException{
         try {
             return new URIBuilder()
                 .setScheme(HTTP_SCHEME)
                 .setHost(HTTP_HOST)
                 .setPort(HTTP_PORT)
+                .setPath(HTTP_PATH)
+                .setParameter("text", text)
                 .build();
         } catch (URISyntaxException e) {
             throw new IOException(e.getMessage(), e);
@@ -75,7 +80,8 @@ public class BenTests {
 
         try (CloseableHttpResponse response = httpclient.execute(httppost)) {
             HttpEntity resEntity = response.getEntity();
-            resEntity.writeTo(out);
+
+            //resEntity.writeTo(out);
             EntityUtils.consume(resEntity); // we can use toString(resEntity) also
         }
     }
@@ -83,12 +89,27 @@ public class BenTests {
 
     @Test
     void justAnExample() throws Exception {
+        RequestConfig lttRequestConfig = createRequestConfig();
+        assertNotNull(lttRequestConfig);
+        URI lttURI = createURI("abc");
+        assertNotNull(lttURI);
+
         try (CloseableHttpClient lttHttpClient = HttpClients.createDefault()) {
             assertNotNull(lttHttpClient);
-            URI lttURI = createURI();
-            assertNotNull(lttURI);
-            RequestConfig lttRequestConfig = createRequestConfig();
-            assertNotNull(lttRequestConfig);
+
+            HttpGet httpget = new HttpGet(lttURI);
+            httpget.setConfig(lttRequestConfig);
+
+            try (CloseableHttpResponse lttHttpResponse = lttHttpClient.execute(httpget)) { // client.execute(..., HttpContext)
+                StatusLine lttResponseStatusLine = lttHttpResponse.getStatusLine();
+                assertNotNull(lttResponseStatusLine);
+                assertEquals(HttpStatus.SC_OK, lttResponseStatusLine.getStatusCode());
+
+                HttpEntity lttResponseEntity = lttHttpResponse.getEntity();
+                assertNotNull(lttResponseEntity);
+                    
+                EntityUtils.consume(lttResponseEntity); // we can use toString(resEntity) also
+            }
         }
     }
 }
