@@ -7,7 +7,6 @@ import org.apache.http.util.EntityUtils;
 import org.apache.http.HttpStatus;
 import org.apache.http.StatusLine;
 
-//import org.apache.http.entity.InputStreamEntity;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -15,25 +14,11 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.client.utils.URIBuilder;
 
-// http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/impl/client/HttpClientBuilder.html
 import java.net.URI;
 import java.net.URISyntaxException;
 
-/*
-import java.io.BufferedWriter;
-import java.io.OutputStreamWriter;
-import java.io.OutputStream;
-*/
 import java.io.ByteArrayOutputStream;
-/*
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.InputStream;
-import java.io.ByteArrayInputStream;
-*/
 import java.io.IOException;
-
-// import static org.apache.http.entity.ContentType.*;
 
 //import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -69,52 +54,27 @@ public class BenTests {
             .build();
     }
 
-    /*
-    public static synchronized void process(InputStream in, OutputStream out) throws IOException {
-        CloseableHttpClient httpclient = mdmHttpClient; 
-
-        InputStreamEntity reqEntity = new InputStreamEntity(in, APPLICATION_XML);
-        reqEntity.setChunked(true);
-
-        HttpPost httppost = new HttpPost(mdmURI);
-        httppost.setConfig(mdmRequestConfig);
-        httppost.setEntity(reqEntity);
-
-        try (CloseableHttpResponse response = httpclient.execute(httppost)) {
-            HttpEntity resEntity = response.getEntity();
-
-            //resEntity.writeTo(out);
-            EntityUtils.consume(resEntity); // we can use toString(resEntity) also
-        }
-    }
-    */
-
     @Test
     void justAnExample() throws Exception {
         RequestConfig lttRequestConfig = createRequestConfig();
         assertNotNull(lttRequestConfig);
-        URI lttURI = createURI("abc");
+        URI lttURI = createURI("খালিদ  জামিলকে দেখে মনে হচ্ছে খাঁচাবন্দি ‘বাঘ’..!");
         assertNotNull(lttURI);
 
         try (CloseableHttpClient lttHttpClient = HttpClients.createDefault()) {
-            assertNotNull(lttHttpClient);
-
             HttpGet httpget = new HttpGet(lttURI);
             httpget.setConfig(lttRequestConfig);
-
             try (CloseableHttpResponse lttHttpResponse = lttHttpClient.execute(httpget)) { // client.execute(..., HttpContext)
                 StatusLine lttResponseStatusLine = lttHttpResponse.getStatusLine();
-                assertNotNull(lttResponseStatusLine);
                 assertEquals(HttpStatus.SC_OK, lttResponseStatusLine.getStatusCode());
 
                 HttpEntity lttResponseEntity = lttHttpResponse.getEntity();
-                assertNotNull(lttResponseEntity);
-
                 long lttRespLen = lttResponseEntity.getContentLength();
-                try (ByteArrayOutputStream bos = new ByteArrayOutputStream()) { // TODO: specifying direct size impacts performance a lot !!!
+                try (ByteArrayOutputStream bos = new ByteArrayOutputStream((int)lttRespLen)) { // specifying direct size impacts performance a lot
                     lttResponseEntity.writeTo(bos); 
 
-                    assertEquals("CgA=", bos.toString()); // bos.toByteArray()
+                    String expectedRes = "CgYIARoCICAKYggCEAcaFeCmnOCmvuCmruCmv+CmsuCmleCnhyJFCg/gppzgpr7gpq7gpr/gprISMv7//////////wHz//////////8B4P//////////Adf//////////wHT//////////8BCgUQDhoBIAojIiEKCeCmpuCnh+CmlhIU9v//////////AcH//////////wEKNyI1Cgngpqbgp4fgppYSKPb//////////wHH//////////8ByP//////////Ac3//////////wEKUwgCEA8aDOCmpuCnh+CmluCnhyI/Cgngpqbgp4fgppYSMvb//////////wHH//////////8ByP//////////Ac7//////////wHi//////////8BCgUQExoBIApNCAIQFBoJ4Kau4Kao4KeHIjwKBuCmruCmqBIy////////////Ad7//////////wHc//////////8B1///////////AdH//////////wEKBRAXGgEgCjEiLwoD4Ka5Eij2//////////8Bx///////////Acb//////////wHN//////////8BClAIAhAYGg/gprngpprgp43gppvgp4ciOQoD4Ka5EjL2//////////8Bx///////////Acb//////////wHO//////////8B4v//////////AQoFEB0aASAKCggBEB4aBCDigJgKUAgCECoaCeCmrOCmvuCmmCI/Cgngpqzgpr7gppgSMv///////////wHg//////////8B2///////////Adf//////////wHU//////////8BCgcQLRoD4oCZChgIAhAuGgEuIg8KAS4SCr///////////wEKGAgCEC8aAS4iDwoBLhIKv///////////AQ==";
+                    assertEquals(expectedRes, bos.toString()); // bos.toByteArray()
                 } 
                 EntityUtils.consume(lttResponseEntity); // we can use toString(resEntity) also
             }
