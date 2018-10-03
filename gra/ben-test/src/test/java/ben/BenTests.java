@@ -23,7 +23,9 @@ import java.net.URISyntaxException;
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
 import java.io.OutputStream;
+*/
 import java.io.ByteArrayOutputStream;
+/*
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.InputStream;
@@ -107,7 +109,13 @@ public class BenTests {
 
                 HttpEntity lttResponseEntity = lttHttpResponse.getEntity();
                 assertNotNull(lttResponseEntity);
-                    
+
+                long lttRespLen = lttResponseEntity.getContentLength();
+                try (ByteArrayOutputStream bos = new ByteArrayOutputStream()) { // TODO: specifying direct size impacts performance a lot !!!
+                    lttResponseEntity.writeTo(bos); 
+
+                    assertEquals("CgA=", bos.toString()); // bos.toByteArray()
+                } 
                 EntityUtils.consume(lttResponseEntity); // we can use toString(resEntity) also
             }
         }
