@@ -20,7 +20,7 @@ import java.net.URISyntaxException;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-//import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -58,7 +58,7 @@ public class BenTests {
     }
 
     @Test
-    public void justAnExample() throws Exception {
+    public void testResp1() throws Exception {
         RequestConfig lttRequestConfig = createRequestConfig();
         assertNotNull(lttRequestConfig);
         URI lttURI = createURI(SAMPLE_TEXT1);
@@ -81,6 +81,12 @@ public class BenTests {
                 EntityUtils.consume(lttResponseEntity); // we can use toString(resEntity) also
             }
         }
+    }
+
+    @Test
+    public void testDeserialization1() throws Exception {
+        dumpRes(EXP_RES1);
+        assertTrue(true);
     }
 
     private void dumpRes(String data) {
