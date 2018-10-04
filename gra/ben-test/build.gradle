@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id "net.ltgt.apt" version '0.18'
 }
 
 ext {
@@ -29,7 +30,22 @@ ext {
     ]
 }
 
+repositories {
+    maven { url rootProject.ext.get('nexus.repo.resolve') }
+}
+
 dependencies {
+    compile 'clarabridge:cb-lttoolbox-api:0.1.0'
+
+    // lombok
+    compileOnly         libraries.lombok
+    testCompileOnly     libraries.lombok
+    annotationProcessor libraries.lombok
+
+    // logging
+    compile libraries.log4j_over_slf4j
+    compile libraries.logstash_logback_encoder
+
     // intentionally obsolete httpclient for compatibility
     compile 'org.apache.httpcomponents:httpcore:4.3'
     compile 'org.apache.httpcomponents:httpclient:4.3.1'

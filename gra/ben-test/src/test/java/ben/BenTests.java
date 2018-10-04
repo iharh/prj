@@ -1,5 +1,7 @@
 package ben;
 
+import com.clarabridge.nlp.serialization.proto.LttService;
+
 import org.junit.jupiter.api.Test;
 
 import org.apache.http.HttpEntity;
@@ -22,10 +24,13 @@ import java.net.URISyntaxException;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+//import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class BenTests {
     private static final String HTTP_SCHEME = "http";
     private static final String HTTP_HOST = "localhost";
@@ -89,13 +94,14 @@ public class BenTests {
 
     @Test
     public void testDeserialization1() throws Exception {
-        dumpRes(EXP_RES1);
-        assertTrue(true);
+        LttService.LTTResponse lttResponse = dumpRes(EXP_RES1);
+        assertNotNull(lttResponse);
     }
 
-    private void dumpRes(String data) {
+    private LttService.LTTResponse dumpRes(String data) throws Exception {
         byte [] byteArray = encoder.decode(data);
 
-        // NlpService.NLPResponse nlpResponse = NlpService.NLPResponse.parseFrom(byteArray);
+        LttService.LTTResponse lttResponse = LttService.LTTResponse.parseFrom(byteArray);
+        return lttResponse;
     }
 }
