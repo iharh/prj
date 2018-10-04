@@ -43,6 +43,8 @@ dependencies {
     annotationProcessor libraries.lombok
 
     // logging
+    compile libraries.slf4j_api
+    compile libraries.slf4j_simple
     compile libraries.log4j_over_slf4j
     compile libraries.logstash_logback_encoder
 

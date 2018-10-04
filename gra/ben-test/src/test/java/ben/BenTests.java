@@ -102,6 +102,7 @@ public class BenTests {
         byte [] byteArray = encoder.decode(data);
 
         LttService.LTTResponse lttResponse = LttService.LTTResponse.parseFrom(byteArray);
+        log.info("lttResponse: {}", lttResponse);
         return lttResponse;
     }
 }

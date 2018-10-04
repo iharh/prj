@@ -17,6 +17,8 @@ ext {
         lombok:                     "${groups.lombok}:lombok:${versions.lombok}",
         // slf4j
         log4j_over_slf4j:           "${groups.slf4j}:log4j-over-slf4j:${versions.slf4j}",
+        slf4j_api:                  "${groups.slf4j}:slf4j-api:${versions.slf4j}",
+        slf4j_simple:               "${groups.slf4j}:slf4j-simple:${versions.slf4j}",
         // logback
         logstash_logback_encoder:   'net.logstash.logback:logstash-logback-encoder:5.2',
         // commons
