@@ -12,10 +12,30 @@ apply from: "${gradleRootDir}/dependencies.gradle"
 apply from: "${gradleRootDir}/java.gradle"
 apply from: "${gradleRootDir}/junit.gradle"
 
+ext {
+    repoRootDir = "${rootProject.getRootDir()}/.." // /..
+    gradleRootDir = "${repoRootDir}/gradle"
+
+    groups += [
+        protobuf:                   'com.google.protobuf',
+    ]
+    versions += [
+        protobuf:                   '3.5.1', // TODO: ask PLAT to upgrade to 3.6.1
+    ]
+    libraries += [
+        // protobuf
+        protobuf_java:              "${groups.protobuf}:protobuf-java:${versions.protobuf}",
+        protobuf_java_util:         "${groups.protobuf}:protobuf-java-util:${versions.protobuf}",
+    ]
+}
+
 dependencies {
     // intentionally obsolete httpclient for compatibility
     compile 'org.apache.httpcomponents:httpcore:4.3'
     compile 'org.apache.httpcomponents:httpclient:4.3.1'
+
+    compile libraries.protobuf_java
+    compile libraries.protobuf_java_util
 
     testCompile libraries.junit_jupiter_api
     testCompile libraries.junit_jupiter_params
