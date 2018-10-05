@@ -17,6 +17,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.client.utils.URIBuilder;
 
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.common.io.BaseEncoding;
 
 import java.net.URI;
@@ -106,16 +107,17 @@ public class BenTests {
         assertEquals("UTF-8", UTF_8.name());
     }
 
-    private LttService.LTTResponse dumpRes(String data) throws Exception {
+    private LttService.LTTResponse dumpRes(String data) throws InvalidProtocolBufferException {
         byte [] byteArray = encoder.decode(data);
 
         LttService.LTTResponse lttResponse = LttService.LTTResponse.parseFrom(byteArray);
         for (LttService.Token token: lttResponse.getTokensList()) {
             LttService.TokenType tokenType = token.getTokenType();
-            if (tokenType == LttService.TokenType.Word) { // UnkWord
+            // if (tokenType == LttService.TokenType.Word) { // UnkWord
+            {
                 int start = token.getStart();
                 String surfaceForm = token.getSurfaceForm();
-                log.info("word start: {} sf: {}", start, surfaceForm);
+                log.info("tokenType: {} start: {} sf: {}", tokenType, start, surfaceForm);
             }
         }
 
