@@ -110,7 +110,15 @@ public class BenTests {
         byte [] byteArray = encoder.decode(data);
 
         LttService.LTTResponse lttResponse = LttService.LTTResponse.parseFrom(byteArray);
-        log.info("lttResponse: {}", lttResponse);
+        for (LttService.Token token: lttResponse.getTokensList()) {
+            LttService.TokenType tokenType = token.getTokenType();
+            if (tokenType == LttService.TokenType.Word) { // UnkWord
+                int start = token.getStart();
+                String surfaceForm = token.getSurfaceForm();
+                log.info("word start: {} sf: {}", start, surfaceForm);
+            }
+        }
+
         return lttResponse;
     }
 }
