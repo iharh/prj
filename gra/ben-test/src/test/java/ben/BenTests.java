@@ -3,6 +3,7 @@ package ben;
 import com.clarabridge.nlp.serialization.proto.LttService;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Disabled;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.util.EntityUtils;
@@ -27,6 +28,8 @@ import java.io.IOException;
 //import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import static java.nio.charset.StandardCharsets.*;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -66,7 +69,7 @@ public class BenTests {
             .build();
     }
 
-    @Test
+    @Disabled
     public void testResp1() throws Exception {
         RequestConfig lttRequestConfig = createRequestConfig();
         assertNotNull(lttRequestConfig);
@@ -96,6 +99,11 @@ public class BenTests {
     public void testDeserialization1() throws Exception {
         LttService.LTTResponse lttResponse = dumpRes(EXP_RES1);
         assertNotNull(lttResponse);
+    }
+
+    @Test
+    public void testCharsetName() throws Exception {
+        assertEquals("UTF-8", UTF_8.name());
     }
 
     private LttService.LTTResponse dumpRes(String data) throws Exception {
