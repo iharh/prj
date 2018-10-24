@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "Launch",
             "program": "${workspaceFolder}/build/exe/w/w",
-            "args": ["ben/ben.automorph.bin"],
+            "args": ["ben/ben.automorpf.bin"],
             "cwd": "${workspaceFolder}"
         }
     ]
