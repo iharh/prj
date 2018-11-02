@@ -38,6 +38,8 @@ dependencies {
     testCompile libraries.junit_jupiter_api
     testCompile libraries.junit_jupiter_params
     testRuntime libraries.junit_jupiter_engine
+
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.11.1'
 }
 
 task dumpInfo {
