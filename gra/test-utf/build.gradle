@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id "net.ltgt.apt" version '0.18'
+}
+
+ext {
+    repoRootDir = "${rootProject.getRootDir()}/.." // /..
+    gradleRootDir = "${repoRootDir}/gradle"
+}
+
+apply from: "${gradleRootDir}/repositories.gradle"
+apply from: "${gradleRootDir}/dependencies.gradle"
+apply from: "${gradleRootDir}/java.gradle"
+apply from: "${gradleRootDir}/junit.gradle"
+
+ext {
+    repoRootDir = "${rootProject.getRootDir()}/.." // /..
+    gradleRootDir = "${repoRootDir}/gradle"
+}
+
+dependencies {
+    // lombok
+    compileOnly         libraries.lombok
+    testCompileOnly     libraries.lombok
+    annotationProcessor libraries.lombok
+
+    compile             libraries.commons_codec
+
+    // logging
+    /*compile libraries.slf4j_api
+    compile libraries.slf4j_simple
+    compile libraries.log4j_over_slf4j
+    compile libraries.logstash_logback_encoder
+    */
+
+    testCompile libraries.junit_jupiter_api
+    testCompile libraries.junit_jupiter_params
+    testRuntime libraries.junit_jupiter_engine
+
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.11.1'
+}
+
+task dumpInfo {
+    doLast {
+        println "Hello gradleRootDir: $gradleRootDir"
+    }
+}
+
+test {
+    testLogging {
+        showStandardStreams true
+    }
+}
