@@ -18,20 +18,23 @@ public class UTFTests {
 
     @Test
     public void test1() throws Exception {
-        "1😌2"
-            .codePoints()
-            .forEach(cp -> {
-                if (Character.isBmpCodePoint(cp)) {
-                    dbg("char: " + (char)cp);
-                } else if (Character.isValidCodePoint(cp)) {
-                    char [] chars = Character.toChars(cp);
-                    String str = new String(chars);
-                    dbg("surrogated: " + str);
-                    // Character.highSurrogate(cp), Character.lowSurrogate(cp)
-                } else {
-                    dbg("invalid");
-                }
-            });
+        String src = "1😌2";
+
+        int i = 0;
+        for (; i < src.length(); ++i) {
+            int cp = src.codePointAt(i);
+            if (Character.isBmpCodePoint(cp)) {
+                dbg("char: " + (char)cp);
+            } else if (Character.isValidCodePoint(cp)) {
+                char [] chars = Character.toChars(cp);
+                String str = new String(chars);
+                dbg("surrogated: " + str);
+                // Character.highSurrogate(cp), Character.lowSurrogate(cp)
+                ++i;
+            } else {
+                dbg("invalid");
+            }
+        }
         // dbg(Hex.encodeHexString("123".getBytes(UTF_8)));
         assertThat(true).isEqualTo(true);
     }
