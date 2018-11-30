@@ -37,7 +37,7 @@ val clbCfg by tasks.creating {
         val serviceCustomProps = Properties()
         serviceCustomProps.setProperty("ehcache.cache.name", "ehcache.dev")
         serviceCustomProps.setProperty("ehcache.alerts.cache.name", "ehcache-alerts.dev")
-        listOf("ar", "de", "en", "es", "fr", "hi", "it", "pt").forEach {
+        listOf("ar", "bn", "de", "en", "es", "fr", "hi", "it", "pt").forEach {
             serviceCustomProps.setProperty("feign.fxservice.${it}.host", "http://${fxsvcHost}:8080")
         }
         propServiceCustomFile.outputStream().use { serviceCustomProps.store(it, null) }
