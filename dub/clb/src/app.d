@@ -26,7 +26,7 @@ struct Options {
     @Option("upload", "u") @Help("Upload data")
     OptionFlag upload;
 
-    @Option("db", "d") @Help("DB test")
+    @Option("db", "d") @Help("DB properties configure")
     OptionFlag db;
 
     @Option("xml", "x") @Help("XML test")
@@ -50,7 +50,7 @@ string getRespStatus(string content) {
 int main(string[] args) {
     auto langId = "bn"; // ar de en ar es fr hi it fr pt
     auto prjNameInt = langId ~ "0int";
-    auto prjNameExt = langId ~ "0ext";
+    auto prjNameExt = langId ~ "1"; // "0ext";
     auto prjNames = [ prjNameInt , prjNameExt ];
     //auto prjNames = [ prjNameInt ];
     //auto prjNames = [ prjNameExt ];
@@ -73,7 +73,7 @@ int main(string[] args) {
         if (options.realtime) {
             writeln("process realtime ...");
             bool isSave = false;
-            auto prjName = prjNameInt;
+            auto prjName = prjNameExt; // int
             auto lines = File(dataFileName).byLineCopy();
             foreach (lineNum, line; lines.enumerate(1)) {
                 writeln(format("process: %s line %d: prj: %s ...", isSave, lineNum, prjName));
@@ -100,14 +100,14 @@ int main(string[] args) {
             auto lines = File(dataFileName).byLineCopy();
             foreach (lineNum, line; lines.enumerate(1)) {
                 // stdin.readln();
-                foreach (prjName; prjNames) {
-                    //auto prjName = prjNameExt;
+                //foreach (prjName; prjNames) {
+                    auto prjName = prjNameExt;
                     writeln(format("line %d: prj: %s ...", lineNum, prjName));
                     auto responseBody = pmvdNatId(prjName, isSave, line, "natId" ~ lineNum.to!string);
                     if (getRespStatus(responseBody) != "SUCCESS") {
                         throw new Exception("failed !!!");
                     }
-                }
+                //}
             }
             /*auto line = "Send a message to an address";
             auto lineNum = 1;
