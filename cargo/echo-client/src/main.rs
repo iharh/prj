@@ -52,17 +52,19 @@ fn process_file() -> ResT<()> {
     let file = std::fs::File::open("input.txt")?;
     let reader = BufReader::new(file);
     // Read the file line by line using the lines() iterator from std::io::BufRead.
-    for (index, line) in reader.lines().enumerate() {
-        let line = line.unwrap(); // Ignore errors.
-        // Show the line and its number.
-        println!("{}. {}", index + 1, line);
-        single(&line)?
-    }
+        for (_index, line) in reader.lines().enumerate() {
+            let line = line.unwrap(); // Ignore errors.
+            // Show the line and its number.
+            // println!("{}. {}", index + 1, line);
+            single(&line)?
+        }
     Ok(())
 }
 
 fn main() -> ResT<()> {
     // let client = reqwest::Client::builder().build()?;
-    // single("abc")
-    process_file()
+    for _x in 0..1000000 {
+        process_file()?;
+    }
+    Ok(())
 }
