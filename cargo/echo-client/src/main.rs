@@ -1,6 +1,7 @@
 // `error_chain!` can recurse deeply
 #![recursion_limit = "1024"]
 
+use reqwest::{Client, StatusCode};
 use std::io::{BufRead, BufReader};
 //use std::{fs, io, path::Path};
 
@@ -19,18 +20,18 @@ mod errors {
 
 type ResT<T> = errors::Result<T>;
 
-fn single(client: &reqwest::Client, text: &str) -> ResT<()> {
+fn single(client: &Client, text: &str) -> ResT<()> {
     let resp = client.get("http://localhost:8091/analyze")
         .query(&[("text", text)])
         .send()?;
 
-    assert!(resp.status() == 200);
+    assert!(resp.status() == StatusCode::OK);
     // std::io::copy(&mut resp, &mut std::io::stdout())?;
     // println!("respBody = {:?}", respBody);
     Ok(())
 }
 
-fn process_file(client: &reqwest::Client) -> ResT<()> {
+fn process_file(client: &Client) -> ResT<()> {
     let file = std::fs::File::open("input.txt")?;
     let reader = BufReader::new(file);
     for (_index, line) in reader.lines().enumerate() {
@@ -42,8 +43,9 @@ fn process_file(client: &reqwest::Client) -> ResT<()> {
 }
 
 fn main() -> ResT<()> {
-    let client = reqwest::Client::new();
-    for _x in 0..1000000 {
+    let client = Client::new();
+    for index in 0..1 {
+        println!("iter: {}", index);
         process_file(&client)?;
     }
     Ok(())
