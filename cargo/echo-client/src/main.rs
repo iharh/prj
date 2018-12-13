@@ -1,20 +1,14 @@
 // `error_chain!` can recurse deeply
 #![recursion_limit = "1024"]
 
-//use std::{fs, io, path::Path};
 use std::io::{BufRead, BufReader};
+//use std::{fs, io, path::Path};
 
-// RUST_BACKTRACE=1 cargo run
+// RUST_BACKTRACE=1 cargo run --example simple
 
 // https://doc.rust-lang.org/std/boxed/
 // https://doc.rust-lang.org/std/macro.assert.html
 // https://doc.rust-lang.org/std/error/
-
-// io::Error
-// https://rust-lang-nursery.github.io/edition-guide/rust-2018/error-handling-and-panics/question-mark-in-main-and-tests.html
-
-// https://github.com/seanmonstar/reqwest/blob/master/examples/simple.rs
-// cargo run --example simple
 
 #[macro_use]
 extern crate error_chain;
@@ -27,44 +21,39 @@ mod errors {
         }
     }
 }
-
 // use errors::*;
 
-// type StdErrT = Box<std::error::Error>;
-// type ReqErrT = Box<reqwest::Error>;
-// type IOErrT = Box<std::io::Error>;
 // https://doc.rust-lang.org/book/ch17-02-trait-objects.html
 //type DynErrT = Box<dyn std::error::Error>;
 //type ResT<T> = Result<T, DynErrT>;
 type ResT<T> = errors::Result<T>;
 
-fn single(text: &str) -> ResT<()> {
-    // let mut resp = reqwest::get("http://localhost:8000/hello")?;
-    let url = String::from("http://localhost:8091/analyze?text=") + text;
-    let resp = reqwest::get(&url)?;
+fn single(client: &reqwest::Client, text: &str) -> ResT<()> {
+    let resp = client.get("http://localhost:8091/analyze")
+        .query(&[("text", text)])
+        .send()?;
+
     assert!(resp.status() == 200);
     // std::io::copy(&mut resp, &mut std::io::stdout())?;
     // println!("respBody = {:?}", respBody);
     Ok(())
 }
 
-fn process_file() -> ResT<()> {
+fn process_file(client: &reqwest::Client) -> ResT<()> {
     let file = std::fs::File::open("input.txt")?;
     let reader = BufReader::new(file);
-    // Read the file line by line using the lines() iterator from std::io::BufRead.
-        for (_index, line) in reader.lines().enumerate() {
-            let line = line.unwrap(); // Ignore errors.
-            // Show the line and its number.
-            // println!("{}. {}", index + 1, line);
-            single(&line)?
-        }
+    for (_index, line) in reader.lines().enumerate() {
+        let line = line?;
+        // println!("{}. {}", index + 1, line);
+        single(client, &line)?
+    }
     Ok(())
 }
 
 fn main() -> ResT<()> {
-    // let client = reqwest::Client::builder().build()?;
+    let client = reqwest::Client::new();
     for _x in 0..1000000 {
-        process_file()?;
+        process_file(&client)?;
     }
     Ok(())
 }
