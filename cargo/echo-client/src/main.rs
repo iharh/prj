@@ -4,12 +4,6 @@
 use std::io::{BufRead, BufReader};
 //use std::{fs, io, path::Path};
 
-// RUST_BACKTRACE=1 cargo run --example simple
-
-// https://doc.rust-lang.org/std/boxed/
-// https://doc.rust-lang.org/std/macro.assert.html
-// https://doc.rust-lang.org/std/error/
-
 #[macro_use]
 extern crate error_chain;
 
@@ -23,9 +17,6 @@ mod errors {
 }
 // use errors::*;
 
-// https://doc.rust-lang.org/book/ch17-02-trait-objects.html
-//type DynErrT = Box<dyn std::error::Error>;
-//type ResT<T> = Result<T, DynErrT>;
 type ResT<T> = errors::Result<T>;
 
 fn single(client: &reqwest::Client, text: &str) -> ResT<()> {
@@ -57,3 +48,5 @@ fn main() -> ResT<()> {
     }
     Ok(())
 }
+
+// RUST_BACKTRACE=1 cargo run --example simple
