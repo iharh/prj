@@ -2,6 +2,7 @@
 #![recursion_limit = "1024"]
 
 use reqwest::{Client, StatusCode};
+use std::collections::HashMap;
 use std::io::{BufRead, BufReader};
 //use std::{fs, io, path::Path};
 
@@ -20,10 +21,17 @@ mod errors {
 
 type ResT<T> = errors::Result<T>;
 
-fn single(client: &Client, text: &str) -> ResT<()> {
+fn process_request(client: &Client, text: &str) -> ResT<()> {
     // http://localhost:8091/analyze
-    let resp = client.get("http://localhost:8080/analyze")
-        .query(&[("text", text)])
+    //let resp = client.get("http://localhost:8080/analyze")
+    //    .query(&[("text", text)])
+    //    .send()?;
+
+    let mut map = HashMap::new();
+    map.insert("text", text);
+
+    let resp = client.post("http://localhost:8080/process")
+        .json(&map)
         .send()?;
 
     assert!(resp.status() == StatusCode::OK);
@@ -35,17 +43,18 @@ fn single(client: &Client, text: &str) -> ResT<()> {
 fn process_file(client: &Client) -> ResT<()> {
     let file = std::fs::File::open("input.txt")?;
     let reader = BufReader::new(file);
-    for (_index, line) in reader.lines().enumerate() {
+    for (index, line) in reader.lines().enumerate() {
         let line = line?;
         // println!("{}. {}", index + 1, line);
-        single(client, &line)?
+        // println!("line: {}", index + 1);
+        process_request(client, &line)?
     }
     Ok(())
 }
 
 fn main() -> ResT<()> {
     let client = Client::new();
-    for index in 0..1 {
+    for index in 0..100000 {
         println!("iter: {}", index);
         process_file(&client)?;
     }
