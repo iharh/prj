@@ -21,7 +21,8 @@ mod errors {
 type ResT<T> = errors::Result<T>;
 
 fn single(client: &Client, text: &str) -> ResT<()> {
-    let resp = client.get("http://localhost:8091/analyze")
+    // http://localhost:8091/analyze
+    let resp = client.get("http://localhost:8080/analyze")
         .query(&[("text", text)])
         .send()?;
 
