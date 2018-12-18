@@ -12,6 +12,7 @@ mod errors;
 use docopt::Docopt;
 use crate::args::{Args, USAGE};
 use handlebars::Handlebars;
+use reqwest::{Client, StatusCode};
 use crate::errors::ResT;
 
 // define some data
@@ -36,13 +37,26 @@ fn main() -> ResT<()> {
     let mut hbs: Handlebars = Handlebars::new();
     reg_templates(& mut hbs)?;
 
-    let prj_create_data = PrjCreateData { lang_id: "bn".to_string(), prj_name: "bn1".to_string(), };
-
-    println!("{}", hbs.render("prjCreate", &prj_create_data)?);
+    let client = Client::new();
 
     match args.arg_command {
         args::Command::Prj =>
-            println!("prj"),
+        {
+            let req_data = PrjCreateData { lang_id: "bn".to_string(), prj_name: "bn1".to_string(), };
+            let req_body = hbs.render("prjCreate", &req_data)?;
+            println!("req_body: {}", req_body);
+
+            // auto rs = rq.post(url, data, "text/xml");
+            let mut resp = client.post("http://localhost:18080/cbapi/project?wsdl")
+                .basic_auth("admin", Some("admin"))
+                .body(req_body)
+                .send()?;
+
+            assert!(resp.status() == StatusCode::OK);
+
+            let resp_body = resp.text()?;
+            println!("resp_body: {}", resp_body);
+        },
         args::Command::Db  =>
             println!("db"),
     }
