@@ -6,13 +6,13 @@ Usage:
 
 Some common commands are:
     prj         create a project
-    db          configure a database
+    realtime    process realtime request
 ";
 
 #[derive(Debug, Deserialize)]
 pub enum Command {
     Prj,
-    Db,
+    Realtime,
 }
 
 #[derive(Debug, Deserialize)]

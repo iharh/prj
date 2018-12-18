@@ -1,8 +1,11 @@
+use crate::errors::ResT;
+use handlebars::Handlebars;
+
 // define some data
 #[derive(Serialize)]
 pub struct PrjCreateData {
-    lang_id: String,
-    prj_name: String,
+    pub lang_id: String,
+    pub prj_name: String,
 }
 
 pub fn reg_templates(hbs: & mut Handlebars) -> ResT<()> {
