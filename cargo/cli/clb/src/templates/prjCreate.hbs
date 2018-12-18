@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/", xmlns:proj="http://project.cbapi.clarabridge.com/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <proj:createProject>
+            <createProjectRequest>
+                <language>{{lang_id}}</language>
+                <name>{{prj_name}}</name>
+            </createProjectRequest>
+        </proj:createProject>
+    </soapenv:Body>
+</soapenv:Envelope>
