@@ -13,6 +13,7 @@ use docopt::Docopt;
 use crate::args::{Args, USAGE};
 use handlebars::Handlebars;
 use reqwest::{Client, StatusCode};
+use std::time::Duration;
 use crate::errors::ResT;
 
 // define some data
@@ -37,7 +38,9 @@ fn main() -> ResT<()> {
     let mut hbs: Handlebars = Handlebars::new();
     reg_templates(& mut hbs)?;
 
-    let client = Client::new();
+    let client = Client::builder()
+        .timeout(Duration::from_secs(5 * 60))
+        .build()?;
 
     match args.arg_command {
         args::Command::Prj =>
