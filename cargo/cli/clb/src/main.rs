@@ -33,7 +33,7 @@ fn main() -> ResT<()> {
     match args.arg_command {
         args::Command::Prj =>
         {
-            let resp_body = prj_create(&client, &hbs, "bn".to_string(), "bn1".to_string())?;
+            let resp_body = prj_create(&client, &hbs, "bn", "bn1")?;
             println!("resp_body: {}", resp_body);
         },
         args::Command::Realtime  =>

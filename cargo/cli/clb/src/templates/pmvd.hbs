@@ -1,0 +1,17 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:real="http://realtime.cbapi.clarabridge.com/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <real:processMultiVerbatimDocument>
+            <processMultiVerbatimDocumentRequest>
+                <responseLevel>FULL<responseLevel>
+                <save dupDetection="NONE">false</save>
+                <limitByWordRank>true</limitByWordRank>
+                <includeWorldAwareness>true</includeWorldAwareness>
+                <projectName>{{prj_name}}</projectName>
+                <verbatimSet>
+                    <verbatim type="REVIEW">{{verbatim_text}}</verbatim>
+                </verbatimSet>
+            </processMultiVerbatimDocumentRequest>
+        </real:processMultiVerbatimDocument>
+    </soapenv:Body>
+</soapenv:Envelope>
