@@ -11,14 +11,19 @@ mod errors;
 
 use docopt::Docopt;
 use crate::args::{Args, USAGE};
-use handlebars::{Handlebars, };
+use handlebars::Handlebars;
 use crate::errors::ResT;
 
 // define some data
 #[derive(Serialize)]
-pub struct PrjCreate {
+pub struct PrjCreateData {
     lang_id: String,
     prj_name: String,
+}
+
+pub fn reg_templates(hbs: & mut Handlebars) -> ResT<()> {
+    hbs.register_template_file("prjCreate", "./src/templates/prjCreate.hbs")?;
+    Ok(())
 }
 
 fn main() -> ResT<()> {
@@ -28,9 +33,11 @@ fn main() -> ResT<()> {
     let args: Args = args_res?;
     // println!("{:?}", args),
 
-    let mut hbs = Handlebars::new();
-    hbs.register_template_file("prjCreate", "./src/templates/prjCreate.hbs")?;
-    let prj_create_data = PrjCreate { lang_id: "bn".to_string(), prj_name: "bn1".to_string(), };
+    let mut hbs: Handlebars = Handlebars::new();
+    reg_templates(& mut hbs)?;
+
+    let prj_create_data = PrjCreateData { lang_id: "bn".to_string(), prj_name: "bn1".to_string(), };
+
     println!("{}", hbs.render("prjCreate", &prj_create_data)?);
 
     match args.arg_command {
