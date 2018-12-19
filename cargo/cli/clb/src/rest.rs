@@ -2,6 +2,7 @@ use crate::errors::ResT;
 use crate::hbs::{PrjCreateData, PmvdData};
 use reqwest::{Client, RequestBuilder, StatusCode};
 use handlebars::Handlebars;
+use xml::escape::escape_str_attribute;
 use std::time::Duration;
 
 pub fn get_client() -> ResT<Client> {
@@ -35,7 +36,8 @@ pub fn prj_create(client: &Client, hbs: &Handlebars, lang_id: &str, prj_name: &s
 }
 
 pub fn pmvd(client: &Client, hbs: &Handlebars, prj_name: &str, verbatim_text: &str) -> ResT<String> {
-    let req_data = PmvdData { prj_name: prj_name.to_string(), verbatim_text: verbatim_text.to_string(), };
+    let verb_text: String = escape_str_attribute(verbatim_text).to_string();
+    let req_data = PmvdData { prj_name: prj_name.to_string(), verbatim_text: verb_text };
     let req_body = hbs.render("pmvd", &req_data)?;
     println!("pmvd request body:\n {}", req_body);
 
