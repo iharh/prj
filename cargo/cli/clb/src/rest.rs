@@ -1,5 +1,5 @@
 use crate::errors::ResT;
-use crate::hbs::{PrjCreateData};
+use crate::hbs::{PrjCreateData, PmvdData};
 use reqwest::{Client, RequestBuilder, StatusCode};
 use handlebars::Handlebars;
 use std::time::Duration;
@@ -30,6 +30,20 @@ pub fn prj_create(client: &Client, hbs: &Handlebars, lang_id: &str, prj_name: &s
     assert!(resp.status() == StatusCode::OK);
 
     // <?xml version='1.0' encoding='UTF-8'?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Body><ns2:createProjectResponse xmlns:ns2="http://project.cbapi.clarabridge.com/"><return><status>SUCCESS</status><projectName>bn1</projectName></return></ns2:createProjectResponse></S:Body></S:Envelope>
+
+    Ok(resp.text()?)
+}
+
+pub fn pmvd(client: &Client, hbs: &Handlebars, prj_name: &str, verbatim_text: &str) -> ResT<String> {
+    let req_data = PmvdData { prj_name: prj_name.to_string(), verbatim_text: verbatim_text.to_string(), };
+    let req_body = hbs.render("pmvd", &req_data)?;
+    println!("pmvd request body: {}", req_body);
+
+    let mut resp = post_wsdl(client, "realtime")
+        .body(req_body)
+        .send()?;
+
+    assert!(resp.status() == StatusCode::OK);
 
     Ok(resp.text()?)
 }

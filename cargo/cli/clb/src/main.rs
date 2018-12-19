@@ -13,7 +13,7 @@ mod rest;
 
 use crate::args::{Args, USAGE};
 use crate::hbs::reg_templates;
-use crate::rest::{get_client, prj_create};
+use crate::rest::{get_client, pmvd, prj_create};
 use docopt::Docopt;
 use handlebars::Handlebars;
 use crate::errors::ResT;
@@ -37,7 +37,10 @@ fn main() -> ResT<()> {
             println!("resp_body: {}", resp_body);
         },
         args::Command::Realtime  =>
-            println!("db"),
+        {
+            let resp_body = pmvd(&client, &hbs, "bn1", "abc def")?;
+            println!("resp_body: {}", resp_body);
+        },
     }
 
     Ok(())
