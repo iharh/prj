@@ -21,7 +21,7 @@ fn post_wsdl(client: &Client, name: &str) -> RequestBuilder {
 pub fn prj_create(client: &Client, hbs: &Handlebars, lang_id: &str, prj_name: &str) -> ResT<String> {
     let req_data = PrjCreateData { lang_id: lang_id.to_string(), prj_name: prj_name.to_string(), };
     let req_body = hbs.render("prjCreate", &req_data)?;
-    println!("prjCreate request body: {}", req_body);
+    println!("prjCreate request body:\n {}", req_body);
 
     let mut resp = post_wsdl(client, "project")
         .body(req_body)
@@ -37,7 +37,7 @@ pub fn prj_create(client: &Client, hbs: &Handlebars, lang_id: &str, prj_name: &s
 pub fn pmvd(client: &Client, hbs: &Handlebars, prj_name: &str, verbatim_text: &str) -> ResT<String> {
     let req_data = PmvdData { prj_name: prj_name.to_string(), verbatim_text: verbatim_text.to_string(), };
     let req_body = hbs.render("pmvd", &req_data)?;
-    println!("pmvd request body: {}", req_body);
+    println!("pmvd request body:\n {}", req_body);
 
     let mut resp = post_wsdl(client, "realtime")
         .body(req_body)
