@@ -38,7 +38,7 @@ fn main() -> ResT<()> {
 
     let client = get_client()?;
 
-    let num_threads = 32;
+    let num_threads = 4;
     let num_iters = 100_000;
     let (tx, rx) = bounded::<Message>(num_threads * num_threads);
     let mut handles = vec![];

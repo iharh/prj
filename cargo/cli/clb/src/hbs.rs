@@ -19,9 +19,11 @@ fn reg_template(hbs: & mut Handlebars, templates_root: &Path, name: &str) -> Res
 }
 
 pub fn reg_templates(hbs: & mut Handlebars) -> ResT<()> {
-    let templates_root = Path::new("src/templates");
+    let templates_root = Path::new("./src/templates");
+    println!("reg_template enter");
     // TODO: traverse a templates_root and auto-register all the *.hbs files
     reg_template(hbs, templates_root, "prjCreate")?;
     reg_template(hbs, templates_root, "pmvd")?;
+    println!("reg_template exit");
     Ok(())
 }
