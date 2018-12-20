@@ -38,8 +38,9 @@ fn main() -> ResT<()> {
         },
         args::Command::Realtime  =>
         {
-            let resp_body = pmvd(&client, &hbs, "bn1", "\"abc\" <def>")?;
-            println!("resp_body: {}", resp_body);
+            pmvd(&client, &hbs, "bn1", "\"abc\" <def>")?;
+            // println!("resp_body: {}", resp_body);
+            println!("OK.");
         },
     }
 
