@@ -5,6 +5,8 @@ error_chain! {
         DocOpt(docopt::Error);
         TemplateFileError(handlebars::TemplateFileError);
         RenderError(handlebars::RenderError);
+        ChannelSendError(crossbeam_channel::SendError<super::Message>);
+        TryRecvError(crossbeam_channel::TryRecvError);
     }
 }
 
