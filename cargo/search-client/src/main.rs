@@ -7,17 +7,18 @@ mod worker;
 use crate::errors::ResT;
 use crate::worker::{Work, Message, Worker};
 
-use std::io::{BufRead, BufReader};
 use crossbeam_channel::bounded;
+
 use std::thread;
 use std::vec;
+use std::io::{BufRead, BufReader};
 
 #[macro_use]
 extern crate error_chain;
 
 fn main() -> ResT<()> {
     let num_threads = 32;
-    let num_iters = 100000;
+    let num_iters = 100_000;
     let (tx, rx) = bounded::<Message>(num_threads * num_threads);
     let mut handles = vec![];
 

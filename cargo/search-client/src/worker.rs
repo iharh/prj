@@ -1,9 +1,10 @@
 use crate::errors::ResT;
 
+use durations::MILLISECOND as MS;
 use crossbeam_channel::{Receiver, TryRecvError};
 use reqwest::{Client, StatusCode};
+
 use std::collections::HashMap;
-use std::time::Duration;
 use std::thread;
 
 pub struct Work {
@@ -61,7 +62,7 @@ impl Worker {
                     return Ok(None);
                 }
                 Err(TryRecvError::Empty) => {
-                    thread::sleep(Duration::from_millis(100));
+                    thread::sleep(100*MS);
                 }
                 Err(TryRecvError::Disconnected) => {
                     return Ok(None);
