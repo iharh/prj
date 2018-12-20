@@ -55,16 +55,28 @@ pub fn pmvd(client: &Client, hbs: &Handlebars, prj_name: &str, verbatim_text: &s
     let verb_text: String = escape_str_attribute(verbatim_text).to_string();
     let req_data = PmvdData { prj_name: prj_name.to_string(), verbatim_text: verb_text };
     let req_body = hbs.render("pmvd", &req_data)?;
-    // println!("pmvd request body:\n {}", req_body);
 
     let mut resp = post_wsdl(client, "realtime")
-        .body(req_body)
+        .body(req_body.to_owned())
         .send()?;
 
-    assert!(resp.status() == StatusCode::OK);
     let resp_text = resp.text()?;
+
+    if resp.status() != StatusCode::OK {
+        println!("status: {}", resp.status());
+        println!("pmvd request body:\n {}", &req_body);
+        println!("resp_text:\n {}", resp_text);
+
+        assert!(resp.status() == StatusCode::OK);
+    }
+
     let result_status = get_return_status(&resp_text)?;
-    assert!(result_status == RES_STATUS_SUCCESS);
+    if result_status != RES_STATUS_SUCCESS {
+        println!("result status: {}", result_status);
+        println!("pmvd request body:\n {}", &req_body);
+        println!("resp_text:\n {}", resp_text);
+        assert!(result_status == RES_STATUS_SUCCESS);
+    }
 
     Ok(resp_text)
 }
