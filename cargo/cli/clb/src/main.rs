@@ -15,16 +15,64 @@ mod worker;
 use crate::args::{Args, USAGE};
 use crate::errors::ResT;
 use crate::hbs::reg_templates;
-use crate::rest::{get_client, prj_create};
+use crate::rest::{get_client, prj_create, pmvd};
 use crate::worker::{Work, Message, Worker};
 //use crate::errors::ResT;
 
 use crossbeam_channel::bounded;
+use reqwest::Client;
 use docopt::Docopt;
 use handlebars::Handlebars;
 
 use std::thread;
 use std::io::{BufRead, BufReader};
+
+fn process_rt_multi() -> ResT<()> {
+    let num_threads = 4;
+    let num_iters = 100_000;
+    let (tx, rx) = bounded::<Message>(num_threads * num_threads);
+    let mut handles = vec![];
+
+    for idx in 0..num_threads {
+        let worker = Worker {
+            thread_id: idx,
+            rx: rx.clone()
+        };
+        handles.push(thread::spawn(|| worker.run()));
+    }
+
+    for iter in 0..num_iters {
+        let file = std::fs::File::open("input.txt")?;
+        let reader = BufReader::new(&file);
+        for (index, line) in reader.lines().enumerate() {
+            let line = line?;
+            tx.send(Message::Work(
+                Work { iter_id: iter, line_id: index, text: line, }
+            ))?;
+        }
+    }
+
+    for _ in 0..num_threads {
+        tx.send(Message::Quit)?;
+    }
+
+    for handle in handles {
+        handle.join().unwrap()?;
+    }
+    Ok(())
+}
+
+fn process_rt_single(client: &Client, hbs: &Handlebars) -> ResT<()> {
+    let file = std::fs::File::open("input.txt")?;
+    let reader = BufReader::new(&file);
+    for (index, line) in reader.lines().enumerate() {
+        println!("line: {}", index);
+        let text = line?;
+        pmvd(&client, &hbs, "bn1", &text)?;
+    }
+    Ok(())
+}
+
 
 fn main() -> ResT<()> {
     let args_res = Docopt::new(USAGE)
@@ -38,50 +86,20 @@ fn main() -> ResT<()> {
 
     let client = get_client()?;
 
-    let num_threads = 4;
-    let num_iters = 100_000;
-    let (tx, rx) = bounded::<Message>(num_threads * num_threads);
-    let mut handles = vec![];
-
     match args.arg_command {
         args::Command::Prj =>
         {
             let resp_body = prj_create(&client, &hbs, "bn", "bn1")?;
             println!("resp_body: {}", resp_body);
         },
-        args::Command::Realtime  =>
+        args::Command::RtSingle  =>
         {
-            for idx in 0..num_threads {
-                let worker = Worker {
-                    thread_id: idx,
-                    rx: rx.clone()
-                };
-                handles.push(thread::spawn(|| worker.run()));
-            }
-
-            for iter in 0..num_iters {
-                let file = std::fs::File::open("input.txt")?;
-                let reader = BufReader::new(&file);
-                for (index, line) in reader.lines().enumerate() {
-                    let line = line?;
-                    tx.send(Message::Work(
-                        Work { iter_id: iter, line_id: index, text: line, }
-                    ))?;
-                }
-            }
-
-            for _ in 0..num_threads {
-                tx.send(Message::Quit)?;
-            }
-
-            for handle in handles {
-                handle.join().unwrap()?;
-            }
-
-            // println!("resp_body: {}", resp_body);
-            println!("OK.");
+            process_rt_single(&client, &hbs)?;
+        },
+        args::Command::RtMulti  =>
+        {
+            process_rt_multi()?;
         },
     }
-
     Ok(())
 }

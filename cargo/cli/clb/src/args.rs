@@ -12,7 +12,8 @@ Some common commands are:
 #[derive(Debug, Deserialize)]
 pub enum Command {
     Prj,
-    Realtime,
+    RtSingle,
+    RtMulti,
 }
 
 #[derive(Debug, Deserialize)]
