@@ -1,0 +1,33 @@
+ext {
+    repoRootDir = "${rootProject.getRootDir()}/../.."
+    gradleRootDir = "${repoRootDir}/gradle"
+}
+
+apply from: "${gradleRootDir}/repositories.gradle"
+apply from: "${gradleRootDir}/dependencies.gradle"
+apply from: "${gradleRootDir}/java.gradle"
+apply from: "${gradleRootDir}/junit.gradle"
+
+ext {
+    groups += [
+        jackson:    'com.fasterxml.jackson.core',
+    ]
+    versions += [
+        jackson:    '2.8.7',       // TODO: ask PLAT to upgrade to '2.9.4' or higher
+    ]
+}
+
+dependencies {
+    // jackson
+    compile "${groups.jackson}:jackson-core:${versions.jackson}"
+    compile "${groups.jackson}:jackson-databind:${versions.jackson}"
+    // httpclient
+    testCompile 'org.apache.httpcomponents:httpcore:4.3'
+    testCompile 'org.apache.httpcomponents:httpclient:4.3.1'
+    // junit
+    testCompile libraries.junit_jupiter_api
+    testCompile libraries.junit_jupiter_params
+    testRuntime libraries.junit_jupiter_engine
+    // assertj
+    testCompile libraries.assertj_core
+}
