@@ -17,8 +17,8 @@ use std::io::{BufRead, BufReader};
 extern crate error_chain;
 
 fn main() -> ResT<()> {
-    let num_threads = 32;
-    let num_iters = 100_000;
+    let num_threads = 1;    // 32;
+    let num_iters = 1;      // 100_000;
     let (tx, rx) = bounded::<Message>(num_threads * num_threads);
     let mut handles = vec![];
 

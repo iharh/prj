@@ -20,7 +20,6 @@ pub enum Message {
 
 pub struct Worker {
     pub thread_id: usize,
-    /// The receive side of our mpmc queue.
     pub rx: Receiver<Message>,
 }
 
@@ -34,11 +33,6 @@ impl Worker {
     }
 
     fn process_request(&self, client: &Client, text: &str) -> ResT<()> {
-        // http://localhost:8091/analyze
-        //let resp = client.get("http://localhost:8080/analyze")
-        //    .query(&[("text", text)])
-        //    .send()?;
-
         let mut map = HashMap::new();
         map.insert("text", text);
 
