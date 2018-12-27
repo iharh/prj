@@ -1,0 +1,73 @@
+<project name="get-deps" default="get-deps" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+
+    <import file="../../../common.xml"/>
+
+    <target name="-get-deps">
+        <delete dir="${ivy.repository.dir}"/>
+        <delete dir="${temp.dir}"/>
+        <mkdir dir="${ivy.repository.dir}"/>
+        <mkdir dir="${temp.dir}"/>
+        <ivy:buildlist onMissingDescriptor="skip" reference="allpath" ivyfilepath="ivy.xml">
+            <fileset dir="${main.dir}">
+                <include name="client/build.xml"/>
+                <include name="cmp/**/build.xml"/>
+            </fileset>
+        </ivy:buildlist>
+        <iterate target="-process-ivy" buildpathref="allpath"/>
+        <concat destfile="${build.dir}/all_deps.xml">
+            <header filtering="no" trimleading="yes">
+              <![CDATA[<dependencies>]]>
+            </header>
+            <fileset dir="${temp.dir}" includes="*.xml"/>
+            <footer filtering="no" trimleading="yes">
+              <![CDATA[</dependencies>]]>
+            </footer>
+        </concat>
+        <xslt in="${build.dir}/all_deps.xml" out="${build.dir}/deps.xml" style="${ivy.xsl.dir}/sort.xsl">
+           <classpath location="${main.dir}/tools/saxon/saxon9.jar" />
+        </xslt>
+        <concat destfile="${build.dir}/deps.bat">
+            <header filtering="no" trimleading="yes">
+              svn co ${svn.libraries}/third-party --depth empty ${ivy.repository.dir}
+              cd ${ivy.repository.dir}
+            </header>
+            <filelist files="${build.dir}/deps.xml"/>
+        </concat>
+        <replace file="${build.dir}/deps.bat" token="{arch}" value="a"/>
+        <replace file="${build.dir}/deps.bat" token="$a" value="${arch}"/>
+        <exec executable="${build.dir}/deps.bat"/>
+        <!--echo message="Use ${main.dir}\deps.bat for checkout of all necessary libraries from ${svn.libraries}/third-pary"/-->
+    </target>
+
+    <target name="-get-transitive">
+        <copy todir="${temp.dir}/trans-all" flatten="true">
+            <fileset dir="${ivy.repository.dir}" includes="**/ivy-*.xml">
+                <contains text="transitive=&quot;true&quot;" casesensitive="no"/>
+            </fileset>
+        </copy>
+        <xslt basedir="${temp.dir}/trans-all" destdir="${temp.dir}/trans" style="${ivy.xsl.dir}/transitive.xsl" extension=".xml"/>
+        <concat destfile="${build.dir}/trans_deps.xml">
+            <header filtering="no" trimleading="yes">
+              <![CDATA[<dependencies>]]>
+            </header>
+            <fileset dir="${temp.dir}/trans" includes="*.xml"/>
+            <footer filtering="no" trimleading="yes">
+              <![CDATA[</dependencies>]]>
+            </footer>
+        </concat>
+        <xslt in="${build.dir}/trans_deps.xml" out="${build.dir}/trans-deps.xml" style="${ivy.xsl.dir}/sort.xsl">
+           <classpath location="${main.dir}/tools/saxon/saxon9.jar" />
+        </xslt>
+        <concat destfile="${build.dir}/trans-deps.bat">
+            <header filtering="no" trimleading="yes">
+              cd ${ivy.repository.dir}
+            </header>
+            <filelist files="${build.dir}/trans-deps.xml"/>
+        </concat>
+        <exec executable="${build.dir}/trans-deps.bat"/>
+    </target>
+
+    <target name="get-deps" depends="-set-properties, -get-deps, -get-transitive"/>
+
+</project>
+

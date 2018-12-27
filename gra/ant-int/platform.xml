@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="platform-properties">
+
+    <condition property="current.os" value="windows">
+        <os family="winnt" />
+    </condition>
+    <condition property="current.os" value="linux">
+        <os name="Linux" />
+    </condition>
+    <fail unless="current.os" message="Unsupported host OS" />
+
+    <condition property="current.arch" value="x86">
+        <equals arg1="${sun.arch.data.model}" arg2="32" casesensitive="false"/>
+    </condition>
+    <condition property="current.arch" value="x64">
+        <equals arg1="${os.arch}" arg2="amd64" casesensitive="false"/>
+    </condition>
+    <fail unless="current.arch" message="Unsupported target platform architecture: ${os.arch}" />
+    <property name="current.platform" value="${current.os}-${current.arch}"/>
+
+    <condition property="is-windows">
+        <contains string="${current.platform}" substring="windows" />
+    </condition>
+    <condition property="is-windows-x86">
+        <equals arg1="${current.platform}" arg2="windows-x86" />
+    </condition>
+    <condition property="is-windows-x64">
+        <equals arg1="${current.platform}" arg2="windows-x64" />
+    </condition>
+    <condition property="is-linux">
+        <contains string="${current.platform}" substring="linux" />
+    </condition>
+    <condition property="is-linux-x86">
+        <equals arg1="${current.platform}" arg2="linux-x86" />
+    </condition>
+    <condition property="is-linux-x64">
+        <equals arg1="${current.platform}" arg2="linux-x64" />
+    </condition>
+    <condition property="is-x86">
+        <contains string="${current.platform}" substring="x86" />
+    </condition>
+    <condition property="is-x64">
+        <contains string="${current.platform}" substring="x64" />
+    </condition>
+
+</project>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<project name="jmy" default="compile" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+
+    <import file="../ant-scripts/java-common.xml"/>
+
+    <property name="target.dir" location="${basedir}/target"/>
+    <property name="src.dir" location="${basedir}/src"/>
+    <property name="module-class" value="com.myorg.my.JmyModule"/>
+
+    <target name="compile" depends="check.version, compile-java, ivy-publish" />
+</project>

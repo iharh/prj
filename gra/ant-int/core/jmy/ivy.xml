@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="http://www.jayasoft.fr/org/ivyrep/ivy-doc.xsl"?>
+<ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
+    <info
+        organisation="myorg" 
+        module="jmy"
+        e:platform="${target.platform}"
+     >
+        <ivyauthor name="myorg" url="www.myorg.com"/>
+        <description homepage="http://www.myorg.com" />
+    </info>
+    <configurations>
+        <conf name="publish"/>
+        <conf name="compile"/>
+        <conf name="manifest"/>
+        <conf name="test"/>
+    </configurations>
+    <publications>
+        <artifact name="jmy" type="jar" conf="publish,compile"/>
+    </publications>
+    <dependencies>
+        <dependency org="org.slf4j" name="slf4j-api" rev="${slf4j.version}" conf="*->default"/>
+        <!-- test -->
+        <dependency org="Apache" name="log4j" rev="${log4j.version}" conf="test->default" transitive="false" />
+        <dependency org="org.slf4j" name="slf4j-log4j12" rev="${slf4j.version}" conf="test->default"/>
+    </dependencies>
+</ivy-module>
