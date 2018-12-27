@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<project name="ant-scripts" xmlns:ivy="antlib:org.apache.ivy.ant">
+
+    <dirname property="common.basedir" file="${ant.file.ant-scripts}"/>
+    <property name="main.dir" location="${common.basedir}/../.."/>
+    <property name="core.dir" location="${common.basedir}/.."/>
+    <property name="lib.dir" location="${main.dir}/lib"/>
+    <property name="tools.dir" location="${main.dir}/tools"/>
+
+    <property environment="env"/>
+
+    <property file="${main.dir}/platform.properties"/>
+    <property file="${env.USERPROFILE}/platform.properties"/>
+    <property file="${env.HOME}/platform.properties"/> <!-- Linux specific -->
+    <property file="${main.dir}/platform.default.properties"/>
+    <property file="${main.dir}/platform.${arch}.properties"/>
+    <property file="${core.dir}/build.properties"/>
+    <property file="${common.basedir}/lib.properties"/>
+
+    <property name="product.version" value="${nlp.core.version}"/>
+
+    <import file="${main.dir}/platform.xml"/>
+
+    <!-- Can be overwritten using system props. By default, use the current platform -->
+    <property name="target.platforms" value="${current.platform}"/>
+
+    <path id="ivy.lib.path">
+        <fileset dir="${tools.dir}/ivy/2.2.0" includes="*.jar"/>
+    </path>
+
+    <taskdef resource="org/apache/ivy/ant/antlib.xml"
+             uri="antlib:org.apache.ivy.ant" classpathref="ivy.lib.path"/>
+
+    <ivy:settings file="${common.basedir}/ivysettings.xml" id="ivy.instance"/>
+
+    <target name="-init-contrib" unless=".contrib-initialized">
+        <ivy:resolve file="${common.basedir}/ivy.xml" conf="ant-contrib" />
+        <ivy:cachepath pathid="ant-contrib.classpath" conf="ant-contrib" type="jar,zip" />
+        <taskdef resource="net/sf/antcontrib/antlib.xml" classpathref="ant-contrib.classpath"/>
+        <property name=".contrib-initialized" value="true"/>
+    </target>
+
+    <target name="-init-junit" unless=".junit-initialized">
+        <ivy:resolve file="${common.basedir}/ivy.xml" conf="junit" />
+        <ivy:cachepath pathid="junit.classpath" conf="junit" type="jar,zip" />
+        <property name=".junit-initialized" value="true"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${basedir}/target"/>
+    </target>
+
+    <target name="check.version">
+        <fail unless="nlp.core.version"
+              message="You must specify nlp.core.version"/>
+    </target>
+
+    <target name="print.settings">
+        <echo message="Build version = ${product.version}"/>
+        <echo message="Build status = ${build.status}"/>
+        <echo message="Current platform = ${current.platform}"/>
+        <echo message="Target platform(s) = ${target.platforms}"/>
+        <echo message="Ant version = ${ant.version}" />
+        <echo message="Java version = ${ant.java.version}" />
+    </target>
+
+    <target name="ivy-publish" depends="-init-contrib">
+        <foreach
+            list="${target.platforms}"
+            target="-ivy-publish-platform"
+            param="target.platform"
+            inheritall="true"
+            trim="true"
+        >
+            <param name="publish.resolver" value="integration" />
+        </foreach>
+    </target>
+
+    <target name="-ivy-set-vars">
+        <if>
+            <contains string="${target.platform}" substring="windows" />
+            <then>
+                <echo message="!!! win-case"/>
+                <ivy:var name="static.lib.prefix" value="" />
+                <ivy:var name="static.lib.suffix" value="lib" />
+                <ivy:var name="shared.lib.prefix" value="" />
+                <ivy:var name="shared.lib.suffix" value="dll" />
+                <ivy:var name="executable.suffix" value="exe" />
+            </then>
+            <elseif>
+                <contains string="${target.platform}" substring="linux" />
+                <then>
+                    <ivy:var name="static.lib.prefix" value="lib" />
+                    <ivy:var name="static.lib.suffix" value="a" />
+                    <ivy:var name="shared.lib.prefix" value="lib" />
+                    <ivy:var name="shared.lib.suffix" value="so" />
+                    <ivy:var name="executable.suffix" value="" />
+                </then>
+            </elseif>
+        </if>
+    </target>
+
+    <target name="-ivy-publish-platform" depends="-ivy-set-vars, -ivy-publish-with-config, -ivy-publish-without-config" />
+    <!--
+        This target should be overwritten in build script of a component,
+        which should deliver final artifacts
+    -->
+    <target name="shared-publish" />
+
+    <target name="-publish" depends="check.version, -ivy-set-vars, -ivy-publish-with-config, -ivy-publish-without-config" />
+
+    <target name="-ivy-publish-with-config" if="publish.config">
+        <ivy:resolve file="${basedir}/ivy.xml" conf="${publish.config}"/>
+        <ivy:publish
+            resolver="${publish.resolver}"
+            pubrevision="${product.version}"
+            status="${build.status}"
+            forcedeliver="true"
+            overwrite="true"
+        >
+            <artifacts pattern="${target.dir}/[artifact].[ext]" />
+            <artifacts pattern="${target.dir}/${target.platform}/[artifact](.[ext])" />
+            <artifacts pattern="${basedir}/[artifact].[ext]" />
+        </ivy:publish>
+    </target>
+
+    <target name="-ivy-publish-without-config" unless="publish.config">
+        <ivy:resolve file="${basedir}/ivy.xml" />
+        <ivy:publish
+            resolver="${publish.resolver}"
+            pubrevision="${product.version}"
+            status="${build.status}"
+            forcedeliver="true"
+            overwrite="true"
+        >
+            <artifacts pattern="${target.dir}/[artifact].[ext]" />
+            <artifacts pattern="${target.dir}/${target.platform}/[artifact](.[ext])" />
+            <artifacts pattern="${basedir}/[artifact].[ext]" />
+        </ivy:publish>
+    </target>
+
+    <target name="recompile" depends="clean, compile" />
+
+    <target name="-ivy-set-vars-cur">
+        <if>
+            <contains string="${current.platform}" substring="windows" />
+            <then>
+                <!-- <ivy:var name="static.lib.prefix" value="" /> -->
+                <property name="static.lib.prefix" value="" />
+                <!-- <ivy:var name="static.lib.suffix" value="lib" /> -->
+                <property name="static.lib.suffix" value="lib" />
+                <!-- <ivy:var name="shared.lib.prefix" value="" /> -->
+                <property name="shared.lib.prefix" value="" />
+                <!-- <ivy:var name="shared.lib.suffix" value="dll" /> -->
+                <property name="shared.lib.suffix" value="dll" />
+                <!-- <ivy:var name="executable.suffix" value="exe" /> -->
+                <property name="executable.suffix" value="exe" />
+                <echo message="!!! win-case"/>
+            </then>
+            <elseif>
+                <contains string="${current.platform}" substring="linux" />
+                <then>
+                    <echo message="SETTING LINUX IVY VARS" />
+                    <!-- <ivy:var name="static.lib.prefix" value="lib" /> -->
+                    <property name="static.lib.prefix" value="lib" />
+                    <!-- <ivy:var name="static.lib.suffix" value="a" /> -->
+                    <property name="static.lib.suffix" value="a" />
+                    <!-- <ivy:var name="shared.lib.prefix" value="lib" /> -->
+                    <property name="shared.lib.prefix" value="lib" />
+                    <!-- <ivy:var name="shared.lib.suffix" value="so" /> -->
+                    <property name="shared.lib.suffix" value="so" />
+                    <!-- <ivy:var name="executable.suffix" value="" /> -->
+                    <property name="executable.suffix" value="" />
+                </then>
+            </elseif>
+        </if>
+    </target>
+
+    <target name="compile-test" depends="-init-junit,-ivy-set-vars-cur">
+        <mkdir dir="${target.dir}/test-classes"/>
+
+        <!-- Resolve compile dependencies using current platform -->
+        <ivy:var name="target.platform" value="${current.platform}"/>
+        <ivy:resolve file="${basedir}/ivy.xml" conf="test" />
+        <ivy:cachepath pathid="test.classpath" conf="test" type="jar" />
+
+        <ivy:retrieve pattern="${target.dir}/lib/[artifact].[ext]" conf="test" type="dll,exe" sync="true"/>
+        <if>
+            <istrue value="${use.ivy.revisions}"/>
+            <then>
+                <!-- add extra -[revision] in the ivy-pattern -->
+                <ivy:retrieve pattern="${target.dir}/lib/[artifact]-[revision].[ext]" conf="test" type="dll" sync="false"/>
+            </then>
+        </if>
+
+        <javac
+            srcdir="${basedir}/test"
+            destdir="${target.dir}/test-classes"
+            optimize="true"
+            debug="true"
+            classpathref="test.classpath"
+            includeantruntime="false"
+            encoding="utf-8"
+        >
+            <classpath>
+                <path refid="test.classpath" />
+                <path refid="junit.classpath" />
+                <pathelement path="${target.dir}/${ant.project.name}.jar"/>
+            </classpath>
+        </javac>
+        <copy todir="${target.dir}/test-classes" preservelastmodified="yes">
+            <fileset dir="${basedir}/test">
+                <exclude name="**/*.java"/>
+                <exclude name="**/.svn/*"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="junit" depends="compile-test">
+        <delete dir="${target.dir}/reports/junit-xml" />
+        <delete dir="${target.dir}/reports/junit-html" />
+        <mkdir dir="${target.dir}/reports/junit-xml" />
+        <mkdir dir="${target.dir}/reports/junit-html" />
+
+        <pathconvert property="lib.path">
+            <path>
+                <pathelement location="${target.dir}/lib" />
+                <pathelement location="${target.dir}/${current.platform}" />
+            </path>
+        </pathconvert>
+
+        <echo message="!!! -Djava.library.path=${lib.path}"/>
+
+        <!--
+            default:
+                showoutput="no"
+            debug:
+                showoutput="yes"
+        -->
+
+        <junit includeantruntime="true" dir="${basedir}"
+            showoutput="yes"
+            printsummary="yes"
+            fork="yes" forkmode="perBatch"
+            filtertrace="yes"
+            failureproperty="junit.failed" errorproperty="junit.failed"
+            haltonerror="false" haltonfailure="false"
+        >
+            <classpath>
+                <path refid="test.classpath" />
+                <path refid="junit.classpath" />
+                <pathelement path="${target.dir}/test-classes"/>
+                <pathelement path="${target.dir}/${ant.project.name}.jar"/>
+            </classpath>
+            <jvmarg value="-Dlog4j.debug=true"/>
+            <jvmarg value="-Djava.library.path=${lib.path}"/>
+            <env key="LD_LIBRARY_PATH" value="${lib.path}" />
+            <formatter type="xml"/>
+            <batchtest fork="yes" todir="${target.dir}/reports/junit-xml">
+                <fileset dir="${target.dir}/test-classes">
+                    <include name="**/*Test.class"/>
+                    <!-- Exclude inner classes -->
+                    <exclude name="**/*$*.class"/>
+                </fileset>
+            </batchtest>
+        </junit>
+
+        <junitreport tofile="TestSuites.xml" todir="${target.dir}/reports">
+            <fileset dir="${target.dir}/reports/junit-xml">
+                <include name="*.xml"/>
+            </fileset>
+            <report format="frames" todir="${target.dir}/reports/junit-html"/>
+        </junitreport>
+
+        <condition property="abort">
+            <and>
+                <istrue value="${my.failbuld.junit}"/>
+                <isset property="junit.failed"/>
+            </and>
+        </condition>
+        <fail if="abort" message="JUnit failed. See ${target.dir}/reports/TestSuites.xml for details" />
+    </target>
+</project>

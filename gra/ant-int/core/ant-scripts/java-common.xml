@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<project name="java-common" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+
+    <import file="common.xml"/>
+
+    <target name="set-mainifest-module" if="module-class">
+        <manifest file="${target.dir}/MANIFEST.MF" mode="update">
+            <attribute name="Module-Class" value="${module-class}"/>
+        </manifest>
+    </target>
+
+    <target name="prepare-classpath">
+        <!-- For java modules resolve compile dependencies using current platform -->
+        <ivy:var name="target.platform" value="${current.platform}"/>
+        <ivy:resolve file="${basedir}/ivy.xml" conf="manifest" />
+        <ivy:cachepath pathid="manifest.cp" conf="manifest" type="jar,zip" />
+        <pathconvert property="manifest.classpath" pathsep=" ">
+            <path refid="manifest.cp"/>
+            <mapper type="flatten"/>
+        </pathconvert>
+        <condition property="has.manifest.classpath">
+            <length string="${manifest.classpath}" trim="true" when="greater" length="0" />
+        </condition>
+    </target>
+
+    <target name="set-mainifest-classpath" depends="prepare-classpath" if="has.manifest.classpath">
+        <manifest file="${target.dir}/MANIFEST.MF" mode="update">
+            <attribute name="Class-Path" value="${manifest.classpath}" />
+        </manifest>
+    </target>
+
+    <target name="prepare-mainifest">
+        <mkdir dir="${target.dir}"/>
+        <tstamp />
+
+        <manifest file="${target.dir}/MANIFEST.MF" mode="update">
+            <attribute name="Build-Jdk" value="${java.version}"/>
+            <attribute name="Implementation-Title" value="${ant.project.name}"/>
+            <attribute name="Implementation-Version" value="${product.version} ${TODAY}"/>
+            <attribute name="Implementation-Vendor" value="${product.company} (${product.company_url})"/>
+            <attribute name="Copyright" value="${product.copyright}"/>
+        </manifest>
+
+        <antcall target="set-mainifest-module"/>
+        <antcall target="set-mainifest-classpath"/>
+    </target>
+
+    <target name="compile-java" depends="-init-contrib, prepare-mainifest,-ivy-set-vars-cur">
+
+        <mkdir dir="${target.dir}/classes"/>
+
+        <!-- For java modules resolve compile dependencies using current platform -->
+        <ivy:var name="target.platform" value="${current.platform}"/>
+        <ivy:resolve file="${basedir}/ivy.xml" conf="compile" />
+        <ivy:cachepath pathid="compile.classpath" conf="compile" type="jar,zip" />
+
+        <pathconvert property="compileJavaClasspathProp" refid="compile.classpath"/>
+        <echo message="!!! compile.classpath: ${compileJavaClasspathProp}"/>
+
+        <javac
+            srcdir="${src.dir}"
+            destdir="${target.dir}/classes"
+            optimize="true"
+            debug="true"
+            includeantruntime="false"
+            encoding="UTF-8"
+        >
+            <classpath>
+                <path refid="compile.classpath" />
+            </classpath>
+            <compilerarg value="-Xlint"/>
+            <compilerarg value="-Xlint:-path"/>
+        </javac>
+
+        <for param="dir" list="${src.dir}" delimiter=";">
+            <sequential>
+                <copy todir="${target.dir}/classes" preservelastmodified="yes">
+                    <fileset dir="@{dir}">
+                        <exclude name="**/*.java"/>
+                        <exclude name="**/.svn/*"/>
+                    </fileset>
+                </copy>
+            </sequential>
+        </for>
+
+        <jar
+            destfile="${target.dir}/${ant.project.name}.jar"
+            basedir="${target.dir}/classes"
+            manifest="${target.dir}/MANIFEST.MF"
+            filesetmanifest="skip"
+        />
+        
+        <if>
+            <and>
+                <available file="${basedir}/test" />
+                <not>
+                    <istrue value="${my.skip.junit}"/>
+                </not>
+            </and>
+            <then>
+                <antcall target="junit" />
+            </then>
+        </if>
+    </target>
+</project>

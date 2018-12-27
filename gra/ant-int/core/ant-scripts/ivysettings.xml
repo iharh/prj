@@ -1,0 +1,51 @@
+<ivysettings>
+    <properties file="${common.basedir}/ivysettings.properties"/>
+    <settings defaultResolver="lib" validate="false"/>
+    <credentials host="${nexus.host}" realm="${nexus.realm}" username="${nexus.deploy.user}" passwd="${nexus.deploy.password}"/>
+
+    <caches
+        defaultCacheDir="${ivy-cache.dir}"
+        useOrigin="true"
+        ivyPattern="[organisation]/[module]/ivy(-[platform])-[revision].xml"
+        artifactPattern="[organisation]/[module]/[type]s/[artifact](-[platform])-[revision](-[classifier]).[ext]"
+    />
+
+    <resolvers>
+        <!-- resolver for nexus libraries-->
+        <!-- usepoms="false" -->
+        <ibiblio name="nexus.libs" m2compatible="true" usepoms="true" root="${nexus.repo.public}"/>
+
+        <!-- used by publish-to-nexus -->
+        <ibiblio name="nexus-snapshots" checksums="sha1, md5" m2compatible="true" pattern="[organisation]/[module]/[revision]/[artifact].[ext]" root="${nexus.repo.snapshots}"/>
+
+        <!-- pattern="[organisation]/[module]/[revision]/[artifact](-[classifier]).[ext]" / -->
+        <ibiblio name="maven" root="http://repo1.maven.org/maven2/" m2compatible="true" />
+
+        <filesystem name="lib">
+            <artifact pattern="${lib.dir}/[module]/[revision]/[artifact]-[revision].[ext]" />
+            <artifact pattern="${lib.dir}/[module]/[revision]/[artifact].[ext]" />
+            <ivy pattern="${lib.dir}/[module]/[revision]/ivy-[revision].xml" />
+        </filesystem>
+        <filesystem name="integration">
+            <artifact pattern="${my.integration.dir}/[platform]/[module]/[revision]/[artifact](.[ext])" />
+            <ivy pattern="${my.integration.dir}/[platform]/[module]/[revision]/ivy-[revision].xml" />
+        </filesystem>
+        <filesystem name="shared">
+            <artifact pattern="${my.shared.dir}/[module]/[revision]/[artifact](.[ext])" />
+            <ivy pattern="${my.shared.dir}/[module]/[revision]/ivy-[revision].xml" />
+        </filesystem>
+    </resolvers>
+    <modules>
+        <module organisation="org.sonatype*" name="*" resolver="maven" matcher="glob"/>
+        <module organisation="org.ow2*" name="*" resolver="maven" matcher="glob"/>
+        <module organisation="com.github*" name="*" resolver="maven" matcher="glob"/>
+        <module organisation="org.mockito*" name="*" resolver="maven" matcher="glob"/>
+        <module organisation="net.bytebuddy*" name="*" resolver="maven" matcher="glob"/>
+        <module organisation="org.objenesis*" name="*" resolver="maven" matcher="glob"/>
+        <module organisation="org.projectlombok*" name="*" resolver="maven" matcher="glob"/>
+
+        <module organisation="myorg" name="*" resolver="integration"/>
+
+        <module organisation="*" name="*" resolver="lib"/>
+    </modules>
+</ivysettings>
