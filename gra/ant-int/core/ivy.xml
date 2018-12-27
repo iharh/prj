@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="http://www.jayasoft.fr/org/ivyrep/ivy-doc.xsl"?>
+<ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
+    <info
+        organisation="myorg"
+        module="nlp-core-${target.platform}"
+        platform="${target.platform}"
+    >
+        <ivyauthor name="myorg" url="www.myorg.com"/>
+        <description homepage="http://www.myorg.com" />
+    </info>
+
+    <configurations>
+        <conf name="publish"/>
+        <conf name="default" extends="publish" />
+        <conf name="dependency" visibility="private" />
+        <conf name="dependency-exe" visibility="private" />
+    </configurations>
+
+    <publications defaultconf="publish">
+<!--artifacts-->
+    </publications>
+
+    <dependencies>
+        <dependency org="myorg" name="jmy" e:platform="${target.platform}" rev="latest.integration" conf="dependency->publish" transitive="false"/>
+    </dependencies>
+</ivy-module>

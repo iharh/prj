@@ -1,0 +1,127 @@
+<project name="nlp-core" default="compile" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+    <import file="ant-scripts/common.xml"/>
+
+    <property name="target.dir" location="${basedir}/.build/target"/>
+
+    <dirname property="nlp-core.dir" file="${ant.file.nlp-core}"/>
+    <property name="shared.ivy.dir" location="${nlp-core.dir}/.build/.shared/nlp-core-${current.os}-${arch}/${product.version}"/>
+
+    <target name="clean-cache">
+        <delete dir="${basedir}/.build/.ivy-cache" />
+        <delete dir="${target.dir}" />
+    </target>
+
+    <target name="-dependency">
+        <ivy:buildlist onMissingDescriptor="skip" reference="bp-full" ivyfilepath="ivy.xml">
+            <fileset dir="${basedir}">
+                <include name="**/build.xml"/>
+                <exclude name="build.xml"/>
+            </fileset>
+        </ivy:buildlist>
+    </target>
+
+    <target name="clean" depends="-dependency">
+        <echo>#################################################################</echo>
+        <echo>##                                                             ##</echo>
+        <echo>##                    Cleaning project                         ##</echo>
+        <echo>##                                                             ##</echo>
+        <echo>#################################################################</echo>
+
+        <delete dir="${core.dir}/.build" />
+
+        <subant buildpathref="bp-full" target="clean" verbose="true" inheritall="false"/>
+    </target>
+
+    <target name="compile" depends="print.settings, clean-cache, -dependency">
+        <echo>#################################################################</echo>
+        <echo>##                                                             ##</echo>
+        <echo>##                     Compiling MY-BASE                       ##</echo>
+        <echo>##                                                             ##</echo>
+        <echo>#################################################################</echo>
+
+        <subant buildpathref="bp-full" target="compile" inheritall="false"/>
+
+        <antcall target="publish-my" />
+    </target>
+
+    <target name="make-description">
+        <mkdir dir="${target.dir}/${target.platform}" />
+        <propertyfile file="${target.dir}/${target.platform}/version.info">
+            <entry key="version" value="${nlp.core.version}"/>
+            <entry key="revision" value="${version.revision}"/>
+            <entry key="platform" value="${target.platform}"/>
+            <entry key="java" value="${ant.java.version}"/>
+            <entry key="url" value="${svn.url}"/>
+        </propertyfile>
+        <replaceregexp file="${target.dir}/${target.platform}/version.info" match="(=.*/svn/)" replace="=/" byline="true"/>
+    </target>
+
+    <target name="publish-platform-my">
+        <antcall target="make-description" />
+
+        <ivy:resolve file="${basedir}/ivy.xml" />
+        <ivy:retrieve pattern="${target.dir}/${target.platform}/[originalname].[ext]" conf="dependency"/>
+        <ivy:retrieve pattern="${target.dir}/${target.platform}/[artifact](.[ext])" conf="dependency-exe"/>
+        <ivy:cachepath pathid="my.cp" />
+        <ivy:deliver
+            conf="*(public)"
+            deliverpattern="${target.dir}/${target.platform}/ivy.xml"
+        />
+
+        <pathconvert property="my.artifacts" pathsep="&quot; /&gt;&#x0D;&#x0A;        &lt;artifact name=&quot;">
+            <path refid="my.cp"/>
+            <mapper type="flatten"/>
+        </pathconvert>
+
+        <replace
+            file="${target.dir}/${target.platform}/ivy.xml"
+            token="&lt;!--artifacts--&gt;"
+            value="        &lt;artifact name=&quot;${my.artifacts}&quot; /&gt;"
+        />
+
+        <replaceregexp
+            file="${target.dir}/${target.platform}/ivy.xml"
+            match="(artifact name=&quot;[^&quot;\.]+)&quot;"
+            replace="\1&quot; type=&quot;exe&quot; ext=&quot;&quot;"
+            byline="true"
+        />
+        <replaceregexp
+            file="${target.dir}/${target.platform}/ivy.xml"
+            match="(artifact name=&quot;[^&quot;]+)\.(dll|so&quot;)"
+            replace="\1&quot; type=&quot;dll&quot; ext=&quot;\2"
+            byline="true"
+        />
+        <replaceregexp
+            file="${target.dir}/${target.platform}/ivy.xml"
+            match="(artifact name=&quot;[^&quot;]+\.so)\.([^&quot;]+&quot;)"
+            replace="\1&quot; type=&quot;dll&quot; ext=&quot;\2"
+            byline="true"
+        />
+        <replaceregexp
+            file="${target.dir}/${target.platform}/ivy.xml"
+            match="(artifact name=&quot;[^&quot;]+)\.([^&quot;\.]+&quot;(?!.*type=))"
+            replace="\1&quot; type=&quot;\2"
+            byline="true"
+        />
+        <ivy:resolve file="${target.dir}/${target.platform}/ivy.xml" />
+        <ivy:publish
+            resolver="shared"
+            pubrevision="${product.version}"
+            status="${build.status}"
+            forcedeliver="true"
+            overwrite="true"
+        >
+            <artifacts pattern="${target.dir}/${target.platform}/[artifact](.[ext])" />
+        </ivy:publish>
+    </target>
+
+    <target name="publish-my" depends="-init-contrib, check.version">
+        <foreach
+            list="${target.platforms}"
+            target="publish-platform-my"
+            param="target.platform"
+            inheritall="true"
+            trim="true"
+        />
+    </target>
+</project>

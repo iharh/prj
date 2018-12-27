@@ -1,0 +1,28 @@
+ant.importBuild("$projectDir/build.xml") { antTargetName ->
+    'ant-core-' + antTargetName
+}
+
+configurations {
+    core
+}
+
+task antCompile(type: Jar) {
+    doLast {
+        ant.project.executeTarget('compile')
+    }
+}
+
+artifacts {
+    core antCompile
+    core file("$coreDir/.build/target/${platform}/jmy.jar")
+}
+
+build {
+    dependsOn antCompile
+}
+
+clean {
+    doLast {
+        ant.project.executeTarget('clean')
+    }
+}
