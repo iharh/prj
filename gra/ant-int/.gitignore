@@ -3,3 +3,8 @@ build/
 
 ### Maven ###
 target/
+
+# custom #
+*.log
+platform.properties
+core/.build
