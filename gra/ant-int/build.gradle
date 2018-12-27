@@ -39,7 +39,7 @@ subprojects {
     //loadProperties("$lpDir/enums/build.properties")
     //loadProperties("${rootProject.getRootDir()}/service/api/build.properties")
 
-    version="${project.'nlp.modules.version'}"
+    version="${project.'nlp.version'}" // nlp.modules.version
 
     apply plugin: 'net.ltgt.apt'
     apply plugin: 'ivy-publish'
