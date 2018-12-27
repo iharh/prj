@@ -1,0 +1,25 @@
+apply from: "${rootProject.getRootDir()}/gradle/build-utils.gradle"
+loadProperties("${rootProject.getRootDir()}/build.properties")
+//loadNlpModulesProperties("${rootProject.getRootDir()}/modules/build.properties")
+
+repositories {
+    jcenter()
+    mavenCentral()
+
+    ivy {
+        name 'core_local'
+        url "${rootProject.getRootDir()}/core/.build/target/${platform}"
+        layout "pattern", {
+            artifact "[artifact](.[ext])"
+            ivy "ivy.xml"
+        }
+    }
+    /*ivy {
+        name 'modules_local'
+        url "${rootProject.getRootDir()}/modules/.build/target/${platform}"
+        layout "pattern", {
+            artifact "[artifact](.[ext])"
+            ivy "ivy.xml"
+        }
+    }*/
+}

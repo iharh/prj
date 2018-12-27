@@ -1,0 +1,48 @@
+ext {
+    groups = [
+        lombok:         'org.projectlombok',
+
+        spring:         'org.springframework',
+
+        protobuf:       'com.google.protobuf',
+        grpc:           'io.grpc',
+
+        junit_jupiter:  'org.junit.jupiter',
+        assertj:        'org.assertj',
+    ]
+    versions = [
+        lombok:         '1.18.4',
+
+        spring:         '5.0.3.RELEASE',
+
+        protobuf:       '3.5.1', // TODO: ask PLAT to upgrade
+        grpc:           '1.9.0',
+        javacpp:        '1.4.3',
+
+        junit:          '5.3.1',
+        assertj:        '3.11.1',
+    ]
+    libraries = [
+        lombok:         "${groups.lombok}:lombok:${versions.lombok}",
+
+        // sprint
+        spring_context: "${groups.spring}:spring-context:${versions.spring}",
+
+        // commons-text
+        commons_text:   'org.apache.commons:commons-text:1.6',
+        commons_io:     'commons-io:commons-io:2.6',
+
+        // javacpp
+        javacpp:        "org.bytedeco:javacpp:${versions.javacpp}",
+
+        // junit
+        junit_jupiter_api:          "${groups.junit_jupiter}:junit-jupiter-api:${versions.junit}",
+        junit_jupiter_params:       "${groups.junit_jupiter}:junit-jupiter-params:${versions.junit}",
+        junit_jupiter_engine:       "${groups.junit_jupiter}:junit-jupiter-engine:${versions.junit}",
+        // assertj
+        assertj_core:               "${groups.assertj}:assertj-core:${versions.assertj}",
+
+        // logback
+        logback_classic:            'ch.qos.logback:logback-classic:1.2.3',
+    ]
+}
