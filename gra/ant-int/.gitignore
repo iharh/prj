@@ -7,4 +7,4 @@ target/
 # custom #
 *.log
 platform.properties
-core/.build
+core/.build/
