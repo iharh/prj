@@ -1,13 +1,9 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="http://www.jayasoft.fr/org/ivyrep/ivy-doc.xsl"?>
 <ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
-    <info
-        organisation="myorg" 
-        module="jmy"
-        e:platform="${target.platform}"
-     >
+    <info organisation="myorg" module="jmy" revision="working@ihdesk" status="integration" publication="20181227143932" e:platform="linux-x64">
         <ivyauthor name="myorg" url="www.myorg.com"/>
-        <description homepage="http://www.myorg.com" />
+        <description homepage="http://www.myorg.com"/>
     </info>
     <configurations>
         <conf name="publish"/>
