@@ -274,10 +274,11 @@
 
         <condition property="abort">
             <and>
-                <istrue value="${my.failbuld.junit}"/>
+                <istrue value="${my.failbuild.junit}"/>
                 <isset property="junit.failed"/>
             </and>
         </condition>
+
         <fail if="abort" message="JUnit failed. See ${target.dir}/reports/TestSuites.xml for details" />
     </target>
 </project>

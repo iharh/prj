@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="http://www.jayasoft.fr/org/ivyrep/ivy-doc.xsl"?>
+
+<ivy-module version="2.0">
+    <info 
+        organisation="junit" 
+        module="junit" 
+        revision="4.11" 
+        status="release">
+        <license name="CPL" url="http://junit.sourceforge.net/cpl-v10.html"/>
+        <description homepage="http://junit.sourceforge.net">
+            JUnit is a simple framework to write repeatable tests. It is an instance of the xUnit architecture for unit testing frameworks. 
+  		</description>
+    </info>
+
+    <configurations>
+        <conf name="default"/>
+    </configurations>
+
+    <publications>
+        <artifact name="junit" type="jar" conf="default"/>
+    </publications>
+
+</ivy-module>
