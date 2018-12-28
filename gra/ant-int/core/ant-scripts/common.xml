@@ -272,8 +272,8 @@
         </junit>
 
         <!-- Required for Gradle -->
-        <!-- taskdef name="junitreport"
-            classname="org.apache.tools.ant.taskdefs.optional.junit.JUnitTask"
+        <taskdef name="junitreport"
+            classname="org.apache.tools.ant.taskdefs.optional.junit.XMLResultAggregator"
             classpath="/home/iharh/.sdkman/candidates/ant/current/lib/ant-junit.jar:/home/iharh/.sdkman/candidates/ant/current/lib/ant-junit4.jar"
         />
 
@@ -282,7 +282,7 @@
                 <include name="*.xml"/>
             </fileset>
             <report format="frames" todir="${target.dir}/reports/junit-html"/>
-        </junitreport -->
+        </junitreport>
 
         <condition property="abort">
             <and>
