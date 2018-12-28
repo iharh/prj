@@ -232,10 +232,8 @@
         <echo message="!!! -Djava.library.path=${lib.path}"/>
 
         <!-- Required for Gradle -->
-        <path id="junit.cp">
+        <!-- path id="junit.cp">
             <fileset dir="/home/iharh/.sdkman/candidates/ant/current/lib" includes="ant-juni*.jar" />
-            <!-- pathelement location="/home/iharh/.sdkman/candidates/ant/current/lib/ant-junit.jar" />
-            <pathelement location="/home/iharh/.sdkman/candidates/ant/current/lib/ant-junit4.jar" / -->
         </path>
 
         <taskdef name="junit"
@@ -245,9 +243,7 @@
         <taskdef name="junitreport"
             classname="org.apache.tools.ant.taskdefs.optional.junit.XMLResultAggregator"
             classpathref="junit.cp"
-        />
-
-        <!-- classpath="/home/iharh/.sdkman/candidates/ant/current/lib/ant-junit.jar:/home/iharh/.sdkman/candidates/ant/current/lib/ant-junit4.jar"/ -->
+        / -->
 
         <!--
             default:
