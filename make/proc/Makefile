@@ -1,11 +1,11 @@
-.PHONY: build bn en
+.PHONY: build ar bn en hi
 
-build: bn en
-	@echo build called
+build: ar bn en hi
+	@echo build finished
 
-bn: ; $(MAKE) lp LP_ID="bn" LP_VER="1"
+ar: ; $(MAKE) lp LP_ID="ar" LP_VER="1"
+bn: ; $(MAKE) lp LP_ID="bn" LP_VER="2"
+en: ; $(MAKE) lp LP_ID="en" LP_VER="3"
+hi: ; $(MAKE) lp LP_ID="hi" LP_VER="4"
 
-en: ; $(MAKE) lp LP_ID="en" LP_VER="2"
-
-lp:
-	@echo lp called with LP_ID: $(LP_ID) LP_VER: $(LP_VER)
+lp: ; @echo lp called with LP_ID: $(LP_ID) LP_VER: $(LP_VER)
