@@ -2,6 +2,7 @@ ext {
     groups = [
         lombok:                     'org.projectlombok',
         slf4j:                      'org.slf4j',
+        spring:                     'org.springframework',
 
         junit_jupiter:              'org.junit.jupiter',
         assertj:                    'org.assertj',
@@ -9,6 +10,7 @@ ext {
     versions = [
         lombok:                     '1.18.2',
         slf4j:                      '1.7.25', // 1.7.25
+        spring:                     '5.1.4.RELEASE',
 
         junit:                      '5.3.1',
         assertj:                    '3.11.1',
@@ -21,6 +23,8 @@ ext {
         slf4j_simple:               "${groups.slf4j}:slf4j-simple:${versions.slf4j}",
         // logback
         logstash_logback_encoder:   'net.logstash.logback:logstash-logback-encoder:5.2',
+        // spring
+        spring_core:                "${groups.spring}:spring-core:${versions.spring}",
         // commons
         commons_io:                 'commons-io:commons-io:2.6',
         commons_codec:              'commons-codec:commons-codec:1.11',
