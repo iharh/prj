@@ -9,6 +9,10 @@ apply from: "${gradleRootDir}/java.gradle"
 apply from: "${gradleRootDir}/junit.gradle"
 
 dependencies {
+    // lombok
+    compileOnly         libraries.lombok
+    testCompileOnly     libraries.lombok
+    annotationProcessor libraries.lombok
     // spring
     compile libraries.spring_core
     // junit
