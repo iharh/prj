@@ -8,9 +8,9 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 public class LockHolderImpl {
     private final ConcurrentMap<Long, ReentrantReadWriteLock> locks;
 
-    private static final int   DEFAULT_INIT_CAPACITY                               = 8;
+    private static final int   DEFAULT_INIT_CAPACITY                               = 16;
     private static final float DEFAULT_LOAD_FACTOR                                 = 0.75f;
-    private static final int   DEFAULT_CONCUR_LEVEL                                = 8;
+    private static final int   DEFAULT_CONCUR_LEVEL                                = 16;
     private static final ConcurrentReferenceHashMap.ReferenceType DEFAULT_REF_TYPE = ConcurrentReferenceHashMap.ReferenceType.SOFT;
 
     public LockHolderImpl() {
