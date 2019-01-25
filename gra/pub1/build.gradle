@@ -1,0 +1,33 @@
+plugins {
+    id 'maven-publish'
+}
+
+ext {
+    gradleDir  = "${rootProject.getRootDir()}/gradle"
+}
+
+apply from: "$gradleDir/build-utils.gradle"
+apply from: "$gradleDir/java.gradle"
+
+group = 'mygrp'
+version = '1.0.0'
+
+publishing {
+    publications {
+        mySrc(MavenPublication) {
+            afterEvaluate {
+                artifactId "my-src"
+                artifact([source: "/home/iharh/Downloads/my-src.zip"])
+            }
+        }
+    }
+    repositories {
+        maven {
+            url project.'nexus.repo.publish'
+            credentials {
+                username = project.'nexus.deploy.user'
+                password = project.'nexus.deploy.password'
+            }
+        }
+    }
+}
