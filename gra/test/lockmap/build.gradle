@@ -8,6 +8,10 @@ apply from: "${gradleRootDir}/dependencies.gradle"
 apply from: "${gradleRootDir}/java.gradle"
 apply from: "${gradleRootDir}/junit.gradle"
 
+plugins {
+    id 'com.github.ben-manes.versions' version '0.17.0'
+}
+
 dependencies {
     // lombok
     compileOnly         libraries.lombok
