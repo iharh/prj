@@ -6,19 +6,19 @@ ext {
     gradleDir  = "${rootProject.getRootDir()}/gradle"
 }
 
-apply from: "$gradleDir/build-utils.gradle"
 apply from: "$gradleDir/java.gradle"
 
 group = 'mygrp'
-version = '1.0.0'
+version = '1.0.1'
 
 publishing {
     publications {
         mySrc(MavenPublication) {
-            afterEvaluate {
+            //afterEvaluate {
                 artifactId "my-src"
                 artifact([source: "/home/iharh/Downloads/my-src.zip"])
-            }
+                //artifact([file: '/home/iharh/Downloads/my-src.zip', classifier: 'zip', extension: 'zip'])
+            //}
         }
     }
     repositories {
