@@ -18,3 +18,17 @@ dependencies {
     //testCompile('org.spockframework:spock-core:1.0-groovy-2.4')
     //testCompile('org.spockframework:spock-core:1.1-groovy-2.4-rc-4')
 }
+
+def check(closure) {
+    println '1'
+    closure()
+    println '2'
+}
+
+task abc {
+    doLast {
+        check {
+            println 'closure1'
+        }
+    }
+}
