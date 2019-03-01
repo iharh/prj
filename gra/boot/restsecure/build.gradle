@@ -16,7 +16,7 @@ ext {
     gradleRootDir = "${repoRootDir}/gradle"
 }
 
-apply from: "${gradleRootDir}/dep-cmp.gradle"
+apply from: "${gradleRootDir}/dep-backward.gradle"
 
 dependencies {
     // spring

@@ -1,13 +1,19 @@
 package my;
 
-import my.configs.MyAppConfig;
+//import my.config.MyAppConfig;
+//import my.config.MySecurityConfig;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.context.annotation.Import;
 
-@Import(value = MyAppConfig.class)
+//import org.springframework.context.annotation.Import;
+
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+//@Import(value = MyAppConfig.class)
+//@Import(value = MySecurityConfig.class)
 public class MyApplication {
     public static void main(String[] args) {
-        new SpringApplication(MyAppConfig.class).run(args);
+        new SpringApplication(MyApplication.class).run(args); // MyAppConfig.class
     }
 }
