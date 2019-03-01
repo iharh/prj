@@ -21,4 +21,12 @@
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="FILE"/>
     </root>
+    <logger name="org.springframework.web" level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </logger>
+    <logger name="org.springframework.security" level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </logger>
 </configuration>
