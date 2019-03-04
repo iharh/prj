@@ -14,7 +14,8 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
                 //.antMatchers("/v1/**").permitAll()
-                .anyRequest().hasRole("USER")
+                // .anyRequest().hasRole("USER")
+                .anyRequest().authenticated()
                 .and()
             .httpBasic()
             //.formLogin().loginPage("/login").failureUrl("/login-error")
