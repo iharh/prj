@@ -13,10 +13,10 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/v1/**").permitAll()
-                //.antMatchers("/css/**", "/index").permitAll()
-                //.antMatchers("/user/**").hasRole("USER")
-                //.and()
+                //.antMatchers("/v1/**").permitAll()
+                .anyRequest().hasRole("USER")
+                .and()
+            .httpBasic()
             //.formLogin().loginPage("/login").failureUrl("/login-error")
         ;
     }
