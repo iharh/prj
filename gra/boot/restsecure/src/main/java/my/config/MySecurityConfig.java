@@ -34,7 +34,6 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
     public static class NlpServiceAuthenticationToken extends AbstractAuthenticationToken {
         private static final long serialVersionUID = -1949976839306453197L;
-        // private User authenticatedUser;
             
         public NlpServiceAuthenticationToken() {
             super(Arrays.asList());
@@ -48,12 +47,12 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
         @Override
         public Object getCredentials() {
-            return "password";
+            return null;
         }
 
         @Override
         public Object getPrincipal() {
-            return "user"; // TODO: ???
+            return null;
         }
     }
 
@@ -86,7 +85,6 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
                 Authentication authResult = new NlpServiceAuthenticationToken();
 
                 SecurityContextHolder.getContext().setAuthentication(authResult);
-                // TODO: catch AuthenticationException
                 
                 chain.doFilter(request, response);
             }
