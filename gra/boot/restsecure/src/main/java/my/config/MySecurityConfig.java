@@ -6,7 +6,6 @@ import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -27,24 +26,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import java.util.Arrays;
-import java.util.Collection;
 
 @EnableWebSecurity
 public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
-    public static class NlpServiceAuthenticationToken extends AbstractAuthenticationToken {
+    public static class MyAuthenticationToken extends AbstractAuthenticationToken {
         private static final long serialVersionUID = -1949976839306453197L;
             
-        public NlpServiceAuthenticationToken() {
+        public MyAuthenticationToken() {
             super(Arrays.asList());
             setAuthenticated(true);
         }
         
-        public NlpServiceAuthenticationToken(Collection<? extends GrantedAuthority> authorities) {
-            super(authorities);
-            setAuthenticated(true);
-        }
-
         @Override
         public Object getCredentials() {
             return null;
@@ -56,10 +49,25 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
         }
     }
 
+    public static class MyFilter extends OncePerRequestFilter {
+        @Override
+        protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
+            logger.info("!!! myFilter enter !!!");
+
+            final String myHeaderVal = request.getHeader("myheader");
+            if ("12345".equals(myHeaderVal)) {
+                final Authentication authResult = new MyAuthenticationToken();
+                SecurityContextHolder.getContext().setAuthentication(authResult);
+            }
+
+            chain.doFilter(request, response);
+        }
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .addFilterBefore(myFilter(), BasicAuthenticationFilter.class)
+            .addFilterBefore(new MyFilter(), BasicAuthenticationFilter.class)
             .authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
@@ -72,22 +80,5 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
         auth
             .inMemoryAuthentication()
                 .withUser("user").password("password").roles("USER");
-    }
-
-    private Filter myFilter() {
-        return new OncePerRequestFilter() {
-            @Override
-            protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
-                    throws IOException, ServletException {
-
-                logger.info("!!! myFilter enter !!!");
-
-                Authentication authResult = new NlpServiceAuthenticationToken();
-
-                SecurityContextHolder.getContext().setAuthentication(authResult);
-                
-                chain.doFilter(request, response);
-            }
-        };
     }
 }
