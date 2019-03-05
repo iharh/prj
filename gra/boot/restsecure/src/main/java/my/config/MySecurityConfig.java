@@ -2,8 +2,11 @@ package my.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -23,8 +26,36 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
+import java.util.Arrays;
+import java.util.Collection;
+
 @EnableWebSecurity
 public class MySecurityConfig extends WebSecurityConfigurerAdapter {
+
+    public static class NlpServiceAuthenticationToken extends AbstractAuthenticationToken {
+        private static final long serialVersionUID = -1949976839306453197L;
+        // private User authenticatedUser;
+            
+        public NlpServiceAuthenticationToken() {
+            super(Arrays.asList());
+            setAuthenticated(true);
+        }
+        
+        public NlpServiceAuthenticationToken(Collection<? extends GrantedAuthority> authorities) {
+            super(authorities);
+            setAuthenticated(true);
+        }
+
+        @Override
+        public Object getCredentials() {
+            return "password";
+        }
+
+        @Override
+        public Object getPrincipal() {
+            return "user"; // TODO: ???
+        }
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -52,10 +83,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
                 logger.info("!!! myFilter enter !!!");
 
-                UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken("user", "password");
-                authRequest.setDetails(this.authenticationDetailsSource.buildDetails(request));
-
-                Authentication authResult = this.authenticationManager.authenticate(authRequest);
+                Authentication authResult = new NlpServiceAuthenticationToken();
 
                 SecurityContextHolder.getContext().setAuthentication(authResult);
                 // TODO: catch AuthenticationException
