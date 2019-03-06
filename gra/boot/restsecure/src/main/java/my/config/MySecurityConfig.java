@@ -17,7 +17,6 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
