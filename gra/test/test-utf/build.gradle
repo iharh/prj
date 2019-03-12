@@ -4,7 +4,7 @@ plugins {
 }
 
 ext {
-    repoRootDir = "${rootProject.getRootDir()}/.." // /..
+    repoRootDir = "${rootProject.getRootDir()}/../.." // /..
     gradleRootDir = "${repoRootDir}/gradle"
 }
 
