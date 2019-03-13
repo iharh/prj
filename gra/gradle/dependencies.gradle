@@ -28,6 +28,8 @@ ext {
         // commons
         commons_io:                 'commons-io:commons-io:2.6',
         commons_codec:              'commons-codec:commons-codec:1.11',
+        // ehcache
+        ehcache:                    'org.ehcache:ehcache:3.7.0',
         // junit
         junit_jupiter_api:          "${groups.junit_jupiter}:junit-jupiter-api:${versions.junit}",
         junit_jupiter_params:       "${groups.junit_jupiter}:junit-jupiter-params:${versions.junit}",

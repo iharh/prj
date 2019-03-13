@@ -1,0 +1,24 @@
+ext {
+    repoRootDir = "${rootProject.getRootDir()}/../.."
+    gradleRootDir = "${repoRootDir}/gradle"
+}
+
+apply from: "${gradleRootDir}/repositories.gradle"
+apply from: "${gradleRootDir}/dependencies.gradle"
+apply from: "${gradleRootDir}/java.gradle"
+apply from: "${gradleRootDir}/junit.gradle"
+
+dependencies {
+    // lombok
+    compileOnly         libraries.lombok
+    testCompileOnly     libraries.lombok
+    annotationProcessor libraries.lombok
+    // spring
+    compile libraries.ehcache
+    // junit
+    testCompile libraries.junit_jupiter_api
+    testCompile libraries.junit_jupiter_params
+    testRuntime libraries.junit_jupiter_engine
+    // assertj
+    testCompile libraries.assertj_core
+}
