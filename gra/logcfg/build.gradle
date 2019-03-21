@@ -1,0 +1,30 @@
+ext {
+    repoRootDir = "${rootProject.getRootDir()}/.."
+    gradleRootDir = "${repoRootDir}/gradle"
+    mainClassName = 'logcfg.Main'
+}
+
+apply from: "${gradleRootDir}/repositories.gradle"
+apply from: "${gradleRootDir}/dependencies.gradle"
+apply from: "${gradleRootDir}/java8.gradle"
+apply from: "${gradleRootDir}/application.gradle"
+apply from: "${gradleRootDir}/jar.gradle"
+
+dependencies {
+    compileOnly         libraries.lombok
+    //testCompileOnly     libraries.lombok
+    annotationProcessor libraries.lombok
+
+    implementation libraries.slf4j_api
+
+    implementation libraries.log4j_api
+    implementation libraries.log4j_core
+    implementation libraries.log4j_slf4j_impl
+}
+
+application {
+    applicationDefaultJvmArgs = [
+        //'-Dlog4j2.debug=true',
+        '-Dlog4j.configurationFile=cfg/cfg.properties'
+    ]
+}

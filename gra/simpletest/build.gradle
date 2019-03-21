@@ -5,7 +5,7 @@ ext {
 
 apply from: "${gradleRootDir}/repositories.gradle"
 apply from: "${gradleRootDir}/dependencies.gradle"
-apply from: "${gradleRootDir}/java.gradle"
+apply from: "${gradleRootDir}/java8.gradle"
 apply from: "${gradleRootDir}/junit.gradle"
 
 dependencies {

@@ -1,0 +1,30 @@
+jar {
+    manifest {
+        attributes(
+            'Implementation-Title': project.name,
+            'Built-By': System.getProperty('user.name'),
+            'Built-JDK': System.getProperty('java.version'),
+            'Built-With': "gradle-${project.getGradle().getGradleVersion()}",
+            'Implementation-Version': project.version,
+            'Built-Date': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+            'Class-Path': configurations.runtime.filter() {
+                it.name.endsWith('.jar')
+            }
+            .collect {
+                it.name
+            }
+            .join(' ')
+        )
+        if (project.hasProperty('mainClassName')) {
+            attributes << [
+                'Main-Class': mainClassName,
+            ]
+        }
+        doFirst {
+            attributes(
+                'Source-Compatibility': project.sourceCompatibility,
+                'Target-Compatibility': project.targetCompatibility
+            )
+        }
+    }
+}

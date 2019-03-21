@@ -1,0 +1,13 @@
+// https://docs.gradle.org/current/userguide/application_plugin.html
+// gradle
+//      startScripts
+//      run
+//          --debug-jvm
+//          --args="foo --bar"
+apply plugin: 'application'
+
+application {
+    if (project.hasProperty('mainClassName')) {
+        mainClassName = project.getProperty('mainClassName')
+    }
+}
