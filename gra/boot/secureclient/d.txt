@@ -1,0 +1,487 @@
+default - Configuration for default artifacts.
++--- org.springframework.boot:spring-boot-starter-security -> 2.1.3.RELEASE
+|    +--- org.springframework.boot:spring-boot-starter:2.1.3.RELEASE
+|    |    +--- org.springframework.boot:spring-boot:2.1.3.RELEASE
+|    |    |    +--- org.springframework:spring-core:5.1.5.RELEASE
+|    |    |    |    \--- org.springframework:spring-jcl:5.1.5.RELEASE
+|    |    |    \--- org.springframework:spring-context:5.1.5.RELEASE
+|    |    |         +--- org.springframework:spring-aop:5.1.5.RELEASE
+|    |    |         |    +--- org.springframework:spring-beans:5.1.5.RELEASE
+|    |    |         |    |    \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    |         |    \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    |         +--- org.springframework:spring-beans:5.1.5.RELEASE (*)
+|    |    |         +--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    |         \--- org.springframework:spring-expression:5.1.5.RELEASE
+|    |    |              \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    +--- org.springframework.boot:spring-boot-autoconfigure:2.1.3.RELEASE
+|    |    |    \--- org.springframework.boot:spring-boot:2.1.3.RELEASE (*)
+|    |    +--- org.springframework.boot:spring-boot-starter-logging:2.1.3.RELEASE
+|    |    |    +--- ch.qos.logback:logback-classic:1.2.3
+|    |    |    |    +--- ch.qos.logback:logback-core:1.2.3
+|    |    |    |    \--- org.slf4j:slf4j-api:1.7.25
+|    |    |    +--- org.apache.logging.log4j:log4j-to-slf4j:2.11.2
+|    |    |    |    +--- org.slf4j:slf4j-api:1.7.25
+|    |    |    |    \--- org.apache.logging.log4j:log4j-api:2.11.2
+|    |    |    \--- org.slf4j:jul-to-slf4j:1.7.25
+|    |    |         \--- org.slf4j:slf4j-api:1.7.25
+|    |    +--- javax.annotation:javax.annotation-api:1.3.2
+|    |    +--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    \--- org.yaml:snakeyaml:1.23
+|    +--- org.springframework:spring-aop:5.1.5.RELEASE (*)
+|    +--- org.springframework.security:spring-security-config:5.1.4.RELEASE
+|    |    +--- org.springframework.security:spring-security-core:5.1.4.RELEASE
+|    |    |    +--- org.springframework:spring-aop:5.1.5.RELEASE (*)
+|    |    |    +--- org.springframework:spring-beans:5.1.5.RELEASE (*)
+|    |    |    +--- org.springframework:spring-context:5.1.5.RELEASE (*)
+|    |    |    +--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    |    \--- org.springframework:spring-expression:5.1.5.RELEASE (*)
+|    |    +--- org.springframework:spring-aop:5.1.5.RELEASE (*)
+|    |    +--- org.springframework:spring-beans:5.1.5.RELEASE (*)
+|    |    +--- org.springframework:spring-context:5.1.5.RELEASE (*)
+|    |    \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    \--- org.springframework.security:spring-security-web:5.1.4.RELEASE
+|         +--- org.springframework.security:spring-security-core:5.1.4.RELEASE (*)
+|         +--- org.springframework:spring-aop:5.1.5.RELEASE (*)
+|         +--- org.springframework:spring-beans:5.1.5.RELEASE (*)
+|         +--- org.springframework:spring-context:5.1.5.RELEASE (*)
+|         +--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|         +--- org.springframework:spring-expression:5.1.5.RELEASE (*)
+|         \--- org.springframework:spring-web:5.1.5.RELEASE
+|              +--- org.springframework:spring-beans:5.1.5.RELEASE (*)
+|              \--- org.springframework:spring-core:5.1.5.RELEASE (*)
++--- org.springframework.boot:spring-boot-starter-oauth2-client -> 2.1.3.RELEASE
+|    +--- org.springframework.boot:spring-boot-starter:2.1.3.RELEASE (*)
+|    +--- org.springframework.security:spring-security-config:5.1.4.RELEASE (*)
+|    +--- org.springframework.security:spring-security-core:5.1.4.RELEASE (*)
+|    +--- org.springframework.security:spring-security-oauth2-client:5.1.4.RELEASE
+|    |    +--- com.nimbusds:oauth2-oidc-sdk:6.0
+|    |    |    +--- com.sun.mail:javax.mail:1.6.1 -> 1.6.2
+|    |    |    |    \--- javax.activation:activation:1.1
+|    |    |    +--- com.github.stephenc.jcip:jcip-annotations:1.0-1
+|    |    |    +--- net.minidev:json-smart:[1.3.1,2.3] -> 2.3
+|    |    |    |    \--- net.minidev:accessors-smart:1.2
+|    |    |    |         \--- org.ow2.asm:asm:5.0.4
+|    |    |    +--- com.nimbusds:lang-tag:[1.4.3,) -> 1.4.4
+|    |    |    \--- com.nimbusds:nimbus-jose-jwt:[6.0.1,) -> 6.0.2
+|    |    |         +--- com.github.stephenc.jcip:jcip-annotations:1.0-1
+|    |    |         \--- net.minidev:json-smart:[1.3.1,2.3] -> 2.3 (*)
+|    |    +--- org.springframework.security:spring-security-core:5.1.4.RELEASE (*)
+|    |    +--- org.springframework.security:spring-security-oauth2-core:5.1.4.RELEASE
+|    |    |    +--- org.springframework.security:spring-security-core:5.1.4.RELEASE (*)
+|    |    |    +--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    |    \--- org.springframework:spring-web:5.1.5.RELEASE (*)
+|    |    +--- org.springframework.security:spring-security-web:5.1.4.RELEASE (*)
+|    |    \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    \--- org.springframework.security:spring-security-oauth2-jose:5.1.4.RELEASE
+|         +--- com.nimbusds:nimbus-jose-jwt:6.0.2 (*)
+|         +--- org.springframework.security:spring-security-core:5.1.4.RELEASE (*)
+|         +--- org.springframework.security:spring-security-oauth2-core:5.1.4.RELEASE (*)
+|         \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+\--- org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.1.3.RELEASE
+     +--- com.fasterxml.jackson.core:jackson-annotations:2.9.0
+     +--- com.fasterxml.jackson.core:jackson-databind:2.9.8
+     |    +--- com.fasterxml.jackson.core:jackson-annotations:2.9.0
+     |    \--- com.fasterxml.jackson.core:jackson-core:2.9.8
+     +--- com.sun.xml.bind:jaxb-core:2.3.0.1
+     +--- com.sun.xml.bind:jaxb-impl:2.3.0.1
+     +--- javax.xml.bind:jaxb-api:2.4.0-b180830.0359 -> 2.3.1
+     |    \--- javax.activation:javax.activation-api:1.2.0
+     +--- org.springframework.boot:spring-boot:2.1.3.RELEASE (*)
+     +--- org.springframework.boot:spring-boot-autoconfigure:2.1.3.RELEASE (*)
+     +--- org.springframework.security.oauth:spring-security-oauth2:2.3.5.RELEASE
+     |    +--- org.springframework:spring-beans:4.0.9.RELEASE -> 5.1.5.RELEASE (*)
+     |    +--- org.springframework:spring-core:4.0.9.RELEASE -> 5.1.5.RELEASE (*)
+     |    +--- org.springframework:spring-context:4.0.9.RELEASE -> 5.1.5.RELEASE (*)
+     |    +--- org.springframework:spring-webmvc:4.0.9.RELEASE -> 5.1.5.RELEASE
+     |    |    +--- org.springframework:spring-aop:5.1.5.RELEASE (*)
+     |    |    +--- org.springframework:spring-beans:5.1.5.RELEASE (*)
+     |    |    +--- org.springframework:spring-context:5.1.5.RELEASE (*)
+     |    |    +--- org.springframework:spring-core:5.1.5.RELEASE (*)
+     |    |    +--- org.springframework:spring-expression:5.1.5.RELEASE (*)
+     |    |    \--- org.springframework:spring-web:5.1.5.RELEASE (*)
+     |    +--- org.springframework.security:spring-security-core:3.2.10.RELEASE -> 5.1.4.RELEASE (*)
+     |    +--- org.springframework.security:spring-security-config:3.2.10.RELEASE -> 5.1.4.RELEASE (*)
+     |    +--- org.springframework.security:spring-security-web:3.2.10.RELEASE -> 5.1.4.RELEASE (*)
+     |    +--- commons-codec:commons-codec:1.9 -> 1.11
+     |    \--- org.codehaus.jackson:jackson-mapper-asl:1.9.13
+     |         \--- org.codehaus.jackson:jackson-core-asl:1.9.13
+     +--- org.springframework.security:spring-security-jwt:1.0.10.RELEASE
+     |    \--- org.bouncycastle:bcpkix-jdk15on:1.60
+     |         \--- org.bouncycastle:bcprov-jdk15on:1.60
+     \--- org.springframework:spring-web:5.1.5.RELEASE (*)
+
+implementation - Implementation only dependencies for source set 'main'. (n)
++--- org.springframework.boot:spring-boot-starter-security (n)
++--- org.springframework.boot:spring-boot-starter-oauth2-client (n)
+\--- org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.1.3.RELEASE (n)
+
+runtime - Runtime dependencies for source set 'main' (deprecated, use 'runtimeOnly' instead).
+No dependencies
+
+runtimeClasspath - Runtime classpath of source set 'main'.
++--- org.springframework.boot:spring-boot-starter-security -> 2.1.3.RELEASE
+|    +--- org.springframework.boot:spring-boot-starter:2.1.3.RELEASE
+|    |    +--- org.springframework.boot:spring-boot:2.1.3.RELEASE
+|    |    |    +--- org.springframework:spring-core:5.1.5.RELEASE
+|    |    |    |    \--- org.springframework:spring-jcl:5.1.5.RELEASE
+|    |    |    \--- org.springframework:spring-context:5.1.5.RELEASE
+|    |    |         +--- org.springframework:spring-aop:5.1.5.RELEASE
+|    |    |         |    +--- org.springframework:spring-beans:5.1.5.RELEASE
+|    |    |         |    |    \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    |         |    \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    |         +--- org.springframework:spring-beans:5.1.5.RELEASE (*)
+|    |    |         +--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    |         \--- org.springframework:spring-expression:5.1.5.RELEASE
+|    |    |              \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    +--- org.springframework.boot:spring-boot-autoconfigure:2.1.3.RELEASE
+|    |    |    \--- org.springframework.boot:spring-boot:2.1.3.RELEASE (*)
+|    |    +--- org.springframework.boot:spring-boot-starter-logging:2.1.3.RELEASE
+|    |    |    +--- ch.qos.logback:logback-classic:1.2.3
+|    |    |    |    +--- ch.qos.logback:logback-core:1.2.3
+|    |    |    |    \--- org.slf4j:slf4j-api:1.7.25
+|    |    |    +--- org.apache.logging.log4j:log4j-to-slf4j:2.11.2
+|    |    |    |    +--- org.slf4j:slf4j-api:1.7.25
+|    |    |    |    \--- org.apache.logging.log4j:log4j-api:2.11.2
+|    |    |    \--- org.slf4j:jul-to-slf4j:1.7.25
+|    |    |         \--- org.slf4j:slf4j-api:1.7.25
+|    |    +--- javax.annotation:javax.annotation-api:1.3.2
+|    |    +--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    \--- org.yaml:snakeyaml:1.23
+|    +--- org.springframework:spring-aop:5.1.5.RELEASE (*)
+|    +--- org.springframework.security:spring-security-config:5.1.4.RELEASE
+|    |    +--- org.springframework.security:spring-security-core:5.1.4.RELEASE
+|    |    |    +--- org.springframework:spring-aop:5.1.5.RELEASE (*)
+|    |    |    +--- org.springframework:spring-beans:5.1.5.RELEASE (*)
+|    |    |    +--- org.springframework:spring-context:5.1.5.RELEASE (*)
+|    |    |    +--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    |    \--- org.springframework:spring-expression:5.1.5.RELEASE (*)
+|    |    +--- org.springframework:spring-aop:5.1.5.RELEASE (*)
+|    |    +--- org.springframework:spring-beans:5.1.5.RELEASE (*)
+|    |    +--- org.springframework:spring-context:5.1.5.RELEASE (*)
+|    |    \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    \--- org.springframework.security:spring-security-web:5.1.4.RELEASE
+|         +--- org.springframework.security:spring-security-core:5.1.4.RELEASE (*)
+|         +--- org.springframework:spring-aop:5.1.5.RELEASE (*)
+|         +--- org.springframework:spring-beans:5.1.5.RELEASE (*)
+|         +--- org.springframework:spring-context:5.1.5.RELEASE (*)
+|         +--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|         +--- org.springframework:spring-expression:5.1.5.RELEASE (*)
+|         \--- org.springframework:spring-web:5.1.5.RELEASE
+|              +--- org.springframework:spring-beans:5.1.5.RELEASE (*)
+|              \--- org.springframework:spring-core:5.1.5.RELEASE (*)
++--- org.springframework.boot:spring-boot-starter-oauth2-client -> 2.1.3.RELEASE
+|    +--- org.springframework.boot:spring-boot-starter:2.1.3.RELEASE (*)
+|    +--- org.springframework.security:spring-security-config:5.1.4.RELEASE (*)
+|    +--- org.springframework.security:spring-security-core:5.1.4.RELEASE (*)
+|    +--- org.springframework.security:spring-security-oauth2-client:5.1.4.RELEASE
+|    |    +--- com.nimbusds:oauth2-oidc-sdk:6.0
+|    |    |    +--- com.sun.mail:javax.mail:1.6.1 -> 1.6.2
+|    |    |    |    \--- javax.activation:activation:1.1
+|    |    |    +--- com.github.stephenc.jcip:jcip-annotations:1.0-1
+|    |    |    +--- net.minidev:json-smart:[1.3.1,2.3] -> 2.3
+|    |    |    |    \--- net.minidev:accessors-smart:1.2
+|    |    |    |         \--- org.ow2.asm:asm:5.0.4
+|    |    |    +--- com.nimbusds:lang-tag:[1.4.3,) -> 1.4.4
+|    |    |    \--- com.nimbusds:nimbus-jose-jwt:[6.0.1,) -> 6.0.2
+|    |    |         +--- com.github.stephenc.jcip:jcip-annotations:1.0-1
+|    |    |         \--- net.minidev:json-smart:[1.3.1,2.3] -> 2.3 (*)
+|    |    +--- org.springframework.security:spring-security-core:5.1.4.RELEASE (*)
+|    |    +--- org.springframework.security:spring-security-oauth2-core:5.1.4.RELEASE
+|    |    |    +--- org.springframework.security:spring-security-core:5.1.4.RELEASE (*)
+|    |    |    +--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    |    \--- org.springframework:spring-web:5.1.5.RELEASE (*)
+|    |    +--- org.springframework.security:spring-security-web:5.1.4.RELEASE (*)
+|    |    \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    \--- org.springframework.security:spring-security-oauth2-jose:5.1.4.RELEASE
+|         +--- com.nimbusds:nimbus-jose-jwt:6.0.2 (*)
+|         +--- org.springframework.security:spring-security-core:5.1.4.RELEASE (*)
+|         +--- org.springframework.security:spring-security-oauth2-core:5.1.4.RELEASE (*)
+|         \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+\--- org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.1.3.RELEASE
+     +--- com.fasterxml.jackson.core:jackson-annotations:2.9.0
+     +--- com.fasterxml.jackson.core:jackson-databind:2.9.8
+     |    +--- com.fasterxml.jackson.core:jackson-annotations:2.9.0
+     |    \--- com.fasterxml.jackson.core:jackson-core:2.9.8
+     +--- com.sun.xml.bind:jaxb-core:2.3.0.1
+     +--- com.sun.xml.bind:jaxb-impl:2.3.0.1
+     +--- javax.xml.bind:jaxb-api:2.4.0-b180830.0359 -> 2.3.1
+     |    \--- javax.activation:javax.activation-api:1.2.0
+     +--- org.springframework.boot:spring-boot:2.1.3.RELEASE (*)
+     +--- org.springframework.boot:spring-boot-autoconfigure:2.1.3.RELEASE (*)
+     +--- org.springframework.security.oauth:spring-security-oauth2:2.3.5.RELEASE
+     |    +--- org.springframework:spring-beans:4.0.9.RELEASE -> 5.1.5.RELEASE (*)
+     |    +--- org.springframework:spring-core:4.0.9.RELEASE -> 5.1.5.RELEASE (*)
+     |    +--- org.springframework:spring-context:4.0.9.RELEASE -> 5.1.5.RELEASE (*)
+     |    +--- org.springframework:spring-webmvc:4.0.9.RELEASE -> 5.1.5.RELEASE
+     |    |    +--- org.springframework:spring-aop:5.1.5.RELEASE (*)
+     |    |    +--- org.springframework:spring-beans:5.1.5.RELEASE (*)
+     |    |    +--- org.springframework:spring-context:5.1.5.RELEASE (*)
+     |    |    +--- org.springframework:spring-core:5.1.5.RELEASE (*)
+     |    |    +--- org.springframework:spring-expression:5.1.5.RELEASE (*)
+     |    |    \--- org.springframework:spring-web:5.1.5.RELEASE (*)
+     |    +--- org.springframework.security:spring-security-core:3.2.10.RELEASE -> 5.1.4.RELEASE (*)
+     |    +--- org.springframework.security:spring-security-config:3.2.10.RELEASE -> 5.1.4.RELEASE (*)
+     |    +--- org.springframework.security:spring-security-web:3.2.10.RELEASE -> 5.1.4.RELEASE (*)
+     |    +--- commons-codec:commons-codec:1.9 -> 1.11
+     |    \--- org.codehaus.jackson:jackson-mapper-asl:1.9.13
+     |         \--- org.codehaus.jackson:jackson-core-asl:1.9.13
+     +--- org.springframework.security:spring-security-jwt:1.0.10.RELEASE
+     |    \--- org.bouncycastle:bcpkix-jdk15on:1.60
+     |         \--- org.bouncycastle:bcprov-jdk15on:1.60
+     \--- org.springframework:spring-web:5.1.5.RELEASE (*)
+
+runtimeElements - Elements of runtime for main. (n)
+No dependencies
+
+runtimeOnly - Runtime only dependencies for source set 'main'. (n)
+No dependencies
+
+testAnnotationProcessor - Annotation processors and their dependencies for source set 'test'.
+No dependencies
+
+testCompile - Dependencies for source set 'test' (deprecated, use 'testImplementation' instead).
+No dependencies
+
+testCompileClasspath - Compile classpath for source set 'test'.
++--- org.springframework.boot:spring-boot-starter-security -> 2.1.3.RELEASE
+|    +--- org.springframework.boot:spring-boot-starter:2.1.3.RELEASE
+|    |    +--- org.springframework.boot:spring-boot:2.1.3.RELEASE
+|    |    |    +--- org.springframework:spring-core:5.1.5.RELEASE
+|    |    |    |    \--- org.springframework:spring-jcl:5.1.5.RELEASE
+|    |    |    \--- org.springframework:spring-context:5.1.5.RELEASE
+|    |    |         +--- org.springframework:spring-aop:5.1.5.RELEASE
+|    |    |         |    +--- org.springframework:spring-beans:5.1.5.RELEASE
+|    |    |         |    |    \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    |         |    \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    |         +--- org.springframework:spring-beans:5.1.5.RELEASE (*)
+|    |    |         +--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    |         \--- org.springframework:spring-expression:5.1.5.RELEASE
+|    |    |              \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    +--- org.springframework.boot:spring-boot-autoconfigure:2.1.3.RELEASE
+|    |    |    \--- org.springframework.boot:spring-boot:2.1.3.RELEASE (*)
+|    |    +--- org.springframework.boot:spring-boot-starter-logging:2.1.3.RELEASE
+|    |    |    +--- ch.qos.logback:logback-classic:1.2.3
+|    |    |    |    +--- ch.qos.logback:logback-core:1.2.3
+|    |    |    |    \--- org.slf4j:slf4j-api:1.7.25
+|    |    |    +--- org.apache.logging.log4j:log4j-to-slf4j:2.11.2
+|    |    |    |    +--- org.slf4j:slf4j-api:1.7.25
+|    |    |    |    \--- org.apache.logging.log4j:log4j-api:2.11.2
+|    |    |    \--- org.slf4j:jul-to-slf4j:1.7.25
+|    |    |         \--- org.slf4j:slf4j-api:1.7.25
+|    |    +--- javax.annotation:javax.annotation-api:1.3.2
+|    |    \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    +--- org.springframework:spring-aop:5.1.5.RELEASE (*)
+|    +--- org.springframework.security:spring-security-config:5.1.4.RELEASE
+|    |    +--- org.springframework.security:spring-security-core:5.1.4.RELEASE
+|    |    |    +--- org.springframework:spring-aop:5.1.5.RELEASE (*)
+|    |    |    +--- org.springframework:spring-beans:5.1.5.RELEASE (*)
+|    |    |    +--- org.springframework:spring-context:5.1.5.RELEASE (*)
+|    |    |    +--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    |    \--- org.springframework:spring-expression:5.1.5.RELEASE (*)
+|    |    +--- org.springframework:spring-aop:5.1.5.RELEASE (*)
+|    |    +--- org.springframework:spring-beans:5.1.5.RELEASE (*)
+|    |    +--- org.springframework:spring-context:5.1.5.RELEASE (*)
+|    |    \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    \--- org.springframework.security:spring-security-web:5.1.4.RELEASE
+|         +--- org.springframework.security:spring-security-core:5.1.4.RELEASE (*)
+|         +--- org.springframework:spring-aop:5.1.5.RELEASE (*)
+|         +--- org.springframework:spring-beans:5.1.5.RELEASE (*)
+|         +--- org.springframework:spring-context:5.1.5.RELEASE (*)
+|         +--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|         +--- org.springframework:spring-expression:5.1.5.RELEASE (*)
+|         \--- org.springframework:spring-web:5.1.5.RELEASE
+|              +--- org.springframework:spring-beans:5.1.5.RELEASE (*)
+|              \--- org.springframework:spring-core:5.1.5.RELEASE (*)
++--- org.springframework.boot:spring-boot-starter-oauth2-client -> 2.1.3.RELEASE
+|    +--- org.springframework.boot:spring-boot-starter:2.1.3.RELEASE (*)
+|    +--- org.springframework.security:spring-security-config:5.1.4.RELEASE (*)
+|    +--- org.springframework.security:spring-security-core:5.1.4.RELEASE (*)
+|    +--- org.springframework.security:spring-security-oauth2-client:5.1.4.RELEASE
+|    |    +--- com.nimbusds:oauth2-oidc-sdk:6.0
+|    |    |    +--- com.sun.mail:javax.mail:1.6.1 -> 1.6.2
+|    |    |    |    \--- javax.activation:activation:1.1
+|    |    |    +--- com.github.stephenc.jcip:jcip-annotations:1.0-1
+|    |    |    +--- net.minidev:json-smart:[1.3.1,2.3] -> 2.3
+|    |    |    |    \--- net.minidev:accessors-smart:1.2
+|    |    |    |         \--- org.ow2.asm:asm:5.0.4
+|    |    |    +--- com.nimbusds:lang-tag:[1.4.3,) -> 1.4.4
+|    |    |    \--- com.nimbusds:nimbus-jose-jwt:[6.0.1,) -> 6.0.2
+|    |    |         +--- com.github.stephenc.jcip:jcip-annotations:1.0-1
+|    |    |         \--- net.minidev:json-smart:[1.3.1,2.3] -> 2.3 (*)
+|    |    +--- org.springframework.security:spring-security-core:5.1.4.RELEASE (*)
+|    |    +--- org.springframework.security:spring-security-oauth2-core:5.1.4.RELEASE
+|    |    |    +--- org.springframework.security:spring-security-core:5.1.4.RELEASE (*)
+|    |    |    +--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    |    \--- org.springframework:spring-web:5.1.5.RELEASE (*)
+|    |    +--- org.springframework.security:spring-security-web:5.1.4.RELEASE (*)
+|    |    \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    \--- org.springframework.security:spring-security-oauth2-jose:5.1.4.RELEASE
+|         +--- com.nimbusds:nimbus-jose-jwt:6.0.2 (*)
+|         +--- org.springframework.security:spring-security-core:5.1.4.RELEASE (*)
+|         +--- org.springframework.security:spring-security-oauth2-core:5.1.4.RELEASE (*)
+|         \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+\--- org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.1.3.RELEASE
+     +--- com.fasterxml.jackson.core:jackson-annotations:2.9.0
+     +--- com.fasterxml.jackson.core:jackson-databind:2.9.8
+     |    +--- com.fasterxml.jackson.core:jackson-annotations:2.9.0
+     |    \--- com.fasterxml.jackson.core:jackson-core:2.9.8
+     +--- com.sun.xml.bind:jaxb-core:2.3.0.1
+     +--- com.sun.xml.bind:jaxb-impl:2.3.0.1
+     +--- javax.xml.bind:jaxb-api:2.4.0-b180830.0359 -> 2.3.1
+     |    \--- javax.activation:javax.activation-api:1.2.0
+     +--- org.springframework.boot:spring-boot:2.1.3.RELEASE (*)
+     +--- org.springframework.boot:spring-boot-autoconfigure:2.1.3.RELEASE (*)
+     +--- org.springframework.security.oauth:spring-security-oauth2:2.3.5.RELEASE
+     |    +--- org.springframework:spring-beans:4.0.9.RELEASE -> 5.1.5.RELEASE (*)
+     |    +--- org.springframework:spring-core:4.0.9.RELEASE -> 5.1.5.RELEASE (*)
+     |    +--- org.springframework:spring-context:4.0.9.RELEASE -> 5.1.5.RELEASE (*)
+     |    +--- org.springframework:spring-webmvc:4.0.9.RELEASE -> 5.1.5.RELEASE
+     |    |    +--- org.springframework:spring-aop:5.1.5.RELEASE (*)
+     |    |    +--- org.springframework:spring-beans:5.1.5.RELEASE (*)
+     |    |    +--- org.springframework:spring-context:5.1.5.RELEASE (*)
+     |    |    +--- org.springframework:spring-core:5.1.5.RELEASE (*)
+     |    |    +--- org.springframework:spring-expression:5.1.5.RELEASE (*)
+     |    |    \--- org.springframework:spring-web:5.1.5.RELEASE (*)
+     |    +--- org.springframework.security:spring-security-core:3.2.10.RELEASE -> 5.1.4.RELEASE (*)
+     |    +--- org.springframework.security:spring-security-config:3.2.10.RELEASE -> 5.1.4.RELEASE (*)
+     |    +--- org.springframework.security:spring-security-web:3.2.10.RELEASE -> 5.1.4.RELEASE (*)
+     |    +--- commons-codec:commons-codec:1.9 -> 1.11
+     |    \--- org.codehaus.jackson:jackson-mapper-asl:1.9.13
+     |         \--- org.codehaus.jackson:jackson-core-asl:1.9.13
+     +--- org.springframework.security:spring-security-jwt:1.0.10.RELEASE
+     |    \--- org.bouncycastle:bcpkix-jdk15on:1.60
+     |         \--- org.bouncycastle:bcprov-jdk15on:1.60
+     \--- org.springframework:spring-web:5.1.5.RELEASE (*)
+
+testCompileOnly - Compile only dependencies for source set 'test'.
+No dependencies
+
+testImplementation - Implementation only dependencies for source set 'test'. (n)
+No dependencies
+
+testRuntime - Runtime dependencies for source set 'test' (deprecated, use 'testRuntimeOnly' instead).
+No dependencies
+
+testRuntimeClasspath - Runtime classpath of source set 'test'.
++--- org.springframework.boot:spring-boot-starter-security -> 2.1.3.RELEASE
+|    +--- org.springframework.boot:spring-boot-starter:2.1.3.RELEASE
+|    |    +--- org.springframework.boot:spring-boot:2.1.3.RELEASE
+|    |    |    +--- org.springframework:spring-core:5.1.5.RELEASE
+|    |    |    |    \--- org.springframework:spring-jcl:5.1.5.RELEASE
+|    |    |    \--- org.springframework:spring-context:5.1.5.RELEASE
+|    |    |         +--- org.springframework:spring-aop:5.1.5.RELEASE
+|    |    |         |    +--- org.springframework:spring-beans:5.1.5.RELEASE
+|    |    |         |    |    \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    |         |    \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    |         +--- org.springframework:spring-beans:5.1.5.RELEASE (*)
+|    |    |         +--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    |         \--- org.springframework:spring-expression:5.1.5.RELEASE
+|    |    |              \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    +--- org.springframework.boot:spring-boot-autoconfigure:2.1.3.RELEASE
+|    |    |    \--- org.springframework.boot:spring-boot:2.1.3.RELEASE (*)
+|    |    +--- org.springframework.boot:spring-boot-starter-logging:2.1.3.RELEASE
+|    |    |    +--- ch.qos.logback:logback-classic:1.2.3
+|    |    |    |    +--- ch.qos.logback:logback-core:1.2.3
+|    |    |    |    \--- org.slf4j:slf4j-api:1.7.25
+|    |    |    +--- org.apache.logging.log4j:log4j-to-slf4j:2.11.2
+|    |    |    |    +--- org.slf4j:slf4j-api:1.7.25
+|    |    |    |    \--- org.apache.logging.log4j:log4j-api:2.11.2
+|    |    |    \--- org.slf4j:jul-to-slf4j:1.7.25
+|    |    |         \--- org.slf4j:slf4j-api:1.7.25
+|    |    +--- javax.annotation:javax.annotation-api:1.3.2
+|    |    +--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    \--- org.yaml:snakeyaml:1.23
+|    +--- org.springframework:spring-aop:5.1.5.RELEASE (*)
+|    +--- org.springframework.security:spring-security-config:5.1.4.RELEASE
+|    |    +--- org.springframework.security:spring-security-core:5.1.4.RELEASE
+|    |    |    +--- org.springframework:spring-aop:5.1.5.RELEASE (*)
+|    |    |    +--- org.springframework:spring-beans:5.1.5.RELEASE (*)
+|    |    |    +--- org.springframework:spring-context:5.1.5.RELEASE (*)
+|    |    |    +--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    |    \--- org.springframework:spring-expression:5.1.5.RELEASE (*)
+|    |    +--- org.springframework:spring-aop:5.1.5.RELEASE (*)
+|    |    +--- org.springframework:spring-beans:5.1.5.RELEASE (*)
+|    |    +--- org.springframework:spring-context:5.1.5.RELEASE (*)
+|    |    \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    \--- org.springframework.security:spring-security-web:5.1.4.RELEASE
+|         +--- org.springframework.security:spring-security-core:5.1.4.RELEASE (*)
+|         +--- org.springframework:spring-aop:5.1.5.RELEASE (*)
+|         +--- org.springframework:spring-beans:5.1.5.RELEASE (*)
+|         +--- org.springframework:spring-context:5.1.5.RELEASE (*)
+|         +--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|         +--- org.springframework:spring-expression:5.1.5.RELEASE (*)
+|         \--- org.springframework:spring-web:5.1.5.RELEASE
+|              +--- org.springframework:spring-beans:5.1.5.RELEASE (*)
+|              \--- org.springframework:spring-core:5.1.5.RELEASE (*)
++--- org.springframework.boot:spring-boot-starter-oauth2-client -> 2.1.3.RELEASE
+|    +--- org.springframework.boot:spring-boot-starter:2.1.3.RELEASE (*)
+|    +--- org.springframework.security:spring-security-config:5.1.4.RELEASE (*)
+|    +--- org.springframework.security:spring-security-core:5.1.4.RELEASE (*)
+|    +--- org.springframework.security:spring-security-oauth2-client:5.1.4.RELEASE
+|    |    +--- com.nimbusds:oauth2-oidc-sdk:6.0
+|    |    |    +--- com.sun.mail:javax.mail:1.6.1 -> 1.6.2
+|    |    |    |    \--- javax.activation:activation:1.1
+|    |    |    +--- com.github.stephenc.jcip:jcip-annotations:1.0-1
+|    |    |    +--- net.minidev:json-smart:[1.3.1,2.3] -> 2.3
+|    |    |    |    \--- net.minidev:accessors-smart:1.2
+|    |    |    |         \--- org.ow2.asm:asm:5.0.4
+|    |    |    +--- com.nimbusds:lang-tag:[1.4.3,) -> 1.4.4
+|    |    |    \--- com.nimbusds:nimbus-jose-jwt:[6.0.1,) -> 6.0.2
+|    |    |         +--- com.github.stephenc.jcip:jcip-annotations:1.0-1
+|    |    |         \--- net.minidev:json-smart:[1.3.1,2.3] -> 2.3 (*)
+|    |    +--- org.springframework.security:spring-security-core:5.1.4.RELEASE (*)
+|    |    +--- org.springframework.security:spring-security-oauth2-core:5.1.4.RELEASE
+|    |    |    +--- org.springframework.security:spring-security-core:5.1.4.RELEASE (*)
+|    |    |    +--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    |    |    \--- org.springframework:spring-web:5.1.5.RELEASE (*)
+|    |    +--- org.springframework.security:spring-security-web:5.1.4.RELEASE (*)
+|    |    \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+|    \--- org.springframework.security:spring-security-oauth2-jose:5.1.4.RELEASE
+|         +--- com.nimbusds:nimbus-jose-jwt:6.0.2 (*)
+|         +--- org.springframework.security:spring-security-core:5.1.4.RELEASE (*)
+|         +--- org.springframework.security:spring-security-oauth2-core:5.1.4.RELEASE (*)
+|         \--- org.springframework:spring-core:5.1.5.RELEASE (*)
+\--- org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.1.3.RELEASE
+     +--- com.fasterxml.jackson.core:jackson-annotations:2.9.0
+     +--- com.fasterxml.jackson.core:jackson-databind:2.9.8
+     |    +--- com.fasterxml.jackson.core:jackson-annotations:2.9.0
+     |    \--- com.fasterxml.jackson.core:jackson-core:2.9.8
+     +--- com.sun.xml.bind:jaxb-core:2.3.0.1
+     +--- com.sun.xml.bind:jaxb-impl:2.3.0.1
+     +--- javax.xml.bind:jaxb-api:2.4.0-b180830.0359 -> 2.3.1
+     |    \--- javax.activation:javax.activation-api:1.2.0
+     +--- org.springframework.boot:spring-boot:2.1.3.RELEASE (*)
+     +--- org.springframework.boot:spring-boot-autoconfigure:2.1.3.RELEASE (*)
+     +--- org.springframework.security.oauth:spring-security-oauth2:2.3.5.RELEASE
+     |    +--- org.springframework:spring-beans:4.0.9.RELEASE -> 5.1.5.RELEASE (*)
+     |    +--- org.springframework:spring-core:4.0.9.RELEASE -> 5.1.5.RELEASE (*)
+     |    +--- org.springframework:spring-context:4.0.9.RELEASE -> 5.1.5.RELEASE (*)
+     |    +--- org.springframework:spring-webmvc:4.0.9.RELEASE -> 5.1.5.RELEASE
+     |    |    +--- org.springframework:spring-aop:5.1.5.RELEASE (*)
+     |    |    +--- org.springframework:spring-beans:5.1.5.RELEASE (*)
+     |    |    +--- org.springframework:spring-context:5.1.5.RELEASE (*)
+     |    |    +--- org.springframework:spring-core:5.1.5.RELEASE (*)
+     |    |    +--- org.springframework:spring-expression:5.1.5.RELEASE (*)
+     |    |    \--- org.springframework:spring-web:5.1.5.RELEASE (*)
+     |    +--- org.springframework.security:spring-security-core:3.2.10.RELEASE -> 5.1.4.RELEASE (*)
+     |    +--- org.springframework.security:spring-security-config:3.2.10.RELEASE -> 5.1.4.RELEASE (*)
+     |    +--- org.springframework.security:spring-security-web:3.2.10.RELEASE -> 5.1.4.RELEASE (*)
+     |    +--- commons-codec:commons-codec:1.9 -> 1.11
+     |    \--- org.codehaus.jackson:jackson-mapper-asl:1.9.13
+     |         \--- org.codehaus.jackson:jackson-core-asl:1.9.13
+     +--- org.springframework.security:spring-security-jwt:1.0.10.RELEASE
+     |    \--- org.bouncycastle:bcpkix-jdk15on:1.60
+     |         \--- org.bouncycastle:bcprov-jdk15on:1.60
+     \--- org.springframework:spring-web:5.1.5.RELEASE (*)
+
+testRuntimeOnly - Runtime only dependencies for source set 'test'. (n)
+No dependencies
+
+(*) - dependencies omitted (listed previously)
+
+(n) - Not resolved (configuration is not meant to be resolved)
+
+A web-based, searchable dependency report is available by adding the --scan option.
+
+BUILD SUCCESSFUL in 7s
+1 actionable task: 1 executed

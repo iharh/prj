@@ -6,6 +6,7 @@ ext {
 
         spring:                     'org.springframework',
         spring_security:            'org.springframework.security',
+        spring_security_oauth:      'org.springframework.security.oauth',
 
         junit_jupiter:              'org.junit.jupiter',
         assertj:                    'org.assertj',
@@ -15,8 +16,10 @@ ext {
         slf4j:                      '1.7.25',
         log4j:                      '2.9.1',
 
-        spring:                     '5.1.4.RELEASE',
-        //spring_security:            '4.1.3.RELEASE',
+        // for spring boot 2.1.3.RELEASE
+        spring:                     '5.1.5.RELEASE',
+        spring_security:            '5.1.4.RELEASE',
+        spring_security_oauth2:     '2.3.5.RELEASE',
 
         junit:                      '5.3.1',
         assertj:                    '3.11.1',
@@ -36,8 +39,10 @@ ext {
         // spring
         spring_core:                "${groups.spring}:spring-core:${versions.spring}",
         // spring security
-        //spring_security_web:        "${groups.spring_security}:spring-security-web:${versions.spring_security}",
-        //spring_security_config:     "${groups.spring_security}:spring-security-config:${versions.spring_security}",
+        spring_security_web:        "${groups.spring_security}:spring-security-web:${versions.spring_security}",
+        spring_security_config:     "${groups.spring_security}:spring-security-config:${versions.spring_security}",
+        // spring security oauth2
+        spring_security_oauth2:     "${groups.spring_security_oauth}:spring-security-oauth2:${versions.spring_security_oauth2}",
         // commons
         commons_io:                 'commons-io:commons-io:2.6',
         commons_codec:              'commons-codec:commons-codec:1.11',
