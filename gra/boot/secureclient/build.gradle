@@ -1,0 +1,46 @@
+buildscript {
+    repositories {
+        gradlePluginPortal()
+    }
+    ext {
+        springBootVersion = '2.1.3.RELEASE'
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    }
+}
+
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'java'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+}
+compileTestJava.options.encoding = 'UTF-8'
+
+repositories {
+    jcenter()
+}
+
+ext {
+    repoRootDir = "${rootProject.getRootDir()}/../.."
+    gradleRootDir = "${repoRootDir}/gradle"
+}
+
+apply from: "${gradleRootDir}/dependencies.gradle"
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    // implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
+    //testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    //testImplementation 'org.springframework.security:spring-security-test'
+}
+
+bootRun {
+    main = 'cl.Main'
+}

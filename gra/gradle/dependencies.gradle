@@ -3,7 +3,9 @@ ext {
         lombok:                     'org.projectlombok',
         slf4j:                      'org.slf4j',
         log4j:                      'org.apache.logging.log4j',
+
         spring:                     'org.springframework',
+        spring_security:            'org.springframework.security',
 
         junit_jupiter:              'org.junit.jupiter',
         assertj:                    'org.assertj',
@@ -12,7 +14,9 @@ ext {
         lombok:                     '1.18.2',
         slf4j:                      '1.7.25',
         log4j:                      '2.9.1',
+
         spring:                     '5.1.4.RELEASE',
+        //spring_security:            '4.1.3.RELEASE',
 
         junit:                      '5.3.1',
         assertj:                    '3.11.1',
@@ -31,6 +35,9 @@ ext {
         logstash_logback_encoder:   'net.logstash.logback:logstash-logback-encoder:5.2',
         // spring
         spring_core:                "${groups.spring}:spring-core:${versions.spring}",
+        // spring security
+        //spring_security_web:        "${groups.spring_security}:spring-security-web:${versions.spring_security}",
+        //spring_security_config:     "${groups.spring_security}:spring-security-config:${versions.spring_security}",
         // commons
         commons_io:                 'commons-io:commons-io:2.6',
         commons_codec:              'commons-codec:commons-codec:1.11',
