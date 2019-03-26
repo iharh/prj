@@ -25,6 +25,11 @@ apply from: "${gradleRootDir}/spring-boot.gradle"
 apply from: "${gradleRootDir}/java8.gradle"
 apply from: "${gradleRootDir}/lombok.gradle"
 
+//apply plugin: 'org.jetbrains.intellij'
+apply plugin: 'org.jetbrains.intellij'
+apply plugin: 'idea'
+
+
 dependencies {
     //implementation 'org.springframework.boot:spring-boot-starter-web'
     //implementation 'org.springframework.boot:spring-boot-starter-jetty'

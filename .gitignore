@@ -1,2 +1,11 @@
 .*.swp
 wrk/*
+
+### IntelliJ IDEA ###
+.idea/
+/out/
+**/out/
+*.ipr
+*.iws
+*.iml
+**/.attach_*
