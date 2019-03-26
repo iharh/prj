@@ -10,6 +10,10 @@ buildscript {
     }
 }
 
+plugins {
+    id "org.jetbrains.intellij" version "0.4.7"
+}
+
 ext {
     repoRootDir = "${rootProject.getRootDir()}/../.."
     gradleRootDir = "${repoRootDir}/gradle"
@@ -22,18 +26,21 @@ apply from: "${gradleRootDir}/java8.gradle"
 apply from: "${gradleRootDir}/lombok.gradle"
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-jetty'
+    //implementation 'org.springframework.boot:spring-boot-starter-web'
+    //implementation 'org.springframework.boot:spring-boot-starter-jetty'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 
-    // implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.1.3.RELEASE'
     implementation libraries.spring_security_oauth2
 
     //testImplementation 'org.springframework.boot:spring-boot-starter-test'
     //testImplementation 'org.springframework.security:spring-security-test'
 }
 
-springBoot {
-    // buildInfo()
+bootRun {
+    main = 'cl.SecureApplication'
 }
+
+//springBoot {
+//    buildInfo()
+//}
