@@ -1,19 +1,17 @@
 package cl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-//import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 
 import lombok.extern.slf4j.Slf4j;
 
-//@SpringBootApplication
-@ComponentScan({"cl", "cl.config"})
+@SpringBootApplication
 @Slf4j
 public class SecureApplication implements CommandLineRunner {
     @Autowired
@@ -22,9 +20,8 @@ public class SecureApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         if (localT == null) {
-            log.info("null localT");
+            log.warn("null localT");
         } else {
-            log.info("non null localT");
             OAuth2AccessToken accessToken = localT.getAccessToken();
             log.info("obtained access token: {}", accessToken.getValue());
         }
