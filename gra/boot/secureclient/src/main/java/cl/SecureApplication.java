@@ -1,12 +1,11 @@
-package my;
+package cl;
 
 import org.springframework.boot.SpringApplication;
-
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MyApplication {
+public class SecureApplication {
     public static void main(String[] args) {
-        new SpringApplication(MyApplication.class).run(args);
+        SpringApplication.run(SecureApplication.class, args);
     }
 }
