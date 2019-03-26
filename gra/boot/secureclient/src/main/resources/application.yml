@@ -3,5 +3,5 @@ security:
     localas:
       client:
         clientId: nlpsvc
-        clientSecret: $2a$10$/fYPnwdo3/kY/0BeQZBfnupkz8BDAlNsbgTfINVStpUD3n.woevVO
-        accessTokenUri: https://localhost:8091/oauth/token
+        clientSecret: devsecret
+        accessTokenUri: http://localhost:8091/oauth/token
