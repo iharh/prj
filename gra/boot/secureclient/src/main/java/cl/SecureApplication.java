@@ -19,12 +19,8 @@ public class SecureApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        if (localT == null) {
-            log.warn("null localT");
-        } else {
-            OAuth2AccessToken accessToken = localT.getAccessToken();
-            log.info("obtained access token: {}", accessToken.getValue());
-        }
+        OAuth2AccessToken accessToken = localT.getAccessToken();
+        log.info("obtained access token: {}", accessToken.getValue());
     }
 
     public static void main(String[] args) {
