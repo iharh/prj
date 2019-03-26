@@ -1,34 +1,29 @@
-package cl;
-
-import org.springframework.beans.factory.annotation.Autowired;
+package cl.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 
-//import org.springframework.security.oauth2.client.token.grant.code.AuthorizationCodeResourceDetails;
 import org.springframework.security.oauth2.client.token.grant.client.ClientCredentialsResourceDetails;
 
-//import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
+import lombok.extern.slf4j.Slf4j;
 
-//@EnableOAuth2Client
 @Configuration
+@Slf4j
 public class OAuth2ClientConfig {
-    //@Autowired
-    //OAuth2ClientContext oauth2ClientContext;
-
     @Bean
     @ConfigurationProperties("security.oauth2.localas.client")
-    public ClientCredentialsResourceDetails localAuthServer() {
+    public ClientCredentialsResourceDetails localAuthServerResourceDetails() {
+        log.info("enter localAuthServerResourceDetails");
         return new ClientCredentialsResourceDetails();
     }
 
     @Bean
     public OAuth2RestTemplate localAuthServerRestTemplate() {
-        return new OAuth2RestTemplate(localAuthServer()/*, oauth2ClientContext*/);
+        log.info("enter localAuthServerRestTemplate");
+        return new OAuth2RestTemplate(localAuthServerResourceDetails());
     }
 }

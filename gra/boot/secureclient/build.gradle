@@ -26,8 +26,7 @@ apply from: "${gradleRootDir}/java8.gradle"
 apply from: "${gradleRootDir}/lombok.gradle"
 
 dependencies {
-    //implementation 'org.springframework.boot:spring-boot-starter-web'
-    //implementation 'org.springframework.boot:spring-boot-starter-jetty'
+    compile 'org.springframework.boot:spring-boot-starter-actuator' // for manage
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 

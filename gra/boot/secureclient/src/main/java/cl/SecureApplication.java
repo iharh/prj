@@ -10,8 +10,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 
+import lombok.extern.slf4j.Slf4j;
+
 //@SpringBootApplication
-@ComponentScan({"cl"})
+@ComponentScan({"cl", "cl.config"})
+@Slf4j
 public class SecureApplication implements CommandLineRunner {
     @Autowired
     OAuth2RestTemplate localT;
@@ -19,10 +22,11 @@ public class SecureApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         if (localT == null) {
-            System.out.println("null localT");
+            log.info("null localT");
         } else {
+            log.info("non null localT");
             OAuth2AccessToken accessToken = localT.getAccessToken();
-            System.out.println("obtained access token: " + accessToken.getValue());
+            log.info("obtained access token: {}", accessToken.getValue());
         }
     }
 
