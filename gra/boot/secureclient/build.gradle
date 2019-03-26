@@ -11,7 +11,7 @@ buildscript {
 }
 
 plugins {
-    id "org.jetbrains.intellij" version "0.4.7"
+    id 'idea'
 }
 
 ext {
@@ -24,11 +24,6 @@ apply from: "${gradleRootDir}/dependencies.gradle"
 apply from: "${gradleRootDir}/spring-boot.gradle"
 apply from: "${gradleRootDir}/java8.gradle"
 apply from: "${gradleRootDir}/lombok.gradle"
-
-//apply plugin: 'org.jetbrains.intellij'
-apply plugin: 'org.jetbrains.intellij'
-apply plugin: 'idea'
-
 
 dependencies {
     //implementation 'org.springframework.boot:spring-boot-starter-web'
