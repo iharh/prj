@@ -30,8 +30,8 @@ public class SecureApplication implements CommandLineRunner {
     
     @Override
     public void run(String... args) throws Exception {
-        OAuth2AccessToken accessToken = localT.getAccessToken();
-        log.info("obtained access token: {}", accessToken.getValue());
+        //OAuth2AccessToken accessToken = localT.getAccessToken();
+        //log.info("obtained access token: {}", accessToken.getValue());
 
         ResponseEntity<String> helloServiceResponse = helloService.hello();
         String helloServiceResponseBody = helloServiceResponse.getBody();
