@@ -14,8 +14,6 @@ import org.springframework.cloud.security.oauth2.client.feign.OAuth2FeignRequest
 
 import feign.RequestInterceptor;
 
-import org.apache.commons.lang3.exception.ExceptionUtils;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Configuration
@@ -38,11 +36,6 @@ public class OAuth2ClientConfig {
     public RequestInterceptor oauth2FeignRequestInterceptor() {
         ClientCredentialsResourceDetails rd = localAuthServerResourceDetails();
         log.info("rd2: {}", rd.getAccessTokenUri());
-        /*try {
-            throw new IllegalArgumentException();
-        } catch (Exception e) {
-            log.info("rd2 st: {}", ExceptionUtils.getStackTrace(e));
-        }*/
         return new OAuth2FeignRequestInterceptor(new DefaultOAuth2ClientContext(), rd);
     }
 }
