@@ -5,9 +5,14 @@ import org.springframework.context.annotation.Configuration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import org.springframework.security.oauth2.client.DefaultOAuth2ClientContext;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 
 import org.springframework.security.oauth2.client.token.grant.client.ClientCredentialsResourceDetails;
+
+import org.springframework.cloud.security.oauth2.client.feign.OAuth2FeignRequestInterceptor;
+
+import feign.RequestInterceptor;
 
 @Configuration
 public class OAuth2ClientConfig {
@@ -20,5 +25,10 @@ public class OAuth2ClientConfig {
     @Bean
     public OAuth2RestTemplate localAuthServerRestTemplate() {
         return new OAuth2RestTemplate(localAuthServerResourceDetails());
+    }
+
+    @Bean
+    public RequestInterceptor oauth2FeignRequestInterceptor() {
+        return new OAuth2FeignRequestInterceptor(new DefaultOAuth2ClientContext(), localAuthServerResourceDetails());
     }
 }
