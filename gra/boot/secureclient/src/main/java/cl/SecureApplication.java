@@ -22,8 +22,8 @@ import lombok.extern.slf4j.Slf4j;
 @EnableFeignClients
 @Slf4j
 public class SecureApplication implements CommandLineRunner {
-    @Autowired
-    private OAuth2RestTemplate localT;
+    //@Autowired
+    //private OAuth2RestTemplate localT;
 
     @Autowired
     private HelloService helloService;
