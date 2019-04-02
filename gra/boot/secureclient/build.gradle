@@ -42,9 +42,6 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-security'
 
     implementation libraries.spring_security_oauth2
-
-    //testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    //testImplementation 'org.springframework.security:spring-security-test'
 }
 
 bootRun {

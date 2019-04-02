@@ -1,14 +1,14 @@
-plugins {
-    id 'java'
-    // mainClass find issue for 1.5.2.RELEASE
-    id 'org.springframework.boot' version '1.5.5.RELEASE' 
-}
-
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
-
-repositories {
-    jcenter()
+buildscript {
+    repositories {
+        gradlePluginPortal()
+    }
+    ext {
+        springBootVersion = '1.5.5.RELEASE'
+        //set('springCloudVersion', 'Edgware.SR5') // 1.3.0.RELEASE
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    }
 }
 
 ext {
@@ -16,14 +16,27 @@ ext {
     gradleRootDir = "${repoRootDir}/gradle"
 }
 
+apply from: "${gradleRootDir}/repositories.gradle"
 apply from: "${gradleRootDir}/dep-backward.gradle"
+apply from: "${gradleRootDir}/spring-boot.gradle"
+apply from: "${gradleRootDir}/java8.gradle"
+
+/*
+dependencyManagement {
+    // applyMavenExclusions false
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+*/
 
 dependencies {
     // spring
-    compile 'org.springframework.boot:spring-boot-starter-web'
-    compile 'org.springframework.boot:spring-boot-starter-jetty'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-jetty'
 
     // spring security
-    compile libraries.spring_security_web
-    compile libraries.spring_security_config
+    implementation libraries.spring_security_web
+    implementation libraries.spring_security_config
+    implementation libraries.spring_security_oauth2
 }

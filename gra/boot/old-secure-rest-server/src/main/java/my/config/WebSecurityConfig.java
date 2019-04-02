@@ -2,8 +2,9 @@ package my.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.context.annotation.Configuration;
+
 import org.springframework.security.authentication.AbstractAuthenticationToken;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,8 +27,9 @@ import java.io.IOException;
 
 import java.util.Arrays;
 
+@Configuration
 @EnableWebSecurity
-public class MySecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     public static class MyAuthenticationToken extends AbstractAuthenticationToken {
         private static final long serialVersionUID = -1949976839306453197L;
