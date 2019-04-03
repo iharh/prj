@@ -30,7 +30,7 @@ import java.util.Arrays;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
+    /*
     public static class MyAuthenticationToken extends AbstractAuthenticationToken {
         private static final long serialVersionUID = -1949976839306453197L;
             
@@ -64,15 +64,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             chain.doFilter(request, response);
         }
     }
+    */
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .addFilterBefore(new MyFilter(), BasicAuthenticationFilter.class)
-            .authorizeRequests()
-                .anyRequest().authenticated()
-                .and()
-            .httpBasic()
+            // .addFilterBefore(new MyFilter(), BasicAuthenticationFilter.class)
+            //.authorizeRequests()
+            //    .anyRequest().authenticated()
+            //.and()
+            //    .httpBasic()
+            .anonymous()
         ;
     }
 
