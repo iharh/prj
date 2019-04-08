@@ -11,7 +11,9 @@ ext {
 
         spring:                     '4.3.7.RELEASE',
         spring_security:            '4.1.3.RELEASE',
+            // http://central.maven.org/maven2/org/springframework/security/spring-security-core/4.1.3.RELEASE/
         spring_security_oauth2:     '2.1.0.RELEASE',
+            // http://central.maven.org/maven2/org/springframework/security/oauth/spring-security-oauth2/2.1.0.RELEASE/
     ]
     libraries = [
         lombok:                     "${groups.lombok}:lombok:${versions.lombok}",
