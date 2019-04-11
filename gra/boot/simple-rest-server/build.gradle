@@ -22,7 +22,8 @@ apply from: "${gradleRootDir}/java8.gradle"
 apply from: "${gradleRootDir}/lombok.gradle"
 
 dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-web' // for manage
+    implementation 'org.springframework.boot:spring-boot-starter-web' // for manage
+    implementation 'io.micrometer:micrometer-core:1.1.4'
 }
 
 springBoot {
