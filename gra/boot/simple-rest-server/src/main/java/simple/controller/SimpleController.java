@@ -30,6 +30,24 @@ public class SimpleController {
     public String hello(HttpServletRequest request) throws Exception {
         StringBuilder result = new StringBuilder("headers: ");
 
+        Enumeration<String> headerNames = request.getHeaderNames();
+        if (headerNames != null) {
+            for (Enumeration<String> e = headerNames; e.hasMoreElements();) {
+                String headerName = e.nextElement();
+                result.append(",");
+                result.append(headerName);
+                result.append(":");
+                result.append(request.getHeader(headerName));
+            }
+        }
+
+        return result.toString();
+    }
+
+    @GetMapping("/bench")
+    public String bench() throws Exception {
+        StringBuilder result = new StringBuilder("headers: ");
+
         final TimeUnit timeUnit = TimeUnit.MILLISECONDS;
         Timer timer = meterRegistry.timer("nlp.bench");
         for (long i = 0; i < 10; ++i) {
@@ -49,17 +67,6 @@ public class SimpleController {
         result.append(timer.mean(timeUnit));
         result.append(" max: ");
         result.append(timer.max(timeUnit));
-
-        Enumeration<String> headerNames = request.getHeaderNames();
-        if (headerNames != null) {
-            for (Enumeration<String> e = headerNames; e.hasMoreElements();) {
-                String headerName = e.nextElement();
-                result.append(",");
-                result.append(headerName);
-                result.append(":");
-                result.append(request.getHeader(headerName));
-            }
-        }
 
         return result.toString();
     }
