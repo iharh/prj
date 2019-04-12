@@ -16,9 +16,15 @@ import io.micrometer.core.instrument.Timer;
 
 import javax.servlet.http.HttpServletRequest;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
 import java.util.Enumeration;
 import java.util.concurrent.TimeUnit;
 
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
@@ -28,6 +34,31 @@ public class SimpleController {
 
     @Autowired
     private MeterRegistry meterRegistry;
+
+    @PostMapping("/bench")
+    public String bench(@RequestBody BenchRequest benchRequest) throws Exception {
+        StringBuilder result = new StringBuilder(benchRequest.toString());
+
+        final TimeUnit timeUnit = TimeUnit.MILLISECONDS;
+        Timer timer = meterRegistry.timer("nlp.bench." + benchRequest.getId());
+        final int numIter = benchRequest.getIter();
+        for (int i = 0; i < numIter; ++i) {
+            timer.record(() -> {
+                benchIter(timeUnit, benchRequest.getFile());
+            });
+        }
+
+        result.append("cnt: ");
+        result.append(timer.count());
+        result.append(" totalTime: ");
+        result.append(timer.totalTime(timeUnit));
+        result.append(" mean: ");
+        result.append(timer.mean(timeUnit));
+        result.append(" max: ");
+        result.append(timer.max(timeUnit));
+
+        return result.toString();
+    }
 
     @GetMapping("/hello")
     public String hello(HttpServletRequest request) throws Exception {
@@ -47,35 +78,15 @@ public class SimpleController {
         return result.toString();
     }
 
-    @PostMapping("/bench")
-    public String bench(@RequestBody BenchRequest benchRequest) throws Exception {
-        StringBuilder result = new StringBuilder(benchRequest.toString());
-
-        final TimeUnit timeUnit = TimeUnit.MILLISECONDS;
-        Timer timer = meterRegistry.timer("nlp.bench." + benchRequest.getId());
-        final int numIter = benchRequest.getIter();
-        for (int i = 0; i < numIter; ++i) {
-            timer.record(() -> {
-                benchIter(timeUnit);
-            });
-        }
-
-        result.append("cnt: ");
-        result.append(timer.count());
-        result.append(" totalTime: ");
-        result.append(timer.totalTime(timeUnit));
-        result.append(" mean: ");
-        result.append(timer.mean(timeUnit));
-        result.append(" max: ");
-        result.append(timer.max(timeUnit));
-
-        return result.toString();
-    }
-
-    private void benchIter(TimeUnit timeUnit) {
+    @SneakyThrows(IOException.class)
+    private void benchIter(TimeUnit timeUnit, String fileName) {
         final long sleepTime = 100;
-        try {
+        try (BufferedReader br = Files.newBufferedReader(Paths.get(fileName))) {
             timeUnit.sleep(sleepTime);
-        } catch (InterruptedException ignored) { }
+            br.lines().forEach(line ->
+                System.out.println(line)
+            );
+        } catch (InterruptedException ignored) {
+        }
     }
 }

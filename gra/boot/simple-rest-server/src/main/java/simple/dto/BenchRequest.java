@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 public class BenchRequest {
     private String id;
     private int iter; // Integer
-    // private String file;
+    private String file;
 }
