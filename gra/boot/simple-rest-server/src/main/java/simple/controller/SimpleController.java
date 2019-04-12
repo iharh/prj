@@ -1,11 +1,14 @@
 package simple;
 
+import simple.dto.BenchRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import io.micrometer.core.instrument.MeterRegistry;
 // https://github.com/micrometer-metrics/micrometer/blob/master/micrometer-core/src/main/java/io/micrometer/core/instrument/Timer.java
@@ -44,18 +47,16 @@ public class SimpleController {
         return result.toString();
     }
 
-    @GetMapping("/bench")
-    public String bench() throws Exception {
-        StringBuilder result = new StringBuilder("headers: ");
+    @PostMapping("/bench")
+    public String bench(@RequestBody BenchRequest benchRequest) throws Exception {
+        StringBuilder result = new StringBuilder(benchRequest.toString());
 
         final TimeUnit timeUnit = TimeUnit.MILLISECONDS;
-        Timer timer = meterRegistry.timer("nlp.bench");
-        for (long i = 0; i < 10; ++i) {
-            final long sleepTime = 100 + i*10;
+        Timer timer = meterRegistry.timer("nlp.bench." + benchRequest.getId());
+        final int numIter = benchRequest.getIter();
+        for (int i = 0; i < numIter; ++i) {
             timer.record(() -> {
-                try {
-                    timeUnit.sleep(sleepTime);
-                } catch (InterruptedException ignored) { }
+                benchIter(timeUnit);
             });
         }
 
@@ -69,5 +70,12 @@ public class SimpleController {
         result.append(timer.max(timeUnit));
 
         return result.toString();
+    }
+
+    private void benchIter(TimeUnit timeUnit) {
+        final long sleepTime = 100;
+        try {
+            timeUnit.sleep(sleepTime);
+        } catch (InterruptedException ignored) { }
     }
 }
