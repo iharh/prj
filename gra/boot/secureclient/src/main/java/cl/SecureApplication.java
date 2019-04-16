@@ -10,11 +10,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import org.springframework.security.oauth2.client.OAuth2RestTemplate;
-import org.springframework.security.oauth2.common.OAuth2AccessToken;
+// import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+// import org.springframework.security.oauth2.common.OAuth2AccessToken;
 
 import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.cloud.security.oauth2.client.feign.OAuth2FeignRequestInterceptor;
 
 import lombok.extern.slf4j.Slf4j;
 
