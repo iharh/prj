@@ -92,14 +92,14 @@ int main(string[] args) {
             auto lines = File(dataFileName).byLineCopy();
             foreach (lineNum, line; lines.enumerate(1)) {
                 // stdin.readln();
-                //foreach (prjName; prjNames) {
-                    auto prjName = prjNameExt;
+                foreach (prjName; prjNames) {
+                    //auto prjName = prjNameExt;
                     writeln(format("line %d: prj: %s ...", lineNum, prjName));
                     auto responseBody = pmvdNatId(prjName, isSave, line, "natId" ~ lineNum.to!string);
                     if (getRespStatus(responseBody) != "SUCCESS") {
                         throw new Exception("failed !!!");
                     }
-                //}
+                }
             }
         }
         if (options.db) {
