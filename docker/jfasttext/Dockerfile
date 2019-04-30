@@ -7,13 +7,13 @@ RUN yum -y update && yum -y install \
         curl \
         tar \
         wget \
-        git
+        git \
+        gcc \
+        gcc-c++
 
 # Edit sudoers file
 # To avoid error: sudo: sorry, you must have a tty to run sudo
 RUN sed -i -e "s/Defaults    requiretty.*/Defaults    !requiretty/g" /etc/sudoers
-
-RUN yum -y install gcc g++
 
 ENV JAVA_HOME=/usr/java/latest
 
