@@ -55,7 +55,7 @@ RUN MVN_VER='3.6.0' \
 ENV M2_HOME /opt/apache-maven-3.6.0
 ENV PATH ${PATH}:${M2_HOME}/bin
 
-# Accept id through --build-arg and create nlp user matching current logon user ID
+# Accept id through --build-arg and create jft user matching current logon user ID
 ARG uid
-RUN useradd -l --uid=$uid nlp
-USER nlp
+RUN useradd -l --uid=$uid jft
+USER jft
