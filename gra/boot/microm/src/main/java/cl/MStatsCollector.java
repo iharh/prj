@@ -7,23 +7,19 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-import java.util.concurrent.TimeUnit;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class MStatsCollector {
-    private static final String keyPrefix = "test.bench.";
+    private static final String keyPrefix = "test.subpref.";
 
     private MeterRegistry meterRegistry;
-    private TimeUnit measureUnit;
 
     private Map<String, Timer.Sample> timerSamples = new HashMap<>();
     private Map<String, Timer> timers = new LinkedHashMap<>();
 
-    public MStatsCollector(MeterRegistry meterRegistry, TimeUnit measureUnit) {
+    public MStatsCollector(MeterRegistry meterRegistry) {
         this.meterRegistry = meterRegistry;
-        this.measureUnit = measureUnit;
     }
 
     public void start(String name) {

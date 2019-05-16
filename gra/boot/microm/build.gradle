@@ -20,11 +20,19 @@ apply from: "${gradleRootDir}/dependencies.gradle"
 apply from: "${gradleRootDir}/spring-boot.gradle"
 apply from: "${gradleRootDir}/java8.gradle"
 apply from: "${gradleRootDir}/lombok.gradle"
+apply from: "${gradleRootDir}/junit.gradle"
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator' // for manage
-    // implementation 'io.micrometer:micrometer-core:1.1.4'
     implementation 'io.micrometer:micrometer-core'
+    implementation 'io.github.mweirauch:micrometer-jvm-extras:0.1.2'
+
+    // junit
+    testImplementation libraries.junit_jupiter_api
+    testImplementation libraries.junit_jupiter_params
+    testRuntime libraries.junit_jupiter_engine
+    // assertj
+    testImplementation libraries.assertj_core
 }
 
 bootRun {
