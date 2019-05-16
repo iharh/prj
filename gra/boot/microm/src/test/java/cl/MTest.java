@@ -14,6 +14,9 @@ import org.springframework.test.context.ContextConfiguration;
 
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
+import io.micrometer.core.instrument.Timer;
+
+import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,6 +24,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ContextConfiguration(loader = SpringBootContextLoader.class)
 @SpringBootTest
 public class MTest {
+    private static final String M_NAME = "test";
+    private static final TimeUnit measureUnit = TimeUnit.MILLISECONDS;
 
     @Configuration
     static class Config {
@@ -37,6 +42,15 @@ public class MTest {
     public void mTest() throws Exception {
         assertThat(meterRegistry).isNotNull();
         final MStatsCollector collector = new MStatsCollector(meterRegistry);
-        assertThat(collector).isNotNull(); // isEqualTo(true);
+        assertThat(collector).isNotNull();
+
+        collector.start(M_NAME);
+        measureUnit.sleep(100);
+        collector.finish(M_NAME);
+
+        final Timer t = collector.getTimerFor(M_NAME);
+        assertThat(t).isNotNull();
+        assertThat(t.count()).isEqualTo(1);
+        assertThat(t.mean(measureUnit)).isLessThan(200.0);
     }
 }
