@@ -38,7 +38,7 @@ public class MTest {
     @Test
     public void mTest() throws Exception {
         assertThat(meterRegistry).isNotNull();
-        //final MStatsCollector collector = new MStatsCollector(meterRegistry);
-        //assertThat(collector).isNotNull();// isEqualTo(true);
+        final MStatsCollector collector = new MStatsCollector(meterRegistry);
+        assertThat(collector).isNotNull(); // isEqualTo(true);
     }
 }
