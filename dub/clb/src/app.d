@@ -54,8 +54,8 @@ int main(string[] args) {
     auto prjNames = [ prjNameInt , prjNameExt ];
     //auto prjNames = [ prjNameInt ];
     //auto prjNames = [ prjNameExt ];
-    //auto dataFileName = langId ~ "1.txt";
-    auto dataFileName = langId ~ "100.txt";
+    auto dataFileName = langId ~ "1.txt";
+    //auto dataFileName = langId ~ "100.txt";
 
     Options options;
     try {
@@ -71,7 +71,7 @@ int main(string[] args) {
         if (options.realtime) {
             writeln("process realtime ...");
             bool isSave = false;
-            auto prjName = prjNameInt; // int
+            auto prjName = prjNameExt; // int
             auto lines = File(dataFileName).byLineCopy();
             foreach (lineNum, line; lines.enumerate(1)) {
                 writeln(format("process: %s line %d: prj: %s ...", isSave, lineNum, prjName));
