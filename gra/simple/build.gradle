@@ -6,8 +6,8 @@ plugins {
     //id 'org.ajoberstar.release-opinion' version '1.7.1'
 }
 
-sourceCompatibility = JavaVersion.VERSION_1_9
-targetCompatibility = JavaVersion.VERSION_1_9
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
     //jcenter() // spock-reports
