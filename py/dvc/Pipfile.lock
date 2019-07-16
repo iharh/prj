@@ -94,11 +94,11 @@
         },
         "dvc": {
             "hashes": [
-                "sha256:080d96ef95f5c8622373b3715f03ee3f3298cc6e7d1fa8a89f9a762ce0f8a382",
-                "sha256:7a9205962aef1199d4f6982fe947223aa348e4ee044d28eb641976b2fc56cc8f"
+                "sha256:79125aabaa9069f9b0f815f67414bf5a9cafbd7dd5182d433745bc15fbaa2107",
+                "sha256:95a4aae5777661d2f627cdddffec79da6621d657bdecec458ec7e19764e82990"
             ],
             "index": "pypi",
-            "version": "==0.52.0"
+            "version": "==0.52.1"
         },
         "funcy": {
             "hashes": [
