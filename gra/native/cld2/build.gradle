@@ -53,7 +53,7 @@ model {
     }
 
     components {
- 	cld2(NativeLibrarySpec) { // SharedLibraryBinarySpec
+        cld2(NativeLibrarySpec) { // SharedLibraryBinarySpec
             targetPlatform 'x64'
             sources {
                 cpp {
@@ -78,21 +78,21 @@ model {
 
                         include 'cldutil_shared.cc', 'cldutil.cc'
 
-			include 'cld_generated_cjk_delta_bi_32.cc' // _4
-			include 'cld2_generated_distinctocta0122.cc'
-			include 'cld2_generated_quad0122.cc'
-			include 'cld2_generated_deltaocta0122.cc'
-			include 'generated_distinct_bi_0.cc'
-			include 'cld_generated_score_quad_octa_0122.cc' // _2
-			include 'cld_generated_cjk_uni_prop_80.cc'
+                        include 'cld_generated_cjk_delta_bi_32.cc' // _4
+                        include 'cld2_generated_distinctocta0122.cc'
+                        include 'cld2_generated_quad0122.cc'
+                        include 'cld2_generated_deltaocta0122.cc'
+                        include 'generated_distinct_bi_0.cc'
+                        include 'cld_generated_score_quad_octa_0122.cc' // _2
+                        include 'cld_generated_cjk_uni_prop_80.cc'
 
-			include 'cld2_generated_cjk_compatible.cc'
+                        include 'cld2_generated_cjk_compatible.cc'
 
-			include 'fixunicodevalue.cc'
+                        include 'fixunicodevalue.cc'
 
-			include 'generated_entities.cc'
+                        include 'generated_entities.cc'
 
-			include 'getonescriptspan.cc', 'scoreonescriptspan.cc'
+                        include 'getonescriptspan.cc', 'scoreonescriptspan.cc'
 
                         include 'compact_lang_det_hint_code.cc'
 

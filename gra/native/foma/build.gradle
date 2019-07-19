@@ -50,7 +50,7 @@ model {
     }
 
     components {
- 	smallrt(NativeLibrarySpec) { // SharedLibraryBinarySpec
+        smallrt(NativeLibrarySpec) { // SharedLibraryBinarySpec
             targetPlatform 'x64'
             sources {
                 c {
@@ -64,7 +64,7 @@ model {
                 }
             }
         }
- 	s1(NativeExecutableSpec) { // SharedLibraryBinarySpec
+        s1(NativeExecutableSpec) { // SharedLibraryBinarySpec
             targetPlatform 'x64'
             sources {
                 c {

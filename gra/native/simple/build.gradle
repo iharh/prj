@@ -1,0 +1,63 @@
+plugins {
+    id 'base'
+    id 'cpp'
+}
+
+model {
+    buildTypes {
+        //release
+        debug
+    }
+
+    toolChains {
+        visualCpp(VisualCpp) {
+            // if omitted - the latest version of MSVC will be used
+            // !!!uncommend for win!!!
+            // installDir "${project.'vs.base'}" 
+            // windowsSdkDir 
+        }
+        gcc(Gcc)
+    }
+
+    platforms {
+        x64 {
+            architecture "x86_64"
+        }
+    }
+
+    binaries {
+        withType(SharedLibraryBinarySpec) { // all
+            // cppCompiler.define "NDEBUG"
+            // Define toolchain-specific compiler and linker options
+            if (toolChain in Gcc) {
+                println 'toolchain is Gcc!'
+                // "-O2", "-fno-access-control"
+                // cppCompiler.args '-std=c++0x', '-Wno-narrowing'
+            }
+            if (toolChain in VisualCpp) {
+                // #if defined (__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
+                //cCompiler.define "__STDC_VERSION__=199901L"
+                println 'toolchain is VisualCpp!'
+            }
+        }
+    }
+
+    components {
+        simple(NativeLibrarySpec) { // SharedLibraryBinarySpec
+            targetPlatform 'x64'
+            sources {
+                cpp {
+                    source {
+                        srcDirs 'src/main/cpp'
+                        include "**/*.cpp"
+                    }
+                }
+            }
+        }
+        all {
+            binaries.withType(StaticLibraryBinarySpec) {
+                buildable = false
+            }
+        }
+    }
+}

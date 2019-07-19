@@ -36,7 +36,7 @@ model {
     }
 
     components {
- 	main(NativeExecutableSpec) {
+        main(NativeExecutableSpec) {
             targetPlatform 'x64'
             sources {
                 cpp {
