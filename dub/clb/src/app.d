@@ -48,14 +48,14 @@ string getRespStatus(string content) {
 }
 
 int main(string[] args) {
-    auto langId = "bn"; // ar bn de en es fr hi id it ko nl pt ro th th tl tr vi zh
+    auto langId = "ru"; // ar bn de en es fr hi id it ko nl pt ro ru th th tl tr vi zh
     auto prjNameInt = langId ~ "0int";
     auto prjNameExt = langId ~ "0ext";
     auto prjNames = [ prjNameInt , prjNameExt ];
     //auto prjNames = [ prjNameInt ];
     //auto prjNames = [ prjNameExt ];
-    //auto dataFileName = langId ~ "1.txt";
-    auto dataFileName = langId ~ "100.txt";
+    auto dataFileName = langId ~ "1.txt";
+    //auto dataFileName = langId ~ "100.txt";
 
     Options options;
     try {
