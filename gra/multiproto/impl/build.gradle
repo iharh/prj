@@ -1,8 +1,19 @@
-// description = 'Centralized Prediction Service'
+ext {
+    repoRootDir = "${rootProject.getRootDir()}/.." // /..
+    gradleRootDir = "${repoRootDir}/gradle"
+}
+
+apply from: "${gradleRootDir}/repositories.gradle"
+apply from: "${gradleRootDir}/dependencies.gradle"
+apply from: "${gradleRootDir}/java8.gradle"
+apply from: "${gradleRootDir}/junit.gradle"
 
 dependencies {
     compile project(':api')
     // compile('org.springframework.security.oauth:spring-security-oauth2')
+
+    testCompile         libraries.junit_jupiter_api
+    testRuntime         libraries.junit_jupiter_engine
 }
 
 task printImpl {

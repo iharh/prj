@@ -1,24 +1,11 @@
 buildscript {
-    ext {
-        // springBootPluginVersion = '1.5.7.RELEASE'
-        // dependencyManagementPluginVersion = '1.0.3.RELEASE'
-        // springVersion = '4.3.11.RELEASE'
-    }
-    //Place for overriding propertis from 'spring-boot-parent' BOM
-    //ext['spring.version'] = '4.3.11.RELEASE'
-
     repositories {
         mavenCentral()
         jcenter()
     }
-    dependencies {
-        // classpath("io.spring.gradle:dependency-management-plugin:${dependencyManagementPluginVersion}")
-        // classpath("com.netflix.nebula:nebula-release-plugin:${nebulaReleasePluginVersion}")
-    }
 }
 
 allprojects {
-    //apply plugin: 'nebula.nebula-release'
     task hello {
         doLast { task ->
             println "I'm $task.project.name"
@@ -27,34 +14,8 @@ allprojects {
 }
 
 subprojects {
-    // def bootable = ["cb-cps-app"]
-
     apply plugin: 'java'
-    //apply plugin: 'io.spring.dependency-management'
-
-    // if (bootable.contains(project.name)) {
-    //    apply plugin: 'org.springframework.boot'
-    //}
 
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
-
-    //repositories {
-    //    mavenCentral()
-    //}
-
-    /* dependencyManagement {
-        imports {
-            mavenBom "org.springframework.boot:spring-boot-parent:${springBootPluginVersion}"
-        }
-        //Currently it's impossible to use several mavenBom or sepcify a parent BOM for Spring Cloud dependencies
-        dependencies {
-            //Lombock
-            dependency('org.projectlombok:lombok:1.16.6')
-        }
-    }*/
-
-    dependencies {
-        //compile('org.projectlombok:lombok')
-    }
 }
