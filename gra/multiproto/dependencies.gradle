@@ -1,13 +1,13 @@
 ext {
-    groups = [
+    groups += [
         protobuf:               'com.google.protobuf'
     ]
-    versions = [
-        protobuf:                   '3.5.1'
+    versions += [
+        protobuf:               '3.5.1'
     ]
-    libraries = [
+    libraries += [
         // protobuf
         protobuf_java:          "${groups.protobuf}:protobuf-java:${versions.protobuf}",
-        protobuf_java_util1:     "${groups.protobuf}:protobuf-java-util:${versions.protobuf}"
+        protobuf_java_util:     "${groups.protobuf}:protobuf-java-util:${versions.protobuf}"
     ]
 }

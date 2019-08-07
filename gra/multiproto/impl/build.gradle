@@ -1,10 +1,9 @@
-// apply from: "${rootProject.getRootDir()}/dependencies.gradle"
+apply from: "${rootProject.getRootDir()}/dependencies.gradle"
 
 dependencies {
     compile project(':api')
 
-    // implementation      libraries.protobuf_java_util1
-    implementation      "com.google.protobuf:protobuf-java-util:3.5.1"
+    implementation      libraries.protobuf_java_util
 
     testCompile         libraries.junit_jupiter_api
     testRuntime         libraries.junit_jupiter_engine

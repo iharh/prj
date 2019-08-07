@@ -21,8 +21,8 @@ ext {
         spring_security:            '5.1.4.RELEASE',
         spring_security_oauth2:     '2.3.5.RELEASE',
 
-        junit:                      '5.3.1',
-        assertj:                    '3.11.1',
+        junit:                      '5.5.1',
+        assertj:                    '3.13.2',
     ]
     libraries = [
         lombok:                     "${groups.lombok}:lombok:${versions.lombok}",
