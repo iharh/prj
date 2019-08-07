@@ -1,3 +1,8 @@
+ext {
+    repoRootDir = "${rootProject.getRootDir()}/.." // /..
+    gradleRootDir = "${repoRootDir}/gradle"
+}
+
 buildscript {
     repositories {
         mavenCentral()
@@ -6,16 +11,14 @@ buildscript {
 }
 
 allprojects {
+    apply from: "${gradleRootDir}/repositories.gradle"
+    apply from: "${gradleRootDir}/dependencies.gradle"
+    apply from: "${gradleRootDir}/java8.gradle"
+    apply from: "${gradleRootDir}/junit.gradle"
+
     task hello {
         doLast { task ->
             println "I'm $task.project.name"
         }
     }
-}
-
-subprojects {
-    apply plugin: 'java'
-
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
 }

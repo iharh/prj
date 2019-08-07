@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.3'
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.10'
     }
 }
 
@@ -19,7 +19,7 @@ protobuf {
         // Download from repositories
         artifact = 'com.google.protobuf:protoc:3.5.0'
     }
-    generatedFilesBaseDir = file("${project(':api').buildDir}/generated")
+    // generatedFilesBaseDir = file("${project(':api').buildDir}/generated")
 }
 
 repositories {
