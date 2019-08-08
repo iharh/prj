@@ -12,11 +12,11 @@ public class MultiProtoTests {
     @Test
     public void test1() throws Exception {
         MPService.MPResponse.Builder respBuilder = MPService.MPResponse.newBuilder();
-        respBuilder.setRes("aaa \" bbb");
+        respBuilder.setRes("When's");
         MPService.MPResponse resp = respBuilder.build();
         assertThat(resp).isNotNull();
 
         String content = JsonFormat.printer().includingDefaultValueFields().print(resp);
-        assertThat(content).isEqualTo("{\n  \"res\": \"aaa \\\" bbb\"\n}");
+        assertThat(content).isEqualTo("{\n  \"res\": \"When's\"\n}");
     }
 }
