@@ -17,11 +17,12 @@ public class MultiProtoTests {
         MPService.MPResponse resp = respBuilder.build();
         assertThat(resp).isNotNull();
 
-        //String content = JsonFormat.printer().includingDefaultValueFields().print(resp);
-        //assertThat(content).isEqualTo("{\n  \"res\": \"When's\"\n}");
+        String encodedContent = encodeBase64(resp);
+        assertThat(encodedContent).isEqualTo("CgZXaGVuJ3M=");
 
-        String content = encodeBase64(resp);
-        assertThat(content).isEqualTo("CgZXaGVuJ3M=");
+        String jsonContent = JsonFormat.printer().includingDefaultValueFields().print(resp);
+        assertThat(jsonContent).isEqualTo("{\n  \"res\": \"When\\u0027s\"\n}");
+
     }
 
     private String encodeBase64(MPService.MPResponse res) {

@@ -3,8 +3,8 @@ ext {
         protobuf:               'com.google.protobuf'
     ]
     versions += [
-        protobuf:               '3.5.1'
-        //protobuf:               '3.7.0'
+        //protobuf:               '3.5.1'
+        protobuf:               '3.9.1'
     ]
     libraries += [
         // protobuf
