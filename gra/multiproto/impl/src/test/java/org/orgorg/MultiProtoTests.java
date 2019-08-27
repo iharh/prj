@@ -23,6 +23,7 @@ public class MultiProtoTests {
         String jsonContent = JsonFormat.printer().includingDefaultValueFields().print(resp);
         assertThat(jsonContent).isEqualTo("{\n  \"res\": \"When\\u0027s\"\n}");
 
+        System.out.println("jsonContent :" + jsonContent);
     }
 
     private String encodeBase64(MPService.MPResponse res) {
