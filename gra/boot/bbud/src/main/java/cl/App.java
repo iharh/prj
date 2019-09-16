@@ -43,11 +43,11 @@ public class App implements CommandLineRunner {
         }
     }
 
-    public static String bar(Integer n, Integer k) {
+    public static String bar(Integer n, int k) {
         log.info("bar called");
         return "do bar n:" + n + ", k=" + k;
     }
-    public static String baz(Integer n, Integer k) {
+    public static String baz(Integer n, int k) {
         return "do baz";
     }
 
@@ -55,7 +55,7 @@ public class App implements CommandLineRunner {
     public void run(String... args) throws Exception {
         log.info("app start");
 
-        Method bar = App.class.getDeclaredMethod("bar", Integer.class, Integer.class);
+        Method bar = App.class.getDeclaredMethod("bar", Integer.class, int.class);
         //Method baz = App.class.getDeclaredMethod("baz");
 
         ByteBuddyAgent.install();
