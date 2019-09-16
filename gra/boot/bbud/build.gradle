@@ -24,8 +24,9 @@ apply from: "${gradleRootDir}/junit.gradle"
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator' // for manage
-    implementation 'io.micrometer:micrometer-core'
-    implementation 'io.github.mweirauch:micrometer-jvm-extras:0.1.2'
+
+    implementation libraries.bytebuddy
+    implementation libraries.bytebuddy_agent
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 

@@ -1,6 +1,7 @@
 ext {
     groups = [
         lombok:                     'org.projectlombok',
+        bytebuddy:                  'net.bytebuddy',
         slf4j:                      'org.slf4j',
         log4j:                      'org.apache.logging.log4j',
 
@@ -13,6 +14,7 @@ ext {
     ]
     versions = [
         lombok:                     '1.18.2',
+        bytebuddy:                  '1.10.1',
         slf4j:                      '1.7.25',
         log4j:                      '2.9.1',
 
@@ -48,7 +50,10 @@ ext {
         commons_codec:              'commons-codec:commons-codec:1.11',
         commons_lang3:              'org.apache.commons:commons-lang3:3.8.1',
         // ehcache
-        ehcache:                    'org.ehcache:ehcache:3.7.0',
+        ehcache:                    'org.ehcache:ehcache:3.7.1',
+        // bytebuddy
+        bytebuddy:                  "${groups.bytebuddy}:byte-buddy:${versions.bytebuddy}",
+        bytebuddy_agent:            "${groups.bytebuddy}:byte-buddy-agent:${versions.bytebuddy}",
         // junit
         junit_jupiter_api:          "${groups.junit_jupiter}:junit-jupiter-api:${versions.junit}",
         junit_jupiter_params:       "${groups.junit_jupiter}:junit-jupiter-params:${versions.junit}",
