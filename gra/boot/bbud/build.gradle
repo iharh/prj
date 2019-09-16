@@ -25,6 +25,8 @@ apply from: "${gradleRootDir}/junit.gradle"
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator' // for manage
 
+    implementation libraries.ehcache
+
     implementation libraries.bytebuddy
     implementation libraries.bytebuddy_agent
 

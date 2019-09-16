@@ -3,6 +3,10 @@ package cl;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 
+import org.ehcache.core.spi.store.heap.SizeOfEngine;
+import org.ehcache.impl.internal.sizeof.DefaultSizeOfEngine;
+import org.ehcache.impl.internal.store.heap.holders.OnHeapValueHolder;
+
 import net.bytebuddy.ByteBuddy;
 import net.bytebuddy.agent.ByteBuddyAgent;
 import net.bytebuddy.dynamic.loading.ClassReloadingStrategy;
@@ -14,6 +18,7 @@ import net.bytebuddy.implementation.bind.annotation.RuntimeType;
 import net.bytebuddy.implementation.bind.annotation.SuperCall;
 
 import java.lang.reflect.Method;
+import java.time.Duration;
 import java.util.concurrent.Callable;
 
 import static net.bytebuddy.matcher.ElementMatchers.*;
@@ -22,6 +27,27 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class App implements CommandLineRunner {
+
+    private static class TestOnHeapValueHolder extends OnHeapValueHolder<String> {
+        long now;
+        Duration expiration;
+
+        protected TestOnHeapValueHolder(long expirationTime) {
+            super(1, 0, expirationTime, true);
+        }
+
+        @Override
+        public String get() {
+            return "test";
+        }
+
+        @Override
+        public void accessed(long now, Duration expiration) {
+            this.now = now;
+            this.expiration = expiration;
+            super.accessed(now, expiration);
+        }
+    }
 
     public static class TimingInterceptor {
         /*@RuntimeType
@@ -78,6 +104,9 @@ public class App implements CommandLineRunner {
         Simple s = new Simple();
         String ret = s.tell(1, 2);
         log.info("app finish: {}", ret);
+
+        SizeOfEngine soe = new DefaultSizeOfEngine(10000, 10000);
+        OnHeapValueHolder<String> vh = new TestOnHeapValueHolder(0);
     }
 
     public static void main(String[] args) {

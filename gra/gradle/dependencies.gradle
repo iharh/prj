@@ -50,7 +50,7 @@ ext {
         commons_codec:              'commons-codec:commons-codec:1.11',
         commons_lang3:              'org.apache.commons:commons-lang3:3.8.1',
         // ehcache
-        ehcache:                    'org.ehcache:ehcache:3.7.1',
+        ehcache:                    'org.ehcache:ehcache:3.8.1',
         // bytebuddy
         bytebuddy:                  "${groups.bytebuddy}:byte-buddy:${versions.bytebuddy}",
         bytebuddy_agent:            "${groups.bytebuddy}:byte-buddy-agent:${versions.bytebuddy}",
