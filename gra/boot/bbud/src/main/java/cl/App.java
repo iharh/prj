@@ -29,7 +29,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class App implements CommandLineRunner {
 
-    private static class TestOnHeapValueHolder extends OnHeapValueHolder<String> {
+    private static class TestOnHeapValueHolder extends OnHeapValueHolder<ResourceValue> {
         long now;
         Duration expiration;
 
@@ -38,8 +38,8 @@ public class App implements CommandLineRunner {
         }
 
         @Override
-        public String get() {
-            return "test";
+        public ResourceValue get() {
+            return null;
         }
 
         @Override
@@ -50,11 +50,6 @@ public class App implements CommandLineRunner {
         }
     }
 
-    // public static
-    //public <K, V> long mysizeof(K key, Store.ValueHolder<V> holder) throws LimitExceededException {
-    //    return 7;
-    //}
-
     private void doInst() throws Exception {
         ByteBuddyAgent.install(
             new ByteBuddyAgent.AttachmentProvider.Compound(
@@ -63,16 +58,9 @@ public class App implements CommandLineRunner {
             )
         );
 
-        // Method mysizeof = App.class.getDeclaredMethod("mysizeof", Object.class, Store.ValueHolder.class);
-
         new ByteBuddy()
             .redefine(DefaultSizeOfEngine.class)
             .visit(Advice.to(TimerAdvice.class).on(named("sizeof")))
-            //.method(named("sizeof"))
-            //.intercept(
-            //    MethodCall.invoke(mysizeof).on(this).withAllArguments()
-            //        .withAssigner(Assigner.DEFAULT, Assigner.Typing.DYNAMIC)
-            //)
             .make()
             .load(
                 DefaultSizeOfEngine.class.getClassLoader(), 
@@ -87,10 +75,9 @@ public class App implements CommandLineRunner {
         doInst();
 
         SizeOfEngine soe = new DefaultSizeOfEngine(10000, 10000);
-        OnHeapValueHolder<String> vh = new TestOnHeapValueHolder(0);
 
         // default - 224
-        long s = soe.sizeof(Integer.valueOf(1), vh);
+        long s = soe.sizeof(Integer.valueOf(1), new TestOnHeapValueHolder(0));
         log.info("s: {}", s);
     }
 

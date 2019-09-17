@@ -2,25 +2,27 @@ package cl;
 
 import net.bytebuddy.asm.Advice;
 
+import org.ehcache.core.spi.store.Store;
+
+import java.lang.reflect.Method;
+import java.lang.reflect.Type;
+
 public class TimerAdvice {
-    /**
-     * From this  enter method we start the timer and pass that value to exit method and the we getting the time
-     * speed for each method
-     */
+
     @Advice.OnMethodEnter
-    static long enter(@Advice.Origin String method) throws Exception {
-        long start = System.currentTimeMillis();
-        return start;
+    static long enter(@Advice.Argument(1) Store.ValueHolder<?> vh) throws Exception {
+        final Method methodGet = vh.getClass().getDeclaredMethod("get");
+        final Class<?> returnClass = methodGet.getReturnType();
+        if (returnClass.isAssignableFrom(ResourceValue.class)) {
+            return 1;
+        }
+        return 0;
     }
 
     @Advice.OnMethodExit
-    static void exit(@Advice.Origin String method,
-            @Advice.Enter long start,
+    static void exit(@Advice.Enter long nativeSize,
             @Advice.Return(readOnly = false) Long result) throws Exception {
-        long end = System.currentTimeMillis();
-        System.out.println(method + " took " + (end - start) + " milliseconds");
-        System.out.println(" result: " + result);
-        //result = Long.valueOf(result + 7);
-        result += 7;
+        System.out.println("result: " + result + ", nativeSize: " + nativeSize);
+        result += nativeSize;
     }
 }
