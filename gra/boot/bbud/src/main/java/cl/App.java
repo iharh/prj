@@ -3,7 +3,9 @@ package cl;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 
+import org.ehcache.core.spi.store.heap.LimitExceededException;
 import org.ehcache.core.spi.store.heap.SizeOfEngine;
+import org.ehcache.core.spi.store.Store;
 import org.ehcache.impl.internal.sizeof.DefaultSizeOfEngine;
 import org.ehcache.impl.internal.store.heap.holders.OnHeapValueHolder;
 
@@ -77,6 +79,10 @@ public class App implements CommandLineRunner {
         return "do baz";
     }
 
+    public <K, V> long mysizeof(K key, Store.ValueHolder<V> holder) throws LimitExceededException {
+        return 7;
+    }
+
     @Override
     public void run(String... args) throws Exception {
         log.info("app start");
@@ -85,6 +91,8 @@ public class App implements CommandLineRunner {
         //Method baz = App.class.getDeclaredMethod("baz");
 
         ByteBuddyAgent.install();
+
+        /*
         new ByteBuddy()
             .redefine(Simple.class)
             .method(named("tell"))
@@ -101,12 +109,31 @@ public class App implements CommandLineRunner {
                 ClassReloadingStrategy.fromInstalledAgent()
             );
 
-        Simple s = new Simple();
-        String ret = s.tell(1, 2);
+        Simple simple = new Simple();
+        String ret = simple.tell(1, 2);
         log.info("app finish: {}", ret);
+        */
+
+        Method mysizeof = App.class.getDeclaredMethod("mysizeof", Object.class, Store.ValueHolder.class);
+
+        new ByteBuddy()
+            .redefine(DefaultSizeOfEngine.class)
+            .method(named("sizeof"))
+            .intercept(
+                MethodCall.invoke(mysizeof).withAllArguments()
+            )
+            .make()
+            .load(
+                DefaultSizeOfEngine.class.getClassLoader(), 
+                ClassReloadingStrategy.fromInstalledAgent()
+            );
 
         SizeOfEngine soe = new DefaultSizeOfEngine(10000, 10000);
         OnHeapValueHolder<String> vh = new TestOnHeapValueHolder(0);
+
+        // default - 224
+        long s = soe.sizeof(Integer.valueOf(1), vh);
+        log.info("s: {}", s);
     }
 
     public static void main(String[] args) {
