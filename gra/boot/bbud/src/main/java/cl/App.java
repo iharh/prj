@@ -91,7 +91,13 @@ public class App implements CommandLineRunner {
         Method bar = App.class.getDeclaredMethod("bar", Integer.class, int.class);
         //Method baz = App.class.getDeclaredMethod("baz");
 
-        ByteBuddyAgent.install();
+        // ByteBuddyAgent.install();
+        ByteBuddyAgent.install(
+            new ByteBuddyAgent.AttachmentProvider.Compound(
+                new EhcAttachmentProvider(),
+                ByteBuddyAgent.AttachmentProvider.DEFAULT
+            )
+        );
 
         /*
         new ByteBuddy()
