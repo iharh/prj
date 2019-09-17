@@ -66,12 +66,12 @@ public class App implements CommandLineRunner {
 
         new ByteBuddy()
             .redefine(DefaultSizeOfEngine.class)
-            .method(named("sizeof"))
-            .intercept(
-                Advice.to(TimerAdvice.class)
-                //MethodCall.invoke(mysizeof).on(this).withAllArguments()
-                //    .withAssigner(Assigner.DEFAULT, Assigner.Typing.DYNAMIC)
-            )
+            .visit(Advice.to(TimerAdvice.class).on(named("sizeof")))
+            //.method(named("sizeof"))
+            //.intercept(
+            //    MethodCall.invoke(mysizeof).on(this).withAllArguments()
+            //        .withAssigner(Assigner.DEFAULT, Assigner.Typing.DYNAMIC)
+            //)
             .make()
             .load(
                 DefaultSizeOfEngine.class.getClassLoader(), 
