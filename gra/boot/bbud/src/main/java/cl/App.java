@@ -11,6 +11,7 @@ import org.ehcache.impl.internal.store.heap.holders.OnHeapValueHolder;
 
 import net.bytebuddy.ByteBuddy;
 import net.bytebuddy.agent.ByteBuddyAgent;
+import net.bytebuddy.asm.Advice;
 import net.bytebuddy.dynamic.loading.ClassReloadingStrategy;
 import net.bytebuddy.implementation.MethodDelegation;
 import net.bytebuddy.implementation.FixedValue;
@@ -53,10 +54,7 @@ public class App implements CommandLineRunner {
         return 7;
     }
 
-    @Override
-    public void run(String... args) throws Exception {
-        log.info("app start");
-
+    private void doInst() throws Exception {
         ByteBuddyAgent.install(
             new ByteBuddyAgent.AttachmentProvider.Compound(
                 new EhcAttachmentProvider(),
@@ -70,14 +68,22 @@ public class App implements CommandLineRunner {
             .redefine(DefaultSizeOfEngine.class)
             .method(named("sizeof"))
             .intercept(
-                MethodCall.invoke(mysizeof).on(this).withAllArguments()
-                    .withAssigner(Assigner.DEFAULT, Assigner.Typing.DYNAMIC)
+                Advice.to(TimerAdvice.class)
+                //MethodCall.invoke(mysizeof).on(this).withAllArguments()
+                //    .withAssigner(Assigner.DEFAULT, Assigner.Typing.DYNAMIC)
             )
             .make()
             .load(
                 DefaultSizeOfEngine.class.getClassLoader(), 
                 ClassReloadingStrategy.fromInstalledAgent()
             );
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        log.info("app start");
+
+        doInst();
 
         SizeOfEngine soe = new DefaultSizeOfEngine(10000, 10000);
         OnHeapValueHolder<String> vh = new TestOnHeapValueHolder(0);
