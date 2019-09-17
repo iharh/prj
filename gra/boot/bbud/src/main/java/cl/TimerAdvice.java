@@ -2,9 +2,6 @@ package cl;
 
 import net.bytebuddy.asm.Advice;
 
-//import lombok.extern.slf4j.Slf4j;
-
-//@Slf4j
 public class TimerAdvice {
     /**
      * From this  enter method we start the timer and pass that value to exit method and the we getting the time
@@ -17,9 +14,13 @@ public class TimerAdvice {
     }
 
     @Advice.OnMethodExit
-    static void exit(@Advice.Origin String method, @Advice.Enter long start) throws Exception {
+    static void exit(@Advice.Origin String method,
+            @Advice.Enter long start,
+            @Advice.Return(readOnly = false) Long result) throws Exception {
         long end = System.currentTimeMillis();
-        // log.info("{} took {} milliseconds", method, (end - start));
         System.out.println(method + " took " + (end - start) + " milliseconds");
+        System.out.println(" result: " + result);
+        //result = Long.valueOf(result + 7);
+        result += 7;
     }
 }

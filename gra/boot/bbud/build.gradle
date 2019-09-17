@@ -40,17 +40,15 @@ dependencies {
     testImplementation libraries.assertj_core
 }
 
-bootJar {
-    manifest {
-        //attributes 'Start-Class': 'com.example.ExampleApplication'
-
+//bootJar {
+//    manifest {
         //attributes "Agent-Class" : "cl.MyAgent"
         //attributes "Premain-Class" : "cl.MyAgent"
 
-        attributes "Can-Redefine-Classes" : "true"
-        attributes "Can-Retransform-Classes" : "true"
-    }
-}
+        //attributes "Can-Redefine-Classes" : "true"
+        //attributes "Can-Retransform-Classes" : "true"
+//    }
+//}
 
 bootRun {
     main = 'cl.App'

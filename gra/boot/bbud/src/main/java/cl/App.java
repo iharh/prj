@@ -50,9 +50,10 @@ public class App implements CommandLineRunner {
         }
     }
 
-    public /*static*/ <K, V> long mysizeof(K key, Store.ValueHolder<V> holder) throws LimitExceededException {
-        return 7;
-    }
+    // public static
+    //public <K, V> long mysizeof(K key, Store.ValueHolder<V> holder) throws LimitExceededException {
+    //    return 7;
+    //}
 
     private void doInst() throws Exception {
         ByteBuddyAgent.install(
@@ -62,7 +63,7 @@ public class App implements CommandLineRunner {
             )
         );
 
-        Method mysizeof = App.class.getDeclaredMethod("mysizeof", Object.class, Store.ValueHolder.class);
+        // Method mysizeof = App.class.getDeclaredMethod("mysizeof", Object.class, Store.ValueHolder.class);
 
         new ByteBuddy()
             .redefine(DefaultSizeOfEngine.class)
