@@ -18,6 +18,7 @@ import net.bytebuddy.implementation.MethodCall;
 import net.bytebuddy.implementation.bind.annotation.Origin;
 import net.bytebuddy.implementation.bind.annotation.RuntimeType;
 import net.bytebuddy.implementation.bind.annotation.SuperCall;
+import net.bytebuddy.implementation.bytecode.assign.Assigner;
 
 import java.lang.reflect.Method;
 import java.time.Duration;
@@ -79,7 +80,7 @@ public class App implements CommandLineRunner {
         return "do baz";
     }
 
-    public <K, V> long mysizeof(K key, Store.ValueHolder<V> holder) throws LimitExceededException {
+    public static <K, V> long mysizeof(K key, Store.ValueHolder<V> holder) throws LimitExceededException {
         return 7;
     }
 
@@ -121,6 +122,7 @@ public class App implements CommandLineRunner {
             .method(named("sizeof"))
             .intercept(
                 MethodCall.invoke(mysizeof).withAllArguments()
+                    .withAssigner(Assigner.DEFAULT, Assigner.Typing.DYNAMIC)
             )
             .make()
             .load(
