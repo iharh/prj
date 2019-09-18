@@ -3,11 +3,19 @@ package cl;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 
+import org.ehcache.Cache;
+import org.ehcache.CacheManager;
+import org.ehcache.config.builders.CacheConfigurationBuilder;
+import org.ehcache.config.builders.CacheManagerBuilder;
+import org.ehcache.config.builders.ResourcePoolsBuilder;
+import org.ehcache.config.units.MemoryUnit;
 import org.ehcache.core.spi.store.heap.LimitExceededException;
 import org.ehcache.core.spi.store.heap.SizeOfEngine;
 import org.ehcache.core.spi.store.Store;
 import org.ehcache.impl.internal.sizeof.DefaultSizeOfEngine;
 import org.ehcache.impl.internal.store.heap.holders.OnHeapValueHolder;
+
+import org.ehcache.core.Ehcache;
 
 import net.bytebuddy.ByteBuddy;
 import net.bytebuddy.agent.ByteBuddyAgent;
@@ -28,6 +36,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class App implements CommandLineRunner {
+    private SizeOfEngine soe;
 
     private static class TestOnHeapValueHolder extends OnHeapValueHolder<ResourceValue> {
         long now;
@@ -51,6 +60,8 @@ public class App implements CommandLineRunner {
     }
 
     private void doInst() throws Exception {
+        log.info("doInst");
+
         ByteBuddyAgent.install(
             new ByteBuddyAgent.AttachmentProvider.Compound(
                 new EhcAttachmentProvider(),
@@ -66,19 +77,58 @@ public class App implements CommandLineRunner {
                 DefaultSizeOfEngine.class.getClassLoader(), 
                 ClassReloadingStrategy.fromInstalledAgent()
             );
+
+        soe = new DefaultSizeOfEngine(10000, 10000);
     }
 
-    @Override
-    public void run(String... args) throws Exception {
-        log.info("app start");
 
-        doInst();
+    private void doEhc() throws Exception {
+        log.info("doEhc");
 
-        SizeOfEngine soe = new DefaultSizeOfEngine(10000, 10000);
+        CacheManager cacheManager = CacheManagerBuilder.newCacheManagerBuilder()
+            .withCache("preConfigured",
+                CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class,
+                    ResourcePoolsBuilder.newResourcePoolsBuilder().heap(100, MemoryUnit.MB).build())
+                .build())
+            .build(true);
+
+        Cache<Long, String> preConfigured
+            = cacheManager.getCache("preConfigured", Long.class, String.class);
+
+        log.info("cache class: {}", preConfigured.getClass());
+
+        Ehcache ehc = (Ehcache) preConfigured;
+        // EhcacheBase stuff
+
+        /*Cache<Long, String> myCache = cacheManager.createCache("myCache",
+            CacheConfigurationBuilder.newCacheConfigurationBuilder(Long.class, String.class,
+                ResourcePoolsBuilder.heap(100)
+            ).build()
+        );
+
+        myCache.put(1L, "da one!");
+        String value = myCache.get(1L);
+        */
+
+        preConfigured.put(1L, "da one!");
+        String value = preConfigured.get(1L);
+
+        cacheManager.close();
+    }
+    
+    private void doSingle() throws Exception {
+        log.info("doSingle");
 
         // default - 224
         long s = soe.sizeof(Integer.valueOf(1), new TestOnHeapValueHolder(0));
         log.info("s: {}", s);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        doInst();
+        doSingle();
+        doEhc();
     }
 
     public static void main(String[] args) {
