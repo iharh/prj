@@ -1,5 +1,6 @@
-package cl.config;
+package cl.cache.config;
 
+import cl.cache.MyCacheListener;
 import cl.cache.ResourceKey;
 import cl.cache.ResourceValue;
 

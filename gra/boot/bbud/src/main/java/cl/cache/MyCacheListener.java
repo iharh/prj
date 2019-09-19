@@ -1,7 +1,4 @@
-package cl.config;
-
-import cl.cache.ResourceKey;
-import cl.cache.ResourceValue;
+package cl.cache;
 
 //import javax.cache.event.CacheEntryCreatedListener;
 import javax.cache.event.CacheEntryExpiredListener;
