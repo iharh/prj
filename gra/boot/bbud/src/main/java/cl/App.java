@@ -1,11 +1,15 @@
 package cl;
 
 import cl.bytebuddy.TimerAdvice;
+import cl.cache.ResourceCacheService;
 import cl.cache.ResourceKey;
 import cl.cache.ResourceValue;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 
 import org.ehcache.Cache;
 import org.ehcache.CacheManager;
@@ -38,9 +42,14 @@ import static net.bytebuddy.matcher.ElementMatchers.*;
 
 import lombok.extern.slf4j.Slf4j;
 
+@SpringBootApplication
+@EnableCaching
 @Slf4j
 public class App implements CommandLineRunner {
     private SizeOfEngine soe;
+
+    @Autowired
+    private ResourceCacheService resourceCacheService;
 
     private static class TestOnHeapValueHolder extends OnHeapValueHolder<ResourceValue> {
         long now;
@@ -130,9 +139,12 @@ public class App implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        log.info("resourceCacheService: {}", resourceCacheService);
+        /*
         doInst();
         doSingle();
         doEhc();
+        */
     }
 
     public static void main(String[] args) {

@@ -6,5 +6,6 @@ import lombok.Value;
 public class ResourceValue {
     boolean predefined;
     long ptrLexiconResGrp;
+
     long nativeSize;    
 }
