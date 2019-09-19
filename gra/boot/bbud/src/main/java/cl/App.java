@@ -94,6 +94,13 @@ public class App implements CommandLineRunner {
         soe = new DefaultSizeOfEngine(10000, 10000);
     }
 
+    private void doSingle() throws Exception {
+        log.info("doSingle");
+
+        // default - 224
+        long s = soe.sizeof(Integer.valueOf(1), new TestOnHeapValueHolder(0));
+        log.info("s: {}", s);
+    }
 
     private void doEhc() throws Exception {
         log.info("doEhc");
@@ -129,22 +136,19 @@ public class App implements CommandLineRunner {
         cacheManager.close();
     }
     
-    private void doSingle() throws Exception {
-        log.info("doSingle");
-
-        // default - 224
-        long s = soe.sizeof(Integer.valueOf(1), new TestOnHeapValueHolder(0));
-        log.info("s: {}", s);
+    private void doJcache() throws Exception {
+        log.info("doJcache");
+        final ResourceKey key = new ResourceKey("cmpId", 0);
+        final ResourceValue value = resourceCacheService.getResourceValue(key);
+        log.info("value: {}", value);
     }
 
     @Override
     public void run(String... args) throws Exception {
-        log.info("resourceCacheService: {}", resourceCacheService);
-        /*
         doInst();
         doSingle();
-        doEhc();
-        */
+        // doEhc();
+        doJcache();
     }
 
     public static void main(String[] args) {
