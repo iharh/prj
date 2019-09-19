@@ -9,6 +9,8 @@ ext {
         spring_security:            'org.springframework.security',
         spring_security_oauth:      'org.springframework.security.oauth',
 
+        cache_api:                  'javax.cache',
+
         junit_jupiter:              'org.junit.jupiter',
         assertj:                    'org.assertj',
     ]
@@ -23,6 +25,8 @@ ext {
         spring_security:            '5.1.4.RELEASE',
         spring_security_oauth2:     '2.3.5.RELEASE',
 
+        cache_api:                  '1.1.1',
+        
         junit:                      '5.5.1',
         assertj:                    '3.13.2',
     ]
@@ -51,6 +55,7 @@ ext {
         commons_lang3:              'org.apache.commons:commons-lang3:3.8.1',
         // ehcache
         ehcache:                    'org.ehcache:ehcache:3.8.1',
+        cache_api:                  "${groups.cache_api}:cache-api:${versions.cache_api}",
         // bytebuddy
         bytebuddy:                  "${groups.bytebuddy}:byte-buddy:${versions.bytebuddy}",
         bytebuddy_agent:            "${groups.bytebuddy}:byte-buddy-agent:${versions.bytebuddy}",
