@@ -24,6 +24,7 @@ apply from: "${gradleRootDir}/junit.gradle"
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator' // for manage
+    implementation 'org.springframework:spring-context-support:5.1.9.RELEASE' // maybe lowen the version
 
     implementation libraries.ehcache
     implementation libraries.cache_api

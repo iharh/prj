@@ -4,46 +4,61 @@ import cl.cache.MyCacheListener;
 import cl.cache.ResourceKey;
 import cl.cache.ResourceValue;
 
-import org.springframework.boot.autoconfigure.cache.JCacheManagerCustomizer;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.cache.jcache.JCacheCacheManager;
+
+import org.ehcache.config.CacheConfiguration;
+import org.ehcache.config.ResourcePools;
+import org.ehcache.config.builders.CacheConfigurationBuilder;
+import org.ehcache.config.builders.ResourcePoolsBuilder;
+import org.ehcache.config.units.MemoryUnit;
+import org.ehcache.core.config.DefaultConfiguration;
+import org.ehcache.jsr107.EhcacheCachingProvider;
 
 import javax.cache.CacheManager;
-import javax.cache.configuration.MutableConfiguration;
-import javax.cache.configuration.MutableCacheEntryListenerConfiguration;
-import javax.cache.configuration.FactoryBuilder;
-import javax.cache.expiry.CreatedExpiryPolicy;
-import javax.cache.expiry.Duration;
+import javax.cache.Caching;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Configuration
+@Slf4j
 public class MyCacheConfig {
-
-    @Bean
-    public JCacheManagerCustomizer cacheManagerCustomizer() {
-        return new JCacheManagerCustomizer() {
-            @Override
-            public void customize(CacheManager cacheManager) {
-                FactoryBuilder.SingletonFactory<MyCacheListener> listenerFactory =
-                    new FactoryBuilder.SingletonFactory<MyCacheListener>(myCacheListener());
-
-                cacheManager.createCache("myCache", new MutableConfiguration<ResourceKey, ResourceValue>()
-                    // TODO: need a memory-based config here !!!
-                    .setExpiryPolicyFactory(CreatedExpiryPolicy.factoryOf(new Duration(TimeUnit.MINUTES, 1)))
-                    .setStoreByValue(false)
-                    .setStatisticsEnabled(true)
-                    .addCacheEntryListenerConfiguration(
-                        new MutableCacheEntryListenerConfiguration<ResourceKey, ResourceValue>(
-                            listenerFactory, null, false, true
-                    )));
-            }
-        };
-    }
 
     @Bean
     public MyCacheListener myCacheListener() {
         return new MyCacheListener();
+    }
+
+    @Bean
+    public JCacheCacheManager jCacheCacheManager() {
+        return new JCacheCacheManager(cacheManager());
+    }
+
+    @Bean(destroyMethod = "close")
+    public CacheManager cacheManager() {
+        log.info("in cacheManager bean creation");
+
+        ResourcePools resourcePools = ResourcePoolsBuilder.newResourcePoolsBuilder()
+            .heap(100, MemoryUnit.MB)
+            .build();
+
+        CacheConfiguration<ResourceKey,ResourceValue> cacheConfiguration = CacheConfigurationBuilder.newCacheConfigurationBuilder(
+            ResourceKey.class,
+            ResourceValue.class,
+            resourcePools).
+            build();
+
+        Map<String, CacheConfiguration<?, ?>> caches = new HashMap<>();
+        caches.put("myCache", cacheConfiguration);
+
+        EhcacheCachingProvider provider = (EhcacheCachingProvider) Caching.getCachingProvider("org.ehcache.jsr107.EhcacheCachingProvider");
+        org.ehcache.config.Configuration configuration = new DefaultConfiguration(caches, provider.getDefaultClassLoader());
+
+        return provider.getCacheManager(provider.getDefaultURI(), (org.ehcache.config.Configuration) configuration);
     }
 }
