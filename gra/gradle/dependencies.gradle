@@ -11,6 +11,8 @@ ext {
 
         cache_api:                  'javax.cache',
 
+        javacpp:                    'org.bytedeco',
+        
         junit_jupiter:              'org.junit.jupiter',
         assertj:                    'org.assertj',
     ]
@@ -26,6 +28,8 @@ ext {
         spring_security_oauth2:     '2.3.5.RELEASE',
 
         cache_api:                  '1.1.1',
+
+        javacpp:                    '1.5.1-1',
         
         junit:                      '5.5.1',
         assertj:                    '3.13.2',
@@ -59,6 +63,8 @@ ext {
         // bytebuddy
         bytebuddy:                  "${groups.bytebuddy}:byte-buddy:${versions.bytebuddy}",
         bytebuddy_agent:            "${groups.bytebuddy}:byte-buddy-agent:${versions.bytebuddy}",
+        // javacpp
+        javacpp:                    "${groups.javacpp}:javacpp:${versions.javacpp}",
         // junit
         junit_jupiter_api:          "${groups.junit_jupiter}:junit-jupiter-api:${versions.junit}",
         junit_jupiter_params:       "${groups.junit_jupiter}:junit-jupiter-params:${versions.junit}",
