@@ -5,11 +5,11 @@
 namespace simple
 {
 
-class SimpleNativeImpl
+class SimpleProviderImpl
 {
 public:
     jlong
-    getSimpleNum();
+    getSimpleNum0();
     //{
     //    return 17;
     //}

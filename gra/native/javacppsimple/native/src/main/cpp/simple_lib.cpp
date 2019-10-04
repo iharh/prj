@@ -4,7 +4,7 @@ namespace simple
 {
 
 jlong
-SimpleNativeImpl::getSimpleNum()
+SimpleProviderImpl::getSimpleNum0()
 {
     return 17;
 }

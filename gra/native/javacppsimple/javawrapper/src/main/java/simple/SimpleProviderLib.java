@@ -11,7 +11,7 @@ import org.bytedeco.javacpp.annotation.Namespace;
     //, @Platform(value = "windows-x86_64", preload = { "icudt49", "icuuc49", "icuin49", "icuio49" })
     //, @Platform(value = "linux-x86_64", preload = { "icudata", "icuuc", "icui18n", "icuio" })
 })
-@Namespace("customrescache")
+@Namespace("simple")
 public class SimpleProviderLib {
 
     public static class SimpleProviderImpl extends Pointer implements SimpleProvider {
