@@ -4,13 +4,9 @@ plugins {
 
 apply from: "$gradleDir/native.gradle"
 
-ext {
-    javacppGenDir = "${project(':javawrapper').buildDir}/javacpp"
-}
-
 library {
     tasks.withType(CppCompile).configureEach {
-        dependsOn(':javawrapper:generateJavacpp')
+        dependsOn(javaNativeApiPrj.generateJavacpp)
         includes.from(javaInclude, javaPlatformInclude)
         source.from(
             "$javacppGenDir/jnijavacpp.cpp",

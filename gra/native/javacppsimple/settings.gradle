@@ -1,2 +1,2 @@
-include('javawrapper')
+include('javanativeapi')
 include('nativeprovider')

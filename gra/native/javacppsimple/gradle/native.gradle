@@ -4,4 +4,7 @@ ext {
 
     javaInclude = extractJavaDirForFile('jni.h')
     javaPlatformInclude = extractJavaDirForFile('jni_md.h')
+
+    javaNativeApiPrj = project(':javanativeapi')
+    javacppGenDir = "${javaNativeApiPrj.buildDir}/javacpp"
 }
