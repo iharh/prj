@@ -1,22 +1,17 @@
 plugins {
     id 'cpp-library'
-    // id 'maven-publish'
 }
 
 ext {
-    repoRootDir = "${rootProject.getRootDir()}/../.."
-    gradleRootDir = "${repoRootDir}/gradle"
-
-    // TODO: move this stuff out to $gradleRootDir
-    javaParent = file(System.getProperty("java.home")).getParentFile().getCanonicalFile()
-    extractJavaDirForFile = { fileName -> fileTree(javaParent) { include "**/$fileName" }.getAt(0).getParentFile() }
-
-    javaInclude = extractJavaDirForFile('jni.h')
-    javaPlatformInclude = extractJavaDirForFile('jni_md.h')
+    // TODO: move to the root level
+    gradleRootDir = "${rootProject.getRootDir()}/gradle"
 }
+
+apply from: "$gradleRootDir/native.gradle"
 
 library {
     tasks.withType(CppCompile).configureEach {
+        dependsOn(':javawrapper:generateJavacpp')
         includes.from(javaInclude, javaPlatformInclude)
     }
 }

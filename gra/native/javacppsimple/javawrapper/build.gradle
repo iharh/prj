@@ -51,5 +51,3 @@ task generateJavacpp(dependsOn: compileJava) { // compileJava, processResources,
             .build() // returns the array of produced files
     }
 }
-
-tasks.build.dependsOn('generateJavacpp')
