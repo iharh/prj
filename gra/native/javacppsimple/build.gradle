@@ -1,0 +1,7 @@
+ext {
+    gradleDir = "${rootProject.getRootDir()}/gradle"
+}
+
+//jar {
+//    enabled = false
+//}
