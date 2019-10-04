@@ -32,9 +32,9 @@ dependencies {
     implementation libraries.javacpp
 }
 
-jar {
-    enabled = false
-}
+//jar {
+//    enabled = false
+//}
 
 def mainClassName = 'simple.SimpleProviderLib'
 

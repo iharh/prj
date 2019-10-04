@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+apply from: "$gradleRootDir/repositories.gradle"
+apply from: "$gradleRootDir/dependencies.gradle"
+apply from: "$gradleDir/native.gradle"
+
+dependencies {
+    compileOnly javaNativeApiPrj
+    testCompileOnly javaNativeApiPrj
+
+    // javacpp
+    compile     libraries.javacpp
+
+    // junit
+    testCompile libraries.junit_jupiter_api
+    testCompile libraries.junit_jupiter_params
+    testRuntime libraries.junit_jupiter_engine
+    // assertj
+    testCompile libraries.commons_io
+    testCompile libraries.assertj_core
+    //testCompile libraries.logback_classic
+}
+
+// compileTestJava.dependsOn(javaNativeApiPrj.tasks('build'))
