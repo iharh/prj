@@ -2,7 +2,7 @@
 
 #include "stdafx.h"
 
-namespace lib
+namespace simple
 {
 
 class SimpleNativeImpl
@@ -15,4 +15,4 @@ public:
     //}
 };
 
-} // lib
+} // simple

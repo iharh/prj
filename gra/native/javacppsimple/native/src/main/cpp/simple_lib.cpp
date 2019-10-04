@@ -1,6 +1,6 @@
 #include "simple_lib.h"
 
-namespace lib
+namespace simple
 {
 
 jlong
@@ -9,4 +9,4 @@ SimpleNativeImpl::getSimpleNum()
     return 17;
 }
 
-} // lib
+} // simple

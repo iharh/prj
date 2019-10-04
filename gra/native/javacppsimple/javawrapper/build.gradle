@@ -23,9 +23,33 @@ plugins {
     id 'maven-publish'
 }
 
+ext {
+    javacppGenDir  = "$buildDir/javacpp"
+    javacppGenFile = file(javacppGenDir)
+}
+
 dependencies {
     implementation libraries.javacpp
 }
 
-// assembleRelease ... stripSymbolsRelease
-// tasks.assemble.dependsOn('linkRelease')
+jar {
+    enabled = false
+}
+
+def mainClassName = 'simple.SimpleProviderLib'
+
+task generateJavacpp(dependsOn: compileJava) { // compileJava, processResources, classes
+    ext.headerDir = javacppGenFile
+    ext.sourceDir = javacppGenFile
+    doLast {
+        new org.bytedeco.javacpp.tools.Builder()
+            .classPaths(compileJava.destinationDir.toString())
+            .classesOrPackages(mainClassName)
+            .outputDirectory(javacppGenDir)
+            .deleteJniFiles(false)
+            .compile(false)
+            .build() // returns the array of produced files
+    }
+}
+
+tasks.build.dependsOn('generateJavacpp')
