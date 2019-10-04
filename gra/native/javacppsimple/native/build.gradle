@@ -2,12 +2,7 @@ plugins {
     id 'cpp-library'
 }
 
-ext {
-    // TODO: move to the root level
-    gradleRootDir = "${rootProject.getRootDir()}/gradle"
-}
-
-apply from: "$gradleRootDir/native.gradle"
+apply from: "$gradleDir/native.gradle"
 
 library {
     tasks.withType(CppCompile).configureEach {
