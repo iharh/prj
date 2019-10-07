@@ -4,11 +4,13 @@ plugins {
 
 apply from: "$gradleRootDir/repositories.gradle"
 apply from: "$gradleRootDir/dependencies.gradle"
+apply from: "$gradleRootDir/junit.gradle"
 apply from: "$gradleDir/native.gradle"
 
 dependencies {
     compileOnly javaNativeApiPrj
-    testCompileOnly javaNativeApiPrj
+    //testCompileOnly javaNativeApiPrj -> leads to ClassNotFoundException
+    testImplementation javaNativeApiPrj
 
     // javacpp
     compile     libraries.javacpp
@@ -22,5 +24,17 @@ dependencies {
     testCompile libraries.assertj_core
     //testCompile libraries.logback_classic
 }
+
+test {
+    // def npBuildDir = project(':nativeprovider').buildDir
+    // def testJavaCP = [$npBuildDir/].join(File.pathSeparator)
+
+    // systemProperty 'java.library.path', testJavaCP
+    // systemProperty 'org.bytedeco.javacpp.logger.debug', 'true'
+
+    // environment = [ 'LD_LIBRARY_PATH' : testJavaCP ]
+}
+
+test.dependsOn project(':nativeprovider').getTasksByName('assemble', false)
 
 // compileTestJava.dependsOn(javaNativeApiPrj.tasks('build'))

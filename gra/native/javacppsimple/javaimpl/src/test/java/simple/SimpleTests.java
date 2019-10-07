@@ -35,6 +35,7 @@ public class SimpleTests {
         printProp("java.library.path");
 
         long simpleNum = lib.getSimpleNum();
+        assertThat(1).isEqualTo(0);
         assertThat(simpleNum).isEqualTo(0);
     }
 }
