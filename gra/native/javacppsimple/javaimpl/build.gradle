@@ -26,15 +26,16 @@ dependencies {
 }
 
 test {
-    // def npBuildDir = project(':nativeprovider').buildDir
-    // def testJavaCP = [$npBuildDir/].join(File.pathSeparator)
+    dependsOn project(':jniSimpleProviderLib').getTasksByName('assemble', false)
 
-    // systemProperty 'java.library.path', testJavaCP
-    // systemProperty 'org.bytedeco.javacpp.logger.debug', 'true'
+    def nativeProviderBuildDir = project(':jniSimpleProviderLib').buildDir
+    def testJavaCP = ["$nativeProviderBuildDir/lib/main/debug"].join(File.pathSeparator)
 
-    // environment = [ 'LD_LIBRARY_PATH' : testJavaCP ]
+    systemProperty 'java.library.path', testJavaCP
+    systemProperty 'org.bytedeco.javacpp.logger.debug', 'true'
+
+    environment = [ 'LD_LIBRARY_PATH' : testJavaCP ]
 }
 
-test.dependsOn project(':nativeprovider').getTasksByName('assemble', false)
-
+// test.dependsOn project(':nativeprovider').getTasksByName('assemble', false)
 // compileTestJava.dependsOn(javaNativeApiPrj.tasks('build'))

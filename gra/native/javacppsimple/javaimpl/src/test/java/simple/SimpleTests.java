@@ -29,13 +29,12 @@ public class SimpleTests {
     }
 
     @Test
-    void customEntityType1() throws Exception {
+    void customTest1() throws Exception {
         printEnv("PATH");
         printEnv("LD_LIBRARY_PATH");
         printProp("java.library.path");
 
         long simpleNum = lib.getSimpleNum();
-        assertThat(1).isEqualTo(0);
-        assertThat(simpleNum).isEqualTo(0);
+        assertThat(simpleNum).isEqualTo(17);
     }
 }
