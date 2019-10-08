@@ -42,6 +42,14 @@ sourceSets {
 
 jar {
     dependsOn nativeProviderBuildTasks
+    doLast {
+        println "!!! include the following shared libs as resources:"
+        (new File(nativeProviderLibDir)).eachFileRecurse (groovy.io.FileType.FILES) { println it.canonicalPath }
+        copy {
+            from nativeProviderLibDir
+            into "${buildDir}/resources/main"
+        }
+    }
 }
 
 test {
