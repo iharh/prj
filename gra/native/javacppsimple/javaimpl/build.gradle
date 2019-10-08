@@ -32,30 +32,10 @@ dependencies {
     testCompile libraries.assertj_core
 }
 
-sourceSets {
-    main {
-        resources {
-            srcDirs += [nativeProviderLibDir] // TODO: executed early at the config-stage !!!
-        }
-    }
-}
-
 jar {
     dependsOn nativeProviderBuildTasks
     from (nativeProviderLibDir) {
-        into ("blabla")
-    }
-    eachFile { details ->
-        println "!!! add details.path = $details.path"
-    }
-    doLast {
-        // sleep(3 * 1000)
-        println "!!! include the following shared libs as resources:"
-        (new File(nativeProviderLibDir)).eachFileRecurse (groovy.io.FileType.FILES) { println it.canonicalPath }
-        copy {
-            from nativeProviderLibDir
-            into "${buildDir}/resources/main"
-        }
+        into ("simple/linux-x86_64")
     }
 }
 
