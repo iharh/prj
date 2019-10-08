@@ -7,6 +7,13 @@ apply from: "$gradleRootDir/dependencies.gradle"
 apply from: "$gradleRootDir/junit.gradle"
 apply from: "$gradleDir/native.gradle"
 
+ext {
+    nativeProviderPrj = project(':jniSimpleProviderLib')
+    nativeProviderBuildDir = nativeProviderPrj.buildDir
+    nativeProviderLibDir = "$nativeProviderBuildDir/lib/main/debug"
+    nativeProviderBuildTasks = nativeProviderPrj.getTasksByName('assembleDebug', false)
+}
+
 dependencies {
     compileOnly javaNativeApiPrj
     //testCompileOnly javaNativeApiPrj -> leads to ClassNotFoundException
@@ -25,11 +32,22 @@ dependencies {
     //testCompile libraries.logback_classic
 }
 
-test {
-    dependsOn project(':jniSimpleProviderLib').getTasksByName('assemble', false)
+sourceSets {
+    main {
+        resources {
+            srcDirs += [nativeProviderLibDir] // 'src/main/resources',
+        }
+    }
+}
 
-    def nativeProviderBuildDir = project(':jniSimpleProviderLib').buildDir
-    def testJavaCP = ["$nativeProviderBuildDir/lib/main/debug"].join(File.pathSeparator)
+jar {
+    dependsOn nativeProviderBuildTasks
+}
+
+test {
+    dependsOn nativeProviderBuildTasks
+
+    def testJavaCP = [nativeProviderLibDir].join(File.pathSeparator)
 
     systemProperty 'java.library.path', testJavaCP
     systemProperty 'org.bytedeco.javacpp.logger.debug', 'true'
