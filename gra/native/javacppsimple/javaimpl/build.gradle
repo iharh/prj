@@ -13,12 +13,14 @@ ext {
 
     nativeProviderLibDir = "$nativeProviderBuildDir/lib/main/debug"
     nativeProviderBuildTasks = nativeProviderPrj.getTasksByName('assembleDebug', false)
+
+    javaNativeApiBuildDir = project(':javanativeapi').buildDir
 }
 
 dependencies {
-    compileOnly javaNativeApiPrj
+    implementation javaNativeApiPrj
     //testCompileOnly javaNativeApiPrj -> leads to ClassNotFoundException
-    testImplementation javaNativeApiPrj
+    //testImplementation javaNativeApiPrj
 
     // javacpp
     compile     libraries.javacpp
@@ -35,7 +37,11 @@ dependencies {
 jar {
     dependsOn nativeProviderBuildTasks
     from (nativeProviderLibDir) {
-        into ("simple/linux-x86_64")
+        into ('simple/linux-x86_64')
+    }
+    from ("$javaNativeApiBuildDir/classes/java/main")
+    manifest {
+        attributes 'Main-Class': 'simple.Main'
     }
 }
 
