@@ -4,6 +4,7 @@ import cl.cache.MyCacheListener;
 import cl.cache.ResourceKey;
 import cl.cache.ResourceValue;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.cache.jcache.JCacheCacheManager;
@@ -28,6 +29,8 @@ import lombok.extern.slf4j.Slf4j;
 @Configuration
 @Slf4j
 public class MyCacheConfig {
+    @Value("${my.cache.heap.bytes}")
+    private long myCacheHeapBytes;
 
     @Bean
     public MyCacheListener myCacheListener() {
@@ -41,7 +44,7 @@ public class MyCacheConfig {
 
     @Bean(destroyMethod = "close")
     public CacheManager cacheManager() {
-        log.info("in cacheManager bean creation");
+        log.info("in cacheManager creation myCacheHeapBytes: {}", myCacheHeapBytes);
 
         ResourcePools resourcePools = ResourcePoolsBuilder.newResourcePoolsBuilder()
             .heap(100, MemoryUnit.MB)
