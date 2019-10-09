@@ -66,6 +66,7 @@ ext {
         // javacpp
         javacpp:                    "${groups.javacpp}:javacpp:${versions.javacpp}",
         // junit
+        junit_jupiter:              "${groups.junit_jupiter}:junit-jupiter:${versions.junit}",
         junit_jupiter_api:          "${groups.junit_jupiter}:junit-jupiter-api:${versions.junit}",
         junit_jupiter_params:       "${groups.junit_jupiter}:junit-jupiter-params:${versions.junit}",
         junit_jupiter_engine:       "${groups.junit_jupiter}:junit-jupiter-engine:${versions.junit}",
