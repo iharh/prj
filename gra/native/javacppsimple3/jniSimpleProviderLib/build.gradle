@@ -1,0 +1,28 @@
+plugins {
+    id 'cpp-library'
+    id 'maven-publish'
+}
+
+apply from: "$gradleDir/native.gradle"
+
+library {
+    tasks.withType(CppCompile).configureEach {
+        dependsOn(javaNativeApiPrj.generateJavacpp)
+        includes.from(javaInclude, javaPlatformInclude)
+        source.from(
+            "$javacppGenDir/jnijavacpp.cpp",
+            "$javacppGenDir/jniSimpleProviderLib.cpp"
+        )
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            url = "$buildDir/repo"
+        }
+    }
+}
+
+// assembleRelease ... stripSymbolsRelease
+// tasks.assemble.dependsOn('linkRelease')

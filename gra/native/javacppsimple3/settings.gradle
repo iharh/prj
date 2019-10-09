@@ -1,0 +1,3 @@
+include('javanativeapi')
+include('jniSimpleProviderLib')
+include('javaimpl')

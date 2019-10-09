@@ -1,0 +1,53 @@
+buildscript {
+    ext {
+        repoRootDir = "${rootProject.getRootDir()}/../.."
+        gradleRootDir = "${repoRootDir}/gradle"
+
+        // TODO: move this stuff out to $gradleRootDir
+        javaParent = file(System.getProperty("java.home")).getParentFile().getCanonicalFile()
+        extractJavaDirForFile = { fileName -> fileTree(javaParent) { include "**/$fileName" }.getAt(0).getParentFile() }
+
+        javaInclude = extractJavaDirForFile('jni.h')
+        javaPlatformInclude = extractJavaDirForFile('jni_md.h')
+    }
+    apply from: "$gradleRootDir/repositories.gradle"
+    apply from: "$gradleRootDir/dependencies.gradle"
+
+    dependencies {
+        classpath libraries.javacpp
+    }
+}
+
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+ext {
+    javacppGenDir  = "$buildDir/javacpp"
+    javacppGenFile = file(javacppGenDir)
+}
+
+dependencies {
+    implementation libraries.javacpp
+}
+
+//jar {
+//    enabled = false
+//}
+
+def mainClassName = 'simple.SimpleProviderLib'
+
+task generateJavacpp(dependsOn: compileJava) { // compileJava, processResources, classes
+    ext.headerDir = javacppGenFile
+    ext.sourceDir = javacppGenFile
+    doLast {
+        new org.bytedeco.javacpp.tools.Builder()
+            .classPaths(compileJava.destinationDir.toString())
+            .classesOrPackages(mainClassName)
+            .outputDirectory(javacppGenDir)
+            .deleteJniFiles(false)
+            .compile(false)
+            .build() // returns the array of produced files
+    }
+}
