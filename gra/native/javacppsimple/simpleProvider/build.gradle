@@ -23,12 +23,9 @@ plugins {
 }
 
 ext {
-    javacppGenDir  = "$buildDir/javacpp"
-    javacppGenFile = file(javacppGenDir)
-
     nativeProviderPrj = project(':jniSimpleProviderLib')
-    nativeProviderLibDir = "${nativeProviderPrj.buildDir}/lib/main/debug"
-    nativeProviderBuildTasks = nativeProviderPrj.getTasksByName('assembleDebug', false)
+    nativeProviderLibDir = "${nativeProviderPrj.buildDir}/lib/main/release"
+    nativeProviderBuildTasks = nativeProviderPrj.getTasksByName('assembleRelease', false)
 }
 
 apply plugin: 'org.springframework.boot'
