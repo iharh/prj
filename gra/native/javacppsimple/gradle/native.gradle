@@ -1,4 +1,4 @@
 ext {
-    javaNativeApiPrj = project(':javanativeapi')
-    javacppGenDir = "${javaNativeApiPrj.buildDir}/javacpp"
+    javaProviderPrj = project(':simpleProvider')
+    javacppGenDir = "${javaProviderPrj.buildDir}/javacpp"
 }

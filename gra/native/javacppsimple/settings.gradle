@@ -1,2 +1,2 @@
-include('javanativeapi')
 include('jniSimpleProviderLib')
+include('simpleProvider')

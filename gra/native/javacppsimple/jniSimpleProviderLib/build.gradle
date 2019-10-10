@@ -7,7 +7,7 @@ apply from: "$gradleDir/native.gradle"
 
 library {
     tasks.withType(CppCompile).configureEach {
-        dependsOn(javaNativeApiPrj.generateJavacpp)
+        dependsOn(javaProviderPrj.generateJavacpp)
         includes.from(javaInclude, javaPlatformInclude)
         source.from(
             "$javacppGenDir/jnijavacpp.cpp",
