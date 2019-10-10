@@ -4,20 +4,12 @@ buildscript {
     }
     ext {
         springBootVersion = '2.1.3.RELEASE'
-
-        repoRootDir = "${rootProject.getRootDir()}/../.."
-        gradleRootDir = "${repoRootDir}/gradle"
-
-        // TODO: move this stuff out to $gradleRootDir
-        javaParent = file(System.getProperty("java.home")).getParentFile().getCanonicalFile()
-        extractJavaDirForFile = { fileName -> fileTree(javaParent) { include "**/$fileName" }.getAt(0).getParentFile() }
-
-        javaInclude = extractJavaDirForFile('jni.h')
-        javaPlatformInclude = extractJavaDirForFile('jni_md.h')
+        gradleRootDir = "${rootProject.getRootDir()}/../../gradle"
     }
 
     apply from: "$gradleRootDir/repositories.gradle"
     apply from: "$gradleRootDir/dependencies.gradle"
+    apply from: "$gradleRootDir/jni.gradle"
 
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
@@ -39,8 +31,6 @@ ext {
 
     nativeProviderLibDir = "$nativeProviderBuildDir/lib/main/debug"
     nativeProviderBuildTasks = nativeProviderPrj.getTasksByName('assembleDebug', false)
-
-    javaNativeApiBuildDir = project(':javanativeapi').buildDir
 }
 
 apply plugin: 'org.springframework.boot'
@@ -56,10 +46,6 @@ dependencyManagement {
 }
 
 dependencies {
-    implementation  javaNativeApiPrj
-    //testCompileOnly javaNativeApiPrj -> leads to ClassNotFoundException
-    //testImplementation javaNativeApiPrj
-
     // javacpp
     implementation  libraries.javacpp
 
@@ -75,7 +61,8 @@ dependencies {
 
 def mainClassName = 'simple.SimpleProviderLib'
 
-task generateJavacpp(dependsOn: compileJava) { // compileJava, processResources, classes
+// called by jniSimpleProviderLib
+task generateJavacpp(dependsOn: compileJava) {
     ext.headerDir = javacppGenFile
     ext.sourceDir = javacppGenFile
     doLast {
