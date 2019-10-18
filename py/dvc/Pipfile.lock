@@ -100,11 +100,11 @@
         },
         "dvc": {
             "hashes": [
-                "sha256:5f9a6b9c449ef21e26b0ff5403855446fbb77777cd028c706052662ea36106f3",
-                "sha256:604bcb90a572bea3698a13de0eb99bfe324ea94b75cd003c73ab1cf1a843731a"
+                "sha256:376fff31da0954cd8be766db434f58f1a0a8571c19f8a9416baa8bf2e1ea9a3d",
+                "sha256:7dacfb53e87fa4d2686a7560d0dc6ac6677588dc18690a89f071df7170b096cf"
             ],
             "index": "pypi",
-            "version": "==0.61.2"
+            "version": "==0.63.3"
         },
         "flufl.lock": {
             "hashes": [
@@ -122,9 +122,9 @@
         },
         "future": {
             "hashes": [
-                "sha256:67045236dcfd6816dc439556d009594abf643e5eb48992e36beac09c2ca659b8"
+                "sha256:858e38522e8fd0d3ce8f0c1feaf0603358e366d5403209674c7b617fa0c24093"
             ],
-            "version": "==0.17.1"
+            "version": "==0.18.1"
         },
         "gitdb2": {
             "hashes": [
@@ -142,10 +142,10 @@
         },
         "google-api-core": {
             "hashes": [
-                "sha256:2c23fbc81c76b941ffb71301bb975ed66a610e9b03f918feacd1ed59cf43a6ec",
-                "sha256:b2b91107bcc3b981633c89602b46451f6474973089febab3ee51c49cb7ae6a1f"
+                "sha256:b95895a9398026bc0500cf9b4a3f82c3f72c3f9150b26ff53af40c74e91c264a",
+                "sha256:df8adc4b97f5ab4328a0e745bee77877cf4a7d4601cb1cd5959d2bbf8fba57aa"
             ],
-            "version": "==1.14.2"
+            "version": "==1.14.3"
         },
         "google-auth": {
             "hashes": [
@@ -310,10 +310,10 @@
         },
         "pyasn1-modules": {
             "hashes": [
-                "sha256:43c17a83c155229839cc5c6b868e8d0c6041dba149789b6d6e28801c64821722",
-                "sha256:e30199a9d221f1b26c885ff3d87fd08694dbbe18ed0e8e405a2a7126d30ce4c0"
+                "sha256:0c35a52e00b672f832e5846826f1fb7507907f7d52fba6faa9e3c4cbe874fe4b",
+                "sha256:b6ada4f840fe51abf5a6bd545b45bf537bea62221fa0dde2e8a553ed9f06a4e3"
             ],
-            "version": "==0.2.6"
+            "version": "==0.2.7"
         },
         "pyfiglet": {
             "hashes": [
