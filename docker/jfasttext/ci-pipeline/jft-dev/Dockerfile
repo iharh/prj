@@ -47,12 +47,12 @@ ENV ANT_HOME /opt/apache-ant-1.10.5
 ENV ANT_OPTS -server -Xms256m -Xmx512m -XX:NewSize=160m -XX:+UseParallelGC -XX:ParallelGCThreads=1 -Duser.language=en -Duser.country=US -Dfile.encoding=UTF-8
 ENV PATH ${PATH}:${ANT_HOME}/bin
 
-RUN MVN_VER='3.6.0' \
+RUN MVN_VER='3.6.2' \
  && curl -LO https://www-us.apache.org/dist/maven/maven-3/${MVN_VER}/binaries/apache-maven-${MVN_VER}-bin.tar.gz \
  && tar -xzf apache-maven-${MVN_VER}-bin.tar.gz -C /opt \
  && rm -f apache-maven-${MVN_VER}-bin.tar.gz
 
-ENV M2_HOME /opt/apache-maven-3.6.0
+ENV M2_HOME /opt/apache-maven-3.6.2
 ENV PATH ${PATH}:${M2_HOME}/bin
 
 # Accept id through --build-arg and create jft user matching current logon user ID
