@@ -1,1 +1,21 @@
-db.commandHelp()
+db.getCollection('oauth.clientDetails').insertOne({
+    "_class" : "com.clarabridge.authentication.entity.OAuthClientDetailsEntity",
+    "clientId" : "nlpsvc",
+    "clientSecret" : "$2a$10$/fYPnwdo3/kY/0BeQZBfnupkz8BDAlNsbgTfINVStpUD3n.woevVO",
+    "applicationKind" : "npl-service",
+    "scope" : [
+        {
+            "name" : "cx-designer.api[group='lexicons-nlpsvc-export']",
+            "authorizedGrantTypes" : [
+                "client_credentials"
+            ],
+            "accessTokenValiditySeconds" : -1.0,
+            "explicit" : true
+        }
+    ],
+    "authorizedGrantTypes" : [
+        "client_credentials"
+    ],
+    "additionalInformation" : {
+    }
+})

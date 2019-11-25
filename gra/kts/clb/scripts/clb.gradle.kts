@@ -41,7 +41,8 @@ val clbCfg by tasks.creating {
                "nl", "pt", "ro", "ru", "th", "tl", "tr", "vi", "zh", "@u", "un").forEach {
             serviceCustomProps.setProperty("feign.fxservice.${it}.host", "http://${fxsvcHost}:8080")
         }
-        serviceCustomProps.setProperty("security.oauth2.baseUrl", "http://${fxsvcHost}:8091")
+        serviceCustomProps.setProperty("security.oauth2.version", "V2")
+        serviceCustomProps.setProperty("security.oauth2.baseUrl", "http://${fxsvcHost}:8081")
         propServiceCustomFile.outputStream().use { serviceCustomProps.store(it, null) }
     }
 }
