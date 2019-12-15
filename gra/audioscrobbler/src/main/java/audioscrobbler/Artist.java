@@ -1,20 +1,20 @@
 package audioscrobbler;
 
-import java.util.List;
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Artist {
+import java.util.List;
 
+public class Artist {
     @SerializedName("name")
     @Expose
     private String name;
 
+    /*
     @SerializedName("image")
     @Expose
     private List<Image> image = null;
-
+    */
 
 
     public String getName() {
@@ -25,6 +25,7 @@ public class Artist {
         this.name = name;
     }
 
+    /*
     public List<Image> getImage() {
         return image;
     }
@@ -32,6 +33,5 @@ public class Artist {
     public void setImage(List<Image> image) {
         this.image = image;
     }
-
-
+    */
 }

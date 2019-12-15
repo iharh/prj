@@ -34,28 +34,23 @@ public class App {
         Retrofit retrofit = getRetrofitClient();
         MusicInterface musicInterface = retrofit.create(MusicInterface.class);
 
-        Call call = musicInterface.getArtistString("artist.getinfo","Cher","6c8dc87e402c8f96b8369f927ca0c1be", "json");
+        try {
+            //Call callDebug = musicInterface.getArtistInfoForDebug("artist.getinfo","Cher","6c8dc87e402c8f96b8369f927ca0c1be", "json");
+            //Response<String> responseDebug = callDebug.execute();
+            //System.out.println("got debug response body: " + responseDebug.body().toString());
 
-        call.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                System.out.println("Response: " + response.body().toString());
-                //Toast.makeText()
-                /*
-                if (response.isSuccessful()){
-                    if (response.body() != null){
-                        Log.i("onSuccess", response.body().toString());
-                    }else{
-                        Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
-                    }
-                }
-                */
-            }
-            @Override
-            public void onFailure(Call call, Throwable t) {
-                System.out.println("onFailure !!!");
-            }
-        });
+            Call callArtist = musicInterface.getArtistInfo("artist.getinfo", "Cher", "6c8dc87e402c8f96b8369f927ca0c1be", "json");
+            Response<ArtistInfo> responseArtistInfo = callArtist.execute();
+            System.out.println("got response: " + responseArtistInfo);
+            ArtistInfo artistInfo = responseArtistInfo.body();
+            System.out.println("got artistInfo: " + artistInfo);
+            final Artist artist = artistInfo.getArtist();
+            System.out.println("got artist: " + artist);
+            final String artistName = artist.getName();
+            System.out.println("got artist name: " + artistName);
+        } catch (IOException e) {
+            System.out.println("caught IOException: " + e);
+        }
     }
 
     public static void main(String[] args) {
