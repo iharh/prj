@@ -35,10 +35,6 @@ public class App {
         MusicInterface musicInterface = retrofit.create(MusicInterface.class);
 
         try {
-            //Call callDebug = musicInterface.getArtistInfoForDebug("artist.getinfo","Cher","6c8dc87e402c8f96b8369f927ca0c1be", "json");
-            //Response<String> responseDebug = callDebug.execute();
-            //System.out.println("got debug response body: " + responseDebug.body().toString());
-
             Call callArtist = musicInterface.getArtistInfo("artist.getinfo", "Cher", "6c8dc87e402c8f96b8369f927ca0c1be", "json");
             Response<ArtistInfo> responseArtistInfo = callArtist.execute();
             System.out.println("got response: " + responseArtistInfo);
@@ -48,6 +44,10 @@ public class App {
             System.out.println("got artist: " + artist);
             final String artistName = artist.getName();
             System.out.println("got artist name: " + artistName);
+
+            Call callDebug = musicInterface.getArtistInfoForDebug("artist.getinfo","Cher","6c8dc87e402c8f96b8369f927ca0c1be", "json");
+            Response<String> responseDebug = callDebug.execute();
+            System.out.println("got debug response body: " + responseDebug.body().toString());
         } catch (IOException e) {
             System.out.println("caught IOException: " + e);
         }
