@@ -1,0 +1,68 @@
+server:
+  port: 8123
+
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          contentType: application/x-protobuf
+          consumer:
+            concurrency: 5
+            maxAttempts: 1
+        output:
+          contentType: application/x-protobuf
+      rabbit:
+        bindings:
+          input:
+            consumer:
+              declareExchange: false
+              bindQueue: false
+              transacted: true
+              republishToDlq: true
+          output:
+            producer:
+              declareExchange: false
+              bindQueue: false
+              trunsacted: true
+              headerPatterns:
+                - "X-Span-Export"
+                - "X-B3-ParentSpanId"
+                - "X-B3-TraceId"
+                - "X-B3-SpanId"
+                - "contentType"
+              routingKeyExpression: headers['routingKey']
+  zipkin:
+    enabled: false
+retryAttempts: 3
+
+---
+spring:
+  profiles: zipkin
+  zipkin:
+    enabled: true
+---
+spring:
+  profiles: development
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: en.p0.q
+          group: nlp-svc
+        output:
+          destination: nlp-svc.tx
+      rabbit:
+        bindings:
+          input:
+            consumer:
+              deadLetterExchange: nlp-svc.dlx
+  rabbitmq:
+    username: nlp-svc
+    password: nlp-svc-password
+    virtual-host: ingestion-pipeline-dev
+    host: rabbitmq.nlp
+  zipkin:
+    sender:
+      type: web
+    base-url: http://localhost:9411
