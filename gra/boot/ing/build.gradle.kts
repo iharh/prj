@@ -32,7 +32,7 @@ idea {
 
 distributions {
     getByName("main") {
-        baseName = project.name // was baseName distributionBaseName
+        distributionBaseName.set(project.name) // was baseName
         contents {
             from(tasks["jar"])
         }
