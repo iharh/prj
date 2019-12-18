@@ -13,5 +13,6 @@ export SPRING_RABBITMQ_PASSWORD=password
 java \
     -Dspring.profiles.active=development\
     -Dserver.max-http-header-size=65536\
-    $JPDA_OPTS\
     -jar $JAR_NAME
+
+#    $JPDA_OPTS\
