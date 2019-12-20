@@ -25,7 +25,8 @@ ext {
         // for spring boot 2.1.3.RELEASE !!! Need to upgrade
         spring:                     '5.1.5.RELEASE',
         spring_security:            '5.1.4.RELEASE',
-        spring_security_oauth2:     '2.3.5.RELEASE',
+        // spring_security_oauth2:     '2.3.5.RELEASE',
+        spring_security_oauth2:     '2.4.0.RELEASE',
 
         cache_api:                  '1.1.1',
 
