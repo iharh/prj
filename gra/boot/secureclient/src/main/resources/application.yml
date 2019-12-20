@@ -11,4 +11,4 @@ security:
       client:
         clientId: nlpsvc
         clientSecret: devsecret
-        accessTokenUri: http://localhost:8091/oauth/token
+        accessTokenUri: http://localhost:8081/oauth/token
