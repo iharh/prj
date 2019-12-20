@@ -31,12 +31,14 @@ apply from: "${gradleRootDir}/lombok.gradle"
 dependencyManagement {
     // applyMavenExclusions false
     imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}" // {
+            // bomProperty("spring-security-oauth2-autoconfigure.version", "2.2.1.RELEASE")
+        //}
     }
 }
 
 dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-actuator' // for manage
+    implementation 'org.springframework.boot:spring-boot-starter-actuator' // for manage
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 

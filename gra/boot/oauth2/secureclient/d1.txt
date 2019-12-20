@@ -166,23 +166,21 @@ compileClasspath - Compile classpath for source set 'main'.
 |    +--- org.springframework.boot:spring-boot-starter-actuator:2.2.1.RELEASE -> 2.2.2.RELEASE (*)
 |    \--- org.springframework.cloud:spring-cloud-security:2.2.0.RELEASE
 |         \--- org.springframework.boot:spring-boot-starter-security:2.2.1.RELEASE -> 2.2.2.RELEASE (*)
-\--- org.springframework.security.oauth:spring-security-oauth2:2.3.5.RELEASE
-     +--- org.springframework:spring-beans:4.0.9.RELEASE -> 5.2.2.RELEASE (*)
-     +--- org.springframework:spring-core:4.0.9.RELEASE -> 5.2.2.RELEASE (*)
-     +--- org.springframework:spring-context:4.0.9.RELEASE -> 5.2.2.RELEASE (*)
-     +--- org.springframework:spring-webmvc:4.0.9.RELEASE -> 5.2.2.RELEASE
+\--- org.springframework.security.oauth:spring-security-oauth2:2.4.0.RELEASE
+     +--- org.springframework:spring-beans:4.3.25.RELEASE -> 5.2.2.RELEASE (*)
+     +--- org.springframework:spring-core:4.3.25.RELEASE -> 5.2.2.RELEASE (*)
+     +--- org.springframework:spring-context:4.3.25.RELEASE -> 5.2.2.RELEASE (*)
+     +--- org.springframework:spring-webmvc:4.3.25.RELEASE -> 5.2.2.RELEASE
      |    +--- org.springframework:spring-aop:5.2.2.RELEASE (*)
      |    +--- org.springframework:spring-beans:5.2.2.RELEASE (*)
      |    +--- org.springframework:spring-context:5.2.2.RELEASE (*)
      |    +--- org.springframework:spring-core:5.2.2.RELEASE (*)
      |    +--- org.springframework:spring-expression:5.2.2.RELEASE (*)
      |    \--- org.springframework:spring-web:5.2.2.RELEASE (*)
-     +--- org.springframework.security:spring-security-core:3.2.10.RELEASE -> 5.2.1.RELEASE (*)
-     +--- org.springframework.security:spring-security-config:3.2.10.RELEASE -> 5.2.1.RELEASE (*)
-     +--- org.springframework.security:spring-security-web:3.2.10.RELEASE -> 5.2.1.RELEASE (*)
-     +--- commons-codec:commons-codec:1.9 -> 1.13
-     \--- org.codehaus.jackson:jackson-mapper-asl:1.9.13
-          \--- org.codehaus.jackson:jackson-core-asl:1.9.13
+     +--- org.springframework.security:spring-security-core:4.2.13.RELEASE -> 5.2.1.RELEASE (*)
+     +--- org.springframework.security:spring-security-config:4.2.13.RELEASE -> 5.2.1.RELEASE (*)
+     +--- org.springframework.security:spring-security-web:4.2.13.RELEASE -> 5.2.1.RELEASE (*)
+     \--- commons-codec:commons-codec:1.9 -> 1.13
 
 compileOnly - Compile only dependencies for source set 'main'. (n)
 \--- org.projectlombok:lombok (n)
@@ -339,30 +337,28 @@ default - Configuration for default artifacts.
 |    +--- org.springframework.boot:spring-boot-starter-actuator:2.2.1.RELEASE -> 2.2.2.RELEASE (*)
 |    \--- org.springframework.cloud:spring-cloud-security:2.2.0.RELEASE
 |         \--- org.springframework.boot:spring-boot-starter-security:2.2.1.RELEASE -> 2.2.2.RELEASE (*)
-\--- org.springframework.security.oauth:spring-security-oauth2:2.3.5.RELEASE
-     +--- org.springframework:spring-beans:4.0.9.RELEASE -> 5.2.2.RELEASE (*)
-     +--- org.springframework:spring-core:4.0.9.RELEASE -> 5.2.2.RELEASE (*)
-     +--- org.springframework:spring-context:4.0.9.RELEASE -> 5.2.2.RELEASE (*)
-     +--- org.springframework:spring-webmvc:4.0.9.RELEASE -> 5.2.2.RELEASE
+\--- org.springframework.security.oauth:spring-security-oauth2:2.4.0.RELEASE
+     +--- org.springframework:spring-beans:4.3.25.RELEASE -> 5.2.2.RELEASE (*)
+     +--- org.springframework:spring-core:4.3.25.RELEASE -> 5.2.2.RELEASE (*)
+     +--- org.springframework:spring-context:4.3.25.RELEASE -> 5.2.2.RELEASE (*)
+     +--- org.springframework:spring-webmvc:4.3.25.RELEASE -> 5.2.2.RELEASE
      |    +--- org.springframework:spring-aop:5.2.2.RELEASE (*)
      |    +--- org.springframework:spring-beans:5.2.2.RELEASE (*)
      |    +--- org.springframework:spring-context:5.2.2.RELEASE (*)
      |    +--- org.springframework:spring-core:5.2.2.RELEASE (*)
      |    +--- org.springframework:spring-expression:5.2.2.RELEASE (*)
      |    \--- org.springframework:spring-web:5.2.2.RELEASE (*)
-     +--- org.springframework.security:spring-security-core:3.2.10.RELEASE -> 5.2.1.RELEASE (*)
-     +--- org.springframework.security:spring-security-config:3.2.10.RELEASE -> 5.2.1.RELEASE (*)
-     +--- org.springframework.security:spring-security-web:3.2.10.RELEASE -> 5.2.1.RELEASE (*)
-     +--- commons-codec:commons-codec:1.9 -> 1.13
-     \--- org.codehaus.jackson:jackson-mapper-asl:1.9.13
-          \--- org.codehaus.jackson:jackson-core-asl:1.9.13
+     +--- org.springframework.security:spring-security-core:4.2.13.RELEASE -> 5.2.1.RELEASE (*)
+     +--- org.springframework.security:spring-security-config:4.2.13.RELEASE -> 5.2.1.RELEASE (*)
+     +--- org.springframework.security:spring-security-web:4.2.13.RELEASE -> 5.2.1.RELEASE (*)
+     \--- commons-codec:commons-codec:1.9 -> 1.13
 
 implementation - Implementation only dependencies for source set 'main'. (n)
 +--- org.springframework.boot:spring-boot-starter-security (n)
 +--- org.springframework.boot:spring-boot-starter-oauth2-client (n)
 +--- org.springframework.cloud:spring-cloud-starter-openfeign (n)
 +--- org.springframework.cloud:spring-cloud-starter-security (n)
-\--- org.springframework.security.oauth:spring-security-oauth2:2.3.5.RELEASE (n)
+\--- org.springframework.security.oauth:spring-security-oauth2:2.4.0.RELEASE (n)
 
 runtimeClasspath - Runtime classpath of source set 'main'.
 +--- org.springframework.boot:spring-boot-starter-actuator -> 2.2.2.RELEASE
@@ -516,23 +512,21 @@ runtimeClasspath - Runtime classpath of source set 'main'.
 |    +--- org.springframework.boot:spring-boot-starter-actuator:2.2.1.RELEASE -> 2.2.2.RELEASE (*)
 |    \--- org.springframework.cloud:spring-cloud-security:2.2.0.RELEASE
 |         \--- org.springframework.boot:spring-boot-starter-security:2.2.1.RELEASE -> 2.2.2.RELEASE (*)
-\--- org.springframework.security.oauth:spring-security-oauth2:2.3.5.RELEASE
-     +--- org.springframework:spring-beans:4.0.9.RELEASE -> 5.2.2.RELEASE (*)
-     +--- org.springframework:spring-core:4.0.9.RELEASE -> 5.2.2.RELEASE (*)
-     +--- org.springframework:spring-context:4.0.9.RELEASE -> 5.2.2.RELEASE (*)
-     +--- org.springframework:spring-webmvc:4.0.9.RELEASE -> 5.2.2.RELEASE
+\--- org.springframework.security.oauth:spring-security-oauth2:2.4.0.RELEASE
+     +--- org.springframework:spring-beans:4.3.25.RELEASE -> 5.2.2.RELEASE (*)
+     +--- org.springframework:spring-core:4.3.25.RELEASE -> 5.2.2.RELEASE (*)
+     +--- org.springframework:spring-context:4.3.25.RELEASE -> 5.2.2.RELEASE (*)
+     +--- org.springframework:spring-webmvc:4.3.25.RELEASE -> 5.2.2.RELEASE
      |    +--- org.springframework:spring-aop:5.2.2.RELEASE (*)
      |    +--- org.springframework:spring-beans:5.2.2.RELEASE (*)
      |    +--- org.springframework:spring-context:5.2.2.RELEASE (*)
      |    +--- org.springframework:spring-core:5.2.2.RELEASE (*)
      |    +--- org.springframework:spring-expression:5.2.2.RELEASE (*)
      |    \--- org.springframework:spring-web:5.2.2.RELEASE (*)
-     +--- org.springframework.security:spring-security-core:3.2.10.RELEASE -> 5.2.1.RELEASE (*)
-     +--- org.springframework.security:spring-security-config:3.2.10.RELEASE -> 5.2.1.RELEASE (*)
-     +--- org.springframework.security:spring-security-web:3.2.10.RELEASE -> 5.2.1.RELEASE (*)
-     +--- commons-codec:commons-codec:1.9 -> 1.13
-     \--- org.codehaus.jackson:jackson-mapper-asl:1.9.13
-          \--- org.codehaus.jackson:jackson-core-asl:1.9.13
+     +--- org.springframework.security:spring-security-core:4.2.13.RELEASE -> 5.2.1.RELEASE (*)
+     +--- org.springframework.security:spring-security-config:4.2.13.RELEASE -> 5.2.1.RELEASE (*)
+     +--- org.springframework.security:spring-security-web:4.2.13.RELEASE -> 5.2.1.RELEASE (*)
+     \--- commons-codec:commons-codec:1.9 -> 1.13
 
 runtimeElements - Elements of runtime for main. (n)
 No dependencies
@@ -684,23 +678,21 @@ testCompileClasspath - Compile classpath for source set 'test'.
 |    +--- org.springframework.boot:spring-boot-starter-actuator:2.2.1.RELEASE -> 2.2.2.RELEASE (*)
 |    \--- org.springframework.cloud:spring-cloud-security:2.2.0.RELEASE
 |         \--- org.springframework.boot:spring-boot-starter-security:2.2.1.RELEASE -> 2.2.2.RELEASE (*)
-\--- org.springframework.security.oauth:spring-security-oauth2:2.3.5.RELEASE
-     +--- org.springframework:spring-beans:4.0.9.RELEASE -> 5.2.2.RELEASE (*)
-     +--- org.springframework:spring-core:4.0.9.RELEASE -> 5.2.2.RELEASE (*)
-     +--- org.springframework:spring-context:4.0.9.RELEASE -> 5.2.2.RELEASE (*)
-     +--- org.springframework:spring-webmvc:4.0.9.RELEASE -> 5.2.2.RELEASE
+\--- org.springframework.security.oauth:spring-security-oauth2:2.4.0.RELEASE
+     +--- org.springframework:spring-beans:4.3.25.RELEASE -> 5.2.2.RELEASE (*)
+     +--- org.springframework:spring-core:4.3.25.RELEASE -> 5.2.2.RELEASE (*)
+     +--- org.springframework:spring-context:4.3.25.RELEASE -> 5.2.2.RELEASE (*)
+     +--- org.springframework:spring-webmvc:4.3.25.RELEASE -> 5.2.2.RELEASE
      |    +--- org.springframework:spring-aop:5.2.2.RELEASE (*)
      |    +--- org.springframework:spring-beans:5.2.2.RELEASE (*)
      |    +--- org.springframework:spring-context:5.2.2.RELEASE (*)
      |    +--- org.springframework:spring-core:5.2.2.RELEASE (*)
      |    +--- org.springframework:spring-expression:5.2.2.RELEASE (*)
      |    \--- org.springframework:spring-web:5.2.2.RELEASE (*)
-     +--- org.springframework.security:spring-security-core:3.2.10.RELEASE -> 5.2.1.RELEASE (*)
-     +--- org.springframework.security:spring-security-config:3.2.10.RELEASE -> 5.2.1.RELEASE (*)
-     +--- org.springframework.security:spring-security-web:3.2.10.RELEASE -> 5.2.1.RELEASE (*)
-     +--- commons-codec:commons-codec:1.9 -> 1.13
-     \--- org.codehaus.jackson:jackson-mapper-asl:1.9.13
-          \--- org.codehaus.jackson:jackson-core-asl:1.9.13
+     +--- org.springframework.security:spring-security-core:4.2.13.RELEASE -> 5.2.1.RELEASE (*)
+     +--- org.springframework.security:spring-security-config:4.2.13.RELEASE -> 5.2.1.RELEASE (*)
+     +--- org.springframework.security:spring-security-web:4.2.13.RELEASE -> 5.2.1.RELEASE (*)
+     \--- commons-codec:commons-codec:1.9 -> 1.13
 
 testCompileOnly - Compile only dependencies for source set 'test'. (n)
 No dependencies
@@ -860,23 +852,21 @@ testRuntimeClasspath - Runtime classpath of source set 'test'.
 |    +--- org.springframework.boot:spring-boot-starter-actuator:2.2.1.RELEASE -> 2.2.2.RELEASE (*)
 |    \--- org.springframework.cloud:spring-cloud-security:2.2.0.RELEASE
 |         \--- org.springframework.boot:spring-boot-starter-security:2.2.1.RELEASE -> 2.2.2.RELEASE (*)
-\--- org.springframework.security.oauth:spring-security-oauth2:2.3.5.RELEASE
-     +--- org.springframework:spring-beans:4.0.9.RELEASE -> 5.2.2.RELEASE (*)
-     +--- org.springframework:spring-core:4.0.9.RELEASE -> 5.2.2.RELEASE (*)
-     +--- org.springframework:spring-context:4.0.9.RELEASE -> 5.2.2.RELEASE (*)
-     +--- org.springframework:spring-webmvc:4.0.9.RELEASE -> 5.2.2.RELEASE
+\--- org.springframework.security.oauth:spring-security-oauth2:2.4.0.RELEASE
+     +--- org.springframework:spring-beans:4.3.25.RELEASE -> 5.2.2.RELEASE (*)
+     +--- org.springframework:spring-core:4.3.25.RELEASE -> 5.2.2.RELEASE (*)
+     +--- org.springframework:spring-context:4.3.25.RELEASE -> 5.2.2.RELEASE (*)
+     +--- org.springframework:spring-webmvc:4.3.25.RELEASE -> 5.2.2.RELEASE
      |    +--- org.springframework:spring-aop:5.2.2.RELEASE (*)
      |    +--- org.springframework:spring-beans:5.2.2.RELEASE (*)
      |    +--- org.springframework:spring-context:5.2.2.RELEASE (*)
      |    +--- org.springframework:spring-core:5.2.2.RELEASE (*)
      |    +--- org.springframework:spring-expression:5.2.2.RELEASE (*)
      |    \--- org.springframework:spring-web:5.2.2.RELEASE (*)
-     +--- org.springframework.security:spring-security-core:3.2.10.RELEASE -> 5.2.1.RELEASE (*)
-     +--- org.springframework.security:spring-security-config:3.2.10.RELEASE -> 5.2.1.RELEASE (*)
-     +--- org.springframework.security:spring-security-web:3.2.10.RELEASE -> 5.2.1.RELEASE (*)
-     +--- commons-codec:commons-codec:1.9 -> 1.13
-     \--- org.codehaus.jackson:jackson-mapper-asl:1.9.13
-          \--- org.codehaus.jackson:jackson-core-asl:1.9.13
+     +--- org.springframework.security:spring-security-core:4.2.13.RELEASE -> 5.2.1.RELEASE (*)
+     +--- org.springframework.security:spring-security-config:4.2.13.RELEASE -> 5.2.1.RELEASE (*)
+     +--- org.springframework.security:spring-security-web:4.2.13.RELEASE -> 5.2.1.RELEASE (*)
+     \--- commons-codec:commons-codec:1.9 -> 1.13
 
 testRuntimeOnly - Runtime only dependencies for source set 'test'. (n)
 No dependencies

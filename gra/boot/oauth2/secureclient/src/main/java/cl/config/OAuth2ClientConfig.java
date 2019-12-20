@@ -10,7 +10,7 @@ import org.springframework.security.oauth2.client.token.grant.client.ClientCrede
 
 import org.springframework.cloud.security.oauth2.client.feign.OAuth2FeignRequestInterceptor;
 
-import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+//import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 
 import feign.RequestInterceptor;
 
@@ -31,8 +31,8 @@ public class OAuth2ClientConfig {
         return new OAuth2FeignRequestInterceptor(new DefaultOAuth2ClientContext(), localAuthServerResourceDetails());
     }
 
-    @Bean
-    public OAuth2RestTemplate localAuthServerRestTemplate() {
-        return new OAuth2RestTemplate(localAuthServerResourceDetails());
-    }
+    //@Bean
+    //public OAuth2RestTemplate localAuthServerRestTemplate() {
+    //    return new OAuth2RestTemplate(localAuthServerResourceDetails());
+    //}
 }
