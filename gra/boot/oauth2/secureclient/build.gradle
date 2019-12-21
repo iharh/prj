@@ -45,7 +45,6 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
     implementation 'org.springframework.cloud:spring-cloud-starter-security'
 
-    // spring_security_oauth2:     '2.3.5.RELEASE',
     implementation libraries.spring_security_oauth2
 }
 
