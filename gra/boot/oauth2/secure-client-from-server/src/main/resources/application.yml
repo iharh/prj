@@ -1,3 +1,6 @@
+server:
+  port: 8023
+
 logging:
   file: logs/app.log
   pattern:
