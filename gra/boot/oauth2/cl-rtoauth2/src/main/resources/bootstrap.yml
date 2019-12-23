@@ -1,0 +1,4 @@
+spring:
+  application:
+    name: cl-rtoauth2
+    version: @version@
