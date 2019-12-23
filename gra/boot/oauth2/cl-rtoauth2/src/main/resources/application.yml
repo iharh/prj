@@ -8,16 +8,11 @@ logging:
 
 security:
   oauth2:
-    # localas:
-    #  client:
-    #    clientId: nlpsvc
-    #    clientSecret: devsecret
-    #    accessTokenUri: http://localhost:8081/oauth/token
-    # baseUrl: http://auth-server
-    client:
-      access-token-uri: http://localhost:8081/oauth/token
-      client-id: nlpsvc
-      client-secret: devsecret
-      grant-type: client_credentials
-      scope:
-        - cx-designer.api[group='lexicons-nlpsvc-export']
+    clb:
+      client:
+        access-token-uri: http://localhost:8081/oauth/token
+        client-id: nlpsvc
+        client-secret: devsecret
+        grant-type: client_credentials
+        scope:
+          - cx-designer.api[group='lexicons-nlpsvc-export']
