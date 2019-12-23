@@ -26,6 +26,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure")
 
+    // ???
+    //implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
     implementation("org.apache.httpcomponents:httpclient:4.5.10")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.1")
@@ -35,7 +37,7 @@ dependencies {
 dependencyManagement {
     imports {
         mavenBom("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion") {
-            bomProperty("spring-security-oauth2-autoconfigure.version", "2.2.1.RELEASE")
+            // bomProperty("spring-security-oauth2-autoconfigure.version", "2.2.1.RELEASE")
         }
     }
 }
