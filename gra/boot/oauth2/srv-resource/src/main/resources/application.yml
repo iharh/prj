@@ -9,6 +9,14 @@ logging:
   level:
     org.springframework.security: debug
     #ROOT: #logback.loglevel#
+
+# spring:
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          jwk-set-uri: http://localhost:8090/auth/realms
+
 security:
   oauth2:
     localas:

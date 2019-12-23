@@ -22,10 +22,9 @@ dependencies {
 
     compileOnly("org.projectlombok:lombok")
 
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
-    // implementation("org.springframework.boot:spring-boot-starter-security")
-    implementation("org.springframework.cloud:spring-cloud-starter-oauth2")
-    // implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
+    // implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure")
 
     implementation("org.apache.httpcomponents:httpclient:4.5.10")
 
