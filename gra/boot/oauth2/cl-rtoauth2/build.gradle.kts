@@ -5,7 +5,6 @@ val springCloudVersion = "Hoxton.RELEASE"
 plugins {
     java
     idea
-    // application
     id("org.springframework.boot") version "2.2.2.RELEASE"
     id("io.spring.dependency-management") version "1.0.8.RELEASE"
 }
@@ -24,11 +23,11 @@ dependencies {
     compileOnly("org.projectlombok:lombok")
 
     implementation("org.springframework.boot:spring-boot-starter-actuator")
-    implementation("org.springframework.cloud:spring-cloud-starter-oauth2")
-
     // implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.cloud:spring-cloud-starter-oauth2")
     // implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
-    // implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
+
+    implementation("org.apache.httpcomponents:httpclient:4.5.10")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.1")
@@ -59,8 +58,6 @@ tasks {
     }
     getByName("compileJava").dependsOn("processResources")
 }
-
-// application { mainClassName = "cl.rtoauth2.App" }
 
 val test by tasks.getting(Test::class) {
     useJUnitPlatform()
