@@ -1,0 +1,72 @@
+ext {
+    groups = [
+        clarabridge:            'clarabridge',
+        clarabridge_micro:      'com.clarabridge.microstructure-libs',
+        lombok:                 'org.projectlombok',
+        swagger:                'io.springfox',
+        bytebuddy:              'net.bytebuddy',
+        commons:                'org.apache.commons',
+        protobuf:               'com.google.protobuf',
+        ehcache:                'org.ehcache',
+        cache_api:              'javax.cache',
+        dom4j:                  'dom4j',
+        slf4j:                  'org.slf4j',
+        // logback:    'logback',
+        junit:                  'org.junit.jupiter',
+    ]
+    versions = [
+        clarabridge_common_feign:   '1.4.1',
+        lombok:                     '1.18.10',
+        swagger:                    '2.9.2',
+        bytebuddy:                  '1.10.1',
+        protobuf:                   '3.9.0',
+        commons_io:                 '2.6',
+        commons_lang3:              '3.9',
+        commons_text:               '1.8',
+        commons_pool2:              '2.7.0',
+        ehcache:                    '3.8.1',
+        cache_api:                  '1.1.1',
+        javacpp:                    '1.4.4',
+        dom4j:                      '1.6.1',
+        slf4j:                      '1.7.28',
+        // logback:        '1.2.3',
+        junit:                      '5.5.2',
+    ]
+    libraries = [
+        // lombok
+        lombok:                     "${groups.lombok}:lombok:${versions.lombok}",
+        // swagger
+        swagger2:                   "${groups.swagger}:springfox-swagger2:${versions.swagger}",
+        swagger_ui:                 "${groups.swagger}:springfox-swagger-ui:${versions.swagger}",
+        // bytebuddy
+        bytebuddy:              "${groups.bytebuddy}:byte-buddy:${versions.bytebuddy}",
+        bytebuddy_agent:        "${groups.bytebuddy}:byte-buddy-agent:${versions.bytebuddy}",
+        // protobuf
+        protobuf_java:          "${groups.protobuf}:protobuf-java:${versions.protobuf}",
+        protobuf_java_util:     "${groups.protobuf}:protobuf-java-util:${versions.protobuf}",
+        // commons
+        commons_io:             "commons-io:commons-io:${versions.commons_io}",
+        commons_lang3:          "${groups.commons}:commons-lang3:${versions.commons_lang3}",
+        commons_text:           "${groups.commons}:commons-text:${versions.commons_text}",
+        commons_pool2:          "${groups.commons}:commons-pool2:${versions.commons_pool2}",
+        // ehcache
+        ehcache:                "${groups.ehcache}:ehcache:${versions.ehcache}",
+        cache_api:              "${groups.cache_api}:cache-api:${versions.cache_api}",
+        // javacpp
+        javacpp:                "org.bytedeco:javacpp:${versions.javacpp}",
+        // dom4j
+        dom4j:                  "${groups.dom4j}:dom4j:${versions.dom4j}",
+        // slf4j
+        slf4j_api:              "${groups.slf4j}:slf4j-api:${versions.slf4j}",
+        log4j_over_slf4j:       "${groups.slf4j}:log4j-over-slf4j:${versions.slf4j}",
+        // logback
+        logstash_logback_encoder:   'net.logstash.logback:logstash-logback-encoder:5.1',
+        //foma - (morph_id)
+        foma:                   "${groups.clarabridge}:libclbfoma-linux:1.0.0",
+        //uetnlp - (segmenter_vi)
+        uetnlp:                 "${groups.clarabridge}:uetnlp:1.0.4",
+        // junit
+        junit_jupiter_api:      "${groups.junit}:junit-jupiter-api:${versions.junit}",
+        junit_jupiter_engine:   "${groups.junit}:junit-jupiter-engine:${versions.junit}",
+    ]
+}

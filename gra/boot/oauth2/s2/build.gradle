@@ -1,0 +1,99 @@
+import org.apache.tools.ant.filters.*
+
+buildscript {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+    ext {
+        springBootVersion = '2.2.2.RELEASE'
+        set('springCloudVersion', 'Hoxton.RELEASE') // springCloudVersion = 'Greenwich.SR1'
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    }
+}
+
+plugins {
+    id 'java'
+    id 'idea'
+}
+
+apply plugin: 'org.springframework.boot' // version "2.2.2.RELEASE"
+apply plugin: 'io.spring.dependency-management' // version "1.0.8.RELEASE"
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events 'PASSED', 'FAILED', 'SKIPPED'
+        showStandardStreams true
+    }
+}
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+}
+compileTestJava.options.encoding = 'UTF-8'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencyManagement {
+    // applyMavenExclusions false
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+dependencies {
+    // Disable API build warnings
+    // implementation      'org.apiguardian:apiguardian-api:1.0.0'
+
+    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly         'org.projectlombok:lombok'
+
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+    // POM relocation to an other version number is not fully supported in Gradle : xml-apis:xml-apis:2.0.2 relocated to xml-apis:xml-apis:1.0.b2.
+    // Please update your dependency to directly use the correct version 'xml-apis:xml-apis:1.0.b2'.
+    // Resolution will only pick dependencies of the relocated element.  Artifacts and other metadata will be ignored.
+    // Copying or archiving duplicate paths with the default duplicates strategy has been deprecated. This is scheduled to be removed in Gradle 7.0. Duplicate path: "BOOT-INF/lib/jaxb-core-2.3.0.1.jar". Explicitly set the duplicates strategy to 'DuplicatesStrategy.INCLUDE' if you want to allow duplicate paths.
+
+    // implementation      'org.glassfish.jaxb:jaxb-runtime:2.3.0.1' // https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-with-Java-9-and-above#jaxb
+
+    // spring boot
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+    implementation      'org.springframework.boot:spring-boot-starter-web'
+    implementation      'org.springframework.boot:spring-boot-starter-jetty'
+    implementation      'org.springframework.boot:spring-boot-starter-actuator' // for manage
+    implementation      'org.springframework.boot:spring-boot-starter-security'
+    // implementation      'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation      'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure'
+
+    // implementation      'org.springframework.cloud:spring-cloud-starter-security'
+    // test
+    testImplementation  'org.springframework.boot:spring-boot-starter-test'
+
+    // jaxen
+    runtimeOnly         'jaxen:jaxen:1.1-beta-6'
+
+    // jericho
+    runtimeOnly         'net.htmlparser.jericho:jericho-html:3.1'
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.1")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.1")
+}
+
+version = '0.1'
+
+processResources {
+    filesMatching('**/bootstrap.yml') {
+       filter(ReplaceTokens, tokens: [version: project.version])
+   }
+}

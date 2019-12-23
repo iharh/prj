@@ -1,0 +1,7 @@
+*.log
+*.log.*
+result.*
+lib/*
+
+# IntelliJ
+out/
