@@ -1,9 +1,6 @@
-package cl.rtoauth2;
+package cl.rtoauth2.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 // import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 // import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.http.HttpStatus;
@@ -16,17 +13,14 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import lombok.extern.slf4j.Slf4j;
 
-@SpringBootApplication
+@RestController
+@RequestMapping(produces = "application/json")
 @Slf4j
-public class App implements CommandLineRunner {
+public class SimpleController {
     @Autowired
     // private OAuth2RestTemplate restTemplate;
     private RestTemplate restTemplate;
     
-    public String getGreeting() {
-        return "Hello world.";
-    }
-
     private String buildUrl(String path) {
         // https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/util/UriComponentsBuilder.html
         return UriComponentsBuilder.newInstance()
@@ -39,8 +33,8 @@ public class App implements CommandLineRunner {
                 .toUriString();
     }
 
-    @Override
-    public void run(String... args) throws Exception {
+    @GetMapping("/hello")
+    public String hello() throws Exception {
         // OAuth2AccessToken accessToken = restTemplate.getAccessToken();
         // log.info("obtained access token: {}", accessToken.getValue());
 
@@ -52,9 +46,7 @@ public class App implements CommandLineRunner {
         if (HttpStatus.OK == response.getStatusCode()) {
             log.info("response body: {}", response.getBody());
         }
-    }
 
-    public static void main(String[] args) {
-        SpringApplication.run(App.class, args);
+        return "Hello World!";
     }
 }
