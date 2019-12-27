@@ -66,7 +66,7 @@ public class App implements CommandLineRunner {
 
             summaries.stream()
                 .map(S3ObjectSummary::getKey)
-                .forEach(System.out::println);
+                .forEach(key -> log.info("{}", key));
             
         } catch (AmazonServiceException ase) {
             System.out.println("Caught an AmazonServiceException, which means your request made it to Amazon S3, but was rejected with an error response for some reason.");
