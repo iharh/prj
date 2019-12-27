@@ -1,6 +1,7 @@
 import org.apache.tools.ant.filters.ReplaceTokens
 
 val springCloudVersion = "Hoxton.RELEASE"
+val awsJavaSdkVersion = "1.11.699"
 
 plugins {
     java
@@ -25,6 +26,9 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-autoconfigure")
     implementation("org.springframework.boot:spring-boot-starter-logging")
 
+    implementation("com.amazonaws:aws-java-sdk-core");
+    implementation("com.amazonaws:aws-java-sdk-s3");
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.1")
 }
@@ -37,6 +41,8 @@ dependencyManagement {
     }
     dependencies {
         dependency("org.projectlombok:lombok:1.18.10")
+        dependency("com.amazonaws:aws-java-sdk-core:$awsJavaSdkVersion");
+        dependency("com.amazonaws:aws-java-sdk-s3:$awsJavaSdkVersion");
     }
 }
 
