@@ -1,4 +1,4 @@
-package cl.rtoauth2;
+package cl;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
