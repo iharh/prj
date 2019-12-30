@@ -28,7 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class App implements CommandLineRunner {
     private static final String S3_ENDPOINT = "http://localhost:9000";
-    private static final String S3_REGION = Regions.US_EAST_1.name();
+    private static final String S3_REGION = Regions.DEFAULT_REGION.name();
     private static final String S3_BUCKET = "clbbucket";
     
     public String getGreeting() {
