@@ -17,13 +17,14 @@ plugins {
 val shlibcfg by configurations.creating
 val lpcfg by configurations.creating
 
-val nexusResolveUrl = rootProject.extra["nexus.repo.resolve"] as String
+// val nexusResolveUrl = rootProject.extra["nexus.repo.resolve"] as String
 
 repositories {
     jcenter()
-    maven (url = rootProject.extra["nexus.repo.resolve"] as String)
+    // maven (url = rootProject.extra["nexus.repo.resolve"] as String)
 
     // CB ivy artifacts resolver
+    /*
     ivy (url = nexusResolveUrl) {
         name = "cb_common"
         ivyPattern("${nexusResolveUrl}/[organisation]/[module]/[revision]/ivy.xml")
@@ -35,6 +36,7 @@ repositories {
         ivyPattern("${nexusResolveUrl}/[organisation]/[module]-linux/[revision]/ivy.xml")
         artifactPattern("${nexusResolveUrl}/[organisation]/[module]-linux/[revision]/[artifact](.[ext])")
     }
+    */
 }
 
 val fullFxVer = rootProject.extra["fx.version"] as String
