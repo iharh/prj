@@ -4,15 +4,7 @@ val springCloudVersion = "Hoxton.RELEASE"
 val awsJavaSdkVersion = "1.11.699"
 
 plugins {
-    java
-    idea
     id("org.springframework.boot") version "2.2.2.RELEASE"
-    id("io.spring.dependency-management") version "1.0.8.RELEASE"
-}
-
-repositories {
-    mavenCentral()
-    jcenter()
 }
 
 dependencies {
@@ -33,6 +25,7 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.1")
 }
 
+/*
 dependencyManagement {
     imports {
         mavenBom("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion") {
@@ -45,6 +38,7 @@ dependencyManagement {
         dependency("com.amazonaws:aws-java-sdk-s3:$awsJavaSdkVersion");
     }
 }
+*/
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
