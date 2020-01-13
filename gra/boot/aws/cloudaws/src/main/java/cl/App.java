@@ -5,8 +5,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.aws.core.io.s3.PathMatchingSimpleStorageResourcePatternResolver;
+import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.core.io.support.ResourcePatternResolver;
 
 import com.amazonaws.services.s3.AmazonS3;
 
@@ -21,11 +24,18 @@ public class App implements CommandLineRunner {
     @Value("${cloud.aws.bucket}")
     private String bucket;
 
-    //@Autowired
-    //private AmazonS3 s3client;
+    @Autowired
+    private AmazonS3 s3client;
     
     @Autowired
     private ResourceLoader resourceLoader;
+
+    private ResourcePatternResolver resourcePatternResolver;
+
+    @Autowired
+    public void setupResolver(ApplicationContext applicationContext, AmazonS3 amazonS3){
+        this.resourcePatternResolver = new PathMatchingSimpleStorageResourcePatternResolver(amazonS3, applicationContext);
+    }
 
     public String getGreeting() {
         return "Hello world.";
@@ -35,11 +45,11 @@ public class App implements CommandLineRunner {
     public void run(String... args) throws Exception {
         log.info("greeting: {} bucket: {}", getGreeting(), bucket);
 
-        Resource resource = this.resourceLoader.getResource("s3://" + bucket + "/" + "1.txt");
-        InputStream inputStream = resource.getInputStream();
-        String content = "abcdefg";
+        Resource[] resources = resourcePatternResolver.getResources("s3://" + bucket + "/*.txt");
+        log.info("found");
 
-        log.info("content: {}", content);
+        // Resource resource = resourceLoader.getResource("s3://" + bucket + "/" + "1.txt");
+        //InputStream inputStream = resource.getInputStream();
     }
 
     public static void main(String[] args) {

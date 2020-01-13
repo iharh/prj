@@ -20,6 +20,7 @@ public class AmazonClientConfig {
     @Value("${cloud.aws.region.static}")
     private String region;
 
+    /*
     @Bean
     public AmazonS3 amazonS3Client(AWSCredentialsProvider credentialsProvider) {
         AwsClientBuilder.EndpointConfiguration endpointConfiguration =
@@ -34,4 +35,5 @@ public class AmazonClientConfig {
         log.info("configured s3 client: {}", result);
         return result;
     }
+    */
 }

@@ -1,4 +1,8 @@
 #aws properties
+aws:
+  paramstore:
+    enabled: false
+
 cloud:
   aws:
     stack.auto: false
@@ -9,4 +13,5 @@ cloud:
     credentials:
       accessKey: "nlpsvc"
       secretKey: "devsecret"
+      instanceProfile: false
     bucket: "clbbucket"
