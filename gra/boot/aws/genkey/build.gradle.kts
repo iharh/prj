@@ -18,15 +18,7 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
-}
-
 tasks {
-    withType<JavaCompile> {
-        options.isDeprecation = true
-    }
     withType<ProcessResources> {
         filesMatching("/**/bootstrap.yml") {
             val filterTokens = mapOf(Pair("version", project.version))
@@ -34,8 +26,4 @@ tasks {
         }
     }
     getByName("compileJava").dependsOn("processResources")
-}
-
-val test by tasks.getting(Test::class) {
-    useJUnitPlatform()
 }

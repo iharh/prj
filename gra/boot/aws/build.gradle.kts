@@ -39,4 +39,18 @@ subprojects {
             dependency("org.junit.jupiter:junit-jupiter-engine:5.5.1")
         }
     }
+
+    configure<JavaPluginConvention> {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+    
+    tasks.withType<JavaCompile>() {
+        println("Configuring $name in project ${project.name}...")
+        options.isDeprecation = true
+    }
+
+    val test by tasks.getting(Test::class) {
+        useJUnitPlatform()
+    }
 }
