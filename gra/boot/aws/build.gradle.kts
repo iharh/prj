@@ -3,6 +3,7 @@ import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
 import org.apache.tools.ant.filters.ReplaceTokens
 
 plugins {
+    id("idea")
     id("io.spring.dependency-management") version "1.0.8.RELEASE" apply false
     id("org.springframework.boot") version "2.2.2.RELEASE" apply false
 }
