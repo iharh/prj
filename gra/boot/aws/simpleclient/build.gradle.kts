@@ -1,5 +1,3 @@
-import org.apache.tools.ant.filters.ReplaceTokens
-
 dependencies {
     compileOnly("org.projectlombok:lombok")
 
@@ -16,14 +14,4 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
-}
-
-tasks {
-    withType<ProcessResources> {
-        filesMatching("/**/bootstrap.yml") {
-            val filterTokens = mapOf(Pair("version", project.version))
-            filter<ReplaceTokens>("tokens" to filterTokens)
-        }
-    }
-    getByName("compileJava").dependsOn("processResources")
 }

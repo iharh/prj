@@ -1,0 +1,12 @@
+#aws properties
+cloud:
+  aws:
+    stack.auto: false
+    # https://github.com/aws/aws-sdk-java/blob/master/aws-java-sdk-core/src/main/java/com/amazonaws/regions/Regions.java
+    region:
+      auto: false
+      static: "us-west-2" # DEFAULT_REGION
+    credentials:
+      accessKey: "nlpsvc"
+      secretKey: "devsecret"
+    bucket: "clbbucket"

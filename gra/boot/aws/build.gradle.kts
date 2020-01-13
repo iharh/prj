@@ -1,5 +1,7 @@
 import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
 
+import org.apache.tools.ant.filters.ReplaceTokens
+
 plugins {
     id("io.spring.dependency-management") version "1.0.8.RELEASE" apply false
     id("org.springframework.boot") version "2.2.2.RELEASE" apply false
@@ -35,6 +37,8 @@ subprojects {
             dependency("com.amazonaws:aws-java-sdk-core:$awsJavaSdkVersion")
             dependency("com.amazonaws:aws-java-sdk-s3:$awsJavaSdkVersion")
 
+            dependency("org.yaml:snakeyaml:1.25")
+
             dependency("org.junit.jupiter:junit-jupiter-api:5.5.1")
             dependency("org.junit.jupiter:junit-jupiter-engine:5.5.1")
         }
@@ -45,9 +49,20 @@ subprojects {
         targetCompatibility = JavaVersion.VERSION_11
     }
     
-    tasks.withType<JavaCompile>() {
-        println("Configuring $name in project ${project.name}...")
-        options.isDeprecation = true
+    tasks {
+        withType<JavaCompile>() {
+            println("Configuring $name in project ${project.name}...")
+            options.isDeprecation = true
+        }
+    }
+    tasks {
+        withType<ProcessResources> {
+            filesMatching("/**/bootstrap.yml") {
+                val filterTokens = mapOf(Pair("version", project.version))
+                filter<ReplaceTokens>("tokens" to filterTokens)
+            }
+        }
+        getByName("compileJava").dependsOn("processResources")
     }
 
     val test by tasks.getting(Test::class) {
