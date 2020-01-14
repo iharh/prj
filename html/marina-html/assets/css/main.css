@@ -188,6 +188,7 @@ html {
 
 body {
   background: #ffffff;
+  /* pink */
 }
 
 body.is-preload *,
@@ -211,7 +212,7 @@ body,
 input,
 select,
 textarea {
-  color: #7f888f;
+  color: black;
   font-family: "Open Sans", sans-serif;
   font-size: 17pt;
   font-weight: 400;
