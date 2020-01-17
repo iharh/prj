@@ -2,6 +2,7 @@ package octet.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,8 +26,8 @@ public class OctetController {
 
     @CrossOrigin
     @PostMapping(consumes = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-    public ResponseEntity putResource() throws Exception {
-        log.info("put called");
+    public ResponseEntity putResource(RequestEntity<String> req) throws Exception {
+        log.info("put called with body: {}", req.getBody());
         return ResponseEntity.ok().build();
     }
 }
