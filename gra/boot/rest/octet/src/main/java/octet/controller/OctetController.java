@@ -34,7 +34,6 @@ public class OctetController {
     @PostMapping(consumes = MediaType.APPLICATION_OCTET_STREAM_VALUE)
     public ResponseEntity putResource(InputStream inputStream) throws Exception {
         String body = IOUtils.toString(inputStream, UTF_8.name());
-        // String body = req.getBody();
         log.info("put called with body: {}", body);
         return ResponseEntity.ok().build();
     }
