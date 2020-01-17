@@ -10,7 +10,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.apache.commons.io.IOUtils;
+
+import java.io.InputStream;
+
 import lombok.extern.slf4j.Slf4j;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 @RestController
 @RequestMapping("/octet")
@@ -26,8 +32,10 @@ public class OctetController {
 
     @CrossOrigin
     @PostMapping(consumes = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-    public ResponseEntity putResource(RequestEntity<String> req) throws Exception {
-        log.info("put called with body: {}", req.getBody());
+    public ResponseEntity putResource(InputStream inputStream) throws Exception {
+        String body = IOUtils.toString(inputStream, UTF_8.name());
+        // String body = req.getBody();
+        log.info("put called with body: {}", body);
         return ResponseEntity.ok().build();
     }
 }

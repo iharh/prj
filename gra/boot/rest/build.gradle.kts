@@ -25,6 +25,8 @@ subprojects {
 
             dependency("org.yaml:snakeyaml:1.25")
 
+            dependency("commons-io:commons-io:2.6")
+            
             dependency("org.junit.jupiter:junit-jupiter-api:5.5.1")
             dependency("org.junit.jupiter:junit-jupiter-engine:5.5.1")
         }
