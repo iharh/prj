@@ -9,8 +9,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-autoconfigure")
     implementation("org.springframework.boot:spring-boot-starter-logging")
 
-    implementation("com.amazonaws:aws-java-sdk-core");
-    implementation("com.amazonaws:aws-java-sdk-s3");
+    implementation("com.amazonaws:aws-java-sdk-core")
+    implementation("com.amazonaws:aws-java-sdk-s3")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")

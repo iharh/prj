@@ -3,9 +3,10 @@ import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
 import org.apache.tools.ant.filters.ReplaceTokens
 
 plugins {
+    val springBootVersion = "2.2.4.RELEASE"
     id("idea")
-    id("io.spring.dependency-management") version "1.0.8.RELEASE" apply false
-    id("org.springframework.boot") version "2.2.2.RELEASE" apply false
+    id("io.spring.dependency-management").version("1.0.8.RELEASE").apply(false)
+    id("org.springframework.boot").version(springBootVersion).apply(false)
 }
 
 allprojects {
@@ -27,7 +28,7 @@ subprojects {
     the<DependencyManagementExtension>().apply {
         imports {
             mavenBom("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion") {
-                // bomProperty("spring-security-oauth2-autoconfigure.version", "2.2.1.RELEASE")
+                // bomProperty("spring-security-oauth2-autoconfigure.version", springBootVersion)
             }
         }
         dependencies {
