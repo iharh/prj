@@ -17,8 +17,8 @@ allprojects {
 }
 
 subprojects {
-    val springCloudVersion = "Hoxton.RELEASE"
-    val awsJavaSdkVersion = "1.11.700"
+    val springCloudVersion = "Hoxton.SR1"
+    val awsJavaSdkVersion = "1.11.714"
 
     apply(plugin = "java")
     apply(plugin = "idea")

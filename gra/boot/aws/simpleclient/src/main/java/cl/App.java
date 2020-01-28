@@ -27,6 +27,8 @@ import lombok.extern.slf4j.Slf4j;
 @SpringBootApplication
 @Slf4j
 public class App implements CommandLineRunner {
+    private static final String KEY_ID = "nlpsvc";
+    private static final String KEY_SECRET = "devsecret";
     private static final String S3_ENDPOINT = "http://localhost:9000";
     private static final String S3_REGION = Regions.DEFAULT_REGION.name();
     private static final String S3_BUCKET = "clbbucket";
@@ -39,7 +41,7 @@ public class App implements CommandLineRunner {
     public void run(String... args) throws Exception {
         log.info("greeting: {}", getGreeting());
 
-        AWSCredentials credentials = new BasicAWSCredentials("nlpsvc", "devsecret");
+        AWSCredentials credentials = new BasicAWSCredentials(KEY_ID, KEY_SECRET);
 
         ClientConfiguration clientConfiguration = new ClientConfiguration();
         clientConfiguration.setSignerOverride("AWSS3V4SignerType");
@@ -47,13 +49,24 @@ public class App implements CommandLineRunner {
         AwsClientBuilder.EndpointConfiguration endpointConfiguration =
                 new AwsClientBuilder.EndpointConfiguration(S3_ENDPOINT, S3_REGION);
         
-        AmazonS3 s3Client = AmazonS3ClientBuilder
+        AmazonS3 s3Client = null;
+
+        if (S3_ENDPOINT == null) {
+            s3Client = AmazonS3ClientBuilder
+                .standard()
+                .withRegion(S3_REGION)
+                .withPathStyleAccessEnabled(true)
+                .withCredentials(new AWSStaticCredentialsProvider(credentials))
+                .build();
+        } else {
+            s3Client = AmazonS3ClientBuilder
                 .standard()
                 .withEndpointConfiguration(endpointConfiguration)
                 .withPathStyleAccessEnabled(true)
                 .withClientConfiguration(clientConfiguration)
                 .withCredentials(new AWSStaticCredentialsProvider(credentials))
                 .build();
+        }
 
         try {
             ObjectListing listing = s3Client.listObjects(S3_BUCKET);
