@@ -27,11 +27,18 @@ import lombok.extern.slf4j.Slf4j;
 @SpringBootApplication
 @Slf4j
 public class App implements CommandLineRunner {
+    /*
     private static final String KEY_ID = "nlpsvc";
     private static final String KEY_SECRET = "devsecret";
     private static final String S3_ENDPOINT = "http://localhost:9000";
     private static final String S3_REGION = Regions.DEFAULT_REGION.name();
     private static final String S3_BUCKET = "clbbucket";
+    */
+    private static final String KEY_ID = System.getenv("AWS_ACCESS_KEY_ID");
+    private static final String KEY_SECRET = System.getenv("AWS_SECRET_ACCESS_KEY");
+    private static final String S3_ENDPOINT = null;
+    private static final String S3_REGION = "us-east-1";
+    private static final String S3_BUCKET = "cb-nlp-app-dev";
     
     public String getGreeting() {
         return "Hello world.";
@@ -56,7 +63,7 @@ public class App implements CommandLineRunner {
                 .standard()
                 .withRegion(S3_REGION)
                 .withPathStyleAccessEnabled(true)
-                .withCredentials(new AWSStaticCredentialsProvider(credentials))
+                // .withCredentials(new AWSStaticCredentialsProvider(credentials))
                 .build();
         } else {
             s3Client = AmazonS3ClientBuilder
