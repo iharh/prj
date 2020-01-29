@@ -1,0 +1,17 @@
+---
+spring:
+  profiles: minio
+aws:
+  bucket: clbbucket
+  endpoint: http://localhost:9000
+  region: us-west-2
+# access-key-id: nlpsvc
+# secret-access-key: devsecret
+# access-session-token: token
+
+---
+spring:
+  profiles: dev
+aws:
+  bucket: cb-nlp-app-dev
+  region: us-east-1
