@@ -56,18 +56,17 @@ subprojects {
             println("Configuring $name in project ${project.name}...")
             options.isDeprecation = true
         }
-    }
-    tasks {
         withType<ProcessResources> {
             filesMatching("/**/bootstrap.yml") {
                 val filterTokens = mapOf(Pair("version", project.version))
                 filter<ReplaceTokens>("tokens" to filterTokens)
             }
         }
-        getByName("compileJava").dependsOn("processResources")
-    }
 
-    val test by tasks.getting(Test::class) {
-        useJUnitPlatform()
+        getByName("compileJava").dependsOn("processResources")
+
+        getting(Test::class) {
+            useJUnitPlatform()
+        }
     }
 }
