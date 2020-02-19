@@ -30,6 +30,9 @@ public class ResRepApp implements CommandLineRunner {
                 .host("localhost")
                 .port(8082) 
                 .path(path)
+                .queryParam("type", "BRAND")
+                .queryParam("instance", "inst1")
+                .queryParam("id", "0")
                 .build()
                 .toUriString();
     }
@@ -41,11 +44,11 @@ public class ResRepApp implements CommandLineRunner {
 
         final String url = buildUrl("v1/resource");
 
-        // ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
-        // log.info("response status code: {}", response.getStatusCode()); // HttpStatus.OK
-        // if (HttpStatus.OK == response.getStatusCode()) {
-        //     log.info("response body: {}", response.getBody());
-        //}
+        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+        log.info("response status code: {}", response.getStatusCode()); // HttpStatus.OK
+        if (HttpStatus.OK == response.getStatusCode()) {
+             log.info("response body: {}", response.getBody());
+        }
     }
 
     public static void main(String[] args) {
