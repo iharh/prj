@@ -1,10 +1,12 @@
 import org.apache.tools.ant.filters.ReplaceTokens
 
+val springCloudVersion = "Hoxton.SR1"
+
 plugins {
     java
     idea
     id("org.springframework.boot") version "2.2.4.RELEASE"
-    id("io.spring.dependency-management") version "1.0.8.RELEASE"
+    id("io.spring.dependency-management") version "1.0.9.RELEASE"
 }
 
 repositories {
@@ -12,18 +14,26 @@ repositories {
     jcenter()
 }
 
-dependencies {
-    implementation("com.google.guava:guava:28.0-jre")
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion") {
+            bomProperty("spring-security-oauth2-autoconfigure.version", "2.2.4.RELEASE")
+        }
+    }
+}
 
+dependencies {
     annotationProcessor("org.projectlombok:lombok")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+
+    // implementation("com.google.guava:guava:28.0-jre")
 
     compileOnly("org.projectlombok:lombok")
 
     implementation("org.springframework.boot:spring-boot-starter-security")
+    // implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
     implementation("org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure")
 
-    //implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
     implementation("org.apache.httpcomponents:httpclient:4.5.10")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.1")
