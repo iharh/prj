@@ -15,4 +15,5 @@ security:
         client-secret: devsecret
         grant-type: client_credentials
         scope:
-          - cx-designer.api[group='lexicons-nlpsvc-export']
+          #- cx-designer.api[group='customres-nlpsvc-read']
+          - cx-designer.api[group='customres-nlpsvc-write']
