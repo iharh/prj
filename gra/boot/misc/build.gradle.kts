@@ -1,9 +1,10 @@
 import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
 
 plugins {
+    val springBootVersion = "2.2.5.RELEASE"
     id("idea")
-    id("io.spring.dependency-management") version "1.0.8.RELEASE" apply false
-    id("org.springframework.boot") version "2.2.5.RELEASE" apply false
+    id("io.spring.dependency-management").version("1.0.8.RELEASE").apply(false)
+    id("org.springframework.boot").version(springBootVersion).apply(false)
 }
 
 allprojects {
@@ -14,6 +15,8 @@ allprojects {
 }
 
 subprojects {
+    val junitVersion = "5.5.1"
+
     apply(plugin = "java")
     apply(plugin = "idea")
     apply(plugin = "io.spring.dependency-management")
@@ -23,12 +26,12 @@ subprojects {
         dependencies {
             dependency("org.projectlombok:lombok:1.18.10")
 
+            dependency("com.google.guava:guava:28.0-jre")
+
             dependency("org.yaml:snakeyaml:1.25")
 
-            dependency("commons-io:commons-io:2.6")
-            
-            dependency("org.junit.jupiter:junit-jupiter-api:5.5.1")
-            dependency("org.junit.jupiter:junit-jupiter-engine:5.5.1")
+            dependency("org.junit.jupiter:junit-jupiter-api:$junitVersion")
+            dependency("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
         }
     }
 
@@ -42,9 +45,9 @@ subprojects {
             println("Configuring $name in project ${project.name}...")
             options.isDeprecation = true
         }
-    }
 
-    val test by tasks.getting(Test::class) {
-        useJUnitPlatform()
+        getting(Test::class) {
+            useJUnitPlatform()
+        }
     }
 }

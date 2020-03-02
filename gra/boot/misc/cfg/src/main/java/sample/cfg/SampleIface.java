@@ -1,4 +1,4 @@
-package sample;
+package sample.cfg;
 
 public interface SampleIface {
     String getId();
