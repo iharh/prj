@@ -1,3 +1,4 @@
 sample:
   lexicon:
-    export-url: http://local-cmp:18080/v1/resource?type={lexiconType}&instance={instanceId}&id={accountId}
+    export-url: http://{instance-id}/mobile/rest/fxresources/lexicons/nlpsvc/export/{account-id}/{lexicon-type}
+    # export-url: http://cb-nlp-resource-repository-service/v1/resource?type={lexicon-type}&instance={instance-id}&id={account-id}
