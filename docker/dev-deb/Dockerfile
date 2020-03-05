@@ -64,4 +64,10 @@ RUN set -ex \
 
 ENV PATH=${PATH}:/opt/gradle/gradle-${GRADLE_VERSION}/bin
 
+RUN set -ex \
+    && echo "==> Install gcc ..." \
+    && install_packages \
+    gcc \
+    g++
+
 CMD ["bash"]
