@@ -1,5 +1,5 @@
-FROM centos:8.1.1911
-#7.7.1908
+FROM centos:7.7.1908
+#8.1.1911
 
 RUN yum -y update && yum -y install \
         curl \
@@ -53,7 +53,7 @@ RUN wget https://dvc.org/rpm/dvc.repo -O /etc/yum.repos.d/dvc.repo
 RUN yum -y update && yum -y install \
     dvc \
     gcc-c++
-# compat-gcc-44-c++
+    # compat-gcc-44-c++
 
 # Accept id through --build-arg and create nlp user matching current logon user ID
 ARG uid
