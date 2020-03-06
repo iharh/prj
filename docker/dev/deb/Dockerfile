@@ -19,9 +19,6 @@ RUN set -ex \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Default to UTF-8 file.encoding
-ENV LANG C.UTF-8
-
 COPY rootfs /
 
 # https://github.com/corretto/corretto-11/releases
@@ -60,14 +57,19 @@ RUN set -ex \
     && echo "$(cat gradle-bin.zip.sha256) gradle-bin.zip" | sha256sum -c - \
     && mkdir /opt/gradle \
     && unzip -d /opt/gradle /tmp/gradle-bin.zip \
-    && rm -f /tmp/gradle-bin.* \
+    && rm -f /tmp/gradle-bin.*
 
 ENV PATH=${PATH}:/opt/gradle/gradle-${GRADLE_VERSION}/bin
 
 RUN set -ex \
     && echo "==> Install gcc ..." \
     && install_packages \
-    gcc \
     g++
 
-CMD ["bash"]
+# Default to UTF-8 file.encoding
+ENV LANG C.UTF-8
+
+# Accept id through --build-arg and create nlp user matching current logon user ID
+ARG uid
+RUN useradd -l --uid=$uid nlp
+USER nlp
