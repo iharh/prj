@@ -31,6 +31,8 @@ dependencies {
     // javacpp
     api             libraries.javacpp
 
+    implementation  libraries.slf4j_api
+    implementation  libraries.logback_classic
     // junit
     testCompile     libraries.junit_jupiter
     // assertj
@@ -67,6 +69,8 @@ test {
     def testJavaCP = [nativeProviderLibDir].join(File.pathSeparator)
 
     systemProperty 'java.library.path', testJavaCP
+    // are we using logback ?
+    systemProperty 'org.bytedeco.javacpp.logger', 'slf4j'
     systemProperty 'org.bytedeco.javacpp.logger.debug', 'true'
 
     environment = [ 'LD_LIBRARY_PATH' : testJavaCP ]
