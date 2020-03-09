@@ -3,8 +3,8 @@ buildscript {
         gradlePluginPortal()
     }
     ext {
-        springBootVersion = '2.1.9.RELEASE'
-        gradleRootDir = "${rootProject.getRootDir()}/../../gradle"
+        springBootVersion = '2.2.5.RELEASE'
+        gradleRootDir = "${rootProject.getRootDir()}/../../../gradle"
     }
 
     apply from: "$gradleRootDir/repositories.gradle"

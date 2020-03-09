@@ -1,4 +1,4 @@
 ext {
-    gradleRootDir = "${rootProject.getRootDir()}/../../gradle"
+    gradleRootDir = "${rootProject.getRootDir()}/../../../gradle"
     gradleDir = "${rootProject.getRootDir()}/gradle"
 }

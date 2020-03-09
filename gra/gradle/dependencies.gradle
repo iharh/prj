@@ -30,7 +30,7 @@ ext {
 
         cache_api:                  '1.1.1',
 
-        javacpp:                    '1.5.1-1',
+        javacpp:                    '1.5.2',
         
         junit:                      '5.5.1',
         assertj:                    '3.13.2',
