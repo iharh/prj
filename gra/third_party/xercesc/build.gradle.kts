@@ -3,6 +3,7 @@ import de.undercouch.gradle.tasks.download.Verify
 
 val xercescVersion: String by project
 val xercescSha256: String by project
+val xercescBuildType: String by project
 
 val xercescZipFile = File(buildDir, "$xercescVersion.zip")
 val xercescSrcDir = "$buildDir/xerces-c-$xercescVersion"
@@ -38,8 +39,8 @@ tasks {
         workingDir(xercescBuildDir)
         executable("cmake")
         args = listOf(
-            "-DCMAKE_BUILD_TYPE=Debug",
             "-DCMAKE_INSTALL_PREFIX=inst",
+            "-DBUILD_SHARED_LIBS:BOOL=OFF",
             "-B", xercescBuildDir,
             "-S", xercescSrcDir
         )
@@ -56,10 +57,11 @@ tasks {
         executable("cmake")
         args = listOf(
             "--build", xercescBuildDir,
+            "--config", xercescBuildType,
             "-t", "install"
         )
         inputs.file("$xercescBuildDir/Makefile")
-        outputs.file("$xercescInstDir/lib/libxerces-c.so")
+        outputs.file("$xercescInstDir/lib/libxerces-c-3.2.a")
     }
     val versionCmake by registering(Exec::class) {
         executable("cmake")
