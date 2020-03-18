@@ -1,1 +1,1 @@
-include("xerces-c")
+include("xercesc")
