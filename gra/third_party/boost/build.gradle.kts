@@ -7,9 +7,10 @@ val boostBuildType: String by project
 
 val boostVersionUnderscore = boostVersion.replace(".", "_")
 val boostArchiveFile = File(buildDir, "boost-$boostVersion.tar.gz")
-val boostSrcDir = "$buildDir/boost-boost-$boostVersion"
-val boostBuildDir = "$buildDir/boost-build"
+val boostBuildDir = "$buildDir/boost_$boostVersionUnderscore"
 val boostInstDir = "$buildDir/boost-inst"
+
+val icu4cInstDir="${rootProject.getRootDir()}/icu4c/build/icu4c-inst"
 
 tasks {
     val downloadArchive by registering(Download::class) {
@@ -29,45 +30,41 @@ tasks {
 
         from(tarTree(boostArchiveFile))
         into(buildDir)
-
-        doLast {
-            mkdir(boostBuildDir)
-        }
     }
-    /*
     val runConfigure by registering(Exec::class) {
         dependsOn(extractArchive)
 
-        workingDir(xercescBuildDir)
-        executable("cmake")
+        workingDir(boostBuildDir)
+
+        executable("./bootstrap.sh")
         args = listOf(
-            "-DCMAKE_INSTALL_PREFIX=inst",
-            "-DBUILD_SHARED_LIBS:BOOL=OFF",
-            "-B", xercescBuildDir,
-            "-S", xercescSrcDir
+            "--prefix=$boostInstDir",
+            "--with-toolset=gcc",
+            "--with-icu=$icu4cInstDir",
+            "--with-libraries=date_time,filesystem,system,thread"
         )
-        inputs.file("$xercescSrcDir/CMakeLists.txt")
-        outputs.file("$xercescBuildDir/Makefile")
+        inputs.file("$boostBuildDir/bootstrap.sh")
+        outputs.file("$boostBuildDir/project-config.jam")
+
         doLast {
-            mkdir(xercescInstDir)
+            mkdir(boostInstDir)
         }
     }
     val runBuild by registering(Exec::class) {
         dependsOn(runConfigure)
 
-        workingDir(xercescBuildDir)
-        executable("cmake")
+        workingDir(boostBuildDir)
+
+        executable("./b2")
         args = listOf(
-            "--build", xercescBuildDir,
-            "--config", xercescBuildType,
-            "-t", "install"
+            "--build-type=minimal",
+            "link=static",
+            "variant=debug",
+            "threading=multi",
+            // "optimization=full",
+            "install" 
         )
-        inputs.file("$xercescBuildDir/Makefile")
-        outputs.file("$xercescInstDir/lib/libxerces-c-3.2.a")
-    }
-    */
-    val versionCmake by registering(Exec::class) {
-        executable("cmake")
-        args = listOf("--version")
+        inputs.file("$boostBuildDir/project-config.jam")
+        outputs.file("$boostInstDir/lib/libboost_system.a")
     }
 }
