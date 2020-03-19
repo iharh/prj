@@ -5,28 +5,28 @@ val xercescVersion: String by project
 val xercescSha256: String by project
 val xercescBuildType: String by project
 
-val xercescZipFile = File(buildDir, "$xercescVersion.zip")
+val xercescArchiveFile = File(buildDir, "$xercescVersion.tar.gz")
 val xercescSrcDir = "$buildDir/xerces-c-$xercescVersion"
 val xercescBuildDir = "$xercescSrcDir/build"
 val xercescInstDir = "$xercescBuildDir/inst"
 
 tasks {
-    val downloadZip by registering(Download::class) {
-        src("https://github.com/apache/xerces-c/archive/v${xercescVersion}.zip")
-        dest(xercescZipFile)
+    val downloadArchive by registering(Download::class) {
+        src("https://github.com/apache/xerces-c/archive/v${xercescVersion}.tar.gz")
+        dest(xercescArchiveFile)
         overwrite(false)
     }
-    val verifyZip by registering(Verify::class) {
-        dependsOn(downloadZip)
+    val verifyArchive by registering(Verify::class) {
+        dependsOn(downloadArchive)
 
-        src(xercescZipFile)
+        src(xercescArchiveFile)
         algorithm("SHA-256")
         checksum(xercescSha256)
     }
-    val unzipZip by registering(Copy::class) {
-        dependsOn(verifyZip)
+    val extractArchive by registering(Copy::class) {
+        dependsOn(verifyArchive)
 
-        from(zipTree(xercescZipFile))
+        from(tarTree(xercescArchiveFile))
         into(buildDir)
 
         doLast {
@@ -34,7 +34,7 @@ tasks {
         }
     }
     val configureXercesc by registering(Exec::class) {
-        dependsOn(unzipZip)
+        dependsOn(extractArchive)
 
         workingDir(xercescBuildDir)
         executable("cmake")
