@@ -10,7 +10,7 @@ val icu4cVersionDash = icu4cVersion.replace(".", "-")
 val icu4cArchiveFile = File(buildDir, "icu4c-$icu4cVersionUnderscore-src.tgz") // ".zip" is for win
 val icu4cSrcDir = "$buildDir/icu/source"
 val icu4cBuildDir = "$buildDir/icu4c-build"
-//val icu4cInstDir = "$icu4cBuildDir/inst"
+val icu4cInstDir = "$buildDir/icu4c-inst"
 
 tasks {
     create("printVer") {
@@ -45,27 +45,30 @@ tasks {
 
         workingDir(icu4cBuildDir)
         executable("$icu4cSrcDir/runConfigureICU")
-        args = listOf("Linux")
+        args = listOf(
+            "--enable-debug",
+            "--disable-release",
+            "Linux/gcc",
+            "--enable-static",
+            "--disable-shared",
+            "--prefix=$icu4cInstDir"
+        )
 
         inputs.file("$icu4cSrcDir/runConfigureICU")
         outputs.file("$icu4cBuildDir/Makefile")
-        //doLast {
-        //    mkdir(icu4cInstDir)
-        //}
-    }
-    /*
-    val runBuild by registering(Exec::class) {
-        dependsOn(configureXercesc)
 
-        workingDir(xercescBuildDir)
-        executable("cmake")
-        args = listOf(
-            "--build", xercescBuildDir,
-            "--config", xercescBuildType,
-            "-t", "install"
-        )
-        inputs.file("$xercescBuildDir/Makefile")
-        outputs.file("$xercescInstDir/lib/libxerces-c-3.2.a")
+        doLast {
+            mkdir(icu4cInstDir)
+        }
     }
-    */
+    val runBuild by registering(Exec::class) {
+        dependsOn(runConfigure)
+
+        workingDir(icu4cBuildDir)
+        executable("make")
+        args = listOf("install")
+
+        inputs.file("$icu4cBuildDir/Makefile")
+        inputs.file("$icu4cInstDir/lib/libicuuc.a")
+    }
 }
