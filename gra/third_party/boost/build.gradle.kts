@@ -1,38 +1,40 @@
 import de.undercouch.gradle.tasks.download.Download
 import de.undercouch.gradle.tasks.download.Verify
 
-val xercescVersion: String by project
-val xercescSha256: String by project
-val xercescBuildType: String by project
+val boostVersion: String by project
+val boostSha256: String by project
+val boostBuildType: String by project
 
-val xercescArchiveFile = File(buildDir, "$xercescVersion.tar.gz")
-val xercescSrcDir = "$buildDir/xerces-c-$xercescVersion"
-val xercescBuildDir = "$buildDir/xerces-c-build"
-val xercescInstDir = "$buildDir/xerces-c-inst"
+val boostVersionUnderscore = boostVersion.replace(".", "_")
+val boostArchiveFile = File(buildDir, "boost-$boostVersion.tar.gz")
+val boostSrcDir = "$buildDir/boost-boost-$boostVersion"
+val boostBuildDir = "$buildDir/boost-build"
+val boostInstDir = "$buildDir/boost-inst"
 
 tasks {
     val downloadArchive by registering(Download::class) {
-        src("https://github.com/apache/xerces-c/archive/v${xercescVersion}.tar.gz")
-        dest(xercescArchiveFile)
+        src("https://dl.bintray.com/boostorg/release/$boostVersion/source/boost_$boostVersionUnderscore.tar.gz")
+        dest(boostArchiveFile)
         overwrite(false)
     }
     val verifyArchive by registering(Verify::class) {
         dependsOn(downloadArchive)
 
-        src(xercescArchiveFile)
+        src(boostArchiveFile)
         algorithm("SHA-256")
-        checksum(xercescSha256)
+        checksum(boostSha256)
     }
     val extractArchive by registering(Copy::class) {
         dependsOn(verifyArchive)
 
-        from(tarTree(xercescArchiveFile))
+        from(tarTree(boostArchiveFile))
         into(buildDir)
 
         doLast {
-            mkdir(xercescBuildDir)
+            mkdir(boostBuildDir)
         }
     }
+    /*
     val runConfigure by registering(Exec::class) {
         dependsOn(extractArchive)
 
@@ -63,6 +65,7 @@ tasks {
         inputs.file("$xercescBuildDir/Makefile")
         outputs.file("$xercescInstDir/lib/libxerces-c-3.2.a")
     }
+    */
     val versionCmake by registering(Exec::class) {
         executable("cmake")
         args = listOf("--version")
