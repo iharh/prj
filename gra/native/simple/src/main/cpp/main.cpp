@@ -1,17 +1,31 @@
+#include "unicode/unistr.h"
+
 #include <cstdlib> // getenv
 #include <iostream>
+
+namespace std
+{
+    inline std::wostream &operator <<(std::wostream &stream, const icu::UnicodeString &s)
+    {
+        for (int i = 0; i < s.length(); ++i)
+            stream.put(s.charAt(i));
+        return stream;
+    }
+}
 
 int
 main()
 {
+    icu::UnicodeString prefix = UNICODE_STRING_SIMPLE("icu4c str");
+
     const char *envVar = std::getenv("ENV_VAR");
     if (envVar != NULL)
     {
-        std::cout << "Hello with ENV_VAR" << std::endl;
+        std::wcout << prefix << UNICODE_STRING_SIMPLE(" with ENV_VAR") << std::endl;
     }
     else
     {
-        std::cout << "Hello without ENV_VAR" << std::endl;
+        std::wcout << prefix << UNICODE_STRING_SIMPLE(" without ENV_VAR") << std::endl;
     }
 
     return 0;
