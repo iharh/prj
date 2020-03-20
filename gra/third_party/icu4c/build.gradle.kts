@@ -69,6 +69,6 @@ tasks {
         args = listOf("install")
 
         inputs.file("$icu4cBuildDir/Makefile")
-        inputs.file("$icu4cInstDir/lib/libicuuc.a")
+        outputs.file("$icu4cInstDir/lib/libicuuc.a")
     }
 }
