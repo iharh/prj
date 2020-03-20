@@ -4,8 +4,9 @@ plugins {
 
 application {
     val thirdPartyDir = "${rootProject.getRootDir()}/../third_party"
+    val icuInstDir = "$thirdPartyDir/icu4c/build/icu4c-inst"
 
-    privateHeaders.from("$thirdPartyDir/icu4c/build/icu4c-inst/include")
+    privateHeaders.from("$icuInstDir/include")
     
     tasks {
         withType<CppCompile>().configureEach {
@@ -19,7 +20,7 @@ application {
         }
         withType<LinkExecutable>().configureEach { // LinkSharedLibrary
             libs.from(
-                "$thirdPartyDir/icu4c/build/icu4c-inst/lib/libicuuc.a"
+                "$icuInstDir/lib/libicuuc.a"
             )
             // linkerArgs.addAll(['-Wl,--no-allow-shlib-undefined'])
         }

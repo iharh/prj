@@ -39,7 +39,7 @@ tasks {
         workingDir(xercescBuildDir)
         executable("cmake")
         args = listOf(
-            "-DCMAKE_INSTALL_PREFIX=inst",
+            "-DCMAKE_INSTALL_PREFIX=$xercescInstDir",
             "-DBUILD_SHARED_LIBS:BOOL=OFF",
             "-B", xercescBuildDir,
             "-S", xercescSrcDir
@@ -61,7 +61,7 @@ tasks {
             "-t", "install"
         )
         inputs.file("$xercescBuildDir/Makefile")
-        outputs.file("$xercescInstDir/lib/libxerces-c-3.2.a")
+        // outputs.file("$xercescInstDir/lib/libxerces-c-3.2.a")
     }
     val versionCmake by registering(Exec::class) {
         executable("cmake")
