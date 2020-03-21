@@ -22,8 +22,11 @@ application {
         }
         withType<LinkExecutable>().configureEach { // LinkSharedLibrary
             libs.from(
+                "$xercescInstDir/lib/libxerces-c-3.2.a", // must go before icu
                 "$icuInstDir/lib/libicuuc.a",
-                "$xercescInstDir/lib/libxerces-c-3.2.a"
+                "$icuInstDir/lib/libicudata.a"
+                //"$icuInstDir/lib/libicuio.a",
+                //"$icuInstDir/lib/libicutu.a",
             )
             // linkerArgs.addAll(['-Wl,--no-allow-shlib-undefined'])
         }

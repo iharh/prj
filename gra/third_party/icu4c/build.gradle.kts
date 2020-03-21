@@ -51,6 +51,7 @@ tasks {
             "Linux/gcc",
             "--enable-static",
             "--disable-shared",
+            "--disable-dyload",
             "--prefix=$icu4cInstDir"
         )
 

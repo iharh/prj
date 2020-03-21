@@ -10,6 +10,8 @@ val xercescSrcDir = "$buildDir/xerces-c-$xercescVersion"
 val xercescBuildDir = "$buildDir/xerces-c-build"
 val xercescInstDir = "$buildDir/xerces-c-inst"
 
+val icu4cInstDir="${rootProject.getRootDir()}/icu4c/build/icu4c-inst"
+
 tasks {
     val downloadArchive by registering(Download::class) {
         src("https://github.com/apache/xerces-c/archive/v${xercescVersion}.tar.gz")
@@ -42,6 +44,8 @@ tasks {
             "-DCMAKE_INSTALL_PREFIX=$xercescInstDir",
             "-DBUILD_SHARED_LIBS:BOOL=OFF",
             "-Dnetwork-accessor=socket",
+            "-DCMAKE_POLICY_DEFAULT_CMP0074=NEW",
+            "-DICU_ROOT=$icu4cInstDir",
             "-B", xercescBuildDir,
             "-S", xercescSrcDir
         )
