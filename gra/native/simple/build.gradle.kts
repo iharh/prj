@@ -22,7 +22,7 @@ application {
         }
         withType<LinkExecutable>().configureEach { // LinkSharedLibrary
             libs.from(
-                "$icuInstDir/lib/libicuuc.a"
+                "$icuInstDir/lib/libicuuc.a",
                 "$xercescInstDir/lib/libxerces-c-3.2.a"
             )
             // linkerArgs.addAll(['-Wl,--no-allow-shlib-undefined'])

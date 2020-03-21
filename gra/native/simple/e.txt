@@ -1,0 +1,139 @@
+To honour the JVM settings for this build a new JVM will be forked. Please consider using the daemon: https://docs.gradle.org/6.2.2/userguide/gradle_daemon.html.
+Daemon will be stopped at the end of the build stopping after processing
+> Task :buildSrc:compileKotlin UP-TO-DATE
+> Task :buildSrc:compileJava NO-SOURCE
+> Task :buildSrc:compileGroovy NO-SOURCE
+> Task :buildSrc:pluginDescriptors UP-TO-DATE
+> Task :buildSrc:processResources UP-TO-DATE
+> Task :buildSrc:classes UP-TO-DATE
+> Task :buildSrc:inspectClassesForKotlinIC UP-TO-DATE
+> Task :buildSrc:jar UP-TO-DATE
+> Task :buildSrc:assemble UP-TO-DATE
+> Task :buildSrc:compileTestKotlin NO-SOURCE
+> Task :buildSrc:pluginUnderTestMetadata UP-TO-DATE
+> Task :buildSrc:compileTestJava NO-SOURCE
+> Task :buildSrc:compileTestGroovy NO-SOURCE
+> Task :buildSrc:processTestResources NO-SOURCE
+> Task :buildSrc:testClasses UP-TO-DATE
+> Task :buildSrc:test NO-SOURCE
+> Task :buildSrc:validatePlugins UP-TO-DATE
+> Task :buildSrc:check UP-TO-DATE
+> Task :buildSrc:build UP-TO-DATE
+:simple:linkDebug sanitize-address: false]
+:simple:compileDebugCpp sanitize-address: false]
+> Task :simple:compileDebugCpp UP-TO-DATE
+> Task :simple:check UP-TO-DATE
+
+> Task :simple:linkDebug FAILED
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(CurlNetAccessor.cpp.o): in function `xercesc_3_2::CurlNetAccessor::initCurl()':
+CurlNetAccessor.cpp:(.text+0xdc): undefined reference to `curl_global_init'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(CurlNetAccessor.cpp.o): in function `xercesc_3_2::CurlNetAccessor::cleanupCurl()':
+CurlNetAccessor.cpp:(.text+0x124): undefined reference to `curl_global_cleanup'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(CurlURLInputStream.cpp.o): in function `xercesc_3_2::CurlURLInputStream::CurlURLInputStream(xercesc_3_2::XMLURL const&, xercesc_3_2::XMLNetHTTPInfo const*)':
+CurlURLInputStream.cpp:(.text+0x167): undefined reference to `curl_multi_init'
+/usr/bin/ld: CurlURLInputStream.cpp:(.text+0x177): undefined reference to `curl_easy_init'
+/usr/bin/ld: CurlURLInputStream.cpp:(.text+0x1eb): undefined reference to `curl_easy_setopt'
+/usr/bin/ld: CurlURLInputStream.cpp:(.text+0x20f): undefined reference to `curl_easy_setopt'
+/usr/bin/ld: CurlURLInputStream.cpp:(.text+0x233): undefined reference to `curl_easy_setopt'
+/usr/bin/ld: CurlURLInputStream.cpp:(.text+0x255): undefined reference to `curl_easy_setopt'
+/usr/bin/ld: CurlURLInputStream.cpp:(.text+0x277): undefined reference to `curl_easy_setopt'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(CurlURLInputStream.cpp.o):CurlURLInputStream.cpp:(.text+0x36c): more undefined references to `curl_easy_setopt' follow
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(CurlURLInputStream.cpp.o): in function `xercesc_3_2::CurlURLInputStream::CurlURLInputStream(xercesc_3_2::XMLURL const&, xercesc_3_2::XMLNetHTTPInfo const*)':
+CurlURLInputStream.cpp:(.text+0x5a0): undefined reference to `curl_slist_append'
+/usr/bin/ld: CurlURLInputStream.cpp:(.text+0x600): undefined reference to `curl_easy_setopt'
+/usr/bin/ld: CurlURLInputStream.cpp:(.text+0x60f): undefined reference to `curl_slist_free_all'
+/usr/bin/ld: CurlURLInputStream.cpp:(.text+0x679): undefined reference to `curl_easy_setopt'
+/usr/bin/ld: CurlURLInputStream.cpp:(.text+0x69d): undefined reference to `curl_easy_setopt'
+/usr/bin/ld: CurlURLInputStream.cpp:(.text+0x6cb): undefined reference to `curl_easy_setopt'
+/usr/bin/ld: CurlURLInputStream.cpp:(.text+0x6ec): undefined reference to `curl_multi_add_handle'
+/usr/bin/ld: CurlURLInputStream.cpp:(.text+0x75d): undefined reference to `curl_easy_getinfo'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(CurlURLInputStream.cpp.o): in function `xercesc_3_2::CurlURLInputStream::~CurlURLInputStream()':
+CurlURLInputStream.cpp:(.text+0x8b9): undefined reference to `curl_multi_remove_handle'
+/usr/bin/ld: CurlURLInputStream.cpp:(.text+0x8c9): undefined reference to `curl_easy_cleanup'
+/usr/bin/ld: CurlURLInputStream.cpp:(.text+0x8d9): undefined reference to `curl_multi_cleanup'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(CurlURLInputStream.cpp.o): in function `xercesc_3_2::CurlURLInputStream::readMore(int*)':
+CurlURLInputStream.cpp:(.text+0xc40): undefined reference to `curl_multi_perform'
+/usr/bin/ld: CurlURLInputStream.cpp:(.text+0xc78): undefined reference to `curl_multi_info_read'
+/usr/bin/ld: CurlURLInputStream.cpp:(.text+0x1088): undefined reference to `curl_multi_fdset'
+/usr/bin/ld: CurlURLInputStream.cpp:(.text+0x10b0): undefined reference to `curl_multi_timeout'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(ICUTransService.cpp.o): in function `xercesc_3_2::convertToXMLCh(char16_t const*, xercesc_3_2::MemoryManager*)':
+ICUTransService.cpp:(.text+0x108): undefined reference to `u_strlen_65'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(ICUTransService.cpp.o): in function `xercesc_3_2::ICUTransService::compareIString(char16_t const*, char16_t const*)':
+ICUTransService.cpp:(.text+0x309): undefined reference to `u_foldCase_65'
+/usr/bin/ld: ICUTransService.cpp:(.text+0x31b): undefined reference to `u_foldCase_65'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(ICUTransService.cpp.o): in function `xercesc_3_2::ICUTransService::compareNIString(char16_t const*, char16_t const*, unsigned long)':
+ICUTransService.cpp:(.text+0x440): undefined reference to `u_foldCase_65'
+/usr/bin/ld: ICUTransService.cpp:(.text+0x452): undefined reference to `u_foldCase_65'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(ICUTransService.cpp.o): in function `xercesc_3_2::ICUTransService::makeNewLCPTranscoder(xercesc_3_2::MemoryManager*)':
+ICUTransService.cpp:(.text+0x4f0): undefined reference to `ucnv_open_65'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(ICUTransService.cpp.o): in function `xercesc_3_2::ICUTransService::upperCase(char16_t*)':
+ICUTransService.cpp:(.text+0x58f): undefined reference to `u_toupper_65'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(ICUTransService.cpp.o): in function `xercesc_3_2::ICUTransService::lowerCase(char16_t*)':
+ICUTransService.cpp:(.text+0x5b9): undefined reference to `u_tolower_65'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(ICUTransService.cpp.o): in function `xercesc_3_2::ICUTransService::makeNewXMLTranscoder(char16_t const*, xercesc_3_2::XMLTransService::Codes&, unsigned long, xercesc_3_2::MemoryManager*)':
+ICUTransService.cpp:(.text+0x790): undefined reference to `ucnv_openU_65'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(ICUTransService.cpp.o): in function `xercesc_3_2::ICUTranscoder::ICUTranscoder(char16_t const*, UConverter*, unsigned long, xercesc_3_2::MemoryManager*)':
+ICUTransService.cpp:(.text+0x918): undefined reference to `ucnv_getMaxCharSize_65'
+/usr/bin/ld: ICUTransService.cpp:(.text+0x92a): undefined reference to `ucnv_getMinCharSize_65'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(ICUTransService.cpp.o): in function `xercesc_3_2::ICUTranscoder::~ICUTranscoder()':
+ICUTransService.cpp:(.text+0x9b7): undefined reference to `ucnv_close_65'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(ICUTransService.cpp.o): in function `xercesc_3_2::ICUTranscoder::transcodeFrom(unsigned char const*, unsigned long, char16_t*, unsigned long, unsigned long&, unsigned char*)':
+ICUTransService.cpp:(.text+0xaea): undefined reference to `ucnv_toUnicode_65'
+/usr/bin/ld: ICUTransService.cpp:(.text+0xc8a): undefined reference to `ucnv_getMaxCharSize_65'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(ICUTransService.cpp.o): in function `xercesc_3_2::ICUTranscoder::transcodeTo(char16_t const*, unsigned long, unsigned char*, unsigned long, unsigned long&, xercesc_3_2::XMLTranscoder::UnRepOpts)':
+ICUTransService.cpp:(.text+0xe6d): undefined reference to `UCNV_FROM_U_CALLBACK_STOP_65'
+/usr/bin/ld: ICUTransService.cpp:(.text+0xe79): undefined reference to `UCNV_FROM_U_CALLBACK_SUBSTITUTE_65'
+/usr/bin/ld: ICUTransService.cpp:(.text+0xeb2): undefined reference to `ucnv_setFromUCallBack_65'
+/usr/bin/ld: ICUTransService.cpp:(.text+0xf22): undefined reference to `ucnv_fromUnicode_65'
+/usr/bin/ld: ICUTransService.cpp:(.text+0xfa0): undefined reference to `ucnv_setFromUCallBack_65'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(ICUTransService.cpp.o): in function `xercesc_3_2::ICUTranscoder::canTranscodeTo(unsigned int)':
+ICUTransService.cpp:(.text+0x1190): undefined reference to `UCNV_FROM_U_CALLBACK_STOP_65'
+/usr/bin/ld: ICUTransService.cpp:(.text+0x1198): undefined reference to `ucnv_setFromUCallBack_65'
+/usr/bin/ld: ICUTransService.cpp:(.text+0x11fd): undefined reference to `ucnv_fromUnicode_65'
+/usr/bin/ld: ICUTransService.cpp:(.text+0x1258): undefined reference to `ucnv_setFromUCallBack_65'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(ICUTransService.cpp.o): in function `xercesc_3_2::ICULCPTranscoder::~ICULCPTranscoder()':
+ICUTransService.cpp:(.text+0x1321): undefined reference to `ucnv_close_65'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(ICUTransService.cpp.o): in function `xercesc_3_2::ICULCPTranscoder::calcRequiredSize(char16_t const*, xercesc_3_2::MemoryManager*)':
+ICUTransService.cpp:(.text+0x13f0): undefined reference to `ucnv_fromUChars_65'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(ICUTransService.cpp.o): in function `xercesc_3_2::ICULCPTranscoder::calcRequiredSize(char const*, xercesc_3_2::MemoryManager*)':
+ICUTransService.cpp:(.text+0x14d5): undefined reference to `ucnv_toUChars_65'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(ICUTransService.cpp.o): in function `xercesc_3_2::ICULCPTranscoder::transcode(char16_t const*, xercesc_3_2::MemoryManager*)':
+ICUTransService.cpp:(.text+0x16a3): undefined reference to `ucnv_fromUChars_65'
+/usr/bin/ld: ICUTransService.cpp:(.text+0x1765): undefined reference to `ucnv_fromUChars_65'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(ICUTransService.cpp.o): in function `xercesc_3_2::ICULCPTranscoder::transcode(char const*, xercesc_3_2::MemoryManager*)':
+ICUTransService.cpp:(.text+0x18f9): undefined reference to `ucnv_toUChars_65'
+/usr/bin/ld: ICUTransService.cpp:(.text+0x1972): undefined reference to `ucnv_toUChars_65'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(ICUTransService.cpp.o): in function `xercesc_3_2::ICULCPTranscoder::transcode(char const*, char16_t*, unsigned long, xercesc_3_2::MemoryManager*)':
+ICUTransService.cpp:(.text+0x1af3): undefined reference to `ucnv_toUChars_65'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(ICUTransService.cpp.o): in function `xercesc_3_2::ICULCPTranscoder::transcode(char16_t const*, char*, unsigned long, xercesc_3_2::MemoryManager*)':
+ICUTransService.cpp:(.text+0x1c5b): undefined reference to `ucnv_fromUChars_65'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(XMLUniCharacter.cpp.o): in function `xercesc_3_2::XMLUniCharacter::getType(char16_t)':
+XMLUniCharacter.cpp:(.text+0x15): undefined reference to `u_charType_65'
+/usr/bin/ld: /data/wrk/prj/gra/third_party/xercesc/build/xerces-c-inst/lib/libxerces-c-3.2.a(RangeToken.cpp.o): in function `xercesc_3_2::RangeToken::getCaseInsensitiveToken(xercesc_3_2::TokenFactory*)':
+RangeToken.cpp:(.text+0x5e2): undefined reference to `uset_openPatternOptions_65'
+/usr/bin/ld: RangeToken.cpp:(.text+0x61b): undefined reference to `uset_serialize_65'
+/usr/bin/ld: RangeToken.cpp:(.text+0x69b): undefined reference to `uset_serialize_65'
+/usr/bin/ld: RangeToken.cpp:(.text+0x6b4): undefined reference to `uset_getSerializedSet_65'
+/usr/bin/ld: RangeToken.cpp:(.text+0x6c0): undefined reference to `uset_getSerializedRangeCount_65'
+/usr/bin/ld: RangeToken.cpp:(.text+0x6fe): undefined reference to `uset_getSerializedRange_65'
+/usr/bin/ld: RangeToken.cpp:(.text+0x744): undefined reference to `uset_setSerializedToOne_65'
+/usr/bin/ld: RangeToken.cpp:(.text+0x750): undefined reference to `uset_close_65'
+collect2: error: ld returned 1 exit status
+
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':simple:linkDebug'.
+> A build operation failed.
+      Linker failed while linking simple.
+  See the complete log at: file:///data/wrk/prj/gra/native/simple/build/tmp/linkDebug/output.txt
+   > Linker failed while linking simple.
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 5s
+2 actionable tasks: 1 executed, 1 up-to-date
