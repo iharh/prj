@@ -1,6 +1,7 @@
 #include <unicode/unistr.h>
 #include <unicode/ustring.h>
 #include <unicode/uchar.h>
+#include <unicode/regex.h>
 
 #include <xercesc/util/PlatformUtils.hpp>
 #include <xercesc/util/XMLString.hpp>
@@ -75,6 +76,11 @@ main()
     // icu::UnicodeString s1;
     // std::wcin >> s1;
 
+    uint32_t flags = 0;
+    UErrorCode status = U_ZERO_ERROR;
+    icu::UnicodeString strPattern;
+    icu::RegexMatcher regexM(strPattern, flags, status);
+    
     xercesc::XMLPlatformUtils::Terminate();
     return 0;
 }

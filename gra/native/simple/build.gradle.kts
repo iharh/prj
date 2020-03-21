@@ -14,19 +14,21 @@ application {
         withType<CppCompile>().configureEach {
             compilerArgs.addAll(listOf( 
                 "-Wall",        // "-Werror",
-                "-std=c++11",   // "-std=c++0x"
-                "-D_GLIBCXX_USE_CXX11_ABI=0"
+                "-std=c++11"    // "-std=c++0x"
+                // "-D_GLIBCXX_USE_CXX11_ABI=0"
             ))
             setPositionIndependentCode(true)
             // includes.from(javaInclude, javaPlatformInclude)
         }
         withType<LinkExecutable>().configureEach { // LinkSharedLibrary
-            libs.from(
-                "$xercescInstDir/lib/libxerces-c-3.2.a", // must go before icu
+            libs.from( // !!! order is very important !!!
+                "$xercescInstDir/lib/libxerces-c-3.2.a",
+                "$icuInstDir/lib/libicui18n.a",
                 "$icuInstDir/lib/libicuuc.a",
                 "$icuInstDir/lib/libicudata.a"
-                //"$icuInstDir/lib/libicuio.a",
-                //"$icuInstDir/lib/libicutu.a",
+                //"$icuInstDir/lib/libicuio.a"
+                //"$icuInstDir/lib/libicutu.a"
+                //"$icuInstDir/lib/libicutest.a"
             )
             // linkerArgs.addAll(['-Wl,--no-allow-shlib-undefined'])
         }
