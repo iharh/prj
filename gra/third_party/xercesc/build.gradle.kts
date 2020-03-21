@@ -41,6 +41,7 @@ tasks {
         args = listOf(
             "-DCMAKE_INSTALL_PREFIX=$xercescInstDir",
             "-DBUILD_SHARED_LIBS:BOOL=OFF",
+            "-Dnetwork-accessor=socket",
             "-B", xercescBuildDir,
             "-S", xercescSrcDir
         )
