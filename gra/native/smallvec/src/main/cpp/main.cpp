@@ -30,7 +30,7 @@ main(void)
 
     for (size_t j = 0; j < 65; ++j)
     {
-        vTmpActiveInstances.push_back(std::make_shared<my_data>());
+        vTmpActiveInstances.push_back(std::make_shared<my_data>()); // grow called
     }
 
     std::wcout << L"Hello Smallvec: 3" << std::endl;
