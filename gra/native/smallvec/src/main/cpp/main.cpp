@@ -39,7 +39,7 @@ main(void)
 
     std::wcout << L"Hello Smallvec: 4" << std::endl;
 
-    vTmpActiveInstances.clear();
+    vTmpActiveInstances.clear(); // clear is really important here !!!
 
     std::wcout << L"Hello Smallvec: 5" << std::endl;
 
