@@ -28,7 +28,7 @@ main(void)
 
     std::wcout << L"Hello Smallvec: 2" << std::endl;
 
-    for (size_t j = 0; j < 69; ++j)
+    for (size_t j = 0; j < 65; ++j)
     {
         vTmpActiveInstances.push_back(std::make_shared<my_data>());
     }
@@ -46,10 +46,6 @@ main(void)
     vActiveInstances.swap(vTmpActiveInstances);
 
     std::wcout << L"Hello Smallvec: 6" << std::endl;
-
-    vTmpActiveInstances.clear();
-
-    std::wcout << L"Hello Smallvec: 7" << std::endl;
 
     return 0;
 }
