@@ -35,11 +35,13 @@ main(void)
 
     std::wcout << L"Hello Smallvec: 3" << std::endl;
 
-    vActiveInstances.swap(vTmpActiveInstances); // grow called
+    // vActiveInstances.swap(vTmpActiveInstances); // grow called
+    vActiveInstances.clear();
 
     std::wcout << L"Hello Smallvec: 4" << std::endl;
 
-    vTmpActiveInstances.clear(); // clear is really important here !!!
+    // vTmpActiveInstances.clear(); // clear is really important here !!!
+    vActiveInstances.swap(vTmpActiveInstances); // grow called
 
     std::wcout << L"Hello Smallvec: 5" << std::endl;
 
