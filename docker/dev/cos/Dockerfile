@@ -49,11 +49,11 @@ ENV ANT_HOME /opt/apache-ant-1.10.7
 ENV ANT_OPTS -server -Xms256m -Xmx4096m -XX:NewSize=160m -XX:+UseParallelGC -XX:ParallelGCThreads=1 -Duser.language=en -Duser.country=US -Dfile.encoding=UTF-8 -Dorg.bytedeco.javacpp.maxbytes=4G -Dorg.bytedeco.javacpp.maxphysicalbytes=6G
 ENV PATH ${PATH}:${ANT_HOME}/bin
 
-RUN wget https://dvc.org/rpm/dvc.repo -O /etc/yum.repos.d/dvc.repo
+# RUN wget https://dvc.org/rpm/dvc.repo -O /etc/yum.repos.d/dvc.repo
 RUN yum -y update && yum -y install \
-    dvc \
     gcc-c++
     # compat-gcc-44-c++
+    # dvc \
 
 # Accept id through --build-arg and create nlp user matching current logon user ID
 ARG uid
