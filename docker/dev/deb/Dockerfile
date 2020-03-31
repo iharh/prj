@@ -47,7 +47,7 @@ RUN set -ex \
 
 ENV JAVA_HOME=/usr/lib/jvm/java-11-amazon-corretto
 
-ENV GRADLE_VERSION=6.2.2
+ENV GRADLE_VERSION=6.3
 
 RUN set -ex \
     && echo "===> Installing Gradle ..." \
