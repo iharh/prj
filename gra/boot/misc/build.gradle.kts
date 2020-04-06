@@ -33,6 +33,7 @@ subprojects {
 
             dependency("org.yaml:snakeyaml:1.26")
 
+            dependency("javax.cache:cache-api:1.1.1")
             dependency("org.ehcache:ehcache:3.8.1")
 
             dependency("org.junit.jupiter:junit-jupiter-api:$junitVersion")

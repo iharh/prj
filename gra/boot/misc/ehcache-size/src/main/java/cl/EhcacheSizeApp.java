@@ -1,6 +1,10 @@
 package cl;
 
-//import org.springframework.beans.factory.annotation.Autowired;
+import cl.cache.ResourceKey;
+import cl.cache.ResourceValue;
+import cl.cache.service.ResourceCacheService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,8 +17,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class EhcacheSizeApp implements CommandLineRunner {
 
+    @Autowired
+    private ResourceCacheService resourceCacheService;
+
     private void doEhc() throws Exception {
-        log.info("doEhc");
+        final ResourceKey key = new ResourceKey("cmpId", 0);
+        final ResourceValue value = resourceCacheService.getResourceValue(key);
+        log.info("got cached value: {}", value);
     }
     
     @Override
