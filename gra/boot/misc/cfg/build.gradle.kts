@@ -1,3 +1,7 @@
+plugins {
+    id("java-library")
+}
+
 dependencies {
     compileOnly("org.projectlombok:lombok")
 
@@ -12,6 +16,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
+
 tasks.bootRun {
     // systemProperty("spring.profiles.active", "aws," + it)
     jvmArgs = listOf("-Dlang.id=en")
