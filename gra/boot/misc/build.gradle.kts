@@ -1,7 +1,7 @@
 import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
 
 plugins {
-    val springBootVersion = "2.2.6.RELEASE"
+    // val springBootVersion = "2.2.6.RELEASE"
     id("java-library")
     id("idea")
     // https://plugins.gradle.org/plugin/io.spring.dependency-management
@@ -50,19 +50,13 @@ subprojects {
     //}
 
     tasks {
-        //withType<JavaCompile>() {
-        //    println("Configuring $name in project ${project.name}...")
-        //    options.isDeprecation = true
-        //}
-        compileJava {
+        withType<JavaCompile>() {
+            println("Configuring $name in project ${project.name}...")
+            options.isDeprecation = true
             options.encoding = "UTF-8"
         }
-        compileTestJava {
-            options.encoding = "UTF-8"
-        }
-        //withType<Test> {
-        //    useJUnitPlatform()
-        //}
+        // compileJava.options.encoding = "UTF-8"
+        // compileTestJava.options.encoding = "UTF-8"
         test {
             useJUnitPlatform()
 
@@ -72,5 +66,4 @@ subprojects {
             }
         }
     }
-
 }
