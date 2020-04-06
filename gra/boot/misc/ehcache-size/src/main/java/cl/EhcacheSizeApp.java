@@ -23,6 +23,6 @@ public class EhcacheSizeApp implements CommandLineRunner {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(App.class, args);
+        SpringApplication.run(EhcacheSizeApp.class, args);
     }
 }
