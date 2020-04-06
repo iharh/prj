@@ -1,10 +1,12 @@
 import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
 
 plugins {
-    val springBootVersion = "2.2.5.RELEASE"
+    val springBootVersion = "2.2.6.RELEASE"
     id("idea")
-    id("io.spring.dependency-management").version("1.0.8.RELEASE").apply(false)
+    // https://plugins.gradle.org/plugin/io.spring.dependency-management
+    id("io.spring.dependency-management").version("1.0.9.RELEASE").apply(false)
     id("org.springframework.boot").version(springBootVersion).apply(false)
+    id("com.github.ben-manes.versions").version("0.28.0").apply(false)
 }
 
 allprojects {
@@ -15,20 +17,23 @@ allprojects {
 }
 
 subprojects {
-    val junitVersion = "5.5.1"
+    val junitVersion = "5.6.1"
 
     apply(plugin = "java")
     apply(plugin = "idea")
     apply(plugin = "io.spring.dependency-management")
     apply(plugin = "org.springframework.boot")
+    apply(plugin = "com.github.ben-manes.versions")
 
     the<DependencyManagementExtension>().apply {
         dependencies {
-            dependency("org.projectlombok:lombok:1.18.10")
+            dependency("org.projectlombok:lombok:1.18.12")
 
-            dependency("com.google.guava:guava:28.0-jre")
+            // dependency("com.google.guava:guava:28.2-jre")
 
-            dependency("org.yaml:snakeyaml:1.25")
+            dependency("org.yaml:snakeyaml:1.26")
+
+            dependency("org.ehcache:ehcache:3.8.1")
 
             dependency("org.junit.jupiter:junit-jupiter-api:$junitVersion")
             dependency("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
