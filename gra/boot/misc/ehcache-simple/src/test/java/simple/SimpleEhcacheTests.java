@@ -52,24 +52,26 @@ public class SimpleEhcacheTests {
         }
     }
 
+    static class ResourceSizeOfEngineProvider implements SizeOfEngineProvider {
+        @Override
+        public void start(ServiceProvider<Service> serviceProvider) {
+            System.out.println("start ResourceSizeOfEngineProvider");
+        }
+
+        @Override
+        public void stop() {
+            System.out.println("stop ResourceSizeOfEngineProvider");
+        }
+
+        @Override
+        public SizeOfEngine createSizeOfEngine(ResourceUnit resourceUnit, ServiceConfiguration<?, ?>... serviceConfigs) {
+            return new ResourceSizeofEngine();
+        }
+    }
+
     @Test
     void testEhcacheSimple() throws Exception {
-        try (CacheManager manager = CacheManagerBuilder.newCacheManagerBuilder().using(new SizeOfEngineProvider() {
-
-            @Override
-            public void start(ServiceProvider<Service> serviceProvider) {
-                System.out.println("Using Custom SizeOfEngineProvider");
-            }
-
-            @Override
-            public void stop() {
-            }
-
-            @Override
-            public SizeOfEngine createSizeOfEngine(ResourceUnit resourceUnit, ServiceConfiguration<?, ?>... serviceConfigs) {
-                return new ResourceSizeofEngine();
-            }
-        }).build(true)) {
+        try (CacheManager manager = CacheManagerBuilder.newCacheManagerBuilder().using(new ResourceSizeOfEngineProvider()).build(true)) {
             Cache<ResourceKey, ResourceValue> cache = manager.createCache("testCache",
                     newCacheConfigurationBuilder(ResourceKey.class, ResourceValue.class,
                         ResourcePoolsBuilder.newResourcePoolsBuilder().heap(NUM_ENTRIES, MemoryUnit.B)));
