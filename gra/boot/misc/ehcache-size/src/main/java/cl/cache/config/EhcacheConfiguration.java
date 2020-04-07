@@ -48,9 +48,10 @@ public class EhcacheConfiguration {
         Map<String, CacheConfiguration<?, ?>> caches = new HashMap<>();
         caches.put("myCache", cacheConfiguration);
 
-        EhcacheCachingProvider provider = (EhcacheCachingProvider) Caching.getCachingProvider("org.ehcache.jsr107.EhcacheCachingProvider");
+        EhcacheCachingProvider provider = (EhcacheCachingProvider) Caching.getCachingProvider(EhcacheCachingProvider.class.getName());
         org.ehcache.config.Configuration configuration = new DefaultConfiguration(caches, provider.getDefaultClassLoader());
 
-        return provider.getCacheManager(provider.getDefaultURI(), (org.ehcache.config.Configuration) configuration);
+        // ??? what if define create "org.ehcache.CacheManager" as a wrapper of "javax.cache.cacheManager" ???
+        return provider.getCacheManager(provider.getDefaultURI(), configuration);
     }
 }

@@ -4,6 +4,11 @@ import cl.cache.ResourceKey;
 import cl.cache.ResourceValue;
 import cl.cache.service.ResourceCacheService;
 
+import org.ehcache.config.units.MemoryUnit;
+import org.ehcache.core.spi.ServiceLocator;
+import org.ehcache.core.spi.store.heap.SizeOfEngineProvider;
+import org.ehcache.impl.config.store.heap.DefaultSizeOfEngineProviderConfiguration;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -28,6 +33,10 @@ public class EhcacheSizeApp implements CommandLineRunner {
     
     @Override
     public void run(String... args) throws Exception {
+        ServiceLocator.DependencySet dependencySet = ServiceLocator.dependencySet();
+        ServiceLocator locator = dependencySet.with(new DefaultSizeOfEngineProviderConfiguration(1, MemoryUnit.B ,1)).build();
+        SizeOfEngineProvider p = locator.getService(SizeOfEngineProvider.class); // ! not a mandatory service
+
         doEhc();
     }
 
