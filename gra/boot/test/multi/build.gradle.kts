@@ -28,10 +28,6 @@ subprojects {
         //}
         dependencies {
             dependency("org.projectlombok:lombok:1.18.12")
-            // dependency("com.google.guava:guava:28.2-jre")
-            dependency("org.yaml:snakeyaml:1.26")
-            dependency("javax.cache:cache-api:1.1.1")
-            dependency("org.ehcache:ehcache:3.8.1")
             dependency("org.assertj:assertj-core:3.15.0");
         }
     }
@@ -40,14 +36,14 @@ subprojects {
     //    targetCompatibility = JavaVersion.VERSION_11
     //}
     tasks {
-        withType<JavaCompile>() { // compileJava, compileTestJava
+        withType<JavaCompile> {
             println("Configuring $name in project ${project.name}...")
             options.isDeprecation = true
             options.encoding = "UTF-8"
         }
         test {
             useJUnitPlatform()
-
+            
             testLogging {
                 events("PASSED", "FAILED", "SKIPPED")
                 showStandardStreams = true

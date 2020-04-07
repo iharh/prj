@@ -1,17 +1,13 @@
 import org.apache.tools.ant.filters.ReplaceTokens
-import org.gradle.internal.os.OperatingSystem
-
-val springCloudVersion = "Hoxton.RELEASE"
-
-val osName = if (OperatingSystem.current().isMacOsX) "macosx" else "linux"
 
 plugins {
     java
     idea
     distribution
-    id("org.springframework.boot") version "2.2.2.RELEASE"
-    id("io.spring.dependency-management") version "1.0.8.RELEASE"
+    id("org.springframework.boot") version "2.2.6.RELEASE"
+    id("io.spring.dependency-management") version "1.0.9.RELEASE"
     id("com.github.ManifestClasspath") version "0.1.0-RELEASE"
+    id("com.github.ben-manes.versions").version("0.28.0")
 }
 
 repositories {
@@ -53,13 +49,45 @@ tasks {
         enabled = false
     }
     test {
+        useJUnitPlatform()
+        
         testLogging {
             events("PASSED", "FAILED", "SKIPPED")
-            showStandardStreams = false
+            showStandardStreams = true
         }
     }
 
     getByName("compileJava").dependsOn("processResources")
+}
+
+extra["springCloudVersion"] = "Hoxton.SR3"
+
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}") {
+            bomProperty("spring-security-oauth2-autoconfigure.version", "2.2.1.RELEASE")
+        }
+    }
+    dependencies {
+        dependency("org.projectlombok:lombok:1.18.12")
+
+        dependency("io.springfox:springfox-swagger2:2.9.2")
+        dependency("io.springfox:springfox-swagger-ui:2.9.2")
+        dependency("io.springfox:springfox-bean-validators:2.9.2")
+
+        dependency("io.github.mweirauch:micrometer-jvm-extras:0.2.0")
+        // ???
+        dependency("io.micrometer:micrometer-core:1.4.1")
+        dependency("io.micrometer:micrometer-registry-prometheus:1.4.1")
+
+        dependency("net.logstash.logback:logstash-logback-encoder:6.3")
+
+        dependency("javax.xml.bind:jaxb-api:2.4.0-b180830.0359")
+        dependency("com.sun.xml.bind:jaxb-impl:2.4.0-b180830.0438")
+        dependency("com.sun.xml.bind:jaxb-core:2.3.0.1")
+
+        dependency("com.github.tomakehurst:wiremock:2.26.3")
+    }
 }
 
 dependencies {
@@ -100,8 +128,7 @@ dependencies {
     implementation("com.sun.xml.bind:jaxb-impl")
     implementation("com.sun.xml.bind:jaxb-core")
 
-    
-    implementation("com.google.guava:guava:28.0-jre")
+    // implementation("com.google.guava:guava:28.2-jre")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.boot:spring-boot-test-autoconfigure")
@@ -112,32 +139,3 @@ dependencies {
     // testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.1")
     // testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.1")
 }
-
-dependencyManagement {
-    imports {
-        mavenBom("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion") {
-            bomProperty("spring-security-oauth2-autoconfigure.version", "2.2.1.RELEASE")
-        }
-    }
-    dependencies {
-        dependency("org.projectlombok:lombok:1.18.10")
-
-        dependency("io.springfox:springfox-swagger2:2.9.2")
-        dependency("io.springfox:springfox-swagger-ui:2.9.2")
-        dependency("io.springfox:springfox-bean-validators:2.9.2")
-
-        dependency("io.github.mweirauch:micrometer-jvm-extras:0.2.0")
-
-        dependency("net.logstash.logback:logstash-logback-encoder:6.2")
-
-        dependency("javax.xml.bind:jaxb-api:2.3.1")
-        dependency("com.sun.xml.bind:jaxb-impl:2.3.1")
-        dependency("com.sun.xml.bind:jaxb-core:2.3.0")
-
-        dependency("com.github.tomakehurst:wiremock:2.25.1")
-    }
-}
-
-// val test by tasks.getting(Test::class) {
-//    useJUnitPlatform()
-//}
