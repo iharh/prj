@@ -2,7 +2,7 @@ package cl;
 
 import cl.cache.ResourceKey;
 import cl.cache.ResourceValue;
-import cl.cache.config.ResourceSizeOfEngineProvider;
+import cl.cache.sizeof.ResourceSizeOfEngineProvider;
 
 import org.junit.jupiter.api.Test;
 

@@ -18,5 +18,6 @@ public class ServiceLocatorTests {
         ).build();
         SizeOfEngineProvider p = locator.getService(SizeOfEngineProvider.class);
         assertThat(p).isNotNull();
+        System.out.println("SizeOfEngineProvider impl: " + p.getClass().getName());
     }
 }

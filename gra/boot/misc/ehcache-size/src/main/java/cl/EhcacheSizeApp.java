@@ -26,7 +26,8 @@ public class EhcacheSizeApp implements CommandLineRunner {
     private ResourceCacheService resourceCacheService;
 
     private void doEhc() throws Exception {
-        final ResourceKey key = new ResourceKey("cmpId", 0);
+        log.debug("enter doEhc");
+        final ResourceKey key = new ResourceKey("some-instance", 0);
         final ResourceValue value = resourceCacheService.getResourceValue(key);
         log.info("got cached value: {}", value);
     }

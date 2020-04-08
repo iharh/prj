@@ -1,4 +1,4 @@
-package cl.cache.config;
+package cl.cache.sizeof;
 
 import cl.cache.ResourceValue;
 

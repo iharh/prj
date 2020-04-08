@@ -1,4 +1,4 @@
-package cl.cache.config;
+package cl.cache.sizeof;
 
 import org.ehcache.config.ResourceUnit;
 import org.ehcache.core.spi.store.heap.SizeOfEngine;
