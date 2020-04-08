@@ -15,8 +15,15 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ResourceSizeOfEngine implements SizeOfEngine {
 
+    private SizeOfEngine delegateSizeOfEngine;
+
+    public ResourceSizeOfEngine(SizeOfEngine delegateSizeOfEngine) {
+        this.delegateSizeOfEngine = delegateSizeOfEngine;
+    }
+
     @Override
     public <K, V> long sizeof(K key, Store.ValueHolder<V> valueHolder) throws LimitExceededException {
+        long delegateSize = 0;
         long nativeSize = 0;
         try {
             final Method methodGet = valueHolder.getClass().getDeclaredMethod("get");
@@ -27,8 +34,12 @@ public class ResourceSizeOfEngine implements SizeOfEngine {
             }
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
         }
+
+        if (delegateSizeOfEngine != null) {
+            delegateSize = delegateSizeOfEngine.sizeof(key, valueHolder);
+        }
         
-        log.debug("nativeSize: {}", nativeSize);
-        return nativeSize;
+        log.debug("delegateSize: {}, nativeSize: {}", delegateSize, nativeSize);
+        return delegateSize + nativeSize;
     }
 }

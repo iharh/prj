@@ -32,6 +32,7 @@ subprojects {
             dependency("org.yaml:snakeyaml:1.26")
             dependency("javax.cache:cache-api:1.1.1")
             dependency("org.ehcache:ehcache:3.8.1")
+            dependency("org.osgi:org.osgi.service.component.annotations:1.3.0")
             dependency("org.assertj:assertj-core:3.15.0");
         }
     }

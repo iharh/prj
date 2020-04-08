@@ -6,10 +6,9 @@ import org.ehcache.impl.config.store.heap.DefaultSizeOfEngineConfiguration;
 import org.ehcache.impl.config.store.heap.DefaultSizeOfEngineProviderConfiguration;
 import org.ehcache.spi.service.ServiceCreationConfiguration;
 
-// clb! 
-// import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Component;
 
-// cbl! @Component
+@Component
 public class ResourceSizeOfEngineProviderFactory implements ServiceFactory<SizeOfEngineProvider> {
 
     @Override
@@ -21,7 +20,7 @@ public class ResourceSizeOfEngineProviderFactory implements ServiceFactory<SizeO
             maxTraversals = sizeOfEngineConfiguration.getMaxObjectGraphSize();
             maxSize = sizeOfEngineConfiguration.getUnit().toBytes(sizeOfEngineConfiguration.getMaxObjectSize());
         }
-        return new ResourceSizeOfEngineProvider(); // clb! TODO: (maxTraversals, maxSize);
+        return new ResourceSizeOfEngineProvider(maxTraversals, maxSize);
     }
 
     @Override

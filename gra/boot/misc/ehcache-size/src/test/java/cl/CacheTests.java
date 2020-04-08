@@ -21,10 +21,12 @@ public class CacheTests {
 
     @Test
     void testEhcacheSimple() throws Exception {
-        try (CacheManager manager = CacheManagerBuilder.newCacheManagerBuilder().using(new ResourceSizeOfEngineProvider()).build(true)) {
+        try (CacheManager manager = CacheManagerBuilder.newCacheManagerBuilder()
+                //.using(new ResourceSizeOfEngineProvider(0, 0)) // at the moment we override the entire service
+                .build(true)) {
             Cache<ResourceKey, ResourceValue> cache = manager.createCache("testCache",
                     newCacheConfigurationBuilder(ResourceKey.class, ResourceValue.class,
-                        ResourcePoolsBuilder.newResourcePoolsBuilder().heap(NUM_ENTRIES, MemoryUnit.B)));
+                        ResourcePoolsBuilder.newResourcePoolsBuilder().heap(NUM_ENTRIES*(328+1), MemoryUnit.B)));
 
             for (int i = 0; i <= NUM_ENTRIES; ++i) {
                 cache.put(new ResourceKey(INSTANCE_ID, i), new ResourceValue(false, 0, 1));
