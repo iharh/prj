@@ -51,7 +51,8 @@ ENV PATH ${PATH}:${ANT_HOME}/bin
 
 # RUN wget https://dvc.org/rpm/dvc.repo -O /etc/yum.repos.d/dvc.repo
 RUN yum -y update && yum -y install \
-    gcc-c++
+    gcc-c++ \
+    make
     # compat-gcc-44-c++
     # dvc \
 
@@ -59,8 +60,11 @@ ENV CMAKE_VERSION 3.17.1
 RUN wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-Linux-x86_64.sh \
       -q -O /tmp/cmake-install.sh \
       && chmod u+x /tmp/cmake-install.sh \
-      && /tmp/cmake-install.sh --skip-license --prefix=/usr/bin \
+      && /tmp/cmake-install.sh --skip-license --prefix=/usr \
       && rm /tmp/cmake-install.sh
+
+# Default to UTF-8 file.encoding
+ENV LANG en_US.UTF-8
 
 # Accept id through --build-arg and create nlp user matching current logon user ID
 ARG uid
