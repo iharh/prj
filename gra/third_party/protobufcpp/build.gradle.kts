@@ -42,6 +42,8 @@ tasks {
             "-DCMAKE_INSTALL_PREFIX=$protobufCppInstDir",
             "-DCMAKE_BUILD_TYPE=$protobufBuildType",
             "-DBUILD_SHARED_LIBS:BOOL=OFF",
+            "-DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=ON",
+            "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON",
             "-B", protobufCppBuildDir,
             "-S", "$protobufCppSrcDir/cmake"
         )
