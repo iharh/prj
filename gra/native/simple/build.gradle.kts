@@ -3,6 +3,20 @@ plugins {
 }
 
 application {
+    // Define toolchain-specific compiler options
+
+    binaries.configureEach() { // CppStaticLibrary::class.java) {
+        println("binaries toolchain: ${getToolChain()}")
+        when (toolChain) {
+            is Gcc -> {
+                println("gcc toolchain detected")
+                (toolChain as Gcc).eachPlatform(p:GccPlatformToolChain -> {
+                    println("hello me") // linker.executable = 'linker'
+                })
+            }
+        }
+    }
+
     val thirdPartyDir = "${rootProject.getRootDir()}/../third_party"
     val icuInstDir = "$thirdPartyDir/icu4c/build/icu4c-inst"
     val xercescInstDir = "$thirdPartyDir/xercesc/build/xerces-c-inst"
@@ -19,6 +33,9 @@ application {
             ))
             setPositionIndependentCode(true)
             // includes.from(javaInclude, javaPlatformInclude)
+
+            // no value
+            // println("cppcompile toolchain: ${getToolChain().get()}")
         }
         withType<LinkExecutable>().configureEach { // LinkSharedLibrary
             libs.from( // !!! order is very important !!!
