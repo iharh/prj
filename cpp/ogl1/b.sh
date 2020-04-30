@@ -1,1 +1,1 @@
-gcc -lGL -lglut a.c
+gcc -lGL -lglut -lm a.c
