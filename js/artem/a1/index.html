@@ -2,31 +2,33 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-        <title>Artem 1 title</title>
+        <title>calc</title>
     </head>
-    <body>
-        <div id="controls">
-            <h1>controls</h1>
-            <button onclick="addK(1);">inc 1</button>
-            <button onclick="addK(2);">inc 2</button>
-            <button onclick="addK(3);">inc 3</button>
-            <br/>
-            <button onclick="addK(-1);">dec 1</button>
-        </div>
-        <div id="root">
-            <h3>Value</h3>
-            <a id="counter">empty</a>
-        </div>
-        <script>
-            counterEl = document.getElementById("counter")            
-            k = 90
-            counterEl.innerHTML = k;
-            
-            function addK(d) {
-                k = k+d;
-                console.log("now k=" + k);
-                counterEl.innerHTML = k;
+    <script>
+        function onButton(n) {
+            console.log(n, typeof(n));
+            if (n == '+') {
+                console.log("plus entered");
             }
-        </script>
+
+            let elInp = document.getElementById("inp");
+            let elOut = document.getElementById("out");
+           
+            elInp.value = elInp.value + n;
+            if (n != '+') {
+                elOut.value = elOut.value + n;
+            }
+        }
+    </script>
+
+    <body>
+        <form>
+            <input type="text" id="inp"></input>
+            <br/>
+            <button type="button" onclick="onButton('1')">1</button>
+            <button type="button" onclick="onButton('+')">+</button>
+            <br/>
+            <textarea name="out" id="out"></textarea>
+        </form>
     </body>
 </html>
