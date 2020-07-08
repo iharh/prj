@@ -30,6 +30,7 @@ subprojects {
             dependency("org.jacoco:org.jacoco.core:0.8.5")
             dependency("com.github.jnr:jnr-ffi:2.1.12")
             dependency("net.minidev:accessors-smart:1.2")
+            dependency("com.thoughtworks.xstream:xstream:1.4.12")
             
             
             dependency("org.assertj:assertj-core:3.15.0")
