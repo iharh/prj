@@ -49,10 +49,18 @@ public class StuffTests {
         public String content;
     }
 
+    @XStreamConverter(value=ToAttributedValueConverter.class, strings={"content"})
+    static class Resource {
+        public String content;
+    }
+
     static class Module {
         @XStreamAsAttribute public String path;
 
         public List<Param> parameters;
+
+        @XStreamImplicit(itemFieldName="resource")
+        public List<Resource> resources;
     }
 
     @XStreamAlias("configuration")
@@ -99,7 +107,7 @@ public class StuffTests {
         assertThat(t.dependsOn).isEqualTo("Numeric");
 
         assertThat(cfg.modules).isNotNull();
-        assertThat(cfg.modules.size()).isEqualTo(1);
+        assertThat(cfg.modules.size()).isEqualTo(25);
         
         Module m = cfg.modules.get(0);
         assertThat(m).isNotNull();
@@ -111,5 +119,12 @@ public class StuffTests {
         assertThat(p.name).isEqualTo("plain-text.block");
         assertThat(p.content).isNotNull();
         assertThat(p.content).isEqualTo("\\r?\\n(?:\\r?\\n|(?=(?:[ \\t]+(?:\\-|[ ]{2,}))))");
+
+        assertThat(m.resources).isNotNull();
+        assertThat(m.resources.size()).isEqualTo(1);
+        Resource r = m.resources.get(0);
+        assertThat(r).isNotNull();
+        assertThat(r.content).isNotNull();
+        assertThat(r.content).isEqualTo("en/break-rule/sentence-recombination.brl");
     }
 }
