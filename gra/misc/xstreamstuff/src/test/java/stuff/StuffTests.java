@@ -3,13 +3,6 @@ package stuff;
 import org.junit.jupiter.api.Test;
 
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.XStreamException;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-import com.thoughtworks.xstream.annotations.XStreamConverter;
-import com.thoughtworks.xstream.annotations.XStreamImplicit;
-import com.thoughtworks.xstream.converters.basic.BooleanConverter;
-import com.thoughtworks.xstream.converters.extended.ToAttributedValueConverter;
 import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
 import com.thoughtworks.xstream.io.xml.StaxDriver;
 
@@ -17,63 +10,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StuffTests {
-    // https://x-stream.github.io/javadoc/index.html
-    // https://x-stream.github.io/annotations-tutorial.html
-
-    static class Untyped {
-        @XStreamAsAttribute public int priority;
-    }
-
-    static class Type {
-        @XStreamAsAttribute public String name;
-        @XStreamAsAttribute public int priority;
-        @XStreamConverter(value = BooleanConverter.class, booleans = {false,true}, strings = {"on", "off"})
-        @XStreamAsAttribute public boolean status;
-        @XStreamAlias("depends-on") @XStreamAsAttribute public String dependsOn;
-    }
-
-    static class Types {
-        public Untyped untyped;
-
-        @XStreamImplicit(itemFieldName="type")
-        public List<Type> elements;
-    }
-
-    @XStreamAlias("param")
-    @XStreamConverter(value=ToAttributedValueConverter.class, strings={"content"})
-    static class Param {
-        @XStreamAsAttribute public String name;
-        public String content;
-    }
-
-    @XStreamConverter(value=ToAttributedValueConverter.class, strings={"content"})
-    static class Resource {
-        public String content;
-    }
-
-    static class Module {
-        @XStreamAsAttribute public String path;
-
-        public List<Param> parameters;
-
-        @XStreamImplicit(itemFieldName="resource")
-        public List<Resource> resources;
-    }
-
-    @XStreamAlias("configuration")
-    static class Configuration {
-        public String scheme;
-
-        public Types types;
-
-        @XStreamImplicit(itemFieldName="module")
-        public List<Module> modules;
-    }
 
     @Test
     void testXpath() throws Exception {
