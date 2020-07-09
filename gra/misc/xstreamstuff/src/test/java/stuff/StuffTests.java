@@ -9,6 +9,7 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import com.thoughtworks.xstream.converters.basic.BooleanConverter;
+import com.thoughtworks.xstream.converters.extended.ToAttributedValueConverter;
 import com.thoughtworks.xstream.io.xml.StaxDriver;
 
 import java.io.File;
@@ -31,7 +32,7 @@ public class StuffTests {
         @XStreamAsAttribute public int priority;
         @XStreamConverter(value = BooleanConverter.class, booleans = {false,true}, strings = {"on", "off"})
         @XStreamAsAttribute public boolean status;
-        @XStreamAsAttribute public String dependsOn; // TODO: alias this
+        @XStreamAlias("depends-on") @XStreamAsAttribute public String dependsOn;
     }
 
     static class Types {
@@ -41,12 +42,17 @@ public class StuffTests {
         public List<Type> elements;
     }
 
-    static class Parameters {
+    @XStreamAlias("param")
+    @XStreamConverter(value=ToAttributedValueConverter.class, strings={"content"})
+    static class Param {
+        @XStreamAsAttribute public String name;
+        public String content;
     }
 
-    static class CfgModule {
+    static class Module {
         @XStreamAsAttribute public String path;
-        public Parameters parameters;
+
+        public List<Param> parameters;
     }
 
     @XStreamAlias("configuration")
@@ -56,7 +62,7 @@ public class StuffTests {
         public Types types;
 
         @XStreamImplicit(itemFieldName="module")
-        public List<CfgModule> modules;
+        public List<Module> modules;
     }
 
     @Test
@@ -68,8 +74,6 @@ public class StuffTests {
         XStream.setupDefaultSecurity(xstream); // to be removed after 1.5
         xstream.allowTypesByWildcard(new String[] { "stuff.**" });
         xstream.processAnnotations(new Class [] { Configuration.class });
-        // can't find appropriate annotation for this
-        xstream.aliasAttribute(Type.class, "dependsOn", "depends-on");
 
         File xmlFile = new File(xmlFileName);
 
@@ -97,8 +101,15 @@ public class StuffTests {
         assertThat(cfg.modules).isNotNull();
         assertThat(cfg.modules.size()).isEqualTo(1);
         
-        CfgModule m = cfg.modules.get(0);
+        Module m = cfg.modules.get(0);
         assertThat(m).isNotNull();
         assertThat(m.path).isEqualTo("text-parser.jar");
+        assertThat(m.parameters).isNotNull();
+        assertThat(m.parameters.size()).isEqualTo(1);
+        Param p = m.parameters.get(0);
+        assertThat(p).isNotNull();
+        assertThat(p.name).isEqualTo("plain-text.block");
+        assertThat(p.content).isNotNull();
+        assertThat(p.content).isEqualTo("\\r?\\n(?:\\r?\\n|(?=(?:[ \\t]+(?:\\-|[ ]{2,}))))");
     }
 }
