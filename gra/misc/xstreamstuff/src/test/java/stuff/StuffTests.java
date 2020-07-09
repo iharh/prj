@@ -10,10 +10,12 @@ import com.thoughtworks.xstream.annotations.XStreamConverter;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import com.thoughtworks.xstream.converters.basic.BooleanConverter;
 import com.thoughtworks.xstream.converters.extended.ToAttributedValueConverter;
+import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
 import com.thoughtworks.xstream.io.xml.StaxDriver;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 
 import java.util.List;
 
@@ -75,15 +77,15 @@ public class StuffTests {
 
     @Test
     void testXpath() throws Exception {
-        String xmlFileName = "/home/iharh/Downloads/config.xml";
-        // String xmlFileName = "/data/wrk/clb/fx/lang-packs/english/resources/config/config.xml";
+        String xmlInputFileName = "/data/wrk/clb/fx/lang-packs/english/resources/config/config.xml";
+        String xmlOutputFileName = "/home/iharh/Downloads/out.xml";
 
         XStream xstream = new XStream(new StaxDriver());
         XStream.setupDefaultSecurity(xstream); // to be removed after 1.5
         xstream.allowTypesByWildcard(new String[] { "stuff.**" });
         xstream.processAnnotations(new Class [] { Configuration.class });
 
-        File xmlFile = new File(xmlFileName);
+        File xmlFile = new File(xmlInputFileName);
 
         Configuration cfg = (Configuration)xstream.fromXML(xmlFile);
         assertThat(cfg).isNotNull();
@@ -126,5 +128,7 @@ public class StuffTests {
         assertThat(r).isNotNull();
         assertThat(r.content).isNotNull();
         assertThat(r.content).isEqualTo("en/break-rule/sentence-recombination.brl");
+
+        xstream.marshal(cfg, new PrettyPrintWriter(new FileWriter(xmlOutputFileName)));
     }
 }
