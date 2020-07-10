@@ -7,7 +7,6 @@ import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
 import com.thoughtworks.xstream.io.xml.StaxDriver;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileWriter;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -24,9 +23,7 @@ public class StuffTests {
         xstream.allowTypesByWildcard(new String[] { "stuff.**" });
         xstream.processAnnotations(new Class [] { Configuration.class });
 
-        File xmlFile = new File(xmlInputFileName);
-
-        Configuration cfg = (Configuration)xstream.fromXML(xmlFile);
+        Configuration cfg = (Configuration)xstream.fromXML(new File(xmlInputFileName));
         assertThat(cfg).isNotNull();
         assertThat(cfg.scheme).isEqualTo("en/scheme/english.scheme");
 
