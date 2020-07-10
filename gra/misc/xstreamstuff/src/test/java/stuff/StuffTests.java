@@ -3,8 +3,10 @@ package stuff;
 import org.junit.jupiter.api.Test;
 
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.QNameMap;
 import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
 import com.thoughtworks.xstream.io.xml.StaxDriver;
+import com.thoughtworks.xstream.io.xml.StaxWriter;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -18,7 +20,12 @@ public class StuffTests {
         String xmlInputFileName = "/data/wrk/clb/fx/lang-packs/english/resources/config/config.xml";
         String xmlOutputFileName = "/home/iharh/Downloads/out.xml";
 
-        XStream xstream = new XStream(new StaxDriver());
+        QNameMap nsm = new QNameMap();
+        nsm.setDefaultNamespace("http://clarabridge.com/fx/config");
+
+        // ??? StandardStaxDriver ignores any sys-prop-based customizations
+        StaxDriver staxDriver = new StaxDriver(nsm);
+        XStream xstream = new XStream(staxDriver);
         XStream.setupDefaultSecurity(xstream); // to be removed after 1.5
         xstream.allowTypesByWildcard(new String[] { "stuff.**" });
         xstream.processAnnotations(new Class [] { Configuration.class });
@@ -65,6 +72,12 @@ public class StuffTests {
         assertThat(r.content).isNotNull();
         assertThat(r.content).isEqualTo("en/break-rule/sentence-recombination.brl");
 
-        xstream.marshal(cfg, new PrettyPrintWriter(new FileWriter(xmlOutputFileName)));
+        // PrettyPrintWriter prettyPrintWriter = new PrettyPrintWriter(new FileWriter(xmlOutputFileName));
+        StaxWriter staxWriter = staxDriver.createStaxWriter(
+            staxDriver.getOutputFactory().createXMLStreamWriter(new FileWriter(xmlOutputFileName)),
+            true); // do write the XML declaration
+
+        xstream.marshal(cfg, staxWriter);
+                // new PrettyPrintWriter(new FileWriter(xmlOutputFileName)));
     }
 }
