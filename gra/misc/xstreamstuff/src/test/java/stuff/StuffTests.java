@@ -3,10 +3,10 @@ package stuff;
 import org.junit.jupiter.api.Test;
 
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import com.thoughtworks.xstream.io.xml.QNameMap;
 import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
 import com.thoughtworks.xstream.io.xml.StaxDriver;
-import com.thoughtworks.xstream.io.xml.StaxWriter;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -72,12 +72,20 @@ public class StuffTests {
         assertThat(r.content).isNotNull();
         assertThat(r.content).isEqualTo("en/break-rule/sentence-recombination.brl");
 
-        // PrettyPrintWriter prettyPrintWriter = new PrettyPrintWriter(new FileWriter(xmlOutputFileName));
-        StaxWriter staxWriter = staxDriver.createStaxWriter(
-            staxDriver.getOutputFactory().createXMLStreamWriter(new FileWriter(xmlOutputFileName)),
-            true); // do write the XML declaration
+        // HierarchicalStreamWriter hierarchicalStreamWriter = staxDriver.createWriter(new FileWriter(xmlOutputFileName));
+        // xstream.marshal(cfg, hierarchicalStreamWriter);
 
-        xstream.marshal(cfg, staxWriter);
-                // new PrettyPrintWriter(new FileWriter(xmlOutputFileName)));
+        // xstream.toXML(cfg, new FileWriter(xmlOutputFileName));
+
+        try (FileWriter fileWriter = new FileWriter(xmlOutputFileName)) {
+            xstream.toXML(cfg, fileWriter);
+        }
+        // fileWriter.close();
+        // PrettyPrintWriter prettyPrintWriter = new PrettyPrintWriter(new FileWriter(xmlOutputFileName));
+        // new PrettyPrintWriter(new FileWriter(xmlOutputFileName)));
+
+        // new HierarchicalStreamCopier().copy(hsr, new PrettyPrintWriter(writer));
+        // writer.close();
+        // System.out.println(writer.toString())
     }
 }
