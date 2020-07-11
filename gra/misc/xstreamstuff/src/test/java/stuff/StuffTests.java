@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import com.thoughtworks.xstream.io.xml.QNameMap;
-import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
+// import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
 import com.thoughtworks.xstream.io.xml.StaxDriver;
 
 import java.io.File;
@@ -24,8 +24,7 @@ public class StuffTests {
         nsm.setDefaultNamespace("http://clarabridge.com/fx/config");
 
         // ??? StandardStaxDriver ignores any sys-prop-based customizations
-        StaxDriver staxDriver = new StaxDriver(nsm);
-        XStream xstream = new XStream(staxDriver);
+        XStream xstream = new XStream(new StaxDriver(nsm));
         XStream.setupDefaultSecurity(xstream); // to be removed after 1.5
         xstream.allowTypesByWildcard(new String[] { "stuff.**" });
         xstream.processAnnotations(new Class [] { Configuration.class });
@@ -72,20 +71,8 @@ public class StuffTests {
         assertThat(r.content).isNotNull();
         assertThat(r.content).isEqualTo("en/break-rule/sentence-recombination.brl");
 
-        // HierarchicalStreamWriter hierarchicalStreamWriter = staxDriver.createWriter(new FileWriter(xmlOutputFileName));
-        // xstream.marshal(cfg, hierarchicalStreamWriter);
-
-        // xstream.toXML(cfg, new FileWriter(xmlOutputFileName));
-
         try (FileWriter fileWriter = new FileWriter(xmlOutputFileName)) {
             xstream.toXML(cfg, fileWriter);
         }
-        // fileWriter.close();
-        // PrettyPrintWriter prettyPrintWriter = new PrettyPrintWriter(new FileWriter(xmlOutputFileName));
-        // new PrettyPrintWriter(new FileWriter(xmlOutputFileName)));
-
-        // new HierarchicalStreamCopier().copy(hsr, new PrettyPrintWriter(writer));
-        // writer.close();
-        // System.out.println(writer.toString())
     }
 }
