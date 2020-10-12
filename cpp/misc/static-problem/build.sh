@@ -8,7 +8,10 @@ mkdir build
 mkdir build/obj
 mkdir build/static
 mkdir build/cli
+
+#-Wall -Wextra
 gcc -c src/libmy.c -o build/obj/libmy.o
 g++ -c src/main.cpp -o build/obj/main.o
-ar rcs build/static/libmy.a build/obj/libmy.o
+# rcs
+ar -cvq build/static/libmy.a build/obj/libmy.o
 g++ build/obj/main.o -Lbuild/static -lmy -o build/cli/main

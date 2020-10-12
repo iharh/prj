@@ -1,6 +1,14 @@
 #include <stdio.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 unsigned char *charset_table_get();
+
+#ifdef __cplusplus
+}
+#endif
 
 int
 main(int argc, char *argv[])
