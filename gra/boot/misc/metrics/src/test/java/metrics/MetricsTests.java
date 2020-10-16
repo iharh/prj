@@ -3,6 +3,7 @@ package metrics;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import org.bytedeco.javacpp.Loader;
 import org.bytedeco.javacpp.Pointer;
 
 import io.micrometer.core.instrument.Gauge;
@@ -22,6 +23,13 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class MetricsTests {
+    static {
+        // load(getCallerClass(2), loadProperties(), Loader.pathsFirst);
+        // Loader.load(SimpleProviderImpl.class);
+        // Loader.load("javacpp");
+        // Loader.load();
+    }
+
     private AtomicInteger n = new AtomicInteger(7);
     // private CollectorRegistry prometheusRegistry = new CollectorRegistry(true);
     // private MockClock clock = new MockClock();
