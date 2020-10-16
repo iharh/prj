@@ -5,8 +5,8 @@ plugins {
     id("idea")
     // https://plugins.gradle.org/plugin/io.spring.dependency-management
     id("io.spring.dependency-management").version("1.0.9.RELEASE").apply(false)
-    id("org.springframework.boot").version("2.2.6.RELEASE").apply(false)
-    id("com.github.ben-manes.versions").version("0.28.0").apply(false)
+    id("org.springframework.boot").version("2.3.4.RELEASE").apply(false)
+    id("com.github.ben-manes.versions").version("0.33.0").apply(false) // dependencyUpdates task
 }
 allprojects {
     repositories {
@@ -27,13 +27,17 @@ subprojects {
         //    mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
         //}
         dependencies {
-            dependency("org.projectlombok:lombok:1.18.12")
+            dependency("org.projectlombok:lombok:1.18.16")
             // dependency("com.google.guava:guava:28.2-jre")
             dependency("org.yaml:snakeyaml:1.26")
+
             dependency("javax.cache:cache-api:1.1.1")
-            dependency("org.ehcache:ehcache:3.8.1")
-            dependency("org.osgi:org.osgi.service.component.annotations:1.3.0")
-            dependency("org.assertj:assertj-core:3.15.0");
+            dependency("org.ehcache:ehcache:3.9.0")
+            dependency("org.osgi:org.osgi.service.component.annotations:1.4.0")
+
+            dependency("io.micrometer:micrometer-registry-prometheus:1.5.5")
+
+            dependency("org.assertj:assertj-core:3.17.2");
         }
     }
     //configure<JavaPluginConvention> {
