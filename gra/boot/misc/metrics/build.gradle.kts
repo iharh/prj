@@ -5,12 +5,15 @@ dependencies {
     compileOnly("org.projectlombok:lombok")
 
     implementation("org.springframework.boot:spring-boot-autoconfigure")
-    //implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     implementation("io.micrometer:micrometer-registry-prometheus")
+    implementation("org.bytedeco:javacpp")
 
-    testImplementation("org.assertj:assertj-core");
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testAnnotationProcessor("org.projectlombok:lombok")
+    testCompileOnly("org.projectlombok:lombok")
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test") // junit jupiter under the hood
     testImplementation("org.springframework.boot:spring-boot-test-autoconfigure")
+    testImplementation("org.assertj:assertj-core");
 }

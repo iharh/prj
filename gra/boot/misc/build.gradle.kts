@@ -36,6 +36,7 @@ subprojects {
             dependency("org.osgi:org.osgi.service.component.annotations:1.4.0")
 
             dependency("io.micrometer:micrometer-registry-prometheus:1.5.5")
+            dependency("org.bytedeco:javacpp:1.4.4")
 
             dependency("org.assertj:assertj-core:3.17.2");
         }
