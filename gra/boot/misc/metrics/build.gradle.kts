@@ -5,7 +5,7 @@ dependencies {
     compileOnly("org.projectlombok:lombok")
 
     implementation("org.springframework.boot:spring-boot-autoconfigure")
-    implementation("org.springframework.boot:spring-boot-starter")
+    //implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     implementation("io.micrometer:micrometer-registry-prometheus")
