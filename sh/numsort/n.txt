@@ -1,8 +1,8 @@
-8
-9
-10
-11
-12
-100
-101
-102
+nixos-generation-8
+nixos-generation-9
+nixos-generation-10
+nixos-generation-11
+nixos-generation-12
+nixos-generation-100
+nixos-generation-101
+nixos-generation-102

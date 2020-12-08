@@ -2,7 +2,7 @@ plugins {
     id("cpp-library")
 }
 
-val topRootDir: String by extra
+// val topRootDir: String by extra
 val javacppGenDir: String by extra
 
 // jni
