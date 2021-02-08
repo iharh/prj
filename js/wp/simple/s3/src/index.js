@@ -1,5 +1,4 @@
-// https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70
-var moment = require('moment');
+import { moment } from "moment";
 
 console.log('before hello from main file!');
 console.log(moment().startOf('day').fromNow());

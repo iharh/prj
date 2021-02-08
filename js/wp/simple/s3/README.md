@@ -9,3 +9,5 @@ you can now run:
 npm run build
 ```
 to bundle your application
+
+https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70
