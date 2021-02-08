@@ -1,16 +1,8 @@
-import { moment } from "moment";
+import moment from "moment";
 import ReactDOM from "react-dom";
+import { App } from "@components/App";
 
-console.log('before hello from main file!');
+console.log('hello from main file!');
 console.log(moment().startOf('day').fromNow());
-console.log('after hello from main file!');
-
-const App = () => {
-  return(
-    <div>
-      <p>Hello World</p>
-    </div>
-  )
-}
 
 ReactDOM.render(<App/>, document.getElementById("root"))

@@ -1,4 +1,4 @@
-import { moment } from "moment";
+import moment from "moment";
 
 console.log('before hello from main file!');
 console.log(moment().startOf('day').fromNow());

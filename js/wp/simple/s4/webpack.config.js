@@ -4,6 +4,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   mode: 'development',
   resolve: {
+    alias: {
+      '@components': path.resolve(__dirname, 'src/components/')
+    },
     extensions: [".js", ".jsx"]
   },
   module: {
