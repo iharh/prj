@@ -10,7 +10,7 @@ module.exports = {
     extensions: [".js", ".jsx"]
   },
   output: {
-    filename: '[name].[hash].js'
+    filename: '[name].[fullhash].js'
   },
   module: {
     rules: [
