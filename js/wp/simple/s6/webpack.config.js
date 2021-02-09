@@ -1,5 +1,6 @@
 const path = require('path');
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ForkTSCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -7,7 +8,7 @@ module.exports = {
     alias: {
       '@components': path.resolve(__dirname, 'src/components/')
     },
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx", ".ts", ".tsx"]
   },
   output: {
     filename: '[name].[hash].js'
@@ -15,7 +16,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
@@ -29,6 +30,8 @@ module.exports = {
     ]
   },
   plugins: [
+    new ForkTSCheckerWebpackPlugin({
+    }),
     new HtmlWebpackPlugin({
       template: "./src/index.html"
     })
