@@ -23,15 +23,23 @@ module.exports = {
           presets: [
             '@babel/preset-env',
             [ 'babel-preset-react-app',
-              { 'flow': false, 'typescript': true, runtime: 'automatic' } ], // https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
+              // { 'flow': false, 'typescript': true, runtime: 'automatic' } ], // https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
+              { runtime: 'automatic' } ], // https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
             ]
         }
       }
     ]
   },
   plugins: [
-    new ForkTSCheckerWebpackPlugin({
-    }),
+    new ForkTsCheckerWebpackPlugin(
+      //typescript: {
+      //  diagnosticOptions: {
+      //    semantic: true,
+      //    syntactic: true,
+      //  },
+      //  mode: "write-references",
+      //},
+    ),
     new HtmlWebpackPlugin({
       template: "./src/index.html"
     })

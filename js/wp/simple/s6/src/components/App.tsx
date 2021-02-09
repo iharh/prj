@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-export const App: FC1 = () => {
+export const App: FC = () => {
   return(
     <div>
       <p>Hello World from App 6</p>
