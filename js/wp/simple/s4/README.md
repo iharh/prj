@@ -13,5 +13,6 @@ npm audit fix
 ```
 to bundle your application
 
+links
 https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70
-https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
+

@@ -1,7 +1,7 @@
 {
-  "name": "my-webpack-project-5",
+  "name": "my-webpack-project-6",
   "version": "1.0.0",
-  "description": "My webpack project 5",
+  "description": "My webpack project 6",
   "private": true,
   "scripts": {
     "build": "NODE_ENV=development webpack",

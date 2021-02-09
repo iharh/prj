@@ -1,9 +1,7 @@
 export const App = () => {
   return(
     <div>
-      <p>Hello World from App 4</p>
+      <p>Hello World from App 6</p>
     </div>
   )
 }
-
-export default App

@@ -1,9 +1,0 @@
-// TODO: move this to webpack - options after Babel 8
-{
-  "presets": [
-    "@babel/preset-env",
-    ["@babel/preset-react", {
-      "runtime": "automatic"
-    }]
-  ]
-}

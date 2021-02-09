@@ -10,15 +10,20 @@ module.exports = {
     extensions: [".js", ".jsx"]
   },
   output: {
-    filename: '[name].[hash].js'
+    filename: '[name].[fullhash].js'
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
+        loader: 'babel-loader',
+        options: {
+          presets: [
+            '@babel/preset-env',
+            [ '@babel/preset-react', { runtime: 'automatic' } ], // https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
+
+          ]
         }
       }
     ]
