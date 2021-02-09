@@ -18,3 +18,6 @@ https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosa
 
 ts
 https://www.carlrippon.com/creating-react-and-typescript-apps-with-webpack/
+
+TODO:
+check tsconfig.json for "jsx": "react"
