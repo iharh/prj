@@ -5,8 +5,7 @@
   "private": true,
   "scripts": {
     "build": "NODE_ENV=development webpack",
-    "serve": "NODE_ENV=development webpack serve",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "NODE_ENV=development webpack serve"
   },
   "author": "",
   "license": "ISC",
