@@ -23,7 +23,6 @@ module.exports = {
           presets: [
             '@babel/preset-env',
             [ 'babel-preset-react-app', { runtime: 'automatic' } ], // https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
-
           ]
         }
       }

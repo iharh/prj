@@ -25,11 +25,10 @@ module.exports = {
         options: {
           presets: [
             '@babel/preset-env',
-            '@babel/preset-react',
-            // '@babel/preset-typescript',
-            [ '@babel/preset-typescript',
-              { runtime: 'automatic' } ] // https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
-            ]
+            // https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
+            [ '@babel/preset-react', { runtime: 'automatic' } ],
+            '@babel/preset-typescript'
+          ]
         }
       },
     ],
