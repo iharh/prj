@@ -24,7 +24,7 @@ repositories {
 }
 
 dependencies {
-    compile('org.mozilla:rhino:1.7R3')
+    compile('org.mozilla:rhino:1.7.13')
 
     // JUnit Jupiter API and TestEngine implementation
     testCompile("org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}")
