@@ -15,21 +15,21 @@ the<DependencyManagementExtension>().apply {
     }
 }
 
-val cpRhino by configurations.creating
+val cfgRhino by configurations.creating
 
 dependencies {
-    cpRhino("org.mozilla:rhino")
+    cfgRhino("org.mozilla:rhino")
 }
 
 tasks {
-    register<JavaExec>("abc") {
+    register<JavaExec>("js") {
         main = "org.mozilla.javascript.tools.shell.Main"
-        classpath = cpRhino
+        classpath = cfgRhino
 
         args(listOf(
             //"-help" "-?",
             // "-debug",
-            "a.js"
+            "$projectDir/a.js"
         ))
 
         //jvmArgs("-Djava.library.path=$shLibDir")
