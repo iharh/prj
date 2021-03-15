@@ -4,14 +4,13 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-
 # dvc with rsa 4.7 has problem
 # https://github.com/googleapis/google-auth-library-python/issues/667
 
 [packages]
-dvc = "*"
-rsa = "==4.6"
+dvc = {extras = ["gs"], version = "*"}
 google-cloud-storage = "*"
+rsa = "==4.6"
 
 [requires]
 python_version = "3.9"
