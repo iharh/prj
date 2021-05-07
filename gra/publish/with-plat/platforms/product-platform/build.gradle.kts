@@ -11,7 +11,10 @@ dependencies {
     api(platform("org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR3"))
     // api(platform("org.springframework.boot:spring-boot-dependencies:2.4.0"))
     api("commons-cli:commons-cli:1.4")
+
+    runtime(platform("org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR3"))
     runtime("commons-cli:commons-cli:1.4")
+
     constraints {
         api("commons-cli:commons-cli:1.4")
         runtime("commons-cli:commons-cli:1.4")

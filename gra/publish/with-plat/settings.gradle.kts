@@ -1,7 +1,5 @@
 enableFeaturePreview("VERSION_CATALOGS")
 
-include("p1")
-
 // This is an empty umbrella build including all the component builds.
 // This build is not necessarily needed. The component builds work independently.
 
@@ -15,3 +13,7 @@ includeBuild("build-logic")
 
 //includeBuild("server-application")
 //includeBuild("android-app")
+
+include("p1")
+include("p2")
+include("p3")
