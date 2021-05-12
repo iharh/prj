@@ -3,9 +3,19 @@ import org.gradle.api.Project
 import org.gradle.api.artifacts.ModuleVersionIdentifier
 import org.gradle.api.artifacts.ResolvedArtifact
 
+import org.gradle.internal.xml.SimpleXmlWriter
+import org.gradle.internal.xml.XmlTransformer
+import java.io.File
+import java.io.IOException
+import java.io.UncheckedIOException
+import java.io.Writer
+
 import org.gradle.kotlin.dsl.*
 
 class MyCustomPlugin : Plugin<Project> {
+
+    private val ivyFileEncoding = "UTF-8"
+    private val xmlTransformer = XmlTransformer()
 
     override fun apply(project: Project): Unit = project.run {
         apply(plugin = "base")
@@ -32,6 +42,49 @@ class MyCustomPlugin : Plugin<Project> {
                     }
                 }
             }
+        }
+    }
+
+    // https://github.com/JetBrains/gradle-intellij-plugin/blob/master/src/main/kotlin/org/jetbrains/intellij/IntelliJIvyDescriptorFileGenerator.kt
+
+    fun writeTo(file: File) {
+        xmlTransformer.transform(file, ivyFileEncoding) { writer ->
+            try {
+                writeDescriptor(writer)
+            } catch (e: IOException) {
+                throw UncheckedIOException(e)
+            }
+        }
+    }
+
+    @Throws(IOException::class)
+    private fun writeDescriptor(writer: Writer) {
+        val xmlWriter = OptionalAttributeXmlWriter(writer, "  ", ivyFileEncoding)
+        xmlWriter.startElement("ivy-module").attribute("version", "2.0")
+
+        xmlWriter.startElement("info")
+            .attribute("organisation", "my.org")
+            .attribute("module", "my.module")
+            .attribute("revision", "1.154.0")
+        xmlWriter.endElement()
+
+        // writeConfigurations(xmlWriter)
+        // writePublications(xmlWriter)
+        xmlWriter.endElement()
+    }
+
+    class OptionalAttributeXmlWriter(writer: Writer, indent: String, encoding: String) : SimpleXmlWriter(writer, indent, encoding) {
+
+        override fun startElement(name: String?): OptionalAttributeXmlWriter {
+            super.startElement(name)
+            return this
+        }
+
+        override fun attribute(name: String?, value: String?): OptionalAttributeXmlWriter {
+            if (value != null) {
+                super.attribute(name, value)
+            }
+            return this
         }
     }
 }
