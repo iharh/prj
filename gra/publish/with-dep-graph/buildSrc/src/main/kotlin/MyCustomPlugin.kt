@@ -1,3 +1,4 @@
+import org.gradle.api.Action
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.artifacts.ModuleVersionIdentifier
@@ -11,6 +12,7 @@ import java.io.UncheckedIOException
 import java.io.Writer
 
 import org.gradle.kotlin.dsl.*
+
 
 class MyCustomPlugin : Plugin<Project> {
 
@@ -39,6 +41,8 @@ class MyCustomPlugin : Plugin<Project> {
 
                         var artifactNode = "${result.getName()}${artifactVer}.${result.getExtension()}"
                         logger.quiet(artifactNode)
+
+                        writeTo(file("$buildDir/ivy.xml"))
                     }
                 }
             }
@@ -46,16 +50,6 @@ class MyCustomPlugin : Plugin<Project> {
     }
 
     // https://github.com/JetBrains/gradle-intellij-plugin/blob/master/src/main/kotlin/org/jetbrains/intellij/IntelliJIvyDescriptorFileGenerator.kt
-
-    fun writeTo(file: File) {
-        xmlTransformer.transform(file, ivyFileEncoding) { writer ->
-            try {
-                writeDescriptor(writer)
-            } catch (e: IOException) {
-                throw UncheckedIOException(e)
-            }
-        }
-    }
 
     @Throws(IOException::class)
     private fun writeDescriptor(writer: Writer) {
@@ -71,6 +65,21 @@ class MyCustomPlugin : Plugin<Project> {
         // writeConfigurations(xmlWriter)
         // writePublications(xmlWriter)
         xmlWriter.endElement()
+    }
+
+    // ??? org.gradle.kotlin.dsl.ActionExtensions.kt
+    inner class GeneratorAction : Action<Writer> {
+        override fun execute(writer: Writer) {
+            try {
+                writeDescriptor(writer)
+            } catch (e: IOException) {
+                throw UncheckedIOException(e)
+            }
+        }
+    }
+
+    fun writeTo(file: File) {
+        xmlTransformer.transform(file, ivyFileEncoding, GeneratorAction())
     }
 
     class OptionalAttributeXmlWriter(writer: Writer, indent: String, encoding: String) : SimpleXmlWriter(writer, indent, encoding) {
