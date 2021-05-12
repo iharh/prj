@@ -12,7 +12,8 @@ dependencies {
 
 // tag::walk-task[]
 tasks.register<DependencyGraphWalk>("walkDependencyGraph") {
-    dependencies.set(configurations["scm"].incoming)
+    // dependencies.set(configurations["scm"].incoming)
+    dependencies.set(scm.incoming)
 }
 
 abstract class DependencyGraphWalk: DefaultTask() {
