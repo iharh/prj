@@ -9,9 +9,15 @@ import java.io.File
 import java.io.IOException
 import java.io.UncheckedIOException
 import java.io.Writer
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class MyIvyXmlWriter {
     private val ivyFileEncoding = "UTF-8"
+    private val ivyDatePattern = "yyyyMMddHHmmss"
+
+    private val ivyDateFormat = SimpleDateFormat(IVY_DATE_PATTERN)
+
     private val xmlTransformer = XmlTransformer()
 
     private val resolvedArtifacts: MutableList<ResolvedArtifact> = ArrayList<ResolvedArtifact>()
@@ -30,7 +36,7 @@ class MyIvyXmlWriter {
             .attribute("module"     , "my.module")
             .attribute("revision"   , "1.154.0")
             .attribute("status"     , "integration")
-            .attribute("publication", "20210506085806") // TODO: convert from current date
+            .attribute("publication", ivyDateFormat.format(Date()))
 
         xmlWriter.startElement("ivyauthor")
             .attribute("name", "my.author")
