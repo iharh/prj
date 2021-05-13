@@ -1,4 +1,6 @@
 import org.gradle.api.Action
+import org.gradle.api.artifacts.ModuleVersionIdentifier
+import org.gradle.api.artifacts.ResolvedArtifact
 
 import org.gradle.internal.xml.SimpleXmlWriter
 import org.gradle.internal.xml.XmlTransformer
@@ -12,22 +14,82 @@ class MyIvyXmlWriter {
     private val ivyFileEncoding = "UTF-8"
     private val xmlTransformer = XmlTransformer()
 
-    // https://github.com/JetBrains/gradle-intellij-plugin/blob/master/src/main/kotlin/org/jetbrains/intellij/IntelliJIvyDescriptorFileGenerator.kt
+    private val resolvedArtifacts: MutableList<ResolvedArtifact> = ArrayList<ResolvedArtifact>()
+
+    fun addArtifact(resolvedArtifact: ResolvedArtifact) {
+        resolvedArtifacts.add(resolvedArtifact)
+    }
+
+    fun writeTo(file: File) {
+        xmlTransformer.transform(file, ivyFileEncoding, GeneratorAction())
+    }
+
+    private fun writeInfo(xmlWriter : OptionalAttributeXmlWriter) {
+        xmlWriter.startElement("info")
+            .attribute("organisation", "my.org")
+            .attribute("module"     , "my.module")
+            .attribute("revision"   , "1.154.0")
+            .attribute("status"     , "integration")
+            .attribute("publication", "20210506085806") // TODO: convert from current date
+
+        xmlWriter.startElement("ivyauthor")
+            .attribute("name", "my.author")
+            .attribute("url", "www.my-company.com")
+        xmlWriter.endElement() // "ivyauthor"
+
+        xmlWriter.startElement("description")
+            .attribute("homepage", "http://www.my-company.com")
+        xmlWriter.endElement() // "description"
+
+        xmlWriter.endElement() // "info"
+    }
+
+    private fun writeConfigurations(xmlWriter : OptionalAttributeXmlWriter) {
+        xmlWriter.startElement("configurations")
+
+        xmlWriter.startElement("conf")
+            .attribute("name", "publish")
+        xmlWriter.endElement() // "conf"
+
+        xmlWriter.endElement() // "configurations"
+    }
+
+    private fun writePublications(xmlWriter : OptionalAttributeXmlWriter) {
+        xmlWriter.startElement("publications")
+            .attribute("defaultconf", "publish")
+
+        resolvedArtifacts.forEach { result: ResolvedArtifact ->
+            val mvId: ModuleVersionIdentifier = result.getModuleVersion().getId()
+            val mvidVer = mvId.getVersion()
+            val artifactVer = if (mvidVer == "unspecified") "" else "-${mvidVer}"
+
+            var ivyArtifactName = "${result.getName()}${artifactVer}"
+
+            xmlWriter.startElement("artifact")
+                .attribute("name", ivyArtifactName)
+                .attribute("type", result.getExtension())
+            xmlWriter.endElement() // "artifact"
+        }
+
+        xmlWriter.endElement() // "publications"
+    }
+
+    private fun writeDependencies(xmlWriter : OptionalAttributeXmlWriter) {
+        xmlWriter.startElement("dependencies")
+        xmlWriter.endElement() // "dependencies"
+    }
 
     @Throws(IOException::class)
     private fun writeDescriptor(writer: Writer) {
         val xmlWriter = OptionalAttributeXmlWriter(writer, "  ", ivyFileEncoding)
         xmlWriter.startElement("ivy-module").attribute("version", "2.0")
 
-        xmlWriter.startElement("info")
-            .attribute("organisation", "my.org")
-            .attribute("module", "my.module")
-            .attribute("revision", "1.154.0")
-        xmlWriter.endElement()
+        writeInfo(xmlWriter)
+        writeConfigurations(xmlWriter)
+        writePublications(xmlWriter)
+        writeDependencies(xmlWriter)
 
-        // writeConfigurations(xmlWriter)
-        // writePublications(xmlWriter)
-        xmlWriter.endElement()
+        xmlWriter.endElement() // "ivy-module"
     }
 
     // ??? org.gradle.kotlin.dsl.ActionExtensions.kt
@@ -41,9 +103,6 @@ class MyIvyXmlWriter {
         }
     }
 
-    fun writeTo(file: File) {
-        xmlTransformer.transform(file, ivyFileEncoding, GeneratorAction())
-    }
 
     class OptionalAttributeXmlWriter(writer: Writer, indent: String, encoding: String) : SimpleXmlWriter(writer, indent, encoding) {
 
