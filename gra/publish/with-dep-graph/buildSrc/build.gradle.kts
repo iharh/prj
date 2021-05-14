@@ -4,6 +4,7 @@ repositories {
     mavenCentral()
 }
 plugins {
+    //id("kotlin-dsl")
     `kotlin-dsl`
     id("io.spring.dependency-management").version("1.0.11.RELEASE")
 }
@@ -19,9 +20,13 @@ gradlePlugin {
         }
     }
 }
-
 the<DependencyManagementExtension>().apply {
     dependencies {
         dependency("xalan:xalan:2.7.2")
+        dependency("org.apache.httpcomponents:httpclient:4.5.13")
     }
+}
+dependencies {
+    //"implementation"(group = "org.apache.httpcomponents", name = "httpclient")
+    implementation("org.apache.httpcomponents:httpclient")
 }
