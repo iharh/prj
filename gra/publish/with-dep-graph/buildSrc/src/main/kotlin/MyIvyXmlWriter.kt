@@ -16,7 +16,7 @@ class MyIvyXmlWriter {
     private val ivyFileEncoding = "UTF-8"
     private val ivyDatePattern = "yyyyMMddHHmmss"
 
-    private val ivyDateFormat = SimpleDateFormat(IVY_DATE_PATTERN)
+    private val ivyDateFormat = SimpleDateFormat(ivyDatePattern)
 
     private val xmlTransformer = XmlTransformer()
 

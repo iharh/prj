@@ -1,62 +1,30 @@
-val pubCfg by configurations.creating
-
-dependencies {
-    //pubCfg("org.eclipse.jgit:org.eclipse.jgit:4.9.2.201712150930-r")
-    pubCfg(project(":p1"))
-    pubCfg(project(":p2"))
+plugins {
+    id("maven-publish")
 }
 
-abstract class DependencyGraphWalk: DefaultTask() {
-    @get:Input
-    abstract val dependencies: Property<ResolvableDependencies>
+val nexusUsername: String by project
+val nexusPassword: String by project
 
-    @TaskAction
-    fun walk() {
-        val resolutionResult: ResolutionResult = dependencies.get().getResolutionResult()
-        val root: ResolvedComponentResult = resolutionResult.getRoot()
-        traverseDependencies(0, root.getDependencies())
+version = "1.1-SNAPSHOT"
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            // groupId = "org.gradle.sample"
+            // artifactId = "library"
+            // version = "1.1"
+
+            from(components.getByName("java"))
+        }
     }
-
-    private fun traverseDependencies(level: Int, results: Set<DependencyResult>) {
-        results.forEach { result ->
-            if (result is ResolvedDependencyResult) {
-                val componentResult: ResolvedComponentResult = result.getSelected()
-                val componentIdentifier: ComponentIdentifier = componentResult.getId()
-                val node: String = "${calculateIndentation(level)}- ${componentIdentifier.getDisplayName()} (${componentResult.getSelectionReason()})"
-                logger.quiet(node)
-                traverseDependencies(level + 1, componentResult.getDependencies())
+    repositories {
+        maven {
+            url = uri("http://localhost:8081/nexus/content/repositories/snapshots/")
+            credentials {
+                username = nexusUsername
+                password = nexusPassword
             }
+            isAllowInsecureProtocol = true
         }
     }
-
-    private fun calculateIndentation(level: Int) = "     ".repeat(level)
-}
-
-tasks.register<DependencyGraphWalk>("walkDependencyGraph") {
-    dependencies.set(pubCfg.getIncoming())
-}
-
-abstract class ResolveScmTask: DefaultTask() {
-    @get:Input
-    abstract val resolvedCfg: Property<ResolvedConfiguration>
-
-    @TaskAction
-    fun walk() {
-        val resolvedArtifacts: Set<ResolvedArtifact> = resolvedCfg.get().getResolvedArtifacts()
-        resolvedArtifacts.forEach { result: ResolvedArtifact ->
-            // cls: ${result.getClassifier()}"
-            // logger.quiet("name: ${result.getName()} type: ${result.getType()} ext: ${result.getExtension()}") 
-            val mvId: ModuleVersionIdentifier = result.getModuleVersion().getId()
-            val mvidVer = mvId.getVersion()
-            val artifactVer = if (mvidVer == "unspecified") "" else "-${mvidVer}"
-            
-            var artifactNode = "${result.getName()}${artifactVer}.${result.getExtension()}"
-            logger.quiet(artifactNode)
-            //logger.quiet("grp: ${mvId.getGroup()} name: ${mvId.getName()} ver: ${mvId.getVersion()}")
-        }
-    }
-}
-
-tasks.register<ResolveScmTask>("resolveScm") {
-    resolvedCfg.set(pubCfg.getResolvedConfiguration())
 }

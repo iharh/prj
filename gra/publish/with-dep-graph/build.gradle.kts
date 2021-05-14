@@ -3,8 +3,8 @@ import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
 plugins {
     id("org.springframework.boot").version("2.2.11.RELEASE").apply(false)
     id("io.spring.dependency-management").version("1.0.11.RELEASE").apply(false)
-
-    id("ivy-publish")
+    // id("ivy-publish")
+    // id("maven-publish")
 }
 
 allprojects {
@@ -58,6 +58,7 @@ subprojects {
     apply(plugin = "java-library") // clb-java-library
 }
 
+/*
 publishing {
     repositories {
         ivy {
@@ -69,11 +70,8 @@ publishing {
             organisation = "org.gradle.sample"
             module = "project1-sample"
             revision = "1.1"
-            //descriptor.status = "milestone"
-            //descriptor.branch = "testing"
-            // descriptor.extraInfo("http://my.namespace", "myElement", "Some value")
-
-            from(project(":p1").components.getByName("java"))
+            from(project.p1.components.getByName("java"))
         }
     }
 }
+*/
