@@ -1,0 +1,11 @@
+<ivysettings>
+    <properties file="${basedir}/ivysettings.properties"/>
+
+    <settings validate="false"/>
+
+    <credentials host="${nexus.host}" realm="${nexus.realm}" username="${nexus.deploy.user}" passwd="${nexus.deploy.password}"/>
+
+    <resolvers>
+        <ibiblio name="nexus-snapshots" checksums="sha1, md5" m2compatible="true" pattern="[organisation]/[module]/[revision]/[artifact].[ext]" root="${nexus.repo.snapshots}"/>
+    </resolvers>
+</ivysettings>
