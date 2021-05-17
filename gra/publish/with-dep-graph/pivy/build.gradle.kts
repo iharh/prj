@@ -15,6 +15,8 @@ publishing {
             // version = "1.1"
 
             from(components.getByName("java"))
+            //artifact(file("$rootDir/p4/build/ivy/commons-codec-1.7.jar"))
+            //artifact(file("$rootDir/p4/build/ivy/commons-cli-1.4.jar"))
         }
     }
     repositories {

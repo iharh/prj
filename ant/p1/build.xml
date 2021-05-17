@@ -1,0 +1,9 @@
+<project name="nex-pub" default="do-pub" basedir=".">
+
+    <target name="do-pub">
+        <property name="current.platform" value="linux-x64"/>
+
+        <echo message = "!!! current.platform: ${current.platform}"/>
+    </target>
+</project>
+
