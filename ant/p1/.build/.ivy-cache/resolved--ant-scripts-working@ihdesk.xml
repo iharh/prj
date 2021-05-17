@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www.jayasoft.fr/org/ivyrep/ivy-doc.xsl"?>
+<ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
+    <info module="ant-scripts" revision="working@ihdesk" status="integration" publication="20210517135320"/>
+
+    <configurations>
+        <conf name="ant-contrib"/>
+    </configurations>
+    <publications/>
+    <dependencies>
+        <dependency org="ant-contrib" name="ant-contrib" rev="1.0" conf="ant-contrib->default" transitive="true"/>
+        <!-- dependency org="ant-contrib" name="ant-contrib" rev="${ant-contrib.version}" conf="cpptasks->cpp" transitive="true" / -->
+    </dependencies>
+</ivy-module>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://www.jayasoft.fr/org/ivyrep/ivy-doc.xsl"?>
+
+<ivy-module version="2.0">
+    <info 
+        organisation="ant-contrib" 
+        module="ant-contrib"
+        revision="1.0" 
+        status="release" 
+        publication="20050203143600">
+        <license name="Apache" url="http://ant-contrib.sourceforge.net/LICENSE.txt"/>
+        <description homepage="http://ant-contrib.sourceforge.net"/>
+    </info>
+    
+    <configurations>
+        <conf name="default"/>
+        <conf name="cpp"/>
+    </configurations>
+    
+    <publications>
+        <artifact name="ant-contrib-1.0b2" type="jar" conf="default"/>
+
+        <!-- customized to use gcc44 -->
+        <artifact name="cpptasks-1.0b5" type="jar" conf="cpp"/> 
+        <!-- artifact name="cpptasks-1.0b4" type="jar" conf="cpp"/ -->
+    </publications>
+</ivy-module>

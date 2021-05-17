@@ -1,9 +1,15 @@
-<project name="nex-pub" default="do-pub" basedir=".">
+<project name="nex-pub" default="do-pub" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+    <import file="ant-scripts/common.xml"/>
 
-    <target name="do-pub">
+    <target name="do-pub" depends="-init-contrib">
         <property name="current.platform" value="linux-x64"/>
 
         <echo message = "!!! current.platform: ${current.platform}"/>
+
+        <!-- ivy:resolve file="${base.dir}/ivy/ivy.xml"/>
+        <ivy:publish resolver="nexus-snapshots" overwrite="true" forcedeliver="true" publishivy="true">
+            <artifacts pattern="${base.dir}/ivy/[artifact](.[ext])"/>
+        </ivy:publish -->
     </target>
 </project>
 

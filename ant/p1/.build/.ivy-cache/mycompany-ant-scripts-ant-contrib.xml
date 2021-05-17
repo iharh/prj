@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="mycompany"
+		module="ant-scripts"
+		revision="working@ihdesk"
+		conf="ant-contrib"
+		confs="ant-contrib"
+		date="20210517135711"/>
+	<dependencies>
+		<module organisation="ant-contrib" name="ant-contrib">
+			<revision name="1.0" status="release" pubdate="20050203143600" resolver="lib" artresolver="lib" homepage="http://ant-contrib.sourceforge.net" downloaded="false" searched="false" default="false" conf="default" position="0">
+				<license name="Apache" url="http://ant-contrib.sourceforge.net/LICENSE.txt"/>
+				<metadata-artifact status="no" details="" size="855" time="0" location="/data/wrk/prj/ant/p1/.build/.ivy-cache/ant-contrib/ant-contrib/ivy-1.0.xml" searched="false" origin-is-local="true" origin-location="/data/wrk/prj/ant/lib/ant-contrib/1.0/ivy-1.0.xml"/>
+				<caller organisation="mycompany" name="ant-scripts" conf="ant-contrib" rev="1.0" rev-constraint-default="1.0" rev-constraint-dynamic="1.0" callerrev="working@ihdesk"/>
+				<artifacts>
+					<artifact name="ant-contrib-1.0b2" type="jar" ext="jar" status="no" details="" size="194040" time="0" location="/data/wrk/prj/ant/lib/ant-contrib/1.0/ant-contrib-1.0b2.jar">
+						<origin-location is-local="true" location="/data/wrk/prj/ant/lib/ant-contrib/1.0/ant-contrib-1.0b2.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>
