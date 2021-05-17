@@ -5,11 +5,13 @@
         <property name="current.platform" value="linux-x64"/>
 
         <echo message = "!!! current.platform: ${current.platform}"/>
+        <echo message = "!!! nexus.deploy.user: ${nexus.deploy.user}"/>
+        <echo message = "!!! nexus.deploy.password: ${nexus.deploy.password}"/>
 
-        <ivy:resolve file="${base.dir}/ivy-pub/ivy.xml"/>
-        <!--ivy:publish resolver="nexus-snapshots" overwrite="true" forcedeliver="true" publishivy="true">
-            <artifacts pattern="${base.dir}/ivy/[artifact](.[ext])"/>
-        </ivy:publish -->
+        <ivy:resolve file="${basedir}/ivy-pub/ivy.xml"/>
+        <ivy:publish resolver="nexus-snapshots" overwrite="true" forcedeliver="true" publishivy="true">
+            <artifacts pattern="${basedir}/ivy-pub/[artifact](.[ext])"/>
+        </ivy:publish>
     </target>
 </project>
 

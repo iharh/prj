@@ -9,6 +9,7 @@
 
     <property environment="env"/>
 
+    <property file="${main.dir}/platform.default.properties"/>
     <property file="${common.basedir}/lib.properties"/>
 
 
