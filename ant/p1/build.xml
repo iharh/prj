@@ -1,5 +1,19 @@
 <project name="nex-pub" default="do-pub" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
-    <import file="ant-scripts/common.xml"/>
+    <property name="main.dir" location="${basedir}/.."/>
+    <property name="tools.dir" location="${main.dir}/tools"/>
+
+    <property environment="env"/>
+
+    <property file="${main.dir}/platform.default.properties"/>
+
+    <path id="ivy.lib.path">
+        <fileset dir="${tools.dir}/ivy/2.2.0" includes="*.jar"/>
+    </path>
+
+    <taskdef resource="org/apache/ivy/ant/antlib.xml"
+             uri="antlib:org.apache.ivy.ant" classpathref="ivy.lib.path"/>
+
+    <ivy:settings file="${basedir}/ivysettings.xml" id="ivy.instance"/>
 
     <target name="do-pub">
         <echo message = "start publish"/>
