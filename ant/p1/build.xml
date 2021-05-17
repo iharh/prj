@@ -1,17 +1,13 @@
 <project name="nex-pub" default="do-pub" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
     <import file="ant-scripts/common.xml"/>
 
-    <target name="do-pub" depends="-init-contrib">
-        <property name="current.platform" value="linux-x64"/>
-
-        <echo message = "!!! current.platform: ${current.platform}"/>
-        <echo message = "!!! nexus.deploy.user: ${nexus.deploy.user}"/>
-        <echo message = "!!! nexus.deploy.password: ${nexus.deploy.password}"/>
+    <target name="do-pub">
+        <echo message = "start publish"/>
 
         <ivy:resolve file="${basedir}/ivy-pub/ivy.xml"/>
+
         <ivy:publish resolver="nexus-snapshots" overwrite="true" forcedeliver="true" publishivy="true">
             <artifacts pattern="${basedir}/ivy-pub/[artifact](.[ext])"/>
         </ivy:publish>
     </target>
 </project>
-

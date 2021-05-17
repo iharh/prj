@@ -2,16 +2,11 @@
 <project name="ant-scripts" xmlns:ivy="antlib:org.apache.ivy.ant">
     <dirname property="common.basedir" file="${ant.file.ant-scripts}"/>
     <property name="main.dir" location="${common.basedir}/../.."/>
-    <property name="prj.dir" location="${common.basedir}/.."/>
-
-    <property name="lib.dir" location="${main.dir}/lib"/>
     <property name="tools.dir" location="${main.dir}/tools"/>
 
     <property environment="env"/>
 
     <property file="${main.dir}/platform.default.properties"/>
-    <property file="${common.basedir}/lib.properties"/>
-
 
     <path id="ivy.lib.path">
         <fileset dir="${tools.dir}/ivy/2.2.0" includes="*.jar"/>
@@ -21,12 +16,4 @@
              uri="antlib:org.apache.ivy.ant" classpathref="ivy.lib.path"/>
 
     <ivy:settings file="${common.basedir}/ivysettings.xml" id="ivy.instance"/>
-
-    <target name="-init-contrib" unless=".contrib-initialized">
-        <ivy:resolve file="${common.basedir}/ivy.xml" conf="ant-contrib" />
-        <ivy:cachepath pathid="ant-contrib.classpath" conf="ant-contrib" type="jar,zip" />
-        <taskdef resource="net/sf/antcontrib/antlib.xml" classpathref="ant-contrib.classpath"/>
-        <property name=".contrib-initialized" value="true"/>
-    </target>
-
 </project>

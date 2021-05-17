@@ -1,36 +1,12 @@
 <ivysettings>
     <properties file="${common.basedir}/ivysettings.properties"/>
 
-    <settings defaultResolver="lib" validate="false"/>
+    <settings validate="false"/>
 
     <credentials host="${nexus.host}" realm="${nexus.realm}" username="${nexus.deploy.user}" passwd="${nexus.deploy.password}"/>
 
-    <caches
-        defaultCacheDir="${ivy-cache.dir}"
-        useOrigin="true"
-        ivyPattern="[organisation]/[module]/ivy(-[platform])-[revision].xml"
-        artifactPattern="[organisation]/[module]/[type]s/[artifact](-[platform])-[revision](-[classifier]).[ext]"
-    />
-
     <resolvers>
-        <!-- used by publish-to-nexus -->
         <ibiblio name="nexus-snapshots" checksums="sha1, md5" m2compatible="true" pattern="[organisation]/[module]/[revision]/[artifact].[ext]" root="${nexus.repo.snapshots}"/>
-
-        <ibiblio name="maven" root="https://repo1.maven.org/maven2/" m2compatible="true" />
-
-        <filesystem name="lib">
-            <artifact pattern="${lib.dir}/[module]/[revision]/[artifact]-[revision].[ext]" />
-            <artifact pattern="${lib.dir}/[module]/[revision]/[artifact].[ext]" />
-            <ivy pattern="${lib.dir}/[module]/[revision]/ivy-[revision].xml" />
-        </filesystem>
     </resolvers>
-    <modules>
-        <!-- module organisation="commons-*" name="*" resolver="maven" matcher="glob"/>
-        <module organisation="commons-codec*" name="*" resolver="maven" matcher="glob"/>
-        <module organisation="org.*" name="*" resolver="maven" matcher="glob"/ -->
-
-        <!-- module organisation="Clarabridge" name="*" resolver="integration"/ -->
-
-        <module organisation="*" name="*" resolver="lib"/>
-    </modules>
+    <modules/>
 </ivysettings>

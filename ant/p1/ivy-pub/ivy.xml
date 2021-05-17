@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0">
-  <info organisation="myorg" module="mymodule" revision="1.154.0-SNAPSHOT" status="integration" publication="20210517144609">
+  <info organisation="myorg" module="mymodule" revision="1.154.0-SNAPSHOT" status="integration" publication="20210517150520">
     <ivyauthor name="my.author" url="www.my-company.com"/>
     <description homepage="http://www.my-company.com"/>
   </info>
@@ -9,9 +9,9 @@
   </configurations>
   <publications defaultconf="publish">
     <artifact name="p1" type="jar"/>
-    <!-- artifact name="p2" type="jar"/>
+    <artifact name="p2" type="jar"/>
     <artifact name="commons-cli-1.4" type="jar"/>
-    <artifact name="commons-codec-1.7" type="jar"/-->
+    <artifact name="commons-codec-1.7" type="jar"/>
   </publications>
   <dependencies/>
 </ivy-module>
