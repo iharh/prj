@@ -8,5 +8,4 @@
     <resolvers>
         <ibiblio name="nexus-snapshots" checksums="sha1, md5" m2compatible="true" pattern="[organisation]/[module]/[revision]/[artifact].[ext]" root="${nexus.repo.snapshots}"/>
     </resolvers>
-    <modules/>
 </ivysettings>
