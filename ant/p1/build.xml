@@ -6,8 +6,8 @@
 
         <echo message = "!!! current.platform: ${current.platform}"/>
 
-        <!-- ivy:resolve file="${base.dir}/ivy/ivy.xml"/>
-        <ivy:publish resolver="nexus-snapshots" overwrite="true" forcedeliver="true" publishivy="true">
+        <ivy:resolve file="${base.dir}/ivy-pub/ivy.xml"/>
+        <!--ivy:publish resolver="nexus-snapshots" overwrite="true" forcedeliver="true" publishivy="true">
             <artifacts pattern="${base.dir}/ivy/[artifact](.[ext])"/>
         </ivy:publish -->
     </target>
