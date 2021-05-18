@@ -1,7 +1,7 @@
 <project name="nex-pub" default="pub-to-nexus" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
     <property name="main.dir" location="${basedir}/.."/>
-    <property environment="env"/>
-    <property file="${main.dir}/platform.default.properties"/>
+    <!-- property environment="env"/>
+    <property file="${main.dir}/platform.default.properties"/ -->
 
     <path id="ivy.lib.path">
         <fileset dir="${main.dir}/tools/ivy/2.2.0" includes="*.jar"/>
@@ -12,15 +12,13 @@
     <ivy:settings file="${basedir}/ivysettings.xml" id="ivy.instance"/>
 
     <target name="pub-to-nexus">
-        <echo message = "start publish"/>
-
         <ivy:resolve file="${basedir}/ivy-pub/ivy.xml"/>
         <ivy:publish resolver="nexus-snapshots" overwrite="true" forcedeliver="true" publishivy="true">
             <artifacts pattern="${basedir}/ivy-pub/[artifact](.[ext])"/>
         </ivy:publish>
     </target>
 
-    <target name="aaa">
-        <echo message="aaa!"/>
+    <target name="dump-pub-cfg">
+        <echo message="user: ${nexusUsername} passwd=${nexusPassword}"/>
     </target>
 </project>
