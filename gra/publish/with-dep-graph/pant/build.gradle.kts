@@ -1,5 +1,3 @@
-//apply(plugin = "my-custom")
-
 val localNexusUsername: String by project
 val localNexusPassword: String by project
 val localNexusRealm: String by project
@@ -41,7 +39,7 @@ tasks {
         }
     }
     create("antPublishNexus") {
-        dependsOn("copyJars")
+        dependsOn("copyJars", "ivyDescr")
         doLast {
             ant.setProperty("nexus.deploy.user", localNexusUsername)
             ant.setProperty("nexus.deploy.password", localNexusPassword)
