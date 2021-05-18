@@ -11,14 +11,14 @@
 
     <ivy:settings file="${basedir}/ivysettings.xml" id="ivy.instance"/>
 
+    <target name="dump-pub-cfg">
+        <echo message="user: ${nexus.deploy.user} passwd=${nexus.deploy.password} realm: ${nexus.realm} host: ${nexus.host} repo: ${nexus.repo.snapshots}"/>
+    </target>
+
     <target name="pub-to-nexus">
         <ivy:resolve file="${basedir}/ivy-pub/ivy.xml"/>
         <ivy:publish resolver="nexus-snapshots" overwrite="true" forcedeliver="true" publishivy="true">
             <artifacts pattern="${basedir}/ivy-pub/[artifact](.[ext])"/>
         </ivy:publish>
-    </target>
-
-    <target name="dump-pub-cfg">
-        <echo message="user: ${nexusUsername} passwd=${nexusPassword}"/>
     </target>
 </project>
