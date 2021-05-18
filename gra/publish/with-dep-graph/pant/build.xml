@@ -19,4 +19,8 @@
             <artifacts pattern="${basedir}/ivy-pub/[artifact](.[ext])"/>
         </ivy:publish>
     </target>
+
+    <target name="aaa">
+        <echo message="aaa!"/>
+    </target>
 </project>

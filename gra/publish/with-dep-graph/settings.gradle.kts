@@ -1,6 +1,7 @@
 //enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
-include("pivy")
+include("pant")
+include("pmaven")
 include("pmaven")
 include("p1")
 include("p2")
