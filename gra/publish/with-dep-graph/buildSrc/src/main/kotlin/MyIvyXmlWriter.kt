@@ -32,9 +32,9 @@ class MyIvyXmlWriter {
 
     private fun writeInfo(xmlWriter : OptionalAttributeXmlWriter) {
         xmlWriter.startElement("info")
-            .attribute("organisation", "my.org")
-            .attribute("module"     , "my.module")
-            .attribute("revision"   , "1.154.0")
+            .attribute("organisation", "mycompany")
+            .attribute("module"     , "mymodule")
+            .attribute("revision"   , "1.154.0-SNAPSHOT")
             .attribute("status"     , "integration")
             .attribute("publication", ivyDateFormat.format(Date()))
 

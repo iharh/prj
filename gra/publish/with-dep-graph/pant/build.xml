@@ -16,7 +16,7 @@
     </target>
 
     <target name="pub-to-nexus">
-        <ivy:resolve file="${basedir}/ivy-pub/ivy.xml"/>
+        <ivy:resolve file="${basedir}/build/ivy/ivy.xml"/>
         <ivy:publish resolver="nexus-snapshots" overwrite="true" forcedeliver="true" publishivy="true">
             <artifacts pattern="${basedir}/ivy-pub/[artifact](.[ext])"/>
         </ivy:publish>
