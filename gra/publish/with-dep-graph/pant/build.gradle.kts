@@ -1,10 +1,25 @@
+import org.gradle.internal.os.OperatingSystem
+
 val localNexusUsername: String by project
 val localNexusPassword: String by project
 val localNexusRealm: String by project
 val localNexusHost: String by project
 val localNexusRepoPublishSnapshots: String by project
 
-val pubCfg by configurations.creating
+val pubJarCfg by configurations.creating
+
+val pubLibCfg by configurations.creating {
+    attributes {
+        // need release variant for misspell compilation
+        // attribute(CppBinary.OPTIMIZED_ATTRIBUTE, true)
+        attribute(CppBinary.OPTIMIZED_ATTRIBUTE, false)
+        // TODO: both Debug and Release variants has true value here
+        // attribute(CppBinary.DEBUGGABLE_ATTRIBUTE, false)
+        attribute(Usage.USAGE_ATTRIBUTE, namedAttribute(Usage.NATIVE_RUNTIME)) // NATIVE_RUNTIME NATIVE_LINK
+    }
+}
+
+val sharedLibSuffix = OperatingSystem.current().getSharedLibrarySuffix()
 
 val ivyPublishDir = "$buildDir/ivy"
 
@@ -13,22 +28,29 @@ ant.importBuild("$projectDir/build.xml") { antTargetName -> "ant-target-" + antT
 ant.lifecycleLogLevel = org.gradle.api.AntBuilder.AntMessagePriority.INFO
 
 dependencies {
-    pubCfg(project(":p1"))
-    pubCfg(project(":p2"))
+    pubJarCfg(project(":p1"))
+    pubJarCfg(project(":p2"))
+
+    pubLibCfg(project(":pnative"))
 }
 
 tasks {
     create<Copy>("copyJars") {
-        from(pubCfg)
+        from(pubJarCfg)
         into(ivyPublishDir)
         include("*.jar")
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    }
+    create<Copy>("copySharedLibs") {
+        from(pubLibCfg)
+        into(ivyPublishDir)
+        include("*$sharedLibSuffix")
     }
     create("ivyDescr") {
         doLast {
             val ivyXmlWriter = MyIvyXmlWriter()
 
-            val resolvedArtifacts: Set<ResolvedArtifact> = pubCfg.getResolvedConfiguration().getResolvedArtifacts()
+            val resolvedArtifacts: Set<ResolvedArtifact> = pubJarCfg.getResolvedConfiguration().getResolvedArtifacts()
             resolvedArtifacts.forEach { result: ResolvedArtifact ->
                 ivyXmlWriter.addArtifact(result)
             }
