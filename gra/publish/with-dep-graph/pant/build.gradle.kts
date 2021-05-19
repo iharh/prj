@@ -50,9 +50,11 @@ tasks {
         doLast {
             val ivyXmlWriter = MyIvyXmlWriter()
 
-            val resolvedArtifacts: Set<ResolvedArtifact> = pubJarCfg.getResolvedConfiguration().getResolvedArtifacts()
-            resolvedArtifacts.forEach { result: ResolvedArtifact ->
-                ivyXmlWriter.addArtifact(result)
+            listOf(pubJarCfg, pubLibCfg).forEach { pubCfg: Configuration ->
+                val resolvedArtifacts: Set<ResolvedArtifact> = pubCfg.getResolvedConfiguration().getResolvedArtifacts()
+                resolvedArtifacts.forEach { result: ResolvedArtifact ->
+                    ivyXmlWriter.addArtifact(result)
+                }
             }
 
             val ivyDescriptorFileName = "$ivyPublishDir/ivy.xml"
