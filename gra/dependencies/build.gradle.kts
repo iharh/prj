@@ -27,6 +27,16 @@ subprojects {
                 exclude("javax.xml.bind:jaxb-api")
                 exclude("xpp3:xpp3")
             }
+
+            dependencySet("io.grpc:1.37.0") {
+                entry("grpc-netty")
+                entry("grpc-core")
+                entry("grpc-api")
+                entry("grpc-context")
+                entry("grpc-protobuf")
+                entry("grpc-stub")
+            }
+
         }
     }
 }
